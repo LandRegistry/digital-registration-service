@@ -25,20 +25,24 @@
 {% endblock %}
 
 {% block header %}
-<h1 class="govuk-heading-l"> Pages </h1>
-<ul>
-  <li><a href="1-application-start"> 1. Application start </a>
-  <li><a href="2-client-reference"> 2. Client reference</a>
-  <li><a href="3-select-applicationtype"> 3. Select application type</a>
-  <li><a href="4-enter-title-number"> 4. Enter title number</a>
-  <li><a href="5-property-description">5. Property Description</a>
-  <li><a href="6-select-transactions"> 6. Select transactions</a>
-  <li><a href="7-add-applicants"> 7. Add applicants</a>
-</ul>
+<div style="margin: 10px;">
+<h1 class="govuk-heading-l"> DRS Index </h1>
+<ol style="font-family: arial; line-height: 25px;">
+  <li><a href="1-application-start">Application start </a>
+  <li><a href="2-client-reference">Client reference</a>
+  <li><a href="3-select-applicationtype">Select application type</a>
+  <li><a href="4-enter-title-number">Enter title number</a>
+  <li><a href="5-property-description">Property Description</a>
+  <li><a href="6-select-transactions">Select transactions</a>
+  <li><a href="7-add-applicants">Add applicants</a>
+</ol>
+</div>
 
 {% endblock %}
 
-{% block content %}
+{% block footer %}
+{% endblock %}
 
-
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
 {% endblock %}
