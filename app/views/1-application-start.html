@@ -1,0 +1,108 @@
+{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
+{%- set assetPath = '/govuk/assets' -%}
+
+{% extends "govuk/template.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+
+{% block headIcons %}
+  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
+  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
+{% endblock %}
+
+{% block head %}
+  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full" id="headerdiv">
+      <img src="public/images/headerlogo.svg" alt="hmlrlogo">
+      <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
+
+
+    <div class="govuk-phase-banner">
+        <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
+        <span class="govuk-phase-banner__text">
+        This is a prototype and not a real service.
+        </span></p>
+    </div>
+    </div>
+
+<div class="govuk-grid-column-full govuk-!-padding-top-6">
+
+  <h1 class="govuk-heading-xl govuk-!-padding-bottom-4"> Apply to update or create a registered title </h1>
+
+  <p class="govuk-body govuk-!-padding-bottom-2"> You can use this service to submit an AP1 form to: </p>
+
+  <ul class="govuk-list govuk-list--bullet">
+    <li>update an existing title</li>
+    <li>extend a lease (not yet available)</li>
+    <li>create a new lease (not yet available)</li>
+    <li>transfer part of a title (not yet available)</li>
+  </ul>
+
+  {{ govukInsetText({
+    text: "This service supports only single title applications where an AP1 is needed. You don't need to supply a paper AP1."
+  }) }}
+
+
+
+  {{ govukButton({
+  text: "Start now",
+  href: "2-client-reference",
+  isStartButton: true
+}) }}
+
+
+<h2 class="govuk-heading-m govuk-!-padding-top-4"> Before you start </h2>
+
+<p class="govuk-body"> You'll need to provide: </p><br>
+
+<ul class="govuk-list govuk-list--bullet">
+  <li>the title number</li>
+  <li>applicant details</li>
+  <li>scanned documents, if needed</li>
+</ul>
+
+<p class="govuk-body"> You can't use this service to: </p><br>
+
+<ul class="govuk-list govuk-list--bullet">
+  <li>register a charge of part</li>
+  <li>remove a default Form A restriction (JP1)</li>
+  <li>affect a caution title</li>
+  <li> affect a scheme title </li>
+</ul>
+
+<p class="govuk-body govuk-!-padding-bottom-9"> You can also use the <a href="#"> Documents registration service </a></p>
+
+
+
+  <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
+  <br>
+  <p class="govuk-body-s"> The following links open in a new window
+  <br>
+  <br>
+  <a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
+
+</div>
+
+
+{% endblock %}
+
+
+{% block footer %}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}

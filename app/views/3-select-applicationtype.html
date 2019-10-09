@@ -1,0 +1,114 @@
+{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
+{%- set assetPath = '/govuk/assets' -%}
+
+{% extends "govuk/template.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+
+{% block headIcons %}
+  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
+  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
+{% endblock %}
+
+{% block head %}
+  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full" id="headerdiv">
+      <img src="public/images/headerlogo.svg" alt="hmlrlogo">
+      <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
+
+
+    <div class="govuk-phase-banner">
+        <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
+        <span class="govuk-phase-banner__text">
+        This is a prototype and not a real service
+        </span></p>
+    </div>
+    </div>
+
+<div class="govuk-grid-column-full govuk-!-margin-top-7">
+  <br>
+  <h1 class="govuk-heading-l"> Select application type </h1>
+  <p> To start a new application, select one of the following options:
+   </p>
+  {{ govukRadios({
+    idPrefix: "where-do-you-live",
+    name: "where-do-you-live",
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--xl"
+      }
+    },
+    items: [
+      {
+        value: "Update an existing title (Document registration)",
+        text: "Update an existing title (Document registration)"
+      },
+      {
+        value: "Lease extension (not yet available)",
+        text: "Lease extension (not yet available)",
+        disabled: true
+      },
+      {
+        value: "New lease (not yet available)",
+        text: "New lease (not yet available)",
+        disabled: true
+      },
+      {
+        value: "Transfer of part (not yet available)",
+        text: "Transfer of part (not yet available)",
+        disabled: true
+      }
+    ]
+  }) }}
+
+
+  {{ govukButton({
+    text: "Continue",
+    href: "4-enter-title-number.html"
+  }) }}
+
+  <h2 class="govuk-heading-m">When to use this service</h2>
+  <h3 class="govuk-heading-s">Update an existing title</h3>
+  <p class="govuk-body">Use this service for applications to update the whole of a registered title or for interests (other than a charge) affecting part of a registered title. This service is limited to applying for simple transactions like amendments, notices and restrictions.</p>
+
+  <p class="govuk-body">Don't use this service:</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>for transfers of part (TP1 and TP2) or assents of part (AS3)</li>
+  <li>to register a deed of variation where the deed attempts to (a) vary the length of a registered lease by increasing the term, or (b) add new land to the extent demised by a registered lease - see <a href="#"> Practice Guide 28</a> (link opens in a new window)</li>
+  <li>when the grant of a new lease takes effect as a surrender of an existing registered lease by operation of law</li>
+</ul>
+<p class="govuk-body">You can make these applications using the <a href="#"> Document registration service</a> (link opens in a new window).</p>
+
+<hr class="govuk-!-margin-top-9" style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
+<br>
+<p class="govuk-body-s"> The following links open in a new window
+<br>
+<br>
+<a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
+
+</div>
+
+
+
+{% endblock %}
+
+
+{% block footer %}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}
