@@ -46,24 +46,27 @@
     </div>
 
 <div class="govuk-grid-column-full">
-    <h1 class="govuk-heading-l">Applicants</h1>
+    <span class="govuk-caption-l">[Transaction name]</span>
+    <h1 class="govuk-heading-l">Add transferor representation</h1>
+    <p class="govuk-body-m">Select 'Add representation' for each transferor.</p>
+    <h2 class="govuk-heading-m">Transferor representation added</h2>
 
 
 {{ govukTable({
-  caption: "Applicants added",
+  caption: "",
   firstCellIsHeader: false,
   head: [
     {
-      text: "Applicant type"
+      text: "Transferor type",
+      classes: 'govuk-!-width-one-quarter'
     },
     {
-      text: "Full name"
+      text: "Full name",
+      classes: 'govuk-!-width-one-quarter'
     },
     {
-      text: "Company number"
-    },
-    {
-      text: "Territory of incorporation"
+      text: "Represented by",
+      classes: 'govuk-!-width-one-half'
     },
     {
       text: "Options"
@@ -72,7 +75,7 @@
   rows: [
     [
     {
-      text:"-No applicants added-"
+      text:"-No transferors added-"
     },
       {
         text: ""
@@ -90,7 +93,9 @@
   ]
 }) }}
 
-
+{{ govukButton({
+  text: "Continue"
+}) }}
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 <br>

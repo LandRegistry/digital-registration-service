@@ -45,13 +45,14 @@
     </div>
 
 <div class="govuk-grid-column-full">
-    <h1 class="govuk-heading-l">Add applicant</h1>
+    <span class="govuk-caption-l">[Transaction name]</span>
+    <h1 class="govuk-heading-l">Add transferor</h1>
 
-    <p class="govuk-body">Say who you’re lodging the application for. If you’re a conveyancer, this may be your client. </p>
+    <p class="govuk-body">Select the type of transferor and enter their name. Names entered here must match those in supporting documents.</p>
 
 
       {{ govukInsetText({
-      text: "Names entered here must match those in supporting documents. If the names don’t match, you must attach evidence of a name change."
+      text: "Names entered here must match those on the register and in supporting documents. If the names don’t match, you must attach evidence of a name change."
     }) }}
 
 
@@ -60,9 +61,9 @@
       <p> Name must be exactly as it appears on documents lodged with this application. </p>
 
         {{ govukInput({
-          id: "applicant-individual-forenames",
-          name: "applicant-individual-forenames",
-          type: "applicant-individual-forenames",
+          id: "transferor-individual-forenames",
+          name: "transferor-individual-forenames",
+          type: "transferor-individual-forenames",
           caption: "Name must be exactly as it appears on documents lodged with this application",
           classes: "govuk-!-width-one-third",
           label: {
@@ -74,9 +75,9 @@
         }) }}
 
         {{ govukInput({
-          id: "applicant-individual-surname",
-          name: "applicant-individual-surname",
-          type: "applicant-individual-surname",
+          id: "transferor-individual-surname",
+          name: "transferor-individual-surname",
+          type: "transferor-individual-surname",
           classes: "govuk-!-width-one-third govuk-!-margin-bottom-5",
           label: {
             text: "Surname"
@@ -90,9 +91,9 @@
 
     {% set UKcompanyhtml %}
           {{ govukInput({
-            id: "applicant-UKcompany-name",
-            name: "applicant-UKcompany-name",
-            type: "applicant-UKcompany-name",
+            id: "transferor-UKcompany-name",
+            name: "transferor-UKcompany-name",
+            type: "transferor-UKcompany-name",
             classes: "govuk-!-width-one-third",
             hint: {
                text: "Full name registered at Companies House"
@@ -107,9 +108,9 @@
 
 
           {{ govukInput({
-            id: "applicant-UKcompany-number",
-            name: "applicant-UKcompany-number",
-            type: "applicant-UKcompany-number",
+            id: "transferor-UKcompany-number",
+            name: "transferor-UKcompany-number",
+            type: "transferor-UKcompany-number",
             classes: "govuk-!-width-one-third govuk-!-margin-bottom-5",
             hint: {
                text: "Companies House registration number, including any prefix"
@@ -126,9 +127,9 @@
 
     {% set overseasHtml %}
           {{ govukInput({
-            id: "applicant-overseas-name",
-            name: "applicant-overseas-name",
-            type: "applicant-overseas-name",
+            id: "transferor-overseas-name",
+            name: "transferor-overseas-name",
+            type: "transferor-overseas-name",
             classes: "govuk-!-width-one-third",
             hint: {
                text: "Company name as incorporated in its state of origin"
@@ -143,9 +144,9 @@
 
 
           {{ govukInput({
-            id: "applicant-overseas-number",
-            name: "applicant-overseas-number",
-            type: "applicant-overseas-number",
+            id: "transferor-overseas-number",
+            name: "transferor-overseas-number",
+            type: "transferor-overseas-number",
             classes: "govuk-!-width-one-third",
             hint: {
                text: "Number issued, if registered at Companies House, eg FC023966"
@@ -183,9 +184,9 @@
     {% set otherHtml %}
 
           {{ govukInput({
-            id: "applicant-other-input",
-            name: "applicant-other-input",
-            type: "applicant-other-input",
+            id: "transferor-other-input",
+            name: "transferor-other-input",
+            type: "transferor-other-input",
             classes: "govuk-!-width-one-third govuk-!-margin-bottom-5",
             label: {
               text: "Name of organisation"
@@ -196,11 +197,11 @@
 
 
       {{ govukRadios({
-          idPrefix: "select-applicant",
-          name: "Select-applicant-type",
+          idPrefix: "select-transferor",
+          name: "Select-transferor-type",
           fieldset: {
             legend: {
-              text: "Select applicant type",
+              text: "Select transferor type",
               classes: "govuk-fieldset__legend--m with-hint"
             }
           },
@@ -245,7 +246,7 @@
   }) }}
 
   {{ govukInsetText({
-  text: "You can add more applicants in the next step."
+  text: "You can add more transferors in the next step."
     }) }}
 
 

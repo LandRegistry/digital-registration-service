@@ -46,15 +46,17 @@
     </div>
 
 <div class="govuk-grid-column-full">
-    <h1 class="govuk-heading-l">Applicants</h1>
+    <span class="govuk-caption-l">[Transaction name]</span>
+    <h1 class="govuk-heading-l">Transferors</h1>
+    <h2 class="govuk-heading-m">Transferors added</h2>
 
 
 {{ govukTable({
-  caption: "Applicants added",
+  caption: "",
   firstCellIsHeader: false,
   head: [
     {
-      text: "Applicant type"
+      text: "Transferor type"
     },
     {
       text: "Full name"
@@ -72,7 +74,7 @@
   rows: [
     [
     {
-      text:"-No applicants added-"
+      text:"-No transferors added-"
     },
       {
         text: ""
@@ -90,7 +92,9 @@
   ]
 }) }}
 
-
+{{ govukButton({
+  text: "Continue"
+}) }}
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 <br>

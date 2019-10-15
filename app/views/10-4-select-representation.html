@@ -46,51 +46,95 @@
     </div>
 
 <div class="govuk-grid-column-full">
-    <h1 class="govuk-heading-l">Applicants</h1>
+    <span class="govuk-caption-l">[Transaction name]</span>
+    <h1 class="govuk-heading-l">Select representation</h1>
+    <h2 class="govuk-heading-s">Tell us who's representing:</h2>
+    <p class="govuk-body-m">[ Transferor name ]</p>
+
+    {% set otherConveyancer %}
 
 
-{{ govukTable({
-  caption: "Applicants added",
-  firstCellIsHeader: false,
-  head: [
-    {
-      text: "Applicant type"
-    },
-    {
-      text: "Full name"
-    },
-    {
-      text: "Company number"
-    },
-    {
-      text: "Territory of incorporation"
-    },
-    {
-      text: "Options"
-    }
-  ],
-  rows: [
-    [
-    {
-      text:"-No applicants added-"
-    },
-      {
-        text: ""
-      },
-      {
-        text: ""
-      },
-      {
-        text: ""
-      },
-      {
-        text: ""
-      }
-    ]
-  ]
+        {{ govukInput({
+          id: "representation-full-name",
+          name: "representation-full-name",
+          type: "representation-full-name",
+          classes: "govuk-!-width-one-third",
+          label: {
+            text: "Full name"
+          },
+          attributes: {
+            spellcheck: "false"
+          }
+        }) }}
+
+        {{ govukInput({
+          id: "representation-registered-address",
+          name: "representation-registered-address",
+          type: "representation-registered-address",
+          classes: "govuk-!-width-one-third",
+          label: {
+            text: "Registered Address"
+          },
+          attributes: {
+            spellcheck: "false"
+          }
+        }) }}
+
+        {{ govukInput({
+          id: "representation-reference",
+          name: "representation-reference",
+          type: "representation-reference",
+          classes: "",
+          label: {
+            text: "Conveyancer reference (optional)",
+            classes: 'govuk-hint govuk-character-count__message'
+          },
+          attributes: {
+            spellcheck: "false"
+          }
+        }) }}
+    {% endset -%}
+
+      {{ govukRadios({
+          idPrefix: "",
+          name: "",
+          fieldset: {
+            legend: {
+              text: "",
+              classes: "govuk-fieldset__legend--m with-hint"
+            }
+          },
+          items: [
+            {
+              value: "Conveyancer1",
+              text: "Conveyancer1",
+              conditional: {
+                html: Conveyancer
+              }
+            },
+            {
+              value: "Other conveyancer",
+              text: "Other conveyancer",
+              conditional: {
+                html: otherConveyancer
+              }
+            },
+            {
+              value: "No representation",
+              text: "No representation",
+              conditional: {
+                html: noRepresentation
+              }
+            }
+
+        ]
+      }) }}
+
+
+
+{{ govukButton({
+  text: "Continue"
 }) }}
-
-
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 <br>

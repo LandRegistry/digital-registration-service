@@ -4,12 +4,8 @@
 {% extends "govuk/template.njk" %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/input/macro.njk" import govukInput %}
-{% from "govuk/components/radios/macro.njk" import govukRadios %}
-{% from "govuk/components/select/macro.njk" import govukSelect %}
-{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
-{% from "govuk/components/details/macro.njk" import govukDetails %}
-{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
-{% from "govuk/components/table/macro.njk" import govukTable %}
+{% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+
 
 
 
@@ -36,7 +32,7 @@
       <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 
 
-    <div class="govuk-phase-banner govuk-!-margin-bottom-5">
+    <div class="govuk-phase-banner">
         <p class="govuk-phase-banner__content">
         <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
         <span class="govuk-phase-banner__text">
@@ -46,50 +42,23 @@
     </div>
 
 <div class="govuk-grid-column-full">
-    <h1 class="govuk-heading-l">Applicants</h1>
+  <br>
+  <h1 class="govuk-heading-l govuk-!-padding-bottom-5"> Change or modify title number </h1>
 
+  <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="with-hint">
+        Type in the title number
+      </label>
+      <input class="govuk-textarea govuk-js-character-count govuk-!-width-one-half govuk-!-margin-bottom-9" rows="1" aria-describedby="with-hint-info with-hint-hint"></input>
+    </div>
 
-{{ govukTable({
-  caption: "Applicants added",
-  firstCellIsHeader: false,
-  head: [
-    {
-      text: "Applicant type"
-    },
-    {
-      text: "Full name"
-    },
-    {
-      text: "Company number"
-    },
-    {
-      text: "Territory of incorporation"
-    },
-    {
-      text: "Options"
-    }
-  ],
-  rows: [
-    [
-    {
-      text:"-No applicants added-"
-    },
-      {
-        text: ""
-      },
-      {
-        text: ""
-      },
-      {
-        text: ""
-      },
-      {
-        text: ""
-      }
-    ]
-  ]
+  </div>
+
+  {{ govukButton({
+  text: "Continue",
+  href: "5-property-description.html"
 }) }}
-
 
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
@@ -100,6 +69,10 @@
 <a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
 
 </div>
+
+
+</div>
+
 
 
 {% endblock %}

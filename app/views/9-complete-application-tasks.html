@@ -46,49 +46,72 @@
     </div>
 
 <div class="govuk-grid-column-full">
-    <h1 class="govuk-heading-l">Applicants</h1>
+    <h1 class="govuk-heading-l">Complete your application</h1>
+    <p class="govuk-body-m">Provide all details and the documents you want to attach.</p>
 
 
-{{ govukTable({
-  caption: "Applicants added",
-  firstCellIsHeader: false,
-  head: [
-    {
-      text: "Applicant type"
-    },
-    {
-      text: "Full name"
-    },
-    {
-      text: "Company number"
-    },
-    {
-      text: "Territory of incorporation"
-    },
-    {
-      text: "Options"
-    }
-  ],
-  rows: [
-    [
-    {
-      text:"-No applicants added-"
-    },
-      {
-        text: ""
-      },
-      {
-        text: ""
-      },
-      {
-        text: ""
-      },
-      {
-        text: ""
-      }
-    ]
-  ]
-}) }}
+
+    {{ govukTable({
+      firstCellIsHeader: true,
+      head: [
+        {
+          text: "Your reference"
+        },
+        {
+          text: ""
+        }
+      ],
+      rows: [
+        [
+          {
+            text: "Title"
+          },
+          {
+            text: ""
+          }
+        ],
+        [
+          {
+            text: "Description"
+          },
+          {
+            text: ""
+          }
+        ]
+      ]
+    }) }}
+
+    <h2 class="govuk-heading-m"> Transaction details </h2>
+    {{ govukTable({
+      firstCellIsHeader: true,
+      head: [
+        {
+          text: "1"
+        },
+        {
+          text: ""
+        }
+      ],
+      rows: [
+        [
+          {
+            text: ""
+          },
+          {
+            text: ""
+          }
+        ]
+      ]
+    }) }}
+
+    {{ govukButton({
+      text: "Review application"
+    }) }}
+
+    {{ govukInsetText({
+      text: "To avoid requisitions, attach all relevant documents."
+      }) }}
+
 
 
 
