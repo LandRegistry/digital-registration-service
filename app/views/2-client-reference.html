@@ -4,6 +4,10 @@
 {% extends "govuk/template.njk" %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
 {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
 
 
@@ -58,7 +62,6 @@
       </span>
     </div>
 
-
     {{ govukButton({
       text: "Continue"
     }) }}
@@ -67,8 +70,7 @@
   <script type="application/json" id="reference-form-validation">
     {
       "reference": {
-        "presence": true,
-        "email": true
+        "presence": true
       }
     }
   </script>
