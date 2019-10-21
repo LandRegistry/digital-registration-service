@@ -10,10 +10,6 @@
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 {% from "govuk/components/table/macro.njk" import govukTable %}
-{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
-{% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
-
-
 
 
 
@@ -51,107 +47,56 @@
 
 <div class="govuk-grid-column-full">
     <span class="govuk-caption-l">[Transaction name]</span>
-    <h1 class="govuk-heading-l">Select representation</h1>
-    <h2 class="govuk-heading-s">Tell us who's representing:</h2>
-    <p class="govuk-body-m">[ Transferor name ]</p>
-
-    {% set otherConveyancer %}
+    <h1 class="govuk-heading-l">Add address for service</h1>
+    <p class="govuk-body">Each transferee can add up to 3 addresses for service to the register. One must be a postal address.</p>
+    <h2 class="govuk-heading-m">Transferees added</h2>
 
 
-        {{ govukInput({
-          id: "representation-full-name",
-          name: "representation-full-name",
-          type: "representation-full-name",
-          classes: "govuk-!-width-one-half",
-          label: {
-            text: "Full name"
-          },
-          attributes: {
-            spellcheck: "false"
-          }
-        }) }}
+{{ govukTable({
+  caption: "",
+  firstCellIsHeader: false,
+  head: [
+    {
+      text: "Transferee type"
+    },
+    {
+      text: "Full name"
+    },
+    {
+      text: "Address type"
+    },
+    {
+      text: "Address for service"
+    },
+    {
+      text: "Options"
+    }
+  ],
+  rows: [
+    [
+    {
+      text:"- No transferee added -"
+    },
+      {
+        text: ""
+      },
+      {
+        text: ""
+      },
+      {
+        text: ""
+      },
+      {
+        text: ""
+      }
+    ]
+  ]
+}) }}
 
-        {{ govukTextarea({
-          name: "representation-address",
-          id: "representation-address",
-          classes: "govuk-!-width-one-half",
-          label: {
-            text: "Registered address"
-          }
-        }) }}
-
-        {{ govukCharacterCount({
-        maxlength: 25,
-        rows: "1",
-        classes: "govuk-!-width-one-third",
-        label: {
-          text: "Conveyancer reference (optional)"
-        }
-      }) }}
-          {% endset -%}
-
-      {{ govukRadios({
-          idPrefix: "",
-          name: "",
-          fieldset: {
-            legend: {
-              text: "",
-              classes: "govuk-fieldset__legend--m with-hint"
-            }
-          },
-          items: [
-            {
-              value: "[Conveyancer1]",
-              text: "[Conveyancer1]",
-              conditional: {
-                html: Conveyancer
-              }
-            },
-            {
-              value: "Other conveyancer",
-              text: "Other conveyancer",
-              conditional: {
-                html: otherConveyancer
-              }
-            },
-            {
-              value: "No representation",
-              text: "No representation",
-              conditional: {
-                html: noRepresentation
-              }
-            }
-
-        ]
-      }) }}
-
-
-        {{ govukCheckboxes({
-          idPrefix: "represents-all",
-          name: "represents-all",
-          classes: "govuk-checkboxes",
-          fieldset: {
-
-          },
-          items: [
-            {
-              value: "Selected conveyancer represents all transferors (optional).",
-              text: "Selected conveyancer represents all transferors (optional)."
-            }
-          ]
-        }) }}
-
-        <div style="margin-left: 50px;">
-        {{ govukInsetText({
-            text: "Replaces any conveyancer details previously added."
-        }) }}
-
-      </div>
-
-      {{ govukButton({
-        text: "Continue",
-        href: "10-3-transferor-representation.html"
-      }) }}
+{{ govukButton({
+  text: "Continue",
+  href: "task-list.html"
+}) }}
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 <br>

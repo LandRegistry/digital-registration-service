@@ -10,10 +10,6 @@
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 {% from "govuk/components/table/macro.njk" import govukTable %}
-{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
-{% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
-
-
 
 
 
@@ -51,107 +47,67 @@
 
 <div class="govuk-grid-column-full">
     <span class="govuk-caption-l">[Transaction name]</span>
-    <h1 class="govuk-heading-l">Select representation</h1>
-    <h2 class="govuk-heading-s">Tell us who's representing:</h2>
-    <p class="govuk-body-m">[ Transferor name ]</p>
+    <h1 class="govuk-heading-l">Add address for service</h1>
+    <h2 class="govuk-heading-s">Address type</h2>
+    <p class="govuk-body">UK postal address</p>
 
-    {% set otherConveyancer %}
+    <h3 class="govuk-heading-s">Postcode</h3>
+    <p class="govuk-body">[Postcode] <a class="govuk-link" href='#'> Change </a> </p>
 
+    <h4 class="govuk-heading-s">Select address</h4>
 
-        {{ govukInput({
-          id: "representation-full-name",
-          name: "representation-full-name",
-          type: "representation-full-name",
-          classes: "govuk-!-width-one-half",
-          label: {
-            text: "Full name"
-          },
-          attributes: {
-            spellcheck: "false"
-          }
-        }) }}
-
-        {{ govukTextarea({
-          name: "representation-address",
-          id: "representation-address",
-          classes: "govuk-!-width-one-half",
-          label: {
-            text: "Registered address"
-          }
-        }) }}
-
-        {{ govukCharacterCount({
-        maxlength: 25,
-        rows: "1",
-        classes: "govuk-!-width-one-third",
+      {{ govukSelect({
+        id: "addresses-found",
+        name: "address-list",
         label: {
-          text: "Conveyancer reference (optional)"
-        }
-      }) }}
-          {% endset -%}
-
-      {{ govukRadios({
-          idPrefix: "",
-          name: "",
-          fieldset: {
-            legend: {
-              text: "",
-              classes: "govuk-fieldset__legend--m with-hint"
-            }
+          text: "3 addresses found"
+        },
+        items: [
+          {
+            value: "1",
+            text: "1, High Street, Road X, City, AR4 1KI"
           },
-          items: [
-            {
-              value: "[Conveyancer1]",
-              text: "[Conveyancer1]",
-              conditional: {
-                html: Conveyancer
-              }
-            },
-            {
-              value: "Other conveyancer",
-              text: "Other conveyancer",
-              conditional: {
-                html: otherConveyancer
-              }
-            },
-            {
-              value: "No representation",
-              text: "No representation",
-              conditional: {
-                html: noRepresentation
-              }
-            }
-
+          {
+            value: "2",
+            text: "2, High Street, Road X, City, AR4 1KI"
+          },
+          {
+            value: "2",
+            text: "2, High Street, Road X, City, AR4 1KI"
+          },
+          {
+            value: "3",
+            text: "3, High Street, Road X, City, AR4 1KI"
+          }
         ]
       }) }}
 
+    <p class="govuk-body"> <a href="#" class="govuk-link">I can't find address in the list</a></p>
 
-        {{ govukCheckboxes({
-          idPrefix: "represents-all",
-          name: "represents-all",
-          classes: "govuk-checkboxes",
-          fieldset: {
 
-          },
-          items: [
-            {
-              value: "Selected conveyancer represents all transferors (optional).",
-              text: "Selected conveyancer represents all transferors (optional)."
-            }
-          ]
-        }) }}
+    <h5 class="govuk-heading-m">More actions</h5>
 
-        <div style="margin-left: 50px;">
-        {{ govukInsetText({
-            text: "Replaces any conveyancer details previously added."
-        }) }}
 
-      </div>
+    {{ govukInput({
+      label: {
+        text: "Add c/o name (optional)"
+      },
+      hint: {
+        text: "If it's a 'care of' address, enter the addressee's name"
+      },
+      id: "care-of",
+      name: "care-of",
+      classes: "govuk-!-width-two-thirds"
+    }) }}
 
-      {{ govukButton({
-        text: "Continue",
-        href: "10-3-transferor-representation.html"
-      }) }}
+    <p class="govuk-body">Add this address to the following transferees: (optional)</p>
+    <p class="govuk-body">- No transferees to select -</p>
+
+
+{{ govukButton({
+  text: "Continue",
+  href: "#"
+}) }}
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 <br>

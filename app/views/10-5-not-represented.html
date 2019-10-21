@@ -51,101 +51,37 @@
 
 <div class="govuk-grid-column-full">
     <span class="govuk-caption-l">[Transaction name]</span>
-    <h1 class="govuk-heading-l">Select representation</h1>
-    <h2 class="govuk-heading-s">Tell us who's representing:</h2>
-    <p class="govuk-body-m">[ Transferor name ]</p>
+    <h1 class="govuk-heading-l">Verify identity</h1>
+    <p class="govuk-body">When a party is not represented by a conveyancer, you must personally verify or provide evidence of their identity.</p>
+    <h2 class="govuk-heading-s">Declaration</h2>
+    <p class="govuk-body-m">[ Transferor name ] is not represented by a conveyancer.</p>
 
-    {% set otherConveyancer %}
 
-
-        {{ govukInput({
-          id: "representation-full-name",
-          name: "representation-full-name",
-          type: "representation-full-name",
-          classes: "govuk-!-width-one-half",
-          label: {
-            text: "Full name"
-          },
-          attributes: {
-            spellcheck: "false"
-          }
-        }) }}
-
-        {{ govukTextarea({
-          name: "representation-address",
-          id: "representation-address",
-          classes: "govuk-!-width-one-half",
-          label: {
-            text: "Registered address"
-          }
-        }) }}
-
-        {{ govukCharacterCount({
-        maxlength: 25,
-        rows: "1",
-        classes: "govuk-!-width-one-third",
-        label: {
-          text: "Conveyancer reference (optional)"
-        }
-      }) }}
-          {% endset -%}
 
       {{ govukRadios({
-          idPrefix: "",
-          name: "",
-          fieldset: {
-            legend: {
-              text: "",
-              classes: "govuk-fieldset__legend--m with-hint"
-            }
+        idPrefix: "select-statement",
+        name: "not-represented-select-statement",
+        fieldset: {
+          legend: {
+            text: "Select the correct statement:",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "Satisfied",
+            text: "I am satisfied that sufficient steps have been taken to verify their identity and that they are the registered proprietor or have the right to be registered as the proprietor"
           },
-          items: [
-            {
-              value: "[Conveyancer1]",
-              text: "[Conveyancer1]",
-              conditional: {
-                html: Conveyancer
-              }
-            },
-            {
-              value: "Other conveyancer",
-              text: "Other conveyancer",
-              conditional: {
-                html: otherConveyancer
-              }
-            },
-            {
-              value: "No representation",
-              text: "No representation",
-              conditional: {
-                html: noRepresentation
-              }
-            }
-
+          {
+            value: "evidence-attach",
+            text: "I attach evidence of their identity with this application"
+          }
         ]
       }) }}
 
-
-        {{ govukCheckboxes({
-          idPrefix: "represents-all",
-          name: "represents-all",
-          classes: "govuk-checkboxes",
-          fieldset: {
-
-          },
-          items: [
-            {
-              value: "Selected conveyancer represents all transferors (optional).",
-              text: "Selected conveyancer represents all transferors (optional)."
-            }
-          ]
-        }) }}
-
-        <div style="margin-left: 50px;">
-        {{ govukInsetText({
-            text: "Replaces any conveyancer details previously added."
-        }) }}
-
+      <div class="govuk-inset-text">
+        See <a href="https://www.gov.uk/government/publications/evidence-of-identity-conveyancers"> Practice Guide 67</a> (link opens in a new window) for information about providing proof of identity.
       </div>
 
       {{ govukButton({
