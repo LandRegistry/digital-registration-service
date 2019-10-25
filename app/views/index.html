@@ -25,33 +25,48 @@
 {% endblock %}
 
 {% block header %}
-<div style="margin: 10px;">
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper">
+     <div class="govuk-grid-row">
+       <div class="govuk-grid-column-full-width">
+
 <h1 class="govuk-heading-l"> DRS Index </h1>
-<ul style="font-family: arial; line-height: 25px;">
-  <li><a href="1-application-start">Application start </a>
-  <li><a href="2-client-reference">Client reference</a>
-  <li><a href="3-select-applicationtype">Select application type</a>
-  <li><a href="4-enter-title-number">Enter title number</a>
-  <li><a href="5-property-description">Property Description</a>
-  <li><a href="6-select-transactions">Select transactions</a>
-  <li><a href="7-add-applicants">Add applicants</a>
-  <li><a href="8-applicants-list">Applicants list</a>
-  <li><a href="9-complete-applications-tasks">Complete applications tasks</a>
-  <li><a href="10-1-transferor-list">Transferor list</a>
-  <li><a href="10-2-add-transferor">Add transferor</a>
-  <li><a href="10-3-transferor-representation">Transferor representation</a>
-  <li><a href="10-4-select-representation">Select representation</a>
-  <li><a href="10-5-not-represented">Not represented</a>
-  <li><a href="11-transferee-list">Transferee list</a>
-  <li><a href="12-AfS-list">Address for Service list</a>
-  <li><a href="12a-AfS-add">Address for Service - Select type</a>
-  <li><a href="12b-AfS-UK">Address for Service - UK</a>
-  <li><a href="12c-AfS-UK_results">Address for Service - UK Results</a>
-  <li><a href="12d-AfS-UKmanual">Address for Service - UK Manual entry</a>
-  <li><a href="12e-AfS-Overseas">Address for Service - Overseas</a>
+<hr>
 
-
-</ul>
+<h2 class="govuk-heading-m"> Prototype </h2>
+  <ul class="govuk-list" style="font-family: arial; line-height: 25px;">
+    <li><a href="1-application-start">Application start</a><br><br>
+    <li><a href="2-client-reference">Client reference</a>
+    <li><a href="3-select-applicationtype">Select application type</a>
+    <li><a href="4-enter-title-number">Enter title number</a>
+    <li style="padding-left: 25px;"><a href="4b-change-title-number">Change title number</a>
+    <li><a href="5-property-description">Property Description</a>
+    <li><a href="6-select-transactions">Select transactions</a>
+    <li><a href="7-add-applicants">Add applicants</a>
+    <li><a href="8-applicants-list">Applicants list</a>
+      <br><br>
+<h2 class="govuk-heading-m">  </h2>
+    <li><a href="9-complete-applications-tasks">Complete applications tasks</a>
+      <br><br>
+    <h3 class="govuk-heading-s"> Transferors </h3>
+    <li><a href="10-1-transferor-list">Transferor list</a>
+    <li><a href="10-2-add-transferor">Add transferor</a>
+    <li><a href="10-3-transferor-representation">Transferor representation</a>
+    <li><a href="10-4-select-representation">Select representation</a>
+    <li><a href="10-5-not-represented">Not represented</a>
+    <li><a href="11-transferee-list">Transferee list</a>
+    <li><a href="12-AfS-list">Address for Service list</a>
+    <li><a href="12a-AfS-add">Address for Service - Select type</a>
+    <li><a href="12b-AfS-UK">Address for Service - UK</a>
+    <li><a href="12c-AfS-UK_results">Address for Service - UK Results</a>
+    <li><a href="12d-AfS-UKmanual">Address for Service - UK Manual entry</a>
+    <li><a href="12e-AfS-Overseas">Address for Service - Overseas</a>
+    <li><a href="12f-AfS-email">Address for Service - email</a>
+    <li><a href="12g-AfS-DX">Address for Service - DX</a>
+    <li><a href="12h-AfS-PO">Address for Service - PO</a>
+    <li><a href="12i-AfS-BFPO">Address for Service - BFPO</a>
+    </div>
+  </ul>
 </div>
 
 {% endblock %}

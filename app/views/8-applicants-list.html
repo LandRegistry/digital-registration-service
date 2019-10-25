@@ -47,47 +47,43 @@
 
 <div class="govuk-grid-column-full">
     <h1 class="govuk-heading-l">Applicants</h1>
+    <h2 class="govuk-heading-m">Applicants added</h2>
 
 
-{{ govukTable({
-  caption: "Applicants added",
-  firstCellIsHeader: false,
-  head: [
-    {
-      text: "Applicant type"
-    },
-    {
-      text: "Full name"
-    },
-    {
-      text: "Company number"
-    },
-    {
-      text: "Territory of incorporation"
-    },
-    {
-      text: "Options"
-    }
-  ],
-  rows: [
-    [
-    {
-      text:"-No applicants added-"
-    },
-      {
-        text: ""
-      },
-      {
-        text: ""
-      },
-      {
-        text: ""
-      },
-      {
-        text: ""
-      }
-    ]
-  ]
+<table class="govuk-table">
+
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Applicant type</th>
+      <th scope="col" class="govuk-table__header">Full name</th>
+      <th scope="col" class="govuk-table__header">Company number</th>
+      <th scope="col" class="govuk-table__header">Territory of incorporation</th>
+      <th scope="col" class="govuk-table__header">Options</th>
+    </tr>
+  </thead>
+    <tbody class="govuk-table_body">
+      <tr class="govuk-table_row">
+      <td class="govuk-table__cell">Private individual</td>
+      <td class="govuk-table__cell"><p>{{ data['forename']['surname'] }}</p></td>
+      <td class="govuk-table__cell">n/a</td>
+      <td class="govuk-table__cell">n/a</td>
+      <td class="govuk-table__cell govuk-link">Remove</td>
+    <tbody>
+      <tbody class="govuk-table_body">
+        <tr class="govuk-table_row">
+        <td class="govuk-table__cell">UK Company</td>
+        <td class="govuk-table__cell"><p>{{ data['company-name'] }}</p></td>
+        <td class="govuk-table__cell">{{ data['company-number'] }}</td>
+        <td class="govuk-table__cell">{{ data['company-territory'] }}</td>
+        <td class="govuk-table__cell govuk-link">Remove</td>
+      <tbody>
+
+</table>
+
+{{ govukButton({
+classes: "govuk-!-margin-top-5",
+text: "Continue",
+href: "9-complete-application-tasks.html"
 }) }}
 
 

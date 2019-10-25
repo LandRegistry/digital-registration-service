@@ -33,11 +33,11 @@
 {% block content %}
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-full" id="headerdiv">
-      <img src="public/images/headerlogo.svg" alt="hmlrlogo" style="float: left;">
+      <img src="public/images/headerlogo.svg" alt="hmlrlogo">
       <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 
 
-    <div class="govuk-phase-banner govuk-!-margin-bottom-5">
+    <div class="govuk-phase-banner">
         <p class="govuk-phase-banner__content">
         <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
         <span class="govuk-phase-banner__text">
@@ -58,7 +58,6 @@
     Enter the price or value if applicable.
   </div>
 
-
   <div class="govuk-grid-column-one-half">
     <h2 class="govuk-heading-m"> Transaction </h2>
     <h3 class="govuk-body">Select from the list</h3>
@@ -72,276 +71,89 @@
     <h3 class="govuk-body"> Fee must be 0 or between 12 and 999 </h3>
   </div>
 
-      <div class="govuk-grid-column-one-half">
-          {{ govukSelect({
-            id: "Select_transaction",
-            name: "Select transaction",
-            label: {
-              text: "Priority 1"
-            },
-            items: [
-              {
-                value: "Select a transaction from the list",
-                text: "Select a transaction from the list",
-                selected: true
-              },
-              {
-                value: "Select a transaction from the list",
-                text: "Select a transaction from the list Select a transaction from the list"
-              },
-              {
-                value: "Acquisition of right to manage",
-                text: "Acquisition of right to manage"
-              },
-              {
-                value: "Agreed Notice (AN1)",
-                text: "Agreed Notice (AN1)"
-              },
-              {
-                value: "Transfer for value (TR1)",
-                text: "Transfer for value (TR1)"
-              }
-            ]
-          }) }}
-      </div>
+  <form method="get" action="7-add-applicants.html" data-validate="transaction-form-validation" novalidate>
+    <div class="govuk-grid-column-one-half">
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="Select_transaction{{n}}">
+          Priority 1
+        </label>
 
-      <div class="govuk-grid-column-one-quarter">
-            {{ govukInput({
-          label: {
-            text: " -"
-          },
-          id: "fee1",
-          name: "fee"
-          }) }}
+        <select class="govuk-select" id="Select_transaction_1" name="Transaction_1">
+            <option value="" selected="">Select a transaction from the list</option>
+            <option value="Select a transaction from the list">Select a transaction from the list Select a transaction from the list</option>
+            <option value="Acquisition of right to manage">Acquisition of right to manage</option>
+            <option value="Agreed Notice (AN1)">Agreed Notice (AN1)</option>
+            <option value="Transfer for value (TR1)">Transfer for value (TR1)</option>
+        </select>
       </div>
-
-      <div class="govuk-grid-column-one-quarter">
-          {{ govukInput({
-          label: {
-            id: "price1",
-            text: " -"
-          },
-          id: "Price",
-          name: "Price"
-          }) }}
-      </div>
-
-      <div class="govuk-grid-column-one-half">
-          {{ govukSelect({
-            id: "Select_transaction",
-            name: "Select transaction",
-            label: {
-              text: "Priority 2"
-            },
-            items: [
-              {
-                value: "Select a transaction from the list",
-                text: "Select a transaction from the list",
-                selected: true
-              },
-              {
-                value: "Select a transaction from the list",
-                text: "Select a transaction from the list Select a transaction from the list"
-              },
-              {
-                value: "Acquisition of right to manage",
-                text: "Acquisition of right to manage"
-              },
-              {
-                value: "Agreed Notice (AN1)",
-                text: "Agreed Notice (AN1)"
-              },
-              {
-                value: "Transfer for value (TR1)",
-                text: "Transfer for value (TR1)"
-              }
-            ]
-          }) }}
-      </div>
-
-      <div class="govuk-grid-column-one-quarter">
-            {{ govukInput({
-          label: {
-            text: " -"
-          },
-          id: "fee2",
-          name: "fee"
-          }) }}
-      </div>
-
-      <div class="govuk-grid-column-one-quarter">
-          {{ govukInput({
-          label: {
-            id: "price2",
-            text: " -"
-          },
-          id: "Price",
-          name: "Price"
-          }) }}
-      </div>
-
-      <div class="govuk-grid-column-one-half">
-          {{ govukSelect({
-            id: "Select_transaction",
-            name: "Select transaction",
-            label: {
-              text: "Priority 3"
-            },
-            items: [
-              {
-                value: "Select a transaction from the list",
-                text: "Select a transaction from the list",
-                selected: true
-              },
-              {
-                value: "Select a transaction from the list",
-                text: "Select a transaction from the list Select a transaction from the list"
-              },
-              {
-                value: "Acquisition of right to manage",
-                text: "Acquisition of right to manage"
-              },
-              {
-                value: "Agreed Notice (AN1)",
-                text: "Agreed Notice (AN1)"
-              },
-              {
-                value: "Transfer for value (TR1)",
-                text: "Transfer for value (TR1)"
-              }
-            ]
-          }) }}
-      </div>
-
-      <div class="govuk-grid-column-one-quarter">
-            {{ govukInput({
-          label: {
-            text: " -"
-          },
-          id: "fee3",
-          name: "fee"
-          }) }}
-      </div>
-
-      <div class="govuk-grid-column-one-quarter">
-          {{ govukInput({
-          label: {
-            id: "price3",
-            text: " -"
-          },
-          id: "Price",
-          name: "Price"
-          }) }}
-      </div>
-
-      <div class="govuk-grid-column-one-half">
-          {{ govukSelect({
-            id: "Select_transaction",
-            name: "Select transaction",
-            label: {
-              text: "Priority 4"
-            },
-            items: [
-              {
-                value: "Select a transaction from the list",
-                text: "Select a transaction from the list",
-                selected: true
-              },
-              {
-                value: "Select a transaction from the list",
-                text: "Select a transaction from the list Select a transaction from the list"
-              },
-              {
-                value: "Acquisition of right to manage",
-                text: "Acquisition of right to manage"
-              },
-              {
-                value: "Agreed Notice (AN1)",
-                text: "Agreed Notice (AN1)"
-              },
-              {
-                value: "Transfer for value (TR1)",
-                text: "Transfer for value (TR1)"
-              }
-            ]
-          }) }}
-      </div>
-
-      <div class="govuk-grid-column-one-quarter">
-            {{ govukInput({
-          label: {
-            text: " -"
-          },
-          id: "fee4",
-          name: "fee"
-          }) }}
-      </div>
-
-      <div class="govuk-grid-column-one-quarter">
-          {{ govukInput({
-          label: {
-            id: "price4",
-            text: " -"
-          },
-          id: "Price",
-          name: "Price"
-          }) }}
-      </div>
+    </div>
 
 
-      <div class="govuk-grid-column-one-half">
-          {{ govukSelect({
-            id: "Select_transaction",
-            name: "Select transaction",
-            label: {
-              text: "Priority 5"
-            },
-            items: [
-              {
-                value: "Select a transaction from the list",
-                text: "Select a transaction from the list",
-                selected: true
-              },
-              {
-                value: "Select a transaction from the list",
-                text: "Select a transaction from the list Select a transaction from the list"
-              },
-              {
-                value: "Acquisition of right to manage",
-                text: "Acquisition of right to manage"
-              },
-              {
-                value: "Agreed Notice (AN1)",
-                text: "Agreed Notice (AN1)"
-              },
-              {
-                value: "Transfer for value (TR1)",
-                text: "Transfer for value (TR1)"
-              }
-            ]
-          }) }}
-      </div>
+    <div class="govuk-grid-column-one-quarter">
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="fee{{n}}">
+         -
+        </label>
 
-      <div class="govuk-grid-column-one-quarter">
-            {{ govukInput({
-          label: {
-            text: " -"
-          },
-          id: "fee5",
-          name: "fee"
-          }) }}
-      </div>
 
-      <div class="govuk-grid-column-one-quarter">
-          {{ govukInput({
-          label: {
-            id: "price5",
-            text: " -"
-          },
-          id: "Price",
-          name: "Price"
-          }) }}
+        <input class="govuk-input" id="fee{{n}}" name="fee{{n}}" type="text">
       </div>
+    </div>
+
+    <div class="govuk-grid-column-one-quarter">
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="Price{{n}}">
+           -
+        </label>
+
+
+        <input class="govuk-input" id="Price{{n}}" name="Price{{n}}" type="text">
+      </div>
+    </div>
+
+  {% for n in range(4) %}
+  <div class="govuk-grid-column-one-half">
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="Select_transaction{{n}}">
+        Priority {{n + 2}}
+      </label>
+
+      <select class="govuk-select" id="Select_transaction{{n}}" name="Transactions{{n}}">
+          <option value="Select a transaction from the list" selected="">Select a transaction from the list</option>
+          <option value="Select a transaction from the list">Select a transaction from the list Select a transaction from the list</option>
+          <option value="Acquisition of right to manage">Acquisition of right to manage</option>
+          <option value="Agreed Notice (AN1)">Agreed Notice (AN1)</option>
+          <option value="Transfer for value (TR1)">Transfer for value (TR1)</option>
+      </select>
+    </div>
+  </div>
+
+
+  <div class="govuk-grid-column-one-quarter">
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="fee{{n}}">
+       -
+      </label>
+
+
+      <input class="govuk-input" id="fee{{n}}" name="fee{{n}}" type="text">
+    </div>
+  </div>
+
+  <div class="govuk-grid-column-one-quarter">
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="Price{{n}}">
+         -
+      </label>
+
+
+      <input class="govuk-input" id="Price{{n}}" name="Price{{n}}" type="text">
+    </div>
+  </div>
+
+  {% endfor %}
+
+
 
 
   <div class="govuk-grid-column-one-half govuk-!-margin-top-5">
@@ -403,14 +215,26 @@
 
 {{ govukButton({
 classes: "govuk-!-margin-top-5",
-text: "Continue",
-href: "7-add-applicants.html"
+text: "Continue"
 }) }}
 
 
 {{ govukInsetText({
   text: "To avoid requisitions, make sure you add any payable fees"
 }) }}
+
+</form>
+<!--
+<script type="application/json" id="transaction-form-validation">
+ {
+   "Transaction_1": {
+     "presence": {
+       "message": "^Select a transaction"
+     }
+   }
+ }
+</script> -->
+
 
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">

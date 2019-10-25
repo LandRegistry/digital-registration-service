@@ -133,7 +133,7 @@ function errorSummary(errors) {
     if (errors.hasOwnProperty(name)) {
       var errorItem = document.createElement('li')
       var errorLink = document.createElement('a')
-      errorLink.setAttribute('href', '#' + name)
+      errorLink.setAttribute('href', '#' + 'name')
       errorLink.textContent = errors[name]
       errorLink.addEventListener('click', function(e) {
         e.preventDefault()

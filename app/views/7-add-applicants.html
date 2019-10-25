@@ -44,206 +44,210 @@
     </div>
     </div>
 
-<div class="govuk-grid-column-full">
-    <h1 class="govuk-heading-l">Add applicant</h1>
-
-    <p class="govuk-body">Say who you’re lodging the application for. If you’re a conveyancer, this may be your client. </p>
 
 
-      {{ govukInsetText({
-      text: "Names entered here must match those in supporting documents. If the names don’t match, you must attach evidence of a name change."
-    }) }}
+
+      <div class="govuk-grid-column-full">
+          <h1 class="govuk-heading-l">Add applicant</h1>
+
+          <p class="govuk-body">Say who you’re lodging the application for. If you’re a conveyancer, this may be your client. </p>
 
 
-    {% set Privatehtml %}
-
-      <p> Name must be exactly as it appears on documents lodged with this application. </p>
-
-        {{ govukInput({
-          id: "applicant-individual-forenames",
-          name: "applicant-individual-forenames",
-          type: "applicant-individual-forenames",
-          caption: "Name must be exactly as it appears on documents lodged with this application",
-          classes: "govuk-!-width-one-third",
-          label: {
-            text: "Forename(s)"
-          },
-          attributes: {
-            spellcheck: "false"
-          }
-        }) }}
-
-        {{ govukInput({
-          id: "applicant-individual-surname",
-          name: "applicant-individual-surname",
-          type: "applicant-individual-surname",
-          classes: "govuk-!-width-one-third govuk-!-margin-bottom-5",
-          label: {
-            text: "Surname"
-          },
-          attributes: {
-            spellcheck: "false"
-          }
-        }) }}
-    {% endset -%}
-
-
-    {% set UKcompanyhtml %}
-          {{ govukInput({
-            id: "applicant-UKcompany-name",
-            name: "applicant-UKcompany-name",
-            type: "applicant-UKcompany-name",
-            classes: "govuk-!-width-one-third",
-            hint: {
-               text: "Full name registered at Companies House"
-             },
-            label: {
-              text: "Company name"
-            },
-            attributes: {
-              spellcheck: "false"
-            }
+            {{ govukInsetText({
+            text: "Names entered here must match those in supporting documents. If the names don’t match, you must attach evidence of a name change."
           }) }}
 
 
-          {{ govukInput({
-            id: "applicant-UKcompany-number",
-            name: "applicant-UKcompany-number",
-            type: "applicant-UKcompany-number",
-            classes: "govuk-!-width-one-third govuk-!-margin-bottom-5",
-            hint: {
-               text: "Companies House registration number, including any prefix"
-             },
-            label: {
-              text: "Company number"
-            },
-            attributes: {
-              spellcheck: "false"
-            }
-          }) }}
-    {% endset -%}
+          {% set Privatehtml %}
+
+            <p class="govuk-hint"> Name must be exactly as it appears on documents lodged with this application </p>
+
+              {{ govukInput({
+                id: "applicant-individual-forenames",
+                name: "applicant-individual-forenames",
+                type: "applicant-individual-forenames",
+                classes: "govuk-!-width-one-third",
+                label: {
+                  text: "Forename(s)"
+                },
+                attributes: {
+                  spellcheck: "false"
+                }
+              }) }}
+
+              {{ govukInput({
+                id: "applicant-individual-surname",
+                name: "applicant-individual-surname",
+                type: "applicant-individual-surname",
+                classes: "govuk-!-width-one-third govuk-!-margin-bottom-5",
+                label: {
+                  text: "Surname"
+                },
+                attributes: {
+                  spellcheck: "false"
+                }
+              }) }}
+          {% endset -%}
 
 
-    {% set overseasHtml %}
-          {{ govukInput({
-            id: "applicant-overseas-name",
-            name: "applicant-overseas-name",
-            type: "applicant-overseas-name",
-            classes: "govuk-!-width-one-third",
-            hint: {
-               text: "Company name as incorporated in its state of origin"
-             },
-            label: {
-              text: "Company name"
-            },
-            attributes: {
-              spellcheck: "false"
-            }
-          }) }}
+          {% set UKcompanyhtml %}
+                {{ govukInput({
+                  id: "applicant-UKcompany-name",
+                  name: "applicant-UKcompany-name",
+                  type: "applicant-UKcompany-name",
+                  classes: "govuk-!-width-one-third",
+                  hint: {
+                     text: "Full name registered at Companies House"
+                   },
+                  label: {
+                    text: "Company name"
+                  },
+                  attributes: {
+                    spellcheck: "false"
+                  }
+                }) }}
 
 
-          {{ govukInput({
-            id: "applicant-overseas-number",
-            name: "applicant-overseas-number",
-            type: "applicant-overseas-number",
-            classes: "govuk-!-width-one-third",
-            hint: {
-               text: "Number issued, if registered at Companies House, eg FC023966"
-             },
-            label: {
-              text: "UK company number (optional)"
-            },
-            attributes: {
-              spellcheck: "false"
-            }
-          }) }}
-
-          {{ govukSelect({
-            id: "Territory",
-            name: "Territory",
-            type: "Territory",
-            classes: "govuk-!-width-one-third govuk-!-margin-bottom-5",
-            hint: {
-               text: "Territory or country where the company was first incorporated, eg ‘France’ or ‘Manitoba, Canada’"
-             },
-            label: {
-              text: "Territory of incorporation"
-            },
-            items: [
-            {
-            value: "select",
-            text: "- Select from the list -",
-            selected: true
-                              }
-            ]
-          }) }}
-
-    {% endset -%}
-
-    {% set otherHtml %}
-
-          {{ govukInput({
-            id: "applicant-other-input",
-            name: "applicant-other-input",
-            type: "applicant-other-input",
-            classes: "govuk-!-width-one-third govuk-!-margin-bottom-5",
-            label: {
-              text: "Name of organisation"
-            }
-          }) }}
-
-    {% endset -%}
+                {{ govukInput({
+                  id: "applicant-UKcompany-number",
+                  name: "applicant-UKcompany-number",
+                  type: "applicant-UKcompany-number",
+                  classes: "govuk-!-width-one-third govuk-!-margin-bottom-5",
+                  hint: {
+                     text: "Companies House registration number, including any prefix"
+                   },
+                  label: {
+                    text: "Company number"
+                  },
+                  attributes: {
+                    spellcheck: "false"
+                  }
+                }) }}
+          {% endset -%}
 
 
-      {{ govukRadios({
-          idPrefix: "select-applicant",
-          name: "Select-applicant-type",
-          fieldset: {
-            legend: {
-              text: "Select applicant type",
-              classes: "govuk-fieldset__legend--m with-hint"
-            }
-          },
-          items: [
-            {
-              value: "Private individual",
-              text: "Private individual",
-              conditional: {
-                html: Privatehtml
-              }
-            },
-            {
-              value: "UK company or LLP",
-              text: "UK company or LLP",
-              conditional: {
-                html: UKcompanyhtml
-              }
-            },
-            {
-              value: "Overseas company",
-              text: "Overseas company",
-              conditional: {
-                html: overseasHtml
-              }
-            },
-            {
-              value: "Other organisation like charity, council, government department",
-              text: "Other organisation like charity, council, government department",
-              conditional: {
-                html: otherHtml
-              }
-          }
-        ]
-      }) }}
+          {% set overseasHtml %}
+                {{ govukInput({
+                  id: "applicant-overseas-name",
+                  name: "applicant-overseas-name",
+                  type: "applicant-overseas-name",
+                  classes: "govuk-!-width-one-third",
+                  hint: {
+                     text: "Company name as incorporated in its state of origin"
+                   },
+                  label: {
+                    text: "Company name"
+                  },
+                  attributes: {
+                    spellcheck: "false"
+                  }
+                }) }}
+
+
+                {{ govukInput({
+                  id: "applicant-overseas-number",
+                  name: "applicant-overseas-number",
+                  type: "applicant-overseas-number",
+                  classes: "govuk-!-width-one-third",
+                  hint: {
+                     text: "Number issued, if registered at Companies House, eg FC023966"
+                   },
+                  label: {
+                    text: "UK company number (optional)"
+                  },
+                  attributes: {
+                    spellcheck: "false"
+                  }
+                }) }}
+
+                {{ govukSelect({
+                  id: "Territory",
+                  name: "Territory",
+                  type: "Territory",
+                  classes: "govuk-!-width-one-third govuk-!-margin-bottom-5",
+                  hint: {
+                     text: "Territory or country where the company was first incorporated, eg ‘France’ or ‘Manitoba, Canada’"
+                   },
+                  label: {
+                    text: "Territory of incorporation"
+                  },
+                  items: [
+                  {
+                  value: "select",
+                  text: "- Select from the list -",
+                  selected: true
+                                    }
+                  ]
+                }) }}
+
+          {% endset -%}
+
+          {% set otherHtml %}
+
+                {{ govukInput({
+                  id: "applicant-other-input",
+                  name: "applicant-other-input",
+                  type: "applicant-other-input",
+                  classes: "govuk-!-width-one-third govuk-!-margin-bottom-5",
+                  label: {
+                    text: "Name of organisation"
+                  }
+                }) }}
+
+          {% endset -%}
+
+
+            {{ govukRadios({
+                idPrefix: "select-applicant",
+                name: "Select-applicant-type",
+                fieldset: {
+                  legend: {
+                    text: "Select applicant type",
+                    classes: "govuk-fieldset__legend--m with-hint"
+                  }
+                },
+                items: [
+                  {
+                    value: "Private individual",
+                    text: "Private individual",
+                    conditional: {
+                      html: Privatehtml
+                    }
+                  },
+                  {
+                    value: "UK company or LLP",
+                    text: "UK company or LLP",
+                    conditional: {
+                      html: UKcompanyhtml
+                    }
+                  },
+                  {
+                    value: "Overseas company",
+                    text: "Overseas company",
+                    conditional: {
+                      html: overseasHtml
+                    }
+                  },
+                  {
+                    value: "Other organisation like charity, council, government department",
+                    text: "Other organisation like charity, council, government department",
+                    conditional: {
+                      html: otherHtml
+                    }
+                }
+              ]
+            }) }}
+
 
 
 
   {{ govukButton({
   classes: "govuk-!-margin-top-5",
   text: "Continue",
-  href: "#"
+  href: "8-applicants-list.html"
   }) }}
 
+</form>
   {{ govukInsetText({
   text: "You can add more applicants in the next step."
     }) }}

@@ -1,4 +1,5 @@
-{% extends "layout_unbranded.html" %}
+{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
+{%- set assetPath = '/govuk/assets' -%}
 
 {% extends "govuk/template.njk" %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
@@ -9,6 +10,7 @@
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 {% from "govuk/components/table/macro.njk" import govukTable %}
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
 
 
 
@@ -45,72 +47,76 @@
     </div>
 
 <div class="govuk-grid-column-full">
-    <h1 class="govuk-heading-l">Complete your application</h1>
-    <p class="govuk-body-m">Provide all details and the documents you want to attach.</p>
-
-
-    <table class="govuk-table">
-
-
-      <thead class="govuk-table__head">
-        <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header">Your reference</th>
-          <td scope="col" class="govuk-table__cell">{{ data['reference'] }}</td>
-        </tr>
-      </thead>
-
-      <tbody class="govuk-table__body">
-            <tr class="govuk-table__row">
-              <th scope="row" class="govuk-table__header">Title</th>
-              <td class="govuk-table__cell">{{ data['title'] }}</td>
-            </tr>
-
-            <tr class="govuk-table__row">
-              <th scope="row" class="govuk-table__header">Description</th>
-              <td class="govuk-table__cell">2, William Prance Road, Plymouth, PL5 4WS</td>
-            </tr>
-      </tbody>
-    </table>
+    <span class="govuk-caption-l">[Transaction name]</span>
+    <h1 class="govuk-heading-l">Add address for service</h1>
+    <h2 class="govuk-heading-s">Address type</h2>
+    <p class="govuk-body">BFPO postal address (armed forces)</p>
+    <p class="govuk-body">
+      You can enter a BFPO address as an address for service. But we ask that, if possible, you provide a 'care of' address instead using the <a href="#"> UK postal address</a> option
+      <br><br>
+      This is because BFPO addresses:
+      <br>
+      • help to identify members of the armed forces
+      <br>
+      • tend to change often
 
 
 
-      <div class="">
-          <h2 class="govuk-heading-m"> Transaction details </h2>
-          <h3 class="govuk-heading-s">1. Transfer for value (TR1)</h3>
-          <br>
-          {{ govukTable({
-            firstCellIsHeader: false,
-            head: [
-              {
-                text: "1.1 Transferee details"
-              }
-            ],
-            rows: [
-              [
-                {
-                  text: ""
-                },
-                {
-                  text: ""
-                }
-              ]
-            ]
-          }) }}
+    {{ govukInput({
+      label: {
+        html: 'Service number and rank'
+      },
+      classes: "govuk-input--width-20"
+    }) }}
 
-          {{ govukButton({
-            text: "Review application"
-          }) }}
+    {{ govukInput({
+      label: {
+        html: 'Unit or regiment'
+      },
+      classes: "govuk-input--width-20"
+    }) }}
 
-          {{ govukInsetText({
-            text: "To avoid requisitions, attach all relevant documents."
-            }) }}
-        </div>
+    {{ govukInput({
+      label: {
+        html: 'Operation or location name (optional)'
+      },
+      classes: "govuk-input--width-20"
+    }) }}
 
-
-    </div>
+    {{ govukInput({
+      label: {
+        html: 'BFPO number'
+      },
+      classes: "govuk-input--width-20",
+      hint: {
+        text: "For example, 'BFPO 61'"
+      }
+    }) }}
 
 
-    {% endblock %}
+
+  <h3 class="govuk-heading-m">More actions</h3>
+
+  {{ govukInput({
+    label: {
+      html: 'Add c/o name (optional)'
+    },
+    classes: "govuk-input--width-20",
+    id: "CareOf",
+    hint: {
+      text: "If it's a 'care of' address, enter the addressee's name"
+    }
+  }) }}
+
+  <p class="govuk-body">Add this address to the following transferees: (optional)</p>
+  <p class="govuk-body">- No other transferees to select -</p>
+
+
+
+{{ govukButton({
+  text: "Continue",
+  href: "#"
+}) }}
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 <br>
@@ -122,7 +128,7 @@
 </div>
 
 
-
+{% endblock %}
 
 
 {% block footer %}
