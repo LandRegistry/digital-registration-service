@@ -30,3 +30,12 @@ $govuk-canvas-background-colour: $govuk-body-background-colour;
 .h2 {
   font-family: "arial", sans-serif;
 }
+
+.govuk-link {
+  color: #1d70b8,
+}
+
+.govuk-link:hover {
+  color: #003078;
+  text-decoration: underline;
+}

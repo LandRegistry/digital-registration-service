@@ -72,42 +72,12 @@
       </tbody>
     </table>
 
-
-
-      <div class="">
-          <h2 class="govuk-heading-m"> Transaction details </h2>
-          <h3 class="govuk-heading-s">1. Transfer for value (TR1)</h3>
-          <br>
-          {{ govukTable({
-            firstCellIsHeader: false,
-            head: [
-              {
-                text: "1.1 Transferee details"
-              }
-            ],
-            rows: [
-              [
-                {
-                  text: ""
-                },
-                {
-                  text: ""
-                }
-              ]
-            ]
-          }) }}
-
-          {{ govukButton({
-            text: "Review application"
-          }) }}
-
-          {{ govukInsetText({
-            text: "To avoid requisitions, attach all relevant documents."
-            }) }}
-        </div>
-
-
-    </div>
+  1. Transfer for value<br><br>
+  1.1 Transferee details<br>
+  <br>
+  <a href="#"> Confirm transferees </a><br>
+  <a href="#"> Confirm transferee representation</a><br>
+  <a href="#"> Add addresses for service</a><br>
 
 
     {% endblock %}
