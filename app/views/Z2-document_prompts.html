@@ -39,27 +39,28 @@
     </div>
     </div>
 
-<div class="govuk-grid-column-two-thirds govuk-!-margin-top-7">
+<div class="govuk-grid-column-three-quarters govuk-!-margin-top-7">
   <span class="govuk-caption-l">Apply to update or create a registered title</span>
   <h1 class="govuk-heading-l"> Attach documents </h1>
+  <h2 class="govuk-heading-m"> Required documents </h2>
 
-  {% set requiredHtml %}
-  <h2 class="govuk-heading-m">Required documents</h2>
   {{ govukTable({
+    caption: "",
+    firstCellIsHeader: false,
     head: [
       {
         text: "Document type",
-        classes: "govuk-!-width-one-third"
+        classes: ""
       },
       {
         text: "Certification"
       },
       {
-        text: "File name"
+        text: "File name",
+        classes: "govuk-!-width-one-third"
       },
       {
-        text: "Options",
-        href: "#"
+        text: "Options"
       }
     ],
     rows: [
@@ -81,7 +82,7 @@
       ],
       [
         {
-          text: "Probate, death certificate or other evidence of death"
+          text: "Evidence of death - probate, death certificate, etc"
         },
         {
           text: ""
@@ -97,27 +98,45 @@
       ]
     ]
   }) }}
-  {% endset -%}
 
+  <h2 class="govuk-heading-m"> Suggested documents </h2>
 
-  {% set suggestedHtml %}
-  <h2 class="govuk-heading-m">Suggested documents</h2>
   {{ govukTable({
+    caption: "",
+    firstCellIsHeader: false,
     head: [
       {
-        text: "Document type"
+        text: "Document type",
+        classes: ""
       },
       {
         text: "Certification"
       },
       {
-        text: "File name"
+        text: "File name",
+        classes: "govuk-!-width-one-third"
       },
       {
         text: "Options"
       }
     ],
     rows: [
+      [
+        {
+          text: "Deed"
+        },
+        {
+          text: "Not certified"
+        },
+        {
+          text: "Deed.pdf"
+        },
+        {
+          text: "Remove",
+          classes: "govuk-link",
+          href: "#"
+        }
+      ],
       [
         {
           text: "Title plan"
@@ -136,22 +155,6 @@
       ],
       [
         {
-          text: "Deed"
-        },
-        {
-          text: ""
-        },
-        {
-          text: ""
-        },
-        {
-          text: "Upload",
-          classes: "govuk-link",
-          href: "#"
-        }
-        ],
-        [
-        {
           text: "Add another",
           classes: "govuk-link",
           href: "#"
@@ -163,31 +166,14 @@
           text: ""
         },
         {
-          text: ""
+          text: "",
+          classes: "",
+          href: "#"
         }
       ]
     ]
   }) }}
-  {% endset -%}
 
-  {{ govukTabs({
-    items: [
-      {
-        label: "Required",
-        id: "required",
-        panel: {
-          html: requiredHtml
-        }
-      },
-      {
-        label: "Suggested",
-        id: "Suggested",
-        panel: {
-          html: suggestedHtml
-        }
-      }
-    ]
-  }) }}
 
   {{ govukButton({
     text: "Continue",
