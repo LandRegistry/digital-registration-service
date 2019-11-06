@@ -39,7 +39,7 @@
     </div>
     </div>
 
-<div class="govuk-grid-column-two-thirds govuk-!-margin-top-7">
+<div class="govuk-grid-column-full govuk-!-margin-top-7">
   <span class="govuk-caption-l">Apply to update or create a registered title</span>
   <h1 class="govuk-heading-l"> Attach documents </h1>
 
@@ -47,6 +47,9 @@
   <h2 class="govuk-heading-m">Required documents</h2>
   {{ govukTable({
     head: [
+      {
+        text: "Category"
+      },
       {
         text: "Document type",
         classes: "govuk-!-width-one-third"
@@ -64,6 +67,9 @@
     ],
     rows: [
       [
+      {
+        text: "Application form"
+      },
         {
           text: "TR1 - Registered title(s): whole transfer"
         },
@@ -80,8 +86,11 @@
         }
       ],
       [
+      {
+        text: "Evidence of death"
+      },
         {
-          text: "Probate, death certificate or other evidence of death"
+          text: "Probate or death certificate"
         },
         {
           text: ""
@@ -90,7 +99,7 @@
           text: ""
         },
         {
-          text: "Upload",
+          text: "Attach",
           classes: "govuk-link",
           href: "#"
         }
@@ -104,6 +113,9 @@
   <h2 class="govuk-heading-m">Suggested documents</h2>
   {{ govukTable({
     head: [
+      {
+        text: "Category"
+      },
       {
         text: "Document type"
       },
@@ -120,7 +132,10 @@
     rows: [
       [
         {
-          text: "Title plan"
+          text: "Various"
+        },
+        {
+          text: "Consent"
         },
         {
           text: ""
@@ -129,32 +144,19 @@
           text: ""
         },
         {
-          text: "Upload",
+          text: "Attach",
           classes: "govuk-link",
           href: "#"
         }
       ],
-      [
-        {
-          text: "Deed"
-        },
-        {
-          text: ""
-        },
-        {
-          text: ""
-        },
-        {
-          text: "Upload",
-          classes: "govuk-link",
-          href: "#"
-        }
-        ],
         [
         {
           text: "Add another",
           classes: "govuk-link",
           href: "#"
+        },
+        {
+          text: ""
         },
         {
           text: ""

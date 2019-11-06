@@ -32,10 +32,15 @@ $govuk-canvas-background-colour: $govuk-body-background-colour;
 }
 
 .govuk-link {
-  color: #1d70b8,
+  color: #1d70b8;
+  text-decoration: underline;
 }
 
 .govuk-link:hover {
   color: #003078;
   text-decoration: underline;
+}
+
+.task-list {
+  font-family: arial;
 }

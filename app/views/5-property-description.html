@@ -7,6 +7,9 @@
 {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
 {% from "govuk/components/table/macro.njk" import govukTable %}
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
 
 
 
@@ -45,7 +48,7 @@
     </div>
 
 <div class="govuk-grid-column-two-thirds">
-  <br><span class="govuk-caption-l">Apply to update or create a registered title</span>
+  <br><span class="govuk-caption-l">Apply to update or create a registered title</span><br>
   <h1 class="govuk-heading-l govuk-!-padding-bottom-5"> Property description </h1>
 
   <div>
@@ -70,31 +73,60 @@
       </tbody>
     </table>
 
-    <form method="get" action="6-select-transactions.html" name="whole-or-part" data-validate="whole-form-validation" novalidate>
+    <form method="get" action="6-select-transactions.html" name="" data-validate="whole-form-validation" novalidate>
 
+      {% set partHtml %}
+        {{ govukTextarea({
+          id: "part",
+          rows: "5",
+          classes: "govuk-!-width-full",
+          hint: {
+              text: "For example 'edged red on the plan to the transfer dated DD/MM/YYYY'"
+            },
+          label: {
+            text: "Describe the part(s) affected"
+          },
+          attributes: {
+            spellcheck: "false"
+          }
+        }) }}
 
-    {{ govukRadios({
-      idPrefix: "whole-or-part",
-      name: "whole-or-part",
-      classes: "govuk-!-margin-bottom-5",
-      fieldset: {
-        legend: {
-          text: "This application affects",
-          isPageHeading: false,
-          classes: "govuk-fieldset__legend--m"
-        }
-      },
-      items: [
-        {
-          value: "the whole of the title",
-          text: "the whole of the title"
-        },
-        {
-          value: "part of the title",
-          text: "part of the title"
-        }
-      ]
-    }) }}
+        {{ govukInsetText({
+              text: "You'll need to upload the plan later."
+            }) }}
+        {% endset -%}
+
+        {{ govukRadios({
+  idPrefix: "part-whole",
+  name: "whole-or-part",
+  fieldset: {
+    legend: {
+      text: "This application affects",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  hint: {
+    text: ""
+  },
+  items: [
+    {
+      value: "Whole",
+      text: "the whole of the title",
+      conditional: {
+        html: wholeHtml
+      }
+    },
+    {
+      value: "part",
+      text: "part of the title",
+      conditional: {
+        html: partHtml
+      }
+    }
+  ]
+}) }}
+
 
     {{ govukButton({
     text: "Continue"
