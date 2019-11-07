@@ -52,46 +52,28 @@
     <h2 class="govuk-heading-m">Transferor representation added</h2>
 
 
-{{ govukTable({
-  caption: "",
-  firstCellIsHeader: false,
-  head: [
-    {
-      text: "Transferor type",
-      classes: 'govuk-!-width-one-quarter'
-    },
-    {
-      text: "Full name",
-      classes: 'govuk-!-width-one-quarter'
-    },
-    {
-      text: "Represented by",
-      classes: 'govuk-!-width-one-half'
-    },
-    {
-      text: "Options"
-    }
-  ],
-  rows: [
-    [
-    {
-      text:"-No transferors added-"
-    },
-      {
-        text: ""
-      },
-      {
-        text: ""
-      },
-      {
-        text: ""
-      },
-      {
-        text: ""
-      }
-    ]
-  ]
-}) }}
+    <table class="govuk-table">
+
+
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Transferor type</th>
+          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Full name</th>
+          <th scope="col" class="govuk-table__header govuk-!-width-one-half">Represented by</th>
+          <th scope="col" class="govuk-table__header">Options</th>
+        </tr>
+      </thead>
+
+      <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">[Type]</td>
+              <td class="govuk-table__cell">[Name]</td>
+              <td class="govuk-table__cell"></td>
+              <td class="govuk-table__cell govuk-link"><a href="10-4-select-representation">Add representation</td>
+              <td class="govuk-table__cell"></td>
+            </tr>
+      </tbody>
+    </table>
 
 {{ govukButton({
   text: "Continue"

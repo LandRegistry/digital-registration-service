@@ -46,40 +46,48 @@
     </div>
 
 <div class="govuk-grid-column-full">
-    <h1 class="govuk-heading-l">Applicants</h1>
-    <h2 class="govuk-heading-m">Applicants added</h2>
+    <span class="govuk-caption-l">[Transaction name]</span>
+    <h1 class="govuk-heading-l">Confirm transferee representation</h1>
+    <p class="govuk-body">Select 'Confirm & continue' to confirm representation for all transferees for this application.</p>
+    <h2 class="govuk-heading-m">Transferee representation added</h2>
 
 
-<table class="govuk-table">
-
-  <thead class="govuk-table__head">
-    <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header">Applicant type</th>
-      <th scope="col" class="govuk-table__header">Full name</th>
-      <th scope="col" class="govuk-table__header">Company number</th>
-      <th scope="col" class="govuk-table__header">Territory of incorporation</th>
-      <th scope="col" class="govuk-table__header">Options</th>
-    </tr>
-  </thead>
-    <tbody class="govuk-table_body">
-      <tr class="govuk-table_row">
-      <td class="govuk-table__cell"></td>
-      <td class="govuk-table__cell"><p></p></td>
-      <td class="govuk-table__cell"></td>
-      <td class="govuk-table__cell"></td>
-      <td class="govuk-table__cell govuk-link">Remove</td>
-    <tbody>
-
-
-</table>
-
-{{ govukButton({
-classes: "govuk-!-margin-top-5",
-text: "Continue",
-href: "9-complete-application-tasks.html"
+{{ govukTable({
+  caption: "",
+  firstCellIsHeader: false,
+  head: [
+    {
+      text: "Transferee type"
+    },
+    {
+      text: "Full name"
+    },
+    {
+      text: "Represented by"
+    }
+  ],
+  rows: [
+    [
+    {
+      text:""
+    },
+      {
+        text: ""
+      },
+      {
+        text: ""
+      },
+      {
+        text: ""
+      }
+    ]
+  ]
 }) }}
 
-
+{{ govukButton({
+  text: "Confirm and continue",
+  href: "9-complete-application-tasks.html"
+}) }}
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 <br>

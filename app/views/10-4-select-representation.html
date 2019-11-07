@@ -55,76 +55,57 @@
     <h2 class="govuk-heading-s">Tell us who's representing:</h2>
     <p class="govuk-body-m">[ Transferor name ]</p>
 
-    {% set otherConveyancer %}
+    <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="how-contacted-conditional-hint">
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="representation-1" name="representation-1" type="radio" value="email" data-aria-controls="representation-1">
+        <label class="govuk-label govuk-radios__label" for="representation-1">
+          [Logged in conveyancer]
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-how-contacted-conditional">
+        <div class="govuk-form-group">
+        </div>
 
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="how-contacted-conditional-2" name="how-contacted" type="radio" value="phone" data-aria-controls="conditional-how-contacted-conditional-2">
+        <label class="govuk-label govuk-radios__label" for="how-contacted-conditional-2">
+          Other conveyancer
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-how-contacted-conditional-2">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="contact-by-phone">
+            Full name
+          </label>
+          <input class="govuk-input govuk-!-width-one-half" id="contact-by-phone" name="contact-by-phone" type="tel">
+        </div>
+        <label class="govuk-label" for="contact-by-phone">
+          Registered address
+        </label>
+        <textarea class="govuk-textarea govuk-!-width-one-half" name="name" rows="6"></textarea>
+      <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
+          <label class="govuk-label" for="with-hint">
+            Conveyancer reference
+          </label>
+          <input type="text" class="govuk-input govuk-js-character-count govuk-!-width-one-half" id="with-hint" name="reference" aria-describedby="with-hint-info with-hint-hint">
+        </div>
+        <span id="with-hint-info" class="govuk-hint govuk-character-count__message govuk-!-padding-bottom-5" aria-live="polite">
+          You can enter up to 25 characters
+        </span>
+        </div>
 
-        {{ govukInput({
-          id: "representation-full-name",
-          name: "representation-full-name",
-          type: "representation-full-name",
-          classes: "govuk-!-width-one-half",
-          label: {
-            text: "Full name"
-          },
-          attributes: {
-            spellcheck: "false"
-          }
-        }) }}
-
-        {{ govukTextarea({
-          name: "representation-address",
-          id: "representation-address",
-          classes: "govuk-!-width-one-half",
-          label: {
-            text: "Registered address"
-          }
-        }) }}
-
-        {{ govukCharacterCount({
-        maxlength: 25,
-        rows: "1",
-        classes: "govuk-!-width-one-third",
-        label: {
-          text: "Conveyancer reference (optional)"
-        }
-      }) }}
-          {% endset -%}
-
-      {{ govukRadios({
-          idPrefix: "",
-          name: "",
-          fieldset: {
-            legend: {
-              text: "",
-              classes: "govuk-fieldset__legend--m with-hint"
-            }
-          },
-          items: [
-            {
-              value: "[Conveyancer1]",
-              text: "[Conveyancer1]",
-              conditional: {
-                html: Conveyancer
-              }
-            },
-            {
-              value: "Other conveyancer",
-              text: "Other conveyancer",
-              conditional: {
-                html: otherConveyancer
-              }
-            },
-            {
-              value: "No representation",
-              text: "No representation",
-              conditional: {
-                html: noRepresentation
-              }
-            }
-
-        ]
-      }) }}
-
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="representation-3" name="how-contacted" type="radio" value="phone" data-aria-controls="conditional-representation-3">
+          <label class="govuk-label govuk-radios__label" for="representation-3">
+            Not represented by a conveyancer
+          </label>
+        </div>
+        </fieldset>
+        </div>
+  </div>
 
         {{ govukCheckboxes({
           idPrefix: "represents-all",

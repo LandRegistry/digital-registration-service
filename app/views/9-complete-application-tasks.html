@@ -71,7 +71,8 @@
     </table>
 
     <h2 class="govuk-heading-m">1.Transfer for value (TR1)</h2>
-
+    </div>
+    <div class="govuk-grid-column-full" style="margin-left: 30px; width: 97%;">
 
     <table class="govuk-table">
       <thead class="govuk-table__head">
@@ -82,23 +83,23 @@
 
       <tbody class="govuk-table__body">
             <tr class="govuk-table__row">
-              <td class="govuk-table__cell govuk-link" href="#">Confirm transferees</td>
+              <td class="govuk-table__cell govuk-link"><a href="11-transferee-list.html">Confirm transferees</a></td>
             </tr>
             <tr class="govuk-table__row">
-              <td class="govuk-table__cell govuk-link" href="#">Confirm transferee representation</td>
+              <td class="govuk-table__cell govuk-link"><a href="11-transferee-representation">Confirm transferee representation</a></td>
             </tr>
             <tr class="govuk-table__row">
-              <td class="govuk-table__cell govuk-link" href="#">Add addresses for service</td>
+              <td class="govuk-table__cell govuk-link"><a href="12-AfS-list.html">Add addresses for service</a></td>
             </tr>
 
             <tr class="govuk-table__row">
               <th scope="row" class="govuk-table__header">1.2 Transferor details</th>
             </tr>
             <tr class="govuk-table__row">
-              <td class="govuk-table__cell govuk-link" href="#">Add transferors</td>
+              <td class="govuk-table__cell govuk-link"><a href="10-2-add-transferor.html">Add transferors</a></td>
             </tr>
             <tr class="govuk-table__row">
-              <td class="govuk-table__cell govuk-link" href="#">Add transferor representation</td>
+              <td class="govuk-table__cell govuk-link"><a href="10-3-transferor-representation.html">Add transferor representation</a></td>
             </tr>
 
             <tr class="govuk-table__row">
@@ -109,16 +110,16 @@
             </tr>
       </tbody>
     </table>
+  </div>
 
     {{ govukButton({
-        text: "Review application"
+        text: "Review application",
+        classes: "govuk-!-margin-top-9"
       }) }}
-      
+
       {{ govukInsetText({
           text: "To avoid requisitions, attach all relevant documents."
         }) }}
-    {% endblock %}
-
 
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
@@ -130,7 +131,7 @@
 
 </div>
 
-
+{% endblock %}
 
 
 
