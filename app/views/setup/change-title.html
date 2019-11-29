@@ -4,12 +4,8 @@
 {% extends "govuk/template.njk" %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/input/macro.njk" import govukInput %}
-{% from "govuk/components/radios/macro.njk" import govukRadios %}
-{% from "govuk/components/select/macro.njk" import govukSelect %}
-{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
-{% from "govuk/components/details/macro.njk" import govukDetails %}
-{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
-{% from "govuk/components/table/macro.njk" import govukTable %}
+{% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+
 
 
 
@@ -36,7 +32,7 @@
       <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 
 
-    <div class="govuk-phase-banner govuk-!-margin-bottom-5">
+    <div class="govuk-phase-banner">
         <p class="govuk-phase-banner__content">
         <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
         <span class="govuk-phase-banner__text">
@@ -45,71 +41,40 @@
     </div>
     </div>
 
-<div class="govuk-grid-column-full">
-    <span class="govuk-caption-l">[Transaction name]</span>
-    <h1 class="govuk-heading-l">Add address for service</h1>
-    <h2 class="govuk-heading-m">For transferee:</h2>
-    <p class="govuk-body">[ Transferee name ]</p>
+    <div class="govuk-grid-column-full govuk-!-margin-top-5"><br>
+    <span class="govuk-caption-l">Apply to update or create a registered title</span>
+    <h1 class="govuk-heading-l govuk-!-padding-bottom-5"> Change or modify title number </h1>
 
 
-    <form method="get">
-    {{ govukRadios({
-      idPrefix: "select-address-type",
-      name: "select-address-type",
-      fieldset: {
-        legend: {
-          text: "Select address type",
-          isPageHeading: false,
-          classes: "govuk-fieldset__legend--m"
-        }
-      },
-      items: [
-        {
-          value: "UK-postal",
-          name: "UK-postal",
-          text: "UK postal address",
-          type: "radio"
-        },
-        {
-          value: "Overseas-postal",
-          text: "Overseas postal address",
-          name: "Overseas postal address",
-          type: "radio"
-        },
-        {
-          value: "PO-box",
-          text: "PO Box (postal address)",
-          name: "PO Box",
-          type: "radio"
-        },
-        {
-          value: "email",
-          text: "Email address",
-          name: "Email address",
-          type: "radio"
-        },
-        {
-          value: "DX",
-          text: "DX address",
-          name: "DX address",
-          type: "radio"
-        },
-        {
-          value: "BFPO",
-          text: "BFPO postal address (armed forces)",
-          name: "BFPO",
-          type: "radio"
-        }
-      ]
+  <form method="get" action="property-description" data-validate="title-form-validation" novalidate>
+    <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="with-hint">
+          Type in the title number
+        </label>
+
+        <input type="text" class="govuk-input govuk-!-width-one-third" id="with-hint" name="title" aria-describedby="with-hint-info with-hint-hint">
+      </div>
+
+
+    {{ govukButton({
+      text: "Continue",
+      classes: "govuk-!-margin-top-9"
     }) }}
 
-{{ govukButton({
-  text: "Continue",
-  type: "Submit",
-  value: "Submit"
-}) }}
+  </form>
+  </div>
 
-</form>
+  <script type="application/json" id="title-form-validation">
+   {
+     "title": {
+       "presence": {
+         "message": "^Enter a title number"
+       }
+     }
+   }
+ </script>
+
 
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
@@ -120,6 +85,10 @@
 <a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
 
 </div>
+
+
+</div>
+
 
 
 {% endblock %}

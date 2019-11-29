@@ -47,37 +47,56 @@
 
 <div class="govuk-grid-column-full">
     <span class="govuk-caption-l">[Transaction name]</span>
-    <h1 class="govuk-heading-l">Add transferor representation</h1>
-    <p class="govuk-body-m">Select 'Add representation' for each transferor.</p>
-    <h2 class="govuk-heading-m">Transferor representation added</h2>
+    <h1 class="govuk-heading-l">Transferors</h1>
+    <h2 class="govuk-heading-m">Transferors added</h2>
 
 
-    <table class="govuk-table">
-
-
-      <thead class="govuk-table__head">
-        <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Transferor type</th>
-          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Full name</th>
-          <th scope="col" class="govuk-table__header govuk-!-width-one-half">Represented by</th>
-          <th scope="col" class="govuk-table__header">Options</th>
-        </tr>
-      </thead>
-
-      <tbody class="govuk-table__body">
-            <tr class="govuk-table__row">
-              <td class="govuk-table__cell">[Type]</td>
-              <td class="govuk-table__cell">[Name]</td>
-              <td class="govuk-table__cell"></td>
-              <td class="govuk-table__cell govuk-link"><a href="10-4-select-representation">Add representation</td>
-              <td class="govuk-table__cell"></td>
-            </tr>
-      </tbody>
-    </table>
+{{ govukTable({
+  caption: "",
+  firstCellIsHeader: false,
+  head: [
+    {
+      text: "Transferor type"
+    },
+    {
+      text: "Full name"
+    },
+    {
+      text: "Company number"
+    },
+    {
+      text: "Territory of incorporation"
+    },
+    {
+      text: "Options"
+    }
+  ],
+  rows: [
+    [
+    {
+      text:"-No transferors added-"
+    },
+      {
+        text: ""
+      },
+      {
+        text: ""
+      },
+      {
+        text: ""
+      },
+      {
+        text: ""
+      }
+    ]
+  ]
+}) }}
 
 {{ govukButton({
-  text: "Continue"
+  text: "Continue",
+  href: "../tasks"
 }) }}
+
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 <br>

@@ -46,70 +46,40 @@
     </div>
 
 <div class="govuk-grid-column-full">
-    <span class="govuk-caption-l">[Transaction name]</span>
-    <h1 class="govuk-heading-l">Add address for service</h1>
-    <h2 class="govuk-heading-m">For transferee:</h2>
-    <p class="govuk-body">[ Transferee name ]</p>
+    <h1 class="govuk-heading-l">Applicants</h1>
+    <h2 class="govuk-heading-m">Applicants added</h2>
 
 
-    <form method="get">
-    {{ govukRadios({
-      idPrefix: "select-address-type",
-      name: "select-address-type",
-      fieldset: {
-        legend: {
-          text: "Select address type",
-          isPageHeading: false,
-          classes: "govuk-fieldset__legend--m"
-        }
-      },
-      items: [
-        {
-          value: "UK-postal",
-          name: "UK-postal",
-          text: "UK postal address",
-          type: "radio"
-        },
-        {
-          value: "Overseas-postal",
-          text: "Overseas postal address",
-          name: "Overseas postal address",
-          type: "radio"
-        },
-        {
-          value: "PO-box",
-          text: "PO Box (postal address)",
-          name: "PO Box",
-          type: "radio"
-        },
-        {
-          value: "email",
-          text: "Email address",
-          name: "Email address",
-          type: "radio"
-        },
-        {
-          value: "DX",
-          text: "DX address",
-          name: "DX address",
-          type: "radio"
-        },
-        {
-          value: "BFPO",
-          text: "BFPO postal address (armed forces)",
-          name: "BFPO",
-          type: "radio"
-        }
-      ]
-    }) }}
+<table class="govuk-table">
+
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header ">Applicant type</th>
+      <th scope="col" class="govuk-table__header">Full name</th>
+      <th scope="col" class="govuk-table__header">Company number</th>
+      <th scope="col" class="govuk-table__header">Territory of incorporation</th>
+      <th scope="col" class="govuk-table__header">Options</th>
+    </tr>
+  </thead>
+    <tbody class="govuk-table_body">
+      <tr class="govuk-table_row">
+      <td class="govuk-table__cell">Private individual</td>
+      <td class="govuk-table__cell govuk-!-width-one-third"><p>{{data['forenames']}}</p></td>
+      <td class="govuk-table__cell">N/a</td>
+      <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+      <td class="govuk-table__cell govuk-link"><a href="#">Change</a><br><a href="#">Remove</a></td>
+    </tbody>
+
+
+
+</table>
 
 {{ govukButton({
-  text: "Continue",
-  type: "Submit",
-  value: "Submit"
+classes: "govuk-!-margin-top-5",
+text: "Continue",
+href: "tasks"
 }) }}
 
-</form>
 
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">

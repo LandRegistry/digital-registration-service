@@ -47,11 +47,11 @@
 
 <div class="govuk-grid-column-full">
     <span class="govuk-caption-l">[Transaction name]</span>
-    <h1 class="govuk-heading-l">Confirm transferees</h1>
-    <p class="govuk-body">Select 'Confirm & continue' to confirm the transferees for this application.</p>
-    <h2 class="govuk-heading-m">Transferees added</h2>
+    <h1 class="govuk-heading-l">Confirm transferee representation</h1>
+    <p class="govuk-body">Select 'Confirm & continue' to confirm representation for all transferees for this application.</p>
+    <h2 class="govuk-heading-m">Transferee representation added</h2>
 
-
+<form>
 {{ govukTable({
   caption: "",
   firstCellIsHeader: false,
@@ -63,37 +63,41 @@
       text: "Full name"
     },
     {
-      text: "Company number"
-    },
-    {
-      text: "Territory of incorporation"
+      text: "Represented by"
     }
   ],
   rows: [
     [
     {
-      text:""
+      text:"Private individual"
     },
       {
-        text: ""
+        text: "[Transferee name]"
       },
       {
-        text: ""
+        text: "[Transferee representation]"
+      }
+    ],
+    [
+    {
+      text:"UK Company or LLC"
+    },
+      {
+        text: "[Transferee name]"
       },
       {
-        text: ""
-      },
-      {
-        text: ""
+        text: "[Transferee representation]"
       }
     ]
   ]
 }) }}
 
 {{ govukButton({
-  text: "Confirm and continue",
-  href: "9-complete-application-tasks.html"
+  text: "Continue",
+  href: "../tasks"
 }) }}
+
+</form>
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 <br>

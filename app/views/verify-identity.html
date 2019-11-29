@@ -45,58 +45,49 @@
     </div>
     </div>
 
-<div class="govuk-grid-column-full">
+<div class="govuk-grid-column-two-thirds">
     <span class="govuk-caption-l">[Transaction name]</span>
-    <h1 class="govuk-heading-l">Transferors</h1>
-    <h2 class="govuk-heading-m">Transferors added</h2>
+    <h1 class="govuk-heading-l">Verify identity</h1>
+    <p class="govuk-body">When a party is not represented by a conveyancer, you must personally verify or provide evidence of their identity.</p>
 
+    <h2 class="govuk-heading-s">Declaration</h2>
+    <p class="govuk-body">[Transferee] is not represented by a conveyancer.</p>
 
-{{ govukTable({
-  caption: "",
-  firstCellIsHeader: false,
-  head: [
-    {
-      text: "Transferor type"
-    },
-    {
-      text: "Full name"
-    },
-    {
-      text: "Company number"
-    },
-    {
-      text: "Territory of incorporation"
-    },
-    {
-      text: "Options"
-    }
-  ],
-  rows: [
-    [
-    {
-      text:"-No transferors added-"
-    },
-      {
-        text: ""
-      },
-      {
-        text: ""
-      },
-      {
-        text: ""
-      },
-      {
-        text: ""
-      }
-    ]
-  ]
-}) }}
+    <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      <h3 class="govuk-fieldset__heading">
+        Select the correct statement:
+      </h3>
+    </legend>
+
+    <div class="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="where-do-you-live" name="where-do-you-live" type="radio" value="england">
+        <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+          I am satisfied that sufficient steps have been taken to verify their identity and that they are the registered proprietor or have the right to be registered as the proprietor
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="where-do-you-live-2" name="where-do-you-live" type="radio" value="scotland">
+        <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+          I attach evidence of their identity with this application
+        <div class="govuk-inset-text">
+          See <a href="https://www.gov.uk/government/publications/evidence-of-identity-conveyancers">Practice Guide 67</a> (link opens in a new window) for information about providing proof of identity.
+        </div>
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
 
 {{ govukButton({
   text: "Continue",
-  href: "9-complete-application-tasks.html"
+  href: "10-3-transferor-representation.html"
 }) }}
-
+</div>
+<div class="govuk-grid-column-full">
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 <br>

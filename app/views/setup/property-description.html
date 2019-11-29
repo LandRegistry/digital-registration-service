@@ -68,26 +68,24 @@
             <tr class="govuk-table__row">
               <td class="govuk-table__cell"><p>{{ data['title'] }}</p></td>
               <td class="govuk-table__cell">2, William Prance Road, Plymouth, PL5 4WS</td>
-              <td class="govuk-table__cell govuk-link govuk-link--no-visited-state"><a href="4b-change-title-number.html">Change</a></td>
+              <td class="govuk-table__cell govuk-link govuk-link--no-visited-state"><a href="change-title">Change</a></td>
             </tr>
       </tbody>
     </table>
 
-    <form method="get" action="6-select-transactions.html" name="" data-validate="whole-form-validation" novalidate>
+    <form method="post" action="/transactions/select-transactions" name="" data-validate="whole-form-validation" novalidate>
 
       {% set partHtml %}
         {{ govukTextarea({
           id: "part",
           rows: "5",
+          name: "part",
           classes: "govuk-!-width-full",
           hint: {
               text: "For example 'edged red on the plan to the transfer dated DD/MM/YYYY'"
             },
           label: {
             text: "Describe the part(s) affected"
-          },
-          attributes: {
-            spellcheck: "false"
           }
         }) }}
 
@@ -120,6 +118,7 @@
     {
       value: "part",
       text: "part of the title",
+      disabled: true,
       conditional: {
         html: partHtml
       }
