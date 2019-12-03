@@ -33,7 +33,7 @@
 {% block content %}
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-full" id="headerdiv">
-      <img src="public/images/headerlogo.svg" alt="hmlrlogo">
+      <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
       <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 
 
@@ -71,7 +71,7 @@
     <h3 class="govuk-body"> Fee must be 0 or between 12 and 999 </h3>
   </div>
 
-  <form method="get" action="add-applicants.html" data-validate="transaction-form-validation" novalidate>
+  <form method="get" action="add-applicants" data-validate="transaction-form-validation" novalidate>
     <div class="govuk-grid-column-one-half">
       <div class="govuk-form-group">
         <label class="govuk-label" for="Select_transaction{{n}}">
@@ -162,7 +162,16 @@
       </div>
     </div>
 
-      <form method="get" action="7-add-applicants.html" name="" data-validate="transaction-validation" novalidate>
+    <div class="govuk-grid-column-one-quarter">
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="Price{{n}}">
+           <br>
+        </label>
+
+
+        <input class="govuk-input" id="Price{{n}}" name="Price{{n}}" type="text">
+      </div>
+    </div>
 
     <div class="govuk-grid-column-one-quarter">
       <div class="govuk-form-group">
@@ -172,17 +181,6 @@
 
 
         <input class="govuk-input" id="fee{{n}}" name="fee{{n}}" type="text">
-      </div>
-    </div>
-
-    <div class="govuk-grid-column-one-quarter">
-      <div class="govuk-form-group">
-        <label class="govuk-label" for="Price{{n}}">
-           <br>
-        </label>
-
-
-        <input class="govuk-input" id="Price{{n}}" name="Price{{n}}" type="text">
       </div>
     </div>
 
@@ -306,7 +304,7 @@
 
 
   <div class="govuk-grid-column-one-half govuk-!-margin-top-5">
-      <a href="#"> Add another </a>
+      <p class="govuk-link"><a href="#"> Add another </a></p>
   </div>
 
   <div class="govuk-grid-column-one-quarter govuk-!-margin-top-5">
@@ -314,7 +312,8 @@
   </div>
 
   <div class="govuk-grid-column-one-quarter govuk-!-margin-top-5">
-      <h4 class="govuk-heading-s" style="float: right;">Total fee of £0</h4>
+      <h4 class="govuk-heading-s" style="float: right;">Total fee of £</h4>
+
   </div>
 
   <div class="govuk-grid-column-full govuk-!-margin-top-5">
@@ -374,31 +373,22 @@ text: "Continue"
 }) }}
 
 </form>
-<!--
-<script type="application/json" id="transaction-form-validation">
+
+
+<!-- <script type="application/json" id="transaction-form-validation">
  {
-   "Transaction_1": {
+   "fee": {
      "presence": {
-       "message": "^Select a transaction"
+       "message": "^Enter your reference for this application"
+     },
+     "length": {
+       "minimum": 1,
+       "maximum": 25,
+       "message": "^Your reference must be 25 characters or less"
      }
    }
  }
 </script> -->
-
-<!-- <script>
-  function calculate()
-  {
-      var field1=document.getElementById(fee{{n}}).value;
-
-      var result=parseFloat(field1)+parseFloat(field2);
-      if (!isNaN(result))
-      {
-        document.getElementById("answer").innerHTML="The answer is "+result;
-      }
-
-  }
-</script> -->
-
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 <br>

@@ -16,7 +16,25 @@
   <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
 {% endblock %}
 
-{% block header %}{% endblock %}
+{% block header %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full" id="headerdiv">
+      <img src="public/images/headerlogo.svg" alt="hmlrlogo">
+      <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
+
+
+    <div class="govuk-phase-banner govuk-!-margin-bottom-5">
+        <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
+        <span class="govuk-phase-banner__text">
+        This is a prototype and not a real service.
+        </span></p>
+    </div>
+
+</div>
+</div>
+
+{% endblock %}
 {% block footer %}{% endblock %}
 
 {% block bodyEnd %}

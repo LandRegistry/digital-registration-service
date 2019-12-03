@@ -48,7 +48,7 @@
     <span class="govuk-caption-l">[Transaction name]</span>
     <h1 class="govuk-heading-l">Add transferor</h1>
 
-    <p class="govuk-body">Select the type of transferor and enter their name. Names entered here must match those in supporting documents.</p>
+    <p class="govuk-body">If you change a transferor’s name or other information, you must reconfirm any representation details you have added.</p>
 
 
       {{ govukInsetText({
@@ -62,7 +62,7 @@
           <h2 class="govuk-heading-s">Select transferor type</h2>
           <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="add-transferor-conditional" name="add-transferor" type="radio" value="individual" data-aria-controls="conditional-add-transferor-conditional">
+              <input class="govuk-radios__input" id="add-transferor-conditional" name="add-transferor" type="radio" value="individual" data-aria-controls="conditional-add-transferor-conditional" checked="true">
               <label class="govuk-label govuk-radios__label" for="add-transferor-conditional">
                 Private individual
               </label>
@@ -74,13 +74,13 @@
                 <label class="govuk-label" for="add-transferor-individual-forename">
                   Forename(s)
                 </label>
-                <input class="govuk-input govuk-!-width-one-third" id="add-transferor-individual-forename" name="transferor-individual-forename" value="" type="forename" spellcheck="false">
+                <input class="govuk-input govuk-!-width-one-third" id="add-transferor-individual-forename" name="transferor-individual-forename" value="{{ data['transferor-individual-forename'] }}" type="forename" spellcheck="false">
               </div>
               <div class="govuk-form-group">
                 <label class="govuk-label" for="add-transferor-individual-surname">
                   Surname
                 </label>
-                <input class="govuk-input govuk-!-width-one-third" id="add-transferor-individual-surname" name="transferor-individual-surname" value="" type="surname" spellcheck="false">
+                <input class="govuk-input govuk-!-width-one-third" id="add-transferor-individual-surname" name="transferor-individual-surname" value="{{ data['transferor-individual-surname'] }}" type="surname" spellcheck="false">
               </div>
 
             </div>

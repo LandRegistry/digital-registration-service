@@ -32,7 +32,7 @@
 {% block content %}
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-full" id="headerdiv">
-      <img src="public/images/headerlogo.svg" alt="hmlrlogo">
+      <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
       <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 
 
@@ -66,9 +66,9 @@
 
       <tbody class="govuk-table__body">
             <tr class="govuk-table__row">
-              <td class="govuk-table__cell">[Type]</td>
-              <td class="govuk-table__cell">[Name]</td>
-              <td class="govuk-table__cell"></td>
+              <td class="govuk-table__cell">Private individual</td>
+              <td class="govuk-table__cell">{{ data['transferor-individual-forename']}} {{ data['transferor-individual-surname']}}</td>
+              <td class="govuk-table__cell">{{ data['otherConveyancerName']}}</td>
               <td class="govuk-table__cell govuk-link"><a href="transferor-representationAdd">Add representation</td>
               <td class="govuk-table__cell"></td>
             </tr>

@@ -26,7 +26,7 @@
 {% block content %}
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-full" id="headerdiv">
-      <img src="public/images/headerlogo.svg" alt="hmlrlogo">
+      <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
       <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 
 
@@ -45,216 +45,95 @@
   <h2 class="govuk-heading-l"> Required documents </h2>
   <p class="govuk-body">Documents you must attach to avoid requisitions.</p>
 
-  {{ govukTable({
-    caption: "",
-    firstCellIsHeader: false,
-    head: [
-    {
-      text: "Category",
-      classes: ""
-    },
-      {
-        text: "Document type",
-        classes: "govuk-!-width-one-third"
-      },
-      {
-        text: "Certification"
-      },
-      {
-        text: "File name",
-        classes: ""
-      },
-      {
-        text: "Options"
-      }
-    ],
-    rows: [
-      [
-      {
-        text: "Application form"
+  <table class="govuk-table">
 
-      },
-        {
-          text: "TR1 - Registered title(s): whole transfer",
-          classes: "govuk-!-width-one-quarter"
-        },
-        {
-          text: ""
-        },
-        {
-          text: "",
-            classes: "govuk-!-width-one-third"
-        },
-        {
-          text: "Attach",
-          classes: "govuk-link",
-          href: "#"
-        }
-      ]
-    ]
-  }) }}
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Category</th>
+      <th scope="col" class="govuk-table__header govuk-!-width-one-third">Document type</th>
+      <th scope="col" class="govuk-table__header">Certification</th>
+      <th scope="col" class="govuk-table__header">File name</th>
+      <th scope="col" class="govuk-table__header">Options</th>
+    </tr>
+  </thead>
 
+  <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Application form</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter">TR1 - Registered title(s): whole transfer</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell govuk-!-width-one-third"></td>
+          <td class="govuk-table__cell govuk-link"><a href="documents/document_upload.html">Attach</a></td>
+        </tr>
+  </tbody>
+</table>
 
 <h3 class="govuk-heading-l"> Suggested documents </h3>
 <p class="govuk-body">Documents you may need to attach if relevant to your application.</p>
-{{ govukTable({
-  caption: "",
-  firstCellIsHeader: false,
-  head: [
-  {
-    text: "Category",
-    classes: ""
-  },
-    {
-      text: "Document type",
-      classes: "govuk-!-width-one-third"
-    },
-    {
-      text: "Certification"
-    },
-    {
-      text: "File name",
-      classes: ""
-    },
-    {
-      text: "Options"
-    }
-  ],
-  rows: [
-    [
-    {
-      text: "Evidence"
 
-    },
-      {
-        text: "Consent",
-        classes: "govuk-!-width-one-quarter"
-      },
-      {
-        text: ""
-      },
-      {
-        text: "",
-          classes: "govuk-!-width-one-third"
-      },
-      {
-        text: "Attach",
-        classes: "govuk-link",
-        href: "#"
-      }
-    ],
-    [
-    {
-      text: "Evidence"
+<table class="govuk-table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Category</th>
+      <th scope="col" class="govuk-table__header govuk-!-width-one-third">Document type</th>
+      <th scope="col" class="govuk-table__header">Certification</th>
+      <th scope="col" class="govuk-table__header">File name</th>
+      <th scope="col" class="govuk-table__header">Options</th>
+    </tr>
+  </thead>
 
-    },
-      {
-        text: "Conveyancers certificate",
-        classes: "govuk-!-width-one-quarter"
-      },
-      {
-        text: ""
-      },
-      {
-        text: "",
-          classes: "govuk-!-width-one-third"
-      },
-      {
-        text: "Attach",
-        classes: "govuk-link",
-        href: "#"
-      }
-    ],
-    [
-    {
-      text: "Evidence"
+  <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Evidence</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter" name="filetype">Consent</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell govuk-!-width-one-third"></td>
+          <td class="govuk-table__cell govuk-link"><a href="documents/document_upload_consent">Attach</a></td>
+        </tr>
 
-    },
-      {
-        text: "Death certificate",
-        classes: "govuk-!-width-one-quarter"
-      },
-      {
-        text: ""
-      },
-      {
-        text: "",
-          classes: "govuk-!-width-one-third"
-      },
-      {
-        text: "Attach",
-        classes: "govuk-link",
-        href: "#"
-      }
-    ],
-    [
-    {
-      text: "Evidence"
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Evidence</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter">Conveyancers certificate</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell govuk-!-width-one-third"></td>
+          <td class="govuk-table__cell govuk-link">Attach</td>
+        </tr>
 
-    },
-      {
-        text: "Marriage/civil partnership certificate",
-        classes: "govuk-!-width-one-quarter"
-      },
-      {
-        text: ""
-      },
-      {
-        text: "",
-          classes: "govuk-!-width-one-third"
-      },
-      {
-        text: "Attach",
-        classes: "govuk-link",
-        href: "#"
-      }
-    ],
-    [
-    {
-      text: "Evidence"
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Evidence</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter">Death certificate</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell govuk-!-width-one-third"></td>
+          <td class="govuk-table__cell govuk-link">Attach</td>
+        </tr>
 
-    },
-      {
-        text: "Stamp Duty Land Tax Certificate",
-        classes: "govuk-!-width-one-quarter"
-      },
-      {
-        text: ""
-      },
-      {
-        text: "",
-          classes: "govuk-!-width-one-third"
-      },
-      {
-        text: "Attach",
-        classes: "govuk-link",
-        href: "#"
-      }
-    ],
-    [
-    {
-      text: "Evidence"
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Evidence</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter">Marriage/civil partnership certificate</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell govuk-!-width-one-third"></td>
+          <td class="govuk-table__cell govuk-link">Attach</td>
+        </tr>
 
-    },
-      {
-        text: "Land Transaction Tax Certificate",
-        classes: "govuk-!-width-one-quarter"
-      },
-      {
-        text: ""
-      },
-      {
-        text: "",
-          classes: "govuk-!-width-one-third"
-      },
-      {
-        text: "Attach",
-        classes: "govuk-link",
-        href: "#"
-      }
-    ]
-  ]
-}) }}
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Evidence</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter">Stamp Duty Land Tax Certificate</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell govuk-!-width-one-third"></td>
+          <td class="govuk-table__cell govuk-link">Attach</td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Evidence</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter">Land Transaction Tax Certificate</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell govuk-!-width-one-third"></td>
+          <td class="govuk-table__cell govuk-link">Attach</td>
+        </tr>
+
+
+  </tbody>
+</table>
 
 <p class='govuk-body'><a href="#">Attach another type of document</a></p>
 
@@ -262,6 +141,8 @@
     text: "Continue",
     href: "../tasks"
   }) }}
+
+
 
 </div>
 <div class="govuk-grid-column-full"
@@ -274,7 +155,6 @@
 <a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
 
 </div>
-
 
 
 {% endblock %}

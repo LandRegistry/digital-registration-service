@@ -44,3 +44,18 @@ $govuk-canvas-background-colour: $govuk-body-background-colour;
 .task-list {
   font-family: arial;
 }
+
+.header-link {
+  text-decoration: none;
+  color: #999999;
+}
+
+.header-link:hover {
+  text-decoration: underline;
+
+}
+
+.upload_btn {
+  width: 100px;
+  font-size: 12px; 
+}

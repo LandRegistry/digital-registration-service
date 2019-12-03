@@ -5,11 +5,25 @@ const path = require('path')
 // Add your routes here - above the module.exports line
 router.use('/node_modules', express.static('node_modules'))
 
+
+router.post('/app/views/transferee-select-answer', function (req, res) {
+
+  let transferSelect = req.session.data['transferee-select']
+
+  console.log(transferSelect)
+
+  if (transferSelect == 'false') {
+    res.redirect('/app/views/transactions/transfer/add-transferee')
+  } else {
+    res.redirect('/app/views/transactions/transfer/transferee-list')
+  }
+})
+
 // post(route, callback(request, response) {
 //     response.render(template, data);
 // });
 
-// 
+//
 // // Branching
 // router.post('/examples/branching/over-18-answer', function (req, res) {
 //   // Get the answer from session data

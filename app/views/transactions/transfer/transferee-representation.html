@@ -32,7 +32,7 @@
 {% block content %}
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-full" id="headerdiv">
-      <img src="public/images/headerlogo.svg" alt="hmlrlogo">
+      <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
       <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 
 
@@ -52,52 +52,31 @@
     <h2 class="govuk-heading-m">Transferee representation added</h2>
 
 <form>
-{{ govukTable({
-  caption: "",
-  firstCellIsHeader: false,
-  head: [
-    {
-      text: "Transferee type"
-    },
-    {
-      text: "Full name"
-    },
-    {
-      text: "Represented by"
-    }
-  ],
-  rows: [
-    [
-    {
-      text:"Private individual"
-    },
-      {
-        text: "[Transferee name]"
-      },
-      {
-        text: "[Transferee representation]"
-      }
-    ],
-    [
-    {
-      text:"UK Company or LLC"
-    },
-      {
-        text: "[Transferee name]"
-      },
-      {
-        text: "[Transferee representation]"
-      }
-    ]
-  ]
-}) }}
+  <table class="govuk-table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Transferee type</th>
+      <th scope="col" class="govuk-table__header">Full name</th>
+      <th scope="col" class="govuk-table__header">Represented by</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Private individual</td>
+          <td class="govuk-table__cell">{{ data['applicant-individual-forename']}} {{ data['applicant-individual-surname']}}</td>
+          <td class="govuk-table__cell">UK Conveyancers LLP</td>
+        </tr>
+  </tbody>
+</table>
 
 {{ govukButton({
   text: "Continue",
-  href: "../tasks"
+  href: "../tasks",
+  id: "button"
 }) }}
 
 </form>
+
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 <br>
