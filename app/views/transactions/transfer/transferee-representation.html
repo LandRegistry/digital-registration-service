@@ -63,17 +63,20 @@
   <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">Private individual</td>
-          <td class="govuk-table__cell">{{ data['applicant-individual-forename']}} {{ data['applicant-individual-surname']}}</td>
-          <td class="govuk-table__cell">UK Conveyancers LLP</td>
+          <td class="govuk-table__cell">  {% if data['transferee-select'] === 'yes' %}
+             {{ data['applicant-individual-forename'] }} {{ data['applicant-individual-surname'] }}
+             {% endif %}
+             {% if data['transferee-select'] === 'no' %}
+            {{ data['transferee-individual-forename'] }} {{ data['transferee-individual-surname'] }}
+            {% endif %}</td>
+          <td class="govuk-table__cell" name="transferee-representation-added">UK Conveyancers LLP</td>
         </tr>
   </tbody>
 </table>
 
-{{ govukButton({
-  text: "Continue",
-  href: "../tasks",
-  id: "button"
-}) }}
+
+<a class="govuk-button" data-module="govuk-button" value="transferee-representation-confirmed" href="../tasks">
+Continue</a>
 
 </form>
 

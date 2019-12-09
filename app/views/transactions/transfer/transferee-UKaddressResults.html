@@ -59,7 +59,7 @@
       {{ govukSelect({
         classes: "govuk-!-width-one-half",
         id: "addresses-found",
-        name: "address-list",
+        name: "address-dropdown",
         label: {
           text: "4 addresses found"
         },
@@ -107,7 +107,8 @@
 
 {{ govukButton({
   text: "Continue",
-  href: "transfereeAddressList"
+  href: "transfereeAddressList",
+  Value: "yes"
 }) }}
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">

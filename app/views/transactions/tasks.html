@@ -85,16 +85,26 @@
 
       <tbody class="govuk-table__body">
             <tr class="govuk-table__row">
-              <td class="govuk-table__cell govuk-link"><a href="transfer/transferees-select" >Select transferees</a></td>
-              <td class="govuk-table__cell"><strong class="" style="float: right;"></strong></td>
+              <td class="govuk-table__cell govuk-link"><a href="transfer/transferees-select">Select transferees</a></td>
+              <td class="govuk-table__cell">
+              {% if data['transferee-select'] %}
+              <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
+              {% endif %}</td>
+
             </tr>
             <tr class="govuk-table__row">
               <td class="govuk-table__cell govuk-link"><a href="transfer/transferee-representation">Confirm transferee representation</a></td>
-              <td class="govuk-table__cell"><strong class="" style="float: right;"></strong></td>
+              <td class="govuk-table__cell">  {% if data['transferee-representation-confirmed'] %}
+                <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
+                {% endif %}</td>
             </tr>
             <tr class="govuk-table__row">
               <td class="govuk-table__cell govuk-link"><a href="transfer/transfereeAddressList">Add addresses for service</a></td>
-              <td class="govuk-table__cell"></td>
+              <td class="govuk-table__cell">
+                {% if data['select-address-type'] === 'UK-postal' %}
+                      <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
+                      {% endif %}
+            </td>
             </tr>
 
             <tr class="govuk-table__row">
@@ -103,11 +113,16 @@
             </tr>
             <tr class="govuk-table__row">
               <td class="govuk-table__cell govuk-link"><a href="transfer/add-transferor.html">Add transferors</a></td>
-              <td class="govuk-table__cell"><strong class="" style="float: right;"></strong></td>
+              <td class="govuk-table__cell">  {% if data['add-transferor'] %}
+                      <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
+                      {% endif %}</td>
             </tr>
             <tr class="govuk-table__row">
               <td class="govuk-table__cell govuk-link"><a href="transfer/transferor-representation.html">Add transferor representation</a></td>
-              <td class="govuk-table__cell"><strong class="" style="float: right;"></strong></td>
+              <td class="govuk-table__cell">  {% if data['certification'] %}
+                      <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
+                      {% endif %}
+                      </td>
             </tr>
 
             <tr class="govuk-table__row">
@@ -145,7 +160,8 @@
 
     {{ govukButton({
         text: "Review application",
-        classes: "govuk-!-margin-top-9"
+        classes: "govuk-!-margin-top-9",
+        href: "../transactions/application-review"
       }) }}
 
       {{ govukInsetText({
@@ -153,9 +169,7 @@
         }) }}
 
 <script>
-  function completed() {
-    $( "strong" ).removeClass( "govuk-visually-hidden" );
-  }
+
 </script>
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
@@ -164,6 +178,8 @@
 <br>
 <br>
 <a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
+<br>
+<a href="/prototype-admin/clear-data">Clear data</a>
 
 
 {% endblock %}
