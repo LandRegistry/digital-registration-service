@@ -32,7 +32,7 @@
 {% block content %}
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-full" id="headerdiv">
-      <img src="public/images/headerlogo.svg" alt="hmlrlogo">
+      <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
       <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 
 
@@ -46,28 +46,70 @@
     </div>
 
 <div class="govuk-grid-column-full">
-    <span class="govuk-caption-l">[Transaction name]</span>
+    <span class="govuk-caption-l">Transfer for value (TR1)</span>
     <h1 class="govuk-heading-l">Add address for service</h1>
-    <h2 class="govuk-heading-m">Address type:</h2>
-    <p class="govuk-body">UK postal address</p>
+    <h2 class="govuk-heading-m">For transferee:</h2>
+    <p class="govuk-body">{{ data['applicant-individual-forename']}} {{ data['applicant-individual-surname']}}</p>
 
-    <form>
-    {{ govukInput({
-        label: {
-          text: "Enter postcode"
-          },
-          classes: "govuk-input--width-10",
-          id: "postcode-finder",
-          name: "postcode-finder"
-      }) }}
-    <a href="#" class="govuk-link"> Enter address manually</a>
-    <br><br><br><br>
 
+    <form method="post" action="transferee-UKaddress">
+    {{ govukRadios({
+      idPrefix: "select-address-type",
+      name: "select-address-type",
+      fieldset: {
+        legend: {
+          text: "Select address type",
+          isPageHeading: false,
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      items: [
+        {
+          value: "UK-postal",
+          name: "UK-postal",
+          text: "UK postal address",
+          type: "radio"
+        },
+        {
+          value: "Overseas-postal",
+          text: "Overseas postal address",
+          name: "Overseas postal address",
+          type: "radio"
+        },
+        {
+          value: "PO-box",
+          text: "PO Box (postal address)",
+          name: "PO Box",
+          type: "radio"
+        },
+        {
+          value: "email",
+          text: "Email address",
+          name: "Email address",
+          type: "radio"
+        },
+        {
+          value: "DX",
+          text: "DX address",
+          name: "DX address",
+          type: "radio"
+        },
+        {
+          value: "BFPO",
+          text: "BFPO postal address (armed forces)",
+          name: "BFPO",
+          type: "radio"
+        }
+      ]
+    }) }}
 
 {{ govukButton({
-  text: "Find address",
-  href: "#"
+  text: "Continue",
+  type: "Submit",
+  value: "Submit"
 }) }}
+
+</form>
 
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">

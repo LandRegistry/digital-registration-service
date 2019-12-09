@@ -79,10 +79,9 @@
   </div>
 
 
-  {{ govukButton({
-    text: "Continue",
-    href: "/transactions/transfer/document_prompts-2"
-  }) }}
+  <a href="/transactions/transfer/documents/document_prompts-2" role="button" draggable="false" class="govuk-button" data-module="govuk-button">
+    Continue
+  </a>
 
 </div>
 <div class="govuk-grid-column-full"
@@ -101,10 +100,11 @@
   $(document).ready(function(){
     $("button").click(function(){
       $(document.getElementById('filename')).text("TR1.pdf");
-      $(document.getElementById('uploaded')).text("TR1.pdf");
     });
   });
-  }
+
+}
+
 </script>
 
 

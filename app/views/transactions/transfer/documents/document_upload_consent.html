@@ -44,7 +44,7 @@
   <h1 class="govuk-heading-l"> Attach and certify document </h1>
   <p class="govuk-body">Files can be GIF, TIFF, JPG or PDF and must not exceed 20MB file size.</p>
   <p class="govuk-body">Document type</p>
-  <h2 class="govuk-heading-m">{{ data['filetype']}}</h2>
+  <h2 class="govuk-heading-m govuk-!-margin-bottom-6" style="margin-top:-20px">Consent</h2>
 
 
   <p class="govuk-body">Upload a file</p>
@@ -95,14 +95,11 @@
 <a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
 
 </div>
-<script>
-  function fileupload() {
 
-  $(document).ready(function(){
-    $("button").click(function(){
-      $(document.getElementById('filename')).text("Consent.pdf");
-    });
-  });
+<script type="application/javascript">
+  var number = Number (prompt("Enter a number:"));
+  if (number > 0) {
+      console.log (number + " is positive");
   }
 </script>
 

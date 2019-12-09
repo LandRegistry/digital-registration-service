@@ -52,50 +52,29 @@
     <h2 class="govuk-heading-m">Transferees added</h2>
 
 
-{{ govukTable({
-  caption: "",
-  firstCellIsHeader: false,
-  head: [
-    {
-      text: "Transferee type",
-      classes: "govuk-!-width-one-sixth"
-    },
-    {
-      text: "Full name"
-    },
-    {
-      text: "Address type"
-    },
-    {
-      text: "Address for service",
-      classes: "govuk-!-width-one-quarter"
-    },
-    {
-      text: "Options"
-    }
-  ],
-  rows: [
-    [
-    {
-      text:"[Private individual]"
-    },
-      {
-        text: "[Firstname Lastname]"
-      },
-      {
-        text: "[e.g. UK Postal]"
-      },
-      {
-        text: "-No address for service added-"
-      },
-      {
-      text: "Add address",
-      classes: "govuk-link",
-      href: "start"
-      }
-    ]
-  ]
-}) }}
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header govuk-!-width-one-sixth">Transferee type</th>
+          <th scope="col" class="govuk-table__header">Full name</th>
+          <th scope="col" class="govuk-table__header">Address type</th>
+          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Address for service</th>
+          <th scope="col" class="govuk-table__header">Options</th>
+        </tr>
+      </thead>
+
+      <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">[Private individual]</td>
+              <td class="govuk-table__cell">{{ data['applicant-individual-forename']}} {{ data['applicant-individual-surname']}}</td>
+              <td class="govuk-table__cell">UK Postal</td>
+              <td class="govuk-table__cell">{{ data['postcode']}}</td>
+              <td class="govuk-table__cell govuk-link"><a href="transferee-addresstype">Add address</td>
+            </tr>
+
+
+      </tbody>
+    </table>
 
 {{ govukButton({
   text: "Continue",

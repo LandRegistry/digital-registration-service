@@ -63,7 +63,7 @@
           <td class="govuk-table__cell govuk-!-width-one-quarter">TR1 - Registered title(s): whole transfer</td>
           <td class="govuk-table__cell"></td>
           <td class="govuk-table__cell govuk-!-width-one-third"></td>
-          <td class="govuk-table__cell govuk-link"><a href="documents/document_upload.html">Attach</a></td>
+          <td class="govuk-table__cell govuk-link"><a href="document_upload.html">Attach</a></td>
         </tr>
   </tbody>
 </table>
@@ -87,7 +87,7 @@
           <td class="govuk-table__cell">Evidence</td>
           <td class="govuk-table__cell govuk-!-width-one-quarter" name="filetype">Consent</td>
           <td class="govuk-table__cell"></td>
-          <td class="govuk-table__cell govuk-!-width-one-third"></td>
+          <td class="govuk-table__cell govuk-!-width-one-third">{{ data['filenameconsent']}}</td>
           <td class="govuk-table__cell govuk-link"><a href="documents/document_upload_consent">Attach</a></td>
         </tr>
 
@@ -137,10 +137,10 @@
 
 <p class='govuk-body'><a href="#">Attach another type of document</a></p>
 
-  {{ govukButton({
-    text: "Continue",
-    href: "../tasks"
-  }) }}
+{{ govukButton({
+  text: "Continue",
+  href: "/transactions/tasks"
+}) }}
 
 
 
@@ -155,6 +155,8 @@
 <a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
 
 </div>
+
+
 
 
 {% endblock %}
