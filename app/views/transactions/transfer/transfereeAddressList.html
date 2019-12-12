@@ -31,9 +31,10 @@
 
 {% block content %}
 <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full" id="headerdiv">
-      <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
-      <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
+  <div class="govuk-grid-column-full" id="headerdiv">
+    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
+    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Apply to update or create a registered title</a></p>
+    <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 
 
     <div class="govuk-phase-banner govuk-!-margin-bottom-5">
@@ -65,7 +66,7 @@
 
       <tbody class="govuk-table__body">
             <tr class="govuk-table__row">
-              <td class="govuk-table__cell">[Private individual]</td>
+              <td class="govuk-table__cell">Private individual</td>
               <td class="govuk-table__cell">      {% if data['transferee-select'] === 'yes' %}
                      {{ data['applicant-individual-forename'] }} {{ data['applicant-individual-surname'] }}
                      {% endif %}
@@ -78,6 +79,23 @@
               <td class="govuk-table__cell"></td>
               <td class="govuk-table__cell govuk-link"><a href="transferee-addresstype">Add address</td>
             </tr>
+
+            <tr class="govuk-table__row">
+              {% if data['applicant-company-name-2'] %}
+              <td class="govuk-table__cell">UK Company or LLP</td>
+              <td class="govuk-table__cell">      {% if data['transferee-select'] === 'yes' %}
+                     {{ data['applicant-company-name-2'] }}
+                    {% endif %}
+                     {% if data['transferee-select'] === 'no' %}
+                    {{ data['transferee-company-name-2'] }}
+                    {% endif %}</td>
+              <td class="govuk-table__cell"> {% if data['select-address-type'] === 'UK-postal' %}
+                     UK Postal
+                     {% endif %} </td>
+              <td class="govuk-table__cell"></td>
+              <td class="govuk-table__cell govuk-link"><a href="transferee-addresstype">Add address</td>
+            {% endif %}</tr>
+
 
 
       </tbody>
@@ -96,7 +114,6 @@
 <a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
 
 </div>
-
 
 {% endblock %}
 

@@ -47,7 +47,7 @@ $govuk-canvas-background-colour: $govuk-body-background-colour;
 
 .header-link {
   text-decoration: none;
-  color: #999999;
+  color: #999999 !important;
 }
 
 .header-link:hover {
@@ -57,5 +57,5 @@ $govuk-canvas-background-colour: $govuk-body-background-colour;
 
 .upload_btn {
   width: 100px;
-  font-size: 12px; 
+  font-size: 12px;
 }

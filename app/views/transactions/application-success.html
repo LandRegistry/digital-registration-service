@@ -1,5 +1,4 @@
-{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
-{%- set assetPath = '/govuk/assets' -%}
+{% extends "layout_unbranded.html" %}
 
 {% extends "govuk/template.njk" %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
@@ -10,6 +9,8 @@
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 {% from "govuk/components/table/macro.njk" import govukTable %}
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
 
 
 
@@ -47,37 +48,67 @@
     </div>
 
 <div class="govuk-grid-column-full">
-    <span class="govuk-caption-l">[Transaction name]</span>
-    <h1 class="govuk-heading-l">Transferors</h1>
-    <h2 class="govuk-heading-m">Transferors added</h2>
+    {{ govukPanel({
+    titleText: "Application complete",
+    html: "Your HM Land Registry reference number:<br><strong>HDJ2123F</strong>"
+    }) }}
+    <br>
+
+    <h2 class="govuk-heading-l">Application details</h2>
+    <table class="govuk-table">
+      <tbody class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Your reference</th>
+          <td scope="col" class="govuk-table__cell">{{ data['reference'] }}</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Application type</th>
+          <td scope="col" class="govuk-table__cell">Update an existing title (Document registration)</td>
+        </tr>
+      </tbody>
+    </table>
 
     <table class="govuk-table">
-      <thead class="govuk-table__head">
-        <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header">Transferor type</th>
-          <th scope="col" class="govuk-table__header">Full name</th>
-          <th scope="col" class="govuk-table__header">Company number</th>
-          <th scope="col" class="govuk-table__header">Territory of incorporation</th>
-          <th scope="col" class="govuk-table__header">Options</th>
-        </tr>
-      </thead>
-
+      <h2 class="govuk-heading-l">Priority details</h2>
       <tbody class="govuk-table__body">
             <tr class="govuk-table__row">
-              <td class="govuk-table__cell">Private individual</td>
-              <td class="govuk-table__cell"> {{ data['transferor-individual-forename'] }} {{ data['transferor-individual-surname'] }}</td>
-              <td class="govuk-table__cell">N/a</td>
-              <td class="govuk-table__cell">N/a</td>
-              <td class="govuk-table__cell govuk-link"><a href="add-transferor-change">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
+              <th scope="row" class="govuk-table__header govuk-!-width-one-quarter">Priority date</th>
+              <td class="govuk-table__cell">[date]</td>
+            </tr>
+
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header govuk-!-width-one-quarter">Priority time</th>
+              <td class="govuk-table__cell">[time]</td>
             </tr>
       </tbody>
     </table>
 
-{{ govukButton({
-  text: "Continue",
-  href: "../tasks"
-}) }}
+    <table class="govuk-table">
+    <h3 class="govuk-heading-m">Your contact email for this application </h3>
+    <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header govuk-!-width-one-quarter">Email address</th>
+            <td class="govuk-table__cell">[email]</td>
+          </tr>
+    </tbody>
+    </table>
 
+
+    <h3 class="govuk-heading-m">Next steps</h3>
+  <p class="govuk-body">  <span class="govuk-caption-m"> You can print this screen for your records.</span>
+    <br>
+    <a class="govuk-link">Download completed AP1 (PDF)</a>
+    <br><br>
+    <a class="govuk-link">Start a new application</a>
+    <br><br>
+    <a class="govuk-link">Go to portal homepage</a> if you need to continue using other HM Land Registry services.</p>
+
+
+
+
+<script>
+
+</script>
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 <br>
@@ -85,11 +116,13 @@
 <br>
 <br>
 <a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
-
-</div>
+<br>
+<a href="/prototype-admin/clear-data">Clear data</a>
 
 
 {% endblock %}
+
+
 
 
 {% block footer %}

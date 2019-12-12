@@ -48,36 +48,63 @@
 
 <div class="govuk-grid-column-full">
     <span class="govuk-caption-l">[Transaction name]</span>
-    <h1 class="govuk-heading-l">Transferors</h1>
-    <h2 class="govuk-heading-m">Transferors added</h2>
+    <h1 class="govuk-heading-l">Which applicants are transferees?</h1>
+    <p class="govuk-body">Select all that apply, or none.</p>
 
-    <table class="govuk-table">
-      <thead class="govuk-table__head">
-        <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header">Transferor type</th>
-          <th scope="col" class="govuk-table__header">Full name</th>
-          <th scope="col" class="govuk-table__header">Company number</th>
-          <th scope="col" class="govuk-table__header">Territory of incorporation</th>
-          <th scope="col" class="govuk-table__header">Options</th>
-        </tr>
-      </thead>
+<form method="post" action="transferee-applicants-answer" class="">
+    <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
 
-      <tbody class="govuk-table__body">
-            <tr class="govuk-table__row">
-              <td class="govuk-table__cell">Private individual</td>
-              <td class="govuk-table__cell"> {{ data['transferor-individual-forename'] }} {{ data['transferor-individual-surname'] }}</td>
-              <td class="govuk-table__cell">N/a</td>
-              <td class="govuk-table__cell">N/a</td>
-              <td class="govuk-table__cell govuk-link"><a href="add-transferor-change">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
-            </tr>
-      </tbody>
-    </table>
 
-{{ govukButton({
-  text: "Continue",
-  href: "../tasks"
-}) }}
+    <div class="govuk-checkboxes">
+    {% if data['applicant-individual-forename'] %}
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="" name="applicant-transferee" type="checkbox" value="applicant-transferee-1">
+            <label class="govuk-label govuk-checkboxes__label" for="applicant-transferee">
+              {{ data['applicant-individual-forename'] }} {{ data['applicant-individual-surname'] }}
+            </label>
+          </div>
+    {% endif %}
 
+    {% if data['applicant-company-name'] %}
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="" name="applicant-transferee" type="checkbox" value="applicant-transferee-2">
+            <label class="govuk-label govuk-checkboxes__label" for="applicant-transferee-2">
+              {{ data['applicant-company-name'] }}
+            </label>
+          </div>
+    {% endif %}
+
+    {% if data['applicant-company-name-2'] %}
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="" name="applicant-transferee" type="checkbox" value="applicant-transferee-3">
+            <label class="govuk-label govuk-checkboxes__label" for="applicant-transferee">
+              {{ data['applicant-company-name-2'] }}
+            </label>
+          </div>
+    {% endif %}
+
+    {% if data['applicant-individual-forename-2'] %}
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="" name="applicant-transferee" type="checkbox" value="applicant-transferee-4">
+            <label class="govuk-label govuk-checkboxes__label" for="applicant-transferee">
+              {{ data['applicant-individual-forename-2'] }} {{ data['applicant-individual-surname-2'] }}
+            </label>
+          </div>
+    {% endif %}
+    <br>
+    <div class="govuk-radios__item">
+       <input class="govuk-radios__input" id="no-applicants-transferees" name="applicant-transferee" type="radio" value="none">
+       <label class="govuk-label govuk-radios__label" for="applicant-transferees">
+         None
+       </label>
+
+      </fieldset>
+      </div>
+
+
+<button class="govuk-button" data-module="govuk-button">Continue</button>
+</form>
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 <br>

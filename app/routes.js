@@ -50,7 +50,21 @@ router.post('/transactions/transfer/transferee-list-answer', function (req, res)
   if (applicanttransferee === 'yes') {
     res.redirect('/transactions/transfer/transferee-list')
   } else {
-    res.redirect('/transactions/transfer/add-transferee')
+    res.redirect('/transactions/transfer/transferees-applicants')
+  }
+})
+
+router.post('/transactions/transfer/transferee-applicants-answer', function (req, res) {
+  // Get the answer from session data
+  // The name between the quotes is the same as the 'name' attribute on the input elements
+  // However in JavaScript we can't use hyphens in variable names
+
+  let applicanttransfereecheckbox = req.session.data['applicant-transferee']
+
+  if (applicanttransfereecheckbox === 'none') {
+    res.redirect('/transactions/transfer/transferees-applicants')
+  } else {
+    res.redirect('/transactions/transfer/transferee-list')
   }
 })
 

@@ -31,9 +31,10 @@
 
 {% block content %}
 <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full" id="headerdiv">
-      <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
-      <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
+  <div class="govuk-grid-column-full" id="headerdiv">
+    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
+    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Apply to update or create a registered title</a></p>
+    <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 
 
     <div class="govuk-phase-banner govuk-!-margin-bottom-5">
@@ -63,6 +64,7 @@
       <th scope="col" class="govuk-table__header">Options</th>
     </tr>
   </thead>
+  {% if data['applicant-individual-forename'] %}
     <tbody class="govuk-table_body">
       <tr class="govuk-table_row" id="hidePI">
       <td class="govuk-table__cell">Private individual</td>
@@ -71,11 +73,50 @@
       <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
       <td class="govuk-table__cell govuk-link"><a href="add-applicants-change">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
     </tbody>
+     {% endif %}
+
+     {% if data['applicant-individual-forename-2'] %}
+       <tbody class="govuk-table_body">
+         <tr class="govuk-table_row" id="hidePI">
+         <td class="govuk-table__cell">Private individual</td>
+         <td class="govuk-table__cell govuk-!-width-one-third">{{ data['applicant-individual-forename-2'] }} {{ data['applicant-individual-surname-2'] }}</td>
+         <td class="govuk-table__cell">N/a</td>
+         <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+         <td class="govuk-table__cell govuk-link"><a href="add-applicants-change">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
+       </tbody>
+        {% endif %}
+
+    {% if data['applicant-company-name'] %}
+    <tbody class="govuk-table_body">
+      <tr class="govuk-table_row" id="hidePI">
+      <td class="govuk-table__cell">UK Company or LLC</td>
+      <td class="govuk-table__cell govuk-!-width-one-third">{{ data['applicant-company-name'] }}</td>
+      <td class="govuk-table__cell"> {{ data['applicant-company-number'] }}</td>
+      <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+      <td class="govuk-table__cell govuk-link"><a href="add-applicants-change">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
+    </tbody>
+     {% endif %}
+
+     {% if data['applicant-company-name-2'] %}
+     <tbody class="govuk-table_body">
+       <tr class="govuk-table_row" id="hidePI">
+       <td class="govuk-table__cell">UK Company or LLC</td>
+       <td class="govuk-table__cell govuk-!-width-one-third">{{ data['applicant-company-name-2'] }}</td>
+       <td class="govuk-table__cell"> {{ data['applicant-company-number-2'] }}</td>
+       <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+       <td class="govuk-table__cell govuk-link"><a href="add-applicants-change">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
+     </tbody>
+      {% endif %}
 
 
 </table>
 
+{% if data['applicant-company-name'] or data['applicant-individual-forename'] %}
 <a class="govuk-link" href="add-applicants-2">Add another</a><br>
+{% else %}
+<a class="govuk-link govuk-visually-hidden" href="add-applicants-2"></a><br>
+{% endif %}
+
 
 {{ govukButton({
 classes: "govuk-!-margin-top-5",
