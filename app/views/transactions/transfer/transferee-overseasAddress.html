@@ -32,9 +32,10 @@
 
 {% block content %}
 <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full" id="headerdiv">
-      <img src="public/images/headerlogo.svg" alt="hmlrlogo">
-      <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
+  <div class="govuk-grid-column-full" id="headerdiv">
+    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
+    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Apply to update or create a registered title</a></p>
+    <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 
 
     <div class="govuk-phase-banner govuk-!-margin-bottom-5">
@@ -47,102 +48,35 @@
     </div>
 
 <div class="govuk-grid-column-full">
-    <span class="govuk-caption-l">[Transaction name]</span>
+    <span class="govuk-caption-l">Transfer for value (TR1)</span>
     <h1 class="govuk-heading-l">Add address for service</h1>
     <h2 class="govuk-heading-m">Address type</h2>
     <p class="govuk-body">Overseas postal address</p>
 
+    <form>
 
-  {% call govukFieldset({
-    legend: {
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="overseas-address-line-1">Address</label>
+      <input class="govuk-input govuk-!-width-one-half" id="overseas-address-line-1" name="overseas-address" type="text">
+      <br><br>
+      <input class="govuk-input govuk-!-width-one-half" id="overseas-address-line-2" name="overseas-address" type="text">
+      <br><br>
+      <input class="govuk-input govuk-!-width-one-half" id="overseas-address-line-3" name="overseas-address" type="text">
+      <br><br>
+      <input class="govuk-input govuk-!-width-one-half" id="overseas-address-line-4" name="overseas-address" type="text">
+      <br><br>
+      <input class="govuk-input govuk-!-width-one-half" id="overseas-address-line-5" name="overseas-address" type="text">
+      <br><br>
 
-    }
-  }) %}
+      <label class="govuk-label" for="country">Country</label>
+      <select class="govuk-select govuk-!-width-one-half" id="country" name="country">
+     <option value="published">Recently published</option>
+     <option value="updated" selected>Recently updated</option>
+     <option value="views">Most views</option>
+     <option value="comments">Most comments</option>
+       </select>
 
-    {{ govukInput({
-      label: {
-        html: 'Flat name or number (optional) <span class="govuk-visually-hidden">line 1 of 2</span>'
-      },
-      classes: "govuk-input--width-20",
-      hint: {
-     text: "For example, 'The Garden Flat' or 'Flat 2'"
-   }
-    }) }}
-
-    {{ govukInput({
-      label: {
-        html: 'House name or number<span class="govuk-visually-hidden">line 2 of 2</span>'
-      },
-      classes: "govuk-input--width-20",
-      id: "house"
-    }) }}
-
-    {{ govukInput({
-      label: {
-        html: 'Street'
-      },
-      classes: "govuk-input--width-20",
-      id: "Street"
-    }) }}
-
-    {{ govukInput({
-      label: {
-        html: 'Place name (optional)'
-      },
-      classes: "govuk-input--width-20",
-      id: "place",
-      hint: {
-        text: "For example, 'Croydon' or 'Redruth'"
-      }
-    }) }}
-
-    {{ govukInput({
-      label: {
-        html: 'Town or city'
-      },
-      classes: "govuk-input--width-20",
-      id: "TownCity"
-    }) }}
-
-
-
-    {{ govukSelect({
-      id: "country",
-      name: "country",
-      label: {
-        text: "Country"
-      },
-      items: [
-        {
-          value: "Select",
-          text: "- Select from list -",
-          selected: true
-        },
-        {
-          value: "Afghanistan",
-          text: "Afghanistan"
-        },
-        {
-          value: "Albania",
-          text: "Albania"
-        },
-        {
-          value: "Korea, Democratic People's Republic of Korea",
-          text: "Korea, Democratic People's Republic of Korea"
-        }
-      ]
-    }) }}
-
-
-    {{ govukInput({
-      label: {
-        html: 'Postcode or Zip (optional)'
-      },
-      classes: "govuk-input--width-10",
-      id: "Postcode-Zip"
-    }) }}
-
-  {% endcall %}
+      </div>
 
   <h3 class="govuk-heading-m">More actions</h3>
 

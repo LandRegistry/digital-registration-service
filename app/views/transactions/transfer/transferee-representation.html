@@ -47,7 +47,7 @@
     </div>
 
 <div class="govuk-grid-column-full">
-    <span class="govuk-caption-l">[Transaction name]</span>
+    <span class="govuk-caption-l">Transfer for value (TR1)</span>
     <h1 class="govuk-heading-l">Confirm transferee representation</h1>
     <p class="govuk-body">Select 'Confirm & continue' to confirm representation for all transferees for this application.</p>
     <h2 class="govuk-heading-m">Transferee representation added</h2>
@@ -63,12 +63,24 @@
   </thead>
   <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
+          {% if data['transferee-select'] === 'yes' %}
           <td class="govuk-table__cell">Private individual</td>
-          <td class="govuk-table__cell">  {% if data['transferee-select'] === 'yes' %}
+          <td class="govuk-table__cell">
              {{ data['applicant-individual-forename'] }} {{ data['applicant-individual-surname'] }}
              {% endif %}
              {% if data['transferee-select'] === 'no' %}
             {{ data['transferee-individual-forename'] }} {{ data['transferee-individual-surname'] }}
+            {% endif %}</td>
+          <td class="govuk-table__cell" name="transferee-representation-added">UK Conveyancers LLP</td>
+        </tr>
+        <tr class="govuk-table__row">
+          {% if data['transferee-select'] === 'yes' %}
+          <td class="govuk-table__cell">Private individual</td>
+          <td class="govuk-table__cell">
+             {{ data['applicant-individual-forename-2'] }} {{ data['applicant-individual-surname-2'] }}
+             {% endif %}
+             {% if data['transferee-select'] === 'no' %}
+            {{ data['transferee-individual-forename-2'] }} {{ data['transferee-individual-surname-2'] }}
             {% endif %}</td>
           <td class="govuk-table__cell" name="transferee-representation-added">UK Conveyancers LLP</td>
         </tr>
@@ -83,10 +95,16 @@
 </table>
 
 
-<a class="govuk-button" data-module="govuk-button" value="transferee-representation-confirmed" href="../tasks">
+
+
+<a class="govuk-button" data-module="govuk-button" value="transferee-representation-confirmed" name="transferee-representation-button" href="../tasks">
 Continue</a>
 
+
 </form>
+
+
+
 
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">

@@ -1,16 +1,15 @@
 
-{% extends "layout.html" %}
+{% extends "layout_unbranded.html" %}
 
 {% block pageTitle %}
   Clear data? - GOV.UK Prototype Kit
 {% endblock %}
 
 {% block beforeContent %}
-  {{ govukBackLink({
-      "text": "Back",
-      "href": "javascript: window.history.go(-1)"
-    }) 
-  }}
+<br>
+<br>
+<a href="javascript: window.history.go(-1)"> Back </a>
+
 {% endblock %}
 
 {% block content %}
@@ -21,11 +20,9 @@
       <h1 class="govuk-heading-xl">
         Clear data?
       </h1>
-      {{ govukWarningText({
-        text: "This will clear all of the data entered in this session",
-        iconFallbackText: "Warning"
-      }) }}
-
+    <h2 class="govuk-heading-m">
+      This will clear all of the data entered in this session</h2>
+      <br>
       {{ govukButton({
         text: "Clear the data"
       }) }}

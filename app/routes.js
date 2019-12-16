@@ -45,8 +45,9 @@ router.post('/transactions/transfer/transferee-list-answer', function (req, res)
   // The name between the quotes is the same as the 'name' attribute on the input elements
   // However in JavaScript we can't use hyphens in variable names
 
+                                            // Name of input
   let applicanttransferee = req.session.data['transferee-select']
-
+                            // Value of input
   if (applicanttransferee === 'yes') {
     res.redirect('/transactions/transfer/transferee-list')
   } else {
@@ -67,5 +68,27 @@ router.post('/transactions/transfer/transferee-applicants-answer', function (req
     res.redirect('/transactions/transfer/transferee-list')
   }
 })
+
+router.post('/transactions/transfer/transferee-addresstype-answer', function (req, res) {
+  // Get the answer from session data
+  // The name between the quotes is the same as the 'name' attribute on the input elements
+  // However in JavaScript we can't use hyphens in variable names
+
+  let transfereeAddress = req.session.data['transfereeAddressType']
+
+  if (transfereeAddress === 'UK-postal') {
+    res.redirect('/transactions/transfer/transferee-UKaddress')
+
+} else if (transfereeAddress === 'Overseas-postal') {
+      res.redirect('/transactions/transfer/transferee-overseasAddress')
+    }
+
+
+})
+
+
+
+
+
 
 module.exports = router
