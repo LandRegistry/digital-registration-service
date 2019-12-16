@@ -1,0 +1,97 @@
+{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
+{%- set assetPath = '/govuk/assets' -%}
+
+{% extends "govuk/template.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/tabs/macro.njk" import govukTabs %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+
+{% block headIcons %}
+  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
+  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
+{% endblock %}
+
+{% block head %}
+  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full" id="headerdiv">
+    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
+
+    <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
+
+
+    <div class="govuk-phase-banner">
+        <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
+        <span class="govuk-phase-banner__text">
+        This is a prototype and not a real service
+        </span></p>
+    </div>
+    </div>
+
+<div class="govuk-grid-column-full govuk-!-margin-top-7">
+  <span class="govuk-caption-l">Apply to update or create a registered title</span>
+  <h1 class="govuk-heading-l">Saved applications</h1>
+  <p class="govuk-body"> Saved applications are available for up to 30 days.</p>
+
+<table class="govuk-table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header ">Your reference</th>
+      <th scope="col" class="govuk-table__header">Title number</th>
+      <th scope="col" class="govuk-table__header">Applicants</th>
+      <th scope="col" class="govuk-table__header">Created</th>
+      <th scope="col" class="govuk-table__header">Options</th>
+    </tr>
+  </thead>
+
+
+    <tbody class="govuk-table_body">
+
+      <tr class="govuk-table_row" id="">
+      <td class="govuk-table__cell">{{ data['reference'] }}</td>
+      <td class="govuk-table__cell govuk-!-width-one-quarter">{{ data['title'] }}</td>
+      <td class="govuk-table__cell">{{ data['applicant-individual-forename'] }} {{ data['applicant-individual-surname'] }}</td>
+      <td class="govuk-table__cell govuk-!-width-one-quarter"><p id="date"></p></td>
+      <td class="govuk-table__cell govuk-link"><a href="">Open</a><br><a href="#">Delete</a></td>
+
+
+    </tbody>
+
+</table>
+
+
+<a class="govuklink" href="#">Start a new application</a><br><br><br><br></div>
+<div class="govuk-grid-column-full"
+
+<hr class="govuk-!-margin-top-9" style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
+<br>
+<p class="govuk-body-s"> The following links open in a new window
+<br>
+<br>
+<a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
+
+</div>
+
+
+
+{% endblock %}
+
+
+{% block footer %}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}
