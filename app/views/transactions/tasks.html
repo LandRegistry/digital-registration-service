@@ -95,7 +95,8 @@
             </tr>
             <tr class="govuk-table__row">
               <td class="govuk-table__cell govuk-link"><a href="transfer/transferee-representation">Confirm transferee representation</a></td>
-              <td class="govuk-table__cell">  {% if data[''] %}
+              <td class="govuk-table__cell">
+                {% if data['transfereerep'] %}
                 <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
                 {% endif %}</td>
             </tr>
@@ -120,7 +121,7 @@
             </tr>
             <tr class="govuk-table__row">
               <td class="govuk-table__cell govuk-link"><a href="transfer/transferor-representation.html">Add transferor representation</a></td>
-              <td class="govuk-table__cell">  {% if data['transferor-representation-select'] %}
+              <td class="govuk-table__cell">  {% if data['transferorrep'] %}
                       <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
                       {% endif %}
                       </td>
@@ -132,7 +133,10 @@
             </tr>
             <tr class="govuk-table__row">
               <td class="govuk-table__cell govuk-link"><a href="transfer/documents/document_prompts-1.html" onclick=completed()>Attach documents</a></td>
-              <td class="govuk-table__cell"><strong class="govuk-tag govuk-visually-hidden" style="float: right;">COMPLETED</strong></td>
+              <td class="govuk-table__cell">
+                {% if data['attached'] %}
+                        <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
+                        {% endif %}
             </tr>
       </tbody>
     </table>

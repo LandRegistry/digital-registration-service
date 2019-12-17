@@ -52,7 +52,7 @@
     <p class="govuk-body">Select 'Confirm & continue' to confirm representation for all transferees for this application.</p>
     <h2 class="govuk-heading-m">Transferee representation added</h2>
 
-<form>
+<form method="post" action="transferee-representation-confirmed">
   <table class="govuk-table">
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
@@ -74,16 +74,17 @@
           <td class="govuk-table__cell" name="transferee-representation-added">UK Conveyancers LLP</td>
         </tr>
         <tr class="govuk-table__row">
-          {% if data['transferee-select'] === 'yes' %}
+          {% if data['transferee-select'] === 'yes' and data['transferee-individual-forename-2']%}
           <td class="govuk-table__cell">Private individual</td>
           <td class="govuk-table__cell">
              {{ data['applicant-individual-forename-2'] }} {{ data['applicant-individual-surname-2'] }}
              {% endif %}
              {% if data['transferee-select'] === 'no' %}
             {{ data['transferee-individual-forename-2'] }} {{ data['transferee-individual-surname-2'] }}
-            {% endif %}</td>
-          <td class="govuk-table__cell" name="transferee-representation-added">UK Conveyancers LLP</td>
+            </td>
+          <td class="govuk-table__cell" name="transferee-representation-added">UK Conveyancers LLP{% endif %}</td>
         </tr>
+
         {% if data['transferee-company-name'] %}
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">UK Company or LLP</td>
@@ -96,9 +97,8 @@
 
 
 
-
-<a class="govuk-button" data-module="govuk-button" value="transferee-representation-confirmed" name="transferee-representation-button" href="../tasks">
-Continue</a>
+<button class="govuk-button"  data-module="govuk-button" value="" name="">
+Continue</button>
 
 
 </form>

@@ -161,8 +161,20 @@ router.get('/stored-data', function (req, res) {
 })
 
 
+router.post('/transactions/transfer/transferee-representation-confirmed', function (req, res) {
+  req.session.data['transfereerep'] = 'true';
+    res.redirect('/../transactions/tasks')
+})
 
+router.post('/transactions/transfer/transferor-representation-confirmed', function (req, res) {
+  req.session.data['transferorrep'] = 'true';
+    res.redirect('/../transactions/tasks')
+})
 
+router.post('/transactions/transfer/documents/attached-required-documents', function (req, res) {
+  req.session.data['attached'] = 'true';
+    res.redirect('/../transactions/tasks')
+})
 
 
 module.exports = router

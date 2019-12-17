@@ -46,6 +46,7 @@
   <h2 class="govuk-heading-l"> Required documents </h2>
   <p class="govuk-body">Documents you must attach to avoid requisitions.</p>
 
+  <form method="post" action="attached-required-documents">
   <table class="govuk-table">
 
   <thead class="govuk-table__head">
@@ -139,10 +140,9 @@
 <p class='govuk-body'><a href="#">Attach another type of document</a></p>
 
 {{ govukButton({
-  text: "Continue",
-  href: "/transactions/tasks"
+  text: "Continue"
 }) }}
-
+</form>
 
 
 </div>

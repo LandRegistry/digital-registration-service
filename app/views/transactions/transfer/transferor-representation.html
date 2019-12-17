@@ -52,16 +52,14 @@
     <p class="govuk-body-m">Select 'Add representation' for each transferor.</p>
     <h2 class="govuk-heading-m">Transferor representation added</h2>
 
-
+    <form method="post" action="transferor-representation-confirmed">
     <table class="govuk-table">
-
-
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Transferor type</th>
+          <th scope="col" class="govuk-table__header govuk-!-width-one-fifth">Transferor type</th>
           <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Full name</th>
-          <th scope="col" class="govuk-table__header govuk-!-width-one-half">Represented by</th>
-          <th scope="col" class="govuk-table__header">Options</th>
+          <th scope="col" class="govuk-table__header govuk-!-width-one-third">Represented by</th>
+          <th scope="col" class="govuk-table__header ">Options</th>
         </tr>
       </thead>
 
@@ -69,21 +67,18 @@
             <tr class="govuk-table__row">
               <td class="govuk-table__cell">Private individual</td>
               <td class="govuk-table__cell">{{ data['transferor-individual-forename']}} {{ data['transferor-individual-surname']}}</td>
-              <td class="govuk-table__cell">
-                {% if data['transferor-rep'] %}
-                Other
-                {% endif %}</td>
+              <td class="govuk-table__cell"></td>
               <td class="govuk-table__cell govuk-link"><a href="transferor-representationAdd">Add representation</td>
-
-            </tr>
+              </tr>
       </tbody>
     </table>
 
 
 {{ govukButton({
-  text: "Continue",
-  href: "../tasks"
+  text: "Continue"
 }) }}
+
+</form>
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 <br>
