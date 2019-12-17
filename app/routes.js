@@ -87,17 +87,17 @@ router.post('/transactions/transfer/transferee-addresstype-answer', function (re
 })
 
 
+router.post('/transactions/transfer/transferor-representation-answer', function (req, res) {
+  // Get the answer from session data
+  // The name between the quotes is the same as the 'name' attribute on the input elements
+  // However in JavaScript we can't use hyphens in variable names
 
-// Passing data into a page
-router.get('/stored-data', function (req, res) {
-	console.log(req.session.data)
-  res.render('stored-data')
-})
+let transferorRep = req.session.data['transferorRepresentation']
 
+if (transferorRep === 'conveyancer') {
+  res.redirect('/transactions/transfer/transferor-representation')
+}
 
-router.get('/docs/examples/pass-data/vehicle-registration-clean', function (req, res) {
-	req.session.data = {}
-  res.redirect('vehicle-registration')
 })
 
 
@@ -113,30 +113,55 @@ router.get('/docs/examples/pass-data/vehicle-registration-car1', function (req, 
   res.redirect('vehicle-registration')
 })
 
-router.get('/docs/examples/pass-data/vehicle-registration-car2', function (req, res) {
+router.get('/docs/examples/pass-data/task-list', function (req, res) {
 	req.session.data = {
-  "vehicle-registration": "BO12 3XX",
-  "vehicle-type": "Car",
-  "vehicle-features": [
-    "Heated seats",
-    "GPS",
-    "Radio"
-  ]
+  "reference": "Ref123/ABC",
+  "title": "DN10001",
+  "whole-or-part": "Whole",
+  "part": "",
+  "Transactions": "Transfer for value (TR1)",
+  "Price": "250000",
+  "fee": "12",
+  "Transactions0": "Death of a joint proprietor (DJP)",
+  "fee0": "0",
+  "Price0": "12",
+  "Transactions1": "Select a transaction from the list",
+  "fee1": "",
+  "Price1": "",
+  "Transactions2": "Select a transaction from the list",
+  "fee2": "",
+  "Price2": "",
+  "Transactions3": "Select a transaction from the list",
+  "fee3": "",
+  "Price3": "",
+  "add-applicant": "individual",
+  "applicant-individual-forename": "John",
+  "applicant-individual-surname": "Smith",
+  "applicant-company-name": "",
+  "applicant-company-number": "",
+  "applicant-overseas-name": [
+    "",
+    ""
+  ],
+  "applicant-overseas-number": "",
+  "applicant-overseas-country": "updated",
+  "applicant-individual-forename-2": "Jane",
+  "applicant-individual-surname-2": "Smith",
+  "applicant-company-name-2": "",
+  "applicant-company-number-2": ""
 }
-  res.redirect('vehicle-registration')
+  res.redirect('/../transactions/tasks')
 })
 
-router.get('/docs/examples/pass-data/vehicle-registration-lorry1', function (req, res) {
-	req.session.data = {
-  "vehicle-registration": "LR56 RRY",
-  "vehicle-type": "Lorry",
-  "vehicle-features": [
-    "GPS",
-    "Radio"
-  ]
-}
-  res.redirect('vehicle-registration')
+
+
+// Passing data into a page
+router.get('/stored-data', function (req, res) {
+	console.log(req.session.data)
+  res.render('stored-data')
 })
+
+
 
 
 

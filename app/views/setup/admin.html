@@ -1,0 +1,33 @@
+{% extends "layout_unbranded.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Admin tools
+        <span class="govuk-caption-xl">Prototype kit {{releaseVersion}}</span>
+      </h1>{{releaseVersion | log }}
+      <p>Open the pages below in new tabs, refresh the view stored session data page anytime to see the current set of session data stored</p>
+      <p>
+        <a href="stored-data">view stored session data</a>
+      </p>
+      <p>Clear session data to remove all previously entered data:
+        <a href="prototype-admin/clear-data">Clear data</a>
+      </p>
+
+      <h2 class="govuk-heading-m">Test scenarios:</h2>
+      	<p><ul class="govuk-list govuk-list--bullet">
+      		<li><a href="/docs/examples/pass-data/vehicle-registration-clean">No stored data</a></li>
+		      <li><a href="/docs/examples/pass-data/task-list">Task list</a></li>
+		    </ul>
+		  </p>
+
+    </div>
+</div>
+
+{% endblock %}

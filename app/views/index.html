@@ -28,14 +28,69 @@
 <div class="govuk-width-container">
   <main class="govuk-main-wrapper">
      <div class="govuk-grid-row">
-       <div class="govuk-grid-column-full-width">
 
-<h1 class="govuk-heading-xl"> DRS </h1>
+       <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l"> Digital registration service </h1>
+        <p>A user-centred digital registration service that captures the right data to reduce requisitions and enable automation.</p>
+        <hr class="headerpanel" style="width: 140%;">
+        </div>
 
 
-<a class="govuk-link govuk-heading-l" href="setup/app-start.html">Start</a>
+        <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-m">Introduction</h2>
+        <h3 class="govuk-heading-s">The problem</h3>
+        <p>Conveyancers applying to change the register generate a lot of requisitions, especially when using the AP1 form, which is needed for many transactions.
+          It’s a complex, multi-purpose form wrapped in legalese guidance that’s not always understood by users.
+          Our users are often clerical staff at conveyancers, some of whom have learned to complete the form by rote. It’s easy to make mistakes of accuracy or omission, and most lead to requisitions.
+          This project took replacing the paper AP1 with a digital system as a starting point.</p>
+
+          <h3 class="govuk-heading-s">Aims of the service:</h3>
+          <ul class="govuk-list govuk-list--bullet">
+    		  <li>make it easier for users to provide exactly (and only) the data needed</li>
+    		  <li>reduce requisitions caused by inaccurate data or missing documents</li>
+    		  <li>save HMLR time and expense in handling paper forms, and issuing and handling requisitions</li>
+    		  <li>save customers time and expense in completing forms and managing requisitions</li>
+    		  <li>make it easier for customers to manage their applications</li>
+    		  <li>ongoing, clean the data in applications and on the register</li>
+    		</ul>
+
+          <h3 class="govuk-heading-s">Methods to achieve this:</h3>
+          <ul class="govuk-list govuk-list--bullet">
+    		  <li>digitised data capture</li>
+    		  <li>validated formats and data where possible</li>
+    		  <li>prompts and guidance around common requisition points</li>
+    		  <li>save and resume applications</li>
+    		  <li>enabling automation where possible</li>
+    		  <li>enabling integration of compatible applications where possible</li>
+    		</ul>
+
+
+        <h4 class="govuk-heading-s">Project so far</h4>
+        <p>As an MVP, we designed an end-to-end application for Noting a lease, one of the shortest, simplest routes to changing the register. This was released as a private beta to selected early adopters.
+
+          We are now (Sept 2019) working on completing a user journey for making a transfer. This entails adding representation for each party and addresses for service.</p>
+
+          <p> Last updated: September 2019 </p>
+          </div>
+
+        <div class="govuk-grid-column-one-third sidebar">
+        <h5 class="govuk-heading-m">Current Prototype</h5>
+        <a class="govuk-link govuk-heading-s" href="setup/app-start.html">Start new session</a>
+        <a class="govuk-link govuk-heading-s" href="setup/admin.html">Access test scenarios</a>
+        <a class="govuk-link govuk-heading-s" href="prototype-admin/clear-data">Clear session data</a>
+        </div>
 </div>
 
+<style>
+  .sidebar {
+  border-left: 3px solid navy;
+  height: 1100px;
+}
+
+  .headerpanel {
+  border: solid navy;
+  }
+</style>
 {% endblock %}
 
 {% block footer %}

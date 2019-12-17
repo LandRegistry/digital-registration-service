@@ -57,64 +57,47 @@
     <h2 class="govuk-heading-s">Tell us who's representing:</h2>
     <p class="govuk-body-m">{{ data['transferor-individual-forename']}} {{ data['transferor-individual-surname']}}</p>
 
-
-    <div class="govuk-form-group"><form method="post" action="transferor-representation">
-      <fieldset class="govuk-fieldset">
+    <form class="" action="/transactions/transfer/transferor-representation-answer">
+    <div class="govuk-form-group">
 
       <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
 
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="representation-conditional" name="transferor-rep" type="radio" value="conveyancer" aria-controls="conditional-representation-conditional" aria-expanded="false">
-              <label class="govuk-label govuk-radios__label" for="representation-conditional">
-            	UK Conveyancers LLP
-          </label>
-            </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="transferorRepresentation-conditional" name="transferor-rep" type="radio" value="thisConveyancer" data-aria-controls="conditional-transferorRepresentation-conditional">
+          <label class="govuk-label govuk-radios__label" for="transferorRepresentation-conditional">UK Conveyancers LLP</label>
+        </div>
 
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="transferorRepresentation-conditional-2" name="transferor-rep" type="radio" value="otherConveyancer" data-aria-controls="conditional-transferorRepresentation-conditional-2">
+        <label class="govuk-label govuk-radios__label" for="transferorRepresentation-conditional-2">
+          Other conveyancer
+        </label>
+      </div>
+          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-transferorRepresentation-conditional-2">
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="transferorRepresentation-name">Full name</label>
+              <input class="govuk-input govuk-!-width-two-thirds" id="transferorRepresentation-name" name="transferorRepresentation-name" type="text">
 
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="representation-conditional-2" name="transferor-rep" type="radio" value="otherConveyancer" aria-controls="conditional-representation-conditional-2" aria-expanded="false">
-              <label class="govuk-label govuk-radios__label" for="representation-conditional-2">
-            Other conveyancer
-          </label>
+              <label class="govuk-label" for="transferorRepresentation-address">Registered address</label>
+              <textarea class="govuk-textarea govuk-!-width-two-thirds" rows="5" id="transferorRepresentation-address" name="transferorRepresentation-address"></textarea>
 
-            </div>
-              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-representation-conditional-2">
+              <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
+              <label class="govuk-label" for="transferorRepresentation-reference">Conveyancer reference</label>
+              <input class="govuk-input govuk-js-character-count govuk-!-width-one-half" id="transferorRepresentation-reference" name="transferorRepresentation-reference" type="text">
+              <span id="with-hint-info" class="govuk-hint govuk-character-count__message" aria-live="polite"></span>
+              </div>
 
-    <div class="govuk-form-group">
-      <label class="govuk-label" for="otherConveyancerName">
-        Full name
-      </label>
-      <input class="govuk-input govuk-!-width-full-width" id="otherConveyancerName" name="otherConveyancerName" type="name">
-    </div>
+           </div>
+          </div>
 
-    <div class="govuk-form-group">
-      <label class="govuk-label" for="otherConveyancerAddress">
-        Registered address
-      </label>
-
-      <textarea class="govuk-textarea govuk-!-width-full-width" id="otherConveyancerAddress" name="otherConveyancerAddress" rows="5"></textarea>
-    </div>
-
-      <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
-
-        <div class="govuk-form-group">
-      <label class="govuk-label" for="otherConveyancerReference">
-        Conveyancer reference
-      </label>
-      <textarea class="govuk-textarea govuk-js-character-count" id="otherConveyancerReference" name="otherConveyancerReference" rows="1" aria-describedby="otherConveyancerReference-info"></textarea><span id="otherConveyancerReference-info" class="govuk-hint govuk-character-count__message" aria-live="polite">You have 25 characters remaining</span>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="transferorRepresentation-conditional-3" name="transferor-rep" type="radio" value="noConveyancer" data-aria-controls="conditional-transferorRepresentation-conditional">
+          <label class="govuk-label govuk-radios__label" for="transferorRepresentation-conditional">Not represented by a conveyancer</label>
         </div>
       </div>
     </div>
 
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="representation-conditional-3" name="transferor-rep" type="radio" value="notRepresented" aria-controls="conditional-representation-conditional-3" aria-expanded="false">
-              <label class="govuk-label govuk-radios__label" for="representation-conditional-3">Not represented by a conveyancer</label>
 
-            </div>
-              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-representation-conditional-3"></div>
-              </div>
-              </fieldset>
-              </div>
 
         {{ govukCheckboxes({
           idPrefix: "represents-all",
@@ -144,7 +127,7 @@
         classes: "govuk-!-margin-top-5",
         href: "transferor-representation"
       }) }}
-
+</form>
       </div>
 
 
