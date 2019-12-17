@@ -115,8 +115,8 @@ router.get('/docs/examples/pass-data/vehicle-registration-car1', function (req, 
 
 router.get('/docs/examples/pass-data/task-list', function (req, res) {
 	req.session.data = {
-  "reference": "Ref123/ABC",
-  "title": "DN10001",
+  "reference": "JT/123/TR1",
+  "title": "LP12345",
   "whole-or-part": "Whole",
   "part": "",
   "Transactions": "Transfer for value (TR1)",
@@ -152,7 +152,6 @@ router.get('/docs/examples/pass-data/task-list', function (req, res) {
 }
   res.redirect('/../transactions/tasks')
 })
-
 
 
 // Passing data into a page
