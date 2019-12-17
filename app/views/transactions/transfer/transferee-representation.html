@@ -74,15 +74,15 @@
           <td class="govuk-table__cell" name="transferee-representation-added">UK Conveyancers LLP</td>
         </tr>
         <tr class="govuk-table__row">
-          {% if data['transferee-select'] === 'yes' and data['transferee-individual-forename-2']%}
+          {% if data['transferee-select'] === 'yes' and data['applicant-individual-forename-2']%}
           <td class="govuk-table__cell">Private individual</td>
           <td class="govuk-table__cell">
              {{ data['applicant-individual-forename-2'] }} {{ data['applicant-individual-surname-2'] }}
              {% endif %}
              {% if data['transferee-select'] === 'no' %}
             {{ data['transferee-individual-forename-2'] }} {{ data['transferee-individual-surname-2'] }}
-            </td>
-          <td class="govuk-table__cell" name="transferee-representation-added">UK Conveyancers LLP{% endif %}</td>
+          {% endif %}  </td>
+          <td class="govuk-table__cell" name="transferee-representation-added">UK Conveyancers LLP</td>
         </tr>
 
         {% if data['transferee-company-name'] %}

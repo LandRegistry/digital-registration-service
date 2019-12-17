@@ -132,10 +132,10 @@
               <td class="govuk-table__cell"></td>
             </tr>
             <tr class="govuk-table__row">
-              <td class="govuk-table__cell govuk-link"><a href="transfer/documents/document_prompts-1.html" onclick=completed()>Attach documents</a></td>
+              <td class="govuk-table__cell govuk-link"><a href="transfer/documents/document_prompts-1.html">Attach documents</a></td>
               <td class="govuk-table__cell">
-                {% if data['attached'] %}
-                        <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
+                {% if data['attached'] === 'true' %}
+                        <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Attached</strong>
                         {% endif %}
             </tr>
       </tbody>

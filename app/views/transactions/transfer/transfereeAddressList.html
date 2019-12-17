@@ -102,14 +102,16 @@
                    </td>
               <td class="govuk-table__cell">
               {% if data['transfereeAddressType'] === 'UK-postal' %}
-               1, High street, City, XX1 1XX
+               4 High street, Town, {{ data['UKpostcode'] }}
                {% endif %}</td>
               <td class="govuk-table__cell govuk-link">
+                {% if data['transfereeAddressType'] === '' %}
+                 <a href="transferee-addresstype">Add address</a>
+                  {% endif %}
                 {% if data['transfereeAddressType'] === 'UK-postal' %}
                  <a href="">Remove</a><br>
-                    {% endif %}
-                 <a href="transferee-addresstype">Add address</a>
-
+                 <a href="transferee1-addresstype2">Add address</a>
+                   {% endif %}
 
               </td>
             </tr>
@@ -119,13 +121,19 @@
                 <tr class="govuk-table_row" id="hidePI">
                 <td class="govuk-table__cell">Private individual</td>
                 <td class="govuk-table__cell">{{ data['applicant-individual-forename-2'] }} {{ data['applicant-individual-surname-2'] }}</td>
-                <td class="govuk-table__cell">  {% if data['transfereeAddressType-2'] === 'UK-postal' %}
+                <td class="govuk-table__cell">
+                  {% if data['transfereeAddressType-2'] === 'UK-postal' %}
                    UK Postal
-                   {% endif %}</td>
+                   {% endif %}
+                  </td>
                 <td class="govuk-table__cell govuk-!-width-one-quarter">
                   {% if data['transfereeAddressType-2'] === 'UK-postal' %}
-                   1, High Street, City, XX1 1XX
-                   {% endif %}</td>
+                   4 High street, Town, {{ data['UKpostcode'] }}
+                   {% endif %}
+                   {% if data['transferee-2'] %}
+                    UK Postal
+                    {% endif %}
+                 </td>
                 <td class="govuk-table__cell govuk-link"><a href="transferee-addresstype-2">
                   {% if data['transfereeAddressType-2'] === 'UK-postal' %}
                    <a href="">Remove</a><br>

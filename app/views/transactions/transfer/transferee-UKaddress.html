@@ -52,19 +52,18 @@
     <h2 class="govuk-heading-m">Address type:</h2>
     <p class="govuk-body">UK postal address</p>
 
-    <form>
+    <form method="post" action="transferee-UKaddressResults">
       <label class="govuk-label" for="postcode-finder">
         Enter postcode
       </label>
-      <input class="govuk-input govuk-!-width-one-quarter" id="" name="UKpostcode">
+      <input class="govuk-input govuk-!-width-one-quarter" id="" name="UKpostcode" value="">
       <br><br>
       <a href="#" class="govuk-link"> Enter address manually</a>
       <br><br><br>
 
 
 {{ govukButton({
-  text: "Find address",
-  href: "transferee-UKaddressResults"
+  text: "Find address"
 }) }}
 </form>
 
