@@ -102,16 +102,17 @@
                    </td>
               <td class="govuk-table__cell">
               {% if data['transfereeAddressType'] === 'UK-postal' %}
-               4 High street, Town, {{ data['UKpostcode'] }}
+               4, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ
                {% endif %}</td>
               <td class="govuk-table__cell govuk-link">
-                {% if data['transfereeAddressType'] === '' %}
-                 <a href="transferee-addresstype">Add address</a>
+                  {% if not data['transfereeAddressType'] %}
+                    <a href="transferee-addresstype">Add address</a>
                   {% endif %}
-                {% if data['transfereeAddressType'] === 'UK-postal' %}
-                 <a href="">Remove</a><br>
-                 <a href="transferee1-addresstype2">Add address</a>
-                   {% endif %}
+                  {% if data['transfereeAddressType'] === 'UK-postal' %}
+                    <a href="">Remove</a><br>
+                    <a href="transferee1-addresstype2">Add address</a>
+                  {% endif %}
+
 
               </td>
             </tr>
@@ -128,7 +129,7 @@
                   </td>
                 <td class="govuk-table__cell govuk-!-width-one-quarter">
                   {% if data['transfereeAddressType-2'] === 'UK-postal' %}
-                   4 High street, Town, {{ data['UKpostcode'] }}
+                   4, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ
                    {% endif %}
                    {% if data['transferee-2'] %}
                     UK Postal
