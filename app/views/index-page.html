@@ -1,0 +1,90 @@
+
+{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
+{%- set assetPath = '/govuk/assets' -%}
+
+{% extends "govuk/template.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+
+{% block headIcons %}
+  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
+  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
+{% endblock %}
+
+{% block head %}
+  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+
+
+{% block pageTitle %}
+  DRS prototype
+{% endblock %}
+
+{% block header %}
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper">
+     <div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+          <div class="govuk-!-padding-bottom-5">
+        <a class="govuk-link" href="index"> < Back</a>
+          </div>
+        <h2 class="govuk-heading-m">Introduction</h2>
+        <h3 class="govuk-heading-s">The problem</h3>
+        <p>Conveyancers applying to change the register generate a lot of requisitions, especially when using the AP1 form, which is needed for many transactions.
+          It’s a complex, multi-purpose form wrapped in legalese guidance that’s not always understood by users.
+          Our users are often clerical staff at conveyancers, some of whom have learned to complete the form by rote. It’s easy to make mistakes of accuracy or omission, and most lead to requisitions.
+          This project took replacing the paper AP1 with a digital system as a starting point.</p>
+
+          <h3 class="govuk-heading-s">Aims of the service:</h3>
+          <ul class="govuk-list govuk-list--bullet">
+    		  <li>make it easier for users to provide exactly (and only) the data needed</li>
+    		  <li>reduce requisitions caused by inaccurate data or missing documents</li>
+    		  <li>save HMLR time and expense in handling paper forms, and issuing and handling requisitions</li>
+    		  <li>save customers time and expense in completing forms and managing requisitions</li>
+    		  <li>make it easier for customers to manage their applications</li>
+    		  <li>ongoing, clean the data in applications and on the register</li>
+    		</ul>
+
+          <h3 class="govuk-heading-s">Methods to achieve this:</h3>
+          <ul class="govuk-list govuk-list--bullet">
+    		  <li>digitised data capture</li>
+    		  <li>validated formats and data where possible</li>
+    		  <li>prompts and guidance around common requisition points</li>
+    		  <li>save and resume applications</li>
+    		  <li>enabling automation where possible</li>
+    		  <li>enabling integration of compatible applications where possible</li>
+    		</ul>
+
+
+        <h4 class="govuk-heading-s">Project so far</h4>
+        <p>As an MVP, we designed an end-to-end application for Noting a lease, one of the shortest, simplest routes to changing the register. This was released as a private beta to selected early adopters.
+
+          We are now (Sept 2019) working on completing a user journey for making a transfer. This entails adding representation for each party and addresses for service.</p>
+
+          <p> Last updated: September 2019 </p>
+          </div>
+
+
+          <style>
+            .sidebar {
+            border-left: 3px solid navy;
+            height: 1100px;
+          }
+
+            .headerpanel {
+            border: solid navy;
+            }
+          </style>
+          {% endblock %}
+
+          {% block footer %}
+          {% endblock %}
+
+          {% block bodyEnd %}
+            {% include "includes/scripts.html" %}
+          {% endblock %}

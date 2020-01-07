@@ -176,6 +176,11 @@ router.post('/transactions/transfer/documents/attached-required-documents', func
     res.redirect('/../transactions/tasks')
 })
 
+// router.post('/transactions/transfer/transferor-representation-answer', function (req, res) ) {
+//     req.session.data['tranferorRepAdd'] = 'UK Conveyancers LLP';
+//     res.redireect('/../transactions/transfer/transferee-list')
+// })
+
 
 
 
