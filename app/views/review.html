@@ -1,0 +1,202 @@
+{% extends "layout_unbranded.html" %}
+
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+{% block headIcons %}
+  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
+  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
+{% endblock %}
+
+{% block head %}
+  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full" id="headerdiv">
+    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
+    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Apply to update or create a registered title</a></p>
+    <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
+
+
+    <div class="govuk-phase-banner govuk-!-margin-bottom-5">
+        <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
+        <span class="govuk-phase-banner__text">
+        This is a prototype and not a real service.
+        </span></p>
+    </div>
+    </div>
+
+<div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-xl">Review your application</h1>
+
+    <h2 class="govuk-heading-l">Application details</h2>
+    <table class="govuk-table">
+      <tbody class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Your reference</th>
+          <td scope="col" class="govuk-table__cell">{{ data['reference'] }}</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Application type</th>
+          <td scope="col" class="govuk-table__cell">Update an existing title (Document registration)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="govuk-table">
+      <h2 class="govuk-heading-l">Property details</h2>
+      <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header govuk-!-width-one-quarter">Title</th>
+              <td class="govuk-table__cell">{{ data['title'] }}</td>
+            </tr>
+
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header govuk-!-width-one-quarter">Description</th>
+              <td class="govuk-table__cell">11, St William Road, Littlehaxten, Wiltshire LH1 3AB</td>
+            </tr>
+
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header govuk-!-width-one-quarter">Application affects</th>
+              <td class="govuk-table__cell">the whole of the title</td>
+            </tr>
+      </tbody>
+    </table>
+
+    <table class="govuk-table" id="applicantlist-review">
+      <h2 class="govuk-heading-l">Applicants</h2>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header ">Applicant type</th>
+          <th scope="col" class="govuk-table__header">Full name</th>
+          <th scope="col" class="govuk-table__header">Company number</th>
+          <th scope="col" class="govuk-table__header">Territory of incorporation</th>
+          <th scope="col" class="govuk-table__header">Options</th>
+        </tr>
+      </thead>
+        <tbody class="govuk-table_body">
+          <tr class="govuk-table_row" id="hidePI">
+          <td class="govuk-table__cell">Private individual</td>
+          <td class="govuk-table__cell govuk-!-width-one-third">{{ data['applicant-individual-forename'] }} {{ data['applicant-individual-surname'] }}</td>
+          <td class="govuk-table__cell">N/a</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+          <td class="govuk-table__cell govuk-link"><a href="add-applicants-change">Change</a></td>
+          </tr>
+          {% if data['applicant-individual-forename-2'] %}
+          <tr class="govuk-table_row" id="hidePI">
+          <td class="govuk-table__cell">Private individual</td>
+          <td class="govuk-table__cell govuk-!-width-one-third">{{ data['applicant-individual-forename-2'] }} {{ data['applicant-individual-surname-2'] }}</td>
+          <td class="govuk-table__cell">N/a</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+          <td class="govuk-table__cell govuk-link"><a href="add-applicants-change">Change</a></td>
+          </tr>
+          {% endif %}
+        </tbody>
+    </table>
+
+
+
+        <table class="govuk-table">
+          <h2 class="govuk-heading-l">Overriding interests</h2>
+          <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header govuk-!-width-one-quarter">Disclosable overriding interests</th>
+                  <td class="govuk-table__cell">Yes</td>
+                </tr>
+
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header govuk-!-width-one-quarter">Document attached</th>
+                  <td class="govuk-table__cell">Form DI.pdf</td>
+                </tr>
+          </tbody> -->
+        </table>
+
+        <table class="govuk-table">
+          <h2 class="govuk-heading-l">Transactions</h2>
+          <span class="govuk-caption-s" style="font-family: arial">Priority 1</span>
+          <h3 class="govuk-heading-s">Transaction 1</h3>
+
+          <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header govuk-!-width-one-quarter">Price/Value (£)</th>
+                  <td class="govuk-table__cell"></td>
+                </tr>
+
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header govuk-!-width-one-quarter">Fee (£)</th>
+                  <td class="govuk-table__cell"></td>
+                </tr>
+          </tbody>
+        </table>
+
+        <table class="govuk-table">
+        <span class="govuk-caption-s" style="font-family: arial">Priority 2</span>
+        <h3 class="govuk-heading-s">Transaction 2</h3>
+
+        <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header govuk-!-width-one-quarter">Price/Value (£)</th>
+                <td class="govuk-table__cell"></td>
+              </tr>
+
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header govuk-!-width-one-quarter">Fee (£)</th>
+                <td class="govuk-table__cell"></td>
+              </tr>
+        </tbody>
+      </table>
+
+        <table class="govuk-table">
+          <h2 class="govuk-heading-m">Transferee details</h2>
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header ">Transferee type</th>
+              <th scope="col" class="govuk-table__header">Full name</th>
+              <th scope="col" class="govuk-table__header">Company number</th>
+              <th scope="col" class="govuk-table__header">Territory of incorporation</th>
+              <th scope="col" class="govuk-table__header">Options</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table_body">
+            <tr class="govuk-table_row" id="hidePI">
+            <td class="govuk-table__cell">Private individual</td>
+            <td class="govuk-table__cell govuk-!-width-one-third">
+              {% if data['transferee-select'] === 'yes' %}
+               {{ data['applicant-individual-forename'] }} {{ data['applicant-individual-surname'] }}
+               {% endif %}
+               {% if data['transferee-select'] === 'no' %}
+              {{ data['transferee-individual-forename'] }} {{ data['transferee-individual-surname'] }}
+              {% endif %}
+
+             </td>
+            <td class="govuk-table__cell">N/a</td>
+            <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+            <td class="govuk-table__cell govuk-link"><a href="add-applicants">Change</a></td>
+            </tr>
+
+            <tr class="govuk-table_row">
+            {% if data['applicant-individual-forename-2]  %}
+            <td class="govuk-table__cell">Private individual</td>
+            <td class="govuk-table__cell govuk-!-width-one-third">
+              {% if data['transferee-select'] === 'yes' %}
+               {{ data['applicant-individual-forename-2'] }} {{ data['applicant-individual-surname-2'] }}
+               {% endif %}
+               {% if data['transferee-select'] === 'no' %}
+              {{ data['transferee-individual-forename-2'] }} {{ data['transferee-individual-surname-2'] }}
+              {% endif %}
+             </td>
+            <td class="govuk-table__cell">N/a</td>
+            <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+            <td class="govuk-table__cell govuk-link"><a href="add-applicants">Change</a></td>
+            {% endif %}
+            </tr>
+{% endblock %}
