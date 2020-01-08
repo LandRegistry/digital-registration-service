@@ -49,7 +49,7 @@
     <h1 class="govuk-heading-xl">Review your application</h1>
 
     <h2 class="govuk-heading-l">Application details</h2>
-    <table class="govuk-table">
+    <table class="govuk-table govuk-!-margin-bottom-9">
       <tbody class="govuk-table__head">
         <tr class="govuk-table__row">
           <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Your reference</th>
@@ -62,7 +62,7 @@
       </tbody>
     </table>
 
-    <table class="govuk-table">
+    <table class="govuk-table govuk-!-margin-bottom-9">
       <h2 class="govuk-heading-l">Property details</h2>
       <tbody class="govuk-table__body">
             <tr class="govuk-table__row">
@@ -82,7 +82,7 @@
       </tbody>
     </table>
 
-    <table class="govuk-table" id="applicantlist-review">
+    <table class="govuk-table govuk-!-margin-bottom-9" id="applicantlist-review">
       <h2 class="govuk-heading-l">Applicants</h2>
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
@@ -99,7 +99,16 @@
           <td class="govuk-table__cell govuk-!-width-one-third">{{ data['applicant-individual-forename'] }} {{ data['applicant-individual-surname'] }}</td>
           <td class="govuk-table__cell">N/a</td>
           <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
-          <td class="govuk-table__cell govuk-link"><a href="add-applicants-change">Change</a></td>
+          <td class="govuk-table__cell govuk-link"><a href="add-applicants-change">Change</a></td></tr>
+
+          {% if data['applicant-individual-forename-2'] %}
+          <tr class="govuk-table_row" id="hidePI">
+          <td class="govuk-table__cell">Private individual</td>
+          <td class="govuk-table__cell govuk-!-width-one-third">{{ data['applicant-individual-forename-2'] }} {{ data['applicant-individual-surname-2'] }}</td>
+          <td class="govuk-table__cell">N/a</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+          <td class="govuk-table__cell govuk-link"><a href="add-applicants-change">Change</a></td></tr>
+          {% endif %}
         </tbody>
     </table>
 
@@ -118,7 +127,7 @@
       </tbody> -->
     <!-- </table> -->
 
-    <table class="govuk-table">
+    <table class="govuk-table govuk-!-margin-bottom-9">
       <h2 class="govuk-heading-l">Transactions</h2>
       <span class="govuk-caption-s" style="font-family: arial">Priority 1</span>
       <h3 class="govuk-heading-s">Transaction 1</h3>
@@ -126,38 +135,38 @@
       <tbody class="govuk-table__body">
             <tr class="govuk-table__row">
               <th scope="row" class="govuk-table__header govuk-!-width-one-quarter">Price/Value (£)</th>
-              <td class="govuk-table__cell"></td>
+              <td class="govuk-table__cell">{{ data['PriceInput1'] }}</td>
             </tr>
 
             <tr class="govuk-table__row">
               <th scope="row" class="govuk-table__header govuk-!-width-one-quarter">Fee (£)</th>
-              <td class="govuk-table__cell"></td>
+              <td class="govuk-table__cell">{{ data['FeeInput1'] }}</td>
             </tr>
       </tbody>
     </table>
 
-    <table class="govuk-table">
+    <table class="govuk-table govuk-!-margin-bottom-9">
     <span class="govuk-caption-s" style="font-family: arial">Priority 2</span>
     <h3 class="govuk-heading-s">Transaction 2</h3>
 
     <tbody class="govuk-table__body">
-          <tr class="govuk-table__row">
-            <th scope="row" class="govuk-table__header govuk-!-width-one-quarter">Price/Value (£)</th>
-            <td class="govuk-table__cell"></td>
-          </tr>
+      <tr class="govuk-table__row">
+        <th scope="row" class="govuk-table__header govuk-!-width-one-quarter">Price/Value (£)</th>
+        <td class="govuk-table__cell">{{ data['PriceInput2'] }}</td>
+      </tr>
 
-          <tr class="govuk-table__row">
-            <th scope="row" class="govuk-table__header govuk-!-width-one-quarter">Fee (£)</th>
-            <td class="govuk-table__cell"></td>
-          </tr>
+      <tr class="govuk-table__row">
+        <th scope="row" class="govuk-table__header govuk-!-width-one-quarter">Fee (£)</th>
+        <td class="govuk-table__cell">{{ data['FeeInput2'] }}</td>
+      </tr>
     </tbody>
   </table>
 
-    <table class="govuk-table">
+    <table class="govuk-table govuk-!-margin-bottom-9">
       <h2 class="govuk-heading-m">Transferee details</h2>
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header ">Transferee type</th>
+          <th scope="col" class="govuk-table__header">Transferee type</th>
           <th scope="col" class="govuk-table__header">Full name</th>
           <th scope="col" class="govuk-table__header">Company number</th>
           <th scope="col" class="govuk-table__header">Territory of incorporation</th>
@@ -165,7 +174,7 @@
         </tr>
       </thead>
       <tbody class="govuk-table_body">
-        <tr class="govuk-table_row" id="hidePI">
+        <tr class="govuk-table_row">
         <td class="govuk-table__cell">Private individual</td>
         <td class="govuk-table__cell govuk-!-width-one-third">
           {% if data['transferee-select'] === 'yes' %}
@@ -174,19 +183,36 @@
            {% if data['transferee-select'] === 'no' %}
           {{ data['transferee-individual-forename'] }} {{ data['transferee-individual-surname'] }}
           {% endif %}
-
          </td>
         <td class="govuk-table__cell">N/a</td>
         <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
         <td class="govuk-table__cell govuk-link"><a href="add-applicants">Change</a></td>
+        <tr>
+
+      {% if data['applicant-individual-forename-2'] or data['transferee-individual-forename-2'] %}
+        <tr class="govuk-table_row">
+        <td class="govuk-table__cell">Private individual</td>
+        <td class="govuk-table__cell govuk-!-width-one-third">
+          {% if data['transferee-select'] === 'yes' %}
+           {{ data['applicant-individual-forename-2'] }} {{ data['applicant-individual-surname-2'] }}
+           {% endif %}
+           {% if data['transferee-select'] === 'no' %}
+          {{ data['transferee-individual-forename-2'] }} {{ data['transferee-individual-surname-2'] }}
+          {% endif %}
+         </td>
+        <td class="govuk-table__cell">N/a</td>
+        <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+        <td class="govuk-table__cell govuk-link"><a href="add-applicants">Change</a></td>
+        {% endif %}
+        </tr>
       </tbody>
     </table>
 
-    <table class="govuk-table">
+    <table class="govuk-table govuk-!-margin-bottom-9">
       <h2 class="govuk-heading-m">Transferor details</h2>
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header govuk-!-width-one-eighth">Transferor type</th>
+          <th scope="col" class="govuk-table__header">Transferor type</th>
           <th scope="col" class="govuk-table__header">Full name</th>
           <th scope="col" class="govuk-table__header">Company number</th>
           <th scope="col" class="govuk-table__header">Territory of incorporation</th>
@@ -197,22 +223,32 @@
       <tbody class="govuk-table__body">
             <tr class="govuk-table__row">
               <td class="govuk-table__cell">Private individual</td>
-              <td class="govuk-table__cell"> {{ data['transferor-individual-forename'] }} {{ data['transferor-individual-surname'] }}</td>
+              <td class="govuk-table__cell govuk-!-width-one-third"> {{ data['transferor-individual-forename'] }} {{ data['transferor-individual-surname'] }}</td>
               <td class="govuk-table__cell">N/a</td>
               <td class="govuk-table__cell">N/a</td>
               <td class="govuk-table__cell govuk-link"><a href="add-transferor-change">Change</a></td>
             </tr>
+
+            {% if data['transferor-individual-forename-2'] %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">Private individual</td>
+              <td class="govuk-table__cell govuk-!-width-one-third"> {{ data['transferor-individual-forename-2'] }} {{ data['transferor-individual-surname-2'] }}</td>
+              <td class="govuk-table__cell">N/a</td>
+              <td class="govuk-table__cell">N/a</td>
+              <td class="govuk-table__cell govuk-link"><a href="add-transferor-change">Change</a></td>
+            </tr>
+            {% endif %}
       </tbody>
     </table>
 
-    <table class="govuk-table">
+    <table class="govuk-table govuk-!-margin-bottom-9">
       <h2 class="govuk-heading-m">Attached documents</h2>
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
           <th scope="col" class="govuk-table__header govuk-!-width-one-eighth">Category</th>
-          <th scope="col" class="govuk-table__header">Document type</th>
-          <th scope="col" class="govuk-table__header">Certification</th>
-          <th scope="col" class="govuk-table__header">File name</th>
+          <th scope="col" class="govuk-table__header govuk-!-width-one-half">Document type</th>
+          <th scope="col" class="govuk-table__header govuk-!-width-one-eighth">Certification</th>
+          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">File name</th>
         </tr>
       </thead>
 
@@ -220,13 +256,13 @@
             <tr class="govuk-table__row">
               <td class="govuk-table__cell">Application form</td>
               <td class="govuk-table__cell">TR1 - Registered title(s): whole transfer</td>
-              <td class="govuk-table__cell"></td>
+              <td class="govuk-table__cell">Certified</td>
               <td class="govuk-table__cell">TR1.pdf</td>
             </tr>
       </tbody>
     </table>
 
-    <div class="govuk-form-group">
+    <div class="govuk-form-group govuk-!-margin-bottom-9">
   <fieldset class="govuk-fieldset" aria-describedby="how-contacted-conditional-hint">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
       <h2 class="govuk-fieldset__heading">
@@ -240,7 +276,7 @@
       <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="how-contacted" name="how-contacted" type="radio" value="email1" data-aria-controls="conditional-how-contacted-conditional">
         <label class="govuk-label govuk-radios__label" for="how-contacted">
-          [Email1@email.com]
+          me@ukconveyancers.co.uk
         </label>
       </div>
       <div class="govuk-radios" id="conditional-how-contacted-conditional">
@@ -250,7 +286,7 @@
         <div class="govuk-radios__item">
           <input class="govuk-radios__input" id="how-contacted" name="how-contacted" type="radio" value="email2" data-aria-controls="conditional-how-contacted-conditional">
           <label class="govuk-label govuk-radios__label" for="how-contacted">
-            [Email2@email.com]
+            admin@ukconveyancers.co.uk
           </label>
         </div>
         <div class="govuk-radios" id="conditional-how-contacted-conditional">
@@ -261,7 +297,7 @@
           <div class="govuk-radios__item">
             <input class="govuk-radios__input" id="how-contacted" name="how-contacted" type="radio" value="email3" data-aria-controls="conditional-how-contacted-conditional">
             <label class="govuk-label govuk-radios__label" for="how-contacted">
-              [Email3@email.com]
+              completions@ukconveyancers.co.uk
             </label>
           </div>
           <div class="govuk-radios" id="conditional-how-contacted-conditional">

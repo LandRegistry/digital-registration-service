@@ -72,14 +72,14 @@
     <h3 class="govuk-body"> Fee must be 0 or between 12 and 999 </h3>
   </div>
 
-  <form method="get" action="add-applicants" data-validate="transaction-form-validation" novalidate>
+  <form method="post" action="add-applicants" data-validate="transaction-form-validation" novalidate>
     <div class="govuk-grid-column-one-half">
       <div class="govuk-form-group">
         <label class="govuk-label" for="Select_transaction{{n}}">
           Priority 1
         </label>
 
-        <select class="govuk-select" id="Select_transaction{{n}}" name="Transactions{{n}}">
+        <select class="govuk-select" id="Select_transaction{{n}}" name="Transaction1">
           <option value="Select a transaction from the list">Select a transaction from the list</option>
           <option value="Acquisition of right to manage">Acquisition of right to manage</option>
           <option value="Agreed maximum amount of security (CH3)">Agreed maximum amount of security (CH3)</option>
@@ -165,30 +165,146 @@
 
     <div class="govuk-grid-column-one-quarter">
       <div class="govuk-form-group">
-        <label class="govuk-label" for="Price{{n}}">
-           <br>
-        </label>
-        <input class="govuk-input" id="Price{{n}}" name="Price{{n}}" type="text">
+        <label class="govuk-label" for="Price1">
+           <br></label>
+        <input class="govuk-input" id="Price1" name="PriceInput1" value="{{ data['PriceInput1'] }}" type="text">
       </div>
     </div>
 
 
     <div class="govuk-grid-column-one-quarter">
       <div class="govuk-form-group">
-        <label class="govuk-label" for="fee{{n}}">
+        <label class="govuk-label" for="Fee1">
          <br>
         </label>
-
-
-        <input class="govuk-input" id="fee{{n}}" name="fee{{n}}" type="text">
+        <input class="govuk-input" id="Fee1" name="FeeInput1" value="{{ data['FeeInput1'] }}" type="text">
       </div>
     </div>
 
-  {% for n in range(4) %}
+    <div class="govuk-grid-column-one-half">
+
+    </div>
+    <div class="govuk-grid-column-one-quarter">
+
+    </div>
+    <div class="govuk-grid-column-one-quarter">
+
+    </div>
+
+    <form method="post" action="add-applicants" data-validate="transaction-form-validation" novalidate>
+      <div class="govuk-grid-column-one-half">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="Select_transaction{{n}}">
+            Priority 2
+          </label>
+
+          <select class="govuk-select" id="Select_transaction{{n}}" name="Transactions2">
+            <option value="Select a transaction from the list">Select a transaction from the list</option>
+            <option value="Acquisition of right to manage">Acquisition of right to manage</option>
+            <option value="Agreed maximum amount of security (CH3)">Agreed maximum amount of security (CH3)</option>
+            <option value="Agreed notice (AN1)">Agreed notice (AN1)</option>
+            <option value="Amendment of unilateral notice (UN3)">Amendment of unilateral notice (UN3)</option>
+            <option value="Amendment to title plan">Amendment to title plan</option>
+            <option value="Appointment of liquidator (compulsory winding up)">Appointment of liquidator (compulsory winding up)</option>
+            <option value="Appointment of liquidator (creditor's voluntary winding up)">Appointment of liquidator (creditor's voluntary winding up)</option>
+            <option value="Appointment of liquidator (members' voluntary winding up)">Appointment of liquidator (members' voluntary winding up)</option>
+            <option value="Bankruptcy notice/Creditors' notice">Bankruptcy notice/Creditors' notice</option>
+            <option value="Bankruptcy restriction/Bankruptcy inhibition">Bankruptcy restriction/Bankruptcy inhibition</option>
+            <option value="Cancellation of a caution (CCD)">Cancellation of a caution (CCD)</option>
+            <option value="Cancellation of bankruptcy notice">Cancellation of bankruptcy notice</option>
+            <option value="Cancellation of bankruptcy restriction">Cancellation of bankruptcy restriction</option>
+            <option value="Cancellation of home rights (HR4)">Cancellation of home rights (HR4)</option>
+            <option value="Cancellation of inhibition (RX3)">Cancellation of inhibition (RX3)</option>
+            <option value="Cancellation of noted lease (CN1)">Cancellation of noted lease (CN1)</option>
+            <option value="Cancellation of notice (not unilateral) (CN1)">Cancellation of notice (not unilateral) (CN1)</option>
+            <option value="Cancellation of notice of unreg. Rentcharge">Cancellation of notice of unreg. Rentcharge</option>
+            <option value="Cancellation of restriction (RX3)">Cancellation of restriction (RX3)</option>
+            <option value="Cancellation of unilateral notice (UN4)">Cancellation of unilateral notice (UN4)</option>
+            <option value="Caution amendment">Caution amendment</option>
+            <option value="Caution amendment">Caution amendment</option>
+            <option value="Change of property description">Change of property description</option>
+            <option value="Charging order - Agreed notice (AN1)">Charging order - Agreed notice (AN1)</option>
+            <option value="Charging order - Unilateral notice (UN1)">Charging order - Unilateral notice (UN1)</option>
+            <option value="Death of a joint proprietor (DJP)">Death of a joint proprietor (DJP)</option>
+            <option value="Death of a sole proprietor">Death of a sole proprietor</option>
+            <option value="Deed of grant of easement">Deed of grant of easement</option>
+            <option value="Deed of rectification">Deed of rectification</option>
+            <option value="Defect in title s64(1) LRA 2002">Defect in title s64(1) LRA 2002</option>
+            <option value="Determined boundary (DB)">Determined boundary (DB)</option>
+            <option value="Disapplication of restriction (RX2)">Disapplication of restriction (RX2)</option>
+            <option value="Disclaimer - notice">Disclaimer - notice</option>
+            <option value="Disclaimer - notification">Disclaimer - notification</option>
+            <option value="Extinguishment of rentcharge">Extinguishment of rentcharge</option>
+            <option value="Form ll restriction entered - simple request">Form ll restriction entered - simple request</option>
+            <option value="Modify a restriction (RX2)">Modify a restriction (RX2)</option>
+            <option value="Notice of home rights (HR1)">Notice of home rights (HR1)</option>
+            <option value="Notice of rentcharge">Notice of rentcharge</option>
+            <option value="Notification of dissolution of company">Notification of dissolution of company</option>
+            <option value="Noting a lease">Noting a lease</option>
+            <option value="Noting an easement">Noting an easement</option>
+            <option value="Noting of a profit">Noting of a profit</option>
+            <option value="Noting of an affecting franchise">Noting of an affecting franchise</option>
+            <option value="Obligation to make further advances (CH2)">Obligation to make further advances (CH2)</option>
+            <option value="Release of covenants - agreed notice (AN1)">Release of covenants - agreed notice (AN1)</option>
+            <option value="Release of covenants - cancellation (CN1)">Release of covenants - cancellation (CN1)</option>
+            <option value="Release of covenants - unilateral notice (UN1)">Release of covenants - unilateral notice (UN1)</option>
+            <option value="Release of easements">Release of easements</option>
+            <option value="Removal of a right to determine">Removal of a right to determine</option>
+            <option value="Removal of unilateral notice (UN2)">Removal of unilateral notice (UN2)</option>
+            <option value="Renewal of home rights (HR2)">Renewal of home rights (HR2)</option>
+            <option value="Restriction (non-standard wording) (RX1)">Restriction (non-standard wording) (RX1)</option>
+            <option value="Restriction (standard wording) (RX1)">Restriction (standard wording) (RX1)</option>
+            <option value="Severance of joint tenancy (SEV">Severance of joint tenancy (SEV</option>
+            <option value="Statutory vestings charge">Statutory vestings charge</option>
+            <option value="Statutory vestings land">Statutory vestings land</option>
+            <option value="Transfer for value (TR1)">Transfer for value (TR1)</option>
+            <option value="Transfer not for value (TR1)">Transfer not for value (TR1)</option>
+            <option value="Transfer of share (TR1)">Transfer of share (TR1)</option>
+            <option value="Transfer subject to a charge (TR1)">Transfer subject to a charge (TR1)</option>
+            <option value="Transfer under power of sale (TR2)">Transfer under power of sale (TR2)</option>
+            <option value="Transfer by operation of law on death (TR1)">Transfer by operation of law on death (TR1)</option>
+            <option value="Unilateral notice (UN1)">Unilateral notice (UN1)</option>
+            <option value="Upgrade class of title (UT1)">Upgrade class of title (UT1)</option>
+            <option value="Variation of charge">Variation of charge</option>
+            <option value="Variation of covenants">Variation of covenants</option>
+            <option value="Variation of covenants - agreed notice (AN1)">Variation of covenants - agreed notice (AN1)</option>
+            <option value="Variation of covenants - unilateral notice (UN1)">Variation of covenants - unilateral notice (UN1)</option>
+            <option value="Variation of easements">Variation of easements</option>
+            <option value="Variation of easements - agreed notice (AN1)">Variation of easements - agreed notice (AN1)</option>
+            <option value="Variation of easements - unilateral notice (UN1)">Variation of easements - unilateral notice (UN1)</option>
+            <option value="Variation of lease">Variation of lease</option>
+            <option value="Variation of lease - agreed notice (AN1)">Variation of lease - agreed notice (AN1)</option>
+            <option value="Variation of lease - unilateral notice (UN1)">Variation of lease - unilateral notice (UN1)</option>
+            <option value="Vesting order">Vesting order</option>
+            <option value="Withdraw a restriction (RX4)">Withdraw a restriction (RX4)</option>
+            <option value="Withdrawal of caution (WCT)">Withdrawal of caution (WCT)</option>
+      </select>
+        </div>
+      </div>
+
+      <div class="govuk-grid-column-one-quarter">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="Price2">
+             <br></label>
+          <input class="govuk-input" id="Price2" name="PriceInput2" value="{{ data['PriceInput2'] }}" type="text">
+        </div>
+      </div>
+
+
+      <div class="govuk-grid-column-one-quarter">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="Fee2">
+           <br>
+          </label>
+          <input class="govuk-input" id="Fee2" name="FeeInput2" value="{{ data['FeeInput2'] }}" type="text">
+        </div>
+      </div>
+
+  {% for n in range(3) %}
   <div class="govuk-grid-column-one-half">
     <div class="govuk-form-group">
       <label class="govuk-label" for="Select_transaction{{n}}">
-        Priority {{n + 2}}
+        Priority {{n + 3}}
       </label>
 
       <select class="govuk-select" id="Select_transaction{{n}}" name="Transactions{{n}}">
@@ -378,7 +494,7 @@ text: "Continue"
 
 <script type="application/json" id="transaction-form-validation">
  {
-   "fee": {
+   "FeeInput1": {
      "presence": {
        "message": "^Enter a fee for this transaction"
      }
