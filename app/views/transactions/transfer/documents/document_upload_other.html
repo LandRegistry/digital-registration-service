@@ -5,6 +5,8 @@
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/tabs/macro.njk" import govukTabs %}
 {% from "govuk/components/table/macro.njk" import govukTable %}
+{% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
+
 
 
 {% block headIcons %}
@@ -46,19 +48,35 @@
   <span class="govuk-caption-xl">Transfer for value (TR1)</span>
   <h1 class="govuk-heading-l"> Attach and certify document </h1>
   <p class="govuk-body">Files can be GIF, TIFF, JPG or PDF and must not exceed 20MB file size.</p>
-  <p class="govuk-body">Document type</p>
-  <h2 class="govuk-heading-m govuk-!-margin-bottom-6" style="margin-top: -20px;">Transfer for value (TR1)</h2>
 
 
-  <p class="govuk-body">Attach a file</p>
+    <div class="govuk-form-group govuk-!-margin-top-7">
+    <label class="govuk-label" for="sort">
+      Select a document type for each file you attach
+    </label>
+    <select class="govuk-select govuk-!-width-one-half" id="sort" name="sort">
+      <option value="" selected>Select document type</option>
+      <option value="" >Document type A</option>
+      <option value="">Document type B</option>
+      <option value="">Document type C</option>
+    </select>
+  </div>
 
+
+  <!-- <p class="govuk-body">Upload a file</p>
   <a href="#" id="tr1-upload" class="" onclick="fileupload()" style="border-style: solid; border-width: 1px; border-color: #D9D9D9; padding: 5px; border-radius: 3px; cursor: pointer;">Choose file</a>
-  <a class="govuk-body" id="filename" for="tr1-upload"> No file chosen </a>
+  <a class="govuk-body" id="filename" for="tr1-upload"> No file chosen </a> -->
+
+    {{ govukFileUpload({
+    id: "file-upload-1",
+    name: "file-upload-1",
+    label: {
+      text: "Attach a file"
+    }
+  }) }}
 
 
-
-
-  <h3 class="govuk-heading-s govuk-!-margin-top-6">Certification</h3>
+  <h3 class="govuk-heading-s govuk-!-margin-top-7">Certification</h3>
   <div class="govuk-form-group">
   <fieldset class="govuk-fieldset">
     <div class="govuk-radios govuk-!-width-two-thirds">
