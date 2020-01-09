@@ -176,6 +176,11 @@ router.post('/transactions/transfer/documents/attached-required-documents', func
     res.redirect('/../transactions/tasks')
 })
 
+router.post('/transactions/transfer/documents/TR1-attached', function (req, res) {
+  req.session.data['tr1attached'] = 'true';
+    res.redirect('document_prompts-1')
+})
+
 
 
 

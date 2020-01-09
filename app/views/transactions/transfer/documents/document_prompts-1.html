@@ -63,8 +63,8 @@
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">Application form</td>
           <td class="govuk-table__cell govuk-!-width-one-quarter">TR1 - Registered title(s): whole transfer</td>
-          <td class="govuk-table__cell"></td>
-          <td class="govuk-table__cell govuk-!-width-one-third"></td>
+          <td class="govuk-table__cell">{% if data['tr1attached']%} Certified {% endif %}</td>
+          <td class="govuk-table__cell govuk-!-width-one-third">{% if data['tr1attached']%} TR1.pdf {% endif %}</td>
           <td class="govuk-table__cell govuk-link"><a href="document_upload.html">Attach</a></td>
         </tr>
   </tbody>
@@ -90,7 +90,7 @@
           <td class="govuk-table__cell govuk-!-width-one-quarter" name="filetype">Consent</td>
           <td class="govuk-table__cell"></td>
           <td class="govuk-table__cell govuk-!-width-one-third">{{ data['filenameconsent']}}</td>
-          <td class="govuk-table__cell govuk-link"><a href="documents/document_upload_consent">Attach</a></td>
+          <td class="govuk-table__cell govuk-link"><a href="/../transactions/transfer/documents/document_upload_suggested-consent">Attach</a></td>
         </tr>
 
         <tr class="govuk-table__row">
