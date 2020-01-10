@@ -176,6 +176,21 @@ router.post('/transactions/transfer/documents/attached-required-documents', func
     res.redirect('/../transactions/tasks')
 })
 
+router.post('/transactions/transfer/documents/TR1-attached', function (req, res) {
+  req.session.data['tr1attached'] = 'true';
+    res.redirect('document_prompts-1')
+})
+
+router.post('/transactions/transfer/documents/consent-attached', function (req, res) {
+  req.session.data['suggested_upload'] = 'true';
+    res.redirect('document_prompts-1')
+})
+
+router.post('/transactions/transfer/documents/other-attached', function (req, res) {
+  req.session.data['other_upload'] = 'true';
+    res.redirect('document_prompts-1')
+})
+
 
 
 
