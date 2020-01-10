@@ -186,6 +186,10 @@ router.post('/transactions/transfer/documents/consent-attached', function (req, 
     res.redirect('document_prompts-1')
 })
 
+router.post('/transactions/transfer/documents/other-attached', function (req, res) {
+  req.session.data['other_upload'] = 'true';
+    res.redirect('document_prompts-1')
+})
 
 
 
