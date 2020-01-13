@@ -36,7 +36,7 @@
     <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 
 
-    <div class="govuk-phase-banner govuk-!-margin-bottom-5">
+    <div class="govuk-phase-banner">
         <p class="govuk-phase-banner__content">
         <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
         <span class="govuk-phase-banner__text">
@@ -44,11 +44,13 @@
         </span></p>
     </div>
     </div>
+    </div>
 
 
 
-
-      <div class="govuk-grid-column-full">
+    <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
           <h1 class="govuk-heading-l">Add applicant</h1>
 
           <p class="govuk-body">Say who you’re lodging the application for. If you’re a conveyancer, this may be your client. </p>
@@ -76,13 +78,13 @@
                       <label class="govuk-label" for="add-applicant-individual-forename">
                         Forename(s)
                       </label>
-                      <input class="govuk-input govuk-!-width-one-third" id="add-applicant-individual-forename" name="applicant-individual-forename" value="" type="forename" spellcheck="false">
+                      <input class="govuk-input govuk-!-width-one-half" id="add-applicant-individual-forename" name="applicant-individual-forename" value="" type="forename" spellcheck="false">
                     </div>
                     <div class="govuk-form-group">
                       <label class="govuk-label" for="add-applicant-individual-surname">
                         Surname
                       </label>
-                      <input class="govuk-input govuk-!-width-one-third" id="add-applicant-individual-surname" name="applicant-individual-surname" value="" type="surname" spellcheck="false">
+                      <input class="govuk-input govuk-!-width-one-half" id="add-applicant-individual-surname" name="applicant-individual-surname" value="" type="surname" spellcheck="false">
                     </div>
 
                   </div>
@@ -100,14 +102,14 @@
                         Company name
                       </label>
                         <span class="govuk-hint">Full name registered at Companies House</span>
-                        <input class="govuk-input govuk-!-width-one-third" id="add-applicant-company-name" name="applicant-company-name" value="" type="companyname" spellcheck="false">
+                        <input class="govuk-input govuk-!-width-one-half" id="add-applicant-company-name" name="applicant-company-name" value="" type="companyname" spellcheck="false">
                     </div>
                     <div class="govuk-form-group">
                       <label class="govuk-label" for="add-applicant-company-number">
                         Company number
                       </label>
                       <span class="govuk-hint">Companies House registration number, including any prefix</span>
-                        <input class="govuk-input govuk-!-width-one-third" id="add-applicant-company-number" name="applicant-company-number" value="" type="companynumber" spellcheck="false">
+                        <input class="govuk-input govuk-!-width-one-half" id="add-applicant-company-number" name="applicant-company-number" value="" type="companynumber" spellcheck="false">
                     </div>
 
                   </div>
@@ -125,14 +127,14 @@
                         Company name
                       </label>
                         <span class="govuk-hint">Company name as incorporated in its state of origin</span>
-                      <input class="govuk-input govuk-!-width-one-third" id="add-applicant-overseas-name" name="applicant-overseas-name" type="text" spellcheck="false">
+                      <input class="govuk-input govuk-!-width-one-half" id="add-applicant-overseas-name" name="applicant-overseas-name" type="text" spellcheck="false">
                     </div>
                     <div class="govuk-form-group">
                       <label class="govuk-label" for="add-applicant-company-number">
                         UK company number (optional)
                       </label>
                       <span class="govuk-hint">Number issued, if registered at Companies House, eg FC023966</span>
-                      <input class="govuk-input govuk-!-width-one-third" id="add-applicant-overseas-number" name="applicant-overseas-number" type="text" spellcheck="false">
+                      <input class="govuk-input govuk-!-width-one-half" id="add-applicant-overseas-number" name="applicant-overseas-number" type="text" spellcheck="false">
                     </div>
                     <div class="govuk-form-group">
                       <label class="govuk-label" for="add-applicant-company-country">
@@ -162,7 +164,7 @@
                         <label class="govuk-label" for="add-applicant-other-name">
                           Name of organisation
                         </label>
-                        <input class="govuk-input govuk-!-width-one-third" id="add-applicant-overseas-name" name="applicant-overseas-name" type="text" spellcheck="false">
+                        <input class="govuk-input govuk-!-width-one-half" id="add-applicant-overseas-name" name="applicant-overseas-name" type="text" spellcheck="false">
                       </div>
 
                       </div>
@@ -175,11 +177,13 @@
 
 
   {{ govukButton({
-  classes: "govuk-!-margin-top-5",
+  classes: "",
   text: "Continue"
   }) }}
 
 </form>
+</main>
+
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 <br>

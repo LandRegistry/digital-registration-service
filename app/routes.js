@@ -120,11 +120,11 @@ router.get('/docs/examples/pass-data/task-list', function (req, res) {
   "whole-or-part": "Whole",
   "part": "",
   "Transactions": "Transfer for value (TR1)",
-  "Price": "250000",
-  "fee": "12",
+  "PriceInput1": "250000",
+  "FeeInput1": "12",
   "Transactions0": "Death of a joint proprietor (DJP)",
-  "fee0": "0",
-  "Price0": "12",
+  "FeeInput2": "0",
+  "PriceInput2": "12",
   "Transactions1": "Select a transaction from the list",
   "fee1": "",
   "Price1": "",
@@ -176,12 +176,25 @@ router.post('/transactions/transfer/documents/attached-required-documents', func
     res.redirect('/../transactions/tasks')
 })
 
+router.post('/transactions/transfer/documents/TR1-attached', function (req, res) {
+  req.session.data['tr1attached'] = 'true';
+    res.redirect('document_prompts-1')
+})
+
+router.post('/transactions/transfer/documents/consent-attached', function (req, res) {
+  req.session.data['suggested_upload'] = 'true';
+    res.redirect('document_prompts-1')
+})
+
+router.post('/transactions/transfer/documents/other-attached', function (req, res) {
+  req.session.data['other_upload'] = 'true';
+    res.redirect('document_prompts-1')
+})
+
 // router.post('/transactions/transfer/transferor-representation-answer', function (req, res) ) {
 //     req.session.data['tranferorRepAdd'] = 'UK Conveyancers LLP';
 //     res.redireect('/../transactions/transfer/transferee-list')
 // })
-
-
 
 
 module.exports = router

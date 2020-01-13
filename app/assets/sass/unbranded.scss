@@ -56,8 +56,13 @@ $govuk-canvas-background-colour: $govuk-body-background-colour;
 }
 
 .upload_btn {
-  width: 100px;
-  font-size: 12px;
+  height: 10px;
+  padding: 10px;
+  padding-bottom: 20px;
+  font-size: 16px;
+  border-style: solid;
+  border-width: 1px;
+  cursor: pointer;
 }
 
 .secondary-button {
@@ -83,4 +88,9 @@ $govuk-canvas-background-colour: $govuk-body-background-colour;
   background-color: #003078;
   height: 38px;
   margin-left: 40px;
+}
+
+#filename:hover {
+color: black;
+cursor: default;  
 }
