@@ -23,7 +23,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="govuk-grid-row">
+  <div class="govuk-grid-row">
     <div class="govuk-grid-column-full" id="headerdiv">
       <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
 
@@ -38,67 +38,73 @@
         </span></p>
     </div>
     </div>
+  </div>
 
-<div class="govuk-grid-column-two-thirds govuk-!-padding-top-6">
+    <main class="govuk-main-wrapper " id="main-content" role="main">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
 
-  <h1 class="govuk-heading-xl govuk-!-padding-bottom-4"> Apply to update or create a registered title </h1>
+            <h1 class="govuk-heading-xl"> Apply to update or create a registered title </h1>
 
-  <p class="govuk-body govuk-!-padding-bottom-2"> You can use this service to submit an AP1 form to: </p>
+            <p class="govuk-body"> You can use this service to submit an AP1 form to: </p>
 
-  <ul class="govuk-list govuk-list--bullet">
-    <li>update an existing title</li>
-    <li>extend a lease (not yet available)</li>
-    <li>create a new lease (not yet available)</li>
-    <li>transfer part of a title (not yet available)</li>
-  </ul>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>update an existing title</li>
+              <li>extend a lease (not yet available)</li>
+              <li>create a new lease (not yet available)</li>
+              <li>transfer part of a title (not yet available)</li>
+            </ul>
 
-  {{ govukInsetText({
-    text: "This service supports only single title applications where an AP1 is needed. You don't need to supply a paper AP1."
-  }) }}
-
-
-
-  {{ govukButton({
-  text: "Start now",
-  href: "client-reference",
-  isStartButton: true
-}) }}
-
-
-  {{ govukButton({
-  text: "Go to saved applications",
-  classes: "secondary-button",
-  href: "/save-resume/saved-applications",
-  isStartButton: false
-}) }}
-
-
-<h2 class="govuk-heading-m govuk-!-padding-top-4"> Before you start </h2>
-
-<p class="govuk-body"> You'll need to provide: </p>
-
-<ul class="govuk-list govuk-list--bullet">
-  <li>the title number</li>
-  <li>applicant details</li>
-  <li>scanned documents, if needed</li>
-</ul>
-
-<p class="govuk-body"> You can't use this service to: </p>
-
-<ul class="govuk-list govuk-list--bullet">
-  <li>register a charge of part</li>
-  <li>remove a default Form A restriction (JP1)</li>
-  <li>affect a caution title</li>
-  <li> affect a scheme title </li>
-</ul>
-
-<p class="govuk-body govuk-!-padding-bottom-9"> You can also use the <a href="#"> Documents registration service </a></p>
-</div>
-</div>
+            {{ govukInsetText({
+              text: "This service supports only single title applications where an AP1 is needed. You don't need to supply a paper AP1."
+            }) }}
 
 
 
+            {{ govukButton({
+            text: "Start now",
+            href: "client-reference",
+            isStartButton: true
+          }) }}
 
+
+            {{ govukButton({
+            text: "Go to saved applications",
+            classes: "secondary-button",
+            href: "/save-resume/saved-applications",
+            isStartButton: false
+          }) }}
+
+
+          <h2 class="govuk-heading-m govuk-!-padding-top-4"> Before you start </h2>
+
+          <p class="govuk-body"> You'll need to provide: </p>
+
+          <ul class="govuk-list govuk-list--bullet">
+            <li>the title number</li>
+            <li>applicant details</li>
+            <li>scanned documents, if needed</li>
+          </ul>
+
+          <p class="govuk-body"> You can't use this service to: </p>
+
+          <ul class="govuk-list govuk-list--bullet">
+            <li>register a charge of part</li>
+            <li>remove a default Form A restriction (JP1)</li>
+            <li>affect a caution title</li>
+            <li> affect a scheme title </li>
+          </ul>
+
+          <p class="govuk-body"> You can also use the <a href="#"> Documents registration service </a></p>
+          </div>
+          </div>
+          </main>
+
+
+
+
+
+    <div class="govuk-grid-row">
 <div class="govuk-grid-column-full-width">
 
   <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
