@@ -198,7 +198,7 @@
         <td class="govuk-table__cell govuk-link"><a href="add-applicants">Change</a></td>
         </tr>
 
-      {% if data['applicant-individual-forename-2'] or data['transferee-individual-forename-2'] %}
+      {% if data['applicant-individual-forename-2'] %}
         <tr class="govuk-table_row">
         <td class="govuk-table__cell">Private individual</td>
         <td class="govuk-table__cell govuk-!-width-one-third">
@@ -212,8 +212,26 @@
         <td class="govuk-table__cell">N/a</td>
         <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
         <td class="govuk-table__cell govuk-link"><a href="add-applicants">Change</a></td>
-        {% endif %}
         </tr>
+
+  {% endif %}
+
+  {% if data['transferee-individual-forename-2'] %}
+    <tr class="govuk-table_row">
+    <td class="govuk-table__cell">Private individual</td>
+    <td class="govuk-table__cell govuk-!-width-one-third">
+      {% if data['transferee-select'] === 'yes' %}
+       {{ data['applicant-individual-forename-2'] }} {{ data['applicant-individual-surname-2'] }}
+       {% endif %},
+       {% if data['transferee-select'] === 'no' %}
+      {{ data['transferee-individual-forename-2'] }} {{ data['transferee-individual-surname-2'] }}
+      {% endif %}
+     </td>
+    <td class="govuk-table__cell">N/a</td>
+    <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+    <td class="govuk-table__cell govuk-link"><a href="add-applicants">Change</a></td>
+    </tr>
+{% endif %}
         </tr>
 
 
@@ -233,6 +251,7 @@
         <td class="govuk-table__cell govuk-link"><a href="add-applicants">Change</a></td>
         {% endif %}
         </tr>
+
 
 
 
