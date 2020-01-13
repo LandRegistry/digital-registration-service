@@ -70,9 +70,23 @@
               <td class="govuk-table__cell">N/a</td>
               <td class="govuk-table__cell govuk-link"><a href="add-transferor-change">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
             </tr>
+            {% if data['transferor-individual-forename-2'] %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">Private individual</td>
+              <td class="govuk-table__cell"> {{ data['transferor-individual-forename-2'] }} {{ data['transferor-individual-surname-2'] }}</td>
+              <td class="govuk-table__cell">N/a</td>
+              <td class="govuk-table__cell">N/a</td>
+              <td class="govuk-table__cell govuk-link"><a href="add-transferor-change">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
+            </tr>
+              {% endif %}
       </tbody>
     </table>
-
+    <br>
+    {% if data['transferor-individual-forename'] %}
+    <a href="add-transferor-2">Add transferor</a>
+    {% endif %}
+    <br>
+    <br>
 {{ govukButton({
   text: "Continue",
   href: "../tasks"

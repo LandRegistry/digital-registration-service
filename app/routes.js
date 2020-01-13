@@ -191,7 +191,10 @@ router.post('/transactions/transfer/documents/other-attached', function (req, re
     res.redirect('document_prompts-1')
 })
 
-
+// router.post('/transactions/transfer/transferor-representation-answer', function (req, res) ) {
+//     req.session.data['tranferorRepAdd'] = 'UK Conveyancers LLP';
+//     res.redireect('/../transactions/transfer/transferee-list')
+// })
 
 
 module.exports = router
