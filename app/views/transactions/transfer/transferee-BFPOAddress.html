@@ -10,6 +10,7 @@
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 {% from "govuk/components/table/macro.njk" import govukTable %}
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
 
 
 
@@ -44,72 +45,96 @@
         This is a prototype and not a real service.
         </span></p>
     </div>
+
     </div>
+
+<form method="post" action="BFPOAddress">
 
 <div class="govuk-grid-column-full">
     <span class="govuk-caption-l">Transfer for value (TR1)</span>
     <h1 class="govuk-heading-l">Add address for service</h1>
     <h2 class="govuk-heading-m">For transferee:</h2>
-    <p class="govuk-body">{{ data['applicant-individual-forename-2']}} {{ data['applicant-individual-surname-2']}}</p>
+    <p class="govuk-body">{{ data['applicant-individual-forename']}} {{ data['applicant-individual-surname']}}</p>
+
+    <p class="govuk-body">
+      You can enter a BFPO address as an address for service. But we ask that, if possible, you provide a 'care of' address instead using the <a href="#"> UK postal address</a> option.
+      <br><br>
+      This is because BFPO addresses:
+      <br>
+      • help to identify members of the armed forces
+      <br>
+      • tend to change often
 
 
-    <form method="post" action="transferee-addresstype-answer">
 
-    <div class="govuk-radios">
+    {{ govukInput({
+      name: 'BFPOserviceNo',
+      label: {
+        html: 'Service number and rank'
+      },
+      classes: "govuk-input--width-20"
+    }) }}
 
-        <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="select-address-type" name="transfereeAddressType-2" type="radio" value="UK-postal">
-          <label class="govuk-label govuk-radios__label" for="select-address-type">
-        UK postal address
-      </label>
+    {{ govukInput({
+      name: 'BFPOunit',
+      label: {
+        html: 'Unit or regiment'
+      },
+      classes: "govuk-input--width-20"
+    }) }}
+
+    {{ govukInput({
+      name: 'BFPOlocation',
+      label: {
+        html: 'Operation or location name (optional)'
+      },
+      classes: "govuk-input--width-20"
+    }) }}
+
+    {{ govukInput({
+      name: 'BFPOnumber',
+      label: {
+        html: 'BFPO number'
+      },
+      classes: "govuk-input--width-20",
+      hint: {
+        text: "For example, 'BFPO 61'"
+      }
+    }) }}
+
+
+
+  <h3 class="govuk-heading-m">More actions</h3>
+
+  {{ govukInput({
+    label: {
+      html: 'Add c/o name (optional)'
+    },
+    classes: "govuk-input--width-20",
+    id: "CareOf",
+    hint: {
+      text: "If it's a 'care of' address, enter the addressee's name"
+    }
+  }) }}
+
+  <p class="govuk-body">Add this address to the following transferees: (optional)</p>
+  {% if data['applicant-individual-forename-2'] %}
+  <div class="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="applicant2-address1" name="applicant2address" type="checkbox" value="true">
+        <label class="govuk-label govuk-checkboxes__label" for="applicant2address">
+          {{ data['applicant-individual-forename-2'] }} {{ data['applicant-individual-surname-2'] }}
+        </label>
+        {% endif %}
         </div>
-
-        <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="select-address-type-2" name="transfereeAddressType-2" type="radio" value="Overseas-postal">
-          <label class="govuk-label govuk-radios__label" for="select-address-type-2">
-        Overseas postal address
-      </label>
         </div>
+        <br>
 
-        <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="select-address-type-3" name="transfereeAddressType-2" type="radio" value="PO-box">
-          <label class="govuk-label govuk-radios__label" for="select-address-type-3">
-        PO Box (postal address)
-      </label>
-        </div>
-
-        <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="select-address-type-4" name="transfereeAddressType-2" type="radio" value="email">
-          <label class="govuk-label govuk-radios__label" for="select-address-type-4">
-        Email address
-      </label>
-        </div>
-
-        <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="select-address-type-5" name="transfereeAddressType-2" type="radio" value="DX">
-          <label class="govuk-label govuk-radios__label" for="select-address-type-5">
-          DX address
-          </label>
-        </div>
-
-        <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="select-address-type-6" name="transfereeAddressType-2" type="radio" value="BFPO">
-            <label class="govuk-label govuk-radios__label" for="select-address-type-6">
-            BFPO postal address (armed forces)
-            </label>
-        </div>
-  </div>
 
 
 {{ govukButton({
-  classes: "govuk-!-margin-top-9",
-  text: "Continue",
-  type: "Submit",
-  value: "Submit"
+  text: "Continue"
 }) }}
-
-</form>
-
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 <br>

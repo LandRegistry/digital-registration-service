@@ -32,9 +32,10 @@
 
 {% block content %}
 <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full" id="headerdiv">
-      <img src="public/images/headerlogo.svg" alt="hmlrlogo">
-      <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
+  <div class="govuk-grid-column-full" id="headerdiv">
+    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
+    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Apply to update or create a registered title</a></p>
+    <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 
 
     <div class="govuk-phase-banner govuk-!-margin-bottom-5">
@@ -46,53 +47,48 @@
     </div>
     </div>
 
-<div class="govuk-grid-column-full">
-    <span class="govuk-caption-l">[Transaction name]</span>
-    <h1 class="govuk-heading-l">Add address for service</h1>
-    <h2 class="govuk-heading-s">Address type</h2>
-    <p class="govuk-body">DX address</p>
+    <form method="post" action="emailAddress">
+
+    <div class="govuk-grid-column-full">
+        <span class="govuk-caption-l">Transfer for value (TR1)</span>
+        <h1 class="govuk-heading-l">Add address for service</h1>
+        <h2 class="govuk-heading-m">For transferee:</h2>
+        <p class="govuk-body">{{ data['applicant-individual-forename']}} {{ data['applicant-individual-surname']}}</p>
 
 
-  {% call govukFieldset({
-    legend: {
 
-    }
-  }) %}
 
     {{ govukInput({
+      name: 'emailAddress',
       label: {
-        html: 'DX reference'
+        html: 'Email address'
       },
-      classes: "govuk-input--width-20",
-      hint: {
-     text: "For example, 'DX 131601'"
-   }
+      classes: "govuk-input--width-20"
     }) }}
 
-    {{ govukInput({
-      label: {
-        html: 'DX exchange name'
-      },
-      classes: "govuk-input--width-20",
-      hint: {
-     text: "For example, 'Gloucester 33"
-   }
-    }) }}
-
-  {% endcall %}
 
   <h3 class="govuk-heading-m">More actions</h3>
 
 
   <p class="govuk-body">Add this address to the following transferees: (optional)</p>
-  <p class="govuk-body">- No other transferees to select -</p>
-
+  {% if data['applicant-individual-forename-2'] %}
+  <div class="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="applicant2-address1" name="applicant2address" type="checkbox" value="true">
+        <label class="govuk-label govuk-checkboxes__label" for="applicant2address">
+          {{ data['applicant-individual-forename-2'] }} {{ data['applicant-individual-surname-2'] }}
+        </label>
+        {% endif %}
+        </div>
+        </div>
+        <br>
 
 
 {{ govukButton({
-  text: "Continue",
-  href: "#"
+  text: "Continue"
 }) }}
+
+</form>
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 <br>

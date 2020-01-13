@@ -47,6 +47,7 @@
     </div>
 
 <div class="govuk-grid-column-full">
+  <form method="post" action="UKAddress">
     <span class="govuk-caption-l">Transfer for value (TR1)</span>
     <h1 class="govuk-heading-l">Add address for service</h1>
     <h2 class="govuk-heading-s">Address type</h2>
@@ -92,25 +93,18 @@
     }) }}
 
     <p class="govuk-body">Add this address to the following transferees: (optional)</p>
-    {% if data['transferee-select'] === 'yes' %}
-
+    {% if data['applicant-individual-forename-2'] %}
     <div class="govuk-checkboxes">
-      <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="" name="transferee-2" type="checkbox" value="true">
-        <label class="govuk-label govuk-checkboxes__label" for="transferee-2">
-          {{ data['applicant-individual-forename-2'] }} {{ data['applicant-individual-surname-2'] }}
-         {% endif %}
-         {% if data['transferee-select'] === 'no' %}
-        {{ data['transferee-individual-forename-2'] }} {{ data['transferee-individual-surname-2'] }}
-        {% endif %}
-        {% if data['transferee-select'] === '' %}
-        </label>
-      </div>
-   {% endif %}
-   <br><br><br>
-    </div>
-    </div>
-    </div>
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="applicant2-address1" name="applicant2address" type="checkbox" value="true">
+          <label class="govuk-label govuk-checkboxes__label" for="applicant2address">
+            {{ data['applicant-individual-forename-2'] }} {{ data['applicant-individual-surname-2'] }}
+          </label>
+          {% endif %}
+          </div>
+          </div>
+
+
 
 
 {{ govukButton({
@@ -118,6 +112,9 @@
   href: "transfereeAddressList",
   Value: "yes"
 }) }}
+</form>
+  </div>
+    </div>
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 <br>
@@ -126,7 +123,7 @@
 <br>
 <a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
 
-</div>
+
 
 
 {% endblock %}
