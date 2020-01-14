@@ -211,10 +211,10 @@
                     {% endif %}
 
                     {% if data['applicant2address'] %}
-<!--
+
                     {% if data['transfereeAddressType'] === 'UK-postal' %}
-                     4, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ
-                     {% endif %} -->
+                    4, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ
+                    {% endif %}
 
                        {% if data['transfereeAddressType'] === 'Overseas-postal' %}
                         {{ data['OverseasAddressLine1'] }}<br>
@@ -226,9 +226,7 @@
                         {% endif %}
 
 
-                      {% if data['transfereeAddressType'] === 'UK-postal' %}
-                      4, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ
-                      {% endif %}
+
 
                       {% if data['transfereeAddressType'] === 'PO-box' %}
                       {{ data['PO'] }}<br>
