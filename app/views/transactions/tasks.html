@@ -104,7 +104,7 @@
             <tr class="govuk-table__row">
               <td class="govuk-table__cell govuk-link"><a href="transfer/transfereeAddressList">Add addresses for service</a></td>
               <td class="govuk-table__cell">
-                {% if data['transfereeAddressType'] === 'UK-postal' %}
+                {% if data['transfereeAddressType'] %}
                       <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
                       {% endif %}
             </td>

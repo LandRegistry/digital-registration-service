@@ -47,7 +47,7 @@
     </div>
 
 <div class="govuk-grid-column-full">
-    <span class="govuk-caption-l">[Transaction name]</span>
+    <span class="govuk-caption-l">Transfer for value (TR1)</span>
     <h1 class="govuk-heading-l">Add address for service</h1>
     <p class="govuk-body">Each transferee can add up to 3 addresses for service to the register. One must be a postal address.</p>
     <h2 class="govuk-heading-m">Transferees added</h2>
@@ -64,6 +64,7 @@
         </tr>
       </thead>
 
+
       <tbody class="govuk-table__body">
             <tr class="govuk-table__row">
               <td class="govuk-table__cell">Private individual</td>
@@ -79,41 +80,92 @@
                      {% endif %}
 
 
-                     <!-- {% if data['select-address-type'] === 'Overseas-postal' %}
+                     {% if data['transfereeAddressType'] === 'Overseas-postal' %}
                      Overseas postal address
                      {% endif %}
 
-                     {% if data['select-address-type'] === 'PO-box' %}
+                     {% if data['transfereeAddressType'] === 'PO-box' %}
                      PO Box (postal address)
                      {% endif %}
 
-                     {% if data['select-address-type'] === 'email' %}
+                     {% if data['transfereeAddressType'] === 'email' %}
                      Email address
                      {% endif %}
 
-                     {% if data['select-address-type'] === 'DX' %}
+                     {% if data['transfereeAddressType'] === 'DX' %}
                      DX address
                      {% endif %}
 
-                     {% if data['select-address-type'] === 'BFPO' %}
+                     {% if data['transfereeAddressType'] === 'BFPO' %}
                      BFPO postal address (armed forces)
-                     {% endif %} -->
+                     {% endif %}
 
                    </td>
               <td class="govuk-table__cell">
               {% if data['transfereeAddressType'] === 'UK-postal' %}
                4, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ
-               {% endif %}</td>
+               {% endif %}
+
+               {% if data['transfereeAddressType'] === 'Overseas-postal' %}
+                {{ data['OverseasAddressLine1'] }}<br>
+                {{ data['OverseasAddressLine2'] }}<br>
+                {{ data['OverseasAddressLine3'] }}<br>
+                {{ data['OverseasAddressLine4'] }}
+                {{ data['OverseasAddressLine5'] }}
+                {{ data['country'] }}
+                {% endif %}
+
+                {% if data['transfereeAddressType'] === 'PO-box' %}
+                {{ data['PO'] }}<br>
+                {{ data['POCity'] }}<br>
+                {{ data['POPostcode'] }}<br>
+                 {% endif %}
+
+                 {% if data['transfereeAddressType'] === 'email' %}
+                 {{ data['emailAddress'] }}
+                 {% endif %}
+
+                 {% if data['transfereeAddressType'] === 'DX' %}
+                 {{ data['DXRef'] }}
+                 {{ data['DXName'] }}
+                 {% endif %}
+
+                 {% if data['transfereeAddressType'] === 'BFPO' %}
+                 {{ data['BFPOserviceNo'] }}<br>
+                 {{ data['BFPOunit'] }}<br>
+                 {{ data['BFPOlocation'] }}<br>
+                 {{ data['BFPOnumber'] }}<br>
+                 {% endif %}
+
+              </td>
               <td class="govuk-table__cell govuk-link">
                   {% if not data['transfereeAddressType'] %}
                     <a href="transferee-addresstype">Add address</a>
                   {% endif %}
-                  {% if data['transfereeAddressType'] === 'UK-postal' %}
+
+                  {% if data['transfereeAddressType'] %}
                     <a href="">Remove</a><br>
                     <a href="transferee1-addresstype2">Add address</a>
                   {% endif %}
 
 
+
+                  <!-- {% if data['transfereeAddressType'] === 'UK-postal' %}
+                    <a href="">Remove</a><br>
+                    <a href="transferee1-addresstype2">Add address</a>
+                  {% endif %}
+                  {% if data['transfereeAddressType'] === 'Overseas-postal' %}
+                    <a href="">Remove</a><br>
+                    <a href="transferee1-addresstype2">Add address</a>
+                  {% endif %}
+                  {% if data['transfereeAddressType'] === 'PO-box' %}
+                    <a href="">Remove</a><br>
+                    <a href="transferee1-addresstype2">Add address</a>
+                  {% endif %}
+                  {% if data['transfereeAddressType'] === 'email' %}
+                    <a href="">Remove</a><br>
+                    <a href="transferee1-addresstype2">Add address</a>
+                  {% endif %} -->
               </td>
             </tr>
 
@@ -123,6 +175,29 @@
                 <td class="govuk-table__cell">Private individual</td>
                 <td class="govuk-table__cell">{{ data['applicant-individual-forename-2'] }} {{ data['applicant-individual-surname-2'] }}</td>
                 <td class="govuk-table__cell">
+                  {% if data['applicant2address'] %}
+                      {% if data['transfereeAddressType'] === 'UK-postal' %}
+                       UK Postal
+                       {% endif %}
+                       {% if data['transfereeAddressType'] === 'Overseas-postal' %}
+                       Overseas postal address
+                       {% endif %}
+                       {% if data['transfereeAddressType'] === 'PO-box' %}
+                       PO Box (postal address)
+                       {% endif %}
+                       {% if data['transfereeAddressType'] === 'email' %}
+                       Email address
+                       {% endif %}
+                       {% if data['transfereeAddressType'] === 'DX' %}
+                       DX address
+                       {% endif %}
+                       {% if data['transfereeAddressType'] === 'BFPO' %}
+                       BFPO postal address (armed forces)
+                       {% endif %}
+                  {% endif %}
+
+
+
                   {% if data['transfereeAddressType-2'] === 'UK-postal' %}
                    UK Postal
                    {% endif %}
@@ -134,13 +209,75 @@
                    {% if data['transferee-2'] %}
                     UK Postal
                     {% endif %}
-                 </td>
-                <td class="govuk-table__cell govuk-link"><a href="transferee-addresstype-2">
-                  {% if data['transfereeAddressType-2'] === 'UK-postal' %}
-                   <a href="">Remove</a><br>
+
+                    {% if data['applicant2address'] %}
+
+                       {% if data['transfereeAddressType'] === 'Overseas-postal' %}
+                        {{ data['OverseasAddressLine1'] }}<br>
+                        {{ data['OverseasAddressLine2'] }}<br>
+                        {{ data['OverseasAddressLine3'] }}<br>
+                        {{ data['OverseasAddressLine4'] }}
+                        {{ data['OverseasAddressLine5'] }}
+                        {{ data['country'] }}
+                        {% endif %}
+
+
+                      {% if data['transfereeAddressType'] === 'UK-postal' %}
+                      4, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ
+                      {% endif %}
+
+                      {% if data['transfereeAddressType'] === 'PO-box' %}
+                      {{ data['PO'] }}<br>
+                      {{ data['POCity'] }}<br>
+                      {{ data['POPostcode'] }}<br>
+                      {% endif %}
+
+                      {% if data['transfereeAddressType'] === 'email' %}
+                      {{ data['emailAddress'] }}
+                      {% endif %}
+
+                      {% if data['transfereeAddressType'] === 'DX' %}
+                      {{ data['DXRef'] }}
+                      {{ data['DXName'] }}
+                      {% endif %}
+
+                      {% if data['transfereeAddressType'] === 'BFPO' %}
+                      {{ data['BFPOserviceNo'] }}<br>
+                      {{ data['BFPOunit'] }}<br>
+                      {{ data['BFPOlocation'] }}<br>
+                      {{ data['BFPOnumber'] }}<br>
+                      {% endif %}
+
                     {% endif %}
-                    <a href="transferee-addresstype-2">Add address</a>
-                  </td>
+
+                 </td>
+                 <td class="govuk-table__cell govuk-link">
+                     {% if not data['transfereeAddressType'] %}
+                       <a href="transferee-addresstype">Add address</a>
+                     {% endif %}
+
+                     {% if data['transfereeAddressType'] %}
+                       <a href="">Remove</a><br>
+                       <a href="transferee1-addresstype2">Add address</a>
+                     {% endif %}
+
+                     <!-- {% if data['transfereeAddressType'] === 'UK-postal' %}
+                       <a href="">Remove</a><br>
+                       <a href="transferee1-addresstype2">Add address</a>
+                     {% endif %}
+                     {% if data['transfereeAddressType'] === 'Overseas-postal' %}
+                       <a href="">Remove</a><br>
+                       <a href="transferee1-addresstype2">Add address</a>
+                     {% endif %}
+                     {% if data['transfereeAddressType'] === 'PO-box' %}
+                       <a href="">Remove</a><br>
+                       <a href="transferee1-addresstype2">Add address</a>
+                     {% endif %}
+                     {% if data['transfereeAddressType'] === 'PO-box' %}
+                       <a href="">Remove</a><br>
+                       <a href="transferee1-addresstype2">Add address</a>
+                     {% endif %} -->
+                 </td>
               </tbody>
                {% endif %}
 

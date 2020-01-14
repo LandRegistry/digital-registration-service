@@ -78,13 +78,30 @@ router.post('/transactions/transfer/transferee-addresstype-answer', function (re
 
   if (transfereeAddress === 'UK-postal') {
     res.redirect('/transactions/transfer/transferee-UKaddress')
-
-} else if (transfereeAddress === 'Overseas-postal') {
+}
+  if (transfereeAddress === 'Overseas-postal') {
       res.redirect('/transactions/transfer/transferee-overseasAddress')
     }
 
+  if (transfereeAddress === 'PO-box') {
+      res.redirect('/transactions/transfer/transferee-POboxAddress')
+    }
+
+    if (transfereeAddress === 'email') {
+        res.redirect('/transactions/transfer/transferee-emailAddress')
+      }
+
+      if (transfereeAddress === 'DX') {
+          res.redirect('/transactions/transfer/transferee-dxAddress')
+        }
+
+        if (transfereeAddress === 'BFPO') {
+            res.redirect('/transactions/transfer/transferee-BFPOAddress')
+          }
+
 
 })
+
 
 
 router.post('/transactions/transfer/transferor-representation-answer', function (req, res) {
@@ -190,6 +207,35 @@ router.post('/transactions/transfer/documents/other-attached', function (req, re
   req.session.data['other_upload'] = 'true';
     res.redirect('document_prompts-1')
 })
+
+router.post('/transactions/transfer/overseasAddress', function (req, res) {
+    res.redirect('transfereeAddressList')
+})
+
+router.post('/transactions/transfer/UKAddress', function (req, res) {
+    res.redirect('transfereeAddressList')
+})
+
+router.post('/transactions/transfer/POboxAddress', function (req, res) {
+    res.redirect('transfereeAddressList')
+})
+
+router.post('/transactions/transfer/emailAddress', function (req, res) {
+    res.redirect('transfereeAddressList')
+})
+
+router.post('/transactions/transfer/DXAddress', function (req, res) {
+    res.redirect('transfereeAddressList')
+})
+
+router.post('/transactions/transfer/BFPOAddress', function (req, res) {
+    res.redirect('transfereeAddressList')
+})
+
+
+
+
+
 
 // router.post('/transactions/transfer/transferor-representation-answer', function (req, res) ) {
 //     req.session.data['tranferorRepAdd'] = 'UK Conveyancers LLP';
