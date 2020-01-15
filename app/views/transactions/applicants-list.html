@@ -49,7 +49,7 @@
 <div class="govuk-grid-column-full">
   <span class="govuk-caption-l">Apply to update or create a registered title</span>
 
- 
+
     <h1 class="govuk-heading-l">Applicants</h1>
     <h2 class="govuk-heading-m">Applicants added</h2>
 
@@ -111,13 +111,60 @@
      </tbody>
       {% endif %}
 
+      {% if data['applicant-overseas-name'] %}
+        <tbody class="govuk-table_body">
+          <tr class="govuk-table_row">
+          <td class="govuk-table__cell">Overseas company</td>
+          <td class="govuk-table__cell govuk-!-width-one-third">{{ data['applicant-overseas-name'] }}</td>
+          <td class="govuk-table__cell"> {% if data['applicant-overseas-number'] %}{{ data['applicant-overseas-number'] }}{% endif %}{% if not data['applicant-overseas-number'] %}N/a{% endif %}</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter"> {{ data['applicant-overseas-country'] }}</td>
+          <td class="govuk-table__cell govuk-link"><a href="add-applicants-change">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
+        </tbody>
+         {% endif %}
+
+         {% if data['applicant2-overseas-name'] %}
+           <tbody class="govuk-table_body">
+             <tr class="govuk-table_row">
+             <td class="govuk-table__cell">Overseas company</td>
+             <td class="govuk-table__cell govuk-!-width-one-third">{{ data['applicant2-overseas-name'] }}</td>
+             <td class="govuk-table__cell"> {% if data['applicant2-overseas-number'] %}{{ data['applicant2-overseas-number'] }}{% endif %}{% if not data['applicant2-overseas-number'] %}N/a{% endif %}</td>
+             <td class="govuk-table__cell govuk-!-width-one-quarter"> {{ data['applicant2-overseas-country'] }}</td>
+             <td class="govuk-table__cell govuk-link"><a href="add-applicants-change">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
+           </tbody>
+            {% endif %}
+
+       {% if data['applicant-other-name'] %}
+       <tbody class="govuk-table_body">
+         <tr class="govuk-table_row">
+         <td class="govuk-table__cell">Other organisation</td>
+         <td class="govuk-table__cell govuk-!-width-one-third">{{ data['applicant-other-name'] }}</td>
+         <td class="govuk-table__cell">N/a</td>
+         <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+         <td class="govuk-table__cell govuk-link"><a href="add-applicants-change">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
+       </tbody>
+       {% endif %}
+
+       {% if data['applicant2-other-name'] %}
+       <tbody class="govuk-table_body">
+         <tr class="govuk-table_row">
+         <td class="govuk-table__cell">Other organisation</td>
+         <td class="govuk-table__cell govuk-!-width-one-third">{{ data['applicant2-other-name'] }}</td>
+         <td class="govuk-table__cell">N/a</td>
+         <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+         <td class="govuk-table__cell govuk-link"><a href="add-applicants-change">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
+       </tbody>
+       {% endif %}
+
 
 </table>
 
-{% if data['applicant-company-name'] or data['applicant-individual-forename'] %}
-<a class="govuk-link" href="add-applicants-2">Add another</a><br>
-{% else %}
-<a class="govuk-link govuk-visually-hidden" href="add-applicants-2"></a><br>
+
+{% if data['applicant-company-name'] or data['applicant-individual-forename'] or data['applicant-overseas-name'] or data['applicant-other-name']%}
+<a class="govuk-link" href="add-applicants-2">Add applicant</a><br>
+{% endif %}
+
+{% if data['applicant2-company-name'] or data['applicant2-individual-forename'] or data['applicant2-overseas-name'] or data['applicant2-other-name'] %}
+<a class="govuk-link" href="add-applicants-3">Add applicant</a><br>
 {% endif %}
 
 
