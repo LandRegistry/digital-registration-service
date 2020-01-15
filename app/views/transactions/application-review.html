@@ -84,7 +84,25 @@
     </table>
 
     <table class="govuk-table govuk-!-margin-bottom-9" id="applicantlist-review">
+      <div class="heading govuk-grid-column-one-quarter">
       <h2 class="govuk-heading-l">Applicants</h2>
+      </div>
+      <div class="govuk-grid-column-three-quarters">
+        <br>
+      <a class="headingcontent govuk-link" href="#">Change</a>
+      </div>
+<!--
+<style>
+  .heading {
+  position: relative;
+}
+
+.headingcontent {
+  position:;
+  bottom: 0;
+}
+</style> -->
+
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
           <th scope="col" class="govuk-table__header ">Applicant type</th>
@@ -104,9 +122,6 @@
           <td class="govuk-table__cell govuk-link"><a href="add-applicants-change">Change</a></td></tr>
 
 
-          <td class="govuk-table__cell govuk-link"><a href="add-applicants-change">Change</a></td>
-          </tr>
-
           {% if data['applicant-individual-forename-2'] %}
           <tr class="govuk-table_row" id="hidePI">
           <td class="govuk-table__cell">Private individual</td>
@@ -115,8 +130,7 @@
           <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
 
           <td class="govuk-table__cell govuk-link"><a href="add-applicants-change">Change</a></td></tr>
-          <td class="govuk-table__cell govuk-link"><a href="add-applicants-change">Change</a></td>
-          </tr>
+
 
           {% endif %}
         </tbody>
