@@ -71,14 +71,7 @@
   <a href="#" id="tr1-upload" class="" onclick="fileupload()" style="border-style: solid; border-width: 1px; border-color: #D9D9D9; padding: 5px; border-radius: 3px; cursor: pointer;">Choose file</a>
   <a class="govuk-body" id="filename" for="tr1-upload"> No file chosen </a> -->
 
-    {{ govukFileUpload({
-    id: "file-upload-1",
-    name: "file-upload-1",
-    label: {
-      text: "Attach a file"
-    }
-  }) }}
-
+<a href="#" type="file" id="suggested_upload" class="govuk-link--no-visited-state" onclick="fileupload()" style="cursor: pointer; text-decoration: none; font-size: 14px; color: black; border-style: solid;  border-width: 0.5px; padding: 5px; border-radius: 3px; position: absolute; ">Choose file</a>
   <a class="govuk-link" href="#">Find out about registering overseas companies</a>
 
 
