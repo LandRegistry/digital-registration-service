@@ -89,6 +89,17 @@
        </tbody>
         {% endif %}
 
+        {% if data['applicant3-individual-forename-3'] %}
+          <tbody class="govuk-table_body">
+            <tr class="govuk-table_row" id="hidePI">
+            <td class="govuk-table__cell">Private individual</td>
+            <td class="govuk-table__cell govuk-!-width-one-third">{{ data['applicant3-individual-forename-3'] }} {{ data['applicant3-individual-surname-3'] }}</td>
+            <td class="govuk-table__cell">N/a</td>
+            <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+            <td class="govuk-table__cell govuk-link"><a href="add-applicants-change">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
+          </tbody>
+           {% endif %}
+
     {% if data['applicant-company-name'] %}
     <tbody class="govuk-table_body">
       <tr class="govuk-table_row" id="hidePI">
@@ -100,16 +111,27 @@
     </tbody>
      {% endif %}
 
-     {% if data['applicant-company-name-2'] %}
+     {% if data['applicant2-company-name-2'] %}
      <tbody class="govuk-table_body">
        <tr class="govuk-table_row" id="hidePI">
        <td class="govuk-table__cell">UK Company or LLC</td>
-       <td class="govuk-table__cell govuk-!-width-one-third">{{ data['applicant-company-name-2'] }}</td>
-       <td class="govuk-table__cell"> {{ data['applicant-company-number-2'] }}</td>
+       <td class="govuk-table__cell govuk-!-width-one-third">{{ data['applicant2-company-name-2'] }}</td>
+       <td class="govuk-table__cell"> {{ data['applicant2-company-number-2'] }}</td>
        <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
        <td class="govuk-table__cell govuk-link"><a href="add-applicants-change">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
      </tbody>
       {% endif %}
+
+      {% if data['applicant3-company-name-3'] %}
+      <tbody class="govuk-table_body">
+        <tr class="govuk-table_row" id="hidePI">
+        <td class="govuk-table__cell">UK Company or LLC</td>
+        <td class="govuk-table__cell govuk-!-width-one-third">{{ data['applicant3-company-name-3'] }}</td>
+        <td class="govuk-table__cell"> {{ data['applicant3-company-number-3'] }}</td>
+        <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+        <td class="govuk-table__cell govuk-link"><a href="add-applicants-change">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
+      </tbody>
+       {% endif %}
 
       {% if data['applicant-overseas-name'] %}
         <tbody class="govuk-table_body">
@@ -133,6 +155,17 @@
            </tbody>
             {% endif %}
 
+            {% if data['applicant3-overseas-name'] %}
+              <tbody class="govuk-table_body">
+                <tr class="govuk-table_row">
+                <td class="govuk-table__cell">Overseas company</td>
+                <td class="govuk-table__cell govuk-!-width-one-third">{{ data['applicant3-overseas-name'] }}</td>
+                <td class="govuk-table__cell"> {% if data['applicant3-overseas-number'] %}{{ data['applicant3-overseas-number'] }}{% endif %}{% if not data['applicant3-overseas-number'] %}N/a{% endif %}</td>
+                <td class="govuk-table__cell govuk-!-width-one-quarter"> {{ data['applicant3-overseas-country'] }}</td>
+                <td class="govuk-table__cell govuk-link"><a href="add-applicants-change">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
+              </tbody>
+               {% endif %}
+
        {% if data['applicant-other-name'] %}
        <tbody class="govuk-table_body">
          <tr class="govuk-table_row">
@@ -149,6 +182,17 @@
          <tr class="govuk-table_row">
          <td class="govuk-table__cell">Other organisation</td>
          <td class="govuk-table__cell govuk-!-width-one-third">{{ data['applicant2-other-name'] }}</td>
+         <td class="govuk-table__cell">N/a</td>
+         <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+         <td class="govuk-table__cell govuk-link"><a href="add-applicants-change">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
+       </tbody>
+       {% endif %}
+
+       {% if data['applicant3-other-name'] %}
+       <tbody class="govuk-table_body">
+         <tr class="govuk-table_row">
+         <td class="govuk-table__cell">Other organisation</td>
+         <td class="govuk-table__cell govuk-!-width-one-third">{{ data['applicant3-other-name'] }}</td>
          <td class="govuk-table__cell">N/a</td>
          <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
          <td class="govuk-table__cell govuk-link"><a href="add-applicants-change">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
