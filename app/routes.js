@@ -155,14 +155,6 @@ router.get('/docs/examples/pass-data/task-list', function (req, res) {
   "add-applicant": "individual",
   "applicant-individual-forename": "John",
   "applicant-individual-surname": "Smith",
-  "applicant-company-name": "",
-  "applicant-company-number": "",
-  "applicant-overseas-name": [
-    "",
-    ""
-  ],
-  "applicant-overseas-number": "",
-  "applicant-overseas-country": "updated",
   "applicant-individual-forename-2": "Jane",
   "applicant-individual-surname-2": "Smith",
   "applicant-company-name-2": "",

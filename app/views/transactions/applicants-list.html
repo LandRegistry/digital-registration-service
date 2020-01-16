@@ -199,17 +199,17 @@
        </tbody>
        {% endif %}
 
+      </table>
 
-</table>
+    {% if data['applicant-company-name'] or data['applicant-individual-forename'] or data['applicant-overseas-name'] or data['applicant-other-name'] %}
+    <a class="govuk-link" href="add-applicants-2">Add applicant</a><br>
+    {% endif %}
+
+    {% if data['applicant2-company-name-2'] or data['applicant-individual-forename-2'] or data['applicant2-overseas-name'] or data['applicant2-other-name'] %}
+    <a class="govuk-link" href="add-applicants-3">Add applicant</a><br>
+    {% endif %}
 
 
-{% if data['applicant-company-name'] or data['applicant-individual-forename'] or data['applicant-overseas-name'] or data['applicant-other-name']%}
-<a class="govuk-link" href="add-applicants-2">Add applicant</a><br>
-{% endif %}
-
-{% if data['applicant2-company-name'] or data['applicant2-individual-forename'] or data['applicant2-overseas-name'] or data['applicant2-other-name'] %}
-<a class="govuk-link" href="add-applicants-3">Add applicant</a><br>
-{% endif %}
 
 
 {{ govukButton({
