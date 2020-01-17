@@ -126,7 +126,7 @@ router.post('/transactions/discharge/method-answer', function (req, res) {
 
                                             // Name of input
   let dischargeMethod = req.session.data['discharge-method']
-                            // Value of input
+  req.session.data['dischargeAttached'] = 'true';
   if (dischargeMethod === 'form') {
     res.redirect('/transactions/discharge/discharge-upload')
   } else {
