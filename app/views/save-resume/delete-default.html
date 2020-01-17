@@ -1,0 +1,102 @@
+
+{% extends "layout_unbranded.html" %}
+
+{% block pageTitle %}
+  Clear data? - GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<br>
+<br>
+<!-- <a href="javascript: window.history.go(-1)"> Back </a> -->
+
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full" id="headerdiv">
+    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
+
+    <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
+
+
+  <div class="govuk-phase-banner">
+      <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
+      <span class="govuk-phase-banner__text">
+      This is a prototype and not a real service.
+      </span></p>
+  </div>
+  </div>
+</div>
+
+<form method="post">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds govuk-!-margin-top-5">
+      <h1 class="govuk-heading-l">
+        Are you sure you want to delete this draft?
+      </h1>
+    <h2 class="govuk-body-l">
+      This will clear delete the following draft application:</h2>
+      </div>
+      <div class="govuk-grid-column-full">
+      <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header ">Your reference</th>
+            <th scope="col" class="govuk-table__header">Title number</th>
+            <th scope="col" class="govuk-table__header">Applicants</th>
+            <th scope="col" class="govuk-table__header">Created</th>
+          </tr>
+        </thead>
+
+
+        <tbody class="govuk-table_body">
+          {% if data['reference'] %}
+          <tr class="govuk-table_row" id="">
+          <td class="govuk-table__cell">{{ data['reference'] }}</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter">{{ data['title'] }}</td>
+          <td class="govuk-table__cell">
+              {{ data['applicant-individual-forename'] }} {{ data['applicant-individual-surname'] }}<br>
+              {{ data['applicant-individual-forename-2'] }} {{ data['applicant-individual-surname-2'] }}<br>
+              {{ data['applicant-company-name'] }}
+          </td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter">19 December 2019</td>
+          {% endif %}
+
+          <tr class="govuk-table_row" id="">
+          <td class="govuk-table__cell">JT/123/TR1</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter">LP12345</td>
+          <td class="govuk-table__cell">John Smith<br> Jane Smith</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter"><p>12 December 2019</p></td>
+
+
+
+          </tbody>
+
+      </table>
+      </div>
+      <div class="govuk-grid-column-one-quarter" style="display: flex; align-items: center;">
+
+      <br>
+      {{ govukButton({
+        text: "Delete draft",
+        classes: "govuk-button--warning"
+      }) }}
+
+      <a href="saved-applications" style="padding-bottom: 20px; padding-left: 20px;">Cancel</a>
+    </div>
+
+</form>
+
+<div class="govuk-grid-column-full"
+
+<hr class="govuk-!-margin-top-9" style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
+<br>
+<p class="govuk-body-s"> The following links open in a new window
+<br>
+<br>
+<a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
+
+</div>
+{% endblock %}
