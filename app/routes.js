@@ -119,6 +119,22 @@ if (transferorRep === 'conveyancer') {
 })
 
 
+router.post('/transactions/discharge/method-answer', function (req, res) {
+  // Get the answer from session data
+  // The name between the quotes is the same as the 'name' attribute on the input elements
+  // However in JavaScript we can't use hyphens in variable names
+
+                                            // Name of input
+  let dischargeMethod = req.session.data['discharge-method']
+                            // Value of input
+  if (dischargeMethod === 'form') {
+    res.redirect('/transactions/discharge/discharge-upload')
+  } else {
+    res.redirect('/transactions/tasks')
+  }
+})
+
+
 router.get('/docs/examples/pass-data/vehicle-registration-car1', function (req, res) {
 	req.session.data = {
   "vehicle-registration": "test-plate",
@@ -155,14 +171,6 @@ router.get('/docs/examples/pass-data/task-list', function (req, res) {
   "add-applicant": "individual",
   "applicant-individual-forename": "John",
   "applicant-individual-surname": "Smith",
-  "applicant-company-name": "",
-  "applicant-company-number": "",
-  "applicant-overseas-name": [
-    "",
-    ""
-  ],
-  "applicant-overseas-number": "",
-  "applicant-overseas-country": "updated",
   "applicant-individual-forename-2": "Jane",
   "applicant-individual-surname-2": "Smith",
   "applicant-company-name-2": "",
@@ -234,6 +242,10 @@ router.post('/transactions/transfer/BFPOAddress', function (req, res) {
     res.redirect('transfereeAddressList')
 })
 
+router.post('/transactions/discharge/discharge-attached', function (req, res) {
+  req.session.data['dischargeAttached'] = 'true';
+    res.redirect('/../transactions/tasks')
+})
 
 
 
