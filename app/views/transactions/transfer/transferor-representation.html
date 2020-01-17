@@ -74,7 +74,7 @@
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell">Private individual</td>
                 <td class="govuk-table__cell">{{ data['transferor-individual-forename-2']}} {{ data['transferor-individual-surname-2']}}</td>
-                <td class="govuk-table__cell">{{ data['tranferorRepAdd']}}</td>
+                <td class="govuk-table__cell">{% if data['transferorrep'] %} UK Conveyancers Ltd {% endif %}</td>
                 <td class="govuk-table__cell govuk-link"><a href="transferor-representationAdd">Add representation</td>
                 </tr>
               {% endif %}
