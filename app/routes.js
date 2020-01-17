@@ -112,7 +112,7 @@ router.post('/transactions/transfer/transferor-representation-answer', function 
 
 let transferorRep = req.session.data['transferorRepresentation']
 
-if (transferorRep === 'conveyancer') {
+if (transferorRep === 'thisConveyancer') {
   res.redirect('/transactions/transfer/transferor-representation')
 }
 
