@@ -1,4 +1,5 @@
-{% extends "layout_unbranded.html" %}
+{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
+{%- set assetPath = '/govuk/assets' -%}
 
 {% extends "govuk/template.njk" %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
@@ -9,8 +10,6 @@
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 {% from "govuk/components/table/macro.njk" import govukTable %}
-{% from "govuk/components/panel/macro.njk" import govukPanel %}
-
 
 
 
@@ -48,67 +47,47 @@
     </div>
 
 <div class="govuk-grid-column-full">
-    {{ govukPanel({
-    titleText: "Application complete",
-    html: "Your HM Land Registry reference number:<br><strong>HDJ2123F</strong>"
-    }) }}
-    <br>
+    <span class="govuk-caption-l">Transfer for value (TR1)</span>
+    <h1 class="govuk-heading-l">Add transferor representation</h1>
+    <p class="govuk-body-m">Select 'Add representation' for each transferor.</p>
+    <h2 class="govuk-heading-m">Transferor representation added</h2>
 
-    <h2 class="govuk-heading-l">Application details</h2>
+    <form method="post" action="/transactions/transfer/transferor-representation-confirmed">
     <table class="govuk-table">
-      <tbody class="govuk-table__head">
+      <thead class="govuk-table__head">
         <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Your reference</th>
-          <td scope="col" class="govuk-table__cell">{{ data['reference'] }}</td>
+          <th scope="col" class="govuk-table__header govuk-!-width-one-fifth">Transferor type</th>
+          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Full name</th>
+          <th scope="col" class="govuk-table__header govuk-!-width-one-third">Represented by</th>
+          <th scope="col" class="govuk-table__header ">Options</th>
         </tr>
-        <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Application type</th>
-          <td scope="col" class="govuk-table__cell">Update an existing title (Document registration)</td>
-        </tr>
-      </tbody>
-    </table>
+      </thead>
 
-    <table class="govuk-table">
-      <h2 class="govuk-heading-l">Priority details</h2>
       <tbody class="govuk-table__body">
             <tr class="govuk-table__row">
-              <th scope="row" class="govuk-table__header govuk-!-width-one-quarter">Priority date</th>
-              <td class="govuk-table__cell">21 January 2020</td>
-            </tr>
+              <td class="govuk-table__cell">Private individual</td>
+              <td class="govuk-table__cell">{{ data['transferor-individual-forename']}} {{ data['transferor-individual-surname']}}</td>
+              <td class="govuk-table__cell">UK Conveyancers Ltd</td>
+              <td class="govuk-table__cell govuk-link"><a href="transferor-representationAdd">Change</td>
+              </tr>
+              {% if data['transferor-individual-forename-2'] %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">Private individual</td>
+                <td class="govuk-table__cell">{{ data['transferor-individual-forename-2']}} {{ data['transferor-individual-surname-2']}}</td>
+                <td class="govuk-table__cell">UK Conveyancers Ltd</td>
+                <td class="govuk-table__cell govuk-link"><a href="transferor-representationAdd">Change</td>
+                </tr>
+              {% endif %}
 
-            <tr class="govuk-table__row">
-              <th scope="row" class="govuk-table__header govuk-!-width-one-quarter">Priority time</th>
-              <td class="govuk-table__cell">09:15</td>
-            </tr>
       </tbody>
     </table>
 
-    <table class="govuk-table">
-    <h3 class="govuk-heading-m">Your contact email for this application </h3>
-    <tbody class="govuk-table__body">
-          <tr class="govuk-table__row">
-            <th scope="row" class="govuk-table__header govuk-!-width-one-quarter">Email address</th>
-            <td class="govuk-table__cell">me@ukconveyancers.co.uk</td>
-          </tr>
-    </tbody>
-    </table>
 
+{{ govukButton({
+  text: "Continue"
+}) }}
 
-    <h3 class="govuk-heading-m">Next steps</h3>
-  <p class="govuk-body">  <span class="govuk-caption-m"> You can print this screen for your records.</span>
-    <br>
-    <a class="govuk-link">Download completed AP1 (PDF)</a>
-    <br><br>
-    <a class="govuk-link" href="/setup/app-start">Start a new application</a>
-    <br><br>
-    <a class="govuk-link">Go to portal homepage</a> if you need to continue using other HM Land Registry services.</p>
-
-
-
-
-<script>
-
-</script>
+</form>
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 <br>
@@ -116,13 +95,11 @@
 <br>
 <br>
 <a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
-<br>
-<a href="/prototype-admin/clear-data">Clear data</a>
+
+</div>
 
 
 {% endblock %}
-
-
 
 
 {% block footer %}
