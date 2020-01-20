@@ -2,7 +2,7 @@
 {% extends "layout_unbranded.html" %}
 
 {% block pageTitle %}
-  Clear data? - GOV.UK Prototype Kit
+  Delete application
 {% endblock %}
 
 {% block beforeContent %}
@@ -34,10 +34,12 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds govuk-!-margin-top-5">
       <h1 class="govuk-heading-l">
-        Are you sure you want to delete this draft?
+        Are you sure you want to delete this saved application?
       </h1>
+    </div>
+      <div class="govuk-grid-column-full govuk-!-margin-top-5">
     <h2 class="govuk-body-l">
-      This will clear delete the following draft application:</h2>
+      Selecting 'Delete' will remove all the information you have entered.</h2>
       </div>
       <div class="govuk-grid-column-full">
       <table class="govuk-table">
@@ -52,7 +54,7 @@
 
 
         <tbody class="govuk-table_body">
-          {% if data['reference'] %}
+          <!-- {% if data['reference'] %}
           <tr class="govuk-table_row" id="">
           <td class="govuk-table__cell">{{ data['reference'] }}</td>
           <td class="govuk-table__cell govuk-!-width-one-quarter">{{ data['title'] }}</td>
@@ -62,7 +64,7 @@
               {{ data['applicant-company-name'] }}
           </td>
           <td class="govuk-table__cell govuk-!-width-one-quarter">19 December 2019</td>
-          {% endif %}
+          {% endif %} -->
 
           <tr class="govuk-table_row" id="">
           <td class="govuk-table__cell">JT/123/TR1</td>
@@ -80,7 +82,8 @@
 
       <br>
       {{ govukButton({
-        text: "Delete draft",
+        text: "Delete",
+        href: "saved-applications",
         classes: "govuk-button--warning"
       }) }}
 
