@@ -57,13 +57,13 @@
         <form method="post" action="/transactions/discharge/method-answer">
         <div class="govuk-form-group">
         <fieldset class="govuk-fieldset">
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+
                   <span class="govuk-caption-l">Discharge of mortgage</span>
             <h1 class="govuk-fieldset__heading">
               How will the discharge be sent?
             </h1>
           </legend>
-          <br>
+
           <div class="govuk-radios">
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="discharge-method-1" name="discharge-method" type="radio" value="direct">
@@ -86,9 +86,11 @@
             </div>
           </fieldset>
           <br>
+
           <div class="govuk-inset-text">
               If you select 'I don't know', your application will be reserved for 3 weeks.
           </div>
+
 
   {{ govukButton({
   classes: "",
@@ -96,6 +98,7 @@
   }) }}
     </div>
   </form>
+
 
 </main>
 
