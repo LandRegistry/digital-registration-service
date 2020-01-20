@@ -1,0 +1,218 @@
+{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
+{%- set assetPath = '/govuk/assets' -%}
+
+{% extends "govuk/template.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+
+
+{% block headIcons %}
+  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
+  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
+{% endblock %}
+
+{% block head %}
+  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full" id="headerdiv">
+    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
+    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Apply to update or create a registered title</a></p>
+    <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
+
+
+    <div class="govuk-phase-banner govuk-!-margin-bottom-5">
+        <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
+        <span class="govuk-phase-banner__text">
+        This is a prototype and not a real service.
+        </span></p>
+    </div>
+    </div>
+
+
+
+
+      <div class="govuk-grid-column-full">
+          <h1 class="govuk-heading-l">Add transferee</h1>
+
+          <p class="govuk-body">Select the type of transferee and enter their name. Names entered here must match those in supporting documents.</p>
+
+
+            {{ govukInsetText({
+            text: "Names entered here must match those in supporting documents. If the names don’t match, you must attach evidence of a name change."
+          }) }}
+
+          <form method="get" action="transferee-list" novalidate>
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset" aria-describedby="add-transferee-conditional-hint">
+                <h2 class="govuk-heading-s">Select transferee type</h2>
+                <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="add-transferee-conditional" name="add-transferee" type="radio" value="individual" data-aria-controls="conditional-add-transferee-conditional">
+                    <label class="govuk-label govuk-radios__label" for="add-transferee-conditional">
+                      Private individual
+                    </label>
+                  </div>
+
+                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-add-transferee-conditional">
+                    <div class="govuk-form-group">
+                      <span class="govuk-hint">Name must be exactly as it appears on documents lodged with this application</span>
+                      <label class="govuk-label" for="add-transferee-individual-forename-2">
+                        Forename(s)
+                      </label>
+                      <input class="govuk-input govuk-!-width-one-third" id="add-transferee-individual-forename-2" name="transferee-individual-forename-2" value="" type="forename" spellcheck="false">
+                    </div>
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="add-transferee-individual-surname-2">
+                        Surname
+                      </label>
+                      <input class="govuk-input govuk-!-width-one-third" id="add-transferee-individual-surname" name="transferee-individual-surname-2" value="" type="surname" spellcheck="false">
+                    </div>
+
+                  </div>
+
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="add-transferee-conditional-2" name="add-transferee" type="radio" value="Company" data-aria-controls="conditional-add-transferee-conditional-2">
+                    <label class="govuk-label govuk-radios__label" for="add-transferee-conditional-2">
+                      UK Company or LLP
+                    </label>
+                  </div>
+
+                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-add-transferee-conditional-2">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="add-transferee-company-name">
+                        Company name
+                      </label>
+                        <span class="govuk-hint">Full name registered at Companies House</span>
+                        <input class="govuk-input govuk-!-width-one-third" id="add-transferee-company-name" name="transferee-company-name" value="" type="companyname" spellcheck="false">
+                    </div>
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="add-transferee-company-number">
+                        Company number
+                      </label>
+                      <span class="govuk-hint">Companies House registration number, including any prefix</span>
+                        <input class="govuk-input govuk-!-width-one-third" id="add-transferee-company-number" name="transferee-company-number" value="" type="companynumber" spellcheck="false">
+                    </div>
+
+                  </div>
+
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="add-transferee-conditional-3" name="add-transferee" type="radio" value="Company" data-aria-controls="conditional-add-transferee-conditional-3">
+                    <label class="govuk-label govuk-radios__label" for="add-transferee-conditional-3">
+                      Overseas company
+                    </label>
+                  </div>
+
+                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-add-transferee-conditional-3">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="add-transferee-overseas-name">
+                        Company name
+                      </label>
+                        <span class="govuk-hint">Company name as incorporated in its state of origin</span>
+                      <input class="govuk-input govuk-!-width-one-third" id="add-transferee-overseas-name" name="transferee-overseas-name" type="text" spellcheck="false">
+                    </div>
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="add-transferee-company-number">
+                        UK company number (optional)
+                      </label>
+                      <span class="govuk-hint">Number issued, if registered at Companies House, eg FC023966</span>
+                      <input class="govuk-input govuk-!-width-one-third" id="add-transferee-overseas-number" name="transferee-overseas-number" type="text" spellcheck="false">
+                    </div>
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="add-transferee-company-country">
+                        Territory of incorporation
+                      </label>
+                      <span class="govuk-hint">Territory or country where the company was first incorporated, eg ‘France’ or ‘Manitoba, Canada’</span>
+
+                        <select class="govuk-select" id="add-transferee-overseas-country" name="transferee-overseas-country" type="text" spellcheck="false">
+                          <option value="published">Recently published</option>
+                          <option value="updated" selected>Recently updated</option>
+                          <option value="views">Most views</option>
+                          <option value="comments">Most comments</option>
+                        </select>
+
+                    </div>
+                    </div>
+
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="add-transferee-conditional-4" name="add-transferee" type="radio" value="Other" data-aria-controls="conditional-add-transferee-conditional-4">
+                      <label class="govuk-label govuk-radios__label" for="add-transferee-conditional-4">
+                        Other organisation like charity, council, government department
+                      </label>
+                    </div>
+
+                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-add-transferee-conditional-4">
+                      <div class="govuk-form-group">
+                        <label class="govuk-label" for="add-transferee-other-name">
+                          Name of organisation
+                        </label>
+                        <input class="govuk-input govuk-!-width-one-third" id="add-transferee-overseas-name" name="transferee-overseas-name" type="text" spellcheck="false">
+                      </div>
+
+                      </div>
+
+                  </div>
+                </fieldset>
+                </div>
+
+
+
+
+  {{ govukButton({
+  classes: "govuk-!-margin-top-5",
+  text: "Continue"
+  }) }}
+
+</form>
+
+<hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
+<br>
+<p class="govuk-body-s"> The following links open in a new window
+<br>
+<br>
+<a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
+
+</div>
+
+<script type="application/json" id="reference-form-validation">
+ {
+   "reference": {
+     "presence": {
+       "message": "^Enter your reference for this application"
+     },
+     "length": {
+       "minimum": 1,
+       "maximum": 25,
+       "message": "^Your reference must be 25 characters or less"
+     }
+   }
+ }
+</script>
+
+
+
+{% endblock %}
+
+
+{% block footer %}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}

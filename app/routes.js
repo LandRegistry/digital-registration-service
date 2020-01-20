@@ -60,10 +60,10 @@ router.post('/transactions/transfer/transferee-applicants-answer', function (req
   // The name between the quotes is the same as the 'name' attribute on the input elements
   // However in JavaScript we can't use hyphens in variable names
 
-  let applicanttransfereecheckbox = req.session.data['applicant-transferee']
+  let applicanttransfereecheckbox = req.session.data['applicant-none-transferee']
 
   if (applicanttransfereecheckbox === 'none') {
-    res.redirect('/transactions/transfer/transferees-applicants')
+    res.redirect('/transactions/transfer/add-transferee')
   } else {
     res.redirect('/transactions/transfer/transferee-list')
   }
@@ -171,8 +171,8 @@ router.get('/docs/examples/pass-data/task-list', function (req, res) {
   "add-applicant": "individual",
   "applicant-individual-forename": "John",
   "applicant-individual-surname": "Smith",
-  "applicant-individual-forename-2": "Jane",
-  "applicant-individual-surname-2": "Smith",
+  "applicant2-individual-forename-2": "Jane",
+  "applicant2-individual-surname-2": "Smith",
   "applicant-company-name-2": "",
   "applicant-company-number-2": ""
 }

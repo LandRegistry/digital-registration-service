@@ -250,6 +250,27 @@
         <td class="govuk-table__cell" >UK Conveyancers Ltd</td>
         </tr>
         {% endif %}
+
+        {% if data['transferee-select'] === 'no' and data['transferee-individual-forename'] %}
+        <tr class="govuk-table_row" id="hidePI">
+        <td class="govuk-table__cell">Private individual</td>
+        <td class="govuk-table__cell govuk-!-width-one-third">
+          {{ data['transferee-individual-forename'] }} {{ data['transferee-individual-surname'] }}
+         </td>
+        <td class="govuk-table__cell">UK Conveyancers Ltd</td>
+        </tr>
+        {% endif %}
+
+        {% if data['transferee-select'] === 'no' and data['transferee-individual-forename-2'] %}
+        <tr class="govuk-table_row" id="hidePI">
+        <td class="govuk-table__cell">Private individual</td>
+        <td class="govuk-table__cell govuk-!-width-one-third">
+          {{ data['transferee-individual-forename-2'] }} {{ data['transferee-individual-surname-2'] }}
+         </td>
+        <td class="govuk-table__cell govuk-!-width-one-quarter">UK Conveyancers Ltd</td>
+
+        {% endif %}
+
   </tbody>
 </table>
 

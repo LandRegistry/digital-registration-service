@@ -89,6 +89,18 @@
      </tr>
      {% endif %}
 
+     {% if data['transferee-select'] === 'yes' and data['applicant-individual-forename-2'] %}
+     <tr class="govuk-table_row" id="hidePI">
+     <td class="govuk-table__cell">Private individual</td>
+     <td class="govuk-table__cell govuk-!-width-one-third">
+        {{ data['applicant-individual-forename-2'] }} {{ data['applicant-individual-surname-2'] }}
+      </td>
+     <td class="govuk-table__cell">N/a</td>
+     <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+     <td class="govuk-table__cell govuk-link"><a href="add-applicants">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
+     </tr>
+     {% endif %}
+
      {% if data['transferee-select'] === 'yes' and data['applicant-individual-forename-3'] %}
      <tr class="govuk-table_row" id="hidePI">
      <td class="govuk-table__cell">Private individual</td>
@@ -185,6 +197,8 @@
           <td class="govuk-table__cell govuk-link"><a href="add-applicants">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
           </tr>
           {% endif %}
+
+<!--- 'No' --->
 
           {% if data['transferee-select'] === 'no' and data['applicant-individual-transferee1'] %}
           <tr class="govuk-table_row" id="hidePI">
@@ -307,11 +321,39 @@
           </tr>
           {% endif %}
 
+          {% if data['transferee-select'] === 'no' and data['transferee-individual-forename'] %}
+          <tr class="govuk-table_row" id="hidePI">
+          <td class="govuk-table__cell">Private individual</td>
+          <td class="govuk-table__cell govuk-!-width-one-third">
+            {{ data['transferee-individual-forename'] }} {{ data['transferee-individual-surname'] }}
+           </td>
+          <td class="govuk-table__cell">N/a</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+          <td class="govuk-table__cell govuk-link"><a href="add-applicants">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
+          </tr>
+          {% endif %}
+
+          {% if data['transferee-select'] === 'no' and data['transferee-individual-forename-2'] %}
+          <tr class="govuk-table_row" id="hidePI">
+          <td class="govuk-table__cell">Private individual</td>
+          <td class="govuk-table__cell govuk-!-width-one-third">
+            {{ data['transferee-individual-forename-2'] }} {{ data['transferee-individual-surname-2'] }}
+           </td>
+          <td class="govuk-table__cell">N/a</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+          <td class="govuk-table__cell govuk-link"><a href="add-applicants">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
+          </tr>
+          {% endif %}
+
+
+
+
+
 
 
      </tbody>
     </table>
-    <p class="govuk-link"> Add another </p>
+    <a class="govuk-link" href="add-transferee-2"> Add another </a><br><br>
 
 {{ govukButton({
   text: "Continue",
