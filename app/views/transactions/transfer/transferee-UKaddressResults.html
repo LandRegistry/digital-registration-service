@@ -92,8 +92,9 @@
       classes: "govuk-!-width-one-half"
     }) }}
 
+    {% if data['transferee-select'] === 'yes' and data['applicant2-individual-forename-2'] %}
     <p class="govuk-body">Add this address to the following transferees: (optional)</p>
-    {% if data['applicant2-individual-forename-2'] %}
+
     <div class="govuk-checkboxes">
         <div class="govuk-checkboxes__item">
           <input class="govuk-checkboxes__input" id="applicant2-address1" name="applicant2address" type="checkbox" value="true">

@@ -57,18 +57,18 @@
     <h2 class="govuk-heading-s">Tell us who's representing:</h2>
     <p class="govuk-body-m">{{ data['transferor-individual-forename']}} {{ data['transferor-individual-surname']}}</p>
 
-    <form class="" action="/transactions/transfer/transferor-representation-answer">
+    <!-- <form class="" action="/transactions/transfer/transferor-representation-answer"> -->
     <div class="govuk-form-group">
 
       <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
 
         <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="transferorRepresentation-conditional" name="transferorrep" type="radio" value="thisConveyancer" data-aria-controls="conditional-transferorRepresentation-conditional">
+          <input class="govuk-radios__input" id="transferorRepresentation-conditional" name="transferorRepAnswer" type="radio" value="thisConveyancer">
           <label class="govuk-label govuk-radios__label" for="transferorRepresentation-conditional">UK Conveyancers LLP</label>
         </div>
 
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="transferorRepresentation-conditional-2" name="transferorrep" type="radio" value="otherConveyancer" data-aria-controls="conditional-transferorRepresentation-conditional-2">
+        <input class="govuk-radios__input" id="transferorRepresentation-conditional-2" name="transferorRepAnswer" type="radio" value="otherConveyancer">
         <label class="govuk-label govuk-radios__label" for="transferorRepresentation-conditional-2">
           Other conveyancer
         </label>
@@ -91,8 +91,8 @@
           </div>
 
         <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="transferorRepresentation-conditional-3" name="transferorrep" type="radio" value="noConveyancer" data-aria-controls="conditional-transferorRepresentation-conditional">
-          <label class="govuk-label govuk-radios__label" for="transferorRepresentation-conditional">Not represented by a conveyancer</label>
+          <input class="govuk-radios__input" id="transferorRepresentation-conditional-3" name="transferorRepAnswer" type="radio" value="noConveyancer" >
+          <label class="govuk-label govuk-radios__label" for="transferorRepresentation-conditional-3">Not represented by a conveyancer</label>
         </div>
       </div>
     </div>
@@ -125,9 +125,9 @@
       {{ govukButton({
         text: "Continue",
         classes: "govuk-!-margin-top-5",
-        href: "transferor-representation"
+        href: "transferor-representation-added"
       }) }}
-</form>
+<!-- </form> -->
       </div>
 
 

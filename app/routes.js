@@ -104,19 +104,20 @@ router.post('/transactions/transfer/transferee-addresstype-answer', function (re
 
 
 
-
-router.post('/transactions/transfer/transferor-representation-answer', function (req, res) {
-  // Get the answer from session data
-  // The name between the quotes is the same as the 'name' attribute on the input elements
-  // However in JavaScript we can't use hyphens in variable names
-
-let transferorRep = req.session.data['transferorRepresentation']
-
-if (transferorRep === 'thisConveyancer') {
-  res.redirect('/transactions/transfer/transferor-representation')
-}
-
-})
+// 
+// router.post('/transactions/transfer/transferor-representation-answer', function (req, res) {
+//   // Get the answer from session data
+//   // The name between the quotes is the same as the 'name' attribute on the input elements
+//   // However in JavaScript we can't use hyphens in variable names
+//
+//
+// if (transferorrep === 'noConveyancer') {
+//   res.redirect('/transactions/transfer/transferor-verify')
+// } else {
+//   res.redirect('/transactions/transfer/transferor-representation')
+// }
+//
+// })
 
 
 router.post('/transactions/discharge/method-answer', function (req, res) {
