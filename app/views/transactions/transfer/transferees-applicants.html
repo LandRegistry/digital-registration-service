@@ -47,7 +47,7 @@
     </div>
 
 <div class="govuk-grid-column-full">
-    <span class="govuk-caption-l">[Transaction name]</span>
+    <span class="govuk-caption-l">Transfer for value (TR1)</span>
     <h1 class="govuk-heading-l">Which applicants are transferees?</h1>
     <p class="govuk-body">Select all that apply, or none.</p>
 
@@ -62,6 +62,16 @@
             <input class="govuk-checkboxes__input" id="" name="applicant-individual-transferee1" type="checkbox" value="applicant1-transferee-1">
             <label class="govuk-label govuk-checkboxes__label" for="applicant-individual-transferee">
               {{ data['applicant-individual-forename'] }} {{ data['applicant-individual-surname'] }}
+            </label>
+          </div>
+    {% endif %}
+
+    <div class="govuk-checkboxes">
+    {% if data['applicant2-individual-forename-2'] %}
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="" name="applicant-individual-transferee2" type="checkbox" value="applicant1-transferee-1">
+            <label class="govuk-label govuk-checkboxes__label" for="applicant-individual-transferee">
+              {{ data['applicant2-individual-forename-2'] }} {{ data['applicant2-individual-surname-2'] }}
             </label>
           </div>
     {% endif %}
