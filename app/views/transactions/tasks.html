@@ -46,6 +46,7 @@
     </div>
 
 <div class="govuk-grid-column-full">
+  <span class="govuk-caption-l">Apply to update or create a registered title</span>
     <h1 class="govuk-heading-l">Complete your application</h1>
     <p class="govuk-body-m">Provide all details and the documents you want to attach.</p>
 
@@ -70,15 +71,34 @@
             </tr>
       </tbody>
     </table>
+</div>
 
-    <h2 class="govuk-heading-m govuk-!-padding-top-5">1.Transfer for value (TR1)</h2>
+  <h2 class="govuk-heading-m govuk-!-padding-top-5">1. Discharge of mortgage</h2>
+
+  <div class="govuk-grid-column-full" style="margin-left: 40px; width: 97%;">
+
+    <table class="govuk-table govuk-!-width-two-thirds">
+
+      <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell"><a href="discharge/discharge-method" class="govuk-link">Add discharge details</a></td>
+            <td class="govuk-table__cell">
+              {% if data['dischargeAttached'] %}
+                    <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed" style="margin-left: 175px;">Completed</strong>
+              {% endif %}
+          </td>
+      </tbody>
+    </table>
+  </div>
+
+    <h2 class="govuk-heading-m govuk-!-padding-top-5">2.Transfer for value (TR1)</h2>
     </div>
     <div class="govuk-grid-column-full" style="margin-left: 25px; width: 97%;">
 
     <table class="govuk-table govuk-!-width-two-thirds">
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header">1.1 Transferee details</th>
+          <th scope="col" class="govuk-table__header">2.1 Transferee details</th>
           <td class="govuk-table__cell"></td>
         </tr>
 
@@ -103,14 +123,14 @@
             <tr class="govuk-table__row">
               <td class="govuk-table__cell govuk-link"><a href="transfer/transfereeAddressList">Add addresses for service</a></td>
               <td class="govuk-table__cell">
-                {% if data['transfereeAddressType'] === 'UK-postal' %}
+                {% if data['transfereeAddressType'] %}
                       <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
                       {% endif %}
             </td>
             </tr>
 
             <tr class="govuk-table__row">
-              <th scope="row" class="govuk-table__header">1.2 Transferor details</th>
+              <th scope="row" class="govuk-table__header">2.2 Transferor details</th>
               <td class="govuk-table__cell"></td>
             </tr>
             <tr class="govuk-table__row">
@@ -128,7 +148,7 @@
             </tr>
 
             <tr class="govuk-table__row">
-              <th scope="row" class="govuk-table__header">1.3 Supporting documents</th>
+              <th scope="row" class="govuk-table__header">2.3 Supporting documents</th>
               <td class="govuk-table__cell"></td>
             </tr>
             <tr class="govuk-table__row">
@@ -144,7 +164,7 @@
 
 
 
-    <h2 class="govuk-heading-m govuk-!-padding-top-5">2. Death of a joint proprietor</h2>
+    <!-- <h2 class="govuk-heading-m govuk-!-padding-top-5">2. Death of a joint proprietor</h2>
     </div>
     <div class="govuk-grid-column-full" style="margin-left: 10px; width: 100%;">
 
@@ -161,7 +181,7 @@
             </tr>
       </tbody>
     </table>
-  </div>
+  </div> -->
 
     {{ govukButton({
         text: "Review application",
@@ -170,10 +190,10 @@
       }) }}
 
 
-        {{ govukButton({
+      {{ govukButton({
         text: "Save application and exit",
         classes: "secondary-button-save govuk-!-margin-top-9",
-        href: "/save-resume/saved-applications"
+        href: "/../save-resume/save-confirmation"
       }) }}
 
 

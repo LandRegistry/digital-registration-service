@@ -60,10 +60,10 @@ router.post('/transactions/transfer/transferee-applicants-answer', function (req
   // The name between the quotes is the same as the 'name' attribute on the input elements
   // However in JavaScript we can't use hyphens in variable names
 
-  let applicanttransfereecheckbox = req.session.data['applicant-transferee']
+  let applicanttransfereecheckbox = req.session.data['applicant-none-transferee']
 
   if (applicanttransfereecheckbox === 'none') {
-    res.redirect('/transactions/transfer/transferees-applicants')
+    res.redirect('/transactions/transfer/add-transferee')
   } else {
     res.redirect('/transactions/transfer/transferee-list')
   }
@@ -78,26 +78,61 @@ router.post('/transactions/transfer/transferee-addresstype-answer', function (re
 
   if (transfereeAddress === 'UK-postal') {
     res.redirect('/transactions/transfer/transferee-UKaddress')
-
-} else if (transfereeAddress === 'Overseas-postal') {
+}
+  if (transfereeAddress === 'Overseas-postal') {
       res.redirect('/transactions/transfer/transferee-overseasAddress')
     }
+
+  if (transfereeAddress === 'PO-box') {
+      res.redirect('/transactions/transfer/transferee-POboxAddress')
+    }
+
+    if (transfereeAddress === 'email') {
+        res.redirect('/transactions/transfer/transferee-emailAddress')
+      }
+
+      if (transfereeAddress === 'DX') {
+          res.redirect('/transactions/transfer/transferee-dxAddress')
+        }
+
+        if (transfereeAddress === 'BFPO') {
+            res.redirect('/transactions/transfer/transferee-BFPOAddress')
+          }
 
 
 })
 
 
-router.post('/transactions/transfer/transferor-representation-answer', function (req, res) {
+
+// 
+// router.post('/transactions/transfer/transferor-representation-answer', function (req, res) {
+//   // Get the answer from session data
+//   // The name between the quotes is the same as the 'name' attribute on the input elements
+//   // However in JavaScript we can't use hyphens in variable names
+//
+//
+// if (transferorrep === 'noConveyancer') {
+//   res.redirect('/transactions/transfer/transferor-verify')
+// } else {
+//   res.redirect('/transactions/transfer/transferor-representation')
+// }
+//
+// })
+
+
+router.post('/transactions/discharge/method-answer', function (req, res) {
   // Get the answer from session data
   // The name between the quotes is the same as the 'name' attribute on the input elements
   // However in JavaScript we can't use hyphens in variable names
 
-let transferorRep = req.session.data['transferorRepresentation']
-
-if (transferorRep === 'conveyancer') {
-  res.redirect('/transactions/transfer/transferor-representation')
-}
-
+                                            // Name of input
+  let dischargeMethod = req.session.data['discharge-method']
+  req.session.data['dischargeAttached'] = 'true';
+  if (dischargeMethod === 'form') {
+    res.redirect('/transactions/discharge/discharge-upload')
+  } else {
+    res.redirect('/transactions/tasks')
+  }
 })
 
 
@@ -137,16 +172,8 @@ router.get('/docs/examples/pass-data/task-list', function (req, res) {
   "add-applicant": "individual",
   "applicant-individual-forename": "John",
   "applicant-individual-surname": "Smith",
-  "applicant-company-name": "",
-  "applicant-company-number": "",
-  "applicant-overseas-name": [
-    "",
-    ""
-  ],
-  "applicant-overseas-number": "",
-  "applicant-overseas-country": "updated",
-  "applicant-individual-forename-2": "Jane",
-  "applicant-individual-surname-2": "Smith",
+  "applicant2-individual-forename-2": "Jane",
+  "applicant2-individual-surname-2": "Smith",
   "applicant-company-name-2": "",
   "applicant-company-number-2": ""
 }
@@ -190,6 +217,40 @@ router.post('/transactions/transfer/documents/other-attached', function (req, re
   req.session.data['other_upload'] = 'true';
     res.redirect('document_prompts-1')
 })
+
+router.post('/transactions/transfer/overseasAddress', function (req, res) {
+    res.redirect('transfereeAddressList')
+})
+
+router.post('/transactions/transfer/UKAddress', function (req, res) {
+    res.redirect('transfereeAddressList')
+})
+
+
+router.post('/transactions/transfer/POboxAddress', function (req, res) {
+    res.redirect('transfereeAddressList')
+})
+
+router.post('/transactions/transfer/emailAddress', function (req, res) {
+    res.redirect('transfereeAddressList')
+})
+
+router.post('/transactions/transfer/DXAddress', function (req, res) {
+    res.redirect('transfereeAddressList')
+})
+
+router.post('/transactions/transfer/BFPOAddress', function (req, res) {
+    res.redirect('transfereeAddressList')
+})
+
+router.post('/transactions/discharge/discharge-attached', function (req, res) {
+  req.session.data['dischargeAttached'] = 'true';
+    res.redirect('/../transactions/tasks')
+})
+
+
+
+
 
 // router.post('/transactions/transfer/transferor-representation-answer', function (req, res) ) {
 //     req.session.data['tranferorRepAdd'] = 'UK Conveyancers LLP';

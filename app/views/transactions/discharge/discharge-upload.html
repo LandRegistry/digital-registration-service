@@ -3,7 +3,8 @@
 
 {% extends "govuk/template.njk" %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
-{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/tabs/macro.njk" import govukTabs %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
 
 
 {% block headIcons %}
@@ -39,61 +40,31 @@
     </div>
     </div>
 
-<div class="govuk-grid-column-full govuk-!-margin-top-7">
-  <span class="govuk-caption-l">Apply to update or create a registered title</span>
-  <h1 class="govuk-heading-l"> Select application type </h1>
-  <p> To start a new application, select one of the following options:
-   </p>
-  {{ govukRadios({
-    idPrefix: "where-do-you-live",
-    name: "where-do-you-live",
-    fieldset: {
-      legend: {
-        classes: "govuk-fieldset__legend--xl"
-      }
-    },
-    items: [
-      {
-        value: "Update an existing title (Document registration)",
-        text: "Update an existing title (Document registration)",
-        checked: true
-      },
-      {
-        value: "Lease extension (not yet available)",
-        text: "Lease extension (not yet available)",
-        disabled: true
-      },
-      {
-        value: "New lease (not yet available)",
-        text: "New lease (not yet available)",
-        disabled: true
-      },
-      {
-        value: "Transfer of part (not yet available)",
-        text: "Transfer of part (not yet available)",
-        disabled: true
-      }
-    ]
-  }) }}
+<form method="post" action="discharge-attached">
+
+<div class="govuk-grid-column-two-thirds govuk-!-margin-top-7">
+  <span class="govuk-caption-xl">Discharge of mortgage</span>
+  <h1 class="govuk-heading-l"> Attach and certify document </h1>
+  <p class="govuk-body">Files can be GIF, TIFF, JPG or PDF and must not exceed 20MB file size.</p>
+  <p class="govuk-body">Attach form DS1</p>
+
+  <a href="#" type="file" id="discharge" class="govuk-link--no-visited-state" onclick="fileupload()" style="cursor: pointer; text-decoration: none; font-size: 14px; color: black; border-style: solid;  border-width: 0.5px; padding: 5px; border-radius: 3px; position: absolute; ">Choose file</a>
+  <a  style="margin-left: 100px;" class="govuk-body" id="filename" for="discharge-upload"> No file chosen </a>
+
+</div>
 
 
-  {{ govukButton({
-    text: "Continue",
-    href: "enter-title"
-  }) }}
+<div class="govuk-grid-column-two-thirds govuk-!-margin-top-7">
+  <button type="submit" role="button" draggable="false" class="govuk-button" data-module="govuk-button">
+    Continue
+  </button>
+
+  <a class="govuk-link" href="/../transactions/tasks" style="margin-left: 20px;vertical-align: middle;">I'll do this later</a>
 
 
-  <h2 class="govuk-heading-m">When to use this service</h2>
-  <h3 class="govuk-heading-s">Update an existing title</h3>
-  <p class="govuk-body">Use this service for applications to update the whole of a registered title or for interests (other than a charge) affecting part of a registered title. This service is limited to applying for simple transactions like amendments, notices and restrictions.</p>
-
-  <p class="govuk-body">Don't use this service:</p>
-<ul class="govuk-list govuk-list--bullet">
-  <li>for transfers of part (TP1 and TP2) or assents of part (AS3)</li>
-  <li>to register a deed of variation where the deed attempts to (a) vary the length of a registered lease by increasing the term, or (b) add new land to the extent demised by a registered lease - see <a href="#"> Practice Guide 28</a> (link opens in a new window)</li>
-  <li>when the grant of a new lease takes effect as a surrender of an existing registered lease by operation of law</li>
-</ul>
-<p class="govuk-body">You can make these applications using the <a href="#"> Document registration service</a> (link opens in a new window).</p>
+</div>
+</form>
+<div class="govuk-grid-column-full"
 
 <hr class="govuk-!-margin-top-9" style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 <br>
@@ -103,6 +74,17 @@
 <a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
 
 </div>
+<script>
+  function fileupload() {
+
+  $(document).ready(function(){
+    $("a").click(function(){
+      $(document.getElementById('filename')).text("DS1.pdf");
+    });
+  });
+
+}
+</script>
 
 
 

@@ -49,99 +49,98 @@
 
 
       <div class="govuk-grid-column-full">
-        <span class="govuk-caption-l">Apply to update or create a registered title</span>
-          <h1 class="govuk-heading-l">Change applicant</h1>
+          <h1 class="govuk-heading-l">Add transferee</h1>
 
-          <p class="govuk-body">If you change an applicant's name or other information, you must reconfirm any representation or address for service details you have added.</p>
+          <p class="govuk-body">Select the type of transferee and enter their name. Names entered here must match those in supporting documents.</p>
 
 
             {{ govukInsetText({
             text: "Names entered here must match those in supporting documents. If the names don’t match, you must attach evidence of a name change."
           }) }}
 
-          <form method="get" action="applicants-list" novalidate>
+          <form method="get" action="transferee-list" novalidate>
             <div class="govuk-form-group">
-              <fieldset class="govuk-fieldset" aria-describedby="add-applicant-conditional-hint">
-
+              <fieldset class="govuk-fieldset" aria-describedby="add-transferee-conditional-hint">
+                <h2 class="govuk-heading-s">Select transferee type</h2>
                 <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
                   <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="add-applicant-conditional"  checked="true" name="add-applicant" type="radio" value="individual" data-aria-controls="conditional-add-applicant-conditional">
-                    <label class="govuk-label govuk-radios__label" for="add-applicant-conditional">
+                    <input class="govuk-radios__input" id="add-transferee-conditional" name="add-transferee" type="radio" value="individual" data-aria-controls="conditional-add-transferee-conditional">
+                    <label class="govuk-label govuk-radios__label" for="add-transferee-conditional">
                       Private individual
                     </label>
                   </div>
 
-                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-add-applicant-conditional">
+                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-add-transferee-conditional">
                     <div class="govuk-form-group">
                       <span class="govuk-hint">Name must be exactly as it appears on documents lodged with this application</span>
-                      <label class="govuk-label" for="add-applicant-individual-forename">
+                      <label class="govuk-label" for="add-transferee-individual-forename-2">
                         Forename(s)
                       </label>
-                      <input class="govuk-input govuk-!-width-one-third" id="add-applicant-individual-forename" value="{{ data['applicant-individual-forename'] }}" name="applicant-individual-forename" value="" type="forename" spellcheck="false">
+                      <input class="govuk-input govuk-!-width-one-third" id="add-transferee-individual-forename-2" name="transferee-individual-forename-2" value="" type="forename" spellcheck="false">
                     </div>
                     <div class="govuk-form-group">
-                      <label class="govuk-label" for="add-applicant-individual-surname">
+                      <label class="govuk-label" for="add-transferee-individual-surname-2">
                         Surname
                       </label>
-                      <input class="govuk-input govuk-!-width-one-third" id="add-applicant-individual-surname" value="{{ data['applicant-individual-surname'] }}" name="applicant-individual-surname" value="" type="surname" spellcheck="false">
+                      <input class="govuk-input govuk-!-width-one-third" id="add-transferee-individual-surname" name="transferee-individual-surname-2" value="" type="surname" spellcheck="false">
                     </div>
 
                   </div>
 
                   <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="add-applicant-conditional-2" name="add-applicant" type="radio" value="Company" data-aria-controls="conditional-add-applicant-conditional-2">
-                    <label class="govuk-label govuk-radios__label" for="add-applicant-conditional-2">
+                    <input class="govuk-radios__input" id="add-transferee-conditional-2" name="add-transferee" type="radio" value="Company" data-aria-controls="conditional-add-transferee-conditional-2">
+                    <label class="govuk-label govuk-radios__label" for="add-transferee-conditional-2">
                       UK Company or LLP
                     </label>
                   </div>
 
-                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-add-applicant-conditional-2">
+                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-add-transferee-conditional-2">
                     <div class="govuk-form-group">
-                      <label class="govuk-label" for="add-applicant-company-name">
+                      <label class="govuk-label" for="add-transferee-company-name">
                         Company name
                       </label>
                         <span class="govuk-hint">Full name registered at Companies House</span>
-                      <input class="govuk-input govuk-!-width-one-third" id="add-applicant-company-name" name="applicant-company-name" type="text" spellcheck="false">
+                        <input class="govuk-input govuk-!-width-one-third" id="add-transferee-company-name" name="transferee-company-name" value="" type="companyname" spellcheck="false">
                     </div>
                     <div class="govuk-form-group">
-                      <label class="govuk-label" for="add-applicant-company-number">
+                      <label class="govuk-label" for="add-transferee-company-number">
                         Company number
                       </label>
                       <span class="govuk-hint">Companies House registration number, including any prefix</span>
-                      <input class="govuk-input govuk-!-width-one-third" id="add-applicant-company-number" name="applicant-company-number" type="text" spellcheck="false">
+                        <input class="govuk-input govuk-!-width-one-third" id="add-transferee-company-number" name="transferee-company-number" value="" type="companynumber" spellcheck="false">
                     </div>
 
                   </div>
 
                   <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="add-applicant-conditional-3" name="add-applicant" type="radio" value="Company" data-aria-controls="conditional-add-applicant-conditional-3">
-                    <label class="govuk-label govuk-radios__label" for="add-applicant-conditional-3">
+                    <input class="govuk-radios__input" id="add-transferee-conditional-3" name="add-transferee" type="radio" value="Company" data-aria-controls="conditional-add-transferee-conditional-3">
+                    <label class="govuk-label govuk-radios__label" for="add-transferee-conditional-3">
                       Overseas company
                     </label>
                   </div>
 
-                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-add-applicant-conditional-3">
+                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-add-transferee-conditional-3">
                     <div class="govuk-form-group">
-                      <label class="govuk-label" for="add-applicant-overseas-name">
+                      <label class="govuk-label" for="add-transferee-overseas-name">
                         Company name
                       </label>
                         <span class="govuk-hint">Company name as incorporated in its state of origin</span>
-                      <input class="govuk-input govuk-!-width-one-third" id="add-applicant-overseas-name" name="applicant-overseas-name" type="text" spellcheck="false">
+                      <input class="govuk-input govuk-!-width-one-third" id="add-transferee-overseas-name" name="transferee-overseas-name" type="text" spellcheck="false">
                     </div>
                     <div class="govuk-form-group">
-                      <label class="govuk-label" for="add-applicant-company-number">
+                      <label class="govuk-label" for="add-transferee-company-number">
                         UK company number (optional)
                       </label>
                       <span class="govuk-hint">Number issued, if registered at Companies House, eg FC023966</span>
-                      <input class="govuk-input govuk-!-width-one-third" id="add-applicant-overseas-number" name="applicant-overseas-number" type="text" spellcheck="false">
+                      <input class="govuk-input govuk-!-width-one-third" id="add-transferee-overseas-number" name="transferee-overseas-number" type="text" spellcheck="false">
                     </div>
                     <div class="govuk-form-group">
-                      <label class="govuk-label" for="add-applicant-company-country">
+                      <label class="govuk-label" for="add-transferee-company-country">
                         Territory of incorporation
                       </label>
                       <span class="govuk-hint">Territory or country where the company was first incorporated, eg ‘France’ or ‘Manitoba, Canada’</span>
 
-                        <select class="govuk-select" id="add-applicant-overseas-country" name="applicant-overseas-country" type="text" spellcheck="false">
+                        <select class="govuk-select" id="add-transferee-overseas-country" name="transferee-overseas-country" type="text" spellcheck="false">
                           <option value="published">Recently published</option>
                           <option value="updated" selected>Recently updated</option>
                           <option value="views">Most views</option>
@@ -152,18 +151,18 @@
                     </div>
 
                     <div class="govuk-radios__item">
-                      <input class="govuk-radios__input" id="add-applicant-conditional-4" name="add-applicant" type="radio" value="Other" data-aria-controls="conditional-add-applicant-conditional-4">
-                      <label class="govuk-label govuk-radios__label" for="add-applicant-conditional-4">
+                      <input class="govuk-radios__input" id="add-transferee-conditional-4" name="add-transferee" type="radio" value="Other" data-aria-controls="conditional-add-transferee-conditional-4">
+                      <label class="govuk-label govuk-radios__label" for="add-transferee-conditional-4">
                         Other organisation like charity, council, government department
                       </label>
                     </div>
 
-                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-add-applicant-conditional-4">
+                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-add-transferee-conditional-4">
                       <div class="govuk-form-group">
-                        <label class="govuk-label" for="add-applicant-other-name">
+                        <label class="govuk-label" for="add-transferee-other-name">
                           Name of organisation
                         </label>
-                        <input class="govuk-input govuk-!-width-one-third" id="add-applicant-overseas-name" name="applicant-overseas-name" type="text" spellcheck="false">
+                        <input class="govuk-input govuk-!-width-one-third" id="add-transferee-overseas-name" name="transferee-overseas-name" type="text" spellcheck="false">
                       </div>
 
                       </div>

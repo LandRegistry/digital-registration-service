@@ -10,7 +10,6 @@
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 {% from "govuk/components/table/macro.njk" import govukTable %}
-{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
 
 
 
@@ -32,9 +31,10 @@
 
 {% block content %}
 <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full" id="headerdiv">
-      <img src="public/images/headerlogo.svg" alt="hmlrlogo">
-      <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
+  <div class="govuk-grid-column-full" id="headerdiv">
+    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
+    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Apply to update or create a registered title</a></p>
+    <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 
 
     <div class="govuk-phase-banner govuk-!-margin-bottom-5">
@@ -47,66 +47,44 @@
     </div>
 
 <div class="govuk-grid-column-full">
-    <span class="govuk-caption-l">[Transaction name]</span>
-    <h1 class="govuk-heading-l">Add address for service</h1>
-    <h2 class="govuk-heading-s">Address type</h2>
-    <p class="govuk-body">PO Box (postal address)</p>
+  <form method="post">
+    <span class="govuk-caption-l">Transfer for value (TR1)</span>
+    <h1 class="govuk-heading-l">Verify identity</h1>
+    <p class="govuk-body-m">When a party is not represented by a conveyancer, you must personally verify or provide evidence of their identity.</p>
+    <h2 class="govuk-heading-m">Declaration</h2>
+    <p>{{ data['transferor-individual-forename'] }} {{ data['transferor-individual-surname'] }} is not represented by a conveyancer.</P>
 
+    <h3 class="govuk-heading-m">Select the correct statement:</h3><br>
 
-  {% call govukFieldset({
-    legend: {
+    <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
 
-    }
-  }) %}
-
-    {{ govukInput({
-      label: {
-        html: 'PO Box number'
-      },
-      classes: "govuk-input--width-20",
-      hint: {
-     text: "For example, 'PO Box 1472'"
-   }
-    }) }}
-
-    {{ govukInput({
-      label: {
-        html: 'Town or city'
-      },
-      classes: "govuk-input--width-20"
-    }) }}
-
-    {{ govukInput({
-      label: {
-        html: 'Postcode'
-      },
-      classes: "govuk-input--width-20"
-    }) }}
-
-  {% endcall %}
-
-  <h3 class="govuk-heading-m">More actions</h3>
-
-  {{ govukInput({
-    label: {
-      html: 'Add c/o name (optional)'
-    },
-    classes: "govuk-input--width-20",
-    id: "CareOf",
-    hint: {
-      text: "If it's a 'care of' address, enter the addressee's name"
-    }
-  }) }}
-
-  <p class="govuk-body">Add this address to the following transferees: (optional)</p>
-  <p class="govuk-body">- No other transferees to select -</p>
-
-
+    <div class="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="verify-transferor-1" name="verify-transferor" type="radio" value="verified">
+        <label class="govuk-label govuk-radios__label" for="verify-transferor-1">
+          I am satisfied that sufficient steps have been taken to verify their identity and that they are the registered proprietor or have the right to be registered as the proprietor
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="verify-transferor-1" name="verify-transferor" type="radio" value="evidence">
+        <label class="govuk-label govuk-radios__label" for="verify-transferor-2">
+          I attach evidence of their identity with this application
+        </label>
+        <div class="govuk-inset-text">
+          See <a class="govuk-link" href="https://www.gov.uk/government/publications/evidence-of-identity-conveyancers"> Practice Guide 67</a> for information about providing proof of identity.
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
 
 {{ govukButton({
   text: "Continue",
-  href: "#"
+  href: "transferor-representation"
 }) }}
+
+</form>
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 <br>

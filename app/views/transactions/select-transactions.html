@@ -51,6 +51,8 @@
     <main class="govuk-main-wrapper " id="main-content" role="main">
     <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
+      <span class="govuk-caption-l">Apply to update or create a registered title</span>
+
   <h1 class="govuk-heading-l"> Select transactions </h1>
   <p class="govuk-body">Select the transaction you want to register in order of priority and enter the appropriate fee.
     <br>
@@ -115,6 +117,7 @@
           <option value="Defect in title s64(1) LRA 2002">Defect in title s64(1) LRA 2002</option>
           <option value="Determined boundary (DB)">Determined boundary (DB)</option>
           <option value="Disapplication of restriction (RX2)">Disapplication of restriction (RX2)</option>
+          <option value="Discharge (DS1)">Discharge of mortgage (DS1)</option>
           <option value="Disclaimer - notice">Disclaimer - notice</option>
           <option value="Disclaimer - notification">Disclaimer - notification</option>
           <option value="Extinguishment of rentcharge">Extinguishment of rentcharge</option>
@@ -169,7 +172,7 @@
       <div class="govuk-form-group">
         <label class="govuk-label" for="Price1">
            <br></label>
-        <input class="govuk-input" id="Price1" name="PriceInput1" value="{{ data['PriceInput1'] }}" type="text">
+        <input onkeyup = "javascript:this.value=Comma(this.value);" class="govuk-input" id="Price1" name="PriceInput1" value="{{ data['PriceInput1'] }}" type="text">
       </div>
     </div>
 
@@ -179,7 +182,7 @@
         <label class="govuk-label" for="Fee1">
          <br>
         </label>
-        <input class="govuk-input" id="Fee1" name="FeeInput1" value="{{ data['FeeInput1'] }}" type="text">
+        <input class="govuk-input  transaction-fee-field" id="Fee1" name="FeeInput1" value="{{ data['FeeInput1'] }}" type="text">
       </div>
     </div>
 
@@ -234,6 +237,7 @@
             <option value="Defect in title s64(1) LRA 2002">Defect in title s64(1) LRA 2002</option>
             <option value="Determined boundary (DB)">Determined boundary (DB)</option>
             <option value="Disapplication of restriction (RX2)">Disapplication of restriction (RX2)</option>
+            <option value="Discharge (DS1)">Discharge of mortgage (DS1)</option>
             <option value="Disclaimer - notice">Disclaimer - notice</option>
             <option value="Disclaimer - notification">Disclaimer - notification</option>
             <option value="Extinguishment of rentcharge">Extinguishment of rentcharge</option>
@@ -288,7 +292,7 @@
         <div class="govuk-form-group">
           <label class="govuk-label" for="Price2">
              <br></label>
-          <input class="govuk-input" id="Price2" name="PriceInput2" value="{{ data['PriceInput2'] }}" type="text">
+          <input onkeyup = "javascript:this.value=Comma(this.value);" class="govuk-input" id="Price2" name="PriceInput2" value="{{ data['PriceInput2'] }}" type="text">
         </div>
       </div>
 
@@ -298,7 +302,7 @@
           <label class="govuk-label" for="Fee2">
            <br>
           </label>
-          <input class="govuk-input" id="Fee2" name="FeeInput2" value="{{ data['FeeInput2'] }}" type="text">
+          <input class="govuk-input transaction-fee-field" id="Fee2" name="FeeInput2" value="{{ data['FeeInput2'] }}" type="text">
         </div>
       </div>
 
@@ -343,6 +347,7 @@
         <option value="Defect in title s64(1) LRA 2002">Defect in title s64(1) LRA 2002</option>
         <option value="Determined boundary (DB)">Determined boundary (DB)</option>
         <option value="Disapplication of restriction (RX2)">Disapplication of restriction (RX2)</option>
+        <option value="Discharge (DS1)">Discharge of mortgage (DS1)</option>
         <option value="Disclaimer - notice">Disclaimer - notice</option>
         <option value="Disclaimer - notification">Disclaimer - notification</option>
         <option value="Extinguishment of rentcharge">Extinguishment of rentcharge</option>
@@ -395,13 +400,13 @@
 
 
   <div class="govuk-grid-column-one-quarter">
-    <div class="govuk-form-group">
+    <div class="govuk-form-group ">
       <label class="govuk-label" for="fee{{n}}">
        <br>
       </label>
 
 
-      <input class="govuk-input" id="fee{{n}}" name="fee{{n}}" type="text">
+      <input onkeyup = "javascript:this.value=Comma(this.value);"  class="govuk-input" id="Price{{n}}" name="Price{{n}}" type="text">
     </div>
   </div>
 
@@ -412,7 +417,7 @@
       </label>
 
 
-      <input class="govuk-input" id="Price{{n}}" name="Price{{n}}" type="text">
+      <input class="govuk-input  transaction-fee-field" id="fee{{n}}" name="fee{{n}}" type="text">
     </div>
   </div>
 
@@ -430,15 +435,17 @@
   </div>
 
   <div class="govuk-grid-column-one-quarter govuk-!-margin-top-5">
-      <h4 class="govuk-heading-s" style="float: right;">Total fee of £</h4>
+      <h4 class="govuk-heading-s" style="float: left;">Total fee of</h4><p style="float: right;" class="govuk-heading-s fee-amount-text"></p>
 
   </div>
 
   <div class="govuk-grid-column-full govuk-!-margin-top-5">
-
-  <h4 class="govuk-heading-s" style="float: left;">Fee of £
-     will be taken by Direct Debit from account no 2244096</h4>
-  </div>
+  <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0">
+        <span>Fee of </span>
+        <span class="fee-amount-text">£12</span>
+        <span>will be taken by Direct Debit from account no 1234567</span>
+      </p>
+</div>
 
 <div class="govuk-grid-column-full govuk-!-margin-top-5">
   {{ govukCheckboxes({
