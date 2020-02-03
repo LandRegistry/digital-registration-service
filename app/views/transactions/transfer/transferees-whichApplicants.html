@@ -49,11 +49,11 @@
 <div class="govuk-grid-column-full">
     <span class="govuk-caption-l">Transfer for value (TR1)</span>
     <h1 class="govuk-heading-l">Which applicants are transferees?</h1>
-    <p class="govuk-body">Select all that apply, or none.</p>
-
-<form method="post" action="transferee-applicants-answer" class="">
+    <p class="govuk-body">Select all that apply. If no applicants are transferees, select 'Continue'. </p>
+<!-- 
+<form method="post" action="/transactions/transfer/transferee-whichapplicants-answer" class=""> -->
     <div class="govuk-form-group">
-      <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+      <fieldset class="govuk-fieldset" id="ApplicantTransfereesCheckboxes">
 
 
     <div class="govuk-checkboxes">
@@ -161,20 +161,16 @@
           </div>
     {% endif %}
 
+    {{ govukInsetText({
+      text: "You can add transferees in the next step."
+    }) }}
 
-
-    <br>
-    <div class="govuk-radios__item">
-       <input class="govuk-radios__input" id="no-applicants-transferees" name="applicant-none-transferee" type="radio" value="none">
-       <label class="govuk-label govuk-radios__label" for="applicant-transferees">
-         None
-       </label>
 
       </fieldset>
       </div>
 
 
-<button class="govuk-button" data-module="govuk-button">Continue</button>
+<button onclick="checked" class="govuk-button" data-module="govuk-button">Continue</button>
 </form>
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
