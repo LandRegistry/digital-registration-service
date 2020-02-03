@@ -48,8 +48,3 @@ function Comma(Num) { //function to add commas to textboxes
             x1 = x1.replace(rgx, '$1' + ',' + '$2');
         return x1 + x2;
     }
-
-function checked() {
-    if ($("#ApplicantTransfereesCheckboxes :checkbox:checked").length == 0) {
-      alert("You have to check at least one box");
-  }

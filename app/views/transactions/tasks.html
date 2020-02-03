@@ -82,11 +82,84 @@
       <tbody class="govuk-table__body">
             <tr class="govuk-table__row">
               <td class="govuk-table__cell"><a href="discharge/discharge-method" class="govuk-link">Add discharge details</a></td>
-            <td class="govuk-table__cell">
-              {% if data['dischargeAttached'] %}
-                    <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed" style="margin-left: 175px;">Completed</strong>
+              {% if data['discharge-method'] %}
+              <td class="govuk-table__cell"><strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong></td>
+              {% endif %}</tr>
+
+              {% if data['discharge-method'] === 'Direct' %}
+
+              <tr class="govuk-table__row">
+              <td class="govuk-table__cell"><a href="discharge/discharge-lenders" class="govuk-link">Add lenders</a></td>
+
+              <td class="govuk-table__cell">{% if data['lender-name'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
+
+              </tr>
+
               {% endif %}
-          </td>
+
+            {% if data['discharge-method'] === 'Form' %}
+            <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+            <a href="discharge/discharge-lenders" class="govuk-link">Add lenders</a>
+            </td>
+              <td class="govuk-table__cell">
+            {% if data['lender-name'] %}
+
+            <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
+
+            {% endif %}
+                </td>
+            </tr>
+
+            <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+            <a href="discharge/lender-representation" class="govuk-link">Add lender representation</a>
+            </td>
+
+            <td class="govuk-table__cell">
+              {% if data['lenderReptype'] %}
+              <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
+                {% endif %}</td>
+
+            </tr>
+
+            <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+            <a href="discharge/discharge-method" class="govuk-link">Attach documents</a>
+            </td>
+            <td class="govuk-table__cell">
+              </td>
+            </tr>
+              {% endif %}
+
+              {% if data['discharge-method'] === 'Later' %}
+              <tr class="govuk-table__row">
+              <td class="govuk-table__cell">
+              <a href="discharge/discharge-lenders" class="govuk-link">Add lenders</a>
+              </td>
+                <td class="govuk-table__cell">
+              {% if data['lender-name'] %}
+
+              <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
+
+              {% endif %}
+                  </td>
+              </tr>
+
+              <tr class="govuk-table__row">
+              <td class="govuk-table__cell">
+              <a href="discharge/lender-representation" class="govuk-link">Add lender representation</a>
+              </td>
+
+              <td class="govuk-table__cell">
+                {% if data['lenderReptype'] %}
+                <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
+                  {% endif %}</td>
+
+                </tr>
+
+                {% endif %}
+
       </tbody>
     </table>
   </div>
