@@ -40,27 +40,52 @@
     </div>
     </div>
 
-<form method="post" action="discharge-attached">
+<form method="post" action="discharge-documents">
 
-<div class="govuk-grid-column-two-thirds govuk-!-margin-top-7">
-  <span class="govuk-caption-xl">Discharge of mortgage</span>
+<div class="govuk-grid-column-full govuk-!-margin-top-7">
+  <span class="govuk-caption-xl">Discharge of charge</span>
   <h1 class="govuk-heading-l"> Attach and certify document </h1>
   <p class="govuk-body">Files can be GIF, TIFF, JPG or PDF and must not exceed 20MB file size.</p>
-  <p class="govuk-body">Attach form DS1</p>
+  <p class="govuk-body">Document type</p>
+  <h2 class="govuk-heading-m govuk-!-margin-bottom-6" style="margin-top: -20px;">DS1: cancellation of entries for lenders</h2>
+  <p class="govuk-body">Attach a file</p>
 
-  <a href="#" type="file" id="discharge" class="govuk-link--no-visited-state" onclick="fileupload()" style="cursor: pointer; text-decoration: none; font-size: 14px; color: black; border-style: solid;  border-width: 0.5px; padding: 5px; border-radius: 3px; position: absolute; ">Choose file</a>
-  <a  style="margin-left: 100px;" class="govuk-body" id="filename" for="discharge-upload"> No file chosen </a>
-
-</div>
+  <a href="#" type="file" id="suggested_upload" class="govuk-link--no-visited-state" onclick="fileupload()" style="cursor: pointer; text-decoration: none; font-size: 14px; color: black; border-style: solid;  border-width: 0.5px; padding: 5px; border-radius: 3px; position: absolute; ">Choose file</a>
+  <a  style="margin-left: 100px;" class="govuk-body" id="filename" for="ds1-upload"> No file chosen </a>
 
 
-<div class="govuk-grid-column-two-thirds govuk-!-margin-top-7">
+
+
+  <h3 class="govuk-heading-s govuk-!-margin-top-6">Certification</h3>
+  <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <div class="govuk-radios govuk-!-width-two-thirds">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="DischargeCertified-1" name="DischargeCertified" value="Certified" type="radio">
+        <label class="govuk-label govuk-radios__label">
+          I/we certify this is a true copy of an original document
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="DischargeCertified-2" name="DischargeCertified" value="Certified" type="radio">
+        <label class="govuk-label govuk-radios__label">
+          I/we certify this attachment is a true copy of an original document which is certified by a conveyancer to be a true copy of the original
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="DischargeCertified-3" name="DischargeCertified" value="Not certified" type="radio">
+        <label class="govuk-label govuk-radios__label">
+          This attachment is an uncertified copy
+        </label>
+      </div>
+    </div>
+  </fieldset>
+  </div>
+
+
   <button type="submit" role="button" draggable="false" class="govuk-button" data-module="govuk-button">
     Continue
   </button>
-
-  <a class="govuk-link" href="/../transactions/tasks" style="margin-left: 20px;vertical-align: middle;">I'll do this later</a>
-
 
 </div>
 </form>
@@ -79,11 +104,12 @@
 
   $(document).ready(function(){
     $("a").click(function(){
-      $(document.getElementById('filename')).text("DS1.pdf");
+      $(document.getElementById('filename')).text("ds1.pdf");
     });
   });
 
 }
+
 </script>
 
 
