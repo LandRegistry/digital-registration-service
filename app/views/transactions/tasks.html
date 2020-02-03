@@ -73,43 +73,26 @@
     </table>
 </div>
 
-  <h2 class="govuk-heading-m govuk-!-padding-top-5">1. Discharge of mortgage</h2>
+  <h2 class="govuk-heading-m govuk-!-padding-top-5">1. Discharge of charge</h2>
 
   <div class="govuk-grid-column-full" style="margin-left: 40px; width: 97%;">
 
     <table class="govuk-table govuk-!-width-two-thirds">
-
+      <th scope="col" class="govuk-table__header">1.1 Add discharge details</th>
+      <td class="govuk-table__cell"></td>
       <tbody class="govuk-table__body">
             <tr class="govuk-table__row">
-              <td class="govuk-table__cell"><a href="discharge/discharge-method" class="govuk-link">Add discharge details</a></td>
+              <td class="govuk-table__cell"><a href="discharge/discharge-method" class="govuk-link">Select submission method</a></td>
               {% if data['discharge-method'] %}
               <td class="govuk-table__cell"><strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong></td>
               {% endif %}</tr>
 
-              {% if data['discharge-method'] === 'Direct' %}
-
-              <tr class="govuk-table__row">
               <td class="govuk-table__cell"><a href="discharge/discharge-lenders" class="govuk-link">Add lenders</a></td>
-
               <td class="govuk-table__cell">{% if data['lender-name'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
 
-              </tr>
-
-              {% endif %}
 
             {% if data['discharge-method'] === 'Form' %}
-            <tr class="govuk-table__row">
-            <td class="govuk-table__cell">
-            <a href="discharge/discharge-lenders" class="govuk-link">Add lenders</a>
-            </td>
-              <td class="govuk-table__cell">
-            {% if data['lender-name'] %}
 
-            <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
-
-            {% endif %}
-                </td>
-            </tr>
 
             <tr class="govuk-table__row">
             <td class="govuk-table__cell">
@@ -123,28 +106,21 @@
 
             </tr>
 
+            <th scope="col" class="govuk-table__header">1.2 Supporting documents</th>
+            <td class="govuk-table__cell"></td>
+
             <tr class="govuk-table__row">
             <td class="govuk-table__cell">
-            <a href="discharge/discharge-method" class="govuk-link">Attach documents</a>
+            <a href="discharge/discharge-documents" class="govuk-link">Attach documents</a>
             </td>
             <td class="govuk-table__cell">
-              </td>
+              {% if data['DischargeCertified'] %}
+              <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
+                {% endif %}</td>
             </tr>
               {% endif %}
 
               {% if data['discharge-method'] === 'Later' %}
-              <tr class="govuk-table__row">
-              <td class="govuk-table__cell">
-              <a href="discharge/discharge-lenders" class="govuk-link">Add lenders</a>
-              </td>
-                <td class="govuk-table__cell">
-              {% if data['lender-name'] %}
-
-              <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
-
-              {% endif %}
-                  </td>
-              </tr>
 
               <tr class="govuk-table__row">
               <td class="govuk-table__cell">
@@ -164,7 +140,7 @@
     </table>
   </div>
 
-    <h2 class="govuk-heading-m govuk-!-padding-top-5">2.Transfer for value (TR1)</h2>
+    <h2 class="govuk-heading-m govuk-!-padding-top-5">2. Transfer for value (TR1)</h2>
     </div>
     <div class="govuk-grid-column-full" style="margin-left: 25px; width: 97%;">
 

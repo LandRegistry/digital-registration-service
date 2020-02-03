@@ -41,12 +41,12 @@
     </div>
 
 <div class="govuk-grid-column-full govuk-!-margin-top-7">
-  <span class="govuk-caption-xl">Transfer for value (TR1)</span>
+  <span class="govuk-caption-xl">Discharge of charge</span>
   <h1 class="govuk-heading-xl"> Attach documents </h1>
   <h2 class="govuk-heading-l"> Required documents </h2>
   <p class="govuk-body">Documents you must attach to avoid requisitions.</p>
 
-  <form method="post" action="attached-required-documents">
+  <form method="post" action="/../transactions/tasks">
   <table class="govuk-table">
 
   <thead class="govuk-table__head">
@@ -62,81 +62,13 @@
   <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">Legal deed</td>
-          <td class="govuk-table__cell govuk-!-width-one-quarter">TR1 - Registered title(s): whole transfer</td>
-          <td class="govuk-table__cell">{% if data['tr1attached']%} Certified {% endif %}</td>
-          <td class="govuk-table__cell govuk-!-width-one-third">{% if data['tr1attached']%} TR1.pdf {% endif %}</td>
-          {% if data['tr1attached']%}<td class="govuk-table__cell govuk-link"><a href="">Remove</a></td>{% endif %}
-          {% if not data['tr1attached'] %}<td class="govuk-table__cell govuk-link"><a href="document_upload.html">Attach</a></td>{% endif %}
+          <td class="govuk-table__cell">DS1</td>
+          <td class="govuk-table__cell">{% if data['DischargeCertified']%} Certified {% endif %}</td>
+          <td class="govuk-table__cell">{% if data['DischargeCertified']%} DS1.pdf {% endif %}</td>
+          {% if data['DischargeCertified']%}<td class="govuk-table__cell govuk-link"><a href="">Remove</a></td>{% endif %}
+          {% if not data['DischargeCertified'] %}<td class="govuk-table__cell govuk-link"><a href="discharge-upload.html">Attach</a></td>{% endif %}
 
         </tr>
-  </tbody>
-</table>
-
-<h3 class="govuk-heading-l"> Suggested documents </h3>
-<p class="govuk-body">Documents you may need to attach if relevant to your application.</p>
-
-<table class="govuk-table">
-  <thead class="govuk-table__head">
-    <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header">Category</th>
-      <th scope="col" class="govuk-table__header govuk-!-width-one-third">Document type</th>
-      <th scope="col" class="govuk-table__header">Certification</th>
-      <th scope="col" class="govuk-table__header">File name</th>
-      <th scope="col" class="govuk-table__header">Options</th>
-    </tr>
-  </thead>
-
-  <tbody class="govuk-table__body">
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">Evidence</td>
-          <td class="govuk-table__cell govuk-!-width-one-quarter">Consent</td>
-          <td class="govuk-table__cell">{% if data['suggested_upload']%} Certified {% endif %}</td>
-          <td class="govuk-table__cell govuk-!-width-one-third">{% if data['suggested_upload']%} Consent.pdf {% endif %}</td>
-          {% if data['suggested_upload']%}<td class="govuk-table__cell govuk-link"><a href="">Remove</a></td>{% endif %}
-          {% if not data['suggested_upload'] %}<td class="govuk-table__cell govuk-link"><a href="/../transactions/transfer/documents/document_upload_suggested">Attach</a></td>{% endif %}
-        </tr>
-
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">Evidence</td>
-          <td class="govuk-table__cell govuk-!-width-one-quarter">Conveyancers certificate</td>
-          <td class="govuk-table__cell"></td>
-          <td class="govuk-table__cell govuk-!-width-one-third"></td>
-          <td class="govuk-table__cell govuk-link">Attach</td>
-        </tr>
-
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">Evidence</td>
-          <td class="govuk-table__cell govuk-!-width-one-quarter">Death certificate</td>
-          <td class="govuk-table__cell"></td>
-          <td class="govuk-table__cell govuk-!-width-one-third"></td>
-          <td class="govuk-table__cell govuk-link">Attach</td>
-        </tr>
-
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">Evidence</td>
-          <td class="govuk-table__cell govuk-!-width-one-quarter">Marriage/civil partnership certificate</td>
-          <td class="govuk-table__cell"></td>
-          <td class="govuk-table__cell govuk-!-width-one-third"></td>
-          <td class="govuk-table__cell govuk-link">Attach</td>
-        </tr>
-
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">Evidence</td>
-          <td class="govuk-table__cell govuk-!-width-one-quarter">Stamp Duty Land Tax Certificate</td>
-          <td class="govuk-table__cell"></td>
-          <td class="govuk-table__cell govuk-!-width-one-third"></td>
-          <td class="govuk-table__cell govuk-link">Attach</td>
-        </tr>
-
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">Evidence</td>
-          <td class="govuk-table__cell govuk-!-width-one-quarter">Land Transaction Tax Certificate</td>
-          <td class="govuk-table__cell"></td>
-          <td class="govuk-table__cell govuk-!-width-one-third"></td>
-          <td class="govuk-table__cell govuk-link">Attach</td>
-        </tr>
-
-
   </tbody>
 </table>
 
