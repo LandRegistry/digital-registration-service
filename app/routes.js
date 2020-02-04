@@ -55,7 +55,7 @@ router.post('/transactions/transfer/transferee-list-answer', function (req, res)
   }
 })
 
-router.post('/transactions/transfer/transferee-applicants-answer', function (req, res) {
+router.post('/transactions/transfer/transferee-whichapplicants-answer', function (req, res) {
   // Get the answer from session data
   // The name between the quotes is the same as the 'name' attribute on the input elements
   // However in JavaScript we can't use hyphens in variable names
@@ -68,6 +68,7 @@ router.post('/transactions/transfer/transferee-applicants-answer', function (req
     res.redirect('/transactions/transfer/transferee-list')
   }
 })
+
 
 router.post('/transactions/transfer/transferee-addresstype-answer', function (req, res) {
   // Get the answer from session data
@@ -104,7 +105,7 @@ router.post('/transactions/transfer/transferee-addresstype-answer', function (re
 
 
 
-// 
+//
 // router.post('/transactions/transfer/transferor-representation-answer', function (req, res) {
 //   // Get the answer from session data
 //   // The name between the quotes is the same as the 'name' attribute on the input elements
@@ -248,7 +249,16 @@ router.post('/transactions/discharge/discharge-attached', function (req, res) {
     res.redirect('/../transactions/tasks')
 })
 
+router.post('/transferee-list-complete', function (req, res) {
+  req.session.data['transfereelistcomplete'] = 'true';
+    res.redirect('/../transactions/tasks')
+})
 
+router.post('/transactions/transfer/transferee-whichapplicants-answer', function (req, res){
+  req.session.data["transfereesnone"]
+
+
+})
 
 
 
