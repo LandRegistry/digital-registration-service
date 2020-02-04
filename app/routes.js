@@ -6,67 +6,34 @@ const path = require('path')
 router.use('/node_modules', express.static('node_modules'))
 
 
-// router.post('/app/views/transferee-select-answer', function (req, res) {
 //
-//   let transferSelect = req.session.data['transferee-select']
 //
-//   console.log(transferSelect)
-//
-//   if (transferSelect == 'false') {
-//     res.redirect('/app/views/transactions/transfer/add-transferee')
-//   } else {
-//     res.redirect('/app/views/transactions/transfer/transferee-list')
-// //   }
-// })
-
-// post(route, callback(request, response) {
-//     response.render(template, data);
-// });
-
-
-// // Branching
-// router.post('/examples/branching/over-18-answer', function (req, res) {
+// router.post('/transactions/transfer/transferee-applicants-answer', function (req, res) {
 //   // Get the answer from session data
 //   // The name between the quotes is the same as the 'name' attribute on the input elements
 //   // However in JavaScript we can't use hyphens in variable names
 //
-//   let over18 = req.session.data['over-18']
+// var applicanttransfereecheckbox = req.session.data['ApplicantTransfereesCheckboxes'];
 //
-//   if (over18 === 'false') {
-//     res.redirect('/docs/examples/branching/under-18')
+//   if (applicanttransfereecheckbox = ':checkbox:checked') {
+//     res.redirect('/transactions/transfer/add-transferee')
 //   } else {
-//     res.redirect('/docs/examples/branching/over-18')
+//     res.redirect('/transactions/transfer/transferee-list')
 //   }
 // })
 
-// Branching
-router.post('/transactions/transfer/transferee-list-answer', function (req, res) {
-  // Get the answer from session data
-  // The name between the quotes is the same as the 'name' attribute on the input elements
-  // However in JavaScript we can't use hyphens in variable names
 
-                                            // Name of input
-  let applicanttransferee = req.session.data['transferee-select']
-                            // Value of input
-  if (applicanttransferee === 'yes') {
-    res.redirect('/transactions/transfer/transferee-list')
-  } else {
-    res.redirect('/transactions/transfer/transferees-applicants')
-  }
-})
+  // Branching
+  router.post('/transactions/transfer/transferee-whichapplicants-answer', function (req, res) {
+
 
 router.post('/transactions/transfer/transferee-whichapplicants-answer', function (req, res) {
   // Get the answer from session data
   // The name between the quotes is the same as the 'name' attribute on the input elements
   // However in JavaScript we can't use hyphens in variable names
 
-  let applicanttransfereecheckbox = req.session.data['applicant-none-transferee']
 
-  if (applicanttransfereecheckbox === 'none') {
-    res.redirect('/transactions/transfer/add-transferee')
-  } else {
-    res.redirect('/transactions/transfer/transferee-list')
-  }
+
 })
 
 
@@ -127,15 +94,39 @@ router.post('/transactions/discharge/method-answer', function (req, res) {
   // However in JavaScript we can't use hyphens in variable names
 
                                             // Name of input
-  let dischargeMethod = req.session.data['discharge-method']
-  req.session.data['dischargeAttached'] = 'true';
+  let dischargeMethod = req.session.data['dischargemethod']
+
   if (dischargeMethod === 'form') {
-    res.redirect('/transactions/discharge/discharge-upload')
-  } else {
+    req.session.data['discharge-method'] = 'Form';
+    res.redirect('/transactions/tasks')
+
+  } if (dischargeMethod === 'direct') {
+    req.session.data['discharge-method'] = 'Direct';
+    res.redirect('/transactions/tasks')
+
+  } if (dischargeMethod === 'later') {
+    req.session.data['discharge-method'] = 'Later';
     res.redirect('/transactions/tasks')
   }
 })
 
+
+
+router.post('/transactions/discharge/lender-representation-answer', function (req, res) {
+      let lenderRep = req.session.data['LenderRepresentation']
+      if (lenderRep === 'NotRepresented') {
+          req.session.data['lenderReptype'] = 'Not represented';
+          res.redirect('/lender-verify')
+      } else {
+        req.session.data['lenderReptype'] = 'UK Conveyancers Ltd';
+        res.redirect('/transactions/discharge/lender-representation')
+      }
+})
+
+
+
+
+  // req.session.data['dischargeAttached'] = 'true';
 
 router.get('/docs/examples/pass-data/vehicle-registration-car1', function (req, res) {
 	req.session.data = {
@@ -249,6 +240,7 @@ router.post('/transactions/discharge/discharge-attached', function (req, res) {
     res.redirect('/../transactions/tasks')
 })
 
+
 router.post('/transferee-list-complete', function (req, res) {
   req.session.data['transfereelistcomplete'] = 'true';
     res.redirect('/../transactions/tasks')
@@ -259,6 +251,12 @@ router.post('/transactions/transfer/transferee-whichapplicants-answer', function
 
 
 })
+=======
+router.post('/transactions/transfer/select-transferees-confirmed', function (req, res) {
+  req.session.data['transfereesConfirmed'] = 'true';
+    res.redirect('/../transactions/tasks')
+})
+
 
 
 

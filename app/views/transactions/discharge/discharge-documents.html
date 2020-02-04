@@ -40,55 +40,73 @@
     </div>
     </div>
 
-<form method="post" action="discharge-documents">
-
 <div class="govuk-grid-column-full govuk-!-margin-top-7">
   <span class="govuk-caption-xl">Discharge of charge</span>
-  <h1 class="govuk-heading-l"> Attach and certify document </h1>
-  <p class="govuk-body">Files can be GIF, TIFF, JPG or PDF and must not exceed 20MB file size.</p>
-  <p class="govuk-body">Document type</p>
-  <h2 class="govuk-heading-m govuk-!-margin-bottom-6" style="margin-top: -20px;">DS1: cancellation of entries for lenders</h2>
-  <p class="govuk-body">Attach a file</p>
+  <h1 class="govuk-heading-xl"> Attach documents </h1>
+  <h2 class="govuk-heading-l"> Required documents </h2>
+  <p class="govuk-body">Documents you must attach to avoid requisitions.</p>
 
-  <a href="#" type="file" id="suggested_upload" class="govuk-link--no-visited-state" onclick="fileupload()" style="cursor: pointer; text-decoration: none; font-size: 14px; color: black; border-style: solid;  border-width: 0.5px; padding: 5px; border-radius: 3px; position: absolute; ">Choose file</a>
-  <a  style="margin-left: 100px;" class="govuk-body" id="filename" for="ds1-upload"> No file chosen </a>
+  <form method="post" action="/../transactions/tasks">
+  <table class="govuk-table">
 
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Category</th>
+      <th scope="col" class="govuk-table__header govuk-!-width-one-third">Document type</th>
+      <th scope="col" class="govuk-table__header">Certification</th>
+      <th scope="col" class="govuk-table__header">File name</th>
+      <th scope="col" class="govuk-table__header">Options</th>
+    </tr>
+  </thead>
 
+  <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Legal deed</td>
+          <td class="govuk-table__cell">DS1</td>
+          <td class="govuk-table__cell">{% if data['DischargeCertified']%} Certified {% endif %}</td>
+          <td class="govuk-table__cell">{% if data['DischargeCertified']%} DS1.pdf {% endif %}</td>
+          {% if data['DischargeCertified']%}<td class="govuk-table__cell govuk-link"><a href="">Remove</a></td>{% endif %}
+          {% if not data['DischargeCertified'] %}<td class="govuk-table__cell govuk-link"><a href="discharge-upload.html">Attach</a></td>{% endif %}
 
+        </tr>
+  </tbody>
+</table>
 
-  <h3 class="govuk-heading-s govuk-!-margin-top-6">Certification</h3>
-  <div class="govuk-form-group">
-  <fieldset class="govuk-fieldset">
-    <div class="govuk-radios govuk-!-width-two-thirds">
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="DischargeCertified-1" name="DischargeCertified" value="Certified" type="radio">
-        <label class="govuk-label govuk-radios__label">
-          I/we certify this is a true copy of an original document
-        </label>
-      </div>
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="DischargeCertified-2" name="DischargeCertified" value="Certified" type="radio">
-        <label class="govuk-label govuk-radios__label">
-          I/we certify this attachment is a true copy of an original document which is certified by a conveyancer to be a true copy of the original
-        </label>
-      </div>
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="DischargeCertified-3" name="DischargeCertified" value="Not certified" type="radio">
-        <label class="govuk-label govuk-radios__label">
-          This attachment is an uncertified copy
-        </label>
-      </div>
-    </div>
-  </fieldset>
-  </div>
+{% if data['other_upload'] %}
+<h3 class="govuk-heading-l"> Other documents </h3>
 
+<table class="govuk-table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Category</th>
+      <th scope="col" class="govuk-table__header govuk-!-width-one-third">Document type</th>
+      <th scope="col" class="govuk-table__header">Certification</th>
+      <th scope="col" class="govuk-table__header">File name</th>
+      <th scope="col" class="govuk-table__header">Options</th>
+    </tr>
+  </thead>
 
-  <button type="submit" role="button" draggable="false" class="govuk-button" data-module="govuk-button">
-    Continue
-  </button>
+  <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Evidence</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter">Form JO (Trust information)</td>
+          <td class="govuk-table__cell">Certified</td>
+          <td class="govuk-table__cell govuk-!-width-one-third">Document.pdf</td>
+          <td class="govuk-table__cell govuk-link"><a href="">Remove</a></td>
+        </tr>
+  </tbody>
+  </table>
+
+{% endif %}
+<p class='govuk-body'><a href="document_upload_other">Attach another type of document</a></p>
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+</form>
+
 
 </div>
-</form>
 <div class="govuk-grid-column-full"
 
 <hr class="govuk-!-margin-top-9" style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
@@ -99,18 +117,7 @@
 <a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
 
 </div>
-<script>
-  function fileupload() {
 
-  $(document).ready(function(){
-    $("a").click(function(){
-      $(document.getElementById('filename')).text("ds1.pdf");
-    });
-  });
-
-}
-
-</script>
 
 
 

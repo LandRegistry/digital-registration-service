@@ -54,37 +54,25 @@
 
 
 
-        <form method="post" action="/transactions/discharge/method-answer">
+        <form method="post" action="lender-list">
         <div class="govuk-form-group">
         <fieldset class="govuk-fieldset">
 
                   <span class="govuk-caption-l">Discharge of charge</span>
             <h1 class="govuk-heading-l">
-              How will the discharge be submitted?
+              Add lender
             </h1>
 
-          <div class="govuk-radios">
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="discharge-method-1" name="dischargemethod" type="radio" value="direct">
-              <label class="govuk-label govuk-radios__label" for="discharge-method-1">
-                Sent by the lender
-              </label>
-            </div>
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="discharge-method-2" name="dischargemethod" type="radio" value="form">
-              <label class="govuk-label govuk-radios__label" for="discharge-method-2">
-                Attached to this application
-              </label>
-            </div>
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="discharge-method-3" name="dischargemethod" type="radio" value="later">
-              <label class="govuk-label govuk-radios__label" for="discharge-method-3">
-                Sent later
-              </label>
-            </div>
 
-            </div>
-          </fieldset>
+            {{ govukInput({
+            label: {
+              text: "Full name"
+            },
+            id: "lender-name-1",
+            classes: "govuk-input--width-20",
+            name: "lender-name"
+}) }}
+
           <br>
     <br>
 
@@ -95,9 +83,9 @@
   text: "Continue"
   }) }}
     </div>
-  </form>
 
 
+</form>
 </main>
 
 

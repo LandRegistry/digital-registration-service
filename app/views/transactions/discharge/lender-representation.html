@@ -9,6 +9,7 @@
 {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
 
 
 
@@ -36,70 +37,56 @@
     <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 
 
-    <div class="govuk-phase-banner">
+    <div class="govuk-phase-banner govuk-!-margin-bottom-5">
         <p class="govuk-phase-banner__content">
         <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
         <span class="govuk-phase-banner__text">
         This is a prototype and not a real service.
         </span></p>
+     </div>
     </div>
-    </div>
-    </div>
+
+<div class="govuk-grid-column-full">
+    <span class="govuk-caption-l">Discharge of charge</span>
+    <h1 class="govuk-heading-l">Add lender representation</h1>
+    <p class="govuk-body-m">Select 'Add representation' for each lender.</p>
+    <h2 class="govuk-heading-m">Lender representation added</h2>
+
+    <form method="post" action="">
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Full name</th>
+          <th scope="col" class="govuk-table__header govuk-!-width-one-third">Represented by</th>
+          <th scope="col" class="govuk-table__header ">Options</th>
+        </tr>
+      </thead>
+
+      <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">{{ data['lender-name']}}</td>
+              <td class="govuk-table__cell">{% if not data['lenderReptype'] %}- No representation added -{% endif %} {% if data['lenderReptype'] %} {{ data['lenderReptype']}}{% endif %}
+              <td class="govuk-table__cell govuk-link"><a href="lender-representationAdd">Add representation</td>
+              </tr>
+
+              {% if data['lender-name2'] %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">{{ data['lender-name2']}}</td>
+                <td class="govuk-table__cell">- No representation added -</td>
+                <td class="govuk-table__cell govuk-link"><a href="lender-representationAdd2">Add representation</td>
+                </tr>
+              {% endif %}
+
+      </tbody>
+    </table>
 
 
+{{ govukButton({
+  text: "Continue",
+  href: "/../transactions/tasks"
+}) }}
 
-    <main class="govuk-main-wrapper " id="main-content" role="main">
-    <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-
-
-
-        <form method="post" action="/transactions/discharge/method-answer">
-        <div class="govuk-form-group">
-        <fieldset class="govuk-fieldset">
-
-                  <span class="govuk-caption-l">Discharge of charge</span>
-            <h1 class="govuk-heading-l">
-              How will the discharge be submitted?
-            </h1>
-
-          <div class="govuk-radios">
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="discharge-method-1" name="dischargemethod" type="radio" value="direct">
-              <label class="govuk-label govuk-radios__label" for="discharge-method-1">
-                Sent by the lender
-              </label>
-            </div>
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="discharge-method-2" name="dischargemethod" type="radio" value="form">
-              <label class="govuk-label govuk-radios__label" for="discharge-method-2">
-                Attached to this application
-              </label>
-            </div>
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="discharge-method-3" name="dischargemethod" type="radio" value="later">
-              <label class="govuk-label govuk-radios__label" for="discharge-method-3">
-                Sent later
-              </label>
-            </div>
-
-            </div>
-          </fieldset>
-          <br>
-    <br>
-
-
-
-  {{ govukButton({
-  classes: "",
-  text: "Continue"
-  }) }}
-    </div>
-  </form>
-
-
-</main>
-
+</form>
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 <br>
@@ -107,24 +94,8 @@
 <br>
 <br>
 <a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
-<a href="/prototype-admin/clear-data">Clear data</a>
 
-
-<script type="application/json" id="reference-form-validation">
- {
-   "reference": {
-     "presence": {
-       "message": "^Enter your reference for this application"
-     },
-     "length": {
-       "minimum": 1,
-       "maximum": 25,
-       "message": "^Your reference must be 25 characters or less"
-     }
-   }
- }
-</script>
-
+</div>
 
 
 {% endblock %}
