@@ -50,16 +50,16 @@
     <span class="govuk-caption-l">Transfer for value (TR1)</span>
     <h1 class="govuk-heading-l">Which applicants are transferees?</h1>
     <p class="govuk-body">Select all that apply. If no applicants are transferees, select 'Continue'. </p>
-<!-- 
-<form method="post" action="/transactions/transfer/transferee-whichapplicants-answer" class=""> -->
-    <div class="govuk-form-group">
-      <fieldset class="govuk-fieldset" id="ApplicantTransfereesCheckboxes">
+
+<form method="post" action="/transactions/transfer/transferee-whichapplicants-answer" class="">
+    <div class="govuk-form-group" id="ApplicantTransfereesCheckboxes">
+      <fieldset class="govuk-fieldset">
 
 
     <div class="govuk-checkboxes">
     {% if data['applicant-individual-forename'] %}
           <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="" name="applicant-individual-transferee1" type="checkbox" value="applicant1-transferee-1">
+            <input class="govuk-checkboxes__input" id="applicantindividual1" name="applicant-individual-transferee1" type="checkbox" value="applicant1-transferee-1">
             <label class="govuk-label govuk-checkboxes__label" for="applicant-individual-transferee">
               {{ data['applicant-individual-forename'] }} {{ data['applicant-individual-surname'] }}
             </label>
@@ -69,7 +69,7 @@
     <div class="govuk-checkboxes">
     {% if data['applicant2-individual-forename-2'] %}
           <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="" name="applicant-individual-transferee2" type="checkbox" value="applicant1-transferee-1">
+            <input class="govuk-checkboxes__input" id="applicantindividual2" name="applicant-individual-transferee2" type="checkbox" value="applicant2-transferee-2">
             <label class="govuk-label govuk-checkboxes__label" for="applicant-individual-transferee">
               {{ data['applicant2-individual-forename-2'] }} {{ data['applicant2-individual-surname-2'] }}
             </label>
@@ -79,7 +79,7 @@
     <div class="govuk-checkboxes">
     {% if data['applicant-individual-forename-2'] %}
           <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="" name="applicant-individual-transferee2" type="checkbox" value="applicant1-transferee-1">
+            <input class="govuk-checkboxes__input" id="" name="applicant-individual-transferee2" type="checkbox" value="applicant-transferee-2">
             <label class="govuk-label govuk-checkboxes__label" for="applicant-individual-transferee">
               {{ data['applicant-individual-forename-2'] }} {{ data['applicant-individual-surname-2'] }}
             </label>
@@ -89,7 +89,7 @@
     <div class="govuk-checkboxes">
     {% if data['applicant-individual-forename-3'] %}
           <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="" name="applicant-individual-transferee3" type="checkbox" value="applicant1-transferee-1">
+            <input class="govuk-checkboxes__input" id="" name="applicant-individual-transferee3" type="checkbox" value="applicant-transferee-3">
             <label class="govuk-label govuk-checkboxes__label" for="applicant-individual-transferee">
               {{ data['applicant3-individual-forename-3'] }} {{ data['applicant3-individual-surname-3'] }}
             </label>
@@ -100,7 +100,7 @@
 
     {% if data['applicant-company-name'] %}
           <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="" name="applicant-company-transferee1" type="checkbox" value="applicant1-transferee-1">
+            <input class="govuk-checkboxes__input" id="" name="applicant-company-transferee1" type="checkbox" value="applicant-company-1">
             <label class="govuk-label govuk-checkboxes__label" for="applicant-company-transfere">
               {{ data['applicant-company-name'] }}
             </label>
@@ -118,7 +118,7 @@
 
     {% if data['applicant3-company-name-3'] %}
           <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="" name="applicant-company-transferee3" type="checkbox" value="applicant-transferee-4">
+            <input class="govuk-checkboxes__input" id="" name="applicant-company-transferee3" type="checkbox" value="applicant-company-transferee3">
             <label class="govuk-label govuk-checkboxes__label" for="applicant-transferee">
               {{ data['applicant3-company-name-3'] }}
             </label>
@@ -127,7 +127,7 @@
 
     {% if data['applicant-overseas-name'] %}
           <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="" name="applicant-overseas-transferee1" type="checkbox" value="applicant-transferee-4">
+            <input class="govuk-checkboxes__input" id="" name="applicant-overseas-transferee1" type="checkbox" value="applicant-overseas-transferee1">
             <label class="govuk-label govuk-checkboxes__label" for="applicant-transferee">
               {{ data['applicant-overseas-name'] }}
             </label>
@@ -136,7 +136,7 @@
 
     {% if data['applicant2-overseas-name'] %}
           <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="" name="applicant-overseas-transferee2" type="checkbox" value="applicant-transferee-4">
+            <input class="govuk-checkboxes__input" id="" name="applicant-overseas-transferee2" type="checkbox" value="applicant-overseas-transferee2">
             <label class="govuk-label govuk-checkboxes__label" for="applicant-transferee">
               {{ data['applicant2-overseas-name'] }}
             </label>
@@ -145,7 +145,7 @@
 
     {% if data['applicant3-overseas-name'] %}
           <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="" name="applicant-overseas-transferee3" type="checkbox" value="applicant-transferee-4">
+            <input class="govuk-checkboxes__input" id="" name="applicant-overseas-transferee3" type="checkbox" value="applicant-overseas-transferee3">
             <label class="govuk-label govuk-checkboxes__label" for="applicant-transferee">
               {{ data['applicant3-overseas-name'] }}
             </label>
@@ -154,7 +154,7 @@
 
     {% if data['applicant-other-name'] %}
           <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="" name="applicant-other-transferee1" type="checkbox" value="applicant-transferee-4">
+            <input class="govuk-checkboxes__input" id="" name="applicant-other-transferee1" type="checkbox" value="applicant-other-transferee1">
             <label class="govuk-label govuk-checkboxes__label" for="applicant-transferee">
               {{ data['applicant-other-name'] }}
             </label>
@@ -170,7 +170,7 @@
       </div>
 
 
-<button onclick="checked" class="govuk-button" data-module="govuk-button">Continue</button>
+<button class="govuk-button" data-module="govuk-button">Continue</button>
 </form>
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
