@@ -51,7 +51,7 @@
     <h1 class="govuk-heading-l">Which applicants are transferees?</h1>
     <p class="govuk-body">Select all that apply. If no applicants are transferees, select 'Continue'. </p>
 
-<form method="post" action="/transactions/transfer/transferee-whichapplicants-answer" class="">
+<form method="post" action="/transactions/transfer/transferee-whichapplicants-answer" name="whichapplicants" onsubmit="return checkChecked('searchForm');" class="">
 
     <div class="govuk-form-group">
       <fieldset class="govuk-fieldset" id="ApplicantTransfereesCheckboxes">
@@ -206,6 +206,21 @@
 
 {% endblock %}
 
+<script>
+  function checkChecked('whichapplicants') {
+    var anyBoxesChecked = false;
+    $('#' + 'whichapplicants' + 'input[type="checkbox"]').each(function() {
+        if ($(this).is(":checked")) {
+            anyBoxesChecked = true;
+        }
+    });
+
+    if (anyBoxesChecked == false) {
+      alert('Please select at least one checkbox');
+      return false;
+    }
+}
+</script>
 
 {% block footer %}
 {% endblock %}

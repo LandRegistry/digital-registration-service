@@ -164,7 +164,7 @@
               <td class="govuk-table__cell">
               {% if data['transfereesConfirmed'] %}
 
-              <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
+              <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}
               {% endif %}</td>
 
             </tr>
@@ -219,25 +219,6 @@
 
 
 
-    <!-- <h2 class="govuk-heading-m govuk-!-padding-top-5">2. Death of a joint proprietor</h2>
-    </div>
-    <div class="govuk-grid-column-full" style="margin-left: 10px; width: 100%;">
-
-    <table class="govuk-table govuk-!-width-two-thirds">
-
-      <tbody class="govuk-table__body">
-            <tr class="govuk-table__row">
-              <thead class="govuk-table__head">
-              <th scope="row" class="govuk-table__header">2.1 Supporting documents</th>
-            </tr>
-            <tr class="govuk-table__row">
-              <td class="govuk-table__cell govuk-link" href="#">Attach documents (optional)</td>
-              <td class="govuk-table__cell"><strong class="" style="float: right;"></strong></td>
-            </tr>
-      </tbody>
-    </table>
-  </div> -->
-
     {{ govukButton({
         text: "Review application",
         classes: "govuk-!-margin-top-9",
@@ -256,9 +237,7 @@
           text: "To avoid requisitions, attach all relevant documents."
         }) }}
 
-<script>
 
-</script>
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 <br>
@@ -271,8 +250,6 @@
 
 
 {% endblock %}
-
-
 
 
 {% block footer %}

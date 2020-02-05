@@ -48,3 +48,4 @@ function Comma(Num) { //function to add commas to textboxes
             x1 = x1.replace(rgx, '$1' + ',' + '$2');
         return x1 + x2;
     }
+  })
