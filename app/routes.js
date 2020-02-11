@@ -8,16 +8,16 @@ router.use('/node_modules', express.static('node_modules'))
 
 
 
-// 
-// router.post('/transactions/transfer/transferee-whichapplicants-answer', function (req, res) {
-//   // Get the answer from session data
-//   // The name between the quotes is the same as the 'name' attribute on the input elements
-//   // However in JavaScript we can't use hyphens in variable names
-//
-//
-//   res.redirect('/transactions/transfer/transferee-overseasAddress')
-//
-//   })
+
+router.post('/transactions/transfer/transferee-whichapplicants-answer', function (req, res) {
+  // Get the answer from session data
+  // The name between the quotes is the same as the 'name' attribute on the input elements
+  // However in JavaScript we can't use hyphens in variable names
+
+
+  res.redirect('/transactions/transfer/transferee-list')
+
+  })
 
 
 router.post('/transactions/transfer/transferee-addresstype-answer', function (req, res) {
@@ -102,6 +102,17 @@ router.post('/transactions/discharge/lender-representation-answer', function (re
           res.redirect('/lender-verify')
       } else {
         req.session.data['lenderReptype'] = 'UK Conveyancers Ltd';
+        res.redirect('/transactions/discharge/lender-representation')
+      }
+})
+
+router.post('/transactions/discharge/lender-representation-answer2', function (req, res) {
+      let lenderRep = req.session.data['LenderRepresentation2']
+      if (lenderRep === 'NotRepresented2') {
+          req.session.data['lenderReptype2'] = 'Not represented';
+          res.redirect('/lender-verify')
+      } else {
+        req.session.data['lenderReptype2'] = 'UK Conveyancers Ltd';
         res.redirect('/transactions/discharge/lender-representation')
       }
 })
