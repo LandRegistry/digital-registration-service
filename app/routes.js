@@ -53,6 +53,22 @@ router.post('/transactions/transfer/transferee-addresstype-answer', function (re
 
 })
 
+router.post('/transactions/transfer/transferee-addresstype-answer2', function (req, res) {
+  // Get the answer from session data
+  // The name between the quotes is the same as the 'name' attribute on the input elements
+  // However in JavaScript we can't use hyphens in variable names
+
+  let transfereeAddress2 = req.session.data['transfereeAddressType-2']
+
+  if (transfereeAddress2 === 'UK-postal2') {
+    res.redirect('/transactions/transfer/transferee-UKaddress2')
+}
+  if (transfereeAddress2 === 'Overseas-postal2') {
+      res.redirect('/transactions/transfer/transferee-overseasAddress2')
+    }
+
+})
+
 
 
 //

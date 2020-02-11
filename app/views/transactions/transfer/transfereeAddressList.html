@@ -68,7 +68,7 @@
       <tbody class="govuk-table__body">
             <tr class="govuk-table__row">
               <td class="govuk-table__cell">Private individual</td>
-              <td class="govuk-table__cell">      {% if data['transferee-select'] === 'yes' %}
+              <td class="govuk-table__cell">      {% if data['applicant-individual-transferee1'] %}
                      {{ data['applicant-individual-forename'] }} {{ data['applicant-individual-surname'] }}
                      {% endif %}
                      {% if data['transferee-select'] === 'no' %}
@@ -151,7 +151,7 @@
               </td>
             </tr>
 
-            {% if data['transferee-select'] === 'yes' and data['applicant2-individual-forename-2'] %}
+            {% if   data['applicant-individual-transferee2'] %}
               <tbody class="govuk-table_body">
                 <tr class="govuk-table_row" id="hidePI">
                 <td class="govuk-table__cell">Private individual</td>
@@ -235,8 +235,8 @@
 
                  </td>
                  <td class="govuk-table__cell govuk-link">
-                     {% if not data['transfereeAddressType'] %}
-                       <a href="transferee-addresstype">Add address</a>
+                     {% if not data['applicant2address'] %}
+                       <a href="transferee-addresstype-2">Add address</a>
                      {% endif %}
 
                      {% if data['applicant2address'] %}
@@ -286,10 +286,11 @@
               <td class="govuk-table__cell govuk-link"><a href="transferee-addresstype">Add address</td>
             </tbody>
              {% endif %} -->
+           </tbody>
 
 
 
-      </tbody>
+
     </table>
 
 {{ govukButton({

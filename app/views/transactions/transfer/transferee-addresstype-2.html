@@ -47,75 +47,73 @@
     </div>
 
 <div class="govuk-grid-column-full">
-  <form method="post" action="UKAddress">
     <span class="govuk-caption-l">Transfer for value (TR1)</span>
     <h1 class="govuk-heading-l">Add address for service</h1>
-    <h2 class="govuk-heading-s">Address type</h2>
-    <p class="govuk-body">UK postal address</p>
-
-    <h3 class="govuk-heading-s">Postcode</h3>
-    <p class="govuk-body">{{ data['UKpostcode'] }}<a class="govuk-link" href='#'>Change </a></p>
-
-    <h4 class="govuk-heading-s">Select address</h4>
-    <div class="govuk-form-group">
-      <select class="govuk-select govuk-!-width-one-half" id="addressResults" name="addressResults">
-        <option value="addressresults0" selected>11 addresses found</option>
-        <option value="addressresult1">1, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-        <option value="addressresult2" >2a, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-        <option value="addressresult2" >2b, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-        <option value="addressresult3">3, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-        <option value="addressresult4">4, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-        <option value="addressresult4">5, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-        <option value="addressresult4">6, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-        <option value="addressresult4">7, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-        <option value="addressresult4">8, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-        <option value="addressresult4">9, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-        <option value="addressresult4">10, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-      </select>
-    </div>
-
-    <p class="govuk-body"> <a href="#" class="govuk-link">I can't find address in the list</a></p>
+    <h2 class="govuk-heading-m">For transferee:</h2>
+    <p class="govuk-body">
 
 
-    <h5 class="govuk-heading-m">More actions</h5>
+      {% if data['applicant-individual-transferee2'] %}
+      {{ data['applicant2-individual-forename-2'] }} {{ data['applicant2-individual-surname-2'] }}
+      {% endif %}
+      </p>
 
+    <form method="post" action="transferee-UKaddress2">
 
-    {{ govukInput({
-      label: {
-        text: "Add c/o name (optional)"
-      },
-      hint: {
-        text: "If it's a 'care of' address, enter the addressee's name"
-      },
-      id: "care-of",
-      name: "care-of",
-      classes: "govuk-!-width-one-half"
-    }) }}
+    <div class="govuk-radios">
 
-    {% if data['applicant2-individual-forename-2'] %}
-    <p class="govuk-body">Add this address to the following transferees: (optional)</p>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="select-address-typeb" name="transfereeAddressType2" type="radio" value="UK-postal2">
+          <label class="govuk-label govuk-radios__label" for="select-address-typeb">
+        UK postal address
+      </label>
+        </div>
 
-    <div class="govuk-checkboxes">
-        <div class="govuk-checkboxes__item">
-          <input class="govuk-checkboxes__input" id="applicant2-address1" name="applicant2address" type="checkbox" value="true">
-          <label class="govuk-label govuk-checkboxes__label" for="applicant2address">
-            {{ data['applicant2-individual-forename-2'] }} {{ data['applicant2-individual-surname-2'] }}
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="select-address-type-2b" name="transfereeAddressType2" type="radio" value="Overseas-postal2">
+          <label class="govuk-label govuk-radios__label" for="select-address-type-2b">
+        Overseas postal address
+      </label>
+        </div>
+
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="select-address-type-3b" name="transfereeAddressType2" type="radio" value="PO-box">
+          <label class="govuk-label govuk-radios__label" for="select-address-type-3b">
+        PO Box (postal address)
+      </label>
+        </div>
+
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="select-address-type-4b" name="transfereeAddressType2" type="radio" value="email">
+          <label class="govuk-label govuk-radios__label" for="select-address-type-4b">
+        Email address
+      </label>
+        </div>
+
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="select-address-type-5b" name="transfereeAddressType2" type="radio" value="DX">
+          <label class="govuk-label govuk-radios__label" for="select-address-type-5b">
+          DX address
           </label>
-          {% endif %}
-          </div>
-          </div>
-          <br>
+        </div>
 
-
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="select-address-type-6b" name="transfereeAddressType2" type="radio" value="BFPO">
+            <label class="govuk-label govuk-radios__label" for="select-address-type-6b">
+            BFPO postal address (armed forces)
+            </label>
+        </div>
+  </div>
 
 
 {{ govukButton({
+  classes: "govuk-!-margin-top-9",
   text: "Continue",
-  Value: "yes"
+  type: "Submit",
+  value: "Submit"
 }) }}
+
 </form>
-
-
 
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
@@ -124,8 +122,8 @@
 <br>
 <br>
 <a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
-</div>
 
+</div>
 
 
 {% endblock %}
