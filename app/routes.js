@@ -6,25 +6,7 @@ const path = require('path')
 router.use('/node_modules', express.static('node_modules'))
 
 
-//
-//
-// router.post('/transactions/transfer/transferee-applicants-answer', function (req, res) {
-//   // Get the answer from session data
-//   // The name between the quotes is the same as the 'name' attribute on the input elements
-//   // However in JavaScript we can't use hyphens in variable names
-//
-// var applicanttransfereecheckbox = req.session.data['ApplicantTransfereesCheckboxes'];
-//
-//   if (applicanttransfereecheckbox = ':checkbox:checked') {
-//     res.redirect('/transactions/transfer/add-transferee')
-//   } else {
-//     res.redirect('/transactions/transfer/transferee-list')
-//   }
-// })
 
-
-  // Branching
-  router.post('/transactions/transfer/transferee-whichapplicants-answer', function (req, res) {
 
 
 router.post('/transactions/transfer/transferee-whichapplicants-answer', function (req, res) {
@@ -33,8 +15,9 @@ router.post('/transactions/transfer/transferee-whichapplicants-answer', function
   // However in JavaScript we can't use hyphens in variable names
 
 
+  res.redirect('/transactions/transfer/transferee-list')
 
-})
+  })
 
 
 router.post('/transactions/transfer/transferee-addresstype-answer', function (req, res) {
@@ -123,10 +106,20 @@ router.post('/transactions/discharge/lender-representation-answer', function (re
       }
 })
 
+router.post('/transactions/discharge/lender-representation-answer2', function (req, res) {
+      let lenderRep = req.session.data['LenderRepresentation2']
+      if (lenderRep === 'NotRepresented2') {
+          req.session.data['lenderReptype2'] = 'Not represented';
+          res.redirect('/lender-verify')
+      } else {
+        req.session.data['lenderReptype2'] = 'UK Conveyancers Ltd';
+        res.redirect('/transactions/discharge/lender-representation')
+      }
+})
 
 
 
-  // req.session.data['dischargeAttached'] = 'true';
+
 
 router.get('/docs/examples/pass-data/vehicle-registration-car1', function (req, res) {
 	req.session.data = {
@@ -251,19 +244,12 @@ router.post('/transactions/transfer/transferee-whichapplicants-answer', function
 
 
 })
-=======
+
 router.post('/transactions/transfer/select-transferees-confirmed', function (req, res) {
   req.session.data['transfereesConfirmed'] = 'true';
     res.redirect('/../transactions/tasks')
 })
 
-
-
-
-// router.post('/transactions/transfer/transferor-representation-answer', function (req, res) ) {
-//     req.session.data['tranferorRepAdd'] = 'UK Conveyancers LLP';
-//     res.redireect('/../transactions/transfer/transferee-list')
-// })
 
 
 module.exports = router
