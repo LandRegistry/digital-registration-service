@@ -57,8 +57,8 @@
 
   <div>
 
-    <table class="govuk-table">
-
+    <!-- <table class="govuk-table"> -->
+<!--
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
 
@@ -75,7 +75,26 @@
               <td class="govuk-table__cell govuk-link govuk-link--no-visited-state"><a href="change-title">Change</a></td>
             </tr>
       </tbody>
-    </table>
+    </table> -->
+
+     <div>
+       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+         <div class="govuk-summary-list__row">
+           <dt class="govuk-summary-list__key govuk-!-width-one-quarter">Title number</dt>
+           <dd class="govuk-summary-list__value govuk-!-width-one-half"><p>{{ data['title'] }}</p></dd>
+           <dd class="govuk-summary-list__actions govuk-!-width-one-quarter">
+               <a href="change-title">Change</a>
+               <span class="govuk-visually-hidden"> title</span>
+           </dd>
+         </div>
+         <div class="govuk-summary-list__row">
+           <dt class="govuk-summary-list__key govuk-!-width-one-quarter">Description</dt>
+           <dd class="govuk-summary-list__value govuk-!-width-one-half" value="property-address"><p>11, St William Road, Littlehaxten, Wiltshire LH1 3AB</p></dd>
+           <dd class="govuk-summary-list__actions govuk-!-width-one-quarter">
+               <span class="govuk-visually-hidden"> title</span>
+           </dd>
+         </div>
+         </dl>
 
     <form method="post" action="/transactions/select-transactions" name="" data-validate="whole-form-validation" novalidate>
 

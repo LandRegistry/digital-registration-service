@@ -49,24 +49,11 @@
 
 <div class="govuk-grid-column-full">
     {{ govukPanel({
-    titleText: "Application complete",
+    titleText: "Application submitted",
     html: "Your HM Land Registry reference number:<br><strong>HDJ2123F</strong>"
     }) }}
     <br>
 
-    <h2 class="govuk-heading-l">Application details</h2>
-    <table class="govuk-table">
-      <tbody class="govuk-table__head">
-        <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Your reference</th>
-          <td scope="col" class="govuk-table__cell">{{ data['reference'] }}</td>
-        </tr>
-        <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Application type</th>
-          <td scope="col" class="govuk-table__cell">Update an existing title (Document registration)</td>
-        </tr>
-      </tbody>
-    </table>
 
     <table class="govuk-table">
       <h2 class="govuk-heading-l">Priority details</h2>
@@ -83,8 +70,22 @@
       </tbody>
     </table>
 
+    <h2 class="govuk-heading-l">Application details</h2>
     <table class="govuk-table">
-    <h3 class="govuk-heading-m">Your contact email for this application </h3>
+      <tbody class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Your reference</th>
+          <td scope="col" class="govuk-table__cell">{{ data['reference'] }}</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Application type</th>
+          <td scope="col" class="govuk-table__cell">Update an existing title (Document registration)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="govuk-table">
+    <h3 class="govuk-heading-l">Your contact email for this application </h3>
     <tbody class="govuk-table__body">
           <tr class="govuk-table__row">
             <th scope="row" class="govuk-table__header govuk-!-width-one-quarter">Email address</th>
@@ -92,6 +93,7 @@
           </tr>
     </tbody>
     </table>
+    <br>
 
 
     <h3 class="govuk-heading-m">Next steps</h3>
@@ -103,8 +105,7 @@
     <br><br>
     <a class="govuk-link">Go to portal homepage</a> if you need to continue using other HM Land Registry services.</p>
 
-
-
+<br>
 
 <script>
 
