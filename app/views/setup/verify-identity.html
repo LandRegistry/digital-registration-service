@@ -54,7 +54,7 @@
     <div class="govuk-grid-column-two-thirds">
       <span class="govuk-caption-l">Discharge of charge</span>
   <h1 class="govuk-heading-xl">Verify identity</h1>
-
+  <form method="post" action="/../transactions/discharge/lender-representation" data-validate="representation-form-validation" novalidate>
 
     <p class="govuk-body"> When a party is not represented by a conveyancer, you must personally verify or provide evidence of their identity.
       <h2 class="govuk-heading-l"> Declaration </h2>
@@ -69,10 +69,12 @@
   items: [
     {
       value: "Sufficient",
+      name: "declaration",
       text: "I am satisfied that sufficient steps have been taken to verify the identity and that they are the registered proprieter or have the right to be registered as the proprieter"
     },
     {
       value: "Attach",
+      name: "declaration",
       text: "I attach evidence of their identity with this application"
     }
   ]
@@ -81,11 +83,15 @@
 <div class="govuk-inset-text">
 See <a href="#"> Practice Guide 67</a> for information about providing proof of identity.</div>
 
+<button class="govuk-button" data-module="govuk-button">
+  Continue
+</button>
+
 </div>
 
-<script type="application/json" id="whole-form-validation">
+<script type="application/json" id="representtation-form-validation">
   {
-    "statement": {
+    "declaration": {
       "presence": {
         "message": "^Select if this application affects the whole or part of the title"
       }
