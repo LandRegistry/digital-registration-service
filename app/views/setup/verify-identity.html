@@ -4,13 +4,14 @@
 {% extends "govuk/template.njk" %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/input/macro.njk" import govukInput %}
-{% from "govuk/components/radios/macro.njk" import govukRadios %}
-{% from "govuk/components/select/macro.njk" import govukSelect %}
-{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
-{% from "govuk/components/details/macro.njk" import govukDetails %}
-{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
 {% from "govuk/components/table/macro.njk" import govukTable %}
-{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+
+
 
 
 
@@ -38,7 +39,7 @@
     <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 
 
-    <div class="govuk-phase-banner govuk-!-margin-bottom-5">
+    <div class="govuk-phase-banner">
         <p class="govuk-phase-banner__content">
         <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
         <span class="govuk-phase-banner__text">
@@ -46,59 +47,62 @@
         </span></p>
     </div>
     </div>
+    </div>
 
-    <form method="post" action="DXAddress">
+    <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">Discharge of charge</span>
+  <h1 class="govuk-heading-xl">Verify identity</h1>
+  <form method="post" action="/../transactions/discharge/lender-representation" data-validate="representation-form-validation" novalidate>
 
-    <div class="govuk-grid-column-full">
-        <span class="govuk-caption-xl">Transfer for value (TR1)</span>
-        <h1 class="govuk-heading-xl">Add DX address</h1>
-        <h2 class="govuk-heading-m">For transferee:</h2>
-        <p class="govuk-body">{{ data['applicant-individual-forename']}} {{ data['applicant-individual-surname']}}</p>
+    <p class="govuk-body"> When a party is not represented by a conveyancer, you must personally verify or provide evidence of their identity.
+      <h2 class="govuk-heading-l"> Declaration </h2>
+    <p class="govuk-body">[Lender name] is not represented by a conveyancer.
+      <h3 class="govuk-heading-m"> Select the correct statement:</h3>
 
-
-    {{ govukInput({
-      name: 'DXRef',
-      label: {
-        html: 'DX reference'
-      },
-      classes: "govuk-input--width-20",
-      hint: {
-     text: "For example, 'DX 131601'"
-   }
-    }) }}
-
-    {{ govukInput({
-      name: 'DXName',
-      label: {
-        html: 'DX exchange name'
-      },
-      classes: "govuk-input--width-20",
-      hint: {
-     text: "For example, 'Gloucester 33'"
-   }
-    }) }}
-
-
-  <h3 class="govuk-heading-m">More actions</h3>
-  <p class="govuk-body">Add this address to the following transferees: (optional)</p>
-  {% if data['applicant-individual-forename-2'] %}
-  <div class="govuk-checkboxes">
-      <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="applicant2-address1" name="applicant2address" type="checkbox" value="true">
-        <label class="govuk-label govuk-checkboxes__label" for="applicant2address">
-          {{ data['applicant-individual-forename-2'] }} {{ data['applicant-individual-surname-2'] }}
-        </label>
-        {% endif %}
-        </div>
-        </div>
-        <br>
-
-
-{{ govukButton({
-  text: "Continue"
+{{ govukRadios({
+  idPrefix: "verify-statement",
+  name: "verify-statement",
+  fieldset: {
+  },
+  items: [
+    {
+      value: "Sufficient",
+      name: "declaration",
+      text: "I am satisfied that sufficient steps have been taken to verify the identity and that they are the registered proprieter or have the right to be registered as the proprieter"
+    },
+    {
+      value: "Attach",
+      name: "declaration",
+      text: "I attach evidence of their identity with this application"
+    }
+  ]
 }) }}
+</div>
+<div class="govuk-inset-text">
+See <a href="#"> Practice Guide 67</a> for information about providing proof of identity.</div>
 
-</form>
+<button class="govuk-button" data-module="govuk-button">
+  Continue
+</button>
+
+</div>
+
+<script type="application/json" id="representtation-form-validation">
+  {
+    "declaration": {
+      "presence": {
+        "message": "^Select if this application affects the whole or part of the title"
+      }
+    }
+  }
+</script>
+
+
+  <div class="govuk-grid-row">
+  <div class="govuk-grid-column-full-width">
+
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 <br>
 <p class="govuk-body-s"> The following links open in a new window
@@ -107,6 +111,10 @@
 <a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
 
 </div>
+
+
+</div>
+
 
 
 {% endblock %}
