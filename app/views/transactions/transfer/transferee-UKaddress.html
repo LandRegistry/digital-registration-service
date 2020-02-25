@@ -51,13 +51,7 @@
     <h1 class="govuk-heading-xl">Add UK postal address (postcode search)</h1>
     <h2 class="govuk-heading-m">For transferee:</h2>
     <p class="govuk-body">
-      {% if data['transferee-select'] === 'yes' and data['applicant-individual-forename'] %}
       {{ data['applicant-individual-forename']}} {{ data['applicant-individual-surname']}}
-      {% endif %}
-
-      {% if data['transferee-select'] === 'no' and data['transferee-individual-forename'] %}
-      {{ data['transferee-individual-forename']}} {{ data['transferee-individual-surname']}}
-      {% endif %}
     </p>
 
 

@@ -52,10 +52,8 @@
     <h2 class="govuk-heading-m">For transferee:</h2>
     <p class="govuk-body">
 
+      {{ data['applicant-individual-forename'] }} {{ data['applicant-individual-surname'] }}
 
-      {% if data['applicant-individual-transferee2'] %}
-      {{ data['applicant2-individual-forename-2'] }} {{ data['applicant2-individual-surname-2'] }}
-      {% endif %}
       </p>
 
     <form method="post" action="transferee-UKaddress2">

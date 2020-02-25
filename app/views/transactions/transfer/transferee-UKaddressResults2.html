@@ -58,19 +58,17 @@
 
     <h4 class="govuk-heading-s">Select address</h4>
     <div class="govuk-form-group">
-      <select class="govuk-select govuk-!-width-one-half" id="addressResults" name="addressResults">
-        <option value="addressresults0" selected>11 addresses found</option>
-        <option value="addressresult1">1, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-        <option value="addressresult2" >2a, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-        <option value="addressresult2" >2b, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-        <option value="addressresult3">3, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-        <option value="addressresult4">4, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-        <option value="addressresult4">5, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-        <option value="addressresult4">6, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-        <option value="addressresult4">7, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-        <option value="addressresult4">8, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-        <option value="addressresult4">9, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-        <option value="addressresult4">10, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
+      <select class="govuk-select govuk-!-width-one-half" id="addressResults2" name="addressResults2">
+        <option value="address2results0" selected>9 addresses found</option>
+        <option value="address2result1">1, Victoria Road,	Greater Haxten,	Wiltshire, LH17 6EQ</option>
+        <option value="address2result2" >Flat A, 2, Victoria Road,	Greater Haxten,	Wiltshire, LH17 6EQ</option>
+        <option value="address2result2" >Flat B, 2, Victoria Road,	Greater Haxten,	Wiltshire, LH17 6EQ</option>
+        <option value="address2result3">Flat C, 2, Victoria Road,	Greater Haxten,	Wiltshire, LH17 6EQ</option>
+        <option value="address2result4">4, Victoria Road,	Greater Haxten,	Wiltshire, LH17 6EQ</option>
+        <option value="address2result4">6, Victoria Road,	Greater Haxten,	Wiltshire, LH17 6EQ</option>
+        <option value="address2result4">8, Victoria Road,	Greater Haxten,	Wiltshire, LH17 6EQ</option>
+        <option value="address2result4">10, Victoria Road,	Greater Haxten,	Wiltshire, LH17 6EQ</option>
+        <option value="address2result4">12, Victoria Road,	Greater Haxten,	Wiltshire, LH17 6EQ</option>
       </select>
     </div>
 
@@ -92,14 +90,14 @@
       classes: "govuk-!-width-one-half"
     }) }}
 
-    {% if data['applicant2-individual-forename'] %}
+    {% if data['applicant2-individual-forename-2'] %}
     <p class="govuk-body">Add this address to the following transferees: (optional)</p>
 
     <div class="govuk-checkboxes">
         <div class="govuk-checkboxes__item">
-          <input class="govuk-checkboxes__input" id="applicant2-address1" name="applicant2address" type="checkbox" value="true">
+          <input class="govuk-checkboxes__input" id="applicant2-address2" name="applicant2address2" type="checkbox" value="true">
           <label class="govuk-label govuk-checkboxes__label" for="applicant2address">
-            {{ data['applicant-individual-forename'] }} {{ data['applicant2-individual-surname'] }}
+            {{ data['applicant2-individual-forename-2'] }} {{ data['applicant2-individual-surname-2'] }}
           </label>
           {% endif %}
           </div>
