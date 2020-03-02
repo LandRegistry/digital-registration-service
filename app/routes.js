@@ -266,6 +266,10 @@ router.post('/transactions/transfer/select-transferees-confirmed', function (req
     res.redirect('/../transactions/tasks')
 })
 
-
+router.get('/../remove-address-one', function (req, res) {
+	req.session.data = {
+  "transfereeAddressType": ""
+}
+})
 
 module.exports = router
