@@ -4,11 +4,9 @@
 {% extends "govuk/template.njk" %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/input/macro.njk" import govukInput %}
-{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
-{% from "govuk/components/radios/macro.njk" import govukRadios %}
-{% from "govuk/components/select/macro.njk" import govukSelect %}
-{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
 {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+
+
 
 
 {% block headIcons %}
@@ -43,44 +41,51 @@
         </span></p>
     </div>
     </div>
-</div>
+    </div>
+
 
     <main class="govuk-main-wrapper " id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
 
-  <span class="govuk-caption-l">Apply to update or create a registered title</span>
+    <span class="govuk-caption-l">Apply to update or create a registered title</span>
 
-  <h1 class="govuk-heading-l"> Enter your reference </h1>
+    <h1 class="govuk-heading-l"> Enter title number </h1>
 
-  <form method="get" action="selectApplicationType" data-validate="reference-form-validation" novalidate>
+  <form method="get" action="property-description" data-validate="title-form-validation" novalidate>
     <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
       <div class="govuk-form-group">
-        <label class="govuk-label" for="with-hint">
-          Type in your reference for this application
+        <label class=" govuk-label" for="govuk-input govuk-input--width-10">
+          Type in the title number
         </label>
 
-        <input type="text" class="govuk-input govuk-js-character-count govuk-!-width-one-half" id="with-hint" name="reference" aria-describedby="with-hint-info with-hint-hint">
+        <input type="text" class="govuk-input govuk-!-width-one-quarter" id="with-hint" name="title" aria-describedby="with-hint-info with-hint-hint">
       </div>
-
-      <span id="with-hint-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
-        You can enter up to 25 characters
-      </span>
-    </div>
-
+      </div>
 
     {{ govukButton({
       text: "Continue",
-      href:"charge-without-transfer-select-application-type"
+      classes: ""
     }) }}
+
   </form>
   </div>
   </div>
+  </main>
 
-
+  <script type="application/json" id="title-form-validation">
+   {
+     "title": {
+       "presence": {
+         "message": "^Enter a title number"
+       }
+     }
+   }
+ </script>
 
 <div class="govuk-grid-row">
-  <div class="govuk-column-width-full">
+<div class="govuk-grid-column-full-width">
+
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 <br>
 <p class="govuk-body-s"> The following links open in a new window
@@ -89,27 +94,14 @@
 <a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
 
 </div>
+</div>
+
 
 
 
 
 {% endblock %}
 
-
-  <script type="application/json" id="reference-form-validation">
-   {
-     "reference": {
-       "presence": {
-         "message": "^Enter your reference for this application"
-       },
-       "length": {
-         "minimum": 1,
-         "maximum": 25,
-         "message": "^Your reference must be 25 characters or less"
-       }
-     }
-   }
- </script>
 
 {% block footer %}
 {% endblock %}
