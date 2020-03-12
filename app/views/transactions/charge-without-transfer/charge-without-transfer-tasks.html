@@ -82,18 +82,21 @@
       <td class="govuk-table__cell"></td>
       <tbody class="govuk-table__body">
             <tr class="govuk-table__row">
-              <td class="govuk-table__cell"><a href="discharge/discharge-method" class="govuk-link">Borrower details</a></td>
-              {% if data['discharge-method'] %}
-              <td class="govuk-table__cell"><strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong></td>
-              {% endif %}</tr>
+              <td class="govuk-table__cell"><a href="charge-without-transfer-borrower-details" class="govuk-link">Borrower details</a></td>
 
-              <td class="govuk-table__cell"><a href="discharge/discharge-lenders" class="govuk-link">Enter charge date</a></td>
-              <td class="govuk-table__cell">{% if data['lender-name'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
+              <td class="govuk-table__cell">{% if data['borrowerDetails1'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td></tr>
+
 
               <tr class="govuk-table__row">
-              <td class="govuk-table__cell">
-              <a href="discharge/lender-representation" class="govuk-link">Do you have an MD refernece?</a>
-              </td>
+              <td class="govuk-table__cell"><a href="charge-without-transfer-charge-date" class="govuk-link">Enter charge date</a></td>
+              <td class="govuk-table__cell">{% if data['chargeDateComplete'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
+              </tr>
+
+              <tr class="govuk-table__row">
+              <td class="govuk-table__cell"><a href="" class="govuk-link">Do you have an MD reference?</a></td>
+              <td class="govuk-table__cell">{% if data['MD-ref'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
+              </tr>
+
 
               <tr class="govuk-table__row">
               <td class="govuk-table__cell">

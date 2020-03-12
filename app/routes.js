@@ -71,6 +71,9 @@ router.post('/transactions/transfer/transferee-addresstype-answer2', function (r
 
 
 
+
+
+
 //
 // router.post('/transactions/transfer/transferor-representation-answer', function (req, res) {
 //   // Get the answer from session data
@@ -137,6 +140,7 @@ router.post('/transactions/discharge/lender-representation-answer2', function (r
 
 
 
+
 router.get('/docs/examples/pass-data/vehicle-registration-car1', function (req, res) {
 	req.session.data = {
   "vehicle-registration": "test-plate",
@@ -148,6 +152,24 @@ router.get('/docs/examples/pass-data/vehicle-registration-car1', function (req, 
 }
   res.redirect('vehicle-registration')
 })
+
+
+router.get('/docs/examples/pass-data/Solecharge', function (req, res) {
+	req.session.data = {
+    "reference": "JT/123/TR1",
+    "title": "LP12345",
+    "whole-or-part": "Whole",
+    "part": "",
+    "Transactions": "charge",
+    "PriceInput1": "120000",
+    "FeeInput1": "12",
+    "add-applicant": "company",
+    "applicant-company-name-2": "Barclays",
+    "applicant-company-number-2": "123456"
+}
+  res.redirect('/../transactions/charge-without-transfer/charge-without-transfer-tasks')
+})
+
 
 router.get('/docs/examples/pass-data/task-list', function (req, res) {
 	req.session.data = {
@@ -186,6 +208,35 @@ router.get('/docs/examples/pass-data/task-list', function (req, res) {
 router.get('/stored-data', function (req, res) {
 	console.log(req.session.data)
   res.render('stored-data')
+})
+
+
+// Charge
+
+router.post('/transactions/charge-without-transfer/charge-without-transfer-borrower1', function (req, res) {
+  // Get the answer from session data
+  // The name between the quotes is the same as the 'name' attribute on the input elements
+  // However in JavaScript we can't use hyphens in variable names
+
+  let borrowerDetails1 = req.session.data['soleChargeborrowerDetails1']
+
+  if (borrowerDetails1 === 'correct') {
+    req.session.data['borrowerDetails1'] = 'Bob Borrower';
+    res.redirect('charge-without-transfer-borrower-list')
+}
+  if (borrowerDetails1 === 'changed') {
+      res.redirect('charge-without-transfer-borrower-change')
+    }
+    if (borrowerDetails1 === 'removed') {
+        res.redirect('charge-without-transfer-borrower-list')
+      }
+})
+
+
+
+router.post('/transactions/charge-without-transfer/date-complete', function (req, res) {
+      req.session.data['chargeDateComplete'] = 'completed';
+      res.redirect('/transactions/charge-without-transfer/charge-without-transfer-tasks')
 })
 
 
@@ -265,6 +316,7 @@ router.post('/transactions/transfer/select-transferees-confirmed', function (req
   req.session.data['transfereesConfirmed'] = 'true';
     res.redirect('/../transactions/tasks')
 })
+
 
 
 
