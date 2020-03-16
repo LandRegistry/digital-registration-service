@@ -8,7 +8,7 @@ router.use('/node_modules', express.static('node_modules'))
 
 
 
-
+// Select/add transferees
 router.post('/transactions/transfer/transferee-whichapplicants-answer', function (req, res) {
   // Get the answer from session data
   // The name between the quotes is the same as the 'name' attribute on the input elements
@@ -104,7 +104,7 @@ router.post('/transactions/transfer/transferee-whichapplicants-answer', function
 
   // res.redirect('/transactions/transfer/transferee-list')
 
-
+// Select/add lenders
   router.post('/transactions/charge-without-transfer/applicants-lenders', function (req, res) {
 
     let applicantLender1 = req.session.data['applicant-company-lender1'];
@@ -123,16 +123,16 @@ router.post('/transactions/transfer/transferee-whichapplicants-answer', function
       res.redirect('/transactions/charge-without-transfer/add-lender')
     } else {
       req.session.data['add-lender'] = 'true';
-      res.redirect('/transactions/charge-without-transfer/lender-list')
+      req.session.data['cwt-lender-company-name'] = 'Barclays Lending Ltd';
+      req.session.data['cwt-lender-company-number'] = '12345678';
+      res.redirect('/transactions/charge-without-transfer/charge-without-transfer-lender-list')
 
     }
 })
 
 
+// Transferee add address for service
 router.post('/transactions/transfer/transferee-addresstype-answer', function (req, res) {
-  // Get the answer from session data
-  // The name between the quotes is the same as the 'name' attribute on the input elements
-  // However in JavaScript we can't use hyphens in variable names
 
   let transfereeAddress = req.session.data['transfereeAddressType']
 
@@ -159,9 +159,9 @@ router.post('/transactions/transfer/transferee-addresstype-answer', function (re
             res.redirect('/transactions/transfer/transferee-BFPOAddress')
           }
 
-
 })
 
+// Transferee 2 address
 router.post('/transactions/transfer/transferee-addresstype-answer2', function (req, res) {
   // Get the answer from session data
   // The name between the quotes is the same as the 'name' attribute on the input elements
@@ -180,6 +180,35 @@ router.post('/transactions/transfer/transferee-addresstype-answer2', function (r
 
 
 
+// charge addresses
+router.post('/transactions/charge-without-transfer/address-for-service/cwt-lender-addresstype-answer', function (req, res) {
+
+  let lenderAddress = req.session.data['lenderAddressType']
+
+  if (lenderAddress === 'UK-postal') {
+    res.redirect('/transactions/charge-without-transfer/address-for-service/lender-UKaddress')
+}
+  if (lenderAddress === 'Overseas-postal') {
+      res.redirect('/transactions/charge-without-transfer/address-for-service/lender-overseasAddress')
+    }
+
+  if (lenderAddress === 'PO-box') {
+      res.redirect('/transactions/charge-without-transfer/address-for-service/lender-POboxAddress')
+    }
+
+    if (lenderAddress === 'email') {
+        res.redirect('/transactions/charge-without-transfer/address-for-service/lender-emailAddress')
+      }
+
+      if (lenderAddress === 'DX') {
+          res.redirect('/transactions/charge-without-transfer/address-for-service/lender-DX')
+        }
+
+        if (lenderAddress === 'BFPO') {
+            res.redirect('/transactions/charge-without-transfer/address-for-service/lender-BFPO')
+          }
+
+})
 
 
 
@@ -199,10 +228,8 @@ router.post('/transactions/transfer/transferee-addresstype-answer2', function (r
 // })
 
 
+// Discharge method
 router.post('/transactions/discharge/method-answer', function (req, res) {
-  // Get the answer from session data
-  // The name between the quotes is the same as the 'name' attribute on the input elements
-  // However in JavaScript we can't use hyphens in variable names
 
                                             // Name of input
   let dischargeMethod = req.session.data['dischargemethod']
@@ -222,7 +249,7 @@ router.post('/transactions/discharge/method-answer', function (req, res) {
 })
 
 
-
+//  discharge representation
 router.post('/transactions/discharge/lender-representation-answer', function (req, res) {
       let lenderRep = req.session.data['LenderRepresentation']
       if (lenderRep === 'NotRepresented') {
@@ -245,10 +272,19 @@ router.post('/transactions/discharge/lender-representation-answer2', function (r
       }
 })
 
-
+// charge without transfer representation
+router.post('/transactions/charge-without-transfer/cwt-lender-representation-answer', function (req, res) {
+      let lenderRep = req.session.data['cwt-LenderRepresentation']
+      if (lenderRep === 'NotRepresented') {
+          req.session.data['lenderReptype'] = 'Not represented';
+          res.redirect('')
+      } else {
+        req.session.data['cwt-lenderReptype'] = 'UK Conveyancers Ltd';
+        res.redirect('/transactions/charge-without-transfer/lender-representation')
+      }
+})
 
 // Set data
-
 
 router.get('/docs/examples/pass-data/vehicle-registration-car1', function (req, res) {
 	req.session.data = {
@@ -344,10 +380,10 @@ router.post('/transactions/charge-without-transfer/charge-without-transfer-borro
 
 
 
-router.post('/transactions/charge-without-transfer/date-complete', function (req, res) {
-      req.session.data['chargeDateComplete'] = 'completed';
-      res.redirect('/transactions/charge-without-transfer/MDRef')
-})
+    router.post('/transactions/charge-without-transfer/date-complete', function (req, res) {
+          req.session.data['chargeDateComplete'] = 'completed';
+          res.redirect('/transactions/charge-without-transfer/MDRef')
+    })
 
 // Transfer completed tags
 
@@ -429,6 +465,24 @@ router.post('/transactions/transfer/select-transferees-confirmed', function (req
 })
 
 
+// Charge documents/tags
+router.post('/transactions/charge-without-transfer/documents/Mortgage-attached', function (req, res) {
+  req.session.data['mortgageAttached'] = 'true';
+    res.redirect('document_prompts')
+})
 
+router.post('/transactions/charge-without-transfer/documents/evidence-attached', function (req, res) {
+  req.session.data['certificateAttached'] = 'true';
+    res.redirect('document_prompts')
+})
+
+
+// Back links
+
+
+router.post('/transactions/charge-without-transfer/back-link-borrower', function (req, res) {
+  req.session.data['borrowerDetails1'] = '';
+    res.redirect('charge-without-transfer-tasks')
+})
 
 module.exports = router

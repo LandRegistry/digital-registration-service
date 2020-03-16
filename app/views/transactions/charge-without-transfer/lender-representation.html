@@ -1,0 +1,213 @@
+{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
+{%- set assetPath = '/govuk/assets' -%}
+
+{% extends "govuk/template.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+
+
+{% block headIcons %}
+  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
+  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
+{% endblock %}
+
+{% block head %}
+  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full" id="headerdiv">
+    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
+    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Apply to update or create a registered title</a></p>
+    <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
+
+
+    <div class="govuk-phase-banner govuk-!-margin-bottom-5">
+        <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
+        <span class="govuk-phase-banner__text">
+        This is a prototype and not a real service.
+        </span></p>
+     </div>
+    </div>
+
+<div class="govuk-grid-column-full">
+  <a href="charge-without-transfer-tasks" class="govuk-back-link">Back</a>
+    <span class="govuk-caption-l">Charge</span>
+    <h1 class="govuk-heading-l">Add lender representation</h1>
+    <p class="govuk-body-m">Select 'Add representation' for each lender.</p>
+    <h2 class="govuk-heading-m">Lender representation added</h2>
+
+    <form>
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Lender name</th>
+          <th scope="col" class="govuk-table__header govuk-!-width-one-half">Represented by</th>
+          <th scope="col" class="govuk-table__header govuk-!-width-one-third">Options</th>
+        </tr>
+      </thead>
+
+      <tbody class="govuk-table__body">
+
+              {% if data['cwt-lender-name2'] %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">{{ data['cwt-lender-name2']}}</td>
+                <td class="govuk-table__cell">{% if not data['cwt-lenderReptype2'] %}- No representation added -{% endif %} {% if data['cwt-lenderReptype2'] %} {{ data['cwt-lenderReptype2']}}{% endif %}</td>
+                <td class="govuk-table__cell govuk-link"><a href="lender-representationAdd2">{% if not data['cwt-lenderReptype2'] %}Add representation {% endif %} {% if data['cwt-lenderReptype2'] %} Change <br> Remove {% endif %}</td>
+                </tr>
+              {% endif %}
+
+              {% if data['cwt-lender-individual-forename'] %}
+                <tbody class="govuk-table_body">
+                  <tr class="govuk-table_row" id="hidePI">
+                  <td class="govuk-table__cell govuk-!-width-one-third">{{ data['cwt-lender-individual-forename'] }} {{ data['cwt-lender-individual-surname'] }}</td>
+                  <td class="govuk-table__cell">{% if not data['cwt-lenderReptype'] %}- No representation added -{% endif %} {% if data['cwt-lenderReptype'] %} {{ data['cwt-lenderReptype']}}{% endif %}
+                  <td class="govuk-table__cell govuk-link"><a href="lender-representationAdd">{% if not data['cwt-lenderReptype'] %}Add representation {% endif %} {% if data['cwt-lenderReptype'] %} Change <br> Remove {% endif %}</td>
+                  </tbody>
+                 {% endif %}
+
+                 {% if data['cwt-lender2-individual-forename-2'] %}
+                   <tbody class="govuk-table_body">
+                     <tr class="govuk-table_row" id="hidePI">
+                     <td class="govuk-table__cell govuk-!-width-one-third">{{ data['cwt-lender2-individual-forename-2'] }} {{ data['cwt-lender2-individual-surname-2'] }}</td>
+                     <td class="govuk-table__cell">{% if not data['cwt-lenderReptype'] %}- No representation added -{% endif %} {% if data['cwt-lenderReptype'] %} {{ data['cwt-lenderReptype']}}{% endif %}
+                     <td class="govuk-table__cell govuk-link"><a href="lender-representationAdd">{% if not data['cwt-lenderReptype'] %}Add representation {% endif %} {% if data['cwt-lenderReptype'] %} Change <br> Remove {% endif %}</td>
+                     </tbody>
+                    {% endif %}
+
+                    {% if data['cwt-lender3-individual-forename-3'] %}
+                      <tbody class="govuk-table_body">
+                        <tr class="govuk-table_row" id="hidePI">
+                        <td class="govuk-table__cell govuk-!-width-one-third">{{ data['cwt-lender3-individual-forename-3'] }} {{ data['cwt-lender3-individual-surname-3'] }}</td>
+                        <td class="govuk-table__cell">{% if not data['cwt-lenderReptype'] %}- No representation added -{% endif %} {% if data['cwt-lenderReptype'] %} {{ data['cwt-lenderReptype']}}{% endif %}
+                        <td class="govuk-table__cell govuk-link"><a href="lender-representationAdd">{% if not data['cwt-lenderReptype'] %}Add representation {% endif %} {% if data['cwt-lenderReptype'] %} Change <br> Remove {% endif %}</td>
+                        </tbody>
+                       {% endif %}
+
+                {% if data['cwt-lender-company-name'] %}
+                <tbody class="govuk-table_body">
+                  <tr class="govuk-table_row" id="hidePI">
+                  <td class="govuk-table__cell govuk-!-width-one-third">{{ data['cwt-lender-company-name'] }}</td>
+                  <td class="govuk-table__cell">{% if not data['cwt-lenderReptype'] %}- No representation added -{% endif %} {% if data['cwt-lenderReptype'] %} {{ data['cwt-lenderReptype']}}{% endif %}
+                  <td class="govuk-table__cell govuk-link"><a href="lender-representationAdd">{% if not data['cwt-lenderReptype'] %}Add representation {% endif %} {% if data['cwt-lenderReptype'] %} Change <br> Remove {% endif %}</td>
+                  </tbody>
+                 {% endif %}
+
+                 {% if data['cwt-lender2-company-name-2'] %}
+                 <tbody class="govuk-table_body">
+                   <tr class="govuk-table_row" id="hidePI">
+                   <td class="govuk-table__cell govuk-!-width-one-third">{{ data['cwt-lender2-company-name-2'] }}</td>
+                   <td class="govuk-table__cell">{% if not data['cwt-lenderReptype'] %}- No representation added -{% endif %} {% if data['cwt-lenderReptype'] %} {{ data['cwt-lenderReptype']}}{% endif %}
+                   <td class="govuk-table__cell govuk-link"><a href="lender-representationAdd">{% if not data['cwt-lenderReptype'] %}Add representation {% endif %} {% if data['cwt-lenderReptype'] %} Change <br> Remove {% endif %}</td>
+                   </tbody>
+                  {% endif %}
+
+                  {% if data['cwt-lender3-company-name-3'] %}
+                  <tbody class="govuk-table_body">
+                    <tr class="govuk-table_row" id="hidePI">
+                    <td class="govuk-table__cell govuk-!-width-one-third">{{ data['cwt-lender3-company-name-3'] }}</td>
+                    <td class="govuk-table__cell">{% if not data['cwt-lenderReptype'] %}- No representation added -{% endif %} {% if data['cwt-lenderReptype'] %} {{ data['cwt-lenderReptype']}}{% endif %}
+                    <td class="govuk-table__cell govuk-link"><a href="lender-representationAdd">{% if not data['cwt-lenderReptype'] %}Add representation {% endif %} {% if data['cwt-lenderReptype'] %} Change <br> Remove {% endif %}</td>
+                    </tbody>
+                   {% endif %}
+
+                  {% if data['cwt-lender-overseas-name'] %}
+                    <tbody class="govuk-table_body">
+                      <tr class="govuk-table_row">
+                      <td class="govuk-table__cell govuk-!-width-one-third">{{ data['cwt-lender-overseas-name'] }}</td>
+                      <td class="govuk-table__cell">{% if not data['cwt-lenderReptype'] %}- No representation added -{% endif %} {% if data['cwt-lenderReptype'] %} {{ data['cwt-lenderReptype']}}{% endif %}
+                      <td class="govuk-table__cell govuk-link"><a href="lender-representationAdd">{% if not data['cwt-lenderReptype'] %}Add representation {% endif %} {% if data['cwt-lenderReptype'] %} Change <br> Remove {% endif %}</td>
+                      </tbody>
+                     {% endif %}
+
+                     {% if data['cwt-lender2-overseas-name'] %}
+                       <tbody class="govuk-table_body">
+                         <tr class="govuk-table_row">
+                         <td class="govuk-table__cell govuk-!-width-one-third">{{ data['cwt-lender2-overseas-name'] }}</td>
+                         <td class="govuk-table__cell">{% if not data['cwt-lenderReptype'] %}- No representation added -{% endif %} {% if data['cwt-lenderReptype'] %} {{ data['cwt-lenderReptype']}}{% endif %}
+                         <td class="govuk-table__cell govuk-link"><a href="lender-representationAdd">{% if not data['cwt-lenderReptype'] %}Add representation {% endif %} {% if data['cwt-lenderReptype'] %} Change <br> Remove {% endif %}</td>
+                         </tbody>
+                        {% endif %}
+
+                        {% if data['cwt-lender3-overseas-name'] %}
+                          <tbody class="govuk-table_body">
+                            <tr class="govuk-table_row">
+                            <td class="govuk-table__cell govuk-!-width-one-third">{{ data['cwt-lender3-overseas-name'] }}</td>
+                            <td class="govuk-table__cell">{% if not data['cwt-lenderReptype'] %}- No representation added -{% endif %} {% if data['cwt-lenderReptype'] %} {{ data['cwt-lenderReptype']}}{% endif %}
+                            <td class="govuk-table__cell govuk-link"><a href="lender-representationAdd">{% if not data['cwt-lenderReptype'] %}Add representation {% endif %} {% if data['cwt-lenderReptype'] %} Change <br> Remove {% endif %}</td>
+                            </tbody>
+                           {% endif %}
+
+                   {% if data['cwt-lender-other-name'] %}
+                   <tbody class="govuk-table_body">
+                     <tr class="govuk-table_row">
+                    <td class="govuk-table__cell govuk-!-width-one-third">{{ data['cwt-lender-other-name'] }}</td>
+                    <td class="govuk-table__cell">{% if not data['cwt-lenderReptype'] %}- No representation added -{% endif %} {% if data['cwt-lenderReptype'] %} {{ data['cwt-lenderReptype']}}{% endif %}
+                    <td class="govuk-table__cell govuk-link"><a href="lender-representationAdd">{% if not data['cwt-lenderReptype'] %}Add representation {% endif %} {% if data['cwt-lenderReptype'] %} Change <br> Remove {% endif %}</td>
+                    </tbody>
+                   {% endif %}
+
+                   {% if data['cwt--lender2-other-name'] %}
+                   <tbody class="govuk-table_body">
+                     <tr class="govuk-table_row">
+                     <td class="govuk-table__cell govuk-!-width-one-third">{{ data['cwt--lender2-other-name'] }}</td>
+                     <td class="govuk-table__cell">{% if not data['cwt--lenderReptype'] %}- No representation added -{% endif %} {% if data['cwt--lenderReptype'] %} {{ data['cwt--lenderReptype']}}{% endif %}
+                     <td class="govuk-table__cell govuk-link"><a href="lender-representationAdd">{% if not data['cwt-lenderReptype'] %}Add representation {% endif %} {% if data['cwt-lenderReptype'] %} Change <br> Remove {% endif %}</td>
+                     </tbody>
+                   {% endif %}
+
+                   {% if data['cwt--lender3-other-name'] %}
+                   <tbody class="govuk-table_body">
+                     <tr class="govuk-table_row">
+                     <td class="govuk-table__cell govuk-!-width-one-third">{{ data['cwt-lender3-other-name'] }}</td>
+                     <td class="govuk-table__cell">{% if not data['cwt-lenderReptype'] %}- No representation added -{% endif %} {% if data['cwt-lenderReptype'] %} {{ data['cwt-lenderReptype']}}{% endif %}
+                     <td class="govuk-table__cell govuk-link"><a href="lender-representationAdd">{% if not data['cwt-lenderReptype'] %}Add representation {% endif %} {% if data['cwt-lenderReptype'] %} Change <br> Remove {% endif %}</td>
+                     </tbody>
+                   {% endif %}
+
+                  </table>
+
+
+
+{{ govukButton({
+  text: "Continue",
+  href: "address-for-service/lender-addresstype"
+}) }}
+
+</form>
+
+<hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
+<br>
+<p class="govuk-body-s"> The following links open in a new window
+<br>
+<br>
+<a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
+
+</div>
+
+
+{% endblock %}
+
+
+{% block footer %}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}

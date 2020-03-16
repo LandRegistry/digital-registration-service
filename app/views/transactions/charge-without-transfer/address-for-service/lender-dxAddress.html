@@ -10,7 +10,7 @@
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 {% from "govuk/components/table/macro.njk" import govukTable %}
-{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
 
 
 
@@ -38,100 +38,82 @@
     <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 
 
-    <div class="govuk-phase-banner">
+    <div class="govuk-phase-banner govuk-!-margin-bottom-5">
         <p class="govuk-phase-banner__content">
         <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
         <span class="govuk-phase-banner__text">
         This is a prototype and not a real service.
         </span></p>
-    </div></div>
+    </div>
     </div>
 
-    <main class="govuk-main-wrapper " id="main-content" role="main">
-      <a href="charge-without-transfer-tasks" class="govuk-back-link">Back</a>
-      <span class="govuk-caption-l">Charge</span>
+    <form method="post" action="DXAddress">
 
-          <h1 class="govuk-heading-l">Borrowers</h1>
-
-
-          <form method="get" action="charge-without-transfer-charge-date" novalidate>
-
-            <table class="govuk-table">
-            <thead class="govuk-table__head">
-            <tr class="govuk-table__row">
-              <th scope="col" class="govuk-table__header govuk-!-width-one-third">Borrower type</th>
-              <th scope="col" class="govuk-table__header govuk-!-width-one-third">Borrower name</th>
-              <th scope="col" class="govuk-table__header govuk-!-width-one-third">Details</th>
-              <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Options</th>
-
-              </tr>
-            </thead>
-
-            <tbody class="govuk-table__body">
-                  <tr class="govuk-table__row">
-                    <td class="govuk-table__cell">Private individual</td>
-                    <td class="govuk-table__cell">{{ data['borrowerDetails1'] }}</td>
-                    <td class="govuk-table__cell">
-                        {% if data['soleChargeborrowerDetails1'] == 'correct' %}
-                        <p>Correct</p>
-                        {% endif %}
-                        {% if data['soleChargeborrowerDetails1'] == 'changed' %}
-                        <p>Amended</p>
-                        {% endif %}
-                        {% if data['soleChargeborrowerDetails1'] == 'removed'%}
-                        <p>Removed</p>
-                        {% endif %}
-                      </td>
-                    <td class="govuk-table__cell"><a href="charge-without-transfer-borrower-change">Change</a></td>
-                  </tr>
-            </tbody>
-          </table>
-
-          {{ govukWarningText({
-            text: "I confirm all name details are correct",
-            iconFallbackText: "Warning"
-          }) }}
-
-            {{ govukButton({
-            classes: "",
-            text: "Continue"
-            }) }}
-
-          </form>
+    <div class="govuk-grid-column-full">
+        <span class="govuk-caption-xl">Transfer for value (TR1)</span>
+        <h1 class="govuk-heading-xl">Add DX address</h1>
+        <h2 class="govuk-heading-m">For transferee:</h2>
+        <p class="govuk-body">{{ data['applicant-individual-forename']}} {{ data['applicant-individual-surname']}}</p>
 
 
-</main>
+    {{ govukInput({
+      name: 'DXRef',
+      label: {
+        html: 'DX reference'
+      },
+      classes: "govuk-input--width-20",
+      hint: {
+     text: "For example, 'DX 131601'"
+   }
+    }) }}
+
+    {{ govukInput({
+      name: 'DXName',
+      label: {
+        html: 'DX exchange name'
+      },
+      classes: "govuk-input--width-20",
+      hint: {
+     text: "For example, 'Gloucester 33'"
+   }
+    }) }}
 
 
+  <h3 class="govuk-heading-m">More actions</h3>
+  <p class="govuk-body">Add this address to the following transferees: (optional)</p>
+  {% if data['applicant-individual-forename-2'] %}
+  <div class="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="applicant2-address1" name="applicant2address" type="checkbox" value="true">
+        <label class="govuk-label govuk-checkboxes__label" for="applicant2address">
+          {{ data['applicant-individual-forename-2'] }} {{ data['applicant-individual-surname-2'] }}
+        </label>
+        {% endif %}
+        </div>
+        </div>
+        <br>
+
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+</form>
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 <br>
 <p class="govuk-body-s"> The following links open in a new window
 <br>
 <br>
 <a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
-<a href="/prototype-admin/clear-data">Clear data</a>
 
-
-<script type="application/json" id="reference-form-validation">
- {
-   "reference": {
-     "presence": {
-       "message": "^Enter your reference for this application"
-     },
-     "length": {
-       "minimum": 1,
-       "maximum": 25,
-       "message": "^Your reference must be 25 characters or less"
-     }
-   }
-</script>
-
+</div>
 
 
 {% endblock %}
 
 
-
+{% block footer %}
+{% endblock %}
 
 {% block bodyEnd %}
   {% include "includes/scripts.html" %}
