@@ -1,0 +1,414 @@
+{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
+{%- set assetPath = '/govuk/assets' -%}
+
+{% extends "govuk/template.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+
+
+{% block headIcons %}
+  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
+  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
+{% endblock %}
+
+{% block head %}
+  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full" id="headerdiv">
+    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
+    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Apply to update or create a registered title</a></p>
+    <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
+
+
+    <div class="govuk-phase-banner govuk-!-margin-bottom-5">
+        <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
+        <span class="govuk-phase-banner__text">
+        This is a prototype and not a real service.
+        </span></p>
+    </div>
+    </div>
+
+<div class="govuk-grid-column-full">
+  <a href="/charge-without-transfer/charge-without-transfer-tasks" class="govuk-back-link">Back</a>
+    <span class="govuk-caption-l">Charge</span>
+    <h1 class="govuk-heading-l">Add address for service</h1>
+    <p class="govuk-body">Each lender can add up to 3 addresses for service to the register. One must be a postal address.</p>
+    <h2 class="govuk-heading-m">Lenders added</h2>
+
+
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Lender type</th>
+          <th scope="col" class="govuk-table__header">Full name</th>
+          <th scope="col" class="govuk-table__header">Address type</th>
+          <th scope="col" class="govuk-table__header govuk-!-width-one-third">Address for service</th>
+          <th scope="col" class="govuk-table__header">Options</th>
+        </tr>
+      </thead>
+
+
+      <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+
+              {% if data['cwt-lender-company-name'] %}
+              <tbody class="govuk-table_body">
+                <tr class="govuk-table_row">
+                  <td class="govuk-table__cell">UK Company or LLP</td>
+                <td class="govuk-table__cell">{{ data['cwt-lender-company-name'] }}</td>
+                <td class="govuk-table__cell">{% if data['lenderAddressType'] === 'UK-postal' %}
+                 UK Postal
+                 {% endif %}
+
+
+                 {% if data['lenderAddressType'] === 'Overseas-postal' %}
+                 Overseas postal address
+                 {% endif %}
+
+                 {% if data['lenderAddressType'] === 'PO-box' %}
+                 PO Box (postal address)
+                 {% endif %}
+
+                 {% if data['lenderAddressType'] === 'email' %}
+                 Email address
+                 {% endif %}
+
+                 {% if data['lenderAddressType'] === 'DX' %}
+                 DX address
+                 {% endif %}
+
+                 {% if data['lenderAddressType'] === 'BFPO' %}
+                 BFPO postal address (armed forces)
+                 {% endif %}
+
+                 <br><br><br>
+                 {% if not data['lenderAddressType2'] and data['lenderAddressType'] %}
+                 <a href="lender-addresstype-2" class="govuk-link"> Add another address </a>
+                 {% endif %}</td>
+
+              <td class="govuk-table__cell">
+              {% if data['lenderAddressType'] === 'UK-postal' %}
+              <p> 4, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</p>
+               {% endif %}
+
+               {% if data['cwt-lenderAddressType'] === 'Overseas-postal' %}
+                {{ data['OverseasAddressLine1'] }}<br>
+                {{ data['OverseasAddressLine2'] }}<br>
+                {{ data['OverseasAddressLine3'] }}<br>
+                {{ data['OverseasAddressLine4'] }}
+                {{ data['OverseasAddressLine5'] }}
+                {{ data['country'] }}
+                {% endif %}
+
+                {% if data['cwt-lenderAddressType'] === 'PO-box' %}
+                {{ data['PO'] }}<br>
+                {{ data['POCity'] }}<br>
+                {{ data['POPostcode'] }}<br>
+                 {% endif %}
+
+                 {% if data['cwt-lenderAddressType'] === 'email' %}
+                 {{ data['emailAddress'] }}
+                 {% endif %}
+
+                 {% if data['cwt-lenderAddressType'] === 'DX' %}
+                 {{ data['DXRef'] }}
+                 {{ data['DXName'] }}
+                 {% endif %}
+
+                 {% if data['cwt-lenderAddressType'] === 'BFPO' %}
+                 {{ data['BFPOserviceNo'] }}<br>
+                 {{ data['BFPOunit'] }}<br>
+                 {{ data['BFPOlocation'] }}<br>
+                 {{ data['BFPOnumber'] }}<br>
+                 {% endif %}
+
+              </td>
+
+
+              <td class="govuk-table__cell govuk-link">
+                  {% if not data['cwt-lenderAddressType'] %}
+                    <a href="">Change</a><br>
+                    <a href="">Remove</a>
+                  {% endif %}
+
+                  {% if data['cwt-lenderAddressType'] %}
+                    <a href="remove-address-one">Remove</a><br>
+                  {% endif %}
+
+              </td>
+            </tr>
+
+
+            </tr>
+            {% endif %}
+
+            {% if   data['lender-individual-lender2'] %}
+              <tbody class="govuk-table_body">
+                <tr class="govuk-table_row" id="hidePI">
+                <td class="govuk-table__cell">Private individual</td>
+                <td class="govuk-table__cell">{{ data['lender2-individual-forename-2'] }} {{ data['lender2-individual-surname-2'] }}</td>
+                <td class="govuk-table__cell">
+
+                  {% if data['lender2address'] %}
+
+                        {% if data['lenderAddressType'] === 'UK-postal' %}
+                        UK Postal
+                        {% endif %}
+                       {% if data['lenderAddressType'] === 'Overseas-postal' %}
+                       Overseas postal address
+                       {% endif %}
+                       {% if data['lenderAddressType'] === 'PO-box' %}
+                       PO Box (postal address)
+                       {% endif %}
+                       {% if data['lenderAddressType'] === 'email' %}
+                       Email address
+                       {% endif %}
+                       {% if data['lenderAddressType'] === 'DX' %}
+                       DX address
+                       {% endif %}
+                       {% if data['lenderAddressType'] === 'BFPO' %}
+                       BFPO postal address (armed forces)
+                       {% endif %}
+
+                  {% endif %}
+
+
+
+                  {% if data['lenderAddressType-2'] === 'UK-postal' %}
+                   UK Postal
+                   {% endif %}
+                  </td>
+                <td class="govuk-table__cell govuk-!-width-one-quarter">
+                  {% if not data['lender2address'] %}
+                  <p class="govuk-body" style="margin-left: -165px">
+                  - No address for service added -</p>
+                  {% endif %}
+
+                  {% if data['lenderAddressType-2'] === 'UK-postal' %}
+                   4, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ
+                   {% endif %}
+                   {% if data['lender-2'] %}
+                    UK Postal
+                    {% endif %}
+
+                    {% if data['lender2address'] %}
+
+                    {% if data['lenderAddressType'] === 'UK-postal' %}
+                        3, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ
+                        {% endif %}
+
+                       {% if data['lenderAddressType'] === 'Overseas-postal' %}
+                        {{ data['OverseasAddressLine1'] }}<br>
+                        {{ data['OverseasAddressLine2'] }}<br>
+                        {{ data['OverseasAddressLine3'] }}<br>
+                        {{ data['OverseasAddressLine4'] }}
+                        {{ data['OverseasAddressLine5'] }}
+                        {{ data['country'] }}
+                        {% endif %}
+
+                      {% if data['lenderAddressType'] === 'PO-box' %}
+                      {{ data['PO'] }}<br>
+                      {{ data['POCity'] }}<br>
+                      {{ data['POPostcode'] }}<br>
+                      {% endif %}
+
+                      {% if data['lenderAddressType'] === 'email' %}
+                      {{ data['emailAddress'] }}
+                      {% endif %}
+
+                      {% if data['lenderAddressType'] === 'DX' %}
+                      {{ data['DXRef'] }}
+                      {{ data['DXName'] }}
+                      {% endif %}
+
+                      {% if data['lenderAddressType'] === 'BFPO' %}
+                      {{ data['BFPOserviceNo'] }}<br>
+                      {{ data['BFPOunit'] }}<br>
+                      {{ data['BFPOlocation'] }}<br>
+                      {{ data['BFPOnumber'] }}<br>
+                      {% endif %}
+
+                    {% endif %}
+
+                 </td>
+                 <td class="govuk-table__cell govuk-link">
+                     {% if not data['lender2address'] %}
+                       <a href="lender-addresstype-2">Add address</a>
+                     {% endif %}
+
+                     {% if data['lender2address'] %}
+                       <a href="">Remove</a><br>
+                     {% endif %}
+                 </td>
+                 </tr>
+
+                {% if data['lender2address2'] %}
+                 <tr class="govuk-table_row" id="hidePI">
+                 <td class="govuk-table__cell"></td>
+                 <td class="govuk-table__cell"></td>
+                 <td class="govuk-table__cell">
+
+                   {% if data['lender2address2'] %}
+
+                         {% if data['lenderAddressType'] === 'UK-postal' %}
+                         UK Postal
+                         {% endif %}
+                        {% if data['lenderAddressType'] === 'Overseas-postal' %}
+                        Overseas postal address
+                        {% endif %}
+                        {% if data['lenderAddressType'] === 'PO-box' %}
+                        PO Box (postal address)
+                        {% endif %}
+                        {% if data['lenderAddressType'] === 'email' %}
+                        Email address
+                        {% endif %}
+                        {% if data['lenderAddressType'] === 'DX' %}
+                        DX address
+                        {% endif %}
+                        {% if data['lenderAddressType'] === 'BFPO' %}
+                        BFPO postal address (armed forces)
+                        {% endif %}
+
+                   {% endif %}
+
+
+
+                   {% if data['lenderAddressType-2'] === 'UK-postal' %}
+                    UK Postal
+                    {% endif %}
+                    <br>
+                    <br>
+                    <br>
+                    {% if data['lenderAddressType'] and data['lenderAddressType2'] %}
+                      <a href="">Add address</a><br>
+                    {% endif %}
+                   </td>
+                 <td class="govuk-table__cell govuk-!-width-one-quarter">
+                   {% if not data['lender2address2'] %}
+                   <p class="govuk-body" style="margin-left: -165px">
+                     - No address for service added -</p>
+                     {% endif %}
+
+                   {% if data['lenderAddressType2'] === 'UK-postal2' %}
+                     6, Victoria Road,	Greater Haxten,	Wiltshire, LH17 6EQ
+                    {% endif %}
+
+                    {% if data['lenderAddressType2'] === 'Overseas-postal' %}
+                     {{ data['OverseasAddressLine1'] }}<br>
+                     {{ data['OverseasAddressLine2'] }}<br>
+                     {{ data['OverseasAddressLine3'] }}<br>
+                     {{ data['OverseasAddressLine4'] }}
+                     {{ data['OverseasAddressLine5'] }}
+                     {{ data['country'] }}
+                     {% endif %}
+
+                     {% if data['lenderAddressType'] === 'PO-box' %}
+                     {{ data['PO'] }}<br>
+                     {{ data['POCity'] }}<br>
+                     {{ data['POPostcode'] }}<br>
+                      {% endif %}
+
+                      {% if data['lenderAddressType'] === 'email' %}
+                      {{ data['emailAddress'] }}
+                      {% endif %}
+
+                      {% if data['lenderAddressType'] === 'DX' %}
+                      {{ data['DXRef'] }}
+                      {{ data['DXName'] }}
+                      {% endif %}
+
+                      {% if data['lenderAddressType'] === 'BFPO' %}
+                      {{ data['BFPOserviceNo'] }}<br>
+                      {{ data['BFPOunit'] }}<br>
+                      {{ data['BFPOlocation'] }}<br>
+                      {{ data['BFPOnumber'] }}<br>
+                      {% endif %}
+
+
+
+                  </td>
+
+                  <td class="govuk-table__cell govuk-link">
+                      {% if not data['lender2address'] %}
+                        <a href="lender-addresstype-2">Add address</a>
+                      {% endif %}
+
+                      {% if data['lender2address'] %}
+                        <a href="">Remove</a><br>
+                      {% endif %}
+                  </td>
+                  </tr>
+                  {% endif %}
+
+              </tbody>
+               {% endif %}
+<!--
+           {% if data['lender-company-name-2'] %}
+           <tbody class="govuk-table_body">
+             <tr class="govuk-table_row" id="hidePI">
+             <td class="govuk-table__cell">UK Company or LLC</td>
+             <td class="govuk-table__cell">{{ data['lender-company-name-2'] }}</td>
+             <td class="govuk-table__cell"> {{ data['lender-company-number-2'] }}</td>
+             <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+             <td class="govuk-table__cell govuk-link"><a href="lender-addresstype">Add address</td>
+           </tbody>
+            {% endif %}
+
+            {% if data['lender-company-name'] %}
+            <tbody class="govuk-table_body">
+              <tr class="govuk-table_row" id="hidePI">
+              <td class="govuk-table__cell">UK Company or LLC</td>
+              <td class="govuk-table__cell govuk-!-width-one-third">{{ data['lender-company-name'] }}</td>
+              <td class="govuk-table__cell"> {{ data['lender-company-number'] }}</td>
+              <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+              <td class="govuk-table__cell govuk-link"><a href="lender-addresstype">Add address</td>
+            </tbody>
+             {% endif %} -->
+           </tbody>
+
+
+
+
+    </table>
+
+{{ govukButton({
+  text: "Continue",
+  href: "../documents/document_prompts"
+}) }}
+
+<hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
+<br>
+<p class="govuk-body-s"> The following links open in a new window
+<br>
+<br>
+<a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
+
+</div>
+
+{% endblock %}
+
+
+{% block footer %}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}
