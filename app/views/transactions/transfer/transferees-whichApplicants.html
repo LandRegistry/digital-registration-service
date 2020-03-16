@@ -51,17 +51,17 @@
     <h1 class="govuk-heading-l">Which applicants are transferees?</h1>
     <p class="govuk-body">Select all that apply. If no applicants are transferees, select 'Continue'. </p>
 
-<form method="post" action="/transactions/transfer/transferee-whichapplicants-answer" name="whichapplicants" onsubmit="return checkChecked('searchForm');" class="">
+<form method="post" action="/transactions/transfer/transferee-whichapplicants-answer" name="whichapplicants" class="">
 
     <div class="govuk-form-group">
-      <fieldset class="govuk-fieldset" id="ApplicantTransfereesCheckboxes">
+    <fieldset class="govuk-fieldset" id="ApplicantTransfereesCheckboxes">
 
 
     <div class="govuk-checkboxes">
     {% if data['applicant-individual-forename'] %}
           <div class="govuk-checkboxes__item">
 
-            <input class="govuk-checkboxes__input" id="" name="applicant-individual-transferee1" type="checkbox" value="applicant1-transferee-1">
+            <input class="govuk-checkboxes__input" id="applicant-individual-transferee1" name="applicant-individual-transferee1" type="checkbox" value="applicant1-transferee-1">
 
             <label class="govuk-label govuk-checkboxes__label" for="applicant-individual-transferee">
               {{ data['applicant-individual-forename'] }} {{ data['applicant-individual-surname'] }}
@@ -69,7 +69,7 @@
           </div>
     {% endif %}
 
-    <div class="govuk-checkboxes">
+
     {% if data['applicant2-individual-forename-2'] %}
           <div class="govuk-checkboxes__item">
 
@@ -81,7 +81,7 @@
           </div>
     {% endif %}
 
-    <div class="govuk-checkboxes">
+
     {% if data['applicant-individual-forename-2'] %}
           <div class="govuk-checkboxes__item">
 
@@ -93,7 +93,7 @@
           </div>
     {% endif %}
 
-    <div class="govuk-checkboxes">
+
     {% if data['applicant-individual-forename-3'] %}
           <div class="govuk-checkboxes__item">
 
@@ -191,7 +191,7 @@
       </div>
 
 
-<button class="govuk-button" data-module="govuk-button">Continue</button>
+<button type="submit" class="govuk-button" data-module="govuk-button">Continue</button>
 </form>
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">

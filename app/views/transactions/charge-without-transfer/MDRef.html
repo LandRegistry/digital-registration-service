@@ -9,8 +9,8 @@
 {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
-{% from "govuk/components/table/macro.njk" import govukTable %}
-{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+
 
 
 
@@ -45,64 +45,63 @@
         This is a prototype and not a real service.
         </span></p>
     </div><br>
-    ◀<a class="govuk-link" href="charge-without-transfer-tasks">Return to task list </a>
+    ◀<a class="govuk-link" href="">Return to task list </a>
     </div>
     </div>
 
 
 
     <main class="govuk-main-wrapper " id="main-content" role="main">
-
+    <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
         <span class="govuk-caption-l">Charge</span>
 
-          <h1 class="govuk-heading-l">Borrowers</h1>
+          <h1 class="govuk-heading-l">Do you have an MD reference?</h1>
 
-
-          <form method="get" action="charge-without-transfer-charge-date" novalidate>
-
-            <table class="govuk-table">
-            <thead class="govuk-table__head">
-            <tr class="govuk-table__row">
-              <th scope="col" class="govuk-table__header govuk-!-width-one-third">Borrower type</th>
-              <th scope="col" class="govuk-table__header govuk-!-width-one-third">Borrower name</th>
-              <th scope="col" class="govuk-table__header govuk-!-width-one-third">Details</th>
-              <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Options</th>
-
-              </tr>
-            </thead>
-
-            <tbody class="govuk-table__body">
-                  <tr class="govuk-table__row">
-                    <td class="govuk-table__cell">Private individual</td>
-                    <td class="govuk-table__cell">{{ data['borrowerDetails1'] }}</td>
-                    <td class="govuk-table__cell">
-                        {% if data['soleChargeborrowerDetails1'] == 'correct' %}
-                        <p>Correct</p>
-                        {% endif %}
-                        {% if data['soleChargeborrowerDetails1'] == 'changed' %}
-                        <p>Amended</p>
-                        {% endif %}
-                        {% if data['soleChargeborrowerDetails1'] == 'removed'%}
-                        <p>Removed</p>
-                        {% endif %}
-                      </td>
-                    <td class="govuk-table__cell"><a href="/charge-without-transfer-borrower-change">Change</a></td>
-                  </tr>
-            </tbody>
-          </table>
-
-          {{ govukWarningText({
-            text: "I confirm all name details are correct",
-            iconFallbackText: "Warning"
-          }) }}
-
-            {{ govukButton({
-            classes: "",
-            text: "Continue"
+          {{ govukDetails({
+          summaryText: "What's an MD reference?",
+          text: "An MD reference is a unique number given to each mortgage. It's often found at the foot of the mortgage deed."
             }) }}
 
-          </form>
+          <form method="post" action="/transactions/charge-without-transfer/charge-without-transfer-charge-lenders" novalidate="">
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+              <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="MDref-conditional" name="MDRef" type="radio" value="MDRefYes" aria-controls="conditional-MDref-conditional" aria-expanded="false">
+                      <label class="govuk-label govuk-radios__label" for="MDref-conditional">Yes</label>
+                    </div>
+
+                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-MDref-conditional">
+                      <div class="govuk-form-group">
+                        <label class="govuk-label" for="MDref-yes">
+                          Enter MD reference
+                        </label>
+                        <input class="govuk-input govuk-!-width-one-third" id="MDref-yes" name="MDref-yes" type="text">
+                      </div>
+                  </div>
+
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="MDref-conditional-2" name="MDRef" type="radio" value="MDRefNo" aria-controls="conditional-MDref-conditional-2" aria-expanded="false">
+                    <label class="govuk-label govuk-radios__label" for="MDref-conditional-2">No</label>
+                      </div>
+                      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-MDref-conditional-2"></div>
+
+              </div>
+              </fieldset>
+
+            </div>
+
+
+
+          {{ govukButton({
+          classes: "",
+          text: "Continue"
+          }) }}
+
+        </form>
 
 
 </main>
@@ -115,7 +114,7 @@
 <br>
 <a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
 <a href="/prototype-admin/clear-data">Clear data</a>
-
+</div>
 
 <script type="application/json" id="reference-form-validation">
  {
@@ -136,7 +135,8 @@
 {% endblock %}
 
 
-
+{% block footer %}
+{% endblock %}
 
 {% block bodyEnd %}
   {% include "includes/scripts.html" %}

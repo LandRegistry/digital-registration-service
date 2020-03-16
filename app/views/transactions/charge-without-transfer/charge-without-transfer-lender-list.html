@@ -1,0 +1,265 @@
+{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
+{%- set assetPath = '/govuk/assets' -%}
+
+{% extends "govuk/template.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+
+
+{% block headIcons %}
+  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
+  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
+{% endblock %}
+
+{% block head %}
+  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full" id="headerdiv">
+    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
+    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Apply to update or create a registered title</a></p>
+    <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
+
+
+    <div class="govuk-phase-banner govuk-!-margin-bottom-5">
+        <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
+        <span class="govuk-phase-banner__text">
+        This is a prototype and not a real service.
+        </span></p>
+    </div>
+    </div>
+
+<div class="govuk-grid-column-full">
+  <span class="govuk-caption-l">Apply to update or create a registered title</span>
+
+
+    <h1 class="govuk-heading-l">Lenders</h1>
+    <h2 class="govuk-heading-m">Lenders added</h2>
+
+<form>
+
+
+<table class="govuk-table" id="lenderlist">
+
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Lender type</th>
+      <th scope="col" class="govuk-table__header">Full name</th>
+      <th scope="col" class="govuk-table__header">Company number</th>
+      <th scope="col" class="govuk-table__header">Territory of incorporation</th>
+      <th scope="col" class="govuk-table__header">Options</th>
+    </tr>
+  </thead>
+  {% if data['lender-individual-forename'] %}
+    <tbody class="govuk-table_body">
+      <tr class="govuk-table_row" id="hidePI">
+      <td class="govuk-table__cell">Private individual</td>
+      <td class="govuk-table__cell govuk-!-width-one-third">{{ data['lender-individual-forename'] }} {{ data['lender-individual-surname'] }}</td>
+      <td class="govuk-table__cell">N/a</td>
+      <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+      <td class="govuk-table__cell govuk-link"><a href="add-lenders-change">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
+    </tbody>
+     {% endif %}
+
+     {% if data['lender2-individual-forename-2'] %}
+       <tbody class="govuk-table_body">
+         <tr class="govuk-table_row" id="hidePI">
+         <td class="govuk-table__cell">Private individual</td>
+         <td class="govuk-table__cell govuk-!-width-one-third">{{ data['lender2-individual-forename-2'] }} {{ data['lender2-individual-surname-2'] }}</td>
+         <td class="govuk-table__cell">N/a</td>
+         <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+         <td class="govuk-table__cell govuk-link"><a href="add-lenders-change">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
+       </tbody>
+        {% endif %}
+
+        {% if data['lender3-individual-forename-3'] %}
+          <tbody class="govuk-table_body">
+            <tr class="govuk-table_row" id="hidePI">
+            <td class="govuk-table__cell">Private individual</td>
+            <td class="govuk-table__cell govuk-!-width-one-third">{{ data['lender3-individual-forename-3'] }} {{ data['lender3-individual-surname-3'] }}</td>
+            <td class="govuk-table__cell">N/a</td>
+            <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+            <td class="govuk-table__cell govuk-link"><a href="add-lenders-change">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
+          </tbody>
+           {% endif %}
+
+    {% if data['lender-company-name'] %}
+    <tbody class="govuk-table_body">
+      <tr class="govuk-table_row" id="hidePI">
+      <td class="govuk-table__cell">UK Company or LLC</td>
+      <td class="govuk-table__cell govuk-!-width-one-third">{{ data['lender-company-name'] }}</td>
+      <td class="govuk-table__cell"> {{ data['lender-company-number'] }}</td>
+      <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+      <td class="govuk-table__cell govuk-link"><a href="add-lenders-change">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
+    </tbody>
+     {% endif %}
+
+     {% if data['lender2-company-name-2'] %}
+     <tbody class="govuk-table_body">
+       <tr class="govuk-table_row" id="hidePI">
+       <td class="govuk-table__cell">UK Company or LLC</td>
+       <td class="govuk-table__cell govuk-!-width-one-third">{{ data['lender2-company-name-2'] }}</td>
+       <td class="govuk-table__cell"> {{ data['lender2-company-number-2'] }}</td>
+       <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+       <td class="govuk-table__cell govuk-link"><a href="add-lenders-change">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
+     </tbody>
+      {% endif %}
+
+      {% if data['lender3-company-name-3'] %}
+      <tbody class="govuk-table_body">
+        <tr class="govuk-table_row" id="hidePI">
+        <td class="govuk-table__cell">UK Company or LLC</td>
+        <td class="govuk-table__cell govuk-!-width-one-third">{{ data['lender3-company-name-3'] }}</td>
+        <td class="govuk-table__cell"> {{ data['lender3-company-number-3'] }}</td>
+        <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+        <td class="govuk-table__cell govuk-link"><a href="add-lenders-change">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
+      </tbody>
+       {% endif %}
+
+      {% if data['lender-overseas-name'] %}
+        <tbody class="govuk-table_body">
+          <tr class="govuk-table_row">
+          <td class="govuk-table__cell">Overseas company</td>
+          <td class="govuk-table__cell govuk-!-width-one-third">{{ data['lender-overseas-name'] }}</td>
+          <td class="govuk-table__cell"> {% if data['lender-overseas-number'] %}{{ data['lender-overseas-number'] }}{% endif %}{% if not data['lender-overseas-number'] %}N/a{% endif %}</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter"> {{ data['lender-overseas-country'] }}</td>
+          <td class="govuk-table__cell govuk-link"><a href="add-lenders-change">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
+        </tbody>
+         {% endif %}
+
+         {% if data['lender2-overseas-name'] %}
+           <tbody class="govuk-table_body">
+             <tr class="govuk-table_row">
+             <td class="govuk-table__cell">Overseas company</td>
+             <td class="govuk-table__cell govuk-!-width-one-third">{{ data['lender2-overseas-name'] }}</td>
+             <td class="govuk-table__cell"> {% if data['lender2-overseas-number'] %}{{ data['lender2-overseas-number'] }}{% endif %}{% if not data['lender2-overseas-number'] %}N/a{% endif %}</td>
+             <td class="govuk-table__cell govuk-!-width-one-quarter"> {{ data['lender2-overseas-country'] }}</td>
+             <td class="govuk-table__cell govuk-link"><a href="add-lenders-change">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
+           </tbody>
+            {% endif %}
+
+            {% if data['lender3-overseas-name'] %}
+              <tbody class="govuk-table_body">
+                <tr class="govuk-table_row">
+                <td class="govuk-table__cell">Overseas company</td>
+                <td class="govuk-table__cell govuk-!-width-one-third">{{ data['lender3-overseas-name'] }}</td>
+                <td class="govuk-table__cell"> {% if data['lender3-overseas-number'] %}{{ data['lender3-overseas-number'] }}{% endif %}{% if not data['lender3-overseas-number'] %}N/a{% endif %}</td>
+                <td class="govuk-table__cell govuk-!-width-one-quarter"> {{ data['lender3-overseas-country'] }}</td>
+                <td class="govuk-table__cell govuk-link"><a href="add-lenders-change">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
+              </tbody>
+               {% endif %}
+
+       {% if data['lender-other-name'] %}
+       <tbody class="govuk-table_body">
+         <tr class="govuk-table_row">
+         <td class="govuk-table__cell">Other organisation</td>
+         <td class="govuk-table__cell govuk-!-width-one-third">{{ data['lender-other-name'] }}</td>
+         <td class="govuk-table__cell">N/a</td>
+         <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+         <td class="govuk-table__cell govuk-link"><a href="add-lenders-change">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
+       </tbody>
+       {% endif %}
+
+       {% if data['lender2-other-name'] %}
+       <tbody class="govuk-table_body">
+         <tr class="govuk-table_row">
+         <td class="govuk-table__cell">Other organisation</td>
+         <td class="govuk-table__cell govuk-!-width-one-third">{{ data['lender2-other-name'] }}</td>
+         <td class="govuk-table__cell">N/a</td>
+         <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+         <td class="govuk-table__cell govuk-link"><a href="add-lenders-change">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
+       </tbody>
+       {% endif %}
+
+       {% if data['lender3-other-name'] %}
+       <tbody class="govuk-table_body">
+         <tr class="govuk-table_row">
+         <td class="govuk-table__cell">Other organisation</td>
+         <td class="govuk-table__cell govuk-!-width-one-third">{{ data['lender3-other-name'] }}</td>
+         <td class="govuk-table__cell">N/a</td>
+         <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+         <td class="govuk-table__cell govuk-link"><a href="add-lenders-change">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
+       </tbody>
+       {% endif %}
+
+      </table>
+
+    <!-- {% if data['lender-company-name'] or data['lender-individual-forename'] or data['lender-overseas-name'] or data['lender-other-name'] %}
+    <a class="govuk-link" href="add-lenders-2">Add lender</a><br>
+    {% endif %} -->
+
+    {% if data['lender2-company-name-2'] or data['lender2-individual-forename-2'] or data['lender2-overseas-name'] or data['lender2-other-name'] %}
+    <a class="govuk-link" href="add-lenders-3">Add lender</a><br>
+    {% else %}
+    <a class="govuk-link" href="add-lenders-2">Add lender</a><br>
+    {% endif %}
+
+
+
+
+{{ govukButton({
+classes: "govuk-!-margin-top-5",
+text: "Continue",
+href: "charge-without-transfer-tasks"
+}) }}
+
+</form>
+
+<hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
+<br>
+<p class="govuk-body-s"> The following links open in a new window
+<br>
+<br>
+<a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
+<a href="/prototype-admin/clear-data">Clear data</a>
+</div>
+
+<script>
+  function RemoveTransfereeIndividual() {
+  var x = document.getElementById("hidePI");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+
+  function RemoveTransfereeUK() {
+  var x = document.getElementById("hideUK");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+</script>
+
+{% endblock %}
+
+
+{% block footer %}
+
+{% endblock %}
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}

@@ -14,10 +14,119 @@ router.post('/transactions/transfer/transferee-whichapplicants-answer', function
   // The name between the quotes is the same as the 'name' attribute on the input elements
   // However in JavaScript we can't use hyphens in variable names
 
+  // This only works if there are two transferees
 
-  res.redirect('/transactions/transfer/transferee-list')
 
+  // let applicantTransferee1 = req.session.data['applicant-individual-transferee1']
+  //
+  // console.log(applicantTransferee1)
+  //
+  // if (applicantTransferee1.checked === false) {
+  //   res.redirect('/docs/examples/branching/under-18')
+  // } else {
+  //   res.redirect('/transactions/transfer/transferee-list')
+  // }
+  //
+  // })
+
+  // let applicantTransferee1 = req.body['applicant-individual-transferee1'];
+  // let applicantTransferee2 = req.body['applicant-individual-transferee2'];
+  //
+  // // console.log(req.body['applicant-individual-transferee1'])
+  //
+  // if ((applicantTransferee1 === '_unchecked') && (applicantTransferee2 === '_unchecked')) {
+  //   res.redirect('/transactions/transfer/add-transferee')
+  // } else {
+  //   res.redirect('/transactions/transfer/transferee-list')
+  // }
+  //
+  // })
+
+  let applicantTransferee1 = req.session.data['applicant-individual-forename'];
+  let applicantTransferee2 = req.session.data['applicant2-individual-forename-2'];
+  // let applicantTransferee3 = req.session.data['applicant-individual-forename-3'];
+  var checkboxTicked1
+  var checkboxTicked2
+  // var checkboxTicked3
+
+  if (applicantTransferee1 != '') {
+      let checkbox1 = req.body['applicant-individual-transferee1'];
+      if (checkbox1 === '_unchecked'){
+        checkboxTicked1 = false
+      } else {
+      checkboxTicked1 = true
+      }
+
+  }
+
+  if (applicantTransferee2 != '') {
+      let checkbox2 = req.body['applicant-individual-transferee2'];
+      if (checkbox2 === '_unchecked'){
+        checkboxTicked2 = false
+      } else {
+      checkboxTicked2 = true
+      }
+
+  }
+
+  // if (applicantTransferee3 != '') {
+  //     let checkbox3 = req.body['applicant-individual-transferee3'];
+  //     if (checkbox3  != '_unchecked'){
+  //       checkboxTicked3 = true
+  //     } else {
+  //     checkboxTicked3 = false
+  //     }
+  //
+  // } else {
+  // checkboxTicked3 = false
+  // }
+
+  if ((checkboxTicked1 === true) || (checkboxTicked2 === true)) {
+    res.redirect('/transactions/transfer/transferee-list')
+  } else {
+    res.redirect('/transactions/transfer/add-transferee')
+  }
+
+
+
+  // console.log(req.body['applicant-individual-transferee1'])
+  //
+  // if ((applicantTransferee1 === '_unchecked') && (applicantTransferee2 === '_unchecked')) {
+  //   res.redirect('/transactions/transfer/add-transferee')
+  // } else {
+  //   res.redirect('/transactions/transfer/transferee-list')
+  // }
+  //
   })
+
+
+
+
+  // res.redirect('/transactions/transfer/transferee-list')
+
+
+  router.post('/transactions/charge-without-transfer/applicants-lenders', function (req, res) {
+
+    let applicantLender1 = req.session.data['applicant-company-lender1'];
+    var lenderTicked1
+
+    if (applicantLender1 != '') {
+        let lendercheckbox1 = req.body['applicant-company-lender1'];
+        if (lendercheckbox1 === '_unchecked'){
+          lenderTicked1 = false
+        } else {
+        lenderTicked1 = true
+      }
+    }
+
+    if (lenderTicked1 === false) {
+      res.redirect('/transactions/charge-without-transfer/add-lender')
+    } else {
+      req.session.data['add-lender'] = 'true';
+      res.redirect('/transactions/charge-without-transfer/lender-list')
+
+    }
+})
 
 
 router.post('/transactions/transfer/transferee-addresstype-answer', function (req, res) {
@@ -138,7 +247,7 @@ router.post('/transactions/discharge/lender-representation-answer2', function (r
 
 
 
-
+// Set data
 
 
 router.get('/docs/examples/pass-data/vehicle-registration-car1', function (req, res) {
@@ -156,16 +265,16 @@ router.get('/docs/examples/pass-data/vehicle-registration-car1', function (req, 
 
 router.get('/docs/examples/pass-data/Solecharge', function (req, res) {
 	req.session.data = {
-    "reference": "JT/123/TR1",
+    "reference": "JT/123/CH",
     "title": "LP12345",
     "whole-or-part": "Whole",
     "part": "",
     "Transactions": "charge",
     "PriceInput1": "120000",
     "FeeInput1": "12",
-    "add-applicant": "company",
-    "applicant-company-name-2": "Barclays",
-    "applicant-company-number-2": "123456"
+    "add-applicant": "Company",
+    "applicant-company-name": "Barclays Lending Ltd",
+    "applicant-company-number": "123456"
 }
   res.redirect('/../transactions/charge-without-transfer/charge-without-transfer-tasks')
 })
@@ -211,7 +320,7 @@ router.get('/stored-data', function (req, res) {
 })
 
 
-// Charge
+// Charge completed tags
 
 router.post('/transactions/charge-without-transfer/charge-without-transfer-borrower1', function (req, res) {
   // Get the answer from session data
@@ -228,6 +337,7 @@ router.post('/transactions/charge-without-transfer/charge-without-transfer-borro
       res.redirect('charge-without-transfer-borrower-change')
     }
     if (borrowerDetails1 === 'removed') {
+      req.session.data['borrowerDetails1'] = 'Bob Borrower';
         res.redirect('charge-without-transfer-borrower-list')
       }
 })
@@ -236,9 +346,10 @@ router.post('/transactions/charge-without-transfer/charge-without-transfer-borro
 
 router.post('/transactions/charge-without-transfer/date-complete', function (req, res) {
       req.session.data['chargeDateComplete'] = 'completed';
-      res.redirect('/transactions/charge-without-transfer/charge-without-transfer-tasks')
+      res.redirect('/transactions/charge-without-transfer/MDRef')
 })
 
+// Transfer completed tags
 
 router.post('/transactions/transfer/transferee-representation-confirmed', function (req, res) {
   req.session.data['transfereerep'] = 'true';

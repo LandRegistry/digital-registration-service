@@ -1,0 +1,767 @@
+{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
+{%- set assetPath = '/govuk/assets' -%}
+
+{% extends "govuk/template.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+
+
+{% block headIcons %}
+  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
+  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
+{% endblock %}
+
+{% block head %}
+  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full" id="headerdiv">
+    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
+    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Apply to update or create a registered title</a></p>
+    <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
+
+
+    <div class="govuk-phase-banner">
+        <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
+        <span class="govuk-phase-banner__text">
+        This is a prototype and not a real service.
+        </span></p>
+    </div>
+    </div>
+    </div>
+
+
+
+    <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <span class="govuk-caption-l">Charge</span>
+
+          <h1 class="govuk-heading-l">Add lender</h1>
+
+          <p class="govuk-body">Select the lender type and enter the lender's name as it appears on the mortgage deed. </p>
+
+
+            {{ govukInsetText({
+            text: "If the names don’t match, you must attach evidence of a name change."
+          }) }}
+
+          <form method="get" action="charge-without-transfer-lender-list" novalidate>
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset" aria-describedby="add-lender-conditional-hint">
+                <h2 class="govuk-heading-s">Select lender type</h2>
+                <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="add-lender-conditional" name="add-lender" type="radio" value="individual" data-aria-controls="conditional-add-lender-conditional">
+                    <label class="govuk-label govuk-radios__label" for="add-lender-conditional">
+                      Private individual
+                    </label>
+                  </div>
+
+                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-add-lender-conditional">
+                    <div class="govuk-form-group">
+                      <span class="govuk-hint">Name must be exactly as it appears on documents lodged with this application</span>
+                      <label class="govuk-label" for="add-lender-individual-forename">
+                        Forename(s)
+                      </label>
+                      <input class="govuk-input govuk-!-width-one-half" id="add-lender-individual-forename" name="lender-individual-forename" value="" type="forename"  >
+                    </div>
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="add-lender-individual-surname">
+                        Surname
+                      </label>
+                      <input class="govuk-input govuk-!-width-one-half" id="add-lender-individual-surname" name="lender-individual-surname" value="" type="surname"  >
+                    </div>
+
+                  </div>
+
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="add-lender-conditional-2" name="add-lender" type="radio" value="Company" data-aria-controls="conditional-add-lender-conditional-2">
+                    <label class="govuk-label govuk-radios__label" for="add-lender-conditional-2">
+                      UK Company or LLP
+                    </label>
+                  </div>
+
+                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-add-lender-conditional-2">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="add-lender-company-name">
+                        Company name
+                      </label>
+                        <span class="govuk-hint">Full name registered at Companies House</span>
+                        <input class="govuk-input govuk-!-width-one-half" id="add-lender-company-name" name="lender-company-name" value="" type="companyname"  >
+                    </div>
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="add-lender-company-number">
+                        Company number
+                      </label>
+                      <span class="govuk-hint">Companies House registration number, including any prefix</span>
+                        <input class="govuk-input govuk-!-width-one-half" id="add-lender-company-number" name="lender-company-number" value="" type="companynumber"  >
+                    </div>
+
+                  </div>
+
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="add-lender-conditional-3" name="add-lender" type="radio" value="OverseasCompany" data-aria-controls="">
+                    <label class="govuk-label govuk-radios__label" for="add-lender-conditional-3">
+                      Overseas company
+                    </label>
+                  </div>
+
+                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-add-lender-conditional-3">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="add-lender-overseas-name">
+                        Company name
+                      </label>
+                        <span class="govuk-hint">Company name as incorporated in its state of origin</span>
+                      <input class="govuk-input govuk-!-width-one-half" id="add-lender-overseas-name" name="lender-overseas-name" type="text">
+                    </div>
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="add-lender-company-number">
+                        UK company number (optional)
+                      </label>
+                      <span class="govuk-hint">Number issued, if registered at Companies House, eg FC023966</span>
+                      <input class="govuk-input govuk-!-width-one-half" id="add-lender-overseas-number" name="lender-overseas-number" type="text"  >
+                    </div>
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="add-lender-company-country">
+                        Territory of incorporation
+                      </label>
+                      <span class="govuk-hint">Territory or country where the company was first incorporated, eg ‘France’ or ‘Manitoba, Canada’</span>
+
+                        <select class="govuk-select" id="add-lender-overseas-country" name="lender-overseas-country" type="text">
+                          <option value="" ="">-Select from list-</option>
+
+                          <option value="AFGHANISTAN">AFGHANISTAN</option>
+
+                          <option value="ALAND">ALAND</option>
+
+                          <option value="ALBANIA">ALBANIA</option>
+
+                          <option value="ALDERNEY">ALDERNEY</option>
+
+                          <option value="ALGERIA">ALGERIA</option>
+
+                          <option value="AMERICAN SAMOA">AMERICAN SAMOA</option>
+
+                          <option value="ANDORRA">ANDORRA</option>
+
+                          <option value="ANGOLA">ANGOLA</option>
+
+                          <option value="ANGUILLA">ANGUILLA</option>
+
+                          <option value="ANTARCTICA">ANTARCTICA</option>
+
+                          <option value="ANTIGUA &amp; BARBUDA">ANTIGUA &amp; BARBUDA</option>
+
+                          <option value="ARGENTINA">ARGENTINA</option>
+
+                          <option value="ARMENIA">ARMENIA</option>
+
+                          <option value="ARUBA">ARUBA</option>
+
+                          <option value="ASCENSION ISLAND">ASCENSION ISLAND</option>
+
+                          <option value="AUSTRALIA">AUSTRALIA</option>
+
+                          <option value="AUSTRALIAN ANTARCTIC TERRITORY">AUSTRALIAN ANTARCTIC TERRITORY</option>
+
+                          <option value="AUSTRIA">AUSTRIA</option>
+
+                          <option value="AZERBAIJAN">AZERBAIJAN</option>
+
+                          <option value="AZORES">AZORES</option>
+
+                          <option value="BAHAMAS">BAHAMAS</option>
+
+                          <option value="BAHRAIN">BAHRAIN</option>
+
+                          <option value="BANGLADESH">BANGLADESH</option>
+
+                          <option value="BARBADOS">BARBADOS</option>
+
+                          <option value="BELARUS">BELARUS</option>
+
+                          <option value="BELAU">BELAU</option>
+
+                          <option value="BELGIUM">BELGIUM</option>
+
+                          <option value="BELIZE">BELIZE</option>
+
+                          <option value="BENIN">BENIN</option>
+
+                          <option value="BERMUDA">BERMUDA</option>
+
+                          <option value="BHUTAN">BHUTAN</option>
+
+                          <option value="BOLIVIA">BOLIVIA</option>
+
+                          <option value="BOSNIA &amp; HERZEGOVINA">BOSNIA &amp; HERZEGOVINA</option>
+
+                          <option value="BOTSWANA">BOTSWANA</option>
+
+                          <option value="BOUVET ISLAND">BOUVET ISLAND</option>
+
+                          <option value="BRAZIL">BRAZIL</option>
+
+                          <option value="BRITISH ANTARCTIC TERRITORY">BRITISH ANTARCTIC TERRITORY</option>
+
+                          <option value="BRITISH INDIAN OCEAN TERRITORY">BRITISH INDIAN OCEAN TERRITORY</option>
+
+                          <option value="BRITISH VIRGIN ISLANDS">BRITISH VIRGIN ISLANDS</option>
+
+                          <option value="BRUNEI DARUSSALAM">BRUNEI DARUSSALAM</option>
+
+                          <option value="BULGARIA">BULGARIA</option>
+
+                          <option value="BURKINA FASO">BURKINA FASO</option>
+
+                          <option value="BURUNDI">BURUNDI</option>
+
+                          <option value="CAMBODIA">CAMBODIA</option>
+
+                          <option value="CAMEROON">CAMEROON</option>
+
+                          <option value="CANADA">CANADA</option>
+
+                          <option value="CAPE VERDE">CAPE VERDE</option>
+
+                          <option value="CAROLINE ISLANDS">CAROLINE ISLANDS</option>
+
+                          <option value="CAYMAN ISLANDS">CAYMAN ISLANDS</option>
+
+                          <option value="CENTRAL AFRICAN REPUBLIC">CENTRAL AFRICAN REPUBLIC</option>
+
+                          <option value="CHAD">CHAD</option>
+
+                          <option value="CHANNEL ISLANDS">CHANNEL ISLANDS</option>
+
+                          <option value="CHILE">CHILE</option>
+
+                          <option value="CHINA">CHINA</option>
+
+                          <option value="CHRISTMAS ISLAND">CHRISTMAS ISLAND</option>
+
+                          <option value="CHRISTMAS ISLAND (INDIAN OCEAN)">CHRISTMAS ISLAND (INDIAN OCEAN)</option>
+
+                          <option value="CHRISTMAS ISLAND (PACIFIC OCEAN)">CHRISTMAS ISLAND (PACIFIC OCEAN)</option>
+
+                          <option value="COCOS ISLANDS">COCOS ISLANDS</option>
+
+                          <option value="COLOMBIA">COLOMBIA</option>
+
+                          <option value="COMOROS">COMOROS</option>
+
+                          <option value="COOK ISLANDS">COOK ISLANDS</option>
+
+                          <option value="COSTA RICA">COSTA RICA</option>
+
+                          <option value="COTE D'IVOIRE">COTE D'IVOIRE</option>
+
+                          <option value="CROATIA">CROATIA</option>
+
+                          <option value="CUBA">CUBA</option>
+
+                          <option value="CURACAO">CURACAO</option>
+
+                          <option value="CYPRUS">CYPRUS</option>
+
+                          <option value="CZECH REPUBLIC">CZECH REPUBLIC</option>
+
+                          <option value="DEMOCRATIC REPUBLIC OF CONGO">DEMOCRATIC REPUBLIC OF CONGO</option>
+
+                          <option value="DENMARK">DENMARK</option>
+
+                          <option value="DJIBOUTI">DJIBOUTI</option>
+
+                          <option value="DOMINICA">DOMINICA</option>
+
+                          <option value="DOMINICAN REPUBLIC">DOMINICAN REPUBLIC</option>
+
+                          <option value="EAST TIMOR">EAST TIMOR</option>
+
+                          <option value="ECUADOR">ECUADOR</option>
+
+                          <option value="EGYPT">EGYPT</option>
+
+                          <option value="EIRE">EIRE</option>
+
+                          <option value="EL SALVADOR">EL SALVADOR</option>
+
+                          <option value="EQUATORIAL GUINEA">EQUATORIAL GUINEA</option>
+
+                          <option value="ERITREA">ERITREA</option>
+
+                          <option value="ESTONIA">ESTONIA</option>
+
+                          <option value="ETHIOPIA">ETHIOPIA</option>
+
+                          <option value="FALKLAND ISLANDS">FALKLAND ISLANDS</option>
+
+                          <option value="FAROE ISLANDS">FAROE ISLANDS</option>
+
+                          <option value="FEDERATED STATES OF MICRONESIA">FEDERATED STATES OF MICRONESIA</option>
+
+                          <option value="FIJI">FIJI</option>
+
+                          <option value="FINLAND">FINLAND</option>
+
+                          <option value="FRANCE">FRANCE</option>
+
+                          <option value="FRENCH GUIANA">FRENCH GUIANA</option>
+
+                          <option value="FRENCH POLYNESIA">FRENCH POLYNESIA</option>
+
+                          <option value="FRENCH SOUTHERN ANTARCTIC TERRITORY">FRENCH SOUTHERN ANTARCTIC TERRITORY</option>
+
+                          <option value="FYR MACEDONIA">FYR MACEDONIA</option>
+
+                          <option value="GABON">GABON</option>
+
+                          <option value="GAMBIA">GAMBIA</option>
+
+                          <option value="GEORGIA">GEORGIA</option>
+
+                          <option value="GERMANY">GERMANY</option>
+
+                          <option value="GHANA">GHANA</option>
+
+                          <option value="GIBRALTAR">GIBRALTAR</option>
+
+                          <option value="GREECE">GREECE</option>
+
+                          <option value="GREENLAND">GREENLAND</option>
+
+                          <option value="GRENADA">GRENADA</option>
+
+                          <option value="GUADELOUPE">GUADELOUPE</option>
+
+                          <option value="GUAM">GUAM</option>
+
+                          <option value="GUATEMALA">GUATEMALA</option>
+
+                          <option value="GUERNSEY">GUERNSEY</option>
+
+                          <option value="GUINEA-BISSAU">GUINEA-BISSAU</option>
+
+                          <option value="GUYANA">GUYANA</option>
+
+                          <option value="HAITI">HAITI</option>
+
+                          <option value="HEARD &amp; MCDONALD ISLANDS">HEARD &amp; MCDONALD ISLANDS</option>
+
+                          <option value="HOLY SEE">HOLY SEE</option>
+
+                          <option value="HONDURAS">HONDURAS</option>
+
+                          <option value="HONG KONG">HONG KONG</option>
+
+                          <option value="HUNGARY">HUNGARY</option>
+
+                          <option value="ICELAND">ICELAND</option>
+
+                          <option value="INDIA">INDIA</option>
+
+                          <option value="INDONESIA">INDONESIA</option>
+
+                          <option value="IRAN">IRAN</option>
+
+                          <option value="IRAQ">IRAQ</option>
+
+                          <option value="IRELAND">IRELAND</option>
+
+                          <option value="ISLE OF MAN">ISLE OF MAN</option>
+
+                          <option value="ISRAEL">ISRAEL</option>
+
+                          <option value="ITALY">ITALY</option>
+
+                          <option value="IVORY COAST">IVORY COAST</option>
+
+                          <option value="JAMAICA">JAMAICA</option>
+
+                          <option value="JAPAN">JAPAN</option>
+
+                          <option value="JERSEY">JERSEY</option>
+
+                          <option value="JORDAN">JORDAN</option>
+
+                          <option value="KAZAKHSTAN">KAZAKHSTAN</option>
+
+                          <option value="KENYA">KENYA</option>
+
+                          <option value="KIRIBATI">KIRIBATI</option>
+
+                          <option value="KOSOVO">KOSOVO</option>
+
+                          <option value="KUWAIT">KUWAIT</option>
+
+                          <option value="KYRGYZSTAN">KYRGYZSTAN</option>
+
+                          <option value="LAO PEOPLE'S DEMOCRATIC REPUBLIC">LAO PEOPLE'S DEMOCRATIC REPUBLIC</option>
+
+                          <option value="LAOS">LAOS</option>
+
+                          <option value="LATVIA">LATVIA</option>
+
+                          <option value="LEBANON">LEBANON</option>
+
+                          <option value="LESOTHO">LESOTHO</option>
+
+                          <option value="LIBERIA">LIBERIA</option>
+
+                          <option value="LIBYA">LIBYA</option>
+
+                          <option value="LIECHTENSTEIN">LIECHTENSTEIN</option>
+
+                          <option value="LITHUANIA">LITHUANIA</option>
+
+                          <option value="LUXEMBOURG">LUXEMBOURG</option>
+
+                          <option value="MACAU">MACAU</option>
+
+                          <option value="MADAGASCAR">MADAGASCAR</option>
+
+                          <option value="MALAWI">MALAWI</option>
+
+                          <option value="MALAYSIA">MALAYSIA</option>
+
+                          <option value="MALDIVES">MALDIVES</option>
+
+                          <option value="MALI">MALI</option>
+
+                          <option value="MALTA">MALTA</option>
+
+                          <option value="MARIANA ISLANDS">MARIANA ISLANDS</option>
+
+                          <option value="MARSHALL ISLANDS">MARSHALL ISLANDS</option>
+
+                          <option value="MARTINIQUE">MARTINIQUE</option>
+
+                          <option value="MAURITANIA">MAURITANIA</option>
+
+                          <option value="MAURITIUS">MAURITIUS</option>
+
+                          <option value="MAYOTTE">MAYOTTE</option>
+
+                          <option value="MEXICO">MEXICO</option>
+
+                          <option value="MOLDOVA">MOLDOVA</option>
+
+                          <option value="MONACO">MONACO</option>
+
+                          <option value="MONGOLIA">MONGOLIA</option>
+
+                          <option value="MONTENEGRO">MONTENEGRO</option>
+
+                          <option value="MONTSERRAT">MONTSERRAT</option>
+
+                          <option value="MOROCCO">MOROCCO</option>
+
+                          <option value="MOZAMBIQUE">MOZAMBIQUE</option>
+
+                          <option value="MYANMAR">MYANMAR</option>
+
+                          <option value="NAMIBIA">NAMIBIA</option>
+
+                          <option value="NAURU ISLAND">NAURU ISLAND</option>
+
+                          <option value="NEPAL">NEPAL</option>
+
+                          <option value="NETHERLAND ANTARCTIC TERRITORY">NETHERLAND ANTARCTIC TERRITORY</option>
+
+                          <option value="NETHERLANDS">NETHERLANDS</option>
+
+                          <option value="NETHERLANDS ANTILLES">NETHERLANDS ANTILLES</option>
+
+                          <option value="NEW CALEDONIA">NEW CALEDONIA</option>
+
+                          <option value="NEW ZEALAND">NEW ZEALAND</option>
+
+                          <option value="NEW ZEALAND ANTARCTIC TERRITORY">NEW ZEALAND ANTARCTIC TERRITORY</option>
+
+                          <option value="NICARAGUA">NICARAGUA</option>
+
+                          <option value="NIGER">NIGER</option>
+
+                          <option value="NIGERIA">NIGERIA</option>
+
+                          <option value="NIUE ISLAND">NIUE ISLAND</option>
+
+                          <option value="NORFOLK ISLAND">NORFOLK ISLAND</option>
+
+                          <option value="NORTHERN MARIANA ISLANDS">NORTHERN MARIANA ISLANDS</option>
+
+                          <option value="NORWAY">NORWAY</option>
+
+                          <option value="NORWEGIAN ANTARCTIC TERRITORY">NORWEGIAN ANTARCTIC TERRITORY</option>
+
+                          <option value="PAKISTAN">PAKISTAN</option>
+
+                          <option value="PALAU">PALAU</option>
+
+                          <option value="PALESTINE TERRITORY">PALESTINE TERRITORY</option>
+
+                          <option value="PANAMA">PANAMA</option>
+
+                          <option value="PAPUA NEW GUINEA">PAPUA NEW GUINEA</option>
+
+                          <option value="PARAGUAY">PARAGUAY</option>
+
+                          <option value="PEOPLES REPUBLIC OF CONGO">PEOPLES REPUBLIC OF CONGO</option>
+
+                          <option value="PERU">PERU</option>
+
+                          <option value="PHILIPPINES">PHILIPPINES</option>
+
+                          <option value="PITCAIRN ISLAND">PITCAIRN ISLAND</option>
+
+                          <option value="POLAND">POLAND</option>
+
+                          <option value="PORTUGAL">PORTUGAL</option>
+
+                          <option value="PUERTO RICO">PUERTO RICO</option>
+
+                          <option value="QATAR">QATAR</option>
+
+                          <option value="REPUBLIC OF KOREA">REPUBLIC OF KOREA</option>
+
+                          <option value="REUNION">REUNION</option>
+
+                          <option value="ROMANIA">ROMANIA</option>
+
+                          <option value="RUSSIAN FEDERATION">RUSSIAN FEDERATION</option>
+
+                          <option value="RWANDA">RWANDA</option>
+
+                          <option value="S GEORGIA AND S SANDWICH ISLANDS">S GEORGIA AND S SANDWICH ISLANDS</option>
+
+                          <option value="SAMOA">SAMOA</option>
+
+                          <option value="SAN MARINO">SAN MARINO</option>
+
+                          <option value="SAO TOME &amp; PRINCIPE">SAO TOME &amp; PRINCIPE</option>
+
+                          <option value="SARK">SARK</option>
+
+                          <option value="SAUDI ARABIA">SAUDI ARABIA</option>
+
+                          <option value="SCATTERED ISLANDS">SCATTERED ISLANDS</option>
+
+                          <option value="SENEGAL">SENEGAL</option>
+
+                          <option value="SERBIA">SERBIA</option>
+
+                          <option value="SEYCHELLES">SEYCHELLES</option>
+
+                          <option value="SIERRA LEONE">SIERRA LEONE</option>
+
+                          <option value="SINGAPORE">SINGAPORE</option>
+
+                          <option value="SLOVAKIA">SLOVAKIA</option>
+
+                          <option value="SLOVENIA">SLOVENIA</option>
+
+                          <option value="SOLOMON ISLANDS">SOLOMON ISLANDS</option>
+
+                          <option value="SOMALIA">SOMALIA</option>
+
+                          <option value="SOUTH AFRICA">SOUTH AFRICA</option>
+
+                          <option value="SPAIN">SPAIN</option>
+
+                          <option value="SPANISH TERRITORY OF NORTH AFRICA">SPANISH TERRITORY OF NORTH AFRICA</option>
+
+                          <option value="SPITZBERGEN">SPITZBERGEN</option>
+
+                          <option value="SRI LANKA">SRI LANKA</option>
+
+                          <option value="ST BARTHELEMY">ST BARTHELEMY</option>
+
+                          <option value="ST HELENA">ST HELENA</option>
+
+                          <option value="ST KITTS &amp; NEVIS">ST KITTS &amp; NEVIS</option>
+
+                          <option value="ST LUCIA">ST LUCIA</option>
+
+                          <option value="ST MARTIN">ST MARTIN</option>
+
+                          <option value="ST PIERRE AND MIQUELON">ST PIERRE AND MIQUELON</option>
+
+                          <option value="ST VINCENT &amp; GRENADINES">ST VINCENT &amp; GRENADINES</option>
+
+                          <option value="SUDAN">SUDAN</option>
+
+                          <option value="SULTANATE OF OMAN">SULTANATE OF OMAN</option>
+
+                          <option value="SURINAM">SURINAM</option>
+
+                          <option value="SVALBARD AND JAN MAYEN">SVALBARD AND JAN MAYEN</option>
+
+                          <option value="SWAZILAND">SWAZILAND</option>
+
+                          <option value="SWEDEN">SWEDEN</option>
+
+                          <option value="SWITZERLAND">SWITZERLAND</option>
+
+                          <option value="SYRIA">SYRIA</option>
+
+                          <option value="TAHITI">TAHITI</option>
+
+                          <option value="TAIWAN">TAIWAN</option>
+
+                          <option value="TAJIKISTAN">TAJIKISTAN</option>
+
+                          <option value="TANZANIA">TANZANIA</option>
+
+                          <option value="THAILAND">THAILAND</option>
+
+                          <option value="THE DEMOCRATIC REPUBLIC OF KOREA">THE DEMOCRATIC REPUBLIC OF KOREA</option>
+
+                          <option value="THE PEOPLES REPUBLIC OF KOREA">THE PEOPLES REPUBLIC OF KOREA</option>
+
+                          <option value="TIBET">TIBET</option>
+
+                          <option value="TOGO">TOGO</option>
+
+                          <option value="TOKELAU">TOKELAU</option>
+
+                          <option value="TONGA">TONGA</option>
+
+                          <option value="TRINIDAD AND TOBAGO">TRINIDAD AND TOBAGO</option>
+
+                          <option value="TRISTAN DA CUNHA">TRISTAN DA CUNHA</option>
+
+                          <option value="TUNISIA">TUNISIA</option>
+
+                          <option value="TURKEY">TURKEY</option>
+
+                          <option value="TURKMENISTAN">TURKMENISTAN</option>
+
+                          <option value="TURKS AND CAICOS ISLANDS">TURKS AND CAICOS ISLANDS</option>
+
+                          <option value="TUVALU">TUVALU</option>
+
+                          <option value="UGANDA">UGANDA</option>
+
+                          <option value="UKRAINE">UKRAINE</option>
+
+                          <option value="UNITED ARAB EMIRATES">UNITED ARAB EMIRATES</option>
+
+                          <option value="UNITED KINGDOM">UNITED KINGDOM</option>
+
+                          <option value="UNITED STATES OF AMERICA">UNITED STATES OF AMERICA</option>
+
+                          <option value="URUGUAY">URUGUAY</option>
+
+                          <option value="US MINOR OUTLYING ISLANDS">US MINOR OUTLYING ISLANDS</option>
+
+                          <option value="US VIRGIN ISLANDS">US VIRGIN ISLANDS</option>
+
+                          <option value="UZBEKISTAN">UZBEKISTAN</option>
+
+                          <option value="VANUATU">VANUATU</option>
+
+                          <option value="VENEZUELA">VENEZUELA</option>
+
+                          <option value="VIETNAM">VIETNAM</option>
+
+                          <option value="WALLIS AND FUTUNA">WALLIS AND FUTUNA</option>
+
+                          <option value="WESTERN SAHARA">WESTERN SAHARA</option>
+
+                          <option value="YEMEN">YEMEN</option>
+
+                          <option value="ZAMBIA">ZAMBIA</option>
+
+                          <option value="ZIMBABWE">ZIMBABWE</option>
+
+                        </select>
+
+
+                    </div>
+                    </div>
+
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="add-lender-conditional-4" name="add-lender" type="radio" value="Other" data-aria-controls="conditional-add-lender-conditional-4">
+                      <label class="govuk-label govuk-radios__label" for="add-lender-conditional-4">
+                        Other organisation like charity, council, government department
+                      </label>
+                    </div>
+
+                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-add-lender-conditional-4">
+                      <div class="govuk-form-group">
+                        <label class="govuk-label" for="lender-other-name">
+                          Name of organisation
+                        </label>
+                        <input class="govuk-input govuk-!-width-one-half" id="add-lender-other-name" name="lender-other-name" type="text">
+                      </div>
+
+                  </div>
+
+                  </div>
+                </fieldset>
+                </div>
+
+
+
+
+  {{ govukButton({
+  classes: "",
+  text: "Continue"
+  }) }}
+
+</form>
+</main>
+
+
+<hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
+<br>
+<p class="govuk-body-s"> The following links open in a new window
+<br>
+<br>
+<a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
+<a href="/prototype-admin/clear-data">Clear data</a>
+</div>
+
+<script type="application/json" id="reference-form-validation">
+ {
+   "reference": {
+     "presence": {
+       "message": "^Enter your reference for this application"
+     },
+     "length": {
+       "minimum": 1,
+       "maximum": 25,
+       "message": "^Your reference must be 25 characters or less"
+     }
+   }
+</script>
+
+
+
+{% endblock %}
+
+
+{% block footer %}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}
