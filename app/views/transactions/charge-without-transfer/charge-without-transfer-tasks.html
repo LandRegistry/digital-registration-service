@@ -97,22 +97,28 @@
               <td class="govuk-table__cell">{% if data['MDRef'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
               </tr>
 
+
+              {% if data['AddLendersTask'] %}
               <tr class="govuk-table__row">
               <td class="govuk-table__cell"><a href="/transactions/charge-without-transfer/add-lender" class="govuk-link">Add lenders</a></td>
               <td class="govuk-table__cell">{% if data['add-lender'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
               </tr>
+              {% endif %}
 
+              {% if data['AddRepTask'] %}
               <tr class="govuk-table__row">
               <td class="govuk-table__cell"><a href="/transactions/charge-without-transfer/lender-representation" class="govuk-link">Add lender representation</a></td>
               <td class="govuk-table__cell">{% if data['cwt-lenderReptype'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
               </tr>
+              {% endif %}
 
-
+              {% if data['AddAddressTask'] %}
               <tr class="govuk-table__row">
               <td class="govuk-table__cell">
               <a href="address-for-service/address-list" class="govuk-link">Add address for service</a>
               <td class="govuk-table__cell">{% if data['lenderAddressType'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
               </tr>
+              {% endif %}
 
               <tr class="govuk-table__row">
                 <th scope="row" class="govuk-table__header">1.2 Supporting documents</th>

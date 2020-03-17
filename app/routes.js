@@ -220,8 +220,13 @@ router.post('/transactions/charge-without-transfer/mdrefanswer', function (req, 
     req.session.data['cwt-lender-company-name'] = 'Barclays Ltd';
     req.session.data['lender-name'] = 'Barclays Ltd';
     req.session.data['add-lender'] = 'true';
+    req.session.data['AddRepTask'] = 'true';
+    req.session.data['AddAddressTask'] = 'true';
     res.redirect('/transactions/charge-without-transfer/lender-representationAdd')
   } else {
+    req.session.data['AddLendersTask'] = 'true';
+    req.session.data['AddRepTask'] = 'true';
+    req.session.data['AddAddressTask'] = 'true';
     res.redirect('/transactions/charge-without-transfer/add-lender')
 
   }
