@@ -210,22 +210,22 @@ router.post('/transactions/charge-without-transfer/address-for-service/cwt-lende
 
 })
 
+// sole charge md ref
+router.post('/transactions/charge-without-transfer/mdrefanswer', function (req, res) {
 
+                                     // Name of input
+  let mdreference = req.session.data['MDreferenceinput']
 
-//
-// router.post('/transactions/transfer/transferor-representation-answer', function (req, res) {
-//   // Get the answer from session data
-//   // The name between the quotes is the same as the 'name' attribute on the input elements
-//   // However in JavaScript we can't use hyphens in variable names
-//
-//
-// if (transferorrep === 'noConveyancer') {
-//   res.redirect('/transactions/transfer/transferor-verify')
-// } else {
-//   res.redirect('/transactions/transfer/transferor-representation')
-// }
-//
-// })
+  if (mdreference != '') {
+    req.session.data['cwt-lender-company-name'] = 'Barclays Ltd';
+    req.session.data['lender-name'] = 'Barclays Ltd';
+    req.session.data['add-lender'] = 'true';
+    res.redirect('/transactions/charge-without-transfer/lender-representationAdd')
+  } else {
+    res.redirect('/transactions/charge-without-transfer/add-lender')
+
+  }
+})
 
 
 // Discharge method
