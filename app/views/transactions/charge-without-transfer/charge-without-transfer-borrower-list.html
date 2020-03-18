@@ -82,13 +82,29 @@
                         <p>Removed</p>
                         {% endif %}
                       </td>
-                    <td class="govuk-table__cell"><a href="charge-without-transfer-borrower-change">Change</a></td>
+                    <td class="govuk-table__cell"><a href="charge-without-transfer-borrower-details">Change</a></td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">Private individual</td>
+                    <td class="govuk-table__cell">{{ data['borrowerDetails2'] }}</td>
+                    <td class="govuk-table__cell">
+                        {% if data['soleChargeborrowerDetails2'] == 'correct' %}
+                        <p>Correct</p>
+                        {% endif %}
+                        {% if data['soleChargeborrowerDetails2'] == 'changed' %}
+                        <p>Amended</p>
+                        {% endif %}
+                        {% if data['soleChargeborrowerDetails2'] == 'removed'%}
+                        <p>Removed</p>
+                        {% endif %}
+                      </td>
+                    <td class="govuk-table__cell"><a href="charge-without-transfer-borrower-details-2">Change</a></td>
                   </tr>
             </tbody>
           </table>
 
           {{ govukWarningText({
-            text: "I confirm all name details are correct",
+            text: "Select ‘Continue’ to confirm the list of borrowers is complete and correct.",
             iconFallbackText: "Warning"
           }) }}
 

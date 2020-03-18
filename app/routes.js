@@ -227,7 +227,7 @@ router.post('/transactions/charge-without-transfer/mdrefanswer', function (req, 
     req.session.data['AddLendersTask'] = 'true';
     req.session.data['AddRepTask'] = 'true';
     req.session.data['AddAddressTask'] = 'true';
-    res.redirect('/transactions/charge-without-transfer/add-lender')
+    res.redirect('/transactions/charge-without-transfer/charge-without-transfer-charge-lenders')
 
   }
 })
@@ -371,18 +371,37 @@ router.post('/transactions/charge-without-transfer/charge-without-transfer-borro
   let borrowerDetails1 = req.session.data['soleChargeborrowerDetails1']
 
   if (borrowerDetails1 === 'correct') {
-    req.session.data['borrowerDetails1'] = 'Bob Borrower';
-    res.redirect('charge-without-transfer-borrower-list')
+    req.session.data['borrowerDetails1'] = 'Bob Smith';
+    res.redirect('charge-without-transfer-borrower-details-2')
 }
   if (borrowerDetails1 === 'changed') {
       res.redirect('charge-without-transfer-borrower-change')
     }
     if (borrowerDetails1 === 'removed') {
       req.session.data['borrowerDetails1'] = 'Bob Borrower';
-        res.redirect('charge-without-transfer-borrower-list')
+        res.redirect('charge-without-transfer-borrower-details-2')
       }
 })
 
+router.post('/transactions/charge-without-transfer/charge-without-transfer-borrower2', function (req, res) {
+  // Get the answer from session data
+  // The name between the quotes is the same as the 'name' attribute on the input elements
+  // However in JavaScript we can't use hyphens in variable names
+
+  let borrowerDetails2 = req.session.data['soleChargeborrowerDetails2']
+
+  if (borrowerDetails2 === 'correct') {
+    req.session.data['borrowerDetails2'] = 'Jane Smith';
+    res.redirect('charge-without-transfer-borrower-list')
+}
+  if (borrowerDetails2 === 'changed') {
+      res.redirect('charge-without-transfer-borrower-change-2')
+    }
+    if (borrowerDetails2 === 'removed') {
+      req.session.data['borrowerDetails2'] = 'Jane Smith';
+        res.redirect('charge-without-transfer-borrower-list')
+      }
+})
 
 
     router.post('/transactions/charge-without-transfer/date-complete', function (req, res) {

@@ -58,12 +58,8 @@
   <a href="lender-representation" class="govuk-back-link">Return to lender representation</a>
     <span class="govuk-caption-l">Charge</span>
     <h1 class="govuk-heading-l">Select representation</h1>
-    <h2 class="govuk-heading-s">Tell us who's representing:</h2>
-    <p class="govuk-body-m">{{ data['lender-name']}}
+    <h2 class="govuk-heading-s">Tell us who's representing: {{ data['cwt-lender-company-name']}}</h2>
 
-
-
-    </p>
 
 
     <div class="govuk-form-group">
@@ -171,7 +167,7 @@
 <br>
 
         <div style="">
-        <h4 class="govuk-heading-s">Apply selected conveyancer to all lenders (optional)</h4>
+        <h4 class="govuk-heading-s">Apply to all (optional)</h4>
 
         {{ govukCheckboxes({
           idPrefix: "represents-all",
@@ -182,14 +178,14 @@
           },
           items: [
             {
-              value: "Selected conveyancer represents all lenders (optional).",
-              text: "Selected conveyancer represents all lenders (optional)."
+              value: "Selected conveyancer represents all lenders",
+              text: "Selected conveyancer represents all lenders"
             }
           ]
         }) }}
 
           {{ govukWarningText({
-            text: "This will replace any conveyancer details previously added",
+            text: "Replaces any conveyancer details previously added",
             iconFallbackText: "Warning"
   }) }}
 

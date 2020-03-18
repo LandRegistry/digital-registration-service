@@ -5,6 +5,8 @@
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/tabs/macro.njk" import govukTabs %}
 {% from "govuk/components/table/macro.njk" import govukTable %}
+{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+
 
 
 {% block headIcons %}
@@ -63,9 +65,9 @@
   <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">Legal deed</td>
-          <td class="govuk-table__cell">Mortgage deed</td>
+          <td class="govuk-table__cell">Various</td>
           <td class="govuk-table__cell">{% if data['mortgageAttached']%} Certified {% endif %}</td>
-          <td class="govuk-table__cell">{% if data['mortgageAttached']%} Mortgage-Deed.pdf {% endif %}</td>
+          <td class="govuk-table__cell">{% if data['mortgageAttached']%} deed.pdf {% endif %}</td>
           {% if data['mortgageAttached']%}<td class="govuk-table__cell govuk-link"><a href="">Remove</a></td>{% endif %}
           {% if not data['mortgageAttached'] %}<td class="govuk-table__cell govuk-link"><a href="document_upload.html">Attach</a></td>{% endif %}
         </tr>
@@ -112,6 +114,17 @@
 
 {% endif %}
 <p class='govuk-body'><a href="document_upload_other">Attach another type of document</a></p>
+
+
+<div class="govuk-warning-text">
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+  <strong class="govuk-warning-text__text">
+    <span class="govuk-warning-text__assistive">Warning</span>
+    By selecting 'Continue' I confirm that the charge lodged here
+          <br>- has been filed at Companies House<br>
+              - relates to the accompanying certificate of registration
+  </strong>
+</div>
 
 {{ govukButton({
   text: "Continue",

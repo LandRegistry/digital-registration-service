@@ -48,11 +48,11 @@
 
 <div class="govuk-grid-column-full">
   <a href="charge-without-transfer-tasks" class="govuk-back-link">Return to task list</a>
-  <span class="govuk-caption-l">Apply to update or create a registered title</span>
+  <span class="govuk-caption-l">Charge</span>
 
 
     <h1 class="govuk-heading-l">Lenders</h1>
-    <h2 class="govuk-heading-m">Lenders added</h2>
+
 
 <form method="post" action="/transactions/charge-without-transfer/lender-representation">
 
@@ -62,7 +62,7 @@
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
       <th scope="col" class="govuk-table__header">Lender type</th>
-      <th scope="col" class="govuk-table__header">Full name</th>
+      <th scope="col" class="govuk-table__header">Lender name</th>
       <th scope="col" class="govuk-table__header">Company number</th>
       <th scope="col" class="govuk-table__header">Territory of incorporation</th>
       <th scope="col" class="govuk-table__header">Options</th>
@@ -207,9 +207,9 @@
     {% endif %} -->
 
     {% if data['cwt-lender2-company-name-2'] or data['cwt-lender2-individual-forename-2'] or data['cwt-lender2-overseas-name'] or data['cwt-lender2-other-name'] %}
-    <a class="govuk-link" href="add-lenders-3">Add lender</a><br>
+    <a class="govuk-link" href="add-lenders-3">Add another lender</a><br>
     {% else %}
-    <a class="govuk-link" href="add-lenders-2">Add lender</a><br>
+    <a class="govuk-link" href="add-lenders-2">Add another lender</a><br>
     {% endif %}
 
 
