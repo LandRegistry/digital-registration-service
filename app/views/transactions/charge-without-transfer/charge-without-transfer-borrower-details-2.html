@@ -9,8 +9,6 @@
 {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
-{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
-
 
 
 
@@ -52,29 +50,43 @@
     <main class="govuk-main-wrapper " id="main-content" role="main">
     <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <a href="charge-without-transfer-borrower-list" class="govuk-back-link">Return to Borrower list</a>
+    <a href="charge-without-transfer-tasks" class="govuk-back-link">Return to task list</a>
+
         <span class="govuk-caption-l">Charge</span>
 
-          <h1 class="govuk-heading-l">Change borrower name</h1>
-          <h2 class="govuk-heading-m">Name: Bob Smith</h2>
+          <h1 class="govuk-heading-l">Check borrower name</h1>
+          <h2 class="govuk-heading-m">Name: Jane Smith</h2>
 
-          <form method="post" action="/transactions/charge-without-transfer/charge-without-transfer-borrower-list" novalidate>
+          <form method="post" action="/transactions/charge-without-transfer/charge-without-transfer-borrower2" novalidate>
 
-            {{ govukInput({
-                label: {
-                  text: "Enter correct name"
-                },
-                classes: "govuk-!-width-two-thirds",
-                id: "borrowerDetails1Change",
-                name: "borrowerDetails1"
-            }) }}
+          {{ govukRadios({
+            idPrefix: "soleChargeborrowerDetails2",
+            name: "soleChargeborrowerDetails2",
+            fieldset: {
+              legend: {
+                text: "Select if this proprieter's name:",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            items: [
+              {
+                value: "correct",
+                text: "is correct"
+              },
+              {
+                value: "changed",
+                text: "has changed"
+              },
+              {
+                value: "removed",
+                text: "needs to be removed"
+              }
+            ]
+          }) }}
+
           <br>
 
-
-          {{ govukWarningText({
-            text: "Name must be exactly as it appears in supporting documents",
-            iconFallbackText: "Warning"
-          }) }}
 
           {{ govukButton({
           classes: "",
