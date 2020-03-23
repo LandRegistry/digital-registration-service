@@ -40,19 +40,30 @@
     </div>
     </div>
 
-<form method="post" action="/transactions/charge-without-transfer/documents/evidence-attached">
+<form method="post" action="discharge-documents" data-validate="doc-form-validation" novalidate>
 
-<div class="govuk-grid-column-full">
-  <a href="/charge-without-transfer/documents/document_prompts" class="govuk-back-link">Return to Attach documents</a>
-  <span class="govuk-caption-xl">Charge</span>
+<div class="govuk-grid-column-full govuk-!-margin-top-7">
+  <span class="govuk-caption-xl">Discharge of charge</span>
   <h1 class="govuk-heading-l"> Attach and certify document </h1>
   <p class="govuk-body">Files can be GIF, TIFF, JPG or PDF and must not exceed 20MB file size.</p>
-  <p class="govuk-body">Document type</p>
-  <h2 class="govuk-heading-m govuk-!-margin-bottom-6" style="margin-top: -20px;">Certificate of registration of a charge</h2>
+  <p class="govuk-body">Category</p>
+  <h2 class="govuk-heading-m govuk-!-margin-bottom-6" style="margin-top: -20px;">Evidence of identity: [Lender name]</h2>
+
+    <div class="govuk-form-group">
+    <label class="govuk-label" for="sort">
+      Select a document type for each file you attach
+    </label>
+    <select class="govuk-select govuk-!-width-one-half" id="sort" name="sort">
+      <option value="select" selected>Select document type</option>
+      <option value="ID1">ID1 - Verify identity: citizen</option>
+      <option value="ID2" >ID2 - Verify identity: corporate body</option>
+    </select>
+  </div>
+
   <p class="govuk-body">Attach a file</p>
 
-  <a href="#" type="file" id="required_upload" class="govuk-link--no-visited-state" onclick="fileupload()" style="cursor: pointer; text-decoration: none; font-size: 14px; color: black; border-style: solid;  border-width: 0.5px; padding: 5px; border-radius: 3px; position: absolute; ">Choose file</a>
-  <a  style="margin-left: 100px;" class="govuk-body" id="filename" for="evidence-upload"> No file chosen </a>
+  <a href="#" type="file" id="suggested_upload" class="govuk-link--no-visited-state" onclick="fileupload()" style="cursor: pointer; text-decoration: none; font-size: 14px; color: black; border-style: solid;  border-width: 0.5px; padding: 5px; border-radius: 3px; position: absolute; ">Choose file</a>
+  <a  style="margin-left: 100px;" class="govuk-body" id="filename" for="ds1-upload"> No file chosen </a>
 
 
 
@@ -62,19 +73,19 @@
   <fieldset class="govuk-fieldset">
     <div class="govuk-radios govuk-!-width-two-thirds">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="Certified-1" name="cert" value="Certified" type="radio">
+        <input class="govuk-radios__input" id="DischargeCertified-1" name="DischargeCertified" value="Certified" type="radio">
         <label class="govuk-label govuk-radios__label">
           I/we certify this is a true copy of an original document
         </label>
       </div>
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="Certified-2" name="cert" value="Certified" type="radio">
+        <input class="govuk-radios__input" id="DischargeCertified-2" name="DischargeCertified" value="Certified" type="radio">
         <label class="govuk-label govuk-radios__label">
           I/we certify this attachment is a true copy of an original document which is certified by a conveyancer to be a true copy of the original
         </label>
       </div>
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="Certified-3" name="cert" value="Not certified" type="radio">
+        <input class="govuk-radios__input" id="DischargeCertified-3" name="DischargeCertified" value="Not certified" type="radio">
         <label class="govuk-label govuk-radios__label">
           This attachment is an uncertified copy
         </label>
@@ -105,13 +116,26 @@
 
   $(document).ready(function(){
     $("a").click(function(){
-      $(document.getElementById('filename')).text("Evidence.pdf");
+      $(document.getElementById('filename')).text("ds1.pdf");
     });
   });
 
 }
-
 </script>
+
+<script type="application/json" id="title-form-validation">
+
+
+// error
+ {
+   "sort": {
+     "presence": {
+       "message": "^Enter a title number"
+     }
+   }
+ }
+</script>
+
 
 
 

@@ -247,7 +247,8 @@
       </tbody>
     </table>
 
-
+    <br>
+    <br>
 
     <table class="govuk-table govuk-!-margin-bottom-9">
       <h2 class="govuk-heading-l">Transactions</h2>
@@ -269,70 +270,101 @@
 
     <div>
 
-      <h3 class="govuk-heading-m">Borrower details</h3><a style="float: right; margin-top: -40px;" href="#">Change</a>
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-quarter">Date of charge</dt>
+          <dd class="govuk-summary-list__value govuk-!-width-one-half"><p>{{ data['charge-date'] }}</p></dd>
+          <dd class="govuk-summary-list__actions govuk-!-width-one-quarter">
+              <a href="change-title">Change</a>
+              <span class="govuk-visually-hidden"> date</span>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-quarter">MD reference</dt>
+          <dd class="govuk-summary-list__value govuk-!-width-one-half" value="property-address"><p>{{ data['MDreferenceinput'] }}</p></dd>
+          <dd class="govuk-summary-list__actions govuk-!-width-one-quarter">
+            <a href="change-title">Change</a>
+              <span class="govuk-visually-hidden"> mdref</span>
+          </dd>
+        </div>
+        </dl>
+
+      <h3 class="govuk-heading-m">Borrower details</h3><a <a class="govuk-link" style="font-size: 19px; float: right; margin-top: -50px;" href="#">Change</a>
       <table class="govuk-table">
 
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Borrower type</th>
             <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Borrower name</th>
-            <th scope="col" class="govuk-table__header govuk-!-width-three-quarters">Represented by</th>
+            <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Represented by</th>
+            <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Addresses for service</th>
           </tr>
         </thead>
         <tbody class="govuk-table_body">
           {% if data['borrowerDetails1'] %}
           <tr class="govuk-table_row">
+          <td class="govuk-table__cell">Private individual</td>
           <td class="govuk-table__cell">{{ data['borrowerDetails1'] }}</td>
-          <td class="govuk-table__cell govuk-!-width-one-third">
+          <td class="govuk-table__cell">{{ data['borrower1rep'] }}</td>
+          <td class="govuk-table__cell">{{ data['borrower1address'] }}</td>
 
-           </td>
+          </tr>
+          {% endif %}
+          {% if data['borrowerDetails2'] %}
+          <tr class="govuk-table_row">
+          <td class="govuk-table__cell">Private individual</td>
+          <td class="govuk-table__cell">{{ data['borrowerDetails2'] }}</td>
+          <td class="govuk-table__cell">{{ data['borrower2rep'] }}</td>
+          <td class="govuk-table__cell">{{ data['borrower2address'] }}</td>
+
           </tr>
           {% endif %}
 
-       {% if data['lender-name2'] %}
-       <tr class="govuk-table_row">
-       <td class="govuk-table__cell">{{ data['lender-name2'] }}</td>
-       <td class="govuk-table__cell govuk-!-width-one-third">
-          {% if not data['lenderReptype'] %}N/a{% endif %}
-          {% if data['lenderReptype'] %}{{ data['lenderReptype']}}{% endif %}
-        </td>
-       </tr>
-       {% endif %}
+
        </tbody>
        </table>
        </div>
 
-      <h3 class="govuk-heading-m">Lender details</h3><a style="float: right; margin-top: -40px;" href="#">Change</a>
+       <br>
+       <br>
+
+      <h3 class="govuk-heading-m">Lender details</h3><a class="govuk-link" style="font-size: 19px; float: right; margin-top: -50px;" href="#">Change</a>
       <table class="govuk-table">
 
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Lender type</th>
             <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Lender name</th>
-            <th scope="col" class="govuk-table__header govuk-!-width-three-quarters">Represented by</th>
+            <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Represented by</th>
+            <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Addresses for service</th>
           </tr>
         </thead>
         <tbody class="govuk-table_body">
           {% if data['lender-name'] %}
           <tr class="govuk-table_row">
+          <td class="govuk-table__cell">UK company or LLP</td>
           <td class="govuk-table__cell">{{ data['lender-name'] }}</td>
-          <td class="govuk-table__cell govuk-!-width-one-third">
-             UK Conveyancer Ltd
-           </td>
-          </tr>
-          {% endif %}
+           <td class="govuk-table__cell govuk-!-width-one-third">{% if not data['lenderReptype'] %}Not represented{% endif %}{% if data['lenderReptype'] %}{{ data['lenderReptype']}}{% endif %}</td>
+           <td class="govuk-table__cell govuk-!-width-one-third">{% if data['lenderAddressType'] === 'UK-postal' %}<p> 4, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</p>{% endif %}<br>completions@ukconveyancers.co.uk</td>
+           </tr>
+           {% endif %}
 
-       {% if data['lender-name2'] %}
-       <tr class="govuk-table_row">
-       <td class="govuk-table__cell">{{ data['lender-name2'] }}</td>
-       <td class="govuk-table__cell govuk-!-width-one-third">
-          {% if not data['lenderReptype'] %}N/a{% endif %}
-          {% if data['lenderReptype'] %}{{ data['lenderReptype']}}{% endif %}
-        </td>
-       </tr>
-       {% endif %}
-       </tbody>
-       </table>
-       </div>
-       <br>
+
+         {% if data['lender-name2'] %}
+         <tr class="govuk-table_row">
+             <td class="govuk-table__cell">UK company or LLP</td>
+         <td class="govuk-table__cell">{{ data['lender-name2'] }}</td>
+         <td class="govuk-table__cell govuk-!-width-one-third">
+            {% if not data['lenderReptype'] %}N/a{% endif %}
+            {% if data['lenderReptype'] %}{{ data['lenderReptype']}}{% endif %}
+          </td>
+         </tr>
+         {% endif %}
+         </tbody>
+         </table>
+
+         <br>
+
 
            <table class="govuk-table govuk-!-margin-bottom-9">
            <h2 class="govuk-heading-m">Attached documents</h2>
@@ -348,10 +380,18 @@
              <tbody class="govuk-table__body">
                    <tr class="govuk-table__row">
                      <td class="govuk-table__cell">Legal deed</td>
-                     <td class="govuk-table__cell">DS1</td>
+                     <td class="govuk-table__cell">Mortgage deed</td>
                      <td class="govuk-table__cell">Certified</td>
-                     <td class="govuk-table__cell">DS1.pdf</td>
+                     <td class="govuk-table__cell">MD.pdf</td>
                    </tr>
+
+                   <tr class="govuk-table__row">
+                     <td class="govuk-table__cell">Evidence</td>
+                     <td class="govuk-table__cell">Certificate of registration of a charge</td>
+                     <td class="govuk-table__cell">Certified</td>
+                     <td class="govuk-table__cell">Certificate.pdf</td>
+                   </tr>
+
              </tbody>
            </table>
 
@@ -442,7 +482,7 @@
         href: "application-success"
       }) }}
 
-
+</div>
 <script>
 
 </script>

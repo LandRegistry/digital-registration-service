@@ -5,8 +5,6 @@
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/tabs/macro.njk" import govukTabs %}
 {% from "govuk/components/table/macro.njk" import govukTable %}
-{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
-
 
 
 {% block headIcons %}
@@ -42,20 +40,19 @@
     </div>
     </div>
 
-<div class="govuk-grid-column-full">
-  <a href="/charge-without-transfer/charge-without-transfer-tasks" class="govuk-back-link">Return to task list</a>
-  <span class="govuk-caption-xl">Charge</span>
+<div class="govuk-grid-column-full govuk-!-margin-top-7">
+  <span class="govuk-caption-xl">Discharge of charge</span>
   <h1 class="govuk-heading-xl"> Attach documents </h1>
-  <h2 class="govuk-heading-l"> Required </h2>
+  <h2 class="govuk-heading-l"> Required documents </h2>
   <p class="govuk-body">Documents you must attach to avoid requisitions.</p>
 
-  <form method="post" action="">
+  <form method="post" action="/../transactions/tasks">
   <table class="govuk-table">
 
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header">Category</th>
-      <th scope="col" class="govuk-table__header govuk-!-width-one-third">Document type</th>
+      <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Category</th>
+      <th scope="col" class="govuk-table__header">Document type</th>
       <th scope="col" class="govuk-table__header">Certification</th>
       <th scope="col" class="govuk-table__header">File name</th>
       <th scope="col" class="govuk-table__header">Options</th>
@@ -65,30 +62,23 @@
   <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">Legal deed</td>
-          <td class="govuk-table__cell">Various</td>
-          <td class="govuk-table__cell">{% if data['mortgageAttached']%} Certified {% endif %}</td>
-          <td class="govuk-table__cell">{% if data['mortgageAttached']%} deed.pdf {% endif %}</td>
-          {% if data['mortgageAttached']%}<td class="govuk-table__cell govuk-link"><a href="">Remove</a></td>{% endif %}
-          {% if not data['mortgageAttached'] %}<td class="govuk-table__cell govuk-link"><a href="document_upload.html">Attach</a></td>{% endif %}
+          <td class="govuk-table__cell">DS1</td>
+          <td class="govuk-table__cell">Certified</td>
+          <td class="govuk-table__cell">DS1.pdf</td>
+          <td class="govuk-table__cell govuk-link"><a href="">Remove</a></td>
         </tr>
-
         <tr class="govuk-table__row">
-          <td class="govuk-table__cell">Evidence</td>
-          <td class="govuk-table__cell">Certificate of registration of a charge</td>
-          <td class="govuk-table__cell">{% if data['certificateAttached']%} Certified {% endif %}</td>
-          <td class="govuk-table__cell">{% if data['certificateAttached']%} Certificate.pdf {% endif %}</td>
-          {% if data['certificateAttached']%}<td class="govuk-table__cell govuk-link"><a href="">Remove</a></td>{% endif %}
-          {% if not data['certificateAttached'] %}<td class="govuk-table__cell govuk-link"><a href="document_upload-evidence.html">Attach</a></td>{% endif %}
-
+          <td class="govuk-table__cell">Evidence of identity: [Lender name]</td>
+          <td class="govuk-table__cell">ID2 - Verify identity: corporate body</td>
+          <td class="govuk-table__cell">Certified</td>
+          <td class="govuk-table__cell">ID2.pdf</td>
+          <td class="govuk-table__cell govuk-link"><a href="">Remove</a></td>
         </tr>
-
   </tbody>
 </table>
 
-
-
 {% if data['other_upload'] %}
-<h3 class="govuk-heading-l"> Other </h3>
+<h3 class="govuk-heading-l"> Other documents </h3>
 
 <table class="govuk-table">
   <thead class="govuk-table__head">
@@ -115,20 +105,8 @@
 {% endif %}
 <p class='govuk-body'><a href="document_upload_other">Attach another type of document</a></p>
 
-
-<div class="govuk-warning-text">
-  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-  <strong class="govuk-warning-text__text">
-    <span class="govuk-warning-text__assistive">Warning</span>
-    By selecting 'Continue' I confirm that the charge lodged here
-          <br>- has been filed at Companies House<br>
-              - relates to the accompanying certificate of registration
-  </strong>
-</div>
-
 {{ govukButton({
-  text: "Continue",
-  href: "/../transactions/charge-without-transfer/charge-without-transfer-tasks"
+  text: "Continue"
 }) }}
 </form>
 
