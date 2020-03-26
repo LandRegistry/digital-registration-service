@@ -10,37 +10,6 @@ router.use('/node_modules', express.static('node_modules'))
 
 // Select/add transferees
 router.post('/transactions/transfer/transferee-whichapplicants-answer', function (req, res) {
-  // Get the answer from session data
-  // The name between the quotes is the same as the 'name' attribute on the input elements
-  // However in JavaScript we can't use hyphens in variable names
-
-  // This only works if there are two transferees
-
-
-  // let applicantTransferee1 = req.session.data['applicant-individual-transferee1']
-  //
-  // console.log(applicantTransferee1)
-  //
-  // if (applicantTransferee1.checked === false) {
-  //   res.redirect('/docs/examples/branching/under-18')
-  // } else {
-  //   res.redirect('/transactions/transfer/transferee-list')
-  // }
-  //
-  // })
-
-  // let applicantTransferee1 = req.body['applicant-individual-transferee1'];
-  // let applicantTransferee2 = req.body['applicant-individual-transferee2'];
-  //
-  // // console.log(req.body['applicant-individual-transferee1'])
-  //
-  // if ((applicantTransferee1 === '_unchecked') && (applicantTransferee2 === '_unchecked')) {
-  //   res.redirect('/transactions/transfer/add-transferee')
-  // } else {
-  //   res.redirect('/transactions/transfer/transferee-list')
-  // }
-  //
-  // })
 
   let applicantTransferee1 = req.session.data['applicant-individual-forename'];
   let applicantTransferee2 = req.session.data['applicant2-individual-forename-2'];
@@ -69,17 +38,6 @@ router.post('/transactions/transfer/transferee-whichapplicants-answer', function
 
   }
 
-  // if (applicantTransferee3 != '') {
-  //     let checkbox3 = req.body['applicant-individual-transferee3'];
-  //     if (checkbox3  != '_unchecked'){
-  //       checkboxTicked3 = true
-  //     } else {
-  //     checkboxTicked3 = false
-  //     }
-  //
-  // } else {
-  // checkboxTicked3 = false
-  // }
 
   if ((checkboxTicked1 === true) || (checkboxTicked2 === true)) {
     res.redirect('/transactions/transfer/transferee-list')
@@ -87,22 +45,9 @@ router.post('/transactions/transfer/transferee-whichapplicants-answer', function
     res.redirect('/transactions/transfer/add-transferee')
   }
 
-
-
-  // console.log(req.body['applicant-individual-transferee1'])
-  //
-  // if ((applicantTransferee1 === '_unchecked') && (applicantTransferee2 === '_unchecked')) {
-  //   res.redirect('/transactions/transfer/add-transferee')
-  // } else {
-  //   res.redirect('/transactions/transfer/transferee-list')
-  // }
-  //
   })
 
 
-
-
-  // res.redirect('/transactions/transfer/transferee-list')
 
 // Select/add lenders
   router.post('/transactions/charge-without-transfer/applicants-lenders', function (req, res) {
