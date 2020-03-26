@@ -52,12 +52,13 @@
     <div class="govuk-grid-column-two-thirds">
     <a href="charge-without-transfer-tasks" class="govuk-back-link">Return to task list</a>
 
-          <span class="govuk-caption-l" style="margin-bottom: 20px;">Charge</span>
-          <h1 class="govuk-heading-l">Check borrower name</h1>
+
+          <h1 class="govuk-heading-l">
+            <span class="govuk-caption-l">Charge</span>
+            Check borrower name</h1>
           <h2 class="govuk-heading-m">Name: Bob Smith</h2>
 
           <form method="post" action="/transactions/charge-without-transfer/charge-without-transfer-borrower1" data-validate="borrower1-form-validation" novalidate>
-
             {{ govukRadios({
             idPrefix: "soleChargeborrowerDetails1",
             name: "solechargeborrowerdetails1",
@@ -111,7 +112,7 @@
 
         "solechargeborrowerdetails1": {
           "presence": {
-            "message": "^you must say if you have changed your name"
+            "message": "^Make a selection"
           }
         }
  	}
@@ -119,26 +120,6 @@
 
 {% endblock %}
 
-<script type="application/json" id="borrower1-form-validation">
-  {
-
-        "solechargeborrowerdetails1": {
-          "presence": {
-            "message": "^you must say if you have changed your name"
-          }
-        }
- 	}
-</script>
-
-<script type="application/json" id="title-form-validation">
- {
-   "title": {
-     "presence": {
-       "message": "^Enter a title number"
-     }
-   }
- }
-</script>
 
 
 {% block footer %}
