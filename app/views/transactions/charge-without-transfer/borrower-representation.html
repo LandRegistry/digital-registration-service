@@ -9,6 +9,7 @@
 {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
 
 
 
@@ -36,67 +37,58 @@
     <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 
 
-    <div class="govuk-phase-banner">
+    <div class="govuk-phase-banner govuk-!-margin-bottom-5">
         <p class="govuk-phase-banner__content">
         <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
         <span class="govuk-phase-banner__text">
         This is a prototype and not a real service.
         </span></p>
-    </div></div>
+     </div>
     </div>
 
+<div class="govuk-grid-column-full">
+  <a href="charge-without-transfer-tasks" class="govuk-back-link">Return to task list</a>
+    <span class="govuk-caption-l">Charge</span>
+    <h1 class="govuk-heading-l">Borrower representation</h1>
+    <p class="govuk-body-m">Select 'Add representation' and enter the details for each borrower.</p>
+
+    <form>
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Borrower type</th>
+          <th scope="col" class="govuk-table__header">Borrower name</th>
+          <th scope="col" class="govuk-table__header">Represented by</th>
+          <th scope="col" class="govuk-table__header">Options</th>
+        </tr>
+      </thead>
+
+      <tbody class="govuk-table__body">
+
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Private individual</td>
+          <td class="govuk-table__cell">{{ data['borrowerDetails1'] }}</td>
+          <td class="govuk-table__cell">{% if not data['borrower1representation'] %}- No representation added - {% endif %} {% if data['borrower1representation'] %} {{ data['Borrower1Representation']}} {% endif %}</td>
+          <td class="govuk-table__cell"><a href="">Add representation</a></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Private individual</td>
+          <td class="govuk-table__cell">{{ data['borrowerDetails2'] }}</td>
+          <td class="govuk-table__cell">{% if not data['borrower2representation'] %}- No representation added - {% endif %} {% if data['borrower2representation'] %} {{ data['Borrower2Representation']}} {% endif %}</td>
+          <td class="govuk-table__cell">{% if not data['borrower2representation'] %}<a href="">Add representation</a>{% endif %}{% if data['borrower2representation'] %}<a href="">Remove</a>{% endif %}</td>
+        </tr>
+
+      </tbody>
+    </table>
 
 
-    <main class="govuk-main-wrapper " id="main-content" role="main">
-    <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-    <a href="charge-without-transfer-tasks" class="govuk-back-link">Return to task list</a>
 
-          <span class="govuk-caption-l" style="margin-bottom: 20px;">Charge</span>
-          <h1 class="govuk-heading-l">Check borrower name</h1>
-          <h2 class="govuk-heading-m">Name: Bob Borrower</h2>
+{{ govukButton({
+  text: "Continue",
+  href: "address-for-service/lender-addresstype"
+}) }}
 
-          <form method="post" action="/transactions/charge-without-transfer/charge-without-transfer-borrower1" data-validate="borrower1-form-validation" novalidate>
-
-            {{ govukRadios({
-            idPrefix: "soleChargeborrowerDetails1",
-            name: "solechargeborrowerdetails1",
-            fieldset: {
-              legend: {
-                text: "Select if this proprieter's name:",
-                isPageHeading: false,
-                classes: "govuk-fieldset__legend--s"
-              }
-            },
-            items: [
-              {
-                value: "correct",
-                text: "is correct"
-              },
-              {
-                value: "changed",
-                text: "has changed"
-              },
-              {
-                value: "removed",
-                text: "needs to be removed"
-              }
-            ]
-          }) }}
-
-          <br>
-
-
-          {{ govukButton({
-          classes: "",
-          text: "Continue"
-          }) }}
-
-        </form>
-
-
-</main>
-
+</form>
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 <br>
@@ -104,41 +96,11 @@
 <br>
 <br>
 <a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
-<a href="/prototype-admin/clear-data">Clear data</a>
 
-<script type="application/json" id="borrower1-form-validation">
-  {
+</div>
 
-        "solechargeborrowerdetails1": {
-          "presence": {
-            "message": "^you must say if you have changed your name"
-          }
-        }
- 	}
-</script>
 
 {% endblock %}
-
-<script type="application/json" id="borrower1-form-validation">
-  {
-
-        "solechargeborrowerdetails1": {
-          "presence": {
-            "message": "^you must say if you have changed your name"
-          }
-        }
- 	}
-</script>
-
-<script type="application/json" id="title-form-validation">
- {
-   "title": {
-     "presence": {
-       "message": "^Enter a title number"
-     }
-   }
- }
-</script>
 
 
 {% block footer %}

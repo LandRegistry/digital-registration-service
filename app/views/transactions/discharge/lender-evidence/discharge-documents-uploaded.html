@@ -1,0 +1,137 @@
+{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
+{%- set assetPath = '/govuk/assets' -%}
+
+{% extends "govuk/template.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/tabs/macro.njk" import govukTabs %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+
+{% block headIcons %}
+  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
+  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
+{% endblock %}
+
+{% block head %}
+  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full" id="headerdiv">
+    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
+    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Apply to update or create a registered title</a></p>
+    <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
+
+
+    <div class="govuk-phase-banner">
+        <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
+        <span class="govuk-phase-banner__text">
+        This is a prototype and not a real service
+        </span></p>
+    </div>
+    </div>
+
+<div class="govuk-grid-column-full govuk-!-margin-top-7">
+  <span class="govuk-caption-xl">Discharge of charge</span>
+  <h1 class="govuk-heading-xl"> Attach documents </h1>
+  <h2 class="govuk-heading-l"> Required documents </h2>
+  <p class="govuk-body">Documents you must attach to avoid requisitions.</p>
+
+  <form method="post" action="/../transactions/tasks">
+  <table class="govuk-table">
+
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Category</th>
+      <th scope="col" class="govuk-table__header">Document type</th>
+      <th scope="col" class="govuk-table__header">Certification</th>
+      <th scope="col" class="govuk-table__header">File name</th>
+      <th scope="col" class="govuk-table__header">Options</th>
+    </tr>
+  </thead>
+
+  <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Legal deed</td>
+          <td class="govuk-table__cell">DS1</td>
+          <td class="govuk-table__cell">Certified</td>
+          <td class="govuk-table__cell">DS1.pdf</td>
+          <td class="govuk-table__cell govuk-link"><a href="">Remove</a></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Evidence of identity: [Lender name]</td>
+          <td class="govuk-table__cell">ID2 - Verify identity: corporate body</td>
+          <td class="govuk-table__cell">Certified</td>
+          <td class="govuk-table__cell">ID2.pdf</td>
+          <td class="govuk-table__cell govuk-link"><a href="">Remove</a></td>
+        </tr>
+  </tbody>
+</table>
+
+{% if data['other_upload'] %}
+<h3 class="govuk-heading-l"> Other documents </h3>
+
+<table class="govuk-table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Category</th>
+      <th scope="col" class="govuk-table__header govuk-!-width-one-third">Document type</th>
+      <th scope="col" class="govuk-table__header">Certification</th>
+      <th scope="col" class="govuk-table__header">File name</th>
+      <th scope="col" class="govuk-table__header">Options</th>
+    </tr>
+  </thead>
+
+  <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Evidence</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter">Form JO (Trust information)</td>
+          <td class="govuk-table__cell">Certified</td>
+          <td class="govuk-table__cell govuk-!-width-one-third">Document.pdf</td>
+          <td class="govuk-table__cell govuk-link"><a href="">Remove</a></td>
+        </tr>
+  </tbody>
+  </table>
+
+{% endif %}
+<p class='govuk-body'><a href="document_upload_other">Attach another type of document</a></p>
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+</form>
+
+
+</div>
+<div class="govuk-grid-column-full"
+
+<hr class="govuk-!-margin-top-9" style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
+<br>
+<p class="govuk-body-s"> The following links open in a new window
+<br>
+<br>
+<a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
+
+</div>
+
+
+
+
+{% endblock %}
+
+
+{% block footer %}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}
