@@ -313,7 +313,7 @@ router.post('/transactions/charge-without-transfer/charge-without-transfer-borro
   // The name between the quotes is the same as the 'name' attribute on the input elements
   // However in JavaScript we can't use hyphens in variable names
 
-  let borrowerDetails1 = req.session.data['soleChargeborrowerDetails1']
+  let borrowerDetails1 = req.session.data['solechargeborrowerdetails1']
 
   if (borrowerDetails1 === 'correct') {
     req.session.data['borrowerDetails1'] = 'Bob Smith';
@@ -323,17 +323,18 @@ router.post('/transactions/charge-without-transfer/charge-without-transfer-borro
       res.redirect('charge-without-transfer-borrower-change')
     }
     if (borrowerDetails1 === 'removed') {
-      req.session.data['borrowerDetails1'] = 'Bob Borrower';
+      req.session.data['borrowerDetails1'] = 'Bob Smith';
         res.redirect('charge-without-transfer-borrower-details-2')
       }
 })
+
 
 router.post('/transactions/charge-without-transfer/charge-without-transfer-borrower2', function (req, res) {
   // Get the answer from session data
   // The name between the quotes is the same as the 'name' attribute on the input elements
   // However in JavaScript we can't use hyphens in variable names
 
-  let borrowerDetails2 = req.session.data['soleChargeborrowerDetails2']
+  let borrowerDetails2 = req.session.data['solechargeborrowerdetails2']
 
   if (borrowerDetails2 === 'correct') {
     req.session.data['borrowerDetails2'] = 'Jane Smith';
@@ -345,6 +346,30 @@ router.post('/transactions/charge-without-transfer/charge-without-transfer-borro
     if (borrowerDetails2 === 'removed') {
       req.session.data['borrowerDetails2'] = 'Jane Smith';
         res.redirect('charge-without-transfer-borrower-list')
+      }
+})
+
+
+router.post('/transactions/charge-without-transfer/borrower-representation-answer', function (req, res) {
+      let borrowerRep = req.session.data['Borrower1Representation']
+      if (borrowerRep === 'NotRepresented') {
+          req.session.data['borrowerReptype'] = 'Not represented';
+          res.redirect('/borrower-verify')
+      } else {
+        req.session.data['borrowerReptype'] = 'UK Conveyancers Ltd';
+        res.redirect('/transactions/charge-without-transfer/borrower-representationAdd2')
+      }
+})
+
+
+router.post('/transactions/charge-without-transfer/borrower2-representation-answer', function (req, res) {
+      let borrowerRep = req.session.data['Borrower2Representation']
+      if (borrowerRep === 'NotRepresented') {
+          req.session.data['borrowerReptype2'] = 'Not represented';
+          res.redirect('/borrower2-verify')
+      } else {
+        req.session.data['borrowerReptype2'] = 'UK Conveyancers Ltd';
+        res.redirect('/transactions/charge-without-transfer/borrower-representation')
       }
 })
 

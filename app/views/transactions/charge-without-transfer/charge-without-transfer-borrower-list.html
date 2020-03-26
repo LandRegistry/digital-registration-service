@@ -54,7 +54,7 @@
           <h1 class="govuk-heading-l">Borrowers</h1>
 
 
-          <form method="get" action="borrower-representation" novalidate>
+          <form method="get" action="borrower-representationAdd" novalidate>
 
             <table class="govuk-table">
             <thead class="govuk-table__head">
@@ -72,13 +72,13 @@
                     <td class="govuk-table__cell">Private individual</td>
                     <td class="govuk-table__cell">{{ data['borrowerDetails1'] }}</td>
                     <td class="govuk-table__cell">
-                        {% if data['soleChargeborrowerDetails1'] == 'correct' %}
+                        {% if data['solechargeborrowerdetails1'] == 'correct' %}
                         <p>Correct</p>
                         {% endif %}
-                        {% if data['soleChargeborrowerDetails1'] == 'changed' %}
+                        {% if data['solechargeborrowerdetails1'] == 'changed' %}
                         <p>Amended</p>
                         {% endif %}
-                        {% if data['soleChargeborrowerDetails1'] == 'removed'%}
+                        {% if data['solechargeborrowerdetails1'] == 'removed'%}
                         <p>Removed</p>
                         {% endif %}
                       </td>
@@ -88,13 +88,13 @@
                     <td class="govuk-table__cell">Private individual</td>
                     <td class="govuk-table__cell">{{ data['borrowerDetails2'] }}</td>
                     <td class="govuk-table__cell">
-                        {% if data['soleChargeborrowerDetails2'] == 'correct' %}
+                        {% if data['solechargeborrowerdetails2'] == 'correct' %}
                         <p>Correct</p>
                         {% endif %}
-                        {% if data['soleChargeborrowerDetails2'] == 'changed' %}
+                        {% if data['solechargeborrowerdetails2'] == 'changed' %}
                         <p>Amended</p>
                         {% endif %}
-                        {% if data['soleChargeborrowerDetails2'] == 'removed'%}
+                        {% if data['solechargeborrowerdetails2'] == 'removed'%}
                         <p>Removed</p>
                         {% endif %}
                       </td>

@@ -52,16 +52,16 @@
     <div class="govuk-grid-column-two-thirds">
     <a href="charge-without-transfer-tasks" class="govuk-back-link">Return to task list</a>
 
-        <span class="govuk-caption-l">Charge</span>
 
-          <h1 class="govuk-heading-l">Check borrower name</h1>
+
+          <h1 class="govuk-heading-l"><span class="govuk-caption-l">Charge</span>Check borrower name</h1>
           <h2 class="govuk-heading-m">Name: Jane Smith</h2>
 
-          <form method="post" action="/transactions/charge-without-transfer/charge-without-transfer-borrower2" novalidate>
+          <form method="post" action="/transactions/charge-without-transfer/charge-without-transfer-borrower2" data-validate="borrower2-form-validation" novalidate>
 
           {{ govukRadios({
-            idPrefix: "soleChargeborrowerDetails2",
-            name: "soleChargeborrowerDetails2",
+            idPrefix: "solechargeborrowerdetails2",
+            name: "solechargeborrowerdetails2",
             fieldset: {
               legend: {
                 text: "Select if this proprieter's name:",
@@ -106,20 +106,16 @@
 <br>
 <a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
 <a href="/prototype-admin/clear-data">Clear data</a>
-</div>
 
-<script type="application/json" id="reference-form-validation">
- {
-   "reference": {
-     "presence": {
-       "message": "^Enter your reference for this application"
-     },
-     "length": {
-       "minimum": 1,
-       "maximum": 25,
-       "message": "^Your reference must be 25 characters or less"
-     }
-   }
+<script type="application/json" id="borrower2-form-validation">
+  {
+
+        "solechargeborrowerdetails2": {
+          "presence": {
+            "message": "^Make a selection"
+          }
+        }
+ 	}
 </script>
 
 
