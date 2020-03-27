@@ -71,7 +71,7 @@
             </tr>
       </tbody>
     </table>
-</div>
+
 
   <h2 class="govuk-heading-m govuk-!-padding-top-5">1. Charge</h2>
 
@@ -119,12 +119,14 @@
               </tr>
               {% endif %}
 
+              {% if not data['MDreferenceinput'] %}
               {% if data['AddAddressTask'] %}
               <tr class="govuk-table__row">
               <td class="govuk-table__cell">
               <a href="address-for-service/address-list" class="govuk-link">Add address for service</a>
               <td class="govuk-table__cell">{% if data['lenderAddressType'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
               </tr>
+              {% endif %}
               {% endif %}
 
               <tr class="govuk-table__row">

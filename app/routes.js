@@ -349,6 +349,14 @@ router.post('/transactions/charge-without-transfer/charge-without-transfer-borro
       }
 })
 
+router.post('/transactions/charge-without-transfer/MDyes', function (req, res) {
+      let mdref = req.session.data['MDreferenceinput']
+      if (mdref != '') {
+          res.redirect('/transactions/charge-without-transfer/documents/document_prompts')
+      } else {
+        res.redirect('/transactions/charge-without-transfer/address-for-service/lender-addresstype')
+      }
+})
 
 router.post('/transactions/charge-without-transfer/borrower-representation-answer', function (req, res) {
       let borrowerRep = req.session.data['Borrower1Representation']
@@ -470,6 +478,16 @@ router.post('/transactions/charge-without-transfer/documents/evidence-attached',
     res.redirect('document_prompts')
 })
 
+
+router.post('/transactions/charge-without-transfer/documents/RX1-attached', function (req, res) {
+  req.session.data['RX1Attached'] = 'true';
+    res.redirect('document_prompts')
+})
+
+router.post('/transactions/charge-without-transfer/documents/CH2-attached', function (req, res) {
+  req.session.data['CH2Attached'] = 'true';
+    res.redirect('document_prompts')
+})
 
 // Back links
 
