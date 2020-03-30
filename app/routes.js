@@ -49,7 +49,7 @@ router.post('/transactions/transfer/transferee-whichapplicants-answer', function
 
 
 
-// Select/add lenders
+// charge without transfer Select/add lenders
   router.post('/transactions/charge-without-transfer/applicants-lenders', function (req, res) {
 
     let applicantLender1 = req.session.data['applicant-company-lender1'];
@@ -71,6 +71,43 @@ router.post('/transactions/transfer/transferee-whichapplicants-answer', function
       req.session.data['cwt-lender-company-name'] = 'Barclays Lending Ltd';
       req.session.data['cwt-lender-company-number'] = '12345678';
       res.redirect('/transactions/charge-without-transfer/charge-without-transfer-lender-list')
+
+    }
+})
+
+// charge with transfer select Lenders
+// Select/add lenders
+  router.post('/transactions/charge/applicants-lenders', function (req, res) {
+
+    let applicantLender1 = req.session.data['applicant-individual-lender1'];
+    let applicantLender2 = req.session.data['applicant-individual-lender2'];
+    var lenderTicked1
+
+    if (applicantLender1 != '') {
+        let lendercheckbox1 = req.body['applicant-individual-lender1'];
+        if (lendercheckbox1 === '_unchecked'){
+          lenderTicked1 = false
+        } else {
+        lenderTicked1 = true
+      }
+    }
+
+    if (applicantLender2 != '') {
+        let lendercheckbox1 = req.body['applicant-individual-lender2'];
+        if (lendercheckbox1 === '_unchecked'){
+          lenderTicked1 = false
+        } else {
+        lenderTicked1 = true
+      }
+    }
+
+    if (lenderTicked1 === false) {
+      res.redirect('/transactions/charge/add-lender')
+    } else {
+      req.session.data['add-lender'] = 'true';
+      req.session.data['charge-lender-company-name'] = 'Barclays Lending Ltd';
+      req.session.data['charge-lender-company-number'] = '12345678';
+      res.redirect('/transactions/charge/lender-list')
 
     }
 })
@@ -125,7 +162,7 @@ router.post('/transactions/transfer/transferee-addresstype-answer2', function (r
 
 
 
-// charge addresses
+// sole charge addresses
 router.post('/transactions/charge-without-transfer/address-for-service/cwt-lender-addresstype-answer', function (req, res) {
 
   let lenderAddress = req.session.data['lenderAddressType']
@@ -155,6 +192,36 @@ router.post('/transactions/charge-without-transfer/address-for-service/cwt-lende
 
 })
 
+// charge with transfer addresses
+router.post('/transactions/charge/charge-lender-addresstype-answer', function (req, res) {
+
+  let lenderAddress = req.session.data['lenderAddressType']
+
+  if (lenderAddress === 'UK-postal') {
+    res.redirect('/transactions/charge/address-for-service/lender-UKaddress')
+}
+  if (lenderAddress === 'Overseas-postal') {
+      res.redirect('/transactions/charge/address-for-service/lender-overseasAddress')
+    }
+
+  if (lenderAddress === 'PO-box') {
+      res.redirect('/transactions/charge/address-for-service/lender-POboxAddress')
+    }
+
+    if (lenderAddress === 'email') {
+        res.redirect('/transactions/charge/address-for-service/lender-emailAddress')
+      }
+
+      if (lenderAddress === 'DX') {
+          res.redirect('/transactions/charge/address-for-service/lender-DX')
+        }
+
+        if (lenderAddress === 'BFPO') {
+            res.redirect('/transactions/charge/address-for-service/lender-BFPO')
+          }
+
+})
+
 // sole charge md ref
 router.post('/transactions/charge-without-transfer/mdrefanswer', function (req, res) {
 
@@ -177,26 +244,71 @@ router.post('/transactions/charge-without-transfer/mdrefanswer', function (req, 
   }
 })
 
+// charge with transfer md ref
+router.post('/transactions/charge/mdrefanswer', function (req, res) {
+
+                                     // Name of input
+  let mdreference = req.session.data['MDreferenceinput']
+
+  if (mdreference != '') {
+    req.session.data['charge-lender-company-name'] = 'Barclays Ltd';
+    req.session.data['charge-lender-name'] = 'Barclays Ltd';
+    req.session.data['add-lender'] = 'true';
+    req.session.data['AddRepTask'] = 'true';
+    req.session.data['AddAddressTask'] = 'true';
+    res.redirect('/transactions/charge/lender-representationAdd')
+  } else {
+    req.session.data['AddLendersTask'] = 'true';
+    req.session.data['AddRepTask'] = 'true';
+    req.session.data['AddAddressTask'] = 'true';
+    res.redirect('/transactions/charge/charge-lenders')
+
+  }
+})
 
 // Discharge method
 router.post('/transactions/discharge/method-answer', function (req, res) {
 
                                             // Name of input
   let dischargeMethod = req.session.data['dischargemethod']
+  let transaction3 = req.session.data['Transaction3']
 
+  if (transaction3 != '') {
   if (dischargeMethod === 'form') {
     req.session.data['discharge-method'] = 'Form';
-    res.redirect('/transactions/tasks')
+    res.redirect('/transactions/charge/tasks')
 
   } if (dischargeMethod === 'direct') {
     req.session.data['discharge-method'] = 'Direct';
-    res.redirect('/transactions/tasks')
+    res.redirect('/transactions/charge/tasks')
 
   } if (dischargeMethod === 'later') {
     req.session.data['discharge-method'] = 'Later';
+    res.redirect('/transactions/charge/tasks')
+  }
+} else {req.session.data['discharge-method'] = 'Form';
+res.redirect('/transactions/tasks')
+
+} if (dischargeMethod === 'direct') {
+req.session.data['discharge-method'] = 'Direct';
+res.redirect('/transactions/tasks')
+
+} if (dischargeMethod === 'later') {
+req.session.data['discharge-method'] = 'Later';
+res.redirect('/transactions/tasks')
+}
+
+})
+
+router.post('/transactions/discharge/lendernameadded', function (req, res) {
+  let transaction3 = req.session.data['Transaction3']
+  if (transaction3 != '') {
+      res.redirect('/transactions/charge/tasks')
+  } else {
     res.redirect('/transactions/tasks')
   }
 })
+
 
 
 //  discharge representation
@@ -210,6 +322,18 @@ router.post('/transactions/discharge/lender-representation-answer', function (re
         res.redirect('/transactions/discharge/lender-representation')
       }
 })
+
+router.post('/transactions/discharge/lenderrepresentationadded', function (req, res) {
+      let transaction3 = req.session.data['Transaction3']
+      if (transaction3 != '') {
+          res.redirect('/transactions/charge/tasks')
+      } else {
+          res.redirect('/transactions/tasks')
+      }
+})
+
+
+
 
 router.post('/transactions/discharge/lender-representation-answer2', function (req, res) {
       let lenderRep = req.session.data['LenderRepresentation2']
@@ -233,6 +357,29 @@ router.post('/transactions/charge-without-transfer/cwt-lender-representation-ans
         res.redirect('/transactions/charge-without-transfer/lender-representation')
       }
 })
+
+// charge with transfer representation
+router.post('/transactions/charge/lender-representation-answer', function (req, res) {
+      let lenderRep = req.session.data['charge-LenderRepresentation']
+      if (lenderRep === 'NotRepresented') {
+          req.session.data['charge-lenderReptype'] = 'Not represented';
+          res.redirect('')
+      } else {
+        req.session.data['charge-lenderReptype'] = 'UK Conveyancers Ltd';
+        res.redirect('/transactions/charge/lender-representation')
+      }
+})
+
+router.post('/transactions/charge/documentscomplete', function (req, res) {
+  let transaction3 = req.session.data['Transaction3']
+  if (transaction3 != '') {
+      res.redirect('/transactions/charge/tasks')
+  } else {
+    res.redirect('/transactions/charge-without-transfer/charge-without-transfer-tasks')
+  }
+})
+
+
 
 // Set data
 
@@ -262,7 +409,34 @@ router.get('/docs/examples/pass-data/Solecharge', function (req, res) {
     "applicant-company-name": "Barclays Lending Ltd",
     "applicant-company-number": "123456"
 }
-  res.redirect('/../transactions/charge-without-transfer/charge-without-transfer-tasks')
+  res.redirect('/..transactions/charge-tasks')
+})
+
+router.get('/docs/examples/pass-data/charge', function (req, res) {
+	req.session.data = {
+    "reference": "JT/123/CH",
+    "title": "LP12345",
+    "whole-or-part": "Whole",
+    "part": "",
+    "Transaction1": "Discharge",
+    "PriceInput1": "120000",
+    "FeeInput1": "12",
+    "Transaction2": "Transfer for value (TR1)",
+    "PriceInput2": "120000",
+    "FeeInput2": "12",
+    "Transaction3": "Charge",
+    "PriceInput3": "120000",
+    "FeeInput3": "12",
+    "add-applicant": "individual",
+    "applicant-individual-forename": "John",
+    "applicant-individual-surname": "Smith",
+    "applicant2-individual-forename-2": "Jane",
+    "applicant2-individual-surname-2": "Smith",
+    "Transaction1": "Discharge",
+    "Transaction1": "Transfer for value (TR1)",
+    "Transaction1": "Charge",
+}
+  res.redirect('/../transactions/charge/tasks')
 })
 
 
@@ -303,6 +477,20 @@ router.get('/docs/examples/pass-data/task-list', function (req, res) {
 router.get('/stored-data', function (req, res) {
 	console.log(req.session.data)
   res.render('stored-data')
+})
+
+
+router.post('/transactions/charge-transactions', function (req, res) {
+      // let transaction1 = req.session.data['Transaction1']
+      // let transaction2 = req.session.data['Transactions2']
+      //
+      // if (transaction1 === 'Transfer for value (TR1)' || transaction2 === 'Charge') {
+      //     req.session.data['Transaction'] = 'TC';
+          res.redirect('/transactions/add-applicants')
+      // } else if (transaction2 === 'Charge') {
+      //   req.session.data['Transaction'] = 'C';
+      //   res.redirect('/add-applicants')
+      // }
 })
 
 
@@ -358,6 +546,15 @@ router.post('/transactions/charge-without-transfer/MDyes', function (req, res) {
       }
 })
 
+router.post('/transactions/charge/MDyes', function (req, res) {
+      let mdref = req.session.data['MDreferenceinput']
+      if (mdref != '') {
+          res.redirect('/transactions/charge/documents/document_prompts')
+      } else {
+        res.redirect('/transactions/charge/address-for-service/lender-addresstype')
+      }
+})
+
 router.post('/transactions/charge-without-transfer/borrower-representation-answer', function (req, res) {
       let borrowerRep = req.session.data['Borrower1Representation']
       if (borrowerRep === 'NotRepresented') {
@@ -387,21 +584,67 @@ router.post('/transactions/charge-without-transfer/borrower2-representation-answ
           res.redirect('/transactions/charge-without-transfer/MDRef')
     })
 
+    router.post('/transactions/charge/date-complete', function (req, res) {
+          req.session.data['chargeDateComplete'] = 'completed';
+          res.redirect('/transactions/charge/MDRef')
+    })
+
 // Transfer completed tags
 
 router.post('/transactions/transfer/transferee-representation-confirmed', function (req, res) {
-  req.session.data['transfereerep'] = 'true';
-    res.redirect('/../transactions/tasks')
+
+    let transaction3 = req.session.data['Transaction3']
+    if (transaction3 != ''){
+    req.session.data['transfereerep'] = 'true';
+        res.redirect('/transactions/charge/tasks')
+    } else {
+      req.session.data['transfereerep'] = 'true';
+        res.redirect('/../transactions/tasks')
+    }
 })
 
+
+router.post('/transactions/transfer/transferee-address-for-service-complete', function (req, res) {
+
+    let transaction3 = req.session.data['Transaction3']
+    if (transaction3 != ''){
+        res.redirect('/transactions/charge/tasks')
+    } else {
+        res.redirect('/../transactions/tasks')
+    }
+})
+
+
+router.post('/transactions/transfer/add-transferor-complete', function (req, res) {
+
+    let transaction3 = req.session.data['Transaction3']
+    if (transaction3 != ''){
+        res.redirect('/transactions/charge/tasks')
+    } else {
+        res.redirect('/../transactions/tasks')
+    }
+})
+
+
 router.post('/transactions/transfer/transferor-representation-confirmed', function (req, res) {
+  let transaction3 = req.session.data['Transaction3']
+  if (transaction3 != ''){
   req.session.data['transferorrep'] = 'true';
-    res.redirect('/../transactions/tasks')
+    res.redirect('/../transactions/charge/tasks')
+  } else {
+    req.session.data['transferorrep'] = 'true';
+      res.redirect('/../transactions/tasks') }
 })
 
 router.post('/transactions/transfer/documents/attached-required-documents', function (req, res) {
+  let transaction3 = req.session.data['Transaction3']
+  if (transaction3 != ''){
   req.session.data['attached'] = 'true';
-    res.redirect('/../transactions/tasks')
+    res.redirect('/../transactions/charge/tasks')
+} else {
+  req.session.data['attached'] = 'true';
+    res.redirect('/../transactions/tasks') }
+
 })
 
 router.post('/transactions/transfer/documents/TR1-attached', function (req, res) {
@@ -445,14 +688,25 @@ router.post('/transactions/transfer/BFPOAddress', function (req, res) {
 })
 
 router.post('/transactions/discharge/discharge-attached', function (req, res) {
+  let transaction3 = req.session.data['Transaction3']
+  if (transaction3 != ''){
   req.session.data['dischargeAttached'] = 'true';
-    res.redirect('/../transactions/tasks')
+      res.redirect('/transactions/charge/tasks')
+  } else {
+  req.session.data['dischargeAttached'] = 'true';
+    res.redirect('/../transactions/tasks') }
 })
 
 
 router.post('/transferee-list-complete', function (req, res) {
+  let transaction3 = req.session.data['Transaction3']
+  if (transaction3 != '') {
+  req.session.data['transfereelistcomplete'] = 'true';
+    res.redirect('/../transactions/charge/tasks')
+} else {
   req.session.data['transfereelistcomplete'] = 'true';
     res.redirect('/../transactions/tasks')
+}
 })
 
 router.post('/transactions/transfer/transferee-whichapplicants-answer', function (req, res){
@@ -473,7 +727,17 @@ router.post('/transactions/charge-without-transfer/documents/Mortgage-attached',
     res.redirect('document_prompts')
 })
 
+router.post('/transactions/charge/documents/Mortgage-attached', function (req, res) {
+  req.session.data['mortgageAttached'] = 'true';
+    res.redirect('/transactions/charge/documents/document_prompts')
+})
+
 router.post('/transactions/charge-without-transfer/documents/evidence-attached', function (req, res) {
+  req.session.data['certificateAttached'] = 'true';
+    res.redirect('document_prompts')
+})
+
+router.post('/transactions/charge/documents/evidence-attached', function (req, res) {
   req.session.data['certificateAttached'] = 'true';
     res.redirect('document_prompts')
 })
@@ -484,9 +748,19 @@ router.post('/transactions/charge-without-transfer/documents/RX1-attached', func
     res.redirect('document_prompts')
 })
 
+router.post('/transactions/charge/documents/RX1-attached', function (req, res) {
+  req.session.data['RX1Attached'] = 'true';
+    res.redirect('/charge/documents/document_prompts')
+})
+
 router.post('/transactions/charge-without-transfer/documents/CH2-attached', function (req, res) {
   req.session.data['CH2Attached'] = 'true';
     res.redirect('document_prompts')
+})
+
+router.post('/transactions/charge/documents/CH2-attached', function (req, res) {
+  req.session.data['CH2Attached'] = 'true';
+    res.redirect('/charge/documents/document_prompts')
 })
 
 // Back links
@@ -494,7 +768,7 @@ router.post('/transactions/charge-without-transfer/documents/CH2-attached', func
 
 router.post('/transactions/charge-without-transfer/back-link-borrower', function (req, res) {
   req.session.data['borrowerDetails1'] = '';
-    res.redirect('charge-without-transfer-tasks')
+    res.redirect('transactions/charge-tasks')
 })
 
 module.exports = router

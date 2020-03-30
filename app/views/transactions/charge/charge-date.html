@@ -9,8 +9,8 @@
 {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
-{% from "govuk/components/table/macro.njk" import govukTable %}
-{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+
 
 
 
@@ -38,103 +38,50 @@
     <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 
 
-    <div class="govuk-phase-banner govuk-!-margin-bottom-5">
+    <div class="govuk-phase-banner">
         <p class="govuk-phase-banner__content">
         <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
         <span class="govuk-phase-banner__text">
         This is a prototype and not a real service.
         </span></p>
+    </div></div>
     </div>
 
-    </div>
-
-<form method="post" action="BFPOAddress">
-
-<div class="govuk-grid-column-full">
-    <span class="govuk-caption-xl">Transfer for value (TR1)</span>
-    <h1 class="govuk-heading-xl">Add BFPO address</h1>
-    <h2 class="govuk-heading-m">For transferee:</h2>
-    <p class="govuk-body">{{ data['applicant-individual-forename']}} {{ data['applicant-individual-surname']}}</p>
-
-    <p class="govuk-body">
-      You can enter a BFPO address as an address for service. But we ask that, if possible, you provide a 'care of' address instead using the <a href="#"> UK postal address</a> option.
-      <br><br>
-      This is because BFPO addresses:
-      <br>
-      • help to identify members of the armed forces
-      <br>
-      • tend to change often
 
 
+    <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <a href="transactions/charge-tasks" class="govuk-back-link">Return to task list</a>
+        <span class="govuk-caption-l">Charge</span>
 
-    {{ govukInput({
-      name: 'BFPOserviceNo',
-      label: {
-        html: 'Service number and rank'
-      },
-      classes: "govuk-input--width-20"
-    }) }}
-
-    {{ govukInput({
-      name: 'BFPOunit',
-      label: {
-        html: 'Unit or regiment'
-      },
-      classes: "govuk-input--width-20"
-    }) }}
-
-    {{ govukInput({
-      name: 'BFPOlocation',
-      label: {
-        html: 'Operation or location name (optional)'
-      },
-      classes: "govuk-input--width-20"
-    }) }}
-
-    {{ govukInput({
-      name: 'BFPOnumber',
-      label: {
-        html: 'BFPO number'
-      },
-      classes: "govuk-input--width-20",
-      hint: {
-        text: "For example, 'BFPO 61'"
-      }
-    }) }}
+          <h1 class="govuk-heading-l">Enter charge date</h1>
 
 
+          <form method="post" action="/transactions/charge/date-complete" novalidate>
 
-  <h3 class="govuk-heading-m">More actions</h3>
-
-  {{ govukInput({
-    label: {
-      html: 'Add c/o name (optional)'
-    },
-    classes: "govuk-input--width-20",
-    id: "CareOf",
-    hint: {
-      text: "If it's a 'care of' address, enter the addressee's name"
-    }
-  }) }}
-
-  <p class="govuk-body">Add this address to the following transferees: (optional)</p>
-  {% if data['applicant-individual-forename-2'] %}
-  <div class="govuk-checkboxes">
-      <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="applicant2-address1" name="applicant2address" type="checkbox" value="true">
-        <label class="govuk-label govuk-checkboxes__label" for="applicant2address">
-          {{ data['applicant-individual-forename-2'] }} {{ data['applicant-individual-surname-2'] }}
-        </label>
-        {% endif %}
-        </div>
-        </div>
-        <br>
+          {{ govukDateInput({
+            id: "charge-date",
+            namePrefix: "charge-date",
+            hint: {
+              text: "For example, 12 11 2007"
+            }
+          }) }}
 
 
+          <br>
 
-{{ govukButton({
-  text: "Continue"
-}) }}
+
+          {{ govukButton({
+          classes: "",
+          text: "Continue"
+          }) }}
+
+        </form>
+
+
+</main>
+
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 <br>
@@ -142,8 +89,23 @@
 <br>
 <br>
 <a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
-
+<a href="/prototype-admin/clear-data">Clear data</a>
 </div>
+
+<script type="application/json" id="reference-form-validation">
+ {
+   "reference": {
+     "presence": {
+       "message": "^Enter your reference for this application"
+     },
+     "length": {
+       "minimum": 1,
+       "maximum": 25,
+       "message": "^Your reference must be 25 characters or less"
+     }
+   }
+</script>
+
 
 
 {% endblock %}

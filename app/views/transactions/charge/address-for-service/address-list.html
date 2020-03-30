@@ -69,11 +69,11 @@
       <tbody class="govuk-table__body">
             <tr class="govuk-table__row">
 
-              {% if data['cwt-lender-company-name'] %}
+              {% if data['charge-lender-company-name'] %}
               <tbody class="govuk-table_body">
                 <tr class="govuk-table_row">
                   <td class="govuk-table__cell">UK Company or LLP</td>
-                <td class="govuk-table__cell">{{ data['cwt-lender-company-name'] }}</td>
+                <td class="govuk-table__cell">{{ data['charge-lender-company-name'] }}</td>
                 <td class="govuk-table__cell">{% if data['lenderAddressType'] === 'UK-postal' %}
                  UK Postal
                  {% endif %}

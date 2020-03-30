@@ -47,27 +47,22 @@
     </div>
 
 <div class="govuk-grid-column-full">
+  <a href="charge-without-transfer/address-for-service/lender-addresstype" class="govuk-back-link">Return to Add address for service</a>
+
     <span class="govuk-caption-xl">Charge</span>
     <h1 class="govuk-heading-xl">Add UK postal address (postcode search)</h1>
-    <h2 class="govuk-heading-m">For Lender:</h2>
-    <p class="govuk-body">
-      {% if data['lender-select'] === 'yes' and data['lender-individual-forename'] %}
-      {{ data['lender-individual-forename']}} {{ data['lender-individual-surname']}}
-      {% endif %}
-
-      {% if data['lender-select'] === 'no' and data['lender-individual-forename'] %}
-      {{ data['lender-individual-forename']}} {{ data['lender-individual-surname']}}
-      {% endif %}
-    </p>
+    <h2 class="govuk-heading-m">For lender:   {{ data['charge-lender-company-name']}}</h2>
 
 
-    <form method="post" action="charge-uk-address-results">
+
+
+    <form method="post" action="lender-UKaddressResults">
       <label class="govuk-label" for="postcode-finder">
         Enter postcode
       </label>
-      <input class="govuk-input govuk-!-width-one-quarter" id="" name="UKpostcode" value="">
+      <input class="govuk-input govuk-!-width-one-quarter" id="" name="lenderUKpostcode" value="">
       <br><br>
-      <a href="#" class="govuk-link"> Enter address manually </a>
+      <a href="#" class="govuk-link"> Enter address manually</a>
       <br><br><br>
 
 

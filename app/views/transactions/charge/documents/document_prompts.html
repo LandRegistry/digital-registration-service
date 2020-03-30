@@ -44,10 +44,10 @@
 
 <div class="govuk-grid-column-full">
 
-  <a href="/charge-without-transfer/transactions/charge-tasks" class="govuk-back-link" style="margin-top: 25px; margin-bottom: 30px;">Return to task list</a>
+  <a href="/tasks" class="govuk-back-link" style="margin-top: 25px; margin-bottom: 30px;">Return to task list</a>
   <h1 class="govuk-heading-xl"><span class="govuk-caption-xl">Charge</span> Attach documents </h1>
 
-  <form method="post" action="">
+  <form method="post" action="/transactions/charge/documentscomplete">
   <h2 class="govuk-heading-l"> Required </h2>
   <p class="govuk-body">Documents you must attach to avoid requisitions.</p>
 
@@ -68,22 +68,12 @@
 
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">Legal deed</td>
-            <td class="govuk-table__cell">Various</td>
+            <td class="govuk-table__cell">Mortgage deed</td>
             <td class="govuk-table__cell">{% if data['mortgageAttached']%} Certified {% endif %}</td>
             <td class="govuk-table__cell">{% if data['mortgageAttached']%} deed.pdf {% endif %}</td>
             {% if data['mortgageAttached']%}<td class="govuk-table__cell govuk-link"><a href="">Remove</a></td>{% endif %}
             {% if not data['mortgageAttached'] %}<td class="govuk-table__cell govuk-link"><a href="document_upload.html">Attach</a></td>{% endif %}
           </tr>
-
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell">Evidence</td>
-            <td class="govuk-table__cell">Certificate of registration of a charge</td>
-            <td class="govuk-table__cell">{% if data['certificateAttached']%} Certified {% endif %}</td>
-            <td class="govuk-table__cell">{% if data['certificateAttached']%} Certificate.pdf {% endif %}</td>
-            {% if data['certificateAttached']%}<td class="govuk-table__cell govuk-link"><a href="">Remove</a></td>{% endif %}
-            {% if not data['certificateAttached'] %}<td class="govuk-table__cell govuk-link"><a href="document_upload-evidence.html">Attach</a></td>{% endif %}
-          </tr>
-
 
 
           </tbody>
@@ -195,7 +185,7 @@
 {% endif %}
 <p class='govuk-body'><a href="document_upload_other">Attach another type of document</a></p>
 
-
+{% if not data['MDreferenceinput'] %}
 <div class="govuk-warning-text">
   <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
   <strong class="govuk-warning-text__text">
@@ -205,10 +195,10 @@
               - relates to the accompanying certificate of registration
   </strong>
 </div>
+{% endif %}
 
 {{ govukButton({
-  text: "Continue",
-  href: "/transactions/charge-without-transfer/charge-without-transfer-tasks"
+  text: "Continue"
 }) }}
 </form>
 

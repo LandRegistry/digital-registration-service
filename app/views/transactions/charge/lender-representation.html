@@ -52,7 +52,7 @@
     <h1 class="govuk-heading-l">Lender representation</h1>
     <p class="govuk-body-m">Select 'Add representation' and enter the details for each lender.</p>
 
-    <form method="post" action="/transactions/charge-without-transfer/MDyes">
+    <form method="post" action="/transactions/charge/MDyes">
     <table class="govuk-table">
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
@@ -104,13 +104,13 @@
                         </tbody>
                        {% endif %}
 
-                {% if data['cwt-lender-company-name'] %}
+                {% if data['charge-lender-company-name'] %}
                 <tbody class="govuk-table_body">
                   <tr class="govuk-table_row" id="hidePI">
                     <td class="govuk-table__cell">UK Company or LLP</td>
-                  <td class="govuk-table__cell govuk-!-width-one-third">{{ data['cwt-lender-company-name'] }}</td>
-                  <td class="govuk-table__cell">{% if not data['cwt-lenderReptype'] %}- No representation added -{% endif %} {% if data['cwt-lenderReptype'] %} {{ data['cwt-lenderReptype']}}{% endif %}
-                  <td class="govuk-table__cell govuk-link"><a href="lender-representationAdd">{% if not data['cwt-lenderReptype'] %}Add representation {% endif %} {% if data['cwt-lenderReptype'] %} Change <br> Remove {% endif %}</td>
+                  <td class="govuk-table__cell govuk-!-width-one-third">{{ data['charge-lender-company-name'] }}</td>
+                  <td class="govuk-table__cell">{% if not data['charge-lenderReptype'] %}- No representation added -{% endif %} {% if data['charge-lenderReptype'] %} {{ data['charge-lenderReptype']}}{% endif %}
+                  <td class="govuk-table__cell govuk-link"><a href="lender-representationAdd">{% if not data['charge-lenderReptype'] %}Add representation {% endif %} {% if data['charge-lenderReptype'] %} Change <br> Remove {% endif %}</td>
                   </tbody>
                  {% endif %}
 
