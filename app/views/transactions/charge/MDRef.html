@@ -9,6 +9,8 @@
 {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+
 
 
 
@@ -42,52 +44,65 @@
         <span class="govuk-phase-banner__text">
         This is a prototype and not a real service.
         </span></p>
+    </div></div>
+    </div>
 
-    </div>
-    </div>
-    </div>
 
 
     <main class="govuk-main-wrapper " id="main-content" role="main">
     <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+      <a href="transactions/charge-tasks" class="govuk-back-link">Return to task list</a>
 
-<a href="#" class="govuk-back-link">Return to task list </a>
-        <form method="post" action="lender-list">
-        <div class="govuk-form-group">
-        <fieldset class="govuk-fieldset">
-<div>
-  <span class="govuk-caption-l">Charge</span>
-</div>
+        <span class="govuk-caption-l">Charge</span>
 
-            {% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+          <h1 class="govuk-heading-l">Do you have an MD reference?</h1>
 
-          {{ govukDateInput({
-            id: "charge-date",
-            namePrefix: "charge-date",
-            fieldset: {
-              legend: {
-                text: "Enter charge date",
-                isPageHeading: true,
-                classes: "govuk-fieldset__legend--xl"
-              }
-            },
-            hint: {
-              text: "For example, 27 3 2019"
-            }
+          {{ govukDetails({
+          summaryText: "What's an MD reference?",
+          text: "An MD reference is a unique number given to each mortgage. It's often found at the foot of the mortgage deed."
+            }) }}
+
+          <form method="post" action="/transactions/charge/mdrefanswer" novalidate="">
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+              <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="MDref-conditional" name="MDRef" type="radio" value="MDRefYes" aria-controls="conditional-MDref-conditional" aria-expanded="false">
+                      <label class="govuk-label govuk-radios__label" for="MDref-conditional">Yes</label>
+                    </div>
+
+                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-MDref-conditional">
+                      <div class="govuk-form-group">
+                        <label class="govuk-label" for="MDref-yes">
+                          Enter MD reference
+                        </label>
+                        <input class="govuk-input govuk-!-width-one-third" id="MDref-yes" name="MDreferenceinput" type="text">
+                      </div>
+                  </div>
+
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="MDref-conditional-2" name="MDRef" type="radio" value="MDRefNo" aria-controls="conditional-MDref-conditional-2" aria-expanded="false">
+                    <label class="govuk-label govuk-radios__label" for="MDref-conditional-2">No</label>
+                      </div>
+                      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-MDref-conditional-2"></div>
+
+              </div>
+              </fieldset>
+
+            </div>
+
+
+
+          {{ govukButton({
+          classes: "",
+          text: "Continue"
           }) }}
 
-
-          <br>
-    <br>
+        </form>
 
 
-  <a href="charge-do-you-have-an-md-ref" role="button" class="govuk-button">
-    Continue
-  </a>
-
-
-</form>
 </main>
 
 
@@ -98,7 +113,7 @@
 <br>
 <a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
 <a href="/prototype-admin/clear-data">Clear data</a>
-
+</div>
 
 <script type="application/json" id="reference-form-validation">
  {
@@ -112,7 +127,6 @@
        "message": "^Your reference must be 25 characters or less"
      }
    }
- }
 </script>
 
 

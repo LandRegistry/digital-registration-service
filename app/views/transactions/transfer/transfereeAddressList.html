@@ -52,7 +52,7 @@
     <p class="govuk-body">Each transferee can add up to 3 addresses for service to the register. One must be a postal address.</p>
     <h2 class="govuk-heading-m">Transferees added</h2>
 
-
+    <form method="post" action="/transactions/transfer/transferee-address-for-service-complete">
     <table class="govuk-table">
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
@@ -490,9 +490,10 @@
     </table>
 
 {{ govukButton({
-  text: "Continue",
-  href: "../tasks"
+  text: "Continue"
 }) }}
+
+</form>
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 <br>

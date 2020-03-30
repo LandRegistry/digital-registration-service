@@ -12,6 +12,8 @@
 {% from "govuk/components/table/macro.njk" import govukTable %}
 {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
 {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+
 
 
 
@@ -51,41 +53,41 @@
     </div>
     </div>
 
+<form method="post" action="/transactions/charge/lender-representation-answer">
 <div class="govuk-grid-column-two-thirds">
-  <a href="#" class="govuk-back-link">Return to Lender representation </a>
+  <a href="lender-representation" class="govuk-back-link">Return to lender representation</a>
     <span class="govuk-caption-l">Charge</span>
-    <h1 class="govuk-heading-xl">Select representation</h1>
-    <h2 class="govuk-heading-m">Tell us who's representing: {{ data['charge-individual-forename']}} </h2>
+    <h1 class="govuk-heading-l">Select representation</h1>
+    <h2 class="govuk-heading-s">Tell us who's representing: {{ data['charge-lender-company-name']}}</h2>
 
 
 
-    <!-- <form class="" action="/transactions/transfer/charge-representation-answer"> -->
     <div class="govuk-form-group">
-
+<!--
       <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
 
         <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="chargeRepresentation-conditional" name="chargeRepAnswer" type="radio" value="thisConveyancer">
-          <label class="govuk-label govuk-radios__label" for="chargeRepresentation-conditional">UK Conveyancers Ltd</label>
+          <input class="govuk-radios__input" id="transfereeRepresentation-conditional" name="transfereeRepAnswer" type="radio" value="thisConveyancer">
+          <label class="govuk-label govuk-radios__label" for="transfereeRepresentation-conditional">UK Conveyancers Ltd</label>
         </div>
 
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="chargeRepresentation-conditional-2" name="chargeRepAnswer" type="radio" value="otherConveyancer">
-        <label class="govuk-label govuk-radios__label" for="chargeRepresentation-conditional-2">
+        <input class="govuk-radios__input" id="transfereeRepresentation-conditional-2" name="transfereeRepAnswer" type="radio" value="otherConveyancer">
+        <label class="govuk-label govuk-radios__label" for="transfereeRepresentation-conditional-2">
           Other conveyancer
         </label>
       </div>
-          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-chargeRepresentation-conditional-2">
+          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-transfereeRepresentation-conditional-2">
             <div class="govuk-form-group">
-              <label class="govuk-label" for="chargeRepresentation-name">Full name</label>
-              <input class="govuk-input govuk-!-width-two-thirds" id="chargeRepresentation-name" name="chargeRepresentation-name" type="text">
+              <label class="govuk-label" for="transfereeRepresentation-name">Full name</label>
+              <input class="govuk-input govuk-!-width-two-thirds" id="transfereeRepresentation-name" name="transfereeRepresentation-name" type="text">
 
-              <label class="govuk-label" for="chargeRepresentation-address">Registered address</label>
-              <textarea class="govuk-textarea govuk-!-width-two-thirds" rows="5" id="chargeRepresentation-address" name="chargeRepresentation-address"></textarea>
+              <label class="govuk-label" for="transfereeRepresentation-address">Registered address</label>
+              <textarea class="govuk-textarea govuk-!-width-two-thirds" rows="5" id="transfereeRepresentation-address" name="transfereeRepresentation-address"></textarea>
 
               <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
-              <label class="govuk-label" for="chargeRepresentation-reference">Conveyancer reference</label>
-              <input class="govuk-input govuk-js-character-count govuk-!-width-one-half" id="chargeRepresentation-reference" name="chargeRepresentation-reference" type="text">
+              <label class="govuk-label" for="transfereeRepresentation-reference">Conveyancer reference</label>
+              <input class="govuk-input govuk-js-character-count govuk-!-width-one-half" id="transfereeRepresentation-reference" name="transfereeRepresentation-reference" type="text">
               <span id="with-hint-info" class="govuk-hint govuk-character-count__message" aria-live="polite"></span>
               </div>
 
@@ -93,17 +95,83 @@
           </div>
 
         <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="chargeRepresentation-conditional-3" name="chargeRepAnswer" type="radio" value="noConveyancer" >
-          <label class="govuk-label govuk-radios__label" for="chargeRepresentation-conditional-3">Not represented by a conveyancer</label>
+          <input class="govuk-radios__input" id="transfereeRepresentation-conditional-3" name="transfereeRepAnswer" type="radio" value="noConveyancer" >
+          <label class="govuk-label govuk-radios__label" for="transfereeRepresentation-conditional-3">Not represented by a conveyancer</label>
         </div>
       </div>
-    </div>
+    </div> -->
 
-<h3 class="govuk-heading-s">Apply to all (optional) </h2>
+
+    {% set otherLenderHtml %}
+    {{ govukInput({
+      id: "LenderOtherName",
+      name: "LenderOtherName",
+      classes: "govuk-!-width-two-thirds",
+      label: {
+        text: "Full name"
+      }
+    }) }}
+
+    {{ govukTextarea({
+      id: "LenderOtherAddress",
+      name: "LenderOtherAddress",
+      classes: "govuk-!-width-two-thirds",
+      rows: "5",
+      label: {
+        text: "Registered address"
+      }
+    }) }}
+
+
+    {{ govukCharacterCount({
+  name: "LenderOtherConveyancerReference",
+  id: "LenderOtherConveyancerReference",
+   rows: "1",
+  classes: "govuk-!-width-two-thirds",
+  maxlength: 25,
+  label: {
+    text: "Conveyancer reference"
+  }
+}) }}
+
+    {% endset -%}
+
+    {{ govukRadios({
+      name: "LenderRepresentation",
+
+      items: [
+        {
+          value: "UKConveyancersLtd",
+          text: "UK Conveyancers Ltd",
+          name: "LenderRepresentation"
+          },
+
+        {
+          value: "OtherConveyancer",
+          text: "Other conveyancer",
+          name: "LenderRepresentation",
+          conditional: {
+            html: otherLenderHtml
+          }
+        },
+        {
+          value: "NotRepresented",
+          name: "LenderRepresentation",
+          text: "Not represented by a conveyancer"
+        }
+      ]
+    }) }}
+
+
+
+<br>
+
+        <div style="">
+        <h4 class="govuk-heading-s">Apply to all (optional)</h4>
 
         {{ govukCheckboxes({
-          idPrefix: "chargeRepresentation-conditional",
-          name: "chargeRepAnswer",
+          idPrefix: "represents-all",
+          name: "represents-all",
           classes: "govuk-checkboxes",
           fieldset: {
 
@@ -116,24 +184,20 @@
           ]
         }) }}
 
-          {% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
-
-  {{ govukWarningText({
-    text: "Replaces any conveyancer details previously added",
-    iconFallbackText: "Warning"
+          {{ govukWarningText({
+            text: "Replaces any conveyancer details previously added",
+            iconFallbackText: "Warning"
   }) }}
 
-
+      </div>
 
       {{ govukButton({
         text: "Continue",
-        classes: "govuk-!-margin-top-5",
-        href: "charge-representation-added"
+        classes: "govuk-!-margin-top-5"
       }) }}
-<!-- </form> -->
       </div>
 
-
+</div>
 <div class="govuk-grid-column-full">
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 <br>
@@ -143,7 +207,7 @@
 <a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
 
 </div>
-
+</form>
 
 {% endblock %}
 

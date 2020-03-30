@@ -47,21 +47,17 @@
     </div>
 
 <div class="govuk-grid-column-full">
-    <span class="govuk-caption-l">Transfer for value (TR1)</span>
+  <a href="/charge-without-transfer/transactions/charge-tasks" class="govuk-back-link">Return to task list</a>
+
+    <span class="govuk-caption-l">Charge</span>
     <h1 class="govuk-heading-l">Add address for service</h1>
-    <h2 class="govuk-heading-m">For transferee:</h2>
-    <p class="govuk-body">
-      {% if data['transferee-select'] === 'yes' and data['applicant-individual-forename'] %}
-      {{ data['applicant-individual-forename']}} {{ data['applicant-individual-surname']}}
-      {% endif %}
+    <h2 class="govuk-heading-m">For lender:   {{ data['charge-lender-company-name']}}</h2>
 
-      {% if data['transferee-select'] === 'no' and data['transferee-individual-forename'] %}
-      {{ data['transferee-individual-forename']}} {{ data['transferee-individual-surname']}}
-      {% endif %}
-      </p>
 
-    <form method="post" action="lender-addresstype-answer">
+      <br>
 
+    <form method="post" action="/transactions/charge/charge-lender-addresstype-answer">
+      <h3 class="govuk-heading-s">Select address type</h3>
     <div class="govuk-radios">
 
         <div class="govuk-radios__item">
