@@ -53,7 +53,7 @@
     <h1 class="govuk-heading-l">Applicants</h1>
     <h2 class="govuk-heading-m">Applicants added</h2>
 
-<form>
+<form method="post" action="/transactions/which-task-list">
 
 
 <table class="govuk-table" id="applicantlist">
@@ -216,8 +216,7 @@
 
 {{ govukButton({
 classes: "govuk-!-margin-top-5",
-text: "Continue",
-href: "tasks"
+text: "Continue"
 }) }}
 
 </form>

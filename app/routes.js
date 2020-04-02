@@ -52,11 +52,11 @@ router.post('/transactions/transfer/transferee-whichapplicants-answer', function
 // charge without transfer Select/add lenders
   router.post('/transactions/charge-without-transfer/applicants-lenders', function (req, res) {
 
-    let applicantLender1 = req.session.data['applicant-company-lender1'];
+    let applicantLender1 = req.session.data['applicant-individual-lender1'];
     var lenderTicked1
 
     if (applicantLender1 != '') {
-        let lendercheckbox1 = req.body['applicant-company-lender1'];
+        let lendercheckbox1 = req.body['applicant-individual-lender1'];
         if (lendercheckbox1 === '_unchecked'){
           lenderTicked1 = false
         } else {
@@ -249,6 +249,7 @@ router.post('/transactions/charge/mdrefanswer', function (req, res) {
 
                                      // Name of input
   let mdreference = req.session.data['MDreferenceinput']
+  let transaction = req.session.data['Transaction']
 
   if (mdreference != '') {
     req.session.data['charge-lender-company-name'] = 'Barclays Ltd';
@@ -257,11 +258,12 @@ router.post('/transactions/charge/mdrefanswer', function (req, res) {
     req.session.data['AddRepTask'] = 'true';
     req.session.data['AddAddressTask'] = 'true';
     res.redirect('/transactions/charge/lender-representationAdd')
-  } else {
+
+  } if (transaction = 'DTC'){
     req.session.data['AddLendersTask'] = 'true';
     req.session.data['AddRepTask'] = 'true';
     req.session.data['AddAddressTask'] = 'true';
-    res.redirect('/transactions/charge/charge-lenders')
+    res.redirect('/transactions/charge/add-lender')
 
   }
 })
@@ -479,19 +481,57 @@ router.get('/stored-data', function (req, res) {
   res.render('stored-data')
 })
 
+// Identifying the transaction type
 
 router.post('/transactions/charge-transactions', function (req, res) {
-      // let transaction1 = req.session.data['Transaction1']
-      // let transaction2 = req.session.data['Transactions2']
-      //
-      // if (transaction1 === 'Transfer for value (TR1)' || transaction2 === 'Charge') {
-      //     req.session.data['Transaction'] = 'TC';
+      let transaction1 = req.session.data['Transaction1']
+      let transaction2 = req.session.data['Transaction2']
+      let transaction3 = req.session.data['Transaction3']
+
+      if (transaction1 === 'Discharge (DS1)' && transaction2 === 'Select a transaction from the list' && transaction3 === 'Select a transaction from the list') {
+          req.session.data['Transaction'] = 'D';
           res.redirect('/transactions/add-applicants')
-      // } else if (transaction2 === 'Charge') {
-      //   req.session.data['Transaction'] = 'C';
-      //   res.redirect('/add-applicants')
-      // }
+
+      }   if (transaction1 === 'Transfer for value (TR1)' && transaction2 === 'Select a transaction from the list' && transaction3 === 'Select a transaction from the list') {
+            req.session.data['Transaction'] = 'T';
+            res.redirect('/transactions/add-applicants')
+
+      }  if (transaction1 === 'Charge') {
+            req.session.data['Transaction'] = 'C';
+            res.redirect('/transactions/add-applicants')
+
+      }   if (transaction1 === 'Discharge (DS1)' && transaction2 === 'Transfer for value (TR1)' && transaction3 === 'Select a transaction from the list') {
+            req.session.data['Transaction'] = 'DT';
+            res.redirect('/transactions/add-applicants')
+
+        } if (transaction1 === 'Discharge (DS1)' && transaction2 === 'Charge' && transaction3 === 'Select a transaction from the list') {
+              req.session.data['Transaction'] = 'DC';
+              res.redirect('/transactions/add-applicants')
+
+        }  if (transaction1 === 'Discharge (DS1)' && transaction2 === 'Transfer for value (TR1)' && transaction3 === 'Charge') {
+              req.session.data['Transaction'] = 'DTC';
+              res.redirect('/transactions/add-applicants')
+
+          } if (transaction1 === 'Transfer for value (TR1)' && transaction2 === 'Charge' && transaction3 === 'Select a transaction from the list') {
+                  req.session.data['Transaction'] = 'TC';
+                  res.redirect('/transactions/add-applicants')
+            }
+
 })
+
+// Using the transaction type to go to a task list
+router.post('/transactions/which-task-list', function (req, res) {
+      let transaction = req.session.data['Transaction']
+
+      if (transaction === 'DTC') {
+          res.redirect('/transactions/charge/tasks')
+      } if (transaction === 'C') {
+          res.redirect('/transactions/charge-without-transfer/charge-without-transfer-tasks')
+      }
+
+    })
+
+
 
 
 // Charge completed tags
