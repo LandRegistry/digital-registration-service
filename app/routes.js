@@ -435,10 +435,131 @@ router.get('/docs/examples/pass-data/charge', function (req, res) {
     "applicant2-individual-forename-2": "Jane",
     "applicant2-individual-surname-2": "Smith",
     "Transaction1": "Discharge",
-    "Transaction1": "Transfer for value (TR1)",
-    "Transaction1": "Charge",
+    "Transaction2": "Transfer for value (TR1)",
+    "Transaction3": "Charge",
+    "Transaction": "DTC"
 }
   res.redirect('/../transactions/charge/tasks')
+})
+
+router.get('/docs/examples/pass-data/charge-DTC1', function (req, res) {
+	req.session.data = 	      		{
+  "reference": "JT/123/CH",
+  "title": "LP12345",
+  "whole-or-part": "Whole",
+  "part": "",
+  "Transaction1": "Discharge",
+  "PriceInput1": "120000",
+  "FeeInput1": "12",
+  "Transaction2": "Transfer for value (TR1)",
+  "PriceInput2": "120000",
+  "FeeInput2": "12",
+  "Transaction3": "Charge",
+  "PriceInput3": "120000",
+  "FeeInput3": "12",
+  "add-applicant": "individual",
+  "applicant-individual-forename": "John",
+  "applicant-individual-surname": "Smith",
+  "applicant2-individual-forename-2": "Jane",
+  "applicant2-individual-surname-2": "Smith",
+  "Transaction": "DTC",
+  "dischargemethod": "direct",
+  "discharge-method": "Direct",
+  "lender-name": "HMLR Lending Co.",
+  "applicant-individual-transferee1": [
+    "applicant1-transferee-1"
+  ],
+  "applicant-individual-transferee2": [
+    "applicant2-transferee-2"
+  ],
+  "transfereelistcomplete": "true",
+  "transfereerep": "true",
+  "transfereeAddressType": "UK-postal",
+  "UKpostcode": "",
+  "applicant2address": [
+    "true"
+  ],
+  "addressResults": "addressresult4",
+  "care-of": "",
+  "transfereeAddressType2": "email",
+  "add-transferor": "individual",
+  "transferor-individual-forename": "Bob",
+  "transferor-individual-surname": "Jones",
+  "transferor-company-name": "",
+  "transferor-company-number": "",
+  "transferor-overseas-name": [
+    "",
+    ""
+  ],
+  "transferor-overseas-number": "",
+  "transferor-overseas-country": "select selected",
+  "transferorrep": "true",
+  "cert": "Certified",
+  "tr1attached": "true",
+  "suggested_cert": "Certified",
+  "suggested_upload": "true",
+  "attached": "true"
+}
+
+  res.redirect('/../transactions/charge/tasks')
+})
+
+
+router.get('/docs/examples/pass-data/sole-charge', function (req, res) {
+	req.session.data = 	      		{
+  "reference": "JT/123/CH",
+  "title": "LP12345",
+  "whole-or-part": "Whole",
+  "part": "",
+  "Transaction1": "Discharge",
+  "PriceInput1": "120000",
+  "FeeInput1": "12",
+  "Transaction2": "Transfer for value (TR1)",
+  "PriceInput2": "120000",
+  "FeeInput2": "12",
+  "Transaction3": "Charge",
+  "PriceInput3": "120000",
+  "FeeInput3": "12",
+  "add-applicant": "individual",
+  "applicant-individual-forename": "John",
+  "applicant-individual-surname": "Smith",
+  "applicant2-individual-forename-2": "Jane",
+  "applicant2-individual-surname-2": "Smith",
+  "Transaction": "C",
+}
+  res.redirect('/../transactions/charge-without-transfer/charge-without-transfer-tasks')
+})
+
+// saved transaction: TR1
+router.get('/docs/examples/pass-data/task-list', function (req, res) {
+	req.session.data = {
+  "reference": "JT/123/TR1",
+  "title": "LP12345",
+  "whole-or-part": "Whole",
+  "part": "",
+  "Transaction": "DT",
+  "PriceInput1": "250000",
+  "FeeInput1": "12",
+  "FeeInput2": "0",
+  "PriceInput2": "12",
+  "Transaction1": "Discharge (DS1)",
+  "fee1": "12",
+  "Price1": "",
+  "Transaction2": "Transfer (TR1)",
+  "fee2": "12",
+  "Price2": "",
+  "Transaction3": "Select a transaction from the list",
+  "fee3": "",
+  "Price3": "",
+  "add-applicant": "individual",
+  "applicant-individual-forename": "John",
+  "applicant-individual-surname": "Smith",
+  "applicant2-individual-forename-2": "Jane",
+  "applicant2-individual-surname-2": "Smith",
+  "applicant-company-name-2": "",
+  "applicant-company-number-2": ""
+}
+  res.redirect('/../transactions/tasks')
 })
 
 
@@ -473,6 +594,7 @@ router.get('/docs/examples/pass-data/task-list', function (req, res) {
 }
   res.redirect('/../transactions/tasks')
 })
+
 
 
 // Passing data into a page
