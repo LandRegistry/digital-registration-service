@@ -47,27 +47,28 @@
     </div></div>
     </div>
 
-
-
     <main class="govuk-main-wrapper " id="main-content" role="main">
     <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds" style="margin-top: -35px;">
+        <a href="/transactions/charge/tasks" class="govuk-back-link">Return to task list</a>
+        </div>
     <div class="govuk-grid-column-two-thirds">
-      <a href="transactions/charge-tasks" class="govuk-back-link">Return to task list</a>
-        <span class="govuk-caption-l">Charge</span>
-
-          <h1 class="govuk-heading-l">Enter charge date</h1>
+        <br>
 
 
-          <form method="post" action="/transactions/charge/date-complete" novalidate>
+          <h1 class="govuk-heading-l"><span class="govuk-caption-l">Charge</span>Enter charge date</h1>
+
+
+          <form method="post" action="/transactions/charge/date-complete" data-validate="charge-date-form-validation" novalidate>
 
           {{ govukDateInput({
             id: "charge-date",
-            namePrefix: "charge-date",
+            class:"govuk-input",
+            name: "charge-date",
             hint: {
               text: "For example, 12 11 2007"
             }
           }) }}
-
 
           <br>
 
@@ -79,6 +80,15 @@
 
         </form>
 
+        <script type="application/json" id="charge-date-form-validation">
+         // {
+         //   "charge-date": {
+         //     "presence": {
+         //       "message": "^Enter charge date"
+         //     }
+         //   }
+         // }
+        </script>
 
 </main>
 
@@ -90,21 +100,7 @@
 <br>
 <a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
 <a href="/prototype-admin/clear-data">Clear data</a>
-</div>
 
-<script type="application/json" id="reference-form-validation">
- {
-   "reference": {
-     "presence": {
-       "message": "^Enter your reference for this application"
-     },
-     "length": {
-       "minimum": 1,
-       "maximum": 25,
-       "message": "^Your reference must be 25 characters or less"
-     }
-   }
-</script>
 
 
 

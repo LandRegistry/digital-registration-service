@@ -54,8 +54,11 @@
     </div>
 
 <form method="post" action="/transactions/charge/lender-representation-answer">
+  <div class="govuk-grid-column-two-thirds" style="margin-top: -20px;">
+    <a href="lender-representation" class="govuk-back-link">Return to lender representation</a>
+    </div>
 <div class="govuk-grid-column-two-thirds">
-  <a href="lender-representation" class="govuk-back-link">Return to lender representation</a>
+  <br>
     <span class="govuk-caption-l">Charge</span>
     <h1 class="govuk-heading-l">Select representation</h1>
     <h2 class="govuk-heading-s">Tell us who's representing: {{ data['charge-lender-company-name']}}</h2>
@@ -167,9 +170,8 @@
 <br>
 
         <div style="">
-        <h4 class="govuk-heading-s">Apply to all (optional)</h4>
 
-        {{ govukCheckboxes({
+        <!-- {{ govukCheckboxes({
           idPrefix: "represents-all",
           name: "represents-all",
           classes: "govuk-checkboxes",
@@ -182,12 +184,12 @@
               text: "Selected conveyancer represents all lenders"
             }
           ]
-        }) }}
+        }) }} -->
 
-          {{ govukWarningText({
+          <!-- {{ govukWarningText({
             text: "Replaces any conveyancer details previously added",
             iconFallbackText: "Warning"
-  }) }}
+  }) }} -->
 
       </div>
 
