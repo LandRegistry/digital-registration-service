@@ -50,6 +50,7 @@
     <h1 class="govuk-heading-l">Complete your application</h1>
     <p class="govuk-body-m">Provide all details and the documents you want to attach.</p>
 
+    <form method="post" action="transactions/charge/charge-review">
 
     <table class="govuk-table">
       <thead class="govuk-table__head">
@@ -275,8 +276,7 @@
 
     {{ govukButton({
         text: "Review application",
-        classes: "govuk-!-margin-top-9",
-        href: "../transactions/application-review"
+        classes: "govuk-!-margin-top-9"
       }) }}
 
 
@@ -291,6 +291,7 @@
           text: "To avoid requisitions, attach all relevant documents."
         }) }}
 
+        </form>
 
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
