@@ -382,6 +382,24 @@ router.post('/transactions/charge/documentscomplete', function (req, res) {
 })
 
 
+router.post('transactions/charge/charge-review', function (req, res) {
+  let mdref = req.session.data['MDreferenceinput']
+  if (mdref = '') {
+    res.redirect('/transactions/charge-yes/application-review')
+  } else {
+    res.redirect('/transactions/charge-no/application-review')
+  }
+})
+
+router.post('transactions/charge-without-transfer/charge-review', function (req, res) {
+  let mdref = req.session.data['MDreferenceinput']
+  if (mdref = '') {
+    res.redirect('/transactions/charge-without-transfer-yes/application-review')
+  } else {
+    res.redirect('/transactions/charge-without-transfer-no/application-review')
+  }
+})
+
 
 // Set data
 

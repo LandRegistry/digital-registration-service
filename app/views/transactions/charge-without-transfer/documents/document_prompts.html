@@ -112,14 +112,14 @@
           {% if not data['mortgageAttached'] %}<td class="govuk-table__cell govuk-link"><a href="document_upload_either">Attach</a></td>{% endif %}
         </tr>
 
-        <tr class="govuk-table__row">
+        <!-- <tr class="govuk-table__row">
           <td class="govuk-table__cell">Evidence</td>
           <td class="govuk-table__cell">Certificate of registration of a charge</td>
           <td class="govuk-table__cell">{% if data['certificateAttached']%} Certified {% endif %}</td>
           <td class="govuk-table__cell">{% if data['certificateAttached']%} Certificate.pdf {% endif %}</td>
           {% if data['certificateAttached']%}<td class="govuk-table__cell govuk-link"><a href="">Remove</a></td>{% endif %}
           {% if not data['certificateAttached'] %}<td class="govuk-table__cell govuk-link"><a href="document_upload-evidence.html">Attach</a></td>{% endif %}
-        </tr>
+        </tr> -->
 
 
 
@@ -196,7 +196,7 @@
 <p class='govuk-body'><a href="document_upload_other">Attach another type of document</a></p>
 
 
-<div class="govuk-warning-text">
+<!-- <div class="govuk-warning-text">
   <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
   <strong class="govuk-warning-text__text">
     <span class="govuk-warning-text__assistive">Warning</span>
@@ -204,7 +204,7 @@
           <br>- has been filed at Companies House<br>
               - relates to the accompanying certificate of registration
   </strong>
-</div>
+</div> -->
 
 {{ govukButton({
   text: "Continue",

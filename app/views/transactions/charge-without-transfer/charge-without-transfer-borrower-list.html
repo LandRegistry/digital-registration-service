@@ -54,7 +54,7 @@
           <h1 class="govuk-heading-l">Borrowers</h1>
 
 
-          <form method="get" action="borrower-representationAdd" novalidate>
+          <form method="post" action="borrower-representation" novalidate>
 
             <table class="govuk-table">
             <thead class="govuk-table__head">
@@ -73,10 +73,10 @@
                     <td class="govuk-table__cell">{{ data['borrowerDetails1'] }}</td>
                     <td class="govuk-table__cell">
                         {% if data['solechargeborrowerdetails1'] == 'correct' %}
-                        <p>Correct</p>
+                        <p>Name is correct</p>
                         {% endif %}
                         {% if data['solechargeborrowerdetails1'] == 'changed' %}
-                        <p>Amended</p>
+                        <p>Name amended from Bob Smith</p>
                         {% endif %}
                         {% if data['solechargeborrowerdetails1'] == 'removed'%}
                         <p>Removed</p>
@@ -89,10 +89,10 @@
                     <td class="govuk-table__cell">{{ data['borrowerDetails2'] }}</td>
                     <td class="govuk-table__cell">
                         {% if data['solechargeborrowerdetails2'] == 'correct' %}
-                        <p>Correct</p>
+                        <p>Name is correct</p>
                         {% endif %}
                         {% if data['solechargeborrowerdetails2'] == 'changed' %}
-                        <p>Amended</p>
+                        <p>Name amended from Jane Smith</p>
                         {% endif %}
                         {% if data['solechargeborrowerdetails2'] == 'removed'%}
                         <p>Removed</p>
@@ -103,10 +103,10 @@
             </tbody>
           </table>
 
-          {{ govukWarningText({
-            text: "Select ‘Continue’ to confirm the list of borrowers is complete and correct.",
-            iconFallbackText: "Warning"
-          }) }}
+
+          {{ govukInsetText({
+          text: "Select ‘Continue’ to confirm the list of borrowers is complete and correct."
+        }) }}
 
             {{ govukButton({
             classes: "",
