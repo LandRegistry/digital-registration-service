@@ -92,5 +92,9 @@ $govuk-canvas-background-colour: $govuk-body-background-colour;
 
 #filename:hover {
 color: black;
-cursor: default;  
+cursor: default;
+}
+
+.govuk-warning-text__icon {
+margin-top: 7px !important;
 }

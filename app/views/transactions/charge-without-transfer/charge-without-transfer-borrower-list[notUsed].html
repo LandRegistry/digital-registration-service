@@ -48,13 +48,10 @@
     </div>
 
     <main class="govuk-main-wrapper " id="main-content" role="main">
-      <a href="/transactions/charge-without-transfer/charge-without-transfer-tasks" class="govuk-back-link">Return to task list</a>
+      <a href="transactions/charge-tasks" class="govuk-back-link">Return to task list</a>
       <span class="govuk-caption-l">Charge</span>
 
-          <h1 class="govuk-heading-l">Check borrower names </h1>
-
-          <p>Select ‘Amend’ to change a name. If all names are correct and </br>
-            consistent with supporting documents, select ‘Continue’.  </p>
+          <h1 class="govuk-heading-l">Borrowers</h1>
 
 
           <form method="post" action="borrower-representation" novalidate>
@@ -62,8 +59,9 @@
             <table class="govuk-table">
             <thead class="govuk-table__head">
             <tr class="govuk-table__row">
-              <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Borrower type</th>
-              <th scope="col" class="govuk-table__header govuk-!-width-two-quarters">Borrower name</th>
+              <th scope="col" class="govuk-table__header govuk-!-width-one-third">Borrower type</th>
+              <th scope="col" class="govuk-table__header govuk-!-width-one-third">Borrower name</th>
+              <th scope="col" class="govuk-table__header govuk-!-width-one-third">Details</th>
               <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Options</th>
 
               </tr>
@@ -73,26 +71,42 @@
                   <tr class="govuk-table__row">
                     <td class="govuk-table__cell">Private individual</td>
                     <td class="govuk-table__cell">{{ data['borrowerDetails1'] }}</td>
+                    <td class="govuk-table__cell">
+                        {% if data['solechargeborrowerdetails1'] == 'correct' %}
+                        <p>Name is correct</p>
+                        {% endif %}
+                        {% if data['solechargeborrowerdetails1'] == 'changed' %}
+                        <p>Name amended from Bob Smith</p>
+                        {% endif %}
+                        {% if data['solechargeborrowerdetails1'] == 'removed'%}
+                        <p>Removed</p>
+                        {% endif %}
+                      </td>
                     <td class="govuk-table__cell"><a href="charge-without-transfer-borrower-details">Change</a></td>
                   </tr>
                   <tr class="govuk-table__row">
                     <td class="govuk-table__cell">Private individual</td>
                     <td class="govuk-table__cell">{{ data['borrowerDetails2'] }}</td>
+                    <td class="govuk-table__cell">
+                        {% if data['solechargeborrowerdetails2'] == 'correct' %}
+                        <p>Name is correct</p>
+                        {% endif %}
+                        {% if data['solechargeborrowerdetails2'] == 'changed' %}
+                        <p>Name amended from Jane Smith</p>
+                        {% endif %}
+                        {% if data['solechargeborrowerdetails2'] == 'removed'%}
+                        <p>Removed</p>
+                        {% endif %}
+                      </td>
                     <td class="govuk-table__cell"><a href="charge-without-transfer-borrower-details-2">Change</a></td>
                   </tr>
             </tbody>
           </table>
 
 
-          <!-- Added margin-top: 7px for warning icon in app/assets/sass/unbranded.scss -->
-          <div class="govuk-warning-text">
-            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-            <strong class="govuk-warning-text__text">
-              <span class="govuk-warning-text__assistive">Warning</span>
-              Naming errors lead to requisitions. By selecting ‘Continue’ </br>
-you confirm all borrower names are correct.
-            </strong>
-          </div>
+          {{ govukInsetText({
+          text: "Select ‘Continue’ to confirm the list of borrowers is complete and correct."
+        }) }}
 
             {{ govukButton({
             classes: "",
