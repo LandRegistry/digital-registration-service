@@ -56,7 +56,7 @@
           <h1 class="govuk-heading-l">
             <span class="govuk-caption-l">Charge</span>
             Amend borrower details</h1>
-          <h2 class="govuk-heading-m">Name: Bob Smith</h2>
+          <h2 class="govuk-heading-m">Name: {{ data['borrower1'] }}</h2>
 
           <form method="post" action="/transactions/charge-without-transfer/charge-without-transfer-details" novalidate>
             {{ govukRadios({
