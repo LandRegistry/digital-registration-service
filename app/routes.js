@@ -544,6 +544,8 @@ router.get('/docs/examples/pass-data/sole-charge', function (req, res) {
   "applicant2-individual-forename-2": "Jane",
   "applicant2-individual-surname-2": "Smith",
   "Transaction": "C",
+  "borrower1": "Joe Bloggs",
+  "borrower2": "Jane Bloggs"
 }
   res.redirect('/../transactions/charge-without-transfer/charge-without-transfer-tasks')
 })
@@ -966,9 +968,11 @@ router.post('/transactions/charge-without-transfer/charge-without-transfer-detai
   let amendBorrowerName1 = req.session.data['amendBorrowerName1']
 
   if (amendBorrowerName1 === 'amended') {
+    req.session.data['Borrower1Status'] = 'amended'; //setting variable for borrower1Status to check for amended
     res.redirect('charge-without-transfer-borrower-change')
 }
   if (amendBorrowerName1 === 'removed') {
+      req.session.data['Borrower1Status'] = 'removed'; //setting variable for borrower1Status to check for removed
       res.redirect('charge-without-transfer-borrower-list')
     }
 })
@@ -980,11 +984,18 @@ router.post('/transactions/charge-without-transfer/charge-without-transfer-detai
 // pull the name through to the borrower rep screen
 // If a name has been removed change link to "undo remove"
 
-router.post('/charge-without-transfer-borrower-list-set', function (req, res){
+// router.post('/charge-without-transfer-borrower-list-set', function (req, res){
+//
+//   let borrower1 = req.session.data['borrower1']
+//
+//   req.session.data['borrower1'] = 'Joe Bloggs';
+//
+//   res.redirect('/transactions/charge-without-transfer-borrower-list')
+// })
 
-  let borrower1 = req.session.data['borrower1']
-
-  req.session.data['borrower1'] = 'Joe Bloggs';
-
-  res.redirect('/transactions/charge-without-transfer-borrower-list')
-})
+// // Borrower 1 'Remove'
+//
+// router.post('/transactions/charge-without-transfer/charge-without-transfer-borrower1-amendremove', function (req, res){
+//
+//
+// })

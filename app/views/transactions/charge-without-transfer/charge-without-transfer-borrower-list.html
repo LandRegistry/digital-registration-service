@@ -53,7 +53,7 @@
 
           <h1 class="govuk-heading-l">Check borrower names </h1>
 
-          <p>Select ‘Amend’ to change a name. If all names are correct and </br>
+          <p>Select ‘Amend’ to change a name. If all names are correct and <br>
             consistent with supporting documents, select ‘Continue’.  </p>
 
 
@@ -74,12 +74,31 @@
                   <tr class="govuk-table__row">
                     <tr class="govuk-table__row">
                       <td class="govuk-table__cell">Private individual</td>
-                      <td class="govuk-table__cell" > {{ data['borrower1'] }} </td> <!-- {{['Joe Bloggs'] }} -->
-                      <td class="govuk-table__cell"><a href="charge-without-transfer-borrower-details">Amend / Remove</a></td>
+                      <td class="govuk-table__cell" >
+                        {% if data['Borrower1Status'] == 'removed'%} <!-- if Borrower1Status = removed show borrower1 variable-->
+                        <p>{{ data['borrower1'] }} removed</p> <!-- show borrower1 variable-->
+
+                        {% elif data['Borrower1Status'] == 'amended'%} <!-- if Borrower1Status = amended show borrower1ameded (input) amended from  borrower1 variable-->
+                        <p> {{ data['borrower1amended'] }} from {{ data['borrower1'] }}</p>
+
+                        {% elif (data['Borrower1Status'] !== 'removed') or (data['Borrower1Status'] !== 'amended') %}
+                        <p>{{ data['borrower1'] }}</p>
+                        {% endif %}
+                     </td>
+<!-- Borrower status equals removed, it will display the name variable with 'removed', if it DOESN'T = removed or amended, it will display the name variable.<-->
+
+                      <td class="govuk-table__cell">
+                          {% if (data['Borrower1Status'] !== 'removed') %}
+                          <a href="charge-without-transfer-borrower-details">Amend / Remove</a>
+
+                          {% elif (data['Borrower1Status'] == 'removed') %}
+                          <a id="undobutton" href="#" onclick="undo()">Undo remove</a>
+                          {% endif %}
+                    </td>
                     </tr>
                   <tr class="govuk-table__row">
                     <td class="govuk-table__cell">Private individual</td>
-                    <td class="govuk-table__cell">{{ ['borrower2'] }}</td>
+                    <td class="govuk-table__cell">{{ data['borrower2'] }}</td>
                     <td class="govuk-table__cell"><a href="charge-without-transfer-borrower-details-2">Amend / Remove</a></td>
                   </tr>
             </tbody>
@@ -92,8 +111,8 @@
             <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
             <strong class="govuk-warning-text__text">
               <span class="govuk-warning-text__assistive">Warning</span>
-              Naming errors lead to requisitions. By selecting ‘Continue’ </br>
-you confirm all borrower names are correct.
+              Naming errors lead to requisitions. By selecting ‘Continue’ <br>
+              you confirm all borrower names are correct.
             </strong>
           </div>
 
@@ -129,9 +148,11 @@ you confirm all borrower names are correct.
        "message": "^Your reference must be 25 characters or less"
      }
    }
+
 </script>
 
-{% set borrowerName1 = "Joe Bloggs" %}
+
+<!-- {% set borrowerName1 = "Joe Bloggs" %} -->
 
 
 
