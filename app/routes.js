@@ -635,9 +635,10 @@ router.post('/transactions/charge-transactions', function (req, res) {
       }   if (transaction1 === 'Transfer for value (TR1)' && transaction2 === 'Select a transaction from the list' && transaction3 === 'Select a transaction from the list') {
             req.session.data['Transaction'] = 'T';
             res.redirect('/transactions/add-applicants')
-
+// set borrower names
       }  if (transaction1 === 'Charge') {
             req.session.data['Transaction'] = 'C';
+
             res.redirect('/transactions/add-applicants')
 
       }   if (transaction1 === 'Discharge (DS1)' && transaction2 === 'Transfer for value (TR1)' && transaction3 === 'Select a transaction from the list') {
@@ -646,14 +647,17 @@ router.post('/transactions/charge-transactions', function (req, res) {
 
         } if (transaction1 === 'Discharge (DS1)' && transaction2 === 'Charge' && transaction3 === 'Select a transaction from the list') {
               req.session.data['Transaction'] = 'DC';
+
               res.redirect('/transactions/add-applicants')
 
         }  if (transaction1 === 'Discharge (DS1)' && transaction2 === 'Transfer for value (TR1)' && transaction3 === 'Charge') {
               req.session.data['Transaction'] = 'DTC';
+
               res.redirect('/transactions/add-applicants')
 
           } if (transaction1 === 'Transfer for value (TR1)' && transaction2 === 'Charge' && transaction3 === 'Select a transaction from the list') {
                   req.session.data['Transaction'] = 'TC';
+
                   res.redirect('/transactions/add-applicants')
             }
 
@@ -952,3 +956,35 @@ router.post('/transactions/charge-without-transfer/back-link-borrower', function
 })
 
 module.exports = router
+
+
+// Borrowers flow - Charge without transfer
+
+// Checking if borrower name needs to be removed or amended
+router.post('/transactions/charge-without-transfer/charge-without-transfer-details', function (req, res) {
+
+  let amendBorrowerName1 = req.session.data['amendBorrowerName1']
+
+  if (amendBorrowerName1 === 'amended') {
+    res.redirect('charge-without-transfer-borrower-change')
+}
+  if (amendBorrowerName1 === 'removed') {
+      res.redirect('charge-without-transfer-borrower-list')
+    }
+})
+
+// Borrower names
+// Display borrower names
+// Option to change / remove borrower name
+// Fontend confirmation of name change / removal
+// pull the name through to the borrower rep screen
+// If a name has been removed change link to "undo remove"
+
+router.post('/charge-without-transfer-borrower-list-set', function (req, res){
+
+  let borrower1 = req.session.data['borrower1']
+
+  req.session.data['borrower1'] = 'Joe Bloggs';
+
+  res.redirect('/transactions/charge-without-transfer-borrower-list')
+})
