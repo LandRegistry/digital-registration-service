@@ -9,8 +9,8 @@
 {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
-{% from "govuk/components/table/macro.njk" import govukTable %}
 {% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+
 
 
 
@@ -47,62 +47,41 @@
     </div></div>
     </div>
 
+
+
     <main class="govuk-main-wrapper " id="main-content" role="main">
-      <a href="/transactions/charge-without-transfer/charge-without-transfer-tasks" class="govuk-back-link">Return to task list</a>
-      <span class="govuk-caption-l">Charge</span>
+    <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <a href="charge-without-transfer-borrower-list" class="govuk-back-link">Return to Borrower list</a>
+        <span class="govuk-caption-l">Charge</span>
 
-          <h1 class="govuk-heading-l">Check borrower names </h1>
+          <h1 class="govuk-heading-l">Change borrower name</h1>
+          <h2 class="govuk-heading-m">Name: Bob Smith</h2>
 
-          <p>Select ‘Amend’ to change a name. If all names are correct and </br>
-            consistent with supporting documents, select ‘Continue’.  </p>
+          <form method="post" action="/transactions/charge-without-transfer/charge-without-transfer-borrower-details-2" novalidate>
 
-
-          <form method="post" action="/transactions/charge-without-transfer/borrower-check-name" novalidate>
-
-
-            <table class="govuk-table">
-            <thead class="govuk-table__head">
-            <tr class="govuk-table__row">
-              <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Borrower type</th>
-              <th scope="col" class="govuk-table__header govuk-!-width-two-quarters">Borrower name</th>
-              <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Options</th>
-
-              </tr>
-            </thead>
-
-            <tbody class="govuk-table__body">
-                  <tr class="govuk-table__row">
-                    <tr class="govuk-table__row">
-                      <td class="govuk-table__cell">Private individual</td>
-                      <td class="govuk-table__cell" > {{ data['borrower1'] }} </td> <!-- {{['Joe Bloggs'] }} -->
-                      <td class="govuk-table__cell"><a href="charge-without-transfer-borrower-details">Amend / Remove</a></td>
-                    </tr>
-                  <tr class="govuk-table__row">
-                    <td class="govuk-table__cell">Private individual</td>
-                    <td class="govuk-table__cell">{{ ['borrower2'] }}</td>
-                    <td class="govuk-table__cell"><a href="charge-without-transfer-borrower-details-2">Amend / Remove</a></td>
-                  </tr>
-            </tbody>
-          </table>
-
-
-
-          <!-- Added margin-top: 7px for warning icon in app/assets/sass/unbranded.scss -->
-          <div class="govuk-warning-text">
-            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-            <strong class="govuk-warning-text__text">
-              <span class="govuk-warning-text__assistive">Warning</span>
-              Naming errors lead to requisitions. By selecting ‘Continue’ </br>
-you confirm all borrower names are correct.
-            </strong>
-          </div>
-
-            {{ govukButton({
-            classes: "",
-            text: "Continue"
+            {{ govukInput({
+                label: {
+                  text: "Enter correct name"
+                },
+                classes: "govuk-!-width-two-thirds",
+                id: "borrowerDetails1Change",
+                name: "borrowerDetails1"
             }) }}
+          <br>
 
-          </form>
+
+          {{ govukWarningText({
+            text: "Name must be exactly as it appears in supporting documents",
+            iconFallbackText: "Warning"
+          }) }}
+
+          {{ govukButton({
+          classes: "",
+          text: "Continue"
+          }) }}
+
+        </form>
 
 
 </main>
@@ -115,7 +94,7 @@ you confirm all borrower names are correct.
 <br>
 <a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
 <a href="/prototype-admin/clear-data">Clear data</a>
-
+</div>
 
 <script type="application/json" id="reference-form-validation">
  {
@@ -131,14 +110,13 @@ you confirm all borrower names are correct.
    }
 </script>
 
-{% set borrowerName1 = "Joe Bloggs" %}
-
 
 
 {% endblock %}
 
 
-
+{% block footer %}
+{% endblock %}
 
 {% block bodyEnd %}
   {% include "includes/scripts.html" %}
