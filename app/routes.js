@@ -673,6 +673,8 @@ router.post('/transactions/which-task-list', function (req, res) {
           res.redirect('/transactions/charge/tasks')
       } if (transaction === 'C') {
           res.redirect('/transactions/charge-without-transfer/charge-without-transfer-tasks')
+      } if (transaction === 'T') {
+          res.redirect('/transactions/charge-without-transfer/charge-without-transfer-tasks')
       }
 
     })

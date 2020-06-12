@@ -63,10 +63,10 @@
             text: "Names entered here must match those in supporting documents. If the names don’t match, you must attach evidence of a name change."
           }) }}
 
-          <form method="get" action="applicants-list" novalidate>
+          <form method="get" action="applicants-list" data-validate="applicant-form-validation" novalidate>
             <div class="govuk-form-group">
               <fieldset class="govuk-fieldset" aria-describedby="add-applicant-conditional-hint">
-                <h2 class="govuk-heading-s">Select applicant type</h2>
+                <h2 class="govuk-heading-m">Select applicant type</h2>
                 <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
                   <div class="govuk-radios__item">
                     <input class="govuk-radios__input" id="add-applicant-conditional" name="add-applicant" type="radio" value="individual" data-aria-controls="conditional-add-applicant-conditional">
@@ -740,18 +740,14 @@
 <a href="/prototype-admin/clear-data">Clear data</a>
 </div>
 
-<script type="application/json" id="reference-form-validation">
+<script type="application/json" id="applicant-form-validation">
  {
-   "reference": {
+   "add-applicant": {
      "presence": {
-       "message": "^Enter your reference for this application"
-     },
-     "length": {
-       "minimum": 1,
-       "maximum": 25,
-       "message": "^Your reference must be 25 characters or less"
+       "message": "^Select applicant type"
      }
    }
+ }
 </script>
 
 
