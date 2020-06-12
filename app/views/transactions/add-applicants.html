@@ -63,10 +63,10 @@
             text: "Names entered here must match those in supporting documents. If the names don’t match, you must attach evidence of a name change."
           }) }}
 
-          <form method="get" action="applicants-list" novalidate>
+          <form method="get" action="applicants-list" data-validate="applicant-form-validation" novalidate>
             <div class="govuk-form-group">
               <fieldset class="govuk-fieldset" aria-describedby="add-applicant-conditional-hint">
-                <h2 class="govuk-heading-s">Select applicant type</h2>
+                <h2 class="govuk-heading-m">Select applicant type</h2>
                 <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
                   <div class="govuk-radios__item">
                     <input class="govuk-radios__input" id="add-applicant-conditional" name="add-applicant" type="radio" value="individual" data-aria-controls="conditional-add-applicant-conditional">
@@ -118,7 +118,7 @@
                   </div>
 
                   <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="add-applicant-conditional-3" name="add-applicant" type="radio" value="OverseasCompany" data-aria-controls="">
+                    <input class="govuk-radios__input" id="add-applicant-conditional-3" name="add-applicant" type="radio" value="OverseasCompany" data-aria-controls="conditional-add-applicant-conditional-3">
                     <label class="govuk-label govuk-radios__label" for="add-applicant-conditional-3">
                       Overseas company
                     </label>
@@ -483,213 +483,109 @@
                           <option value="NAURU ISLAND">NAURU ISLAND</option>
 
                           <option value="NEPAL">NEPAL</option>
-
                           <option value="NETHERLAND ANTARCTIC TERRITORY">NETHERLAND ANTARCTIC TERRITORY</option>
-
                           <option value="NETHERLANDS">NETHERLANDS</option>
-
                           <option value="NETHERLANDS ANTILLES">NETHERLANDS ANTILLES</option>
-
                           <option value="NEW CALEDONIA">NEW CALEDONIA</option>
-
                           <option value="NEW ZEALAND">NEW ZEALAND</option>
-
                           <option value="NEW ZEALAND ANTARCTIC TERRITORY">NEW ZEALAND ANTARCTIC TERRITORY</option>
-
                           <option value="NICARAGUA">NICARAGUA</option>
-
                           <option value="NIGER">NIGER</option>
-
                           <option value="NIGERIA">NIGERIA</option>
-
                           <option value="NIUE ISLAND">NIUE ISLAND</option>
-
                           <option value="NORFOLK ISLAND">NORFOLK ISLAND</option>
-
                           <option value="NORTHERN MARIANA ISLANDS">NORTHERN MARIANA ISLANDS</option>
-
                           <option value="NORWAY">NORWAY</option>
-
                           <option value="NORWEGIAN ANTARCTIC TERRITORY">NORWEGIAN ANTARCTIC TERRITORY</option>
-
                           <option value="PAKISTAN">PAKISTAN</option>
-
                           <option value="PALAU">PALAU</option>
-
                           <option value="PALESTINE TERRITORY">PALESTINE TERRITORY</option>
-
                           <option value="PANAMA">PANAMA</option>
-
                           <option value="PAPUA NEW GUINEA">PAPUA NEW GUINEA</option>
-
                           <option value="PARAGUAY">PARAGUAY</option>
-
                           <option value="PEOPLES REPUBLIC OF CONGO">PEOPLES REPUBLIC OF CONGO</option>
-
                           <option value="PERU">PERU</option>
-
                           <option value="PHILIPPINES">PHILIPPINES</option>
-
                           <option value="PITCAIRN ISLAND">PITCAIRN ISLAND</option>
-
                           <option value="POLAND">POLAND</option>
-
                           <option value="PORTUGAL">PORTUGAL</option>
-
                           <option value="PUERTO RICO">PUERTO RICO</option>
-
                           <option value="QATAR">QATAR</option>
-
                           <option value="REPUBLIC OF KOREA">REPUBLIC OF KOREA</option>
-
                           <option value="REUNION">REUNION</option>
-
                           <option value="ROMANIA">ROMANIA</option>
-
                           <option value="RUSSIAN FEDERATION">RUSSIAN FEDERATION</option>
-
                           <option value="RWANDA">RWANDA</option>
-
                           <option value="S GEORGIA AND S SANDWICH ISLANDS">S GEORGIA AND S SANDWICH ISLANDS</option>
-
                           <option value="SAMOA">SAMOA</option>
-
                           <option value="SAN MARINO">SAN MARINO</option>
-
                           <option value="SAO TOME &amp; PRINCIPE">SAO TOME &amp; PRINCIPE</option>
-
                           <option value="SARK">SARK</option>
-
                           <option value="SAUDI ARABIA">SAUDI ARABIA</option>
-
                           <option value="SCATTERED ISLANDS">SCATTERED ISLANDS</option>
-
                           <option value="SENEGAL">SENEGAL</option>
-
                           <option value="SERBIA">SERBIA</option>
-
                           <option value="SEYCHELLES">SEYCHELLES</option>
-
                           <option value="SIERRA LEONE">SIERRA LEONE</option>
-
                           <option value="SINGAPORE">SINGAPORE</option>
-
                           <option value="SLOVAKIA">SLOVAKIA</option>
-
                           <option value="SLOVENIA">SLOVENIA</option>
-
                           <option value="SOLOMON ISLANDS">SOLOMON ISLANDS</option>
-
                           <option value="SOMALIA">SOMALIA</option>
-
                           <option value="SOUTH AFRICA">SOUTH AFRICA</option>
-
                           <option value="SPAIN">SPAIN</option>
-
                           <option value="SPANISH TERRITORY OF NORTH AFRICA">SPANISH TERRITORY OF NORTH AFRICA</option>
-
                           <option value="SPITZBERGEN">SPITZBERGEN</option>
-
                           <option value="SRI LANKA">SRI LANKA</option>
-
                           <option value="ST BARTHELEMY">ST BARTHELEMY</option>
-
                           <option value="ST HELENA">ST HELENA</option>
-
                           <option value="ST KITTS &amp; NEVIS">ST KITTS &amp; NEVIS</option>
-
                           <option value="ST LUCIA">ST LUCIA</option>
-
                           <option value="ST MARTIN">ST MARTIN</option>
-
                           <option value="ST PIERRE AND MIQUELON">ST PIERRE AND MIQUELON</option>
-
                           <option value="ST VINCENT &amp; GRENADINES">ST VINCENT &amp; GRENADINES</option>
-
                           <option value="SUDAN">SUDAN</option>
-
                           <option value="SULTANATE OF OMAN">SULTANATE OF OMAN</option>
-
                           <option value="SURINAM">SURINAM</option>
-
                           <option value="SVALBARD AND JAN MAYEN">SVALBARD AND JAN MAYEN</option>
-
                           <option value="SWAZILAND">SWAZILAND</option>
-
                           <option value="SWEDEN">SWEDEN</option>
-
                           <option value="SWITZERLAND">SWITZERLAND</option>
-
                           <option value="SYRIA">SYRIA</option>
-
                           <option value="TAHITI">TAHITI</option>
-
                           <option value="TAIWAN">TAIWAN</option>
-
                           <option value="TAJIKISTAN">TAJIKISTAN</option>
-
                           <option value="TANZANIA">TANZANIA</option>
-
                           <option value="THAILAND">THAILAND</option>
-
                           <option value="THE DEMOCRATIC REPUBLIC OF KOREA">THE DEMOCRATIC REPUBLIC OF KOREA</option>
-
                           <option value="THE PEOPLES REPUBLIC OF KOREA">THE PEOPLES REPUBLIC OF KOREA</option>
-
                           <option value="TIBET">TIBET</option>
-
                           <option value="TOGO">TOGO</option>
-
                           <option value="TOKELAU">TOKELAU</option>
-
                           <option value="TONGA">TONGA</option>
-
                           <option value="TRINIDAD AND TOBAGO">TRINIDAD AND TOBAGO</option>
-
                           <option value="TRISTAN DA CUNHA">TRISTAN DA CUNHA</option>
-
                           <option value="TUNISIA">TUNISIA</option>
-
                           <option value="TURKEY">TURKEY</option>
-
                           <option value="TURKMENISTAN">TURKMENISTAN</option>
-
                           <option value="TURKS AND CAICOS ISLANDS">TURKS AND CAICOS ISLANDS</option>
-
                           <option value="TUVALU">TUVALU</option>
-
                           <option value="UGANDA">UGANDA</option>
-
                           <option value="UKRAINE">UKRAINE</option>
-
                           <option value="UNITED ARAB EMIRATES">UNITED ARAB EMIRATES</option>
-
                           <option value="UNITED KINGDOM">UNITED KINGDOM</option>
-
                           <option value="UNITED STATES OF AMERICA">UNITED STATES OF AMERICA</option>
-
                           <option value="URUGUAY">URUGUAY</option>
-
                           <option value="US MINOR OUTLYING ISLANDS">US MINOR OUTLYING ISLANDS</option>
-
                           <option value="US VIRGIN ISLANDS">US VIRGIN ISLANDS</option>
-
                           <option value="UZBEKISTAN">UZBEKISTAN</option>
-
                           <option value="VANUATU">VANUATU</option>
-
                           <option value="VENEZUELA">VENEZUELA</option>
-
                           <option value="VIETNAM">VIETNAM</option>
-
                           <option value="WALLIS AND FUTUNA">WALLIS AND FUTUNA</option>
-
                           <option value="WESTERN SAHARA">WESTERN SAHARA</option>
-
                           <option value="YEMEN">YEMEN</option>
-
                           <option value="ZAMBIA">ZAMBIA</option>
-
                           <option value="ZIMBABWE">ZIMBABWE</option>
 
                         </select>
@@ -740,18 +636,14 @@
 <a href="/prototype-admin/clear-data">Clear data</a>
 </div>
 
-<script type="application/json" id="reference-form-validation">
+<script type="application/json" id="applicant-form-validation">
  {
-   "reference": {
+   "add-applicant": {
      "presence": {
-       "message": "^Enter your reference for this application"
-     },
-     "length": {
-       "minimum": 1,
-       "maximum": 25,
-       "message": "^Your reference must be 25 characters or less"
+       "message": "^Select applicant type"
      }
    }
+ }
 </script>
 
 
