@@ -254,8 +254,88 @@
       <h2 class="govuk-heading-l">Transactions</h2>
 
         <span class="govuk-caption-m" style="">Priority 1</span>
-        <h3 class="govuk-heading-m">Transfer for value (TR1)</h3>
+        <h3 class="govuk-heading-m">Discharge of charge</h3>
 
+        <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header govuk-!-width-one-quarter">Price/Value (£)</th>
+                <td class="govuk-table__cell">{{ data['PriceInput1'] }}</td>
+              </tr>
+
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header govuk-!-width-one-quarter">Fee (£)</th>
+                <td class="govuk-table__cell">{{ data['FeeInput1'] }}</td>
+              </tr>
+
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header govuk-!-width-one-quarter">Discharge method</th>
+                <td class="govuk-table__cell">Attached to this application</td>
+              </tr>
+        </tbody>
+        </table>
+
+        <div>
+        <h3 class="govuk-heading-m">Lender details</h3><a style="float: right; margin-top: -40px;" href="#">Change</a>
+        <table class="govuk-table">
+
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Lender name</th>
+              <th scope="col" class="govuk-table__header govuk-!-width-three-quarters">Represented by</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table_body">
+            {% if data['lender-name'] %}
+            <tr class="govuk-table_row">
+            <td class="govuk-table__cell">{{ data['lender-name'] }}</td>
+            <td class="govuk-table__cell govuk-!-width-one-third">
+               UK Conveyancer Ltd
+             </td>
+            </tr>
+            {% endif %}
+
+         {% if data['lender-name2'] %}
+         <tr class="govuk-table_row">
+         <td class="govuk-table__cell">{{ data['lender-name2'] }}</td>
+         <td class="govuk-table__cell govuk-!-width-one-third">
+            {% if not data['lenderReptype'] %}N/a{% endif %}
+            {% if data['lenderReptype'] %}{{ data['lenderReptype']}}{% endif %}
+          </td>
+         </tr>
+         {% endif %}
+         </tbody>
+         </table>
+         </div>
+         <br>
+
+             <table class="govuk-table govuk-!-margin-bottom-9">
+             <h2 class="govuk-heading-m">Attached documents</h2>
+               <thead class="govuk-table__head">
+                 <tr class="govuk-table__row">
+                   <th scope="col" class="govuk-table__header govuk-!-width-one-eighth">Category</th>
+                   <th scope="col" class="govuk-table__header govuk-!-width-one-third">Document type</th>
+                   <th scope="col" class="govuk-table__header govuk-!-width-one-eighth">Certification</th>
+                   <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">File name</th>
+                 </tr>
+               </thead>
+
+               <tbody class="govuk-table__body">
+                     <tr class="govuk-table__row">
+                       <td class="govuk-table__cell">Legal deed</td>
+                       <td class="govuk-table__cell">DS1</td>
+                       <td class="govuk-table__cell">Certified</td>
+                       <td class="govuk-table__cell">DS1.pdf</td>
+                     </tr>
+               </tbody>
+             </table>
+
+
+
+
+
+        <span class="govuk-caption-m" style="">Priority 2</span>
+        <h3 class="govuk-heading-m">Transfer for value (TR1)</h3>
+        <table class="govuk-table">
       <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header govuk-!-width-one-quarter">Price/Value (£)</th>
@@ -539,7 +619,7 @@
       </table>
 
       <table class="govuk-table govuk-!-margin-bottom-9">
-        <span class="govuk-caption-m" style="">Priority 2</span>
+        <span class="govuk-caption-m" style="">Priority 3</span>
           <h3 class="govuk-heading-m">Charge</h3>
 
         <tbody class="govuk-table__body">
