@@ -460,6 +460,26 @@ router.get('/docs/examples/pass-data/charge', function (req, res) {
   res.redirect('/../transactions/charge/tasks')
 })
 
+router.get('/docs/examples/pass-data/transfer', function (req, res) {
+	req.session.data = {
+    "reference": "JT/123/CH",
+    "title": "LP12345",
+    "whole-or-part": "Whole",
+    "part": "",
+    "Transaction1": "Transfer",
+    "PriceInput1": "120000",
+    "FeeInput1": "12",
+    "add-applicant": "individual",
+    "applicant-individual-forename": "John",
+    "applicant-individual-surname": "Smith",
+    "applicant2-individual-forename-2": "Jane",
+    "applicant2-individual-surname-2": "Smith",
+    "Transaction1": "Transfer for value (TR1)",
+    "Transaction": "T"
+}
+  res.redirect('/../transactions/transfer/transfer-tasks')
+})
+
 router.get('/docs/examples/pass-data/charge-DTC1', function (req, res) {
 	req.session.data = 	      		{
   "reference": "JT/123/CH",
@@ -674,7 +694,7 @@ router.post('/transactions/which-task-list', function (req, res) {
       } if (transaction === 'C') {
           res.redirect('/transactions/charge-without-transfer/charge-without-transfer-tasks')
       } if (transaction === 'T') {
-          res.redirect('/transactions/charge-without-transfer/charge-without-transfer-tasks')
+          res.redirect('/transactions/transfer/transfer-tasks')
       }
 
     })
