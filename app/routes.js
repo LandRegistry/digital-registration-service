@@ -971,6 +971,17 @@ router.post('/transactions/charge/documents/CH2-attached', function (req, res) {
     res.redirect('/charge/documents/document_prompts')
 })
 
+// TR1 enhancement - routing
+// 
+// router.post('/transactions/transfer/check-transferees', function (req, res) {
+//   let transaction3 = req.session.data['Transaction3']
+//   if (transaction3 != ''){
+//   req.session.data['dischargeAttached'] = 'true';
+//       res.redirect('/transactions/charge/tasks')
+//   } else {
+//   req.session.data['dischargeAttached'] = 'true';
+//     res.redirect('/../transactions/tasks') }
+
 // Back links
 
 
@@ -998,6 +1009,7 @@ router.post('/transactions/charge-without-transfer/charge-without-transfer-detai
       res.redirect('charge-without-transfer-borrower-list')
     }
 })
+
 
 // Borrower names
 // Display borrower names
