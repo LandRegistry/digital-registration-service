@@ -7,7 +7,6 @@
 {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
 {% from "govuk/components/input/macro.njk" import govukInput %}
-{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
 
 
 
@@ -46,56 +45,48 @@
     </div>
     </div>
 
-    <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-column-full">
         <span class="govuk-caption-xl">Transfer for value (TR1)</span>
-        <h1 class="govuk-heading-xl">Declaration of trust</h1>
+        <h1 class="govuk-heading-xl">Select title guarantee</h1>
 
         <form action="/transactions/transfer/" method="post">
-          {% set trustDetailsHtml %}
-          {{ govukTextarea({
-            id: "trustDetails",
-            name: "trust-Details",
-            rows: "6",
-            classes: "govuk-!-width-three-quarters"
-          }) }}
-          {% endset -%}
 
-          {{ govukRadios({
-            idPrefix: "trust-conditional",
-            name: "transferTrust",
-            fieldset: {
-              legend: {
-                text: "The transferees are to hold the property:",
-                isPageHeading: false,
-                classes: "govuk-fieldset__legend--m"
-              }
-            },
-            hint: {
-              text: "Select one option."
-            },
-            items: [
-              {
-                value: "jointTenants",
-                text: "on trust for themselves as joint tenants"
-              },
-              {
-                value: "equalShares",
-                text: "on trust for themselves as tenants in  common equal shares"
-              },
-              {
-                value: "trustDetails",
-                text: "on trust - I will provide details",
-                conditional: {
-                  html: trustDetailsHtml
-                }
-              },
-              {
-                value: "trustAttached",
-                text: "on trust - I will attach Form JO (link opens in new window)"
-              }
-            ]
-          }) }}
+          <p class="govuk-body"> Select whether the transferor gives full or limited title guarantee with the transfer.</p>
 
+        {{ govukRadios({
+          idPrefix: "guarantee",
+          name: "title-guarantee",
+          fieldset: {
+          },
+          items: [
+            {
+              value: "full",
+              text: "full title guarantee"
+            },
+            {
+              value: "limited",
+              text: "limited title guarantees"
+            }
+          ]
+        }) }}
+
+
+
+        <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            What are full and limited title guarantees?
+          </span>
+        </summary>
+          <div class="govuk-details__text">
+          Full title guarantee: the transferor(s) guarantee, to the best of their knowledge, that there are no financial charges/encumbrances
+          (such as mortgages) or other third party interests (such as rights of way/leases) which affect the property other than those already revealed
+          to the transferee(s)
+          <br><br>
+          Limited title guarantee: a more restricted set of promises by the transferor(s). This guarantees that the transferor(s) have
+          not themselves created, or allowed to be created, any charge, encumbrance or third party interest that still exists at the date of the transfer.
+          </div>
+          </details>
 
 
 
@@ -104,8 +95,7 @@
            </button>
 
          </form>
-         </div>
-         <div class="govuk-grid-column-full">
+
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 <br>
