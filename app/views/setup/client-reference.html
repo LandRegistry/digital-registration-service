@@ -49,11 +49,11 @@
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
 
+<form method="get" action="selectApplicationType" data-validate="reference-form-validation" novalidate>
   <span class="govuk-caption-l">Apply to update or create a registered title</span>
-
   <h1 class="govuk-heading-l"> Enter your reference </h1>
 
-  <form method="get" action="selectApplicationType" data-validate="reference-form-validation" novalidate>
+
     <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
       <div class="govuk-form-group">
         <label class="govuk-label" for="with-hint">
@@ -90,11 +90,6 @@
 </div>
 
 
-
-
-{% endblock %}
-
-
   <script type="application/json" id="reference-form-validation">
    {
      "reference": {
@@ -109,6 +104,10 @@
      }
    }
  </script>
+
+
+{% endblock %}
+
 
 {% block footer %}
 {% endblock %}

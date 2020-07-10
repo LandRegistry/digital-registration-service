@@ -147,7 +147,7 @@ function errorSummary(errors) {
     }
   }
 
-  document.querySelector('h1').parentNode.insertBefore(newErrorSummary, document.querySelector('h1'))
+  document.querySelector('span.govuk-caption-l').parentNode.insertBefore(newErrorSummary, document.querySelector('span.govuk-caption-l'))
 
   newErrorSummary.focus()
 }

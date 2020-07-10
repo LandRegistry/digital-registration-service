@@ -1,0 +1,182 @@
+{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
+{%- set assetPath = '/govuk/assets' -%}
+
+{% extends "govuk/template.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+
+{% block headIcons %}
+  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
+  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
+{% endblock %}
+
+{% block head %}
+  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full" id="headerdiv">
+    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
+    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Apply to update or create a registered title</a></p>
+    <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
+
+
+    <div class="govuk-phase-banner">
+        <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
+        <span class="govuk-phase-banner__text">
+        This is a prototype and not a real service.
+        </span></p>
+    </div>
+    </div>
+    </div>
+
+
+    <main class="govuk-main-wrapper " id="main-content" role="main">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-xl">Digital Registration Service</span>
+    <h1 class="govuk-heading-xl"> Accessibility statement </h1>
+
+    <p class="govuk-body">This website is run by HM Land Registry. We want as many people as possible to be able to use it. For example, that means you should be able to:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>change colours, contrast levels and fonts</li>
+        <li>zoom in up to 200% without the text spilling off the screen</li>
+      	<li>navigate most of the website using just a keyboard</li>
+      	<li>navigate most of the website using speech recognition software</li>
+      	<li>listen to most of the website using a screen reader (including the most recent versions of JAWS, NVDA and VoiceOver)</li>
+      </ul>
+
+    <p class="govuk-body">
+      We’ve also made the website text as simple as possible to understand. <br><br>
+
+    <a class="govuk-link" href="https://mcmw.abilitynet.org.uk/">AbilityNet</a> has advice on making your device easier to use if you have a disability.</p>
+
+    <h2 class="govuk-heading-l">How accessible is this website?</h2>
+    <p class="govuk-body"> We know some parts of this website aren’t fully accessible. For example:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>it’s not always possible to return to the homepage</li>
+      <li>some headings are clipped at high magnification sizes</li>
+      <li>some button colours are not consistent</li>
+      <li>some link highlighting is not consistent</li>
+      <li>some radio buttons don’t behave as intended</li>
+    </ul>
+
+    <h2 class="govuk-heading-l">What to do if you can’t access parts of this website</h2>
+    <p class="govuk-body">If you need information on this website in a different format like accessible PDF, large print, easy read, audio recording or braille, make a request using these details:</p>
+      <ul class="govuk-list govuk-list--bullet">
+          <li>phone on 0300 006 0411 </li>
+          <li>post at HM Land Registry Citizen Centre, PO Box 74, Gloucester, GL14 9BB</li>
+          <li><a href="https://www.gov.uk/guidance/contact-hm-land-registry">online</a></li>
+    </ul>
+
+    <br>
+    <p class="govuk-body"> We’ll consider your request and get back to you within 5 days.</p>
+
+    <h2 class="govuk-heading-l">Reporting accessibility problems with this website</h2>
+    <p class="govuk-body">We’re always trying to improve the accessibility of this website. If you find any problems that aren’t listed on this page or if you think we’re not meeting accessibility standards, contact the Customer Services Centre using these details:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>phone on 0300 006 0411</li>
+      <li>post at HM Land Registry Citizen Centre, PO Box 74, Gloucester, GL14 9BB</li>
+      <li><a href="https://www.gov.uk/guidance/contact-hm-land-registry">online</a></li>
+    </ul>
+
+    <h2 class="govuk-heading-l">Enforcement procedure</h2>
+    <p class="govuk-body">The Equality and Human Rights Commission (EHRC) is responsible for enforcing the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018 (the ‘accessibility regulations’).
+      If you’re not happy with how we respond to your complaint, contact the <a href="https://www.equalityadvisoryservice.com/">Equality Advisory and Support Service (EASS)</a>.</p>
+
+    <h2 class="govuk-heading-l">Contact us by phone or visit us in person</h2>
+    <p class="govuk-body">We provide a text relay service for people who are D/deaf, hearing impaired or have a speech impediment.<br><br>
+      Our offices have audio induction loops. Contact us before your visit if you need a British Sign Language (BSL) interpreter.<br><br>
+
+    <a class="govuk-link" href="https://www.gov.uk/guidance/contact-hm-land-registry"> Find out how to contact us</a></p>
+
+  <br>
+    <h2 class="govuk-heading-l">Technical information about this website’s accessibility</h2>
+    <p class="govuk-body">HM Land Registry is committed to making its website accessible,
+    in accordance with the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018.</p>
+
+    <p class="govuk-body">This website is partially compliant with the <a href="https://www.w3.org/TR/WCAG21/">Web Content Accessibility Guidelines version 2.1</a> AA standard. </p>
+
+    <h2 class="govuk-heading-l">Non-accessible content</h2>
+    <p class="govuk-body">The content listed below is non-accessible for the following reasons.</p>
+
+    <h3 class="govuk-heading-m">Non-compliance with the accessibility regulations</h3>
+    <ul class="govuk-list">
+      <li>Users cannot return to the start of the journey once they have begun. This fails WCAG 2.1 AA criterion 2.4.5 (Multiple Ways).</li>
+      <br>
+      <li>Some headings appear clipped. This fails WCAG 2.1 AA criterion 1.4.10 (Reflow). </li>
+      <br>
+      <li>The red delete button sometimes appears green when tabbing through the page. This fails WCAG 2.1 AA criterion 3.2.1 (On Focus). </li>
+      <br>
+      <li>The highlight colour shown when using the tab key to navigate through links is sometimes inconsistent. This fails WCAG 2.1 AA criterion 2.4.7 (Focus Visible). </li>
+      <br>
+      <li>Some parts of the ‘Select lender representation’ function will not be visible to screen readers. This fails WCAG 2.1 A criterion 4.1.1 (Validate the HTML). </li>
+      <br>
+      <li>Some selected radio buttons do not remain selected when returned to. This fails WCAG 2.1 AA criterion 3.2.3 (Consistent Navigation). </li>
+      <br>
+      <li>In a few instances, users are not informed that links will open in a new window or tab. This fails WCAG 2.1 AA criterion 2.4.4 (Link Purpose). </li>
+      <br>
+      <li>Some tables do not have captions to help those using assistive technology. This fails WCAG 2.1 AA criterion 1.3.2 (Meaningful Sequence). </li>
+
+    </ul>
+
+    <h3 class="govuk-heading-m">Disproportionate burden</h3>
+      <p class="govuk-body">It is not considered that any aspect of HM Land Registry’s services will fall into this category.  Areas of non-compliance with the guidelines are detailed in other sections of this statement.</p>
+
+    <h3 class="govuk-heading-m">Content that’s not within the scope of the accessibility regulations</h3>
+      <h4 class="govuk-heading-s">PDFs and other documents</h4>
+      <p class="govuk-body"> The <a href="http://www.legislation.gov.uk/uksi/2018/952/regulation/4/made">accessibility regulations</a> do not require us to fix PDFs or other documents published before 23 September 2018 if they’re not essential to providing our services. For example, we do not plan to fix <a href="https://www.gov.uk/government/publications/transfer-under-a-chargees-power-of-sale">Transfer under a chargee’s power of sale (PG75)</a>.</p>
+
+    <h2 class="govuk-heading-l">How we tested this website</h2>
+      <p class="govuk-body">This website was last tested on 1 May 2020. Tests were carried out by an independent internal audit team using a purpose-built test suite.
+
+      We aim to fix the reported defects by 30 September 2020.</p>
+
+    <h2 class="govuk-heading-l">What we’re doing to improve accessibility</h2>
+      <p class="govuk-body">We've written this statement based on the defects found on 1 May 2020. As we are still building this service, we'll continue to test it and all new pages. We'll update this statement as we find or fix any defects.</p>
+      <br>
+      <br>
+      <p class="govuk-body">This statement was prepared on 1 July 2020. </p>
+
+    </div>
+  </div>
+  </main>
+
+<footer>
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-full-width">
+
+<hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
+<br>
+<p class="govuk-body-s"> The following links open in a new window
+<br>
+<br>
+<a href="#"> Terms and conditions</a> | <a href="/setup/accessibility-statement">Accessibility statement</a> |  <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
+
+</div>
+</div>
+</footer>
+
+
+
+
+
+{% endblock %}
+
+
+{% block footer %}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}
