@@ -1,0 +1,302 @@
+
+{% extends "layout_unbranded.html" %}
+    {% from "govuk/components/accordion/macro.njk" import govukAccordion %}
+    {% from "govuk/components/radios/macro.njk" import govukRadios %}
+    {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+
+{% block pageTitle %}
+Application saved
+{% endblock %}
+
+{% block beforeContent %}
+<br>
+<br>
+
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full" id="headerdiv">
+    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
+
+    <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
+
+
+  <div class="govuk-phase-banner">
+      <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
+      <span class="govuk-phase-banner__text">
+      This is a prototype and not a real service.
+      </span></p>
+  </div>
+  </div>
+</div>
+
+<form method="post">
+    <div class="govuk-grid-column-full govuk-!-margin-top-5">
+        <div class="govuk-panel govuk-panel--confirmation">
+            <h1 class="govuk-panel__title">
+              Your application has been saved
+            </h1>
+            <div class="govuk-panel__body">
+              Your reference<br><strong>JT/123/TR1</strong>
+            </div>
+        </div>
+        <div class="govuk-grid-column-full govuk-!-margin-top-5" style="">
+          <p> Your <a class="govuk-link" href="saved-applications">saved applications</a> are available for 90 days. </p>
+
+          <p><a class="govuk-link" href="/setup/app-start"> Start a new application </a></p>
+
+          <p><a class="govuk-link" href="#">Go to portal homepage</a> for other HM Land Registry Services.</p>
+      </div>
+  </div>
+
+
+</form>
+
+<div class="govuk-grid-column-full govuk-!-margin-top-6">
+  
+
+    <hr id="break" style="display: none; height: 8px;  background-color: #B5D306; border: none;">
+
+
+    <button class="feedback-accordion govuk-!-margin-top-5" id="surveylink" onclick="myFunction()">Help us improve this service</button>
+    <button class="feedback-accordion govuk-!-margin-top-5" id="close" style=" display: none; float: right;" onclick="closediv()">Close</button>
+
+    <div class="govuk-grid-column-two-thirds" id="myDIV" style="display: none">
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-6">Help us improve Digital Registration Service</h2>
+
+
+      <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset govuk-!-margin-top-5">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+              <h1 class="govuk-fieldset__heading">
+                    How easy or difficult is the service to use (compared with what you’re used to)?
+                  </h1>
+                </legend>
+                <div class="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="difficulty" name="difficulty" type="radio" value="very-easy">
+                    <label class="govuk-label govuk-radios__label" for="difficulty">
+                      Very easy
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="difficulty-2" name="difficulty" type="radio" value="easy">
+                    <label class="govuk-label govuk-radios__label" for="difficulty-2">
+                      Quite easy
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="difficulty-3" name="difficulty" type="radio" value="quite-difficult">
+                    <label class="govuk-label govuk-radios__label" for="difficulty-3">
+                      Difficult
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="difficulty-4" name="difficulty" type="radio" value="very-difficult">
+                    <label class="govuk-label govuk-radios__label" for="difficulty-4">
+                      Very difficult
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+
+
+              <fieldset class="govuk-fieldset govuk-!-margin-top-5">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                  <h1 class="govuk-fieldset__heading">
+                        How much time do you think the service will save you, if any (compared with what you’re used to)?
+                      </h1>
+                    </legend>
+                    <div class="govuk-radios">
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="time-saved" name="time" type="radio" value="lots">
+                        <label class="govuk-label govuk-radios__label" for="time-saved">
+                          A lot
+                        </label>
+                      </div>
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="time-saved-2" name="time" type="radio" value="bit">
+                        <label class="govuk-label govuk-radios__label" for="time-saved-2">
+                          A bit
+                        </label>
+                      </div>
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="time-saved-3" name="time" type="radio" value="none">
+                        <label class="govuk-label govuk-radios__label" for="time-saved-3">
+                          None
+                        </label>
+                      </div>
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="time-saved-4" name="time" type="radio" value="longer">
+                        <label class="govuk-label govuk-radios__label" for="time-saved-4">
+                          It will take longer
+                        </label>
+                      </div>
+                    </div>
+                  </fieldset>
+
+                  <fieldset class="govuk-fieldset govuk-!-margin-top-5">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                      <h1 class="govuk-fieldset__heading">
+                            Did you understand what to do on every page?
+                          </h1>
+                        </legend>
+                        <div class="govuk-radios">
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="understand" name="understanding" type="radio" value="always">
+                            <label class="govuk-label govuk-radios__label" for="understand">
+                              Always
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="understand-2" name="understanding" type="radio" value="usually">
+                            <label class="govuk-label govuk-radios__label" for="understand-2">
+                              Usually
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="understand-3" name="understanding" type="radio" value="sometimes">
+                            <label class="govuk-label govuk-radios__label" for="understand-3">
+                              Sometimes
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="understand-4" name="understanding" type="radio" value="rarely">
+                            <label class="govuk-label govuk-radios__label" for="understand-4">
+                              Rarely
+                            </label>
+                          </div>
+                        </div>
+                      </fieldset>
+
+                      <fieldset class="govuk-fieldset govuk-!-margin-top-5">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                          <h1 class="govuk-fieldset__heading">
+                              How well do you think the service helps you to avoid requisitions?
+                              </h1>
+                            </legend>
+                            <div class="govuk-radios">
+                              <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="requisitions" name="understanding" type="radio" value="lot">
+                                <label class="govuk-label govuk-radios__label" for="requisitions">
+                                  A lot
+                                </label>
+                              </div>
+                              <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="requisitions-2" name="understanding" type="radio" value="bit">
+                                <label class="govuk-label govuk-radios__label" for="requisitions-2">
+                                  A bit
+                                </label>
+                              </div>
+                              <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="requisitions-3" name="understanding" type="radio" value="not">
+                                <label class="govuk-label govuk-radios__label" for="requisitions-3">
+                                  Not at all
+                                </label>
+                              </div>
+
+                            </div>
+                          </fieldset>
+
+                          <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--s" for="more-detail">
+                          Could this service be improved?
+                          </label>
+
+                          </h1>
+                          <span id="more-detail-hint" class="govuk-hint">
+                            If you found a problem or have an idea for improvement, please tell us about it.
+                          </span>
+                          <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
+                          <p class="govuk-body">(Limit is 1200 characters)</p>
+
+
+                          <button class="govuk-button" id="submitsurvey" onclick="submit()" data-module="govuk-button">
+                          Submit
+                          </button>
+
+            <!-- form group -->    </div>
+            <!-- survey div -->     </div>
+            <!-- grid row -->              </div>
+
+    <div class="govuk-grid-column-full">
+    <p class="govuk-body govuk-!-font-weight-bold" style="display: none" id="thanks">Thank you for your feedback</p>
+    </div>
+
+    <div class="govuk-grid-column-full">
+    <hr class="govuk-!-margin-top-5" style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
+    <br>
+    <p class="govuk-body-s"> The following links open in a new window
+    <br>
+    <br>
+    <a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
+    <a href="/prototype-admin/clear-data">Clear data</a>
+    </div>
+    </div>
+
+
+
+
+      <script>
+      function myFunction() {
+      var survey = document.getElementById("myDIV");
+      var line = document.getElementById("break");
+      var link = document.getElementById("surveylink");
+      var close = document.getElementById("close")
+
+      if (survey.style.display == "none" && line.style.display == "none") {
+          survey.style.display = "block";
+          line.style.display = "block";
+          close.style.display = "block";
+          link.style.display = "none";
+      }}
+
+      function closediv() {
+      var survey = document.getElementById("myDIV");
+      var line = document.getElementById("break");
+      var link = document.getElementById("surveylink");
+      var close = document.getElementById("close");
+
+      if (close.style.display == "block") {
+          survey.style.display = "none";
+          line.style.display = "none";
+          link.style.display = "block";
+          close.style.display = "none";
+      }
+
+    }
+
+    function submit() {
+    var survey = document.getElementById("myDIV");
+    var line = document.getElementById("break");
+    var link = document.getElementById("surveylink");
+    var close = document.getElementById("close");
+    var button = document.getElementById("submitsurvey")
+    var thanks = document.getElementById("thanks")
+
+    if (close.style.display == "block") {
+        survey.style.display = "none";
+        line.style.display = "none";
+        link.style.display = "none";
+        close.style.display = "none";
+        thanks.style.display = "block"
+    }
+
+  }
+
+
+    </script>
+
+</div>
+
+
+    <style>
+      .closebutton {
+        font-size: 100px;
+
+      }
+    </style>
+{% endblock %}
