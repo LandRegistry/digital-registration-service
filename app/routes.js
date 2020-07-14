@@ -905,28 +905,25 @@ router.post('/transactions/discharge/discharge-attached', function (req, res) {
     res.redirect('/../transactions/tasks') }
 })
 
-
 router.post('/transferee-list-complete', function (req, res) {
-  let transaction3 = req.session.data['Transaction3']
-  if (transaction3 != '') {
+  let transaction1 = req.session.data['Transaction1']
+  if (transaction1 != 'Transfer for value (TR1)'){
   req.session.data['transfereelistcomplete'] = 'true';
-    res.redirect('/../transactions/charge/tasks')
-} else {
+      res.redirect('/transactions/charge/tasks')
+  } else {
   req.session.data['transfereelistcomplete'] = 'true';
-    res.redirect('/../transactions/tasks')
-}
+    res.redirect('/../transactions/transfer/transfer-tasks') }
 })
+
 
 router.post('/transactions/transfer/transferee-whichapplicants-answer', function (req, res){
   req.session.data["transfereesnone"]
-
-
 })
 
-router.post('/transactions/transfer/select-transferees-confirmed', function (req, res) {
-  req.session.data['transfereesConfirmed'] = 'true';
-    res.redirect('/../transactions/tasks')
-})
+// router.post('/transactions/transfer/select-transferees-confirmed', function (req, res) {
+//   req.session.data['transfereesConfirmed'] = 'true';
+//     res.redirect('/../transactions/tasks')
+// })
 
 
 // Charge documents/tags
@@ -971,6 +968,17 @@ router.post('/transactions/charge/documents/CH2-attached', function (req, res) {
     res.redirect('/charge/documents/document_prompts')
 })
 
+// TR1 enhancement - routing
+//
+// router.post('/transactions/transfer/check-transferees', function (req, res) {
+//   let transaction3 = req.session.data['Transaction3']
+//   if (transaction3 != ''){
+//   req.session.data['dischargeAttached'] = 'true';
+//       res.redirect('/transactions/charge/tasks')
+//   } else {
+//   req.session.data['dischargeAttached'] = 'true';
+//     res.redirect('/../transactions/tasks') }
+
 // Back links
 
 
@@ -998,6 +1006,7 @@ router.post('/transactions/charge-without-transfer/charge-without-transfer-detai
       res.redirect('charge-without-transfer-borrower-list')
     }
 })
+
 
 // Borrower names
 // Display borrower names
