@@ -764,13 +764,13 @@ router.post('/transactions/charge/MDyes', function (req, res) {
 })
 
 router.post('/transactions/charge-without-transfer/borrower-representation-answer', function (req, res) {
-      let borrowerRep = req.session.data['Borrower1Representation']
-      if (borrowerRep === 'NotRepresented') {
-          req.session.data['borrowerReptype'] = 'Not represented';
-          res.redirect('/borrower-verify')
+      let borrowerRep = req.session.data['Borrower1Representation'] //variable req data from name
+      if (borrowerRep === 'NotRepresented') { // if variable equals value
+          req.session.data['borrowerReptype'] = 'Not represented'; // set variable to 'Not represented'
+          res.redirect('/borrower-verify') // redirect user to verify screen
       } else {
         req.session.data['borrowerReptype'] = 'UK Conveyancers Ltd';
-        res.redirect('/transactions/charge-without-transfer/borrower-representationAdd2')
+        res.redirect('/transactions/charge-without-transfer/borrower-representation')
       }
 })
 

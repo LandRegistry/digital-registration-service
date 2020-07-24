@@ -47,7 +47,7 @@
     </div>
 
 <div class="govuk-grid-column-full">
-  <a href="transactions/charge-tasks" class="govuk-back-link">Return to task list</a>
+  <a href="transactions/charge-without-transfer-tasks" class="govuk-back-link">Return to task list</a>
     <span class="govuk-caption-l">Charge</span>
     <h1 class="govuk-heading-l">Borrower representation</h1>
     <p class="govuk-body-m">Select 'Add representation' and enter the details for each borrower.</p>
@@ -67,15 +67,15 @@
 
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">Private individual</td>
-          <td class="govuk-table__cell">{{ data['borrowerDetails1'] }}</td>
+          <td class="govuk-table__cell">{{ data['borrower1'] }}</td>
           <td class="govuk-table__cell">{% if not data['borrowerReptype'] %}- No representation added - {% endif %} {% if data['borrowerReptype'] %} UK Conveyancers Ltd {% endif %}</td>
           <td class="govuk-table__cell">{% if not data['borrowerReptype'] %}<a href="borrower-representationAdd">Add representation</a>{% endif %} {% if data['borrowerReptype'] %}<a href="">Remove</a><a href=""></a>{% endif %}</td>
         </tr>
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">Private individual</td>
-          <td class="govuk-table__cell">{{ data['borrowerDetails2'] }}</td>
+          <td class="govuk-table__cell">{{ data['borrower2'] }}</td>
           <td class="govuk-table__cell">{% if not data['borrowerReptype2'] %}- No representation added - {% endif %} {% if data['borrowerReptype2'] %} UK Conveyancers Ltd {% endif %}</td>
-          <td class="govuk-table__cell">{% if not data['borrowerReptype2'] %}<a href="">Add representation</a>{% endif %}{% if data['borrowerReptype2'] %}<a href="">Remove</a>{% endif %}</td>
+          <td class="govuk-table__cell">{% if not data['borrowerReptype2'] %}<a href="borrower-representationAdd2">Add representation</a>{% endif %}{% if data['borrowerReptype2'] %}<a href="">Remove</a>{% endif %}</td>
         </tr>
 
       </tbody>
