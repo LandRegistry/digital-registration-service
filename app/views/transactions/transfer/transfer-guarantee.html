@@ -3,12 +3,13 @@
 
 {% extends "govuk/template.njk" %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
-{% from "govuk/components/input/macro.njk" import govukInput %}
-{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
-{% from "govuk/components/select/macro.njk" import govukSelect %}
-{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
-{% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+
+
 
 
 {% block headIcons %}
@@ -35,7 +36,7 @@
     <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 
 
-    <div class="govuk-phase-banner">
+    <div class="govuk-phase-banner govuk-!-margin-bottom-5">
         <p class="govuk-phase-banner__content">
         <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
         <span class="govuk-phase-banner__text">
@@ -43,43 +44,59 @@
         </span></p>
     </div>
     </div>
-</div>
 
-    <main class="govuk-main-wrapper " id="main-content" role="main">
-        <div class="govuk-grid-row">
-            <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-column-full">
+        <span class="govuk-caption-xl">Transfer for value (TR1)</span>
+        <h1 class="govuk-heading-xl">Select title guarantee</h1>
 
-<form method="get" action="enter-title" data-validate="reference-form-validation" novalidate>
-  <span class="govuk-caption-l">Apply to update or create a registered title</span>
-  <h1 class="govuk-heading-l"> Enter your reference </h1>
+        <form action="/transactions/transfer/" method="post">
 
+          <p class="govuk-body"> Select whether the transferor gives full or limited title guarantee with the transfer.</p>
 
-    <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
-      <div class="govuk-form-group">
-        <label class="govuk-label" for="with-hint">
-          Type in your reference for this application
-        </label>
-
-        <input type="text" class="govuk-input govuk-js-character-count govuk-!-width-one-half" id="with-hint" name="reference" aria-describedby="with-hint-info with-hint-hint">
-      </div>
-
-      <span id="with-hint-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
-        You can enter up to 25 characters
-      </span>
-    </div>
-
-
-    {{ govukButton({
-      text: "Continue"
-    }) }}
-  </form>
-  </div>
-  </div>
+        {{ govukRadios({
+          idPrefix: "guarantee",
+          name: "title-guarantee",
+          fieldset: {
+          },
+          items: [
+            {
+              value: "full",
+              text: "full title guarantee"
+            },
+            {
+              value: "limited",
+              text: "limited title guarantees"
+            }
+          ]
+        }) }}
 
 
 
-<div class="govuk-grid-row">
-  <div class="govuk-column-width-full">
+        <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            What are full and limited title guarantees?
+          </span>
+        </summary>
+          <div class="govuk-details__text">
+          Full title guarantee: the transferor(s) guarantee, to the best of their knowledge, that there are no financial charges/encumbrances
+          (such as mortgages) or other third party interests (such as rights of way/leases) which affect the property other than those already revealed
+          to the transferee(s)
+          <br><br>
+          Limited title guarantee: a more restricted set of promises by the transferor(s). This guarantees that the transferor(s) have
+          not themselves created, or allowed to be created, any charge, encumbrance or third party interest that still exists at the date of the transfer.
+          </div>
+          </details>
+
+
+
+           <button class="govuk-button" data-module="govuk-button">
+             Continue
+           </button>
+
+         </form>
+
+
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 <br>
 <p class="govuk-body-s"> The following links open in a new window
@@ -90,24 +107,7 @@
 </div>
 
 
-  <script type="application/json" id="reference-form-validation">
-   {
-     "reference": {
-       "presence": {
-         "message": "^Enter your reference for this application"
-       },
-       "length": {
-         "minimum": 1,
-         "maximum": 25,
-         "message": "^Your reference must be 25 characters or less"
-       }
-     }
-   }
- </script>
-
-
 {% endblock %}
-
 
 {% block footer %}
 {% endblock %}
