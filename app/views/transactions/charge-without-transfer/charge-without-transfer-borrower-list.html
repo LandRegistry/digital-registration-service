@@ -57,7 +57,7 @@
             consistent with supporting documents, select ‘Continue’.  </p>
 
 
-          <form method="post" action="/transactions/charge-without-transfer/borrower-check-name" novalidate>
+          <form method="post" action="/transactions/charge-without-transfer/borrower-representation" novalidate>
 
 
             <table class="govuk-table">
@@ -83,7 +83,9 @@
 
                         {% elif (data['Borrower1Status'] !== 'removed') or (data['Borrower1Status'] !== 'amended') %}
                         <p>{{ data['borrower1'] }}</p>
+
                         {% endif %}
+
                      </td>
 <!-- Borrower status equals removed, it will display the name variable with 'removed', if it DOESN'T = removed or amended, it will display the name variable.<-->
 
@@ -92,7 +94,7 @@
                           <a href="charge-without-transfer-borrower-details">Amend / Remove</a>
 
                           {% elif (data['Borrower1Status'] == 'removed') %}
-                          <a id="undobutton" href="#" onclick="undo()">Undo remove</a>
+                          <a id="undoButton" href="charge-without-transfer-borrower-list" onclick="undo()">Undo remove</a>
                           {% endif %}
                     </td>
                     </tr>
