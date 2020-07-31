@@ -270,10 +270,11 @@ router.post('/transactions/charge/mdrefanswer', function (req, res) {
 
 // Discharge method
 router.post('/transactions/discharge/method-answer', function (req, res) {
-
-                                            // Name of input
+                                    // Name of input
   let dischargeMethod = req.session.data['dischargemethod']
   let transaction3 = req.session.data['Transaction3']
+  let transaction2 = req.session.data['Transaction2']
+  let transactioncode = req.session.data['Transaction']
 
   if (transaction3 != '') {
   if (dischargeMethod === 'form') {
@@ -286,20 +287,18 @@ router.post('/transactions/discharge/method-answer', function (req, res) {
 
   } if (dischargeMethod === 'later') {
     req.session.data['discharge-method'] = 'Later';
-    res.redirect('/transactions/charge/tasks')
+    res.redirect('/transactions/charge/tasks') }
+  } else {req.session.data['discharge-method'] = 'Form';
+    res.redirect('/transactions/tasks')
+
+    } if (dischargeMethod === 'direct') {
+    req.session.data['discharge-method'] = 'Direct';
+    res.redirect('/transactions/tasks')
+
+    } if (dischargeMethod === 'later') {
+    req.session.data['discharge-method'] = 'Later';
+    res.redirect('/transactions/tasks')
   }
-} else {req.session.data['discharge-method'] = 'Form';
-res.redirect('/transactions/tasks')
-
-} if (dischargeMethod === 'direct') {
-req.session.data['discharge-method'] = 'Direct';
-res.redirect('/transactions/tasks')
-
-} if (dischargeMethod === 'later') {
-req.session.data['discharge-method'] = 'Later';
-res.redirect('/transactions/tasks')
-}
-
 })
 
 router.post('/transactions/discharge/lendernameadded', function (req, res) {
@@ -657,7 +656,7 @@ router.post('/transactions/charge-transactions', function (req, res) {
       }   if (transaction1 === 'Transfer for value (TR1)' && transaction2 === 'Select a transaction from the list' && transaction3 === 'Select a transaction from the list') {
             req.session.data['Transaction'] = 'T';
             res.redirect('/transactions/add-applicants')
-// set borrower names
+// set transaction code
       }  if (transaction1 === 'Charge') {
             req.session.data['Transaction'] = 'C';
 
@@ -695,6 +694,8 @@ router.post('/transactions/which-task-list', function (req, res) {
           res.redirect('/transactions/charge-without-transfer/charge-without-transfer-tasks')
       } if (transaction === 'T') {
           res.redirect('/transactions/transfer/transfer-tasks')
+      } if (transaction === 'DT') {
+          res.redirect('/transactions/DT-tasks')
       }
 
     })
