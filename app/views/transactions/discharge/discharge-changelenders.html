@@ -54,38 +54,25 @@
 
 
 
-        <form method="post" action="/transactions/discharge/lendernameadded">
+        <form method="post" action="lender-list">
         <div class="govuk-form-group">
         <fieldset class="govuk-fieldset">
 
                   <span class="govuk-caption-l">Discharge of charge</span>
             <h1 class="govuk-heading-l">
-            Lenders
+              Change lender
             </h1>
-            <p class="govuk-body"> You can add or remove lenders. Select 'Continue' when the list is complete. </p>
-            <h2 class="govuk-heading-m">Lenders added</h2>
 
-            <table class="govuk-table">
-            <thead class="govuk-table__head">
-              <tr class="govuk-table__row">
-                <th scope="col" class="govuk-table__header govuk-!-width-three-quarters">Lender name</th>
-                <th scope="col" class="govuk-table__header">Options</th>
-              </tr>
-            </thead>
-            <tbody class="govuk-table__body">
-              <tr class="govuk-table__row">
-                <td scope="row" class="govuk-table__cell">{{ data['lender-name'] }}</td>
-                <td class="govuk-table__cell"><a href="discharge-changelenders.html">Change</a><br><a href="">Remove</a></td>
-              </tr>
-              {% if data['lender-name2'] %}
-              <tr class="govuk-table__row">
-                <td scope="row" class="govuk-table__cell">{{ data['lender-name2'] }}</td>
-                <td class="govuk-table__cell"><a href="">Change</a><br><a href="">Remove</a></td>
-              </tr>
-              {% endif %}
-            </tbody>
-          </table>
-          <a href="discharge-lenders2">Add lender</a>
+
+            {{ govukInput({
+            label: {
+              text: "Lender name"
+            },
+            id: "lender-name-1",
+            classes: "govuk-input--width-20",
+            name: "lender-name"
+}) }}
+
           <br>
     <br>
 
@@ -98,7 +85,7 @@
     </div>
 
 
-
+</form>
 </main>
 
 
