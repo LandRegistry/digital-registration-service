@@ -802,13 +802,22 @@ router.post('/transactions/charge-without-transfer/borrower2-representation-answ
 
 router.post('/transactions/transfer/transferee-representation-confirmed', function (req, res) {
 
-    let transaction3 = req.session.data['Transaction3']
-    if (transaction3 != ''){
-    req.session.data['transfereerep'] = 'true';
+  let transaction = req.session.data['Transaction']
+  let transfereerep = req.session.data['transfereerep']
+
+
+    if (transaction === 'DTC') {
+        req.session.data['transfereerep'] = 'true';
         res.redirect('/transactions/charge/tasks')
-    } else {
-      req.session.data['transfereerep'] = 'true';
-        res.redirect('/../transactions/tasks')
+    } if (transaction === 'C') {
+        req.session.data['transfereerep'] = 'true';
+        res.redirect('/transactions/charge-without-transfer/charge-without-transfer-tasks')
+    } if (transaction === 'T') {
+        req.session.data['transfereerep'] = 'true';
+        res.redirect('/transactions/transfer/transfer-tasks')
+    } if (transaction === 'DT') {
+        req.session.data['transfereerep'] = 'true';
+        res.redirect('/transactions/DT-tasks')
     }
 })
 
