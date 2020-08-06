@@ -120,28 +120,23 @@ router.post('/transactions/transfer/transferee-addresstype-answer', function (re
 
   if (transfereeAddress === 'UK-postal') {
     res.redirect('/transactions/transfer/transferee-UKaddress')
-}
+    }
   if (transfereeAddress === 'Overseas-postal') {
       res.redirect('/transactions/transfer/transferee-overseasAddress')
     }
-
   if (transfereeAddress === 'PO-box') {
       res.redirect('/transactions/transfer/transferee-POboxAddress')
     }
-
-    if (transfereeAddress === 'email') {
-        res.redirect('/transactions/transfer/transferee-emailAddress')
-      }
-
-      if (transfereeAddress === 'DX') {
-          res.redirect('/transactions/transfer/transferee-dxAddress')
-        }
-
-        if (transfereeAddress === 'BFPO') {
-            res.redirect('/transactions/transfer/transferee-BFPOAddress')
-          }
-
-})
+  if (transfereeAddress === 'email') {
+      res.redirect('/transactions/transfer/transferee-emailAddress')
+    }
+  if (transfereeAddress === 'DX') {
+      res.redirect('/transactions/transfer/transferee-dxAddress')
+    }
+  if (transfereeAddress === 'BFPO') {
+      res.redirect('/transactions/transfer/transferee-BFPOAddress')
+    }
+  })
 
 // Transferee 2 address
 router.post('/transactions/transfer/transferee-addresstype-answer2', function (req, res) {

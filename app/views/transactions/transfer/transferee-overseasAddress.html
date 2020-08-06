@@ -649,17 +649,18 @@
     }
   }) }}
 
+  {% if data['applicant2-individual-forename-2'] %}
   <p class="govuk-body">Add this address to the following transferees: (optional)</p>
-  {% if data['applicant-individual-forename-2'] %}
+
   <div class="govuk-checkboxes">
       <div class="govuk-checkboxes__item">
         <input class="govuk-checkboxes__input" id="applicant2-address1" name="applicant2address" type="checkbox" value="true">
         <label class="govuk-label govuk-checkboxes__label" for="applicant2address">
-          {{ data['applicant-individual-forename-2'] }} {{ data['applicant-individual-surname-2'] }}
+          {{ data['applicant2-individual-forename-2'] }} {{ data['applicant2-individual-surname-2'] }}
         </label>
         {% endif %}
         </div>
-        </div>
+    </div>
 <br>
 <br>
 

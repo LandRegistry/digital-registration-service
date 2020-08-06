@@ -50,10 +50,14 @@
   <form method="post" action="UKAddress">
     <span class="govuk-caption-xl">Transfer for value (TR1)</span>
     <h1 class="govuk-heading-xl">Select UK postal address</h1>
+    <h2 class="govuk-heading-m">For transferee:</h2>
+    <p class="govuk-body">
+      {{ data['applicant-individual-forename']}} {{ data['applicant-individual-surname']}}
+    </p>
 
 
     <h3 class="govuk-heading-s">Postcode</h3>
-    <p class="govuk-body">{{ data['UKpostcode'] }}<a class="govuk-link" href='#' style="margin-left: 10px;">Change </a></p>
+    <p class="govuk-body">{{ data['UKpostcode'] }}<a class="govuk-link" href='/transactions/transfer/transferee-UKaddress.html' style="margin-left: 10px;">Change </a></p>
 
     <h4 class="govuk-heading-s">Select address</h4>
     <div class="govuk-form-group">
@@ -102,7 +106,7 @@
           </label>
           {% endif %}
           </div>
-          </div>
+      </div>
           <br>
 
 
