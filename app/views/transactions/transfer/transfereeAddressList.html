@@ -102,9 +102,7 @@
                      {% endif %}
 
                      <br><br><br>
-                     {% if not data['transfereeAddressType2'] and data['transfereeAddressType'] %}
-                     <a href="transferee-addresstype-2" class="govuk-link"> Add address </a>
-                     {% endif %}
+
 
                    </td>
               <td class="govuk-table__cell">
@@ -158,6 +156,10 @@
                     <a href="remove-address-one">Remove</a><br>
                   {% endif %}
 
+                  {% if not data['transfereeAddressType2'] and data['transfereeAddressType'] %}
+                  <a href="transferee-addresstype-2" class="govuk-link"> Add address </a>
+                  {% endif %}
+
               </td>
             </tr>
 
@@ -192,13 +194,6 @@
                      BFPO postal address (armed forces)
                      {% endif %}
 
-                     <br>
-                     <br>
-                     <br>
-                     <br>
-                     {% if data['transfereeAddressType'] and data['transfereeAddressType2'] %}
-                       <a href="">Add address</a><br>
-                     {% endif %}
 
 
                    </td>
@@ -254,6 +249,7 @@
                   {% if data['transfereeAddressType2'] %}
                     <a href="">Remove</a><br>
                   {% endif %}
+
 
               </td>
 
@@ -350,13 +346,19 @@
 
                  </td>
                  <td class="govuk-table__cell govuk-link">
-                     {% if not data['applicant2address'] %}
-                       <a href="transferee-addresstype-2">Add address</a>
+                   {% if data['transfereeAddressType'] %}
+                     <a href="">Remove</a><br>
+                   {% endif %}
+
+                   {% if data['transfereeAddressType2'] %}
+                     <a href="">Remove</a><br>
+                   {% endif %}
+                   
+                     {% if not data['transfereeAddressType2'] %}
+                       <a href="">Add address</a>
                      {% endif %}
 
-                     {% if data['applicant2address'] %}
-                       <a href="">Remove</a><br>
-                     {% endif %}
+
                  </td>
                  </tr>
 
@@ -389,17 +391,11 @@
 
                    {% endif %}
 
-
-
                    {% if data['transfereeAddressType-2'] === 'UK-postal' %}
                     UK Postal
                     {% endif %}
-                    <br>
-                    <br>
-                    <br>
-                    {% if data['transfereeAddressType'] and data['transfereeAddressType2'] %}
-                      <a href="">Add address</a><br>
-                    {% endif %}
+
+
                    </td>
                  <td class="govuk-table__cell govuk-!-width-one-quarter">
                    {% if not data['applicant2address2'] %}

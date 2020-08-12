@@ -48,17 +48,15 @@
 
 
 
-    <main class="govuk-main-wrapper " id="main-content" role="main">
-    <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-
-
+        <main class="govuk-main-wrapper" id="main-content" role="main">
+        <div class="govuk-grid-row">
+        <div class="govuk-grid-column-three-quarters">
 
         <form method="post" action="/transactions/discharge/method-answer">
         <div class="govuk-form-group">
         <fieldset class="govuk-fieldset">
 
-                  <span class="govuk-caption-l">Discharge of charge</span>
+            <span class="govuk-caption-l">Discharge of charge</span>
             <h1 class="govuk-heading-l">
               How will the discharge be submitted?
             </h1>
@@ -83,35 +81,32 @@
                 I will submit the discharge later
               </label>
             </div>
-
             </div>
+
+
+          {{ govukButton({
+          classes: "govuk-!-margin-top-8 govuk-!-margin-bottom-1",
+          text: "Continue"
+          }) }}
           </fieldset>
-          <br>
-    <br>
+          </div>
+          </form>
+          </div>
+          </div>
+          </main>
+
+        <div style="margin-top: -25px;">
+        <hr style= "height: 4px; background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
+        <br>
+        <p class="govuk-body-s"> The following links open in a new window
+        <br>
+        <br>
+        <a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
+        <a href="/prototype-admin/clear-data">Clear data</a>
+        </div>
 
 
-
-  {{ govukButton({
-  classes: "",
-  text: "Continue"
-  }) }}
-    </div>
-  </form>
-
-
-</main>
-
-
-<hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
-<br>
-<p class="govuk-body-s"> The following links open in a new window
-<br>
-<br>
-<a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
-<a href="/prototype-admin/clear-data">Clear data</a>
-
-
-<script type="application/json" id="reference-form-validation">
+<!-- <script type="application/json" id="reference-form-validation">
  {
    "reference": {
      "presence": {
@@ -124,7 +119,7 @@
      }
    }
  }
-</script>
+</script> -->
 
 
 

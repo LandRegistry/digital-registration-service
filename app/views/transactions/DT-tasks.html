@@ -167,7 +167,7 @@
 
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell govuk-link"><a href="/../transactions/transfer/transferee-representation">Add transferee representation</a></td>
+            <td class="govuk-table__cell govuk-link"><a href="/../transactions/transfer/transferee-representation">Confirm transferee representation</a></td>
             <td class="govuk-table__cell">
               {% if data['transfereerep'] %}
               <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
@@ -244,63 +244,7 @@
   </table>
   </div>
 
-    <h2 class="govuk-heading-m govuk-!-padding-top-5">3. Charge</h2>
 
-    <div class="govuk-grid-column-full" style="margin-left: 40px; width: 97%;">
-
-      <table class="govuk-table govuk-!-width-two-thirds">
-        <th scope="col" class="govuk-table__header">3.1 Add charge details</th>
-        <td class="govuk-table__cell"></td>
-        <tbody class="govuk-table__body">
-
-
-                <tr class="govuk-table__row">
-                <td class="govuk-table__cell"><a href="charge-date" class="govuk-link">Enter charge date</a></td>
-                <td class="govuk-table__cell">{% if data['chargeDateComplete'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
-                </tr>
-
-                <tr class="govuk-table__row">
-                <td class="govuk-table__cell"><a href="/transactions/charge/MDRef" class="govuk-link">Do you have an MD reference?</a></td>
-                <td class="govuk-table__cell">{% if data['MDRef'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
-                </tr>
-
-
-                {% if data['AddLendersTask'] %}
-                <tr class="govuk-table__row">
-                <td class="govuk-table__cell"><a href="/transactions/charge/add-lender" class="govuk-link">Add lenders</a></td>
-                <td class="govuk-table__cell">{% if data['add-lender'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
-                </tr>
-                {% endif %}
-
-                {% if data['AddRepTask'] %}
-                <tr class="govuk-table__row">
-                <td class="govuk-table__cell"><a href="/transactions/charge/lender-representation" class="govuk-link">Add lender representation</a></td>
-                <td class="govuk-table__cell">{% if data['charge-lenderReptype'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
-                </tr>
-                {% endif %}
-
-                {% if not data['MDreferenceinput'] %}
-                {% if data['AddAddressTask'] %}
-                <tr class="govuk-table__row">
-                <td class="govuk-table__cell">
-                <a href="address-for-service/address-list" class="govuk-link">Add address for service</a>
-                <td class="govuk-table__cell">{% if data['lenderAddressType'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
-                </tr>
-                {% endif %}
-                {% endif %}
-
-                <tr class="govuk-table__row">
-                  <th scope="row" class="govuk-table__header">3.2 Supporting documents</th>
-                  <td class="govuk-table__cell"></td>
-                </tr>
-
-                <tr class="govuk-table__row">
-                <td class="govuk-table__cell"><a href="documents/document_prompts" class="govuk-link">Attach documents</a></td>
-                <td class="govuk-table__cell">{% if data['mortgageAttached'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Attached</strong>{% endif %}</td>
-              </tr>
-        </tbody>
-      </table>
-      </div>
 
 
     {{ govukButton({
