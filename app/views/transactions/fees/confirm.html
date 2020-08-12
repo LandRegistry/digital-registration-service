@@ -50,8 +50,11 @@
   <span class="govuk-caption-l">Apply to update or create a registered title</span>
 
 
-  <h1 class="govuk-heading-l">Confirm transaction fees</h1>
-  <p class="govuk-body"> Add the value or price paid for each transaction. When you're done, you'll see the total fee for this application.</p>
+  <h1 class="govuk-heading-l">A total fee of </h1>
+  <h3 class="govuk-body govuk-!-margin-bottom-7" style="font-weight: bold">£44 will be taken by Direct Debit from account no 123456789</h3>
+  <p class="govuk-body"> Confirm the price paid, value or amount for each transaction.
+You can <br> also amend any details entered before selecting Continue.</p>
+
 
 
     <table class="govuk-table govuk-!-margin-bottom-9" id="">
@@ -88,13 +91,13 @@
                 <td class="govuk-table__cell">3</td>
                 <td class="govuk-table__cell"><p>{{ data['priority3value'] }}</p></td>
                 <td class="govuk-table__cell">£22</td>
-                <td class="govuk-table__cell"><a class="govuk-link" href="calculate">Amend value</a></td>
+
+                <td class="govuk-table__cell"><a class="govuk-link" href="calculate">Amend amount</a></td>
+
               </tr>
           </tbody>
 
       </table>
-
-      <h3 class="govuk-body govuk-!-margin-bottom-7" style="font-weight: bold">Total fee of £44 will be taken by Direct Debit from account no 123456789</h3>
 
       <a class="govuk-link govuk-body" href="select">Add/amend transactions</a><br>
 
@@ -104,7 +107,10 @@
 
 {{ govukButton({
 classes: "govuk-!-margin-top-9",
-text: "Confirm and continue"
+
+text: "Confirm and continue",
+href: "/transactions/add-applicants"
+
 }) }}
 
 
