@@ -12,7 +12,6 @@
 {% from "govuk/components/table/macro.njk" import govukTable %}
 
 
-
 {% block headIcons %}
   <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
   <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
@@ -50,7 +49,7 @@
       <span class="govuk-caption-l">Apply to update or create a registered title</span>
     </div>
 
-    <form method="post" action="confirm">
+    <form method="post" action="confirm"> <!--data-validate="reference-form-validation" novalidate-->
       <div class="govuk-grid-column-two-thirds">
         <h1 class="govuk-heading-l">Calculate fee</h1>
         <p class="govuk-body"> Enter the price paid, value or amount as appropriate. When you're done calculate fee to view the total to pay.</p>
@@ -59,7 +58,7 @@
 
         <h2 class="govuk-heading-m govuk-!-margin-top-6"> Discharge of charge </h2>
         <div class="govuk-form-group">
-        <label class="govuk-label" for="width-10" style="margin-left: 30px;">
+        <label class="govuk-label" for="width-10" >
           No value required
         </label>
       </div>
@@ -68,6 +67,7 @@
       <hr style="opacity: 0.5;"> </hr>
       <br>
 
+  <!--
         <h2 class="govuk-heading-m">Transfer for value </h2>
         <div class="govuk-form-group">
         <label class="govuk-label" for="width-10" style="margin-left: 30px;">
@@ -77,12 +77,34 @@
          For example, 145000
        </div>
        <p class="govuk-heading-l" style="float: left; margin-right: 10px;">£</p>
+
+
        {{ govukInput({
         classes: "govuk-input--width-10",
         id: "priority2fees",
         name: "priority2value"
       }) }}
         </div>
+          -->
+
+
+          <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
+            <h2 class="govuk-heading-m"> Value for: Transfer for value (TR1)  </h2>
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="width-10" >
+                Value
+              </label>
+              <div id="account-number-hint" class="govuk-hint" >
+               For example, 145000
+             </div>
+             <div class="input-container"> <!-- add input and span into a container-->
+                <input type="text" class="govuk-input govuk-input--width-10" id="with-hint" name="priority2values"  value="{{ data['priority2values'] }}"  type="text" aria-describedby="with-hint-info with-hint-hint" style="padding-left : 30px;"> <!-- add padding to stop user typing behind £ sign-->
+                <span class="unit" id="with-hint">&pound</span>
+            </div>
+            </div>
+          </div>
+
+
 
 
       <hr style="opacity: 0.5;"> </hr>
@@ -90,7 +112,25 @@
 
       <br>
 
-        <h2 class="govuk-heading-m"> Charge </h2>
+      <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
+        <h2 class="govuk-heading-m"> Amount for: Charge </h2>
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="width-10" >
+            Amount
+          </label>
+          <div id="account-number-hint" class="govuk-hint" >
+           For example, 145000
+         </div>
+         <div class="input-container"> <!-- add input and span into a container-->
+            <input type="text" class="govuk-input govuk-input--width-10" id="with-hint" name="priority3value"  value="{{ data['priority3value'] }}"  type="text" aria-describedby="with-hint-info with-hint-hint" style="padding-left : 30px;"> <!-- add padding to stop user typing behind £ sign-->
+            <span class="unit" id="with-hint">&pound</span>
+        </div>
+        </div>
+      </div>
+
+      <!--
+
+        <h2 class="govuk-heading-m"> Amount for: Charge </h2>
         <div class="govuk-form-group">
         <label class="govuk-label" for="width-10" style="margin-left: 30px;">
           Amount
@@ -105,6 +145,10 @@
           name: "priority3value"
         }) }}
           </div>
+
+          -->
+          <br>
+          <br>
 
 
         <a class="govuk-link govuk-body" href="select">Add/amend transactions</a><br>
@@ -122,6 +166,25 @@
         </div>
         </form>
         </div>
+
+
+        <script type="application/json" id="reference-form-validation">
+         {
+           "reference": {
+             "presence": {
+               "message": "^Enter your reference for this application"
+             },
+             "length": {
+               "minimum": 1,
+               "maximum": 25,
+               "message": "^Your reference must be 25 characters or less"
+             }
+           }
+         }
+        </script>
+
+
+
 
 
 <div>
