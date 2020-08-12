@@ -10,7 +10,6 @@
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 {% from "govuk/components/table/macro.njk" import govukTable %}
-{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
 
 
 
@@ -34,7 +33,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full" id="headerdiv">
     <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
-    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Apply to update or create a registered title</a></p>
+    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Digital Registration Service</a></p>
     <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 
 
@@ -47,64 +46,117 @@
     </div>
     </div>
 
-    <form method="post" action="emailAddress">
-
     <div class="govuk-grid-column-full">
-        <span class="govuk-caption-xl">Transfer for value (TR1)</span>
-        <h1 class="govuk-heading-xl">Add email address</h1>
-        <h2 class="govuk-heading-m">For transferee:</h2>
-        <p class="govuk-body">
-          {{ data['applicant-individual-forename']}} {{ data['applicant-individual-surname']}}
-          </p>
-          <br>
-
-    {{ govukInput({
-      name: 'emailAddress',
-      label: {
-        html: 'Email address'
-      },
-      classes: "govuk-input--width-20"
-    }) }}
-
-
-  <h3 class="govuk-heading-m">More actions</h3>
-
-
-  {% if data['applicant2-individual-forename-2'] %}
-  <p class="govuk-body">Add this address to the following transferees: (optional)</p>
-
-  <div class="govuk-checkboxes">
-      <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="applicant2-address1" name="applicant2address" type="checkbox" value="true">
-        <label class="govuk-label govuk-checkboxes__label" for="applicant2address">
-          {{ data['applicant2-individual-forename-2'] }} {{ data['applicant2-individual-surname-2'] }}
-        </label>
-        {% endif %}
-        </div>
+      <span class="govuk-caption-l">Apply to update or create a registered title</span>
     </div>
-    <br>
+
+    <form method="post" action="confirm">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Calculate fee</h1>
+        <p class="govuk-body"> Enter the price paid or value as appropriate. When you're done calculate fee to view the total to pay.</p>
 
 
-{{ govukButton({
-  text: "Continue"
-}) }}
+        <h2 class="govuk-heading-m govuk-!-margin-top-6"> Discharge of charge </h2>
+        <div class="govuk-form-group">
+        <label class="govuk-label" for="width-10" style="margin-left: 30px;">
+          No value required
+        </label>
+      </div>
 
-</form>
 
+      <hr style="opacity: 0.5;"> </hr>
+      <br>
+
+        <h2 class="govuk-heading-m">Transfer for value </h2>
+        <div class="govuk-form-group">
+        <label class="govuk-label" for="width-10" style="margin-left: 30px;">
+          Value
+        </label>
+        <div id="account-number-hint" class="govuk-hint" style="margin-left: 30px;">
+         For example, 145000
+       </div>
+       <p class="govuk-heading-l" style="float: left; margin-right: 10px;">£</p>
+       {{ govukInput({
+        classes: "govuk-input--width-10",
+        id: "priority2fees",
+        name: "priority2value"
+      }) }}
+        </div>
+
+
+      <hr style="opacity: 0.5;"> </hr>
+
+      <br>
+
+        <h2 class="govuk-heading-m"> Charge </h2>
+        <div class="govuk-form-group">
+        <label class="govuk-label" for="width-10" style="margin-left: 30px;">
+          Amount
+        </label>
+        <div id="account-number-hint" class="govuk-hint" style="margin-left: 30px;">
+         For example, 145000
+       </div>
+         <p class="govuk-heading-l" style="float: left; margin-right: 10px;">£</p>
+         {{ govukInput({
+          classes: "govuk-input--width-10",
+          id: "priority3fees",
+          name: "priority3value"
+        }) }}
+          </div>
+
+        <a class="govuk-link govuk-body" href="">Add/amend transactions</a><br>
+
+
+
+
+
+        {{ govukButton({
+        classes: "govuk-!-margin-top-9",
+        text: "Calculate fee"
+        }) }}
+
+        </div>
+        </form>
+        </div>
+      
+
+<div>
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 <br>
 <p class="govuk-body-s"> The following links open in a new window
 <br>
 <br>
 <a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
-
+<a href="/prototype-admin/clear-data">Clear data</a>
 </div>
 
+<!-- <script>
+  function RemoveTransfereeIndividual() {
+  var x = document.getElementById("hidePI");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+
+  function RemoveTransfereeUK() {
+  var x = document.getElementById("hideUK");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+</script> -->
 
 {% endblock %}
 
 
 {% block footer %}
+
 {% endblock %}
 
 {% block bodyEnd %}

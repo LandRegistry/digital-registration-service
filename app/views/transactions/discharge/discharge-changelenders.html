@@ -9,8 +9,6 @@
 {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
-{% from "govuk/components/table/macro.njk" import govukTable %}
-{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
 
 
 
@@ -38,7 +36,7 @@
     <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 
 
-    <div class="govuk-phase-banner govuk-!-margin-bottom-5">
+    <div class="govuk-phase-banner">
         <p class="govuk-phase-banner__content">
         <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
         <span class="govuk-phase-banner__text">
@@ -46,50 +44,50 @@
         </span></p>
     </div>
     </div>
-
-    <form method="post" action="emailAddress">
-
-    <div class="govuk-grid-column-full">
-        <span class="govuk-caption-xl">Transfer for value (TR1)</span>
-        <h1 class="govuk-heading-xl">Add email address</h1>
-        <h2 class="govuk-heading-m">For transferee:</h2>
-        <p class="govuk-body">
-          {{ data['applicant-individual-forename']}} {{ data['applicant-individual-surname']}}
-          </p>
-          <br>
-
-    {{ govukInput({
-      name: 'emailAddress',
-      label: {
-        html: 'Email address'
-      },
-      classes: "govuk-input--width-20"
-    }) }}
-
-
-  <h3 class="govuk-heading-m">More actions</h3>
-
-
-  {% if data['applicant2-individual-forename-2'] %}
-  <p class="govuk-body">Add this address to the following transferees: (optional)</p>
-
-  <div class="govuk-checkboxes">
-      <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="applicant2-address1" name="applicant2address" type="checkbox" value="true">
-        <label class="govuk-label govuk-checkboxes__label" for="applicant2address">
-          {{ data['applicant2-individual-forename-2'] }} {{ data['applicant2-individual-surname-2'] }}
-        </label>
-        {% endif %}
-        </div>
     </div>
+
+
+
+    <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+
+        <form method="post" action="lender-list">
+        <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+
+                  <span class="govuk-caption-l">Discharge of charge</span>
+            <h1 class="govuk-heading-l">
+              Change lender
+            </h1>
+
+
+            {{ govukInput({
+            label: {
+              text: "Lender name"
+            },
+            id: "lender-name-1",
+            classes: "govuk-input--width-20",
+            name: "lender-name"
+}) }}
+
+          <br>
     <br>
 
 
-{{ govukButton({
+
+  {{ govukButton({
+  classes: "",
   text: "Continue"
-}) }}
+  }) }}
+    </div>
+
 
 </form>
+</main>
+
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 <br>
@@ -97,8 +95,24 @@
 <br>
 <br>
 <a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
+<a href="/prototype-admin/clear-data">Clear data</a>
 
-</div>
+
+<script type="application/json" id="reference-form-validation">
+ {
+   "reference": {
+     "presence": {
+       "message": "^Enter your reference for this application"
+     },
+     "length": {
+       "minimum": 1,
+       "maximum": 25,
+       "message": "^Your reference must be 25 characters or less"
+     }
+   }
+ }
+</script>
+
 
 
 {% endblock %}
