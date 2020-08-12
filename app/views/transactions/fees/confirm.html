@@ -1,0 +1,152 @@
+{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
+{%- set assetPath = '/govuk/assets' -%}
+
+{% extends "govuk/template.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+
+
+{% block headIcons %}
+  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
+  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
+{% endblock %}
+
+{% block head %}
+  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full" id="headerdiv">
+    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
+    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Digital Registration Service</a></p>
+    <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
+
+
+    <div class="govuk-phase-banner govuk-!-margin-bottom-5">
+        <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
+        <span class="govuk-phase-banner__text">
+        This is a prototype and not a real service.
+        </span></p>
+    </div>
+    </div>
+
+<div class="govuk-grid-column-full">
+  <span class="govuk-caption-l">Apply to update or create a registered title</span>
+
+
+  <h1 class="govuk-heading-l">Confirm transaction fees</h1>
+  <p class="govuk-body"> Add the value or price paid for each transaction. When you're done, you'll see the total fee for this application.</p>
+
+
+    <table class="govuk-table govuk-!-margin-bottom-9" id="">
+
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header ">Transaction</th>
+          <th scope="col" class="govuk-table__header">Priority</th>
+          <th scope="col" class="govuk-table__header">Value or price paid</th>
+          <th scope="col" class="govuk-table__header">Fee</th>
+          <th scope="col" class="govuk-table__header">Options</th>
+        </tr>
+      </thead>
+
+          <tbody class="govuk-table_body">
+              <tr class="govuk-table_row" id="hidePI">
+                <td class="govuk-table__cell">Discharge of charge</td>
+                <td class="govuk-table__cell">1</td>
+                <td class="govuk-table__cell">N/a</td>
+                <td class="govuk-table__cell">N/a</td>
+                <td class="govuk-table__cell">N/a</td>
+              </tr>
+
+              <tr class="govuk-table_row" id="hidePI">
+                <td class="govuk-table__cell">Transfer for value (TR1)</td>
+                <td class="govuk-table__cell">2</td>
+                <td class="govuk-table__cell"><p>{{ data['priority2value'] }}</p></td>
+                <td class="govuk-table__cell">£22</td>
+                <td class="govuk-table__cell"><a class="govuk-link" href="calculate">Amend value</a></td>
+              </tr>
+
+              <tr class="govuk-table_row" id="hidePI">
+                <td class="govuk-table__cell">Charge</td>
+                <td class="govuk-table__cell">3</td>
+                <td class="govuk-table__cell"><p>{{ data['priority3value'] }}</p></td>
+                <td class="govuk-table__cell">£22</td>
+                <td class="govuk-table__cell"><a class="govuk-link" href="calculate">Amend value</a></td>
+              </tr>
+          </tbody>
+
+      </table>
+
+      <h3 class="govuk-body govuk-!-margin-bottom-7" style="font-weight: bold">Total fee of £44 will be taken by Direct Debit from account no 123456789</h3>
+
+      <a class="govuk-link govuk-body" href="select">Add/amend transactions</a><br>
+
+
+
+
+
+{{ govukButton({
+classes: "govuk-!-margin-top-9",
+text: "Confirm and continue"
+}) }}
+
+
+
+<hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
+<br>
+<p class="govuk-body-s"> The following links open in a new window
+<br>
+<br>
+<a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
+<a href="/prototype-admin/clear-data">Clear data</a>
+</div>
+
+<!-- <script>
+  function RemoveTransfereeIndividual() {
+  var x = document.getElementById("hidePI");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+
+  function RemoveTransfereeUK() {
+  var x = document.getElementById("hideUK");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+</script> -->
+
+{% endblock %}
+
+
+{% block footer %}
+
+{% endblock %}
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}
