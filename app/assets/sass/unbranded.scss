@@ -99,3 +99,26 @@ cursor: default;
 margin-top: 7px !important;
 }
 
+
+
+.input-container {
+  position: relative;
+  width: 150px;
+}
+
+.input-container input {
+  width: 100%;
+}
+
+.input-container .unit {
+  position: absolute;
+  display: block;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 130%;
+  top: 8px;
+  right: 95px;
+  color: black;
+  padding-left: 5px;
+  width: 45px;
+}
