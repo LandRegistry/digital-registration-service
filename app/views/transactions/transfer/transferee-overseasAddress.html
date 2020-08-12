@@ -52,15 +52,10 @@
     <h1 class="govuk-heading-xl">Add overseas postal address</h1>
 
     <h2 class="govuk-heading-m">For transferee:</h2>
-    <p class="govuk-body">{% if data['transferee-select'] === 'yes' %}
-     {{ data['applicant-individual-forename'] }} {{ data['applicant-individual-surname'] }}
-     {% endif %}
-     {% if data['transferee-select'] === 'no' %}
-    {{ data['transferee-individual-forename'] }} {{ data['transferee-individual-surname'] }}
-    {% endif %}
-    {% if data['transferee-select'] === '' %}
-   {% endif %}</p>
-
+    <p class="govuk-body">
+      {{ data['applicant-individual-forename']}} {{ data['applicant-individual-surname']}}
+      </p>
+      <br>
 
     <h3 class="govuk-heading-m">Address type</h3>
     <p class="govuk-body">Overseas postal address</p>
