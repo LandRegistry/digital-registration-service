@@ -56,11 +56,14 @@
     <span class="govuk-caption-l">Transfer for value (TR1)</span>
     <h1 class="govuk-heading-l">Select representation</h1>
     <h2 class="govuk-heading-s">Tell us who's representing:</h2>
-    <p class="govuk-body-m">John Smith
+      {% if data['applicant-individual-transferee1'] %}
+        <p class="govuk-body"> {{ data['applicant-individual-forename'] }} {{ data['applicant-individual-surname'] }}</p>
+      {% endif %}
 
+      {% if data['transferee-individual-forename'] %}
+      <p class="govuk-body">   {{ data['transferee-individual-forename'] }} {{ data['transferee-individual-surname'] }}</p>
+      {% endif %}
 
-
-    </p>
 
 
     <div class="govuk-form-group">
@@ -193,7 +196,7 @@
       }) }}
       </div>
 
-
+</div>
 <div class="govuk-grid-column-full">
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 <br>
