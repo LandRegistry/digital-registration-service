@@ -52,14 +52,17 @@
     <form method="post" action="confirm"> <!--data-validate="reference-form-validation" novalidate-->
       <div class="govuk-grid-column-two-thirds">
         <h1 class="govuk-heading-l">Calculate fee</h1>
-        <p class="govuk-body"> Enter the price paid, value or amount as appropriate. When you're done calculate fee to view the total to pay.</p>
+        <p class="govuk-body"> Enter prices and values where requested, then select 'Calculate fee'.</p>
 
 
 
-        <h2 class="govuk-heading-m govuk-!-margin-top-6"> Discharge of charge </h2>
+
+        <h2 class="govuk-heading-m govuk-!-margin-top-6"> <label class="govuk-label" style="opacity: 0.5" for="Select_transaction{{n}}">
+          Priority 1
+        </label>Discharge of charge </h2>
         <div class="govuk-form-group">
         <label class="govuk-label" for="width-10" >
-          No value required
+          No value needed
         </label>
       </div>
 
@@ -89,10 +92,12 @@
 
 
           <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
-            <h2 class="govuk-heading-m"> Value for: Transfer for value (TR1)  </h2>
+            <h2 class="govuk-heading-m"><label class="govuk-label" style="opacity: 0.5" for="Select_transaction{{n}}">
+              Priority 2
+            </label> Transfer for value (TR1)  </h2>
             <div class="govuk-form-group">
               <label class="govuk-label" for="width-10" >
-                Value
+                Price paid
               </label>
               <div id="account-number-hint" class="govuk-hint" >
                For example, 145000
@@ -113,7 +118,9 @@
       <br>
 
       <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
-        <h2 class="govuk-heading-m"> Amount for: Charge </h2>
+        <h2 class="govuk-heading-m"><label class="govuk-label" style="opacity: 0.5" for="Select_transaction{{n}}">
+          Priority 3
+        </label> Charge </h2>
         <div class="govuk-form-group">
           <label class="govuk-label" for="width-10" >
             Amount
@@ -151,7 +158,7 @@
           <br>
 
 
-        <a class="govuk-link govuk-body" href="select">Add/amend transactions</a><br>
+        <a class="govuk-link govuk-body" href="select">Add/change transactions</a><br>
 
 
 
