@@ -62,23 +62,23 @@
 
 
 
-    <form method="post" action="overseasAddress">
+    <form method="post" action="/transactions/transfer/address2/overseasAddress">
 
     <div class="govuk-form-group">
       <label class="govuk-label" for="overseas-address-line-1">Address</label>
-      <input class="govuk-input govuk-!-width-one-half" id="overseas-address-line-1" name="OverseasAddressLine1" type="text">
+      <input class="govuk-input govuk-!-width-one-half" id="overseas-address2-line-1" name="OverseasAddress2Line1" type="text">
       <br><br>
-      <input class="govuk-input govuk-!-width-one-half" id="overseas-address-line-2" name="OverseasAddressLine2" type="text">
+      <input class="govuk-input govuk-!-width-one-half" id="overseas-address2-line-2" name="OverseasAddress2Line2" type="text">
       <br><br>
-      <input class="govuk-input govuk-!-width-one-half" id="overseas-address-line-3" name="OverseasAddressLine3" type="text">
+      <input class="govuk-input govuk-!-width-one-half" id="overseas-address2-line-3" name="OverseasAddress2Line3" type="text">
       <br><br>
-      <input class="govuk-input govuk-!-width-one-half" id="overseas-address-line-4" name="OverseasAddressLine4" type="text">
+      <input class="govuk-input govuk-!-width-one-half" id="overseas-address2-line-4" name="OverseasAddress2Line4" type="text">
       <br><br>
-      <input class="govuk-input govuk-!-width-one-half" id="overseas-address-line-5" name="OverseasAddressLine5" type="text">
+      <input class="govuk-input govuk-!-width-one-half" id="overseas-address2-line-5" name="OverseasAddress2Line5" type="text">
       <br><br>
 
-      <label class="govuk-label" for="country">Country</label>
-      <select class="govuk-select" id="country" name="country">
+      <label class="govuk-label" for="country2">Country</label>
+      <select class="govuk-select" id="country2" name="country2">
 
        <option value="" selected="">-Select from list-</option>
 
@@ -644,18 +644,18 @@
     }
   }) }}
 
-        {% if data['applicant2-individual-forename-2'] %}
-          <p class="govuk-body">Add this address to the following transferees: (optional)</p>
+  {% if data['applicant2-individual-forename-2'] %}
+  <p class="govuk-body">Add this address to the following transferees: (optional)</p>
 
-          <div class="govuk-checkboxes">
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="applicant2-address1" name="applicant2address" type="checkbox" value="true">
-                <label class="govuk-label govuk-checkboxes__label" for="applicant2address">
-                  {{ data['applicant2-individual-forename-2'] }} {{ data['applicant2-individual-surname-2'] }}
-                </label>
+  <div class="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="applicant2-address2" name="applicant2address2" type="checkbox" value="true">
+        <label class="govuk-label govuk-checkboxes__label" for="applicant2address">
+          {{ data['applicant2-individual-forename-2'] }} {{ data['applicant2-individual-surname-2'] }}
+        </label>
         {% endif %}
-          </div>
         </div>
+    </div>
 <br>
 <br>
 

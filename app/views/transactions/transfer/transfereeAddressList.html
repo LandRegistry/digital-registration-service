@@ -74,6 +74,7 @@
                      {% if data['transferee-select'] === 'no' %}
                     {{ data['transferee-individual-forename'] }} {{ data['transferee-individual-surname'] }}
                     {% endif %}</td>
+<!-- transferee one address type -->
               <td class="govuk-table__cell">
 
                     {% if data['transfereeAddressType'] === 'UK-postal' %}
@@ -111,6 +112,7 @@
                 - No address for service added -</p>
                 {% endif %}
 
+<!-- transferee one address -->
               {% if data['transfereeAddressType'] === 'UK-postal' %}
                4, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ
                {% endif %}
@@ -163,6 +165,7 @@
               </td>
             </tr>
 
+<!-- transferee one address type two -->
             {% if data['transfereeAddressType2'] %}
             <tr class="govuk-table__row">
               <td class="govuk-table__cell"></td>
@@ -170,27 +173,27 @@
               <td class="govuk-table__cell">
 
 
-                    {% if data['transfereeAddressType2'] === 'UK-postal2' %}
+                    {% if data['transfereeAddressType2'] === 'UK-postal' %}
                      UK Postal
                      {% endif %}
 
-                     {% if data['transfereeAddressType2'] === 'Overseas-postal2' %}
+                     {% if data['transfereeAddressType2'] === 'Overseas-postal' %}
                      Overseas postal address
                      {% endif %}
 
-                     {% if data['transfereeAddressType2'] === 'PO-box2' %}
+                     {% if data['transfereeAddressType2'] === 'PO-box' %}
                      PO Box (postal address)
                      {% endif %}
 
-                     {% if data['transfereeAddressType2'] === 'email2' %}
+                     {% if data['transfereeAddressType2'] === 'email' %}
                      Email address
                      {% endif %}
 
-                     {% if data['transfereeAddressType2'] === 'DX2' %}
+                     {% if data['transfereeAddressType2'] === 'DX' %}
                      DX address
                      {% endif %}
 
-                     {% if data['transfereeAddressType2'] === 'BFPO2' %}
+                     {% if data['transfereeAddressType2'] === 'BFPO' %}
                      BFPO postal address (armed forces)
                      {% endif %}
 
@@ -203,35 +206,35 @@
                 - No address for service added -</p>
                 {% endif %}
 
-              {% if data['transfereeAddressType2'] === 'UK-postal2' %}
+              {% if data['transfereeAddressType2'] === 'UK-postal' %}
                 6, Victoria Road,	Greater Haxten,	Wiltshire, LH17 6EQ
                {% endif %}
 
                {% if data['transfereeAddressType2'] === 'Overseas-postal' %}
-                {{ data['OverseasAddressLine1'] }}<br>
-                {{ data['OverseasAddressLine2'] }}<br>
-                {{ data['OverseasAddressLine3'] }}<br>
-                {{ data['OverseasAddressLine4'] }}
-                {{ data['OverseasAddressLine5'] }}
-                {{ data['country'] }}
+                {{ data['OverseasAddress2Line1'] }}<br>
+                {{ data['OverseasAddress2Line2'] }}<br>
+                {{ data['OverseasAddress2Line3'] }}<br>
+                {{ data['OverseasAddress2Line4'] }}
+                {{ data['OverseasAddress2Line5'] }}
+                {{ data['country2'] }}
                 {% endif %}
 
-                {% if data['transfereeAddressType'] === 'PO-box' %}
-                {{ data['PO'] }}<br>
-                {{ data['POCity'] }}<br>
-                {{ data['POPostcode'] }}<br>
+                {% if data['transfereeAddressType2'] === 'PO-box' %}
+                {{ data['PO2'] }}<br>
+                {{ data['POCity2'] }}<br>
+                {{ data['POPostcode2'] }}<br>
                  {% endif %}
 
-                 {% if data['transfereeAddressType'] === 'email' %}
-                 {{ data['emailAddress'] }}
+                 {% if data['transfereeAddressType2'] === 'email' %}
+                 {{ data['emailAddress2'] }}
                  {% endif %}
 
-                 {% if data['transfereeAddressType'] === 'DX' %}
+                 {% if data['transfereeAddressType2'] === 'DX' %}
                  {{ data['DXRef'] }}
                  {{ data['DXName'] }}
                  {% endif %}
 
-                 {% if data['transfereeAddressType'] === 'BFPO' %}
+                 {% if data['transfereeAddressType2'] === 'BFPO' %}
                  {{ data['BFPOserviceNo'] }}<br>
                  {{ data['BFPOunit'] }}<br>
                  {{ data['BFPOlocation'] }}<br>
@@ -255,6 +258,8 @@
 
             </tr>
             {% endif %}
+
+<!-- transferee two address type -->
 
             {% if   data['applicant-individual-transferee2'] %}
               <tbody class="govuk-table_body">
@@ -350,10 +355,10 @@
                      <a href="">Remove</a><br>
                    {% endif %}
 
-                   {% if data['transfereeAddressType2'] %}
+                   <!-- {% if data['transfereeAddressType2'] %}
                      <a href="">Remove</a><br>
-                   {% endif %}
-                   
+                   {% endif %} -->
+
                      {% if not data['transfereeAddressType2'] %}
                        <a href="">Add address</a>
                      {% endif %}
@@ -370,22 +375,22 @@
 
                    {% if data['applicant2address2'] %}
 
-                         {% if data['transfereeAddressType'] === 'UK-postal' %}
+                         {% if data['transfereeAddressType2'] === 'UK-postal' %}
                          UK Postal
                          {% endif %}
-                        {% if data['transfereeAddressType'] === 'Overseas-postal' %}
+                        {% if data['transfereeAddressType2'] === 'Overseas-postal' %}
                         Overseas postal address
                         {% endif %}
-                        {% if data['transfereeAddressType'] === 'PO-box' %}
+                        {% if data['transfereeAddressType2'] === 'PO-box' %}
                         PO Box (postal address)
                         {% endif %}
-                        {% if data['transfereeAddressType'] === 'email' %}
+                        {% if data['transfereeAddressType2'] === 'email' %}
                         Email address
                         {% endif %}
-                        {% if data['transfereeAddressType'] === 'DX' %}
+                        {% if data['transfereeAddressType2'] === 'DX' %}
                         DX address
                         {% endif %}
-                        {% if data['transfereeAddressType'] === 'BFPO' %}
+                        {% if data['transfereeAddressType2'] === 'BFPO' %}
                         BFPO postal address (armed forces)
                         {% endif %}
 
@@ -403,41 +408,44 @@
                      - No address for service added -</p>
                      {% endif %}
 
-                   {% if data['transfereeAddressType2'] === 'UK-postal2' %}
-                     6, Victoria Road,	Greater Haxten,	Wiltshire, LH17 6EQ
-                    {% endif %}
-
-                    {% if data['transfereeAddressType2'] === 'Overseas-postal' %}
-                     {{ data['OverseasAddressLine1'] }}<br>
-                     {{ data['OverseasAddressLine2'] }}<br>
-                     {{ data['OverseasAddressLine3'] }}<br>
-                     {{ data['OverseasAddressLine4'] }}
-                     {{ data['OverseasAddressLine5'] }}
-                     {{ data['country'] }}
+<!-- transferee two address two -->
+                    {% if data['applicant2address2'] %}
+                    {% if data['transfereeAddressType2'] === 'UK-postal' %}
+                      6, Victoria Road,	Greater Haxten,	Wiltshire, LH17 6EQ
                      {% endif %}
 
-                     {% if data['transfereeAddressType'] === 'PO-box' %}
-                     {{ data['PO'] }}<br>
-                     {{ data['POCity'] }}<br>
-                     {{ data['POPostcode'] }}<br>
-                      {% endif %}
+                          {% if data['transfereeAddressType2'] === 'Overseas-postal' %}
+                           {{ data['OverseasAddress2Line1'] }}<br>
+                           {{ data['OverseasAddress2Line2'] }}<br>
+                           {{ data['OverseasAddress2Line3'] }}<br>
+                           {{ data['OverseasAddress2Line4'] }}
+                           {{ data['OverseasAddress2Line5'] }}
+                           {{ data['country2'] }}
+                           {% endif %}
 
-                      {% if data['transfereeAddressType'] === 'email' %}
-                      {{ data['emailAddress'] }}
-                      {% endif %}
+                           {% if data['transfereeAddressType2'] === 'PO-box' %}
+                           {{ data['PO2'] }}<br>
+                           {{ data['POCity2'] }}<br>
+                           {{ data['POPostcode2'] }}<br>
+                            {% endif %}
 
-                      {% if data['transfereeAddressType'] === 'DX' %}
-                      {{ data['DXRef'] }}
-                      {{ data['DXName'] }}
-                      {% endif %}
+                            {% if data['transfereeAddressType2'] === 'email' %}
+                            {{ data['emailAddress2'] }}
+                            {% endif %}
 
-                      {% if data['transfereeAddressType'] === 'BFPO' %}
-                      {{ data['BFPOserviceNo'] }}<br>
-                      {{ data['BFPOunit'] }}<br>
-                      {{ data['BFPOlocation'] }}<br>
-                      {{ data['BFPOnumber'] }}<br>
-                      {% endif %}
+                            {% if data['transfereeAddressType2'] === 'DX' %}
+                            {{ data['DXRef'] }}
+                            {{ data['DXName'] }}
+                            {% endif %}
 
+                            {% if data['transfereeAddressType2'] === 'BFPO' %}
+                            {{ data['BFPOserviceNo'] }}<br>
+                            {{ data['BFPOunit'] }}<br>
+                            {{ data['BFPOlocation'] }}<br>
+                            {{ data['BFPOnumber'] }}<br>
+                            {% endif %}
+
+                      {% endif %}
 
 
                   </td>

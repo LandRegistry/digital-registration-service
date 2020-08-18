@@ -138,22 +138,47 @@ router.post('/transactions/transfer/transferee-addresstype-answer', function (re
     }
   })
 
-// Transferee 2 address
-router.post('/transactions/transfer/transferee-addresstype-answer2', function (req, res) {
-  // Get the answer from session data
-  // The name between the quotes is the same as the 'name' attribute on the input elements
-  // However in JavaScript we can't use hyphens in variable names
+// // Transferee 2 address
+// router.post('/transactions/transfer/transferee-addresstype-answer2', function (req, res) {
+//   // Get the answer from session data
+//   // The name between the quotes is the same as the 'name' attribute on the input elements
+//   // However in JavaScript we can't use hyphens in variable names
+//
+//   let transfereeAddress2 = req.session.data['transfereeAddressType-2']
+//
+//   if (transfereeAddress2 === 'UK-postal2') {
+//     res.redirect('/transactions/transfer/transferee-UKaddress2')
+// }
+//   if (transfereeAddress2 === 'Overseas-postal2') {
+//       res.redirect('/transactions/transfer/transferee-overseasAddress2')
+//     }
+//
+// })
 
-  let transfereeAddress2 = req.session.data['transfereeAddressType-2']
+// Transferee add address for service
+router.post('/transactions/transfer/transferee-addresstype2-answer', function (req, res) {
 
-  if (transfereeAddress2 === 'UK-postal2') {
-    res.redirect('/transactions/transfer/transferee-UKaddress2')
-}
-  if (transfereeAddress2 === 'Overseas-postal2') {
-      res.redirect('/transactions/transfer/transferee-overseasAddress2')
+  let transfereeAddress = req.session.data['transfereeAddressType2']
+
+  if (transfereeAddress === 'UK-postal') {
+    res.redirect('/transactions/transfer/Address2/transferee-UKaddress2')
     }
-
-})
+  if (transfereeAddress === 'Overseas-postal') {
+      res.redirect('/transactions/transfer/Address2/transferee-overseasAddress2')
+    }
+  if (transfereeAddress === 'PO-box') {
+      res.redirect('/transactions/transfer/Address2/transferee-POboxAddress2')
+    }
+  if (transfereeAddress === 'email') {
+      res.redirect('/transactions/transfer/Address2/transferee-emailAddress2')
+    }
+  if (transfereeAddress === 'DX') {
+      res.redirect('/transactions/transfer/Address2/transferee-dxAddress2')
+    }
+  if (transfereeAddress === 'BFPO') {
+      res.redirect('/transactions/transfer/Address2/transferee-BFPOAddress2')
+    }
+  })
 
 
 
@@ -875,6 +900,8 @@ router.post('/transactions/transfer/documents/other-attached', function (req, re
     res.redirect('document_prompts-1')
 })
 
+
+// transferee address 1
 router.post('/transactions/transfer/overseasAddress', function (req, res) {
     res.redirect('transfereeAddressList')
 })
@@ -898,6 +925,33 @@ router.post('/transactions/transfer/DXAddress', function (req, res) {
 
 router.post('/transactions/transfer/BFPOAddress', function (req, res) {
     res.redirect('transfereeAddressList')
+})
+
+// transferee address 2
+
+router.post('/transactions/transfer/address2/overseasAddress', function (req, res) {
+    res.redirect('/transactions/transfer/transfereeAddressList')
+})
+
+router.post('/transactions/transfer/address2/UKAddress', function (req, res) {
+    res.redirect('/transactions/transfer/transfereeAddressList')
+})
+
+
+router.post('/transactions/transfer/address2/POboxAddress', function (req, res) {
+    res.redirect('/transactions/transfer/transfereeAddressList')
+})
+
+router.post('/transactions/transfer/address2/emailAddress', function (req, res) {
+    res.redirect('/transactions/transfer/transfereeAddressList')
+})
+
+router.post('/transactions/transfer/address2/DXAddress', function (req, res) {
+    res.redirect('/transactions/transfer/transfereeAddressList')
+})
+
+router.post('/transactions/transfer/address2/BFPOAddress', function (req, res) {
+    res.redirect('/transactions/transfer/transfereeAddressList')
 })
 
 router.post('/transactions/discharge/discharge-attached', function (req, res) {
