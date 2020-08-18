@@ -10,6 +10,7 @@
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 {% from "govuk/components/table/macro.njk" import govukTable %}
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
 
 
 
@@ -44,77 +45,99 @@
         This is a prototype and not a real service.
         </span></p>
     </div>
+
     </div>
+
+<form method="post" action="BFPOAddress">
 
 <div class="govuk-grid-column-full">
-  <form method="post" action="UKAddress">
     <span class="govuk-caption-xl">Transfer for value (TR1)</span>
-    <h1 class="govuk-heading-xl">Select UK postal address</h1>
-    <h2 class="govuk-heading-s">Address type</h2>
-    <p class="govuk-body">UK postal address</p>
+    <h1 class="govuk-heading-xl">Add BFPO address</h1>
+    <h2 class="govuk-heading-m">For transferee:</h2>
+    <p class="govuk-body">
+      {{ data['applicant-individual-forename']}} {{ data['applicant-individual-surname']}}
+      </p>
+      <br>
+    <p class="govuk-body">
+      You can enter a BFPO address as an address for service. But we ask that, if possible, you provide a 'care of' address instead using the <a href="#"> UK postal address</a> option.
+      <br><br>
+      This is because BFPO addresses:
+      <br>
+      • help to identify members of the armed forces
+      <br>
+      • tend to change often
 
-    <h3 class="govuk-heading-s">Postcode</h3>
-    <p class="govuk-body">{{ data['UKpostcode'] }}<a class="govuk-link" href='#'>Change </a></p>
-
-    <h4 class="govuk-heading-s">Select address</h4>
-    <div class="govuk-form-group">
-      <select class="govuk-select govuk-!-width-one-half" id="addressResults2" name="addressResults2">
-        <option value="address2results0" selected>9 addresses found</option>
-        <option value="address2result1">1, Victoria Road,	Greater Haxten,	Wiltshire, LH17 6EQ</option>
-        <option value="address2result2" >Flat A, 2, Victoria Road,	Greater Haxten,	Wiltshire, LH17 6EQ</option>
-        <option value="address2result2" >Flat B, 2, Victoria Road,	Greater Haxten,	Wiltshire, LH17 6EQ</option>
-        <option value="address2result3">Flat C, 2, Victoria Road,	Greater Haxten,	Wiltshire, LH17 6EQ</option>
-        <option value="address2result4">4, Victoria Road,	Greater Haxten,	Wiltshire, LH17 6EQ</option>
-        <option value="address2result4">6, Victoria Road,	Greater Haxten,	Wiltshire, LH17 6EQ</option>
-        <option value="address2result4">8, Victoria Road,	Greater Haxten,	Wiltshire, LH17 6EQ</option>
-        <option value="address2result4">10, Victoria Road,	Greater Haxten,	Wiltshire, LH17 6EQ</option>
-        <option value="address2result4">12, Victoria Road,	Greater Haxten,	Wiltshire, LH17 6EQ</option>
-      </select>
-    </div>
-
-    <p class="govuk-body"> <a href="#" class="govuk-link">I can't find address in the list</a></p>
-
-
-    <h5 class="govuk-heading-m">More actions</h5>
 
 
     {{ govukInput({
+      name: 'BFPOserviceNo',
       label: {
-        text: "Add c/o name (optional)"
+        html: 'Service number and rank'
       },
-      hint: {
-        text: "If it's a 'care of' address, enter the addressee's name"
-      },
-      id: "care-of",
-      name: "care-of",
-      classes: "govuk-!-width-one-half"
+      classes: "govuk-input--width-20"
     }) }}
 
-    {% if data['applicant2-individual-forename-2'] %}
-    <p class="govuk-body">Add this address to the following transferees: (optional)</p>
+    {{ govukInput({
+      name: 'BFPOunit',
+      label: {
+        html: 'Unit or regiment'
+      },
+      classes: "govuk-input--width-20"
+    }) }}
 
-    <div class="govuk-checkboxes">
-        <div class="govuk-checkboxes__item">
-          <input class="govuk-checkboxes__input" id="applicant2-address2" name="applicant2address2" type="checkbox" value="true">
-          <label class="govuk-label govuk-checkboxes__label" for="applicant2address">
-            {{ data['applicant2-individual-forename-2'] }} {{ data['applicant2-individual-surname-2'] }}
-          </label>
-          {% endif %}
-          </div>
-          </div>
-          <br>
+    {{ govukInput({
+      name: 'BFPOlocation',
+      label: {
+        html: 'Operation or location name (optional)'
+      },
+      classes: "govuk-input--width-20"
+    }) }}
 
+    {{ govukInput({
+      name: 'BFPOnumber',
+      label: {
+        html: 'BFPO number'
+      },
+      classes: "govuk-input--width-20",
+      hint: {
+        text: "For example, 'BFPO 61'"
+      }
+    }) }}
+
+
+
+  <h3 class="govuk-heading-m">More actions</h3>
+
+  {{ govukInput({
+    label: {
+      html: 'Add c/o name (optional)'
+    },
+    classes: "govuk-input--width-20",
+    id: "CareOf",
+    hint: {
+      text: "If it's a 'care of' address, enter the addressee's name"
+    }
+  }) }}
+
+  {% if data['applicant2-individual-forename-2'] %}
+  <p class="govuk-body">Add this address to the following transferees: (optional)</p>
+
+  <div class="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="applicant2-address1" name="applicant2address" type="checkbox" value="true">
+        <label class="govuk-label govuk-checkboxes__label" for="applicant2address">
+          {{ data['applicant2-individual-forename-2'] }} {{ data['applicant2-individual-surname-2'] }}
+        </label>
+        {% endif %}
+        </div>
+    </div>
+    <br>
 
 
 
 {{ govukButton({
-  text: "Continue",
-  Value: "yes"
+  text: "Continue"
 }) }}
-</form>
-
-
-
 
 <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 <br>
@@ -122,8 +145,8 @@
 <br>
 <br>
 <a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
-</div>
 
+</div>
 
 
 {% endblock %}
