@@ -40,7 +40,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full" id="headerdiv">
     <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
-    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Apply to update or create a registered title</a></p>
+    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Digital Registration Service</a></p>
     <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 
 
@@ -88,9 +88,10 @@
               <input class="govuk-input govuk-js-character-count govuk-!-width-one-half" id="transferorRepresentation-reference" name="transferorRepresentation-reference" type="text">
               <span id="with-hint-info" class="govuk-hint govuk-character-count__message" aria-live="polite"></span>
               </div>
+            </div>
 
-           </div>
           </div>
+
 
         <div class="govuk-radios__item">
           <input class="govuk-radios__input" id="transferorRepresentation-conditional-3" name="transferorRepAnswer" type="radio" value="noConveyancer" >
@@ -100,6 +101,9 @@
     </div>
 
 
+        <br>
+        <div style="">
+        <h4 class="govuk-heading-s">More options</h4>
 
         {{ govukCheckboxes({
           idPrefix: "represents-all",
@@ -112,25 +116,6 @@
             {
               value: "Selected conveyancer represents all transferors (optional).",
               text: "Selected conveyancer represents all transferors (optional)."
-            }
-          ]
-        }) }}
-
-        <br>
-        <div style="">
-        <h4 class="govuk-heading-s">Apply selected conveyancer to all transferors (optional)</h4>
-
-        {{ govukCheckboxes({
-          idPrefix: "represents-all",
-          name: "represents-all",
-          classes: "govuk-checkboxes",
-          fieldset: {
-
-          },
-          items: [
-            {
-              value: "Selected conveyancer represents all lenders (optional).",
-              text: "Selected conveyancer represents all lenders (optional)."
             }
           ]
         }) }}

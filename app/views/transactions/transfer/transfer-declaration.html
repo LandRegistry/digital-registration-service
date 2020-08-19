@@ -33,7 +33,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full" id="headerdiv">
     <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
-    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Apply to update or create a registered title</a></p>
+    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Digital Registration Service</a></p>
     <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
 
 
@@ -50,52 +50,50 @@
         <span class="govuk-caption-xl">Transfer for value (TR1)</span>
         <h1 class="govuk-heading-xl">Declaration of trust</h1>
 
-        <form action="/transactions/transfer/" method="post">
-          {% set trustDetailsHtml %}
-          {{ govukTextarea({
-            id: "trustDetails",
-            name: "trust-Details",
-            rows: "6",
-            classes: "govuk-!-width-three-quarters"
-          }) }}
-          {% endset -%}
+        <form action="/transactions/transfer-declaration-complete" method="post">
 
-          {{ govukRadios({
-            idPrefix: "trust-conditional",
-            name: "transferTrust",
-            fieldset: {
-              legend: {
-                text: "The transferees are to hold the property:",
-                isPageHeading: false,
-                classes: "govuk-fieldset__legend--m"
-              }
-            },
-            hint: {
-              text: "Select one option."
-            },
-            items: [
-              {
-                value: "jointTenants",
-                text: "on trust for themselves as joint tenants"
-              },
-              {
-                value: "equalShares",
-                text: "on trust for themselves as tenants in  common equal shares"
-              },
-              {
-                value: "trustDetails",
-                text: "on trust - I will provide details",
-                conditional: {
-                  html: trustDetailsHtml
-                }
-              },
-              {
-                value: "trustAttached",
-                text: "on trust - I will attach Form JO (link opens in new window)"
-              }
-            ]
-          }) }}
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="trust-conditional-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                The transferees are to hold the property:</legend>
 
+              <span id="trust-conditional-hint" class="govuk-hint">Select one option.</span>
+
+              <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="trust-conditional" name="transferTrust" type="radio" value="jointTenants">
+                  <label class="govuk-label govuk-radios__label" for="trust-conditional">on trust for themselves as joint tenants</label>
+                </div>
+
+
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="trust-conditional-2" name="transferTrust" type="radio" value="equalShares">
+                  <label class="govuk-label govuk-radios__label" for="trust-conditional-2">on trust for themselves as tenants in  common equal shares</label>
+                </div>
+
+
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="trust-conditional-3" name="transferTrust" type="radio" value="trustDetails" aria-controls="conditional-trust-conditional-3" aria-expanded="false">
+                  <label class="govuk-label govuk-radios__label" for="trust-conditional-3">on trust - I will provide details</label>
+                </div>
+
+                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-trust-conditional-3">
+                  <div class="govuk-form-group">
+                    <textarea class="govuk-textarea govuk-!-width-three-quarters" id="trustDetails" name="trust-Details" rows="6"></textarea>
+                  </div>
+                </div>
+
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="trust-conditional-4" name="transferTrust" type="radio" value="trustAttached">
+                  <label class="govuk-label govuk-radios__label" for="trust-conditional-4">on trust - I will attach <a href="https://www.gov.uk/government/publications/jointly-owned-property-trust-registration-jo" target="_blank" rel="noopener noreferrer">Form JO</a> (link opens in new window)</label>
+                </div>
+
+  </div>
+  </fieldset>
+
+
+</div>
 
 
 
