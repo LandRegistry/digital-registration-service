@@ -53,13 +53,14 @@
         <span class="govuk-caption-xl">Transfer for value (TR1)</span>
         <h1 class="govuk-heading-xl">Confirm transfer date</h1>
 
-    <form method="post" action="transfer-tasks">
+    <form method="post" action="/transactions/transfer-date-complete">
           <div class="govuk-form-group">
 
 
               {{ govukDateInput({
-                  id: "passport-issued",
-                  namePrefix: "passport-issued",
+                  id: "transfer-date",
+                  namePrefix: "transfer-date",
+                  name: "transfer-date",
                   fieldset: {
                   },
                   hint: {
