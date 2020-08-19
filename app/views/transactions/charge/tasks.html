@@ -174,7 +174,7 @@
                 {% endif %}</td>
             </tr>
             <tr class="govuk-table__row">
-              <td class="govuk-table__cell govuk-link"><a href="transfer/transfereeAddressList">Add addresses for service</a></td>
+              <td class="govuk-table__cell govuk-link"><a href="/transactions/transfer/transfereeAddressList">Add addresses for service</a></td>
               <td class="govuk-table__cell">
                 {% if data['transfereeAddressType'] %}
                       <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
@@ -187,13 +187,13 @@
               <td class="govuk-table__cell"></td>
             </tr>
             <tr class="govuk-table__row">
-              <td class="govuk-table__cell govuk-link"><a href="transfer/add-transferor.html">Add transferors</a></td>
+              <td class="govuk-table__cell govuk-link"><a href="/transactions/transfer/add-transferor.html">Add transferors</a></td>
               <td class="govuk-table__cell">  {% if data['add-transferor'] %}
                       <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
                       {% endif %}</td>
             </tr>
             <tr class="govuk-table__row">
-              <td class="govuk-table__cell govuk-link"><a href="transfer/transferor-representation.html">Add transferor representation</a></td>
+              <td class="govuk-table__cell govuk-link"><a href="/transactions/transfer/transferor-representation.html">Add transferor representation</a></td>
               <td class="govuk-table__cell">  {% if data['transferorrep'] %}
                       <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
                       {% endif %}
@@ -234,7 +234,7 @@
               <td class="govuk-table__cell"></td>
             </tr>
             <tr class="govuk-table__row">
-              <td class="govuk-table__cell govuk-link"><a href="transfer/documents/document_prompts-1.html">Attach documents</a></td>
+              <td class="govuk-table__cell govuk-link"><a href="/transactions/transfer/documents/document_prompts-1.html">Attach documents</a></td>
               <td class="govuk-table__cell">
                 {% if data['attached'] %}
                   <strong class="govuk-tag app-task-list__task-completed">Attached</strong>
@@ -242,10 +242,14 @@
             </tr>
       </tbody>
     </table>
+    </div>
 
     <h2 class="govuk-heading-m govuk-!-padding-top-5">3. Charge</h2>
 
-    <div class="govuk-grid-column-full" style="margin-left: 40px; width: 97%;">
+    <div class="govuk-grid-column-full" style="margin-left: 10px; width: 100%;">
+
+
+    <div class="govuk-grid-column-full">
 
       <table class="govuk-table govuk-!-width-two-thirds">
         <th scope="col" class="govuk-table__header">3.1 Add charge details</th>
