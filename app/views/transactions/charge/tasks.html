@@ -33,7 +33,7 @@
   <div class="govuk-grid-column-full" id="headerdiv">
     <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
     <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Digital Registration Service</a></p>
-    <hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
+    <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
 
 
     <div class="govuk-phase-banner govuk-!-margin-bottom-5">
@@ -44,13 +44,12 @@
         </span></p>
     </div>
     </div>
-
+<form method="post" action="/../transactions/application-reviews/DischargeTransferCharge-MD">
 <div class="govuk-grid-column-full">
   <span class="govuk-caption-l">Apply to update or create a registered title</span>
     <h1 class="govuk-heading-l">Complete your application</h1>
     <p class="govuk-body-m">Provide all details and the documents you want to attach.</p>
 
-    <form method="post" action="/../transactions/application-reviews/DischargeTransferCharge-MD">
 
     <table class="govuk-table">
       <thead class="govuk-table__head">
@@ -72,11 +71,10 @@
             </tr>
       </tbody>
     </table>
-</div>
 
   <h2 class="govuk-heading-m govuk-!-padding-top-5">1. Discharge of charge</h2>
 
-  <div class="govuk-grid-column-full" style="margin-left: 40px; width: 97%;">
+  <div class="govuk-grid-column-full" style="margin-left: 40px; width: 100%;">
 
     <table class="govuk-table govuk-!-width-two-thirds">
       <th scope="col" class="govuk-table__header">1.1 Add discharge details</th>
@@ -142,7 +140,7 @@
   </div>
 
   <h2 class="govuk-heading-m govuk-!-padding-top-5">2. Transfer for value (TR1)</h2>
-  </div>
+
   <div class="govuk-grid-column-full" style="margin-left: 25px; width: 97%;">
 
     <table class="govuk-table govuk-!-width-two-thirds">
@@ -244,12 +242,11 @@
     </table>
     </div>
 
+
     <h2 class="govuk-heading-m govuk-!-padding-top-5">3. Charge</h2>
 
-    <div class="govuk-grid-column-full" style="margin-left: 10px; width: 100%;">
+    <div class="govuk-grid-column-full" style="margin-left: 0px; width: 100%;">
 
-
-    <div class="govuk-grid-column-full">
 
       <table class="govuk-table govuk-!-width-two-thirds">
         <th scope="col" class="govuk-table__header">3.1 Add charge details</th>
@@ -323,17 +320,23 @@
           text: "To avoid requisitions, attach all relevant documents."
         }) }}
 
-        </form>
 
 
-<hr style= "height: 4px;  background-image: linear-gradient(-60deg, #d7e900, #d7e900 0%, #b4d307 50%, #b4d307); border: none;">
-<br>
-<p class="govuk-body-s"> The following links open in a new window
-<br>
-<br>
-<a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
-<br>
-<a href="/prototype-admin/clear-data">Clear data</a>
+
+
+        <footer>
+        <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+        <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+        <br>
+        <p class="govuk-body-s" style="color: #747B7F"> The following links open in a new window
+        <br>
+        <br>
+        <a href="#" style="color: #747B7F"> Terms and conditions</a> | <a href="/setup/accessibility-statement" target="_blank" rel="noopener noreferrer" style="color: #747B7F">Accessibility statement</a> |  <a href="#" style="color: #747B7F">Freedom of information</a> | <a href="#" style="color: #747B7F">© Crown copyright</a></p>
+        </div>
+        </div>
+        </footer>
+
 
 
 {% endblock %}
