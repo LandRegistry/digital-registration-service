@@ -710,31 +710,31 @@ router.post('/transactions/charge-transactions', function (req, res) {
 
       }   if (transaction1 === 'Transfer for value (TR1)' && transaction2 === 'Select a transaction from the list' && transaction3 === 'Select a transaction from the list') {
             req.session.data['Transaction'] = 'T';
-            res.redirect('/transactions/add-applicants')
+            res.redirect('/transactions/calculate-fees')
 // set transaction code
       }  if (transaction1 === 'Charge') {
             req.session.data['Transaction'] = 'C';
 
-            res.redirect('/transactions/add-applicants')
+            res.redirect('/transactions/calculate-fees')
 
       }   if (transaction1 === 'Discharge (DS1)' && transaction2 === 'Transfer for value (TR1)' && transaction3 === 'Select a transaction from the list') {
             req.session.data['Transaction'] = 'DT';
-            res.redirect('/transactions/add-applicants')
+            res.redirect('/transactions/calculate-fees')
 
         } if (transaction1 === 'Discharge (DS1)' && transaction2 === 'Charge' && transaction3 === 'Select a transaction from the list') {
               req.session.data['Transaction'] = 'DC';
 
-              res.redirect('/transactions/add-applicants')
+              res.redirect('/transactions/calculate-fees')
 
         }  if (transaction1 === 'Discharge (DS1)' && transaction2 === 'Transfer for value (TR1)' && transaction3 === 'Charge') {
               req.session.data['Transaction'] = 'DTC';
 
-              res.redirect('/transactions/add-applicants')
+              res.redirect('/transactions/calculate-fees')
 
           } if (transaction1 === 'Transfer for value (TR1)' && transaction2 === 'Charge' && transaction3 === 'Select a transaction from the list') {
                   req.session.data['Transaction'] = 'TC';
 
-                  res.redirect('/transactions/add-applicants')
+                  res.redirect('/transactions/calculate-fees')
             }
 
 })
