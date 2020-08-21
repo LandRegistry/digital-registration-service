@@ -55,16 +55,32 @@
       <span class="govuk-caption-l">Apply to update or create a registered title</span>
 
   <h1 class="govuk-heading-l"> Select transactions </h1>
-  <p class="govuk-body">Select your transactions in priority order.
-      You can apply for up to 10 transactions. </p>
+  <p class="govuk-body">Select the transaction you want to register in order of priority and enter the appropriate fee.
+    <br>
+    <br>
+    If there is no fee, enter 0. You can check the fee using the <a target="_blank" href="https://landregistry.data.gov.uk/fees-calculator.html">fee calculator</a> (link opens in a new window).
+    <br>
+    <br>
+    Enter the price or value if applicable.<br>
   </div>
 
   <div class="govuk-grid-column-one-half">
-    <h2 class="govuk-heading-m"> Transactions </h2>
+    <h2 class="govuk-heading-m"> Transaction </h2>
+    <h3 class="govuk-body">Select from the list</h3>
+  </div>
+  <div class="govuk-grid-column-one-quarter">
+    <h2 class="govuk-heading-m"> Price or value (£) </h2>
+    <h3 class="govuk-body"> Enter full price or value, eg 250,000 </h3>
+  </div>
+  <div class="govuk-grid-column-one-quarter">
+    <h2 class="govuk-heading-m"> Fee (£) </h2>
+    <h3 class="govuk-body"> Fee must be 0 or between 12 and 999 </h3>
+  </div>
 
 
+    <div class="govuk-grid-column-one-half">
       <div class="govuk-form-group">
-        <label class="govuk-label" for="Select_transaction{{n}}" style="opacity: 0.5">
+        <label class="govuk-label" for="Select_transaction{{n}}">
           Priority 1
         </label>
 
@@ -152,13 +168,40 @@
           <option value="Withdrawal of caution (WCT)">Withdrawal of caution (WCT)</option>
     </select>
       </div>
+    </div>
+
+    <div class="govuk-grid-column-one-quarter">
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="Price1">
+           <br></label>
+        <input onkeyup = "javascript:this.value=Comma(this.value);" class="govuk-input" id="Price1" name="PriceInput1" value="{{ data['PriceInput1'] }}" type="text">
+      </div>
+    </div>
 
 
+    <div class="govuk-grid-column-one-quarter">
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="Fee1">
+         <br>
+        </label>
+        <input class="govuk-input  transaction-fee-field" id="Fee1" name="FeeInput1" value="{{ data['FeeInput1'] }}" type="text">
+      </div>
+    </div>
+
+    <div class="govuk-grid-column-one-half">
+
+    </div>
+    <div class="govuk-grid-column-one-quarter">
+
+    </div>
+    <div class="govuk-grid-column-one-quarter">
+
+    </div>
 
 
-
+      <div class="govuk-grid-column-one-half">
         <div class="govuk-form-group">
-          <label class="govuk-label" for="Select_transaction{{n}}" style="opacity: 0.5">
+          <label class="govuk-label" for="Select_transaction{{n}}">
             Priority 2
           </label>
 
@@ -246,10 +289,30 @@
             <option value="Withdrawal of caution (WCT)">Withdrawal of caution (WCT)</option>
       </select>
         </div>
+      </div>
+
+      <div class="govuk-grid-column-one-quarter">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="Price2">
+             <br></label>
+          <input onkeyup = "javascript:this.value=Comma(this.value);" class="govuk-input" id="Price2" name="PriceInput2" value="{{ data['PriceInput2'] }}" type="text">
+        </div>
+      </div>
 
 
+      <div class="govuk-grid-column-one-quarter">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="Fee2">
+           <br>
+          </label>
+          <input class="govuk-input transaction-fee-field" id="Fee2" name="FeeInput2" value="{{ data['FeeInput2'] }}" type="text">
+        </div>
+      </div>
+
+
+  <div class="govuk-grid-column-one-half">
     <div class="govuk-form-group">
-      <label class="govuk-label" for="Select_transaction3" style="opacity: 0.5">
+      <label class="govuk-label" for="Select_transaction3">
         Priority 3
       </label>
 
@@ -337,9 +400,34 @@
         <option value="Withdrawal of caution (WCT)">Withdrawal of caution (WCT)</option>
   </select>
     </div>
+  </div>
 
+
+  <div class="govuk-grid-column-one-quarter">
+    <div class="govuk-form-group ">
+      <label class="govuk-label" for="fee3">
+       <br>
+      </label>
+
+
+      <input onkeyup = "javascript:this.value=Comma(this.value);"  class="govuk-input" id="Price3" name="Price3" type="text">
+    </div>
+  </div>
+
+  <div class="govuk-grid-column-one-quarter">
     <div class="govuk-form-group">
-      <label class="govuk-label" for="Select_transaction4" style="opacity: 0.5">
+      <label class="govuk-label" for="Price3">
+         <br>
+      </label>
+
+
+      <input class="govuk-input  transaction-fee-field" id="fee3" name="fee3" type="text">
+    </div>
+  </div>
+
+  <div class="govuk-grid-column-one-half">
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="Select_transaction4">
         Priority 4
       </label>
 
@@ -427,16 +515,57 @@
         <option value="Withdrawal of caution (WCT)">Withdrawal of caution (WCT)</option>
   </select>
     </div>
+  </div>
 
 
+  <div class="govuk-grid-column-one-quarter">
+    <div class="govuk-form-group ">
+      <label class="govuk-label" for="fee4">
+       <br>
+      </label>
+
+
+      <input onkeyup = "javascript:this.value=Comma(this.value);"  class="govuk-input" id="Price4" name="Price4" type="text">
+    </div>
+  </div>
+
+  <div class="govuk-grid-column-one-quarter">
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="Price4">
+         <br>
+      </label>
+
+
+      <input class="govuk-input  transaction-fee-field" id="fee4" name="fee4" type="text">
+    </div>
+  </div>
+
+
+
+
+
+  <div class="govuk-grid-column-one-half govuk-!-margin-top-5">
+      <p class="govuk-link"><a href="#"> Add another </a></p>
+  </div>
+
+  <div class="govuk-grid-column-one-quarter govuk-!-margin-top-5">
+      <h4 class="govuk-heading-s" style="float: right;"></h4>
+  </div>
+
+  <div class="govuk-grid-column-one-quarter govuk-!-margin-top-5">
+      <h4 class="govuk-heading-s" style="float: left;">Total fee of</h4><p style="float: right;" class="govuk-heading-s fee-amount-text"></p>
+
+  </div>
+
+  <div class="govuk-grid-column-full govuk-!-margin-top-5">
+  <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0">
+        <span>Fee of </span>
+        <span class="fee-amount-text">£12</span>
+        <span>will be taken by Direct Debit from account no 1234567</span>
+      </p>
 </div>
 
-  <div class="govuk-grid-column-two-thirds">
-<p class="govuk-link"><a href="#"> Add another </a></p>
-
-
-
-
+<div class="govuk-grid-column-full govuk-!-margin-top-5">
   {{ govukCheckboxes({
   idPrefix: "DOI",
   id: "DOI",
@@ -488,8 +617,7 @@ text: "Continue"
 }) }}
 
 
-</div>
-</div>
+
 
 <script type="application/json" id="select-form-validation">
 //  {
