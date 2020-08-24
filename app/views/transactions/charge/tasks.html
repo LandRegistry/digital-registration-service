@@ -232,6 +232,13 @@
               <td class="govuk-table__cell"></td>
             </tr>
             <tr class="govuk-table__row">
+              <td class="govuk-table__cell govuk-link"><a href="/transactions/transfer/transfer-download">Get part-completed TR1 (optional)</a></td>
+              <td class="govuk-table__cell">
+                {% if data['download'] %}
+                  <strong class="govuk-tag app-task-list__task-completed">Downloaded</strong>
+                {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
               <td class="govuk-table__cell govuk-link"><a href="/transactions/transfer/documents/document_prompts-1.html">Attach documents</a></td>
               <td class="govuk-table__cell">
                 {% if data['attached'] %}

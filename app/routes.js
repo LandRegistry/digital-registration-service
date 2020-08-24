@@ -1032,6 +1032,27 @@ router.post('/transactions/transfer/guarantee-complete', function (req, res) {
         res.redirect('/transactions/charge/TC-tasks') }
 })
 
+// transfer  download
+router.post('/transactions/transfer/downloaded', function (req, res) {
+
+  let transaction = req.session.data['Transaction']
+
+    if (transaction === 'DTC') {
+        req.session.data['download'] = 'true';
+        res.redirect('/transactions/charge/tasks')
+    }   if (transaction === 'T') {
+        req.session.data['download'] = 'true';
+        res.redirect('/transactions/transfer/transfer-tasks')
+    } if (transaction === 'DT') {
+        req.session.data['download'] = 'true';
+        res.redirect('/transactions/tasks')
+    } if (transaction === 'TC') {
+        req.session.data['download'] = 'true';
+        res.redirect('/transactions/charge/TC-tasks') }
+})
+
+
+
 
 router.post('/transactions/transfer/documents/TR1-attached', function (req, res) {
   req.session.data['tr1attached'] = 'true';
