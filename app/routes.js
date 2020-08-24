@@ -322,14 +322,20 @@ router.post('/transactions/discharge/method-answer', function (req, res) {
 })
 
 router.post('/transactions/discharge/lendernameadded', function (req, res) {
-  let transaction3 = req.session.data['Transaction3']
-  if (transaction3 != '') {
-      res.redirect('/transactions/charge/tasks')
-  } else {
-    res.redirect('/transactions/tasks')
-  }
-})
 
+let transaction = req.session.data['Transaction']
+
+  if (transaction === 'DTC') {
+      res.redirect('/transactions/charge/tasks')
+  } if (transaction === 'C') {
+      res.redirect('/transactions/charge-without-transfer/charge-without-transfer-tasks')
+  } if (transaction === 'T') {
+      res.redirect('/transactions/transfer/transfer-tasks')
+  } if (transaction === 'DT') {
+      res.redirect('/transactions/tasks')
+  } if (transaction === 'TC') {
+      res.redirect('/transactions/charge/TC-tasks') }
+})
 
 
 //  discharge representation
@@ -403,7 +409,7 @@ router.post('/transactions/charge/documentscomplete', function (req, res) {
     } if (transaction === 'T') {
         res.redirect('/transactions/transfer/transfer-tasks')
     } if (transaction === 'DT') {
-        res.redirect('/transactions/DT-tasks')
+        res.redirect('/transactions/tasks')
     } if (transaction === 'TC') {
         res.redirect('/transactions/charge/TC-tasks') }
 })
@@ -750,7 +756,7 @@ router.post('/transactions/which-task-list', function (req, res) {
       } if (transaction === 'T') {
           res.redirect('/transactions/transfer/transfer-tasks')
       } if (transaction === 'DT') {
-          res.redirect('/transactions/DT-tasks')
+          res.redirect('/transactions/tasks')
       } if (transaction === 'TC') {
           res.redirect('/transactions/charge/TC-tasks') }
 
@@ -873,7 +879,7 @@ router.post('/transactions/transfer/transferee-representation-confirmed', functi
         res.redirect('/transactions/transfer/transfer-tasks')
     } if (transaction === 'DT') {
         req.session.data['transfereerep'] = 'true';
-        res.redirect('/transactions/DT-tasks')
+        res.redirect('/transactions/tasks')
     } if (transaction === 'TC') {
         req.session.data['transfereerep'] = 'true';
         res.redirect('/transactions/charge/TC-tasks') }
@@ -891,7 +897,7 @@ let transaction = req.session.data['Transaction']
   } if (transaction === 'T') {
       res.redirect('/transactions/transfer/transfer-tasks')
   } if (transaction === 'DT') {
-      res.redirect('/transactions/DT-tasks')
+      res.redirect('/transactions/tasks')
   } if (transaction === 'TC') {
       res.redirect('/transactions/charge/TC-tasks') }
 })
@@ -909,7 +915,7 @@ router.post('/transactions/transfer/add-transferor-complete', function (req, res
     } if (transaction === 'T') {
         res.redirect('/transactions/transfer/transfer-tasks')
     } if (transaction === 'DT') {
-        res.redirect('/transactions/DT-tasks')
+        res.redirect('/transactions/tasks')
     } if (transaction === 'TC') {
         res.redirect('/transactions/charge/TC-tasks') }
   })
@@ -931,7 +937,7 @@ if (transaction === 'DTC') {
     res.redirect('/transactions/transfer/transfer-tasks')
 } if (transaction === 'DT') {
     req.session.data['transferorrep'] = 'true';
-    res.redirect('/transactions/DT-tasks')
+    res.redirect('/transactions/tasks')
 } if (transaction === 'TC') {
     req.session.data['transferorrep'] = 'true';
     res.redirect('/transactions/charge/TC-tasks') }
@@ -952,7 +958,7 @@ router.post('/transactions/transfer/documents/attached-required-documents', func
       res.redirect('/transactions/transfer/transfer-tasks')
   } if (transaction === 'DT') {
       req.session.data['attached'] = 'true';
-      res.redirect('/transactions/DT-tasks')
+      res.redirect('/transactions/tasks')
   } if (transaction === 'TC') {
       req.session.data['attached'] = 'true';
       res.redirect('/transactions/charge/TC-tasks') }
@@ -975,7 +981,7 @@ router.post('/transactions/transfer-date-complete', function (req, res) {
         res.redirect('/transactions/transfer/transfer-tasks')
     } if (transaction === 'DT') {
         req.session.data['transfer-date'] = 'true';
-        res.redirect('/transactions/DT-tasks')
+        res.redirect('/transactions/tasks')
     } if (transaction === 'TC') {
         req.session.data['transfer-date'] = 'true';
         res.redirect('/transactions/charge/TC-tasks') }
@@ -998,7 +1004,7 @@ router.post('/transactions/transfer-declaration-complete', function (req, res) {
         res.redirect('/transactions/transfer/transfer-tasks')
     } if (transaction === 'DT') {
         req.session.data['transfer-declaration'] = 'true';
-        res.redirect('/transactions/DT-tasks')
+        res.redirect('/transactions/tasks')
     } if (transaction === 'TC') {
         req.session.data['transfer-declaration'] = 'true';
         res.redirect('/transactions/charge/TC-tasks') }
@@ -1020,7 +1026,7 @@ router.post('/transactions/transfer/guarantee-complete', function (req, res) {
         res.redirect('/transactions/transfer/transfer-tasks')
     } if (transaction === 'DT') {
         req.session.data['title-guarantee'] = 'true';
-        res.redirect('/transactions/DT-tasks')
+        res.redirect('/transactions/tasks')
     } if (transaction === 'TC') {
         req.session.data['title-guarantee'] = 'true';
         res.redirect('/transactions/charge/TC-tasks') }
@@ -1121,7 +1127,7 @@ router.post('/transferee-list-complete', function (req, res) {
       res.redirect('/transactions/transfer/transfer-tasks')
   } if (transaction === 'DT') {
       req.session.data['transfereelistcomplete'] = 'true';
-      res.redirect('/transactions/DT-tasks')
+      res.redirect('/transactions/tasks')
   } if (transaction === 'TC') {
       req.session.data['transfereelistcomplete'] = 'true';
       res.redirect('/transactions/charge/TC-tasks') }

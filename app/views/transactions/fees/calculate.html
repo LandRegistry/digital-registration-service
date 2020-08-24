@@ -55,40 +55,16 @@
         <p class="govuk-body"> Enter the price paid, value or amount as appropriate. When you're done calculate fee to view the total to pay.</p>
 
 
-
+        <!-- DTC transaction -->
+        {% if data['Transaction'] === 'DTC' %}
         <h2 class="govuk-heading-m govuk-!-margin-top-6"> Discharge of charge </h2>
         <div class="govuk-form-group">
-        <label class="govuk-label" for="width-10" >
-          No value required
-        </label>
-      </div>
-
-
-      <hr style="opacity: 0.5;"> </hr>
-      <br>
-
-  <!--
-        <h2 class="govuk-heading-m">Transfer for value </h2>
-        <div class="govuk-form-group">
-        <label class="govuk-label" for="width-10" style="margin-left: 30px;">
-          Value
-        </label>
-        <div id="account-number-hint" class="govuk-hint" style="margin-left: 30px;">
-         For example, 145000
-       </div>
-       <p class="govuk-heading-l" style="float: left; margin-right: 10px;">£</p>
-
-
-       {{ govukInput({
-        classes: "govuk-input--width-10",
-        id: "priority2fees",
-        name: "priority2value"
-      }) }}
+        <label class="govuk-label" for="width-10" >No value required</label>
         </div>
-          -->
+        <hr style="opacity: 0.5;"> </hr>
+        <br>
 
-
-          <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
+        <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
             <h2 class="govuk-heading-m"> Value for: Transfer for value (TR1)  </h2>
             <div class="govuk-form-group">
               <label class="govuk-label" for="width-10" >
@@ -105,57 +81,140 @@
           </div>
 
 
+          <hr style="opacity: 0.5;"> </hr>
+          <br>
+
+          <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
+            <h2 class="govuk-heading-m"> Amount for: Charge </h2>
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="width-10" >
+                Amount
+              </label>
+              <div id="account-number-hint" class="govuk-hint" >
+               For example, 145000
+             </div>
+             <div class="input-container"> <!-- add input and span into a container-->
+                <input type="text" class="govuk-input govuk-input--width-10" id="with-hint" name="priority3value"  value="{{ data['priority3value'] }}"  type="text" aria-describedby="with-hint-info with-hint-hint" style="padding-left : 30px;"> <!-- add padding to stop user typing behind £ sign-->
+                <span class="unit" id="with-hint">&pound</span>
+            </div>
+            </div>
+          </div>
+        {% endif %}
 
 
-      <hr style="opacity: 0.5;"> </hr>
-
-
-      <br>
-
-      <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
-        <h2 class="govuk-heading-m"> Amount for: Charge </h2>
+        <!-- DT transaction -->
+        {% if data['Transaction'] === 'DT' %}
+        <h2 class="govuk-heading-m govuk-!-margin-top-6"> Discharge of charge </h2>
         <div class="govuk-form-group">
-          <label class="govuk-label" for="width-10" >
-            Amount
-          </label>
-          <div id="account-number-hint" class="govuk-hint" >
-           For example, 145000
-         </div>
-         <div class="input-container"> <!-- add input and span into a container-->
-            <input type="text" class="govuk-input govuk-input--width-10" id="with-hint" name="priority3value"  value="{{ data['priority3value'] }}"  type="text" aria-describedby="with-hint-info with-hint-hint" style="padding-left : 30px;"> <!-- add padding to stop user typing behind £ sign-->
-            <span class="unit" id="with-hint">&pound</span>
+        <label class="govuk-label" for="width-10" >No value required</label>
         </div>
-        </div>
-      </div>
+        <hr style="opacity: 0.5;"> </hr>
+        <br>
 
-      <!--
-
-        <h2 class="govuk-heading-m"> Amount for: Charge </h2>
-        <div class="govuk-form-group">
-        <label class="govuk-label" for="width-10" style="margin-left: 30px;">
-          Amount
-        </label>
-        <div id="account-number-hint" class="govuk-hint" style="margin-left: 30px;">
-         For example, 145000
-       </div>
-         <p class="govuk-heading-l" style="float: left; margin-right: 10px;">£</p>
-         {{ govukInput({
-          classes: "govuk-input--width-10",
-          id: "priority3fees",
-          name: "priority3value"
-        }) }}
+        <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
+            <h2 class="govuk-heading-m"> Value for: Transfer for value (TR1)  </h2>
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="width-10" >
+                Value
+              </label>
+              <div id="account-number-hint" class="govuk-hint" >
+               For example, 145000
+             </div>
+             <div class="input-container"> <!-- add input and span into a container-->
+                <input type="text" class="govuk-input govuk-input--width-10" id="with-hint" name="priority2values"  value="{{ data['priority2values'] }}"  type="text" aria-describedby="with-hint-info with-hint-hint" style="padding-left : 30px;"> <!-- add padding to stop user typing behind £ sign-->
+                <span class="unit" id="with-hint">&pound</span>
+            </div>
+            </div>
           </div>
 
-          -->
+        {% endif %}
+
+        <!-- TC transaction -->
+        {% if data['Transaction'] === 'TC' %}
+
+        <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
+            <h2 class="govuk-heading-m"> Value for: Transfer for value (TR1)  </h2>
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="width-10" >
+                Value
+              </label>
+              <div id="account-number-hint" class="govuk-hint" >
+               For example, 145000
+             </div>
+             <div class="input-container"> <!-- add input and span into a container-->
+                <input type="text" class="govuk-input govuk-input--width-10" id="with-hint" name="priority2values"  value="{{ data['priority2values'] }}"  type="text" aria-describedby="with-hint-info with-hint-hint" style="padding-left : 30px;"> <!-- add padding to stop user typing behind £ sign-->
+                <span class="unit" id="with-hint">&pound</span>
+            </div>
+            </div>
+          </div>
+
+
+          <hr style="opacity: 0.5;"> </hr>
+          <br>
+
+          <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
+            <h2 class="govuk-heading-m"> Amount for: Charge </h2>
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="width-10" >
+                Amount
+              </label>
+              <div id="account-number-hint" class="govuk-hint" >
+               For example, 145000
+             </div>
+             <div class="input-container"> <!-- add input and span into a container-->
+                <input type="text" class="govuk-input govuk-input--width-10" id="with-hint" name="priority3value"  value="{{ data['priority3value'] }}"  type="text" aria-describedby="with-hint-info with-hint-hint" style="padding-left : 30px;"> <!-- add padding to stop user typing behind £ sign-->
+                <span class="unit" id="with-hint">&pound</span>
+            </div>
+            </div>
+          </div>
+        {% endif %}
+
+        <!-- T transaction -->
+        {% if data['Transaction'] === 'T' %}
+
+        <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
+            <h2 class="govuk-heading-m"> Value for: Transfer for value (TR1)  </h2>
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="width-10" >
+                Value
+              </label>
+              <div id="account-number-hint" class="govuk-hint" >
+               For example, 145000
+             </div>
+             <div class="input-container"> <!-- add input and span into a container-->
+                <input type="text" class="govuk-input govuk-input--width-10" id="with-hint" name="priority2values"  value="{{ data['priority2values'] }}"  type="text" aria-describedby="with-hint-info with-hint-hint" style="padding-left : 30px;"> <!-- add padding to stop user typing behind £ sign-->
+                <span class="unit" id="with-hint">&pound</span>
+            </div>
+            </div>
+          </div>
+
+        {% endif %}
+
+
+        <!-- C transaction -->
+        {% if data['Transaction'] === 'C' %}
+
+          <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
+            <h2 class="govuk-heading-m"> Amount for: Charge </h2>
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="width-10" >
+                Amount
+              </label>
+              <div id="account-number-hint" class="govuk-hint" >
+               For example, 145000
+             </div>
+             <div class="input-container"> <!-- add input and span into a container-->
+                <input type="text" class="govuk-input govuk-input--width-10" id="with-hint" name="priority3value"  value="{{ data['priority3value'] }}"  type="text" aria-describedby="with-hint-info with-hint-hint" style="padding-left : 30px;"> <!-- add padding to stop user typing behind £ sign-->
+                <span class="unit" id="with-hint">&pound</span>
+            </div>
+            </div>
+          </div>
+        {% endif %}
           <br>
           <br>
 
 
         <a class="govuk-link govuk-body" href="select">Add/amend transactions</a><br>
-
-
-
-
 
 
         {{ govukButton({
