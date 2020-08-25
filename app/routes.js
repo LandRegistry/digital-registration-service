@@ -1249,6 +1249,18 @@ router.post('/transactions/charge-without-transfer/charge-without-transfer-detai
 })
 
 
+router.post('/DTC-CheckMD', function (req, res) {
+  let mdRef = req.session.data['mdRef']
+
+  if (mdRef !== '') {
+    res.redirect('/transactions/application-reviews/DischargeTransferCharge-MD.html')
+} else {
+      res.redirect('index.html')
+    }
+})
+
+
+
 // Borrower names
 // Display borrower names
 // Option to change / remove borrower name

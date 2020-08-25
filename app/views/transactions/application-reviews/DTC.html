@@ -1,0 +1,202 @@
+{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
+{%- set assetPath = '/govuk/assets' -%}
+
+{% extends "govuk/template.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+
+
+{% block headIcons %}
+  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
+  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
+{% endblock %}
+
+{% block head %}
+  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+
+
+<!-- D -->
+{% if data['Transaction'] === 'D' %}
+
+    <table class="govuk-table govuk-!-margin-bottom-9">
+      <span class="govuk-caption-m" style="">Priority 1</span>
+      <h3 class="govuk-heading-m">Discharge of charge</h3>
+
+      <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header govuk-!-width-one-quarter">Price/Value (£)</th>
+              <td class="govuk-table__cell">{{ data['PriceInput1'] }}</td>
+            </tr>
+
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header govuk-!-width-one-quarter">Fee (£)</th>
+              <td class="govuk-table__cell">{{ data['FeeInput1'] }}</td>
+            </tr>
+
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header govuk-!-width-one-quarter">Discharge method</th>
+              <td class="govuk-table__cell">
+                {% if data['dischargemethod'] === 'form' %}Attached to this application{% endif %}
+                {% if data['dischargemethod'] === 'direct' %}Sent by lender{% endif %}
+                {% if data['dischargemethod'] === 'later' %}Sent later{% endif %}
+                </td>
+            </tr>
+      </tbody>
+    </table>
+
+
+    {% if data['dischargemethod'] === 'form' or data['dischargemethod'] === 'later' %}
+    <div>
+      <h3 class="govuk-heading-m">Lender details</h3><a style="float: right; margin-top: -40px;" href="#">Change</a>
+      <table class="govuk-table">
+
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Lender name</th>
+            <th scope="col" class="govuk-table__header govuk-!-width-three-quarters">Represented by</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table_body">
+          {% if data['lender-name'] %}
+          <tr class="govuk-table_row">
+          <td class="govuk-table__cell">{{ data['lender-name'] }}</td>
+          <td class="govuk-table__cell govuk-!-width-one-third">
+             UK Conveyancer Ltd
+           </td>
+          </tr>
+          {% endif %}
+
+       {% if data['lender-name2'] %}
+       <tr class="govuk-table_row">
+       <td class="govuk-table__cell">{{ data['lender-name2'] }}</td>
+       <td class="govuk-table__cell govuk-!-width-one-third">
+          {% if not data['lenderReptype'] %}N/a{% endif %}
+          {% if data['lenderReptype'] %}{{ data['lenderReptype']}}{% endif %}
+        </td>
+       </tr>
+       {% endif %}
+       </tbody>
+       </table>
+       </div>
+       <br>
+
+           <table class="govuk-table govuk-!-margin-bottom-9">
+           <h2 class="govuk-heading-m">Attached documents</h2>
+             <thead class="govuk-table__head">
+               <tr class="govuk-table__row">
+                 <th scope="col" class="govuk-table__header govuk-!-width-one-eighth">Category</th>
+                 <th scope="col" class="govuk-table__header govuk-!-width-one-third">Document type</th>
+                 <th scope="col" class="govuk-table__header govuk-!-width-one-eighth">Certification</th>
+                 <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">File name</th>
+               </tr>
+             </thead>
+
+             <tbody class="govuk-table__body">
+                   <tr class="govuk-table__row">
+                     <td class="govuk-table__cell">Legal deed</td>
+                     <td class="govuk-table__cell">DS1</td>
+                     <td class="govuk-table__cell">Certified</td>
+                     <td class="govuk-table__cell">DS1.pdf</td>
+                   </tr>
+             </tbody>
+           </table>
+  {% endif %}
+
+  {% if data['dischargemethod'] === 'direct' %}
+        <div>
+          <h3 class="govuk-heading-m">Lender details</h3><a style="float: right; margin-top: -40px;" href="#">Change</a>
+          <table class="govuk-table">
+
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Lender name</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table_body">
+              {% if data['lender-name'] %}
+              <tr class="govuk-table_row">
+              <td class="govuk-table__cell">{{ data['lender-name'] }}</td>
+              </tr>
+              {% endif %}
+
+           {% if data['lender-name2'] %}
+           <tr class="govuk-table_row">
+           <td class="govuk-table__cell">{{ data['lender-name2'] }}</td>
+           </tr>
+           {% endif %}
+           </tbody>
+           </table>
+           </div>
+           <br>
+
+               <table class="govuk-table govuk-!-margin-bottom-9">
+               <h2 class="govuk-heading-m">Attached documents</h2>
+                 <thead class="govuk-table__head">
+                   <tr class="govuk-table__row">
+                     <th scope="col" class="govuk-table__header govuk-!-width-one-eighth">Category</th>
+                     <th scope="col" class="govuk-table__header govuk-!-width-one-third">Document type</th>
+                     <th scope="col" class="govuk-table__header govuk-!-width-one-eighth">Certification</th>
+                     <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">File name</th>
+                   </tr>
+                 </thead>
+
+                 <tbody class="govuk-table__body">
+                       <tr class="govuk-table__row">
+                         <td class="govuk-table__cell">Legal deed</td>
+                         <td class="govuk-table__cell">DS1</td>
+                         <td class="govuk-table__cell">Certified</td>
+                         <td class="govuk-table__cell">DS1.pdf</td>
+                       </tr>
+                 </tbody>
+               </table>
+  {% endif %}
+
+
+
+<!-- {% endif %} -->
+
+
+
+
+<!-- <script type="application/json" id="reference-form-validation">
+ {
+   "reference": {
+     "presence": {
+       "message": "^Enter your reference for this application"
+     },
+     "length": {
+       "minimum": 1,
+       "maximum": 25,
+       "message": "^Your reference must be 25 characters or less"
+     }
+   }
+ }
+</script> -->
+
+
+
+{% endblock %}
+
+
+{% block footer %}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}
