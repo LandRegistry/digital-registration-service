@@ -110,7 +110,7 @@
                 {% endif %}</td>
             </tr>
             <tr class="govuk-table__row">
-              <td class="govuk-table__cell govuk-link"><a href="transfer/transfereeAddressList">Add addresses for service</a></td>
+              <td class="govuk-table__cell govuk-link"><a href="/transactions/transfer/transfereeAddressList">Add addresses for service</a></td>
               <td class="govuk-table__cell">
                 {% if data['transfereeAddressType'] %}
                       <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
@@ -123,13 +123,13 @@
               <td class="govuk-table__cell"></td>
             </tr>
             <tr class="govuk-table__row">
-              <td class="govuk-table__cell govuk-link"><a href="transfer/add-transferor.html">Add transferors</a></td>
+              <td class="govuk-table__cell govuk-link"><a href="/transactions/transfer/add-transferor.html">Add transferors</a></td>
               <td class="govuk-table__cell">  {% if data['add-transferor'] %}
                       <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
                       {% endif %}</td>
             </tr>
             <tr class="govuk-table__row">
-              <td class="govuk-table__cell govuk-link"><a href="transfer/transferor-representation.html">Add transferor representation</a></td>
+              <td class="govuk-table__cell govuk-link"><a href="/transactions/transfer/transferor-representation.html">Add transferor representation</a></td>
               <td class="govuk-table__cell">  {% if data['transferorrep'] %}
                       <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
                       {% endif %}
@@ -170,7 +170,14 @@
               <td class="govuk-table__cell"></td>
             </tr>
             <tr class="govuk-table__row">
-              <td class="govuk-table__cell govuk-link"><a href="transfer/documents/document_prompts-1.html">Attach documents</a></td>
+              <td class="govuk-table__cell govuk-link"><a href="/transactions/transfer/transfer-download">Get part-completed TR1 (optional)</a></td>
+              <td class="govuk-table__cell">
+                {% if data['download'] %}
+                  <strong class="govuk-tag app-task-list__task-completed">Downloaded</strong>
+                {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell govuk-link"><a href="/transactions/transfer/documents/document_prompts-1">Attach documents</a></td>
               <td class="govuk-table__cell">
                 {% if data['attached'] %}
                   <strong class="govuk-tag app-task-list__task-completed">Attached</strong>
@@ -185,7 +192,7 @@
     {{ govukButton({
         text: "Review application",
         classes: "govuk-!-margin-top-9",
-        href: "../transactions/application-review"
+        href: "/../transactions/multi-application-review"
       }) }}
 
 

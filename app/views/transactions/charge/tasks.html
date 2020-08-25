@@ -44,7 +44,7 @@
         </span></p>
     </div>
     </div>
-<form method="post" action="/../transactions/application-reviews/DischargeTransferCharge-MD">
+<form method="post" action="/../transactions/multi-application-review">
 <div class="govuk-grid-column-full">
   <span class="govuk-caption-l">Apply to update or create a registered title</span>
     <h1 class="govuk-heading-l">Complete your application</h1>
@@ -74,7 +74,7 @@
 
   <h2 class="govuk-heading-m govuk-!-padding-top-5">1. Discharge of charge</h2>
 
-  <div class="govuk-grid-column-full" style="margin-left: 40px; width: 100%;">
+  <div class="govuk-grid-column-full" style="margin-left: 25px; width: 100%;">
 
     <table class="govuk-table govuk-!-width-two-thirds">
       <th scope="col" class="govuk-table__header">1.1 Add discharge details</th>
@@ -232,6 +232,13 @@
               <td class="govuk-table__cell"></td>
             </tr>
             <tr class="govuk-table__row">
+              <td class="govuk-table__cell govuk-link"><a href="/transactions/transfer/transfer-download">Get part-completed TR1 (optional)</a></td>
+              <td class="govuk-table__cell">
+                {% if data['download'] %}
+                  <strong class="govuk-tag app-task-list__task-completed">Downloaded</strong>
+                {% endif %}
+            </tr>
+            <tr class="govuk-table__row">
               <td class="govuk-table__cell govuk-link"><a href="/transactions/transfer/documents/document_prompts-1.html">Attach documents</a></td>
               <td class="govuk-table__cell">
                 {% if data['attached'] %}
@@ -245,7 +252,7 @@
 
     <h2 class="govuk-heading-m govuk-!-padding-top-5">3. Charge</h2>
 
-    <div class="govuk-grid-column-full" style="margin-left: 0px; width: 100%;">
+    <div class="govuk-grid-column-full" style="margin-left: 25px; width: 100%;">
 
 
       <table class="govuk-table govuk-!-width-two-thirds">

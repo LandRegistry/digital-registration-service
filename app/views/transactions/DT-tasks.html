@@ -50,7 +50,7 @@
     <h1 class="govuk-heading-l">Complete your application</h1>
     <p class="govuk-body-m">Provide all details and the documents you want to attach.</p>
 
-    <form method="post" action="/../transactions/application-reviews/DischargeTransferCharge-MD">
+    <form method="post" action="/../transactions/multi-application-review">
 
     <table class="govuk-table">
       <thead class="govuk-table__head">
@@ -232,6 +232,13 @@
           <tr class="govuk-table__row">
             <th scope="row" class="govuk-table__header">2.4 Supporting documents</th>
             <td class="govuk-table__cell"></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell govuk-link"><a href="/transactions/transfer/transfer-download">Get part-completed TR1 (optional)</a></td>
+            <td class="govuk-table__cell">
+              {% if data['download'] %}
+                <strong class="govuk-tag app-task-list__task-completed">Downloaded</strong>
+              {% endif %}
           </tr>
           <tr class="govuk-table__row">
             <td class="govuk-table__cell govuk-link"><a href="/../transactions/transfer/documents/document_prompts-1.html">Attach documents</a></td>
