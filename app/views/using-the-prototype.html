@@ -1,0 +1,71 @@
+
+{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
+{%- set assetPath = '/govuk/assets' -%}
+
+{% extends "govuk/template.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
+{% from "govuk/components/tabs/macro.njk" import govukTabs %}
+
+
+
+
+{% block headIcons %}
+  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
+  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
+{% endblock %}
+
+{% block head %}
+  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+
+
+{% block pageTitle %}
+  DRS prototype
+{% endblock %}
+
+{% block header %}
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper">
+     <div class="govuk-grid-row">
+       <div class="govuk-grid-column-full">
+         <div class="govuk-!-padding-bottom-6"><a class="govuk-link" href="index"> < Back</a></div>
+       </div>
+
+      <div class="govuk-grid-column-two-thirds">
+        <span class="govuk-caption-l">Digital Registration Service</span>
+        <h1 class="govuk-heading-l"> Using the prototype </h1>
+
+        <p class="govuk-body"> The prototype is primarily for user research sessions. Not all functionality will work and unexpected errors are likely occur.
+        <br><br> When using the prototype, some pages will feature dynamic data, whilst others have set information for use in testing scenarios and for ease.
+        <br><br> Simple, happy paths are more likely to work end-to-end. </p>
+        <p class="govuk-body"> A summary of specific journeys with shortcuts to different stages of the journey can be found on the <a class="govuk-link govuk-body" href="index">home page</a>.</p>
+
+        <p class="govuk-body">For support using this prototype, contact Ros Boyes or Kristin Hall.</p>
+
+      </div>
+
+        <br>
+        <div class="govuk-grid-column-full">
+
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}
