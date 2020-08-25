@@ -28,12 +28,17 @@
 <div class="govuk-width-container">
   <main class="govuk-main-wrapper">
      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <div class="govuk-!-padding-bottom-6"><a class="govuk-link" href="index"> < Back</a></div>
+        </div>
+
 
         <div class="govuk-grid-column-two-thirds">
-          <div class="govuk-!-padding-bottom-5">
-        <a class="govuk-link" href="index"> < Back</a>
-          </div>
-        <h2 class="govuk-heading-m">Introduction</h2>
+        <span class="govuk-caption-l">Digital Registration Service</span>
+        <h2 class="govuk-heading-l">Introduction to Digital Registration Service</h2>
+        </div>
+
+        <div class="govuk-grid-column-two-thirds">
         <h3 class="govuk-heading-s">The problem</h3>
         <p>Conveyancers applying to change the register generate a lot of requisitions, especially when using the AP1 form, which is needed for many transactions.
           It’s a complex, multi-purpose form wrapped in legalese guidance that’s not always understood by users.
@@ -62,24 +67,29 @@
 
 
         <h4 class="govuk-heading-s">Project so far</h4>
-        <p>As an MVP, we designed an end-to-end application for Noting a lease, one of the shortest, simplest routes to changing the register. This was released as a private beta to selected early adopters.
+        <p>In 2020, we've designed, tested, developed and deployed discharges, transfers for value and charges,
+          allowing users to submit some of the most common transaction combinations.
 
-          We are now (Sept 2019) working on completing a user journey for making a transfer. This entails adding representation for each party and addresses for service.</p>
+          <br>  <br>
+          Over the Summer, we've created an
+         accessibility statement for the service, tested and settled on an MVP for fees calculation and created an in-service feedback form for users.
 
-          <p> Last updated: September 2019 </p>
+          <p> Last updated: August 2020 </p>
+          </div>
+
+          <div class="govuk-grid-column-one-third">
+          <h4 class="govuk-heading-m">Further reading</h4>
+            <ul class="govuk-list">
+              <li>
+                <a class="govuk-link" href="https://gallery.io/projects/MCHbtQVoQ2HCZZci5kXNmqB-">Gallery.io</a>
+              </li>
+              <li>
+                <a class="govuk-link" href="https://github.com/LandRegistry/digital-registration-service">Github</a>
+              </li>
+            </ul>
           </div>
 
 
-          <style>
-            .sidebar {
-            border-left: 3px solid navy;
-            height: 1100px;
-          }
-
-            .headerpanel {
-            border: solid navy;
-            }
-          </style>
           {% endblock %}
 
           {% block footer %}
