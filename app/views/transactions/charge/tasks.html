@@ -255,7 +255,7 @@
     <div class="govuk-grid-column-full" style="margin-left: 25px; width: 100%;">
 
 
-      <table class="govuk-table govuk-!-width-two-thirds">
+      <table class="govuk-table govuk-!-width-two-thirds govuk-!-margin-bottom-9">
         <th scope="col" class="govuk-table__header">3.1 Add charge details</th>
         <td class="govuk-table__cell"></td>
         <tbody class="govuk-table__body">
@@ -309,6 +309,20 @@
       </table>
       </div>
 
+      {% if data['mortgageAttached'] %}
+      <div class="govuk-!-margin-bottom-9">
+      <h3 class="govuk-heading-l">Preview your e-AP1</h3>
+      <a href="#"><img src="/public/images/ap1-icon.svg" style="max-width:15%; height:auto; float: left; padding-right: 25px;" alt="ap1 icon"></a>
+      <h2><a href="#" class="govuk-link govuk-heading-m govuk-!-font-weight-regular" style="">Download draft e-AP1 (PDF)</a></h2>
+      <p class="govuk-body"> PDF - opens in a new window</p><br><br>
+      </div>
+      {% endif %}
+
+
+
+
+      <div style="margin-top: 75px;">
+
 
     {{ govukButton({
         text: "Review application",
@@ -322,6 +336,7 @@
         href: "/../save-resume/save-confirmation"
       }) }}
 
+      </div>
 
       {{ govukInsetText({
           text: "To avoid requisitions, attach all relevant documents."
