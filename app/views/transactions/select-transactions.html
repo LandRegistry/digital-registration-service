@@ -55,12 +55,11 @@
       <span class="govuk-caption-l">Apply to update or create a registered title</span>
 
   <h1 class="govuk-heading-l"> Select transactions </h1>
-  <p class="govuk-body">Select your transactions in priority order.
-      You can apply for up to 10 transactions. </p>
+  <p class="govuk-body">Select your transactions in priority order.<br>You can apply for up to 10 transactions. </p>
   </div>
 
   <div class="govuk-grid-column-one-half">
-    <h2 class="govuk-heading-m"> Transactions </h2>
+    <h2 class="govuk-heading-m govuk-!-margin-bottom-7" style="font-weight: bold"> Transactions </h2>
 
 
       <div class="govuk-form-group">
@@ -159,7 +158,7 @@
 
         <div class="govuk-form-group" id="displaytest">
           <label class="govuk-label" for="Select_transaction{{n}}" style="opacity: 0.5">
-            Priority 2
+            Priority 2 - (optional)
           </label>
 
           <select class="govuk-select" id="Select_transaction{{n}}" name="Transaction2">
@@ -250,7 +249,7 @@
 
     <div class="govuk-form-group">
       <label class="govuk-label" for="Select_transaction3" style="opacity: 0.5">
-        Priority 3
+        Priority 3 - (optional)
       </label>
 
       <select class="govuk-select" id="Select_transaction3" name="Transaction3">
@@ -340,7 +339,7 @@
 
     <div class="govuk-form-group">
       <label class="govuk-label" for="Select_transaction4" style="opacity: 0.5">
-        Priority 4
+        Priority 4 - (optional)
       </label>
 
       <select class="govuk-select" id="Select_transaction4" name="Transaction4">
@@ -426,35 +425,28 @@
         <option value="Withdraw a restriction (RX4)">Withdraw a restriction (RX4)</option>
         <option value="Withdrawal of caution (WCT)">Withdrawal of caution (WCT)</option>
   </select>
-    </div>
-
-
 </div>
-
-  <div class="govuk-grid-column-two-thirds">
-<p class="govuk-link"><a href="#"> Add another </a></p>
-
+<a class="govuk-body govuk-link" href="">Add another transaction</a><br>
+  </div>
 
 
-
-  {{ govukCheckboxes({
-  idPrefix: "DOI",
-  id: "DOI",
-  name: "DOI",
-  fieldset: {
-    legend: {
-      text: ""
-    }
-  },
-  items: [
-    {
-      value: "DOI",
-      text: "Select if disclosable overriding interests affect the registered estate."
-    }
-  ]
-}) }}
-
-
+    <div class="govuk-grid-column-full govuk-!-margin-top-9">
+      {{ govukCheckboxes({
+      idPrefix: "DOI",
+      id: "DOI",
+      name: "DOI",
+      fieldset: {
+        legend: {
+          text: ""
+        }
+      },
+      items: [
+        {
+          value: "DOI",
+          text: "Select if disclosable overriding interests affect the registered estate."
+        }
+      ]
+    }) }}
 
 <details class="govuk-details" data-module="govuk-details">
   <summary class="govuk-details__summary">
@@ -480,11 +472,6 @@
 {{ govukButton({
 classes: "govuk-!-margin-top-5",
 text: "Continue"
-}) }}
-
-
-{{ govukInsetText({
-  text: "To avoid requisitions, make sure you add any payable fees"
 }) }}
 
 
