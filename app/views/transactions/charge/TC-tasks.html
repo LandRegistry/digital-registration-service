@@ -45,12 +45,14 @@
     </div>
     </div>
 
+<form method="post" action="/../transactions/multi-application-review">
+
 <div class="govuk-grid-column-full">
   <span class="govuk-caption-l">Apply to update or create a registered title</span>
     <h1 class="govuk-heading-l">Complete your application</h1>
     <p class="govuk-body-m">Provide all details and the documents you want to attach.</p>
 
-    <form method="post" action="/../transactions/multi-application-review">
+
 
     <table class="govuk-table">
       <thead class="govuk-table__head">
@@ -72,7 +74,7 @@
             </tr>
       </tbody>
     </table>
-</div>
+  </div>
 
 
   <h2 class="govuk-heading-m govuk-!-padding-top-5">1. Transfer for value (TR1)</h2>
@@ -185,6 +187,7 @@
   </table>
   </div>
 
+
     <h2 class="govuk-heading-m govuk-!-padding-top-5">2. Charge</h2>
 
     <div class="govuk-grid-column-full" style="margin-left: 40px; width: 97%;">
@@ -243,25 +246,42 @@
       </table>
       </div>
 
-
-    {{ govukButton({
-        text: "Review application",
-        classes: "govuk-!-margin-top-9"
-      }) }}
-
-
-      {{ govukButton({
-        text: "Save application and exit",
-        classes: "secondary-button-save govuk-!-margin-top-9",
-        href: "/../save-resume/save-confirmation"
-      }) }}
+              {% if data['mortgageAttached'] %}
+              <div class="govuk-!-margin-bottom-9">
+              <h3 class="govuk-heading-l">Preview your e-AP1</h3>
+              <a href="#"><img src="/public/images/ap1-icon.svg" style="max-width:15%; height:auto; float: left; padding-right: 25px;" alt="ap1 icon"></a>
+              <h2><a href="#" class="govuk-link govuk-heading-m govuk-!-font-weight-regular" style="">Download draft e-AP1 (PDF)</a></h2>
+              <p class="govuk-body"> PDF - opens in a new window</p><br><br>
+              </div>
+              {% endif %}
 
 
-      {{ govukInsetText({
-          text: "To avoid requisitions, attach all relevant documents."
-        }) }}
 
-        </form>
+
+            <div style="margin-top: 75px;">
+              {{ govukButton({
+                  text: "Review application",
+                  classes: "govuk-!-margin-top-9"
+                }) }}
+
+
+                {{ govukButton({
+                  text: "Save application and exit",
+                  classes: "secondary-button-save govuk-!-margin-top-9",
+                  href: "/../save-resume/save-confirmation"
+                }) }}
+
+            </form>
+            </div>
+
+
+          {{ govukInsetText({
+              text: "To avoid requisitions, attach all relevant documents."
+            }) }}
+
+
+
+
 
 
         <footer>
@@ -276,6 +296,8 @@
         </div>
         </div>
         </footer>
+
+        </div>
 
 
 {% endblock %}
