@@ -76,10 +76,9 @@
                     {% endif %}</td>
 <!-- transferee one address type -->
               <td class="govuk-table__cell">
-
-                    {% if data['transfereeAddressType'] === 'property' %}
-                     Property description
-                     {% endif %}
+                {% if data['transfereeAddressType'] === 'property' %}
+                 Property description
+                 {% endif %}
 
                     {% if data['transfereeAddressType'] === 'UK-postal' %}
                      UK Postal
@@ -119,7 +118,7 @@
 <!-- transferee one address -->
 
               {% if data['transfereeAddressType'] === 'property' %}
-               66 Edwards Walk, Littlehaxten, LH12 9PJ
+              66 Edwards Walk, Littlehaxten, LH12 9PJ
                {% endif %}
 
               {% if data['transfereeAddressType'] === 'UK-postal' %}
@@ -160,7 +159,7 @@
               </td>
               <td class="govuk-table__cell govuk-link">
                   {% if not data['transfereeAddressType'] %}
-                    <a href="transferee-addresstype">Add address</a>
+                    <a href="/testing/address/type">Add address</a>
                   {% endif %}
 
                   {% if data['transfereeAddressType'] %}
@@ -277,13 +276,11 @@
                 <td class="govuk-table__cell">{{ data['applicant2-individual-forename-2'] }} {{ data['applicant2-individual-surname-2'] }}</td>
                 <td class="govuk-table__cell">
 
-                  {% if data['applyall'] %}
-                   Property description
-                   {% endif %}
-
                   {% if data['applicant2address'] %}
 
-
+                  {% if data['propertyapplyall'] === 'true' %}
+                  Property description
+                   {% endif %}
 
                         {% if data['transfereeAddressType'] === 'UK-postal' %}
                         UK Postal
@@ -313,16 +310,10 @@
                    {% endif %}
                   </td>
                 <td class="govuk-table__cell govuk-!-width-one-quarter">
-                  {% if not data['applyall'] %}
                   {% if not data['applicant2address'] %}
                   <p class="govuk-body" style="margin-left: -165px">
                   - No address for service added -</p>
                   {% endif %}
-                  {% endif %}
-
-                  {% if data['applyall'] %}
-                   66 Edwards Walk, Littlehaxten, LH12 9PJ
-                   {% endif %}
 
                   {% if data['transfereeAddressType-2'] === 'UK-postal' %}
                    4, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ
@@ -396,6 +387,7 @@
 
                    {% if data['applicant2address2'] %}
 
+
                          {% if data['transfereeAddressType2'] === 'UK-postal' %}
                          UK Postal
                          {% endif %}
@@ -431,11 +423,6 @@
 
 <!-- transferee two address two -->
                     {% if data['applicant2address2'] %}
-
-                    {% if data['applyall'] %}
-                     66 Edwards Walk, Littlehaxten, LH12 9PJ
-                     {% endif %}
-
                     {% if data['transfereeAddressType2'] === 'UK-postal' %}
                       6, Victoria Road,	Greater Haxten,	Wiltshire, LH17 6EQ
                      {% endif %}
