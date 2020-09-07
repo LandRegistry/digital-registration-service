@@ -118,6 +118,9 @@ router.post('/transactions/transfer/transferee-addresstype-answer', function (re
 
   let transfereeAddress = req.session.data['transfereeAddressType']
 
+  if (transfereeAddress === 'property') {
+      res.redirect('/transactions/transfer/transfereeAddressList')
+    }
   if (transfereeAddress === 'UK-postal') {
     res.redirect('/transactions/transfer/transferee-UKaddress')
     }
@@ -694,6 +697,43 @@ router.get('/docs/examples/pass-data/TC', function (req, res) {
     "Transaction": "TC"
 }
   res.redirect('/../transactions/charge/TC-tasks')
+})
+
+router.get('/testing/addresses', function (req, res) {
+	req.session.data = {
+    "reference": "JT/123/CH",
+    "title": "LP12345",
+    "whole-or-part": "Whole",
+    "part": "",
+    "Transaction1": "Transfer for value (TR1)",
+    "PriceInput1": "120000",
+    "FeeInput1": "12",
+    "Transaction2": "Charge",
+    "PriceInput2": "120000",
+    "FeeInput2": "12",
+    "Transaction3": "",
+    "PriceInput3": "",
+    "FeeInput3": "",
+    "add-applicant": "individual",
+    "applicant-individual-forename": "John",
+    "applicant-individual-surname": "Smith",
+    "applicant2-individual-forename-2": "Jane",
+    "applicant2-individual-surname-2": "Smith",
+    "Transaction1": "Transfer for value (TR1)",
+    "Transaction2": "Charge",
+    "Transaction3": "",
+    "Transaction": "TC",
+    "applicant-individual-transferee1": [
+      "applicant1-transferee-1"
+    ],
+    "applicant-individual-transferee2": [
+      "applicant2-transferee-2"
+    ],
+      "transfereelistcomplete": "true",
+      "TransfereeRepresentation": "UKConveyancersLtd",
+      "transfereerep": "true"
+    }
+  res.redirect('/transactions/transfer/transfer-tasks')
 })
 
 
