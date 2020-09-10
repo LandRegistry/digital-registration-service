@@ -1323,3 +1323,28 @@ router.post('/DTC-CheckMD', function (req, res) {
 //
 //
 // })
+
+
+router.get('/docs/examples/pass-data/transfer1', function (req, res) {
+	req.session.data = 	      		{
+  "transferor1": "Joe Bloggs",
+  "transferor2": "Jane Bloggs"
+}
+  res.redirect('/../testing/transfer/task-list')
+})
+
+
+// Checking if transferor name needs to be removed or amended
+router.post('/testing/transfer/transferor-list', function (req, res) {
+
+  let amendTransferorName1 = req.session.data['amendTransferorName1']
+
+  if (amendTransferorName1 === 'amended') {
+    req.session.data['Transferor1Status'] = 'amended'; //setting variable for borrower1Status to check for amended
+    res.redirect('charge-without-transfer-borrower-change')
+}
+  if (amendTransferorName1 === 'removed') {
+      req.session.data['Transferor1Status'] = 'removed'; //setting variable for borrower1Status to check for removed
+      res.redirect('transferor-list')
+    }
+})
