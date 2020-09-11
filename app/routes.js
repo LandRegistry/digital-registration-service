@@ -1340,11 +1340,24 @@ router.post('/testing/transfer/transferor-list', function (req, res) {
   let amendTransferorName1 = req.session.data['amendTransferorName1']
 
   if (amendTransferorName1 === 'amended') {
-    req.session.data['Transferor1Status'] = 'amended'; //setting variable for borrower1Status to check for amended
-    res.redirect('charge-without-transfer-borrower-change')
+    req.session.data['Transferor1Status'] = 'amended'; //setting variable for transferor1Status to check for amended
+    res.redirect('change')
 }
   if (amendTransferorName1 === 'removed') {
-      req.session.data['Transferor1Status'] = 'removed'; //setting variable for borrower1Status to check for removed
+      req.session.data['Transferor1Status'] = 'removed'; //setting variable for transferor1Status to check for removed
       res.redirect('transferor-list')
     }
 })
+
+/*
+router.post('/change-answer', function (req, res) {
+
+  let transferor1Amended = req.session.data['transferor1Amended']
+
+  if (transferor1Amended !=== '') {
+    req.session.data['transferorChnage'] = 'amended'; //setting variable for transferor1Status to check for amended
+    res.redirect('transferor-list')
+  }
+})
+
+ */
