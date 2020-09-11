@@ -48,7 +48,7 @@
     </div>
 
     <main class="govuk-main-wrapper " id="main-content" role="main">
-      <a href="/transactions/charge-without-transfer/charge-without-transfer-tasks" class="govuk-back-link">Return to task list</a>
+      <a href="../transfer/task-list" class="govuk-back-link">Return to task list</a>
       <span class="govuk-caption-l">Transfer for value (TR1)</span>
 
           <h1 class="govuk-heading-l">Check transferor details</h1>
@@ -56,7 +56,7 @@
           <p>Use the options menu to add or amend transferor details where necessary. When all <br> names are correct and consistent with supporting documents, select ‘Continue’.</p>
 
 
-          <form method="post" action="/transactions/charge-without-transfer/borrower-representation" novalidate>
+          <form method="post" action="../transfer/task-list" novalidate>
 
 
             <table class="govuk-table">
@@ -76,11 +76,11 @@
                     <tr class="govuk-table__row">
                       <td class="govuk-table__cell">Private individual</td>
                       <td class="govuk-table__cell" >
-                        {% if data['Transferor1Status'] == 'removed'%} <!-- if Transferor1Status = removed show transferor1 variable-->
+                        {% if data['Transferor1Status'] === 'removed'%} <!-- if Transferor1Status = removed show transferor1 variable-->
                         <p>{{ data['transferor1'] }} removed</p> <!-- show transferor1 variable-->
 
-                        {% elif data['Transferor1Status'] == 'amended'%} <!-- if Transferor1Status = amended show transferor1ameded (input) amended from  transferor1 variable-->
-                        <p> {{ data['transferor1amended'] }} from {{ data['transferor1'] }}</p>
+                        {% elif data['Transferor1Status'] === 'amended'%} <!-- if Transferor1Status = amended show transferor1ameded (input) amended from  transferor1 variable-->
+                        <p> {{ data['transferor1Amended'] }} amended from {{ data['transferor1'] }}</p>
 
                         {% elif (data['Transferor1Status'] !== 'removed') or (data['Transferor1Status'] !== 'amended') %}
                         <p>{{ data['transferor1'] }}</p>
