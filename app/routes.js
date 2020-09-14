@@ -1348,16 +1348,3 @@ router.post('/testing/transfer/transferor-list', function (req, res) {
       res.redirect('transferor-list')
     }
 })
-
-/*
-router.post('/change-answer', function (req, res) {
-
-  let transferor1Amended = req.session.data['transferor1Amended']
-
-  if (transferor1Amended !=== '') {
-    req.session.data['transferorChnage'] = 'amended'; //setting variable for transferor1Status to check for amended
-    res.redirect('transferor-list')
-  }
-})
-
- */

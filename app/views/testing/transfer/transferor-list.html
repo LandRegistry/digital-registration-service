@@ -80,7 +80,7 @@
                         <p>{{ data['transferor1'] }} removed</p> <!-- show transferor1 variable-->
 
                         {% elif data['Transferor1Status'] === 'amended'%} <!-- if Transferor1Status = amended show transferor1ameded (input) amended from  transferor1 variable-->
-                        <p> {{ data['transferor1Amended'] }} amended from {{ data['transferor1'] }}</p>
+                        <p> {{ data['nameChange'] }} amended from {{ data['transferor1'] }}</p>
 
                         {% elif (data['Transferor1Status'] !== 'removed') or (data['Transferor1Status'] !== 'amended') %}
                         <p>{{ data['transferor1'] }}</p>
