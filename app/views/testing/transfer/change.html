@@ -1,5 +1,4 @@
-{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
-{%- set assetPath = '/govuk/assets' -%}
+{% extends "layout_unbranded.html" %}
 
 {% extends "govuk/template.njk" %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
@@ -9,8 +8,7 @@
 {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
-{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
-
+{% from "govuk/components/table/macro.njk" import govukTable %}
 
 
 
@@ -32,84 +30,64 @@
 
 {% block content %}
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-full" id="headerdiv">
-    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
-    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Digital Registration Service</a></p>
-    <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
 
+    <!-- Header - we need to make this a component we can reuse and edit in one place -->
+    <div class="govuk-grid-column-full" id="headerdiv">
+      <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
+      <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Digital Registration Service</a></p>
+      <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
 
-    <div class="govuk-phase-banner">
-        <p class="govuk-phase-banner__content">
-        <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
-        <span class="govuk-phase-banner__text">
-        This is a prototype and not a real service.
-        </span></p>
-    </div></div>
+    <!-- Banner - should be included in above component -->
+      <div class="govuk-phase-banner govuk-!-margin-bottom-5">
+          <p class="govuk-phase-banner__content">
+          <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
+          <span class="govuk-phase-banner__text">
+          This is a prototype and not a real service.
+          </span></p>
+      </div>
     </div>
 
+    <div class="govuk-grid-column-full">
+      <span class="govuk-caption-l">Charge</span>
+        <h1 class="govuk-heading-l">Change transferor name</h1>
+        <p class="govuk-body-l"><b>Name: {{ data['transferor1'] }}</b></p>
+
+<form class="" action="transferor-list">
 
 
-    <main class="govuk-main-wrapper " id="main-content" role="main">
-    <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <a href="charge-without-transfer-borrower-list" class="govuk-back-link">Return to Borrower list</a>
-        <span class="govuk-caption-l">Charge</span>
+        <div class="govuk-form-group">
+  <label class="govuk-label" for="one-third">
+    Enter correct name
+  </label>
+  <input class="govuk-input govuk-!-width-one-third" id="one-third" name="nameChange" type="text"></div>
 
-          <h1 class="govuk-heading-l">Change transferor name</h1>
-          <h2 class="govuk-heading-m">Name: {{ data['transferor1'] }}</h2>
-
-          <form method="post" action="transferor-list" novalidate>
-
-            {{ govukInput({
-                label: {
-                  text: "Enter correct name"
-                },
-                classes: "govuk-!-width-two-thirds",
-                id: "transferorDetails1Change",
-                name: "transferor1Amended"
-            }) }}
-          <br>
-
-
-          {{ govukWarningText({
-            text: "Name must be exactly as it appears in supporting documents",
-            iconFallbackText: "Warning"
-          }) }}
-
-          {{ govukButton({
-          classes: "",
-          text: "Continue"
-          }) }}
-
-        </form>
-
-
-</main>
-
-
-<hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
-<br>
-<p class="govuk-body-s"> The following links open in a new window
-<br>
-<br>
-<a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
-<a href="/prototype-admin/clear-data">Clear data</a>
+  <div class="govuk-warning-text">
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+  <strong class="govuk-warning-text__text" style="padding-top: 10px">
+    <span class="govuk-warning-text__assistive">Warning</span>
+    Name must be exactly as it appears in supporting documents.
+  </strong>
 </div>
 
-<script type="application/json" id="reference-form-validation">
- {
-   "reference": {
-     "presence": {
-       "message": "^Enter your reference for this application"
-     },
-     "length": {
-       "minimum": 1,
-       "maximum": 25,
-       "message": "^Your reference must be 25 characters or less"
-     }
-   }
-</script>
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+</form>
 
+
+
+        <footer>
+        <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+        <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+        <br>
+        <p class="govuk-body-s" style="color: #747B7F"> The following links open in a new window
+        <br>
+        <br>
+        <a href="#" style="color: #747B7F"> Terms and conditions</a> | <a href="/setup/accessibility-statement" target="_blank" rel="noopener noreferrer" style="color: #747B7F">Accessibility statement</a> |  <a href="#" style="color: #747B7F">Freedom of information</a> | <a href="#" style="color: #747B7F">© Crown copyright</a></p>
+        </div>
+        </div>
+        </footer>
 
 
 {% endblock %}
