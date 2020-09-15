@@ -1348,3 +1348,19 @@ router.post('/testing/transfer/transferor-list', function (req, res) {
       res.redirect('transferor-list')
     }
 })
+
+
+// wes yes no answer
+router.post('/wes-yes-no-answer', function (req, res) {
+
+  let wesAnswer = req.session.data['wesAnswer']
+
+  if (wesAnswer === 'yes') {
+    req.session.data['wesYesNoAnswer'] = 'yes';
+    res.redirect('/testing/wes/wes-doc-prompt')
+}
+  if (wesAnswer === 'no') {
+    req.session.data['wesYesNoAnswer'] = 'no';
+      res.redirect('/testing/wes/task-list-dtc.html')
+    }
+})
