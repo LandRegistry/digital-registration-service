@@ -328,9 +328,9 @@
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">Evidence - Change name: {{ data['nameChange'] }}</td>
             <td class="govuk-table__cell govuk-!-width-one-quarter">Passport</td>
-            <td class="govuk-table__cell"></td>
-            <td class="govuk-table__cell govuk-!-width-one-third"></td>
-            <td class="govuk-table__cell govuk-link"><a href="/testing/transfer/doc-prompts/changed/change-selection.html">Attach</a></td>
+            <td class="govuk-table__cell">Certified</td>
+            <td class="govuk-table__cell govuk-!-width-one-third"><p id="tr1">document.pdf</p></td>
+            <td class="govuk-table__cell"><a  class="govuk-link remove" onclick="addClass" name="remove" href="remove-selection">Remove</a></td>
           </tr>
 
           <tr class="govuk-table__row">
@@ -344,9 +344,9 @@
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">Evidence - Change name: {{ data['nameChange'] }}</td>
             <td class="govuk-table__cell govuk-!-width-one-quarter">Statutory Declaration</td>
-            <td class="govuk-table__cell"></td>
+           <td class="govuk-table__cell"></td>
             <td class="govuk-table__cell govuk-!-width-one-third"></td>
-            <td class="govuk-table__cell govuk-link">Attach</td>
+           <td class="govuk-table__cell govuk-link">Attach</td>
           </tr>
 
 
@@ -358,7 +358,7 @@
 
     {{ govukButton({
       text: "Continue",
-      href: "/transactions/tasks"
+      href: "/testing/transfer/task-list.html"
     }) }}
 
 
