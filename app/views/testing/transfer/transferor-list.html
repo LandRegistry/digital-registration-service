@@ -97,7 +97,7 @@
                           <a href="/testing/transfer/transferor-details.html">Amend / Remove</a>
 
                           {% elif (data['Transferor1Status'] == 'removed') %}
-                          <a id="undoButton" href="charge-without-transfer-borrower-list" onclick="undo()">Undo remove</a>
+                          <a id="undoButton" href="charge-without-transfer-borrower-list" name="undo" onclick="undo()">Undo remove</a>
                           {% endif %}
                     </td>
                     </tr>

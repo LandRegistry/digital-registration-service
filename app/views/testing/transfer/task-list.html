@@ -120,7 +120,7 @@
             </tr>
             <tr class="govuk-table__row">
               <td class="govuk-table__cell govuk-link"><a href="/testing/transfer/transferor-list.html">Transferor details</a></td>
-              <td class="govuk-table__cell">  {% if data['add-transferor'] %}
+              <td class="govuk-table__cell">      {% if (data['Transferor1Status'] === 'removed') or (data['Transferor1Status'] === 'amended') %}
                       <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
                       {% endif %}</td>
             </tr>
@@ -170,9 +170,9 @@
               <td class="govuk-table__cell">
             </tr>
             <tr class="govuk-table__row">
-              <td class="govuk-table__cell govuk-link"><a href="/testing/transfer/doc-prompts/name-removed.html">Attach documents</a></td>
+              <td class="govuk-table__cell govuk-link"><a href="/testing/transfer/doc-prompts/removed/name-removed.html">Attach documents</a></td>
               <td class="govuk-table__cell">
-                {% if data['attached'] %}
+                {% if data['sort'] %}
                   <strong class="govuk-tag app-task-list__task-completed">Attached</strong>
                 {% endif %}
             </tr>
