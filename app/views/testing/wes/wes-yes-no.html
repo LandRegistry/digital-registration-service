@@ -55,11 +55,20 @@
 
           <h1 class="govuk-heading-l">
             <span class="govuk-caption-l">Signatures</span>
-            Do any of your documents use electronic signatures?</h1>
+            Do your documents use witnessed electronic signatures?</h1>
 
-            <p class="govuk-body-m"> If any of your documents include a witnessed electronic signature, you'll need to attach a certificate. Practice guide 8: execution of deeds includes <a href="#">an example showing what the certificate must contain.</a>(opens in new window)</p>
+            <p class="govuk-body-m"> If any of your documents have a witnessed electronic signature, you'll need to attach a certificate.</p>
 
-
+            <details class="govuk-details" data-module="govuk-details">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">
+                  Help with electronic signature certificates
+                </span>
+              </summary>
+              <div class="govuk-details__text">
+                Practice guide 8: execution of deeds includes <a href="#">an example showing what the certificate must contain</a> (opens in new window).
+              </div>
+            </details>
           <form method="post" action="/wes-yes-no-answer" novalidate>
             {{ govukRadios({
             idPrefix: "wesAnswer",
