@@ -1,0 +1,122 @@
+{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
+{%- set assetPath = '/govuk/assets' -%}
+
+{% extends "govuk/template.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+
+
+
+
+{% block headIcons %}
+  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
+  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
+{% endblock %}
+
+{% block head %}
+  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full" id="headerdiv">
+    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
+    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Digital Registration Service</a></p>
+    <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+
+
+    <div class="govuk-phase-banner">
+        <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
+        <span class="govuk-phase-banner__text">
+        This is a prototype and not a real service.
+        </span></p>
+    </div>
+    </div>
+    </div>
+
+
+    <main class="govuk-main-wrapper " id="main-content" role="main">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <h1 class="govuk-heading-xl"> Introduction to Digital<br> Registration Service </h1>
+            </div>
+            <div class="govuk-grid-column-two-thirds">
+                <p class="govuk-body">
+
+                  The new Digital Registration Service makes it faster and easier to submit HM Land Registry applications online.
+
+                  <br><br>As part of HM Land Registry’s Digital Transformation Programme, we are enhancing the existing electronic Document Registration Service (e-DRS) provided through the portal. This enhancement will be available for all portal users towards the end of 2020.
+
+                  <br><br>With improved guidance as you work your way through the application process, all applications will have all the right information before they are submitted. As the service grows, you will be able to complete register updates in less time, with required data automatically added to the form. This will reduce both duplication of effort and the risk of mistakes, leading to fewer requisitions.
+
+                  <br><br>The service will also help us process applications faster by reducing requisitions and enabling greater levels of automation in our casework systems.
+
+            <h2 class="govuk-heading-l">Who can use the service now?</h2>
+
+              <p class="govuk-body">
+
+                This service is being rolled out to a small group of users who submit significant volumes of applications through the portal. Their experience and feedback is helping us develop the best service possible.
+
+                <br><br>The service enables a user to submit up to 10 transactions, against a single title via one application. Currently there are 83 transactions live, including a number of non-ID and transfer of ownership transactions.
+
+              </p>
+
+              <h2 class="govuk-heading-l">What changes will we see in the near future?</h2>
+
+                <p class="govuk-body">
+
+                  We are currently working on implementing a fees calculator within the service. This feature will help reduce fee discrepancy requisitions and will be available during the Autumn.
+                  <br><br>
+                  By the end of next Spring, we aim to have Powers of Attorney and Assent applications available and implement enhancements to the recently released 'Save and resume' functionality.
+                  <br><br>
+                  We are continually iterating the service based on user insights, behaviours and feedback. Digital Registration Service will eventually replace the existing offering (e-DRS) but it will take some time to develop all application types.
+
+
+                </p>
+
+            </div>
+
+            <div class="govuk-grid-column-one-third">
+              <hr style="height: 5px; width: full; background: #b4d307; border: none;">
+              <h3 class="govuk-heading-m govuk-!-margin-top-3">Related content</h3>
+              <a class="govuk-link govuk-body">Video demonstration</a>
+            </div>
+        </div>
+  </main>
+
+
+ <footer>
+ <div class="govuk-grid-row">
+ <div class="govuk-grid-column-full">
+ <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+ <br>
+ <p class="govuk-body-s" style="color: #747B7F"> The following links open in a new window
+ <br>
+ <br>
+ <a href="#" style="color: #747B7F"> Terms and conditions</a> | <a href="/setup/accessibility-statement" target="_blank" rel="noopener noreferrer" style="color: #747B7F">Accessibility statement</a> |  <a href="#" style="color: #747B7F">Freedom of information</a> | <a href="#" style="color: #747B7F">© Crown copyright</a></p>
+ </div>
+ </div>
+ </footer>
+
+
+
+
+
+{% endblock %}
+
+
+{% block footer %}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}
