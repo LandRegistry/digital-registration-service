@@ -49,17 +49,6 @@
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
 
-              <script type="text/javascript">
-                window.onload = function() {
-                    document.goBack.action = document.referrer;
-                }
-            
-                function get_action() {
-                    return form_action;
-                }
-            </script>
-
-
 <form name="goBack" method="get" data-validate="reference-form-validation" novalidate>
   <span class="govuk-caption-l"></span>
   <h1 class="govuk-heading-l"> Change your reference </h1>
@@ -101,6 +90,18 @@
   </div>
   </div>
   </footer>
+
+
+<!--Return the user to their previous page after editing their reference-->
+  <script type="text/javascript">
+    window.onload = function() {
+        document.goBack.action = document.referrer;
+    }
+
+    function get_action() {
+        return form_action;
+    }
+</script>
 
 
   <script type="application/json" id="reference-form-validation">
