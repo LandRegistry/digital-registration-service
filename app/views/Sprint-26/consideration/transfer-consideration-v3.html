@@ -50,23 +50,22 @@
         <span class="govuk-caption-xl">Transfer for value (TR1)</span>
         <h1 class="govuk-heading-xl">Select consideration</h1>
 
-        <form action="/transactions/transfer-declaration-complete" method="post">
-
-        <h2 class="govuk-heading-m">Price paid</h2>
-        <p class="govuk-body">{{ data['priority2values'] }} (inclusive of VAT)</p>
-        <br>
+        <form method="post" action="/test-task-consideration">
 
           <div class="govuk-form-group">
               <fieldset class="govuk-fieldset" aria-describedby="consideration-conditional-hint">
-              <h3 class="govuk-heading-m">Select one of the following options</h3>
-                <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+              <h2 class="govuk-heading-m">Select one of the following options</h2>
 
-                  <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="consideration-conditional" name="transferConsideration" type="radio" value="transferReceived">
-                    <label class="govuk-label govuk-radios__label" for="consideration-conditional">
-                      Transfer received from transferee
-                    </label>
-                  </div>
+                  <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                    <div class="govuk-radios__item">
+                      <input checked="checked" class="govuk-radios__input" id="consideration-conditional" name="transferConsideration" type="radio" value="Received" data-aria-controls="conditional-consideration-conditional">
+                      <label class="govuk-label govuk-radios__label" for="consideration-conditional">
+                        Transfer of £100,000 including £20,000 VAT received from transferee
+                      </label>
+                    </div>
+
+
+
 
                   <div class="govuk-radios__item">
                     <input class="govuk-radios__input" id="consideration-conditional-2" name="transferConsideration" type="radio" value="transferNot" data-aria-controls="conditional-consideration-conditional-2">
@@ -74,33 +73,36 @@
                       Transfer not for money or anything that has a monetary value
                     </label>
                   </div>
-                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-consideration-conditional-2">
 
 
-                  </div>
                   <div class="govuk-radios__item">
                     <input class="govuk-radios__input" id="consideration-conditional-3" name="transferConsideration" type="radio" value="text" data-aria-controls="conditional-consideration-conditional-3">
                     <label class="govuk-label govuk-radios__label" for="consideration-conditional-3">
                       Other consideration
                     </label>
+
                   </div>
+
                   <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-consideration-conditional-3">
+                    <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="5000">
                     <div class="govuk-form-group">
-                      <textarea class="govuk-textarea govuk-!-width-three-quarters" id="considerationOther" name="considerationOther-Details" rows="6"></textarea>
+                      <div id="event-name-hint" class="govuk-hint">
+                      Give details
                     </div>
+                      <textarea class="govuk-textarea govuk-!-width-three-quarters govuk-js-character-count" id="considerationOther" name="considerationOther-Details" rows="6"></textarea>
+                    </div>
+
 
                   </div>
                 </div>
               </fieldset>
             </div>
 
+            {{ govukButton({
+              text: "Continue"
+            }) }}
 
-
-           <button class="govuk-button" data-module="govuk-button">
-             Continue
-           </button>
-
-         </form>
+            </form>
          </div>
 </div>
 

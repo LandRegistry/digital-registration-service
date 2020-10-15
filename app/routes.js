@@ -1249,6 +1249,20 @@ router.post('/transactions/charge/documents/CH2-attached', function (req, res) {
     res.redirect('/charge/documents/document_prompts')
 })
 
+// testing task list_
+
+router.post('/test-task-consideration', function (req, res) {
+  // Get the answer from session data
+  // The name between the quotes is the same as the 'name' attribute on the input elements
+  // However in JavaScript we can't use hyphens in variable names
+
+  req.session.data['transfer-consideration'] = 'true';
+    res.redirect('Sprint-26/consideration/task-test')
+
+    })
+
+
+
 // TR1 enhancement - routing
 //
 // router.post('/transactions/transfer/check-transferees', function (req, res) {
