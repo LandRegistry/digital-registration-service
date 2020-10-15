@@ -48,17 +48,17 @@
 
     <div class="govuk-grid-column-two-thirds">
         <span class="govuk-caption-xl">Transfer for value (TR1)</span>
-        <h1 class="govuk-heading-xl">Select consideration</h1>
+        <h1 class="govuk-heading-xl">Consideration</h1>
 
         <form action="/transactions/transfer-declaration-complete" method="post">
 
         <h2 class="govuk-heading-m">Price paid</h2>
-        <p class="govuk-body">{{ data['priority2values'] }} (inclusive of VAT)</p>
+        <p class="govuk-body">£180,000 (inclusive of VAT)</p>
         <br>
 
           <div class="govuk-form-group">
               <fieldset class="govuk-fieldset" aria-describedby="consideration-conditional-hint">
-              <h3 class="govuk-heading-m">Select one of the following options</h3>
+              <p class="govuk-body">Select one of the following options.</p>
                 <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
 
                   <div class="govuk-radios__item">
@@ -75,7 +75,9 @@
                     </label>
                   </div>
                   <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-consideration-conditional-2">
-
+                    <div class="govuk-form-group">
+                      <textarea class="govuk-textarea govuk-!-width-three-quarters" id="considerationNot" name="consideration-Details" rows="6"></textarea>
+                    </div>
 
                   </div>
                   <div class="govuk-radios__item">
@@ -87,6 +89,7 @@
                   <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-consideration-conditional-3">
                     <div class="govuk-form-group">
                       <textarea class="govuk-textarea govuk-!-width-three-quarters" id="considerationOther" name="considerationOther-Details" rows="6"></textarea>
+
                     </div>
 
                   </div>
