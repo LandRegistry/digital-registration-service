@@ -1,5 +1,4 @@
-{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
-{%- set assetPath = '/govuk/assets' -%}
+{% extends "layout_unbranded.html" %}
 
 {% extends "govuk/template.njk" %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
@@ -9,6 +8,7 @@
 {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
 
 
 
@@ -24,6 +24,7 @@
 {% block head %}
   <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
 {% endblock %}
+
 
 {% block header %}
 {% endblock %}
@@ -58,7 +59,7 @@
             Amend transferor details</h1>
           <h2 class="govuk-heading-m">Name: {{ data['transferor1'] }}</h2>
 
-          <form method="post" action="/testing/transfer/transferor-list" novalidate>
+          <form method="post" action="/Sprint-24/transfer/transferor-list" novalidate>
             {{ govukRadios({
             idPrefix: "AmendTransferorName1",
             name: "amendTransferorName1",
@@ -95,24 +96,18 @@
 </main>
 
 
+<footer>
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-full">
 <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
 <br>
-<p class="govuk-body-s"> The following links open in a new window
+<p class="govuk-body-s" style="color: #747B7F"> The following links open in a new window
 <br>
 <br>
-<a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
-<a href="/prototype-admin/clear-data">Clear data</a>
-
-<script type="application/json" id="borrower1-form-validation">
-  {
-
-        "solechargeborrowerdetails1": {
-          "presence": {
-            "message": "^Make a selection"
-          }
-        }
- 	}
-</script>
+<a href="#" style="color: #747B7F"> Terms and conditions</a> | <a href="/setup/accessibility-statement" target="_blank" rel="noopener noreferrer" style="color: #747B7F">Accessibility statement</a> |  <a href="#" style="color: #747B7F">Freedom of information</a> | <a href="#" style="color: #747B7F">© Crown copyright</a></p>
+</div>
+</div>
+</footer>
 
 {% endblock %}
 

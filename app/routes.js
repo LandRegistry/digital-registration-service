@@ -1344,7 +1344,7 @@ router.get('/docs/examples/pass-data/transfer1', function (req, res) {
   "transferor1": "Joe Bloggs",
   "transferor2": "Jane Bloggs"
 }
-  res.redirect('/../testing/transfer/task-list')
+  res.redirect('/../Sprint-24/transfer/task-list')
 })
 
 
