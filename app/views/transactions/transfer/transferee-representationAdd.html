@@ -66,7 +66,7 @@
         {% if data['transferee-individual-forename'] %}
         {{ data['transferee-individual-forename'] }} {{ data['transferee-individual-surname'] }}
         {% endif %}-->    
-      { % else %}
+    {% else %}
       {% if data['applicant-individual-transferee1'] %}
         <span>Is {{ data['applicant-individual-forename'] }} {{ data['applicant-individual-surname'] }} represented by a conveyancer?</span> 
       {% endif %}
@@ -246,7 +246,7 @@
             
           
             {
-              value: "AConveyancer",
+              value: "A conveyancer",
               text: "Yes",
               name: "TransfereeRepresentation",
               conditional: {
