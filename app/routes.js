@@ -1378,3 +1378,26 @@ router.post('/wes-yes-no-answer', function (req, res) {
       res.redirect('/testing/wes/task-list-dtc.html')
     }
 })
+
+/* 
+//  conveyancer/non-conveyancer answer test
+router.post('/setup/user-type-answer', function (req, res) {
+  let userType = req.session.data['user-type']
+  if (userType === 'conveyancer') {
+      req.session.data['user-type'] = 'conveyancer';
+      res.redirect('/yes')
+  } else {
+    req.session.data['user-type'] = 'non-conveyancer';
+    res.redirect('/no')
+  }
+}) */
+
+router.post('/setup/user-type-answer', function (req, res) {
+  let userType = req.session.data['user-type'];
+  res.redirect('/setup/enter-title')
+  if (userType === 'conveyancer') {
+      req.session.data['user-type'] = 'conveyancer';
+  } else {
+    req.session.data['user-type'] = 'non-conveyancer';
+  }
+})

@@ -63,6 +63,19 @@
   </thead>
   <tbody class="govuk-table__body">
     <tbody class="govuk-table_body">
+
+
+
+
+         {% if data['user-type'] === 'non-conveyancer' %}
+      <p>Non-conveyancer!</p>
+   {% endif %}
+
+
+
+
+
+
       <!-- {% if data['transferee-select'] === 'yes' and data['applicant-individual-forename'] %}
       <tr class="govuk-table_row" id="hidePI">
       <td class="govuk-table__cell">Private individual</td>

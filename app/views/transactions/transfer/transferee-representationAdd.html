@@ -54,16 +54,35 @@
 <form method="post" action="/transactions/transfer/transferee-representation">
 <div class="govuk-grid-column-two-thirds">
     <span class="govuk-caption-l">Transfer for value (TR1)</span>
-    <h1 class="govuk-heading-l">Select representation</h1>
-    <h2 class="govuk-heading-s">Tell us who's representing:</h2>
-      {% if data['applicant-individual-transferee1'] %}
-        <p class="govuk-body"> {{ data['applicant-individual-forename'] }} {{ data['applicant-individual-surname'] }}</p>
-      {% endif %}
 
-      {% if data['transferee-individual-forename'] %}
-      <p class="govuk-body">   {{ data['transferee-individual-forename'] }} {{ data['transferee-individual-surname'] }}</p>
-      {% endif %}
 
+<h1 class="govuk-heading-l">
+    {% if data['user-type'] === 'conveyancer' %}
+
+      <span>Who is representing </span>
+        {% if data['applicant-individual-transferee1'] %}
+          <span>{{ data['applicant-individual-forename'] }}</span>
+          <span>{{ data['applicant-individual-surname'] }}?</span>
+        {% endif %}
+        <!--What is this? Is it meant to be transferee 2?
+        {% if data['transferee-individual-forename'] %}
+        {{ data['transferee-individual-forename'] }} {{ data['transferee-individual-surname'] }}
+        {% endif %}-->    
+    {% else %}
+
+      <span>Is</span>
+        {% if data['applicant-individual-transferee1'] %}
+          <span>{{ data['applicant-individual-forename'] }}</span>
+          <span>{{ data['applicant-individual-surname'] }}</span>
+        {% endif %}
+      <span>represented by a conveyancer?</span>  
+        <!--What is this? Is it meant to be transferee 2?
+        {% if data['transferee-individual-forename'] %}
+        {{ data['transferee-individual-forename'] }} {{ data['transferee-individual-surname'] }}
+        {% endif %}-->
+    {% endif %}
+
+</h1>
 
 
     <div class="govuk-form-group">
@@ -104,6 +123,7 @@
         </div>
       </div>
     </div> -->
+    {% if data['user-type'] === 'conveyancer' %}
 
 
     {% set otherTransfereeHtml %}
@@ -112,7 +132,7 @@
       name: "TransfereeOtherName",
       classes: "govuk-!-width-two-thirds",
       label: {
-        text: "Full name"
+        text: "Conveyancer full name"
       }
     }) }}
 
@@ -144,12 +164,14 @@
       name: "TransfereeRepresentation",
 
       items: [
+        
+      
         {
           value: "UKConveyancersLtd",
           text: "UK Conveyancers Ltd",
           name: "TransfereeRepresentation"
           },
-
+      
         {
           value: "OtherConveyancer",
           text: "Other conveyancer",
@@ -176,19 +198,94 @@
           },
           items: [
             {
-              value: "Selected conveyancer represents all transferees (optional).",
-              text: "Selected conveyancer represents all transferees (optional)."
+              value: "This applies to all transferees (optional)",
+              text: "This applies to all transferees (optional)",
+              hint: {
+                text: "This replaces any conveyancer details previously added"
+              }
             }
           ]
         }) }}
 
 
-        <div style="margin-left: 60px;">
-        {{ govukInsetText({
-            text: "Replaces any conveyancer details previously added."
-        }) }}
+        {% else %}
 
-      </div>
+        {% set otherTransfereeHtml %}
+        {{ govukInput({
+          id: "TransfereeOtherName",
+          name: "TransfereeOtherName",
+          classes: "govuk-!-width-two-thirds",
+          label: {
+            text: "Conveyancer full name"
+          }
+        }) }}
+    
+        {{ govukTextarea({
+          id: "TransfereeOtherAddress",
+          name: "TransfereeOtherAddress",
+          classes: "govuk-!-width-two-thirds",
+          rows: "5",
+          label: {
+            text: "Registered address"
+          }
+        }) }}
+    
+    
+        {{ govukCharacterCount({
+      name: "OtherConveyancerReference",
+      id: "OtherConveyancerReference",
+       rows: "1",
+      classes: "govuk-!-width-two-thirds",
+      maxlength: 25,
+      label: {
+        text: "Conveyancer reference"
+      }
+    }) }}
+    
+        {% endset -%}
+    
+        {{ govukRadios({
+          name: "TransfereeRepresentation",
+    
+          items: [
+            
+          
+            {
+              value: "AConveyancer",
+              text: "Yes",
+              name: "TransfereeRepresentation",
+              conditional: {
+                html: otherTransfereeHtml
+              }
+            },
+            {
+              value: "NotRepresented",
+              name: "TransfereeRepresentation",
+              text: "No"
+            }
+          ]
+        }) }}
+    
+    
+            {{ govukCheckboxes({
+              idPrefix: "represents-all",
+              name: "represents-all",
+              classes: "govuk-checkboxes",
+              fieldset: {
+    
+              },
+              items: [
+                {
+                  value: "This applies to all transferees (optional)",
+                  text: "This applies to all transferees (optional)",
+                  hint: {
+                    text: "This replaces any conveyancer details previously added"
+                  }
+                }
+              ]
+            }) }}
+
+        {% endif %}
 
       {{ govukButton({
         text: "Continue",

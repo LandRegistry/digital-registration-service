@@ -55,9 +55,7 @@
 
 <div class="govuk-grid-column-two-thirds">
     <span class="govuk-caption-l">Transfer for value (TR1)</span>
-    <h1 class="govuk-heading-l">Select representation</h1>
-    <h2 class="govuk-heading-s">Tell us who's representing:</h2>
-    <p class="govuk-body-m">{{ data['transferor-individual-forename']}} {{ data['transferor-individual-surname']}}</p>
+    <h1 class="govuk-heading-l">Who is representing {{ data['transferor-individual-forename']}} {{ data['transferor-individual-surname']}}?</h1>
 
     <!-- <form class="" action="/transactions/transfer/transferor-representation-answer"> -->
     <div class="govuk-form-group">
@@ -114,16 +112,16 @@
           },
           items: [
             {
-              value: "Selected conveyancer represents all transferors (optional).",
-              text: "Selected conveyancer represents all transferors (optional)."
+              value: "This applies to all transferors (optional)",
+              text: "This applies to all transferors (optional)",
+              hint: {
+                text: "This replaces any conveyancer details previously added"
+              }
             }
           ]
         }) }}
 
-          {{ govukWarningText({
-            text: "This will replace any conveyancer details previously added",
-            iconFallbackText: "Warning"
-  }) }}
+         
 
       </div>
 
