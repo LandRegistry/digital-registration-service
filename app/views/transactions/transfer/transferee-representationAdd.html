@@ -59,24 +59,19 @@
 <h1 class="govuk-heading-l">
     {% if data['user-type'] === 'conveyancer' %}
 
-      <span>Who is representing </span>
-        {% if data['applicant-individual-transferee1'] %}
-          <span>{{ data['applicant-individual-forename'] }}</span>
-          <span>{{ data['applicant-individual-surname'] }}?</span>
+      {% if data['applicant-individual-transferee1'] %}
+        <span>Who is representing {{ data['applicant-individual-forename'] }} {{ data['applicant-individual-surname'] }}?</span>
         {% endif %}
-        <!--What is this? Is it meant to be transferee 2?
+        <!--What is this?
         {% if data['transferee-individual-forename'] %}
         {{ data['transferee-individual-forename'] }} {{ data['transferee-individual-surname'] }}
         {% endif %}-->    
-    {% else %}
-
-      <span>Is</span>
-        {% if data['applicant-individual-transferee1'] %}
-          <span>{{ data['applicant-individual-forename'] }}</span>
-          <span>{{ data['applicant-individual-surname'] }}</span>
-        {% endif %}
-      <span>represented by a conveyancer?</span>  
-        <!--What is this? Is it meant to be transferee 2?
+      { % else %}
+      {% if data['applicant-individual-transferee1'] %}
+        <span>Is {{ data['applicant-individual-forename'] }} {{ data['applicant-individual-surname'] }} represented by a conveyancer?</span> 
+      {% endif %}
+      
+        <!--What is this?
         {% if data['transferee-individual-forename'] %}
         {{ data['transferee-individual-forename'] }} {{ data['transferee-individual-surname'] }}
         {% endif %}-->
