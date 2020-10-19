@@ -1379,19 +1379,7 @@ router.post('/wes-yes-no-answer', function (req, res) {
     }
 })
 
-/* 
-//  conveyancer/non-conveyancer answer test
-router.post('/setup/user-type-answer', function (req, res) {
-  let userType = req.session.data['user-type']
-  if (userType === 'conveyancer') {
-      req.session.data['user-type'] = 'conveyancer';
-      res.redirect('/yes')
-  } else {
-    req.session.data['user-type'] = 'non-conveyancer';
-    res.redirect('/no')
-  }
-}) */
-
+// Is the user a conveyancer?
 router.post('/setup/user-type-answer', function (req, res) {
   let userType = req.session.data['user-type'];
   res.redirect('/setup/enter-title')
