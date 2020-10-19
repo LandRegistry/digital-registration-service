@@ -60,20 +60,19 @@
     <!-- <form class="" action="/transactions/transfer/transferor-representation-answer"> -->
     <div class="govuk-form-group">
 
-      <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
-
         <div class="govuk-radios__item">
           <input class="govuk-radios__input" id="transferorRepresentation-conditional" name="transferorRepAnswer" type="radio" value="thisConveyancer">
           <label class="govuk-label govuk-radios__label" for="transferorRepresentation-conditional">UK Conveyancers Ltd</label>
         </div>
 
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="transferorRepresentation-conditional-2" name="transferorRepAnswer" type="radio" value="otherConveyancer">
-        <label class="govuk-label govuk-radios__label" for="transferorRepresentation-conditional-2">
-          Other conveyancer
-        </label>
-      </div>
-          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-transferorRepresentation-conditional-2">
+        <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">    
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="transferorRepAnswer" name="transferorRepAnswer" type="radio" value="otherConveyancer">
+            <label class="govuk-label govuk-radios__label" for="transferorRepresentation-conditional-2">
+              Other conveyancer
+            </label>
+          </div>
+          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="transferorRepresentation-conditional-2">
             <div class="govuk-form-group">
               <label class="govuk-label" for="transferorRepresentation-name">Full name</label>
               <input class="govuk-input govuk-!-width-two-thirds" id="transferorRepresentation-name" name="transferorRepresentation-name" type="text">
@@ -89,18 +88,18 @@
             </div>
 
           </div>
-
+        </div>
 
         <div class="govuk-radios__item">
           <input class="govuk-radios__input" id="transferorRepresentation-conditional-3" name="transferorRepAnswer" type="radio" value="noConveyancer" >
           <label class="govuk-label govuk-radios__label" for="transferorRepresentation-conditional-3">Not represented by a conveyancer</label>
         </div>
       </div>
-    </div>
+
 
 
         <br>
-        <div style="">
+        <div>
        
 
         {{ govukCheckboxes({
