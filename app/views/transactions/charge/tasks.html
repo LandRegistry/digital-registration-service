@@ -212,13 +212,13 @@
               </tr>
 
               <tr class="govuk-table__row">
-                <td class="govuk-table__cell govuk-link"><a href="/transactions/transfer/transfer-declaration">Declaration of trust</a></td>
+                <td class="govuk-table__cell govuk-link"><a href="/Sprint-26/consideration/transfer-consideration-v3">Select consideration</a></td>
                 <td class="govuk-table__cell">
-                  {% if data['transfer-declaration'] %}
-                    <strong class="govuk-tag app-task-list__task-completed">Completed</strong>
+                  {% if data['transfer-consideration'] %}
+                    <strong class="govuk-tag app-task-list__task-completed">COMPLETED</strong>
                   {% endif %}
-
               </tr>
+
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell govuk-link"><a href="/../transactions/transfer/transfer-guarantee">Select title guarantee</a></td>
                 <td class="govuk-table__cell">
@@ -227,17 +227,28 @@
                   {% endif %}
               </tr>
 
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell govuk-link"><a href="/transactions/transfer/transfer-declaration">Declaration of trust</a></td>
+                <td class="govuk-table__cell">
+                  {% if data['transfer-declaration'] %}
+                    <strong class="govuk-tag app-task-list__task-completed">Completed</strong>
+                  {% endif %}
+              </tr>
+
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell govuk-link"><a href="#">Additional provisions (optional)</a></td>
+                <td class="govuk-table__cell">
+              </tr>
+
+
 
             <tr class="govuk-table__row">
               <th scope="row" class="govuk-table__header">1.4 Supporting documents</th>
               <td class="govuk-table__cell"></td>
             </tr>
             <tr class="govuk-table__row">
-              <td class="govuk-table__cell govuk-link"><a href="/transactions/transfer/transfer-download">Get part-completed TR1 (optional)</a></td>
+              <td class="govuk-table__cell govuk-link"><a href="/transactions/transfer/transfer-download">Download part-completed TR1 (optional)</a></td>
               <td class="govuk-table__cell">
-                {% if data['download'] %}
-                  <strong class="govuk-tag app-task-list__task-completed">Downloaded</strong>
-                {% endif %}
             </tr>
             <tr class="govuk-table__row">
               <td class="govuk-table__cell govuk-link"><a href="/transactions/transfer/documents/document_prompts-1.html">Attach documents</a></td>

@@ -737,6 +737,16 @@ router.get('/testing/addresses', function (req, res) {
 })
 
 
+// // Sprint 26 journey
+// // Set data
+//
+// router.get('/sprint26', function (req, res) {
+// 	req.session.data = {
+//   "sprint": "true"
+// }
+//   res.redirect('/sprint-26/consideration/app-start')
+// })
+
 // Passing data into a page
 router.get('/stored-data', function (req, res) {
 	console.log(req.session.data)
@@ -788,6 +798,7 @@ router.post('/transactions/charge-transactions', function (req, res) {
 // Using the transaction type to go to a task list
 router.post('/transactions/which-task-list', function (req, res) {
       let transaction = req.session.data['Transaction']
+      let sprint = req.session.data['sprint']
 
       if (transaction === 'DTC') {
           res.redirect('/transactions/charge/tasks')
@@ -798,11 +809,9 @@ router.post('/transactions/which-task-list', function (req, res) {
       } if (transaction === 'DT') {
           res.redirect('/transactions/tasks')
       } if (transaction === 'TC') {
-          res.redirect('/transactions/charge/TC-tasks') }
-
+          res.redirect('/transactions/charge/TC-tasks')
+      }
     })
-
-
 
 
 // Charge completed tags
@@ -1191,7 +1200,8 @@ router.post('/transferee-list-complete', function (req, res) {
       res.redirect('/transactions/tasks')
   } if (transaction === 'TC') {
       req.session.data['transfereelistcomplete'] = 'true';
-      res.redirect('/transactions/charge/TC-tasks') }
+      res.redirect('/transactions/charge/TC-tasks')
+  }
 
 })
 
