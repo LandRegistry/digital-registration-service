@@ -117,10 +117,10 @@
     {% if data['user-type'] === 'conveyancer' %}
 
 
-    {% set otherTransfereeHtml %}
+    {% set otherTransferee2Html %}
     {{ govukInput({
-      id: "TransfereeOtherName",
-      name: "TransfereeOtherName",
+      id: "Transferee2OtherName",
+      name: "Transferee2OtherName",
       classes: "govuk-!-width-two-thirds",
       label: {
         text: "Conveyancer full name"
@@ -128,8 +128,8 @@
     }) }}
 
     {{ govukTextarea({
-      id: "TransfereeOtherAddress",
-      name: "TransfereeOtherAddress",
+      id: "Transferee2OtherAddress",
+      name: "Transferee2OtherAddress",
       classes: "govuk-!-width-two-thirds",
       rows: "5",
       label: {
@@ -139,8 +139,8 @@
 
 
     {{ govukCharacterCount({
-  name: "OtherConveyancerReference",
-  id: "OtherConveyancerReference",
+  name: "OtherConveyancer2Reference",
+  id: "OtherConveyancer2Reference",
    rows: "1",
   classes: "govuk-!-width-two-thirds",
   maxlength: 25,
@@ -152,7 +152,7 @@
     {% endset -%}
 
     {{ govukRadios({
-      name: "TransfereeRepresentation",
+      name: "Transferee2Representation",
 
       items: [
         
@@ -160,20 +160,20 @@
         {
           value: "UKConveyancersLtd",
           text: "UK Conveyancers Ltd",
-          name: "TransfereeRepresentation"
+          name: "Transferee2Representation"
           },
       
         {
           value: "OtherConveyancer",
           text: "Other conveyancer",
-          name: "TransfereeRepresentation",
+          name: "Transferee2Representation",
           conditional: {
-            html: otherTransfereeHtml
+            html: otherTransferee2Html
           }
         },
         {
           value: "NotRepresented",
-          name: "TransfereeRepresentation",
+          name: "Transferee2Representation",
           text: "Not represented by a conveyancer"
         }
       ]
@@ -201,10 +201,10 @@
 
         {% else %}
 
-        {% set otherTransfereeHtml %}
+        {% set otherTransferee2Html %}
         {{ govukInput({
-          id: "TransfereeOtherName",
-          name: "TransfereeOtherName",
+          id: "Transferee2OtherName",
+          name: "Transferee2OtherName",
           classes: "govuk-!-width-two-thirds",
           label: {
             text: "Conveyancer full name"
@@ -212,8 +212,8 @@
         }) }}
     
         {{ govukTextarea({
-          id: "TransfereeOtherAddress",
-          name: "TransfereeOtherAddress",
+          id: "Transferee2OtherAddress",
+          name: "Transferee2OtherAddress",
           classes: "govuk-!-width-two-thirds",
           rows: "5",
           label: {
@@ -223,8 +223,8 @@
     
     
         {{ govukCharacterCount({
-      name: "OtherConveyancerReference",
-      id: "OtherConveyancerReference",
+      name: "OtherConveyancer2Reference",
+      id: "OtherConveyancer2Reference",
        rows: "1",
       classes: "govuk-!-width-two-thirds",
       maxlength: 25,
@@ -236,7 +236,7 @@
         {% endset -%}
     
         {{ govukRadios({
-          name: "TransfereeRepresentation",
+          name: "Transferee2Representation",
     
           items: [
             
@@ -244,14 +244,14 @@
             {
               value: "AConveyancer",
               text: "Yes",
-              name: "TransfereeRepresentation",
+              name: "Transferee2Representation",
               conditional: {
                 html: otherTransfereeHtml
               }
             },
             {
               value: "NotRepresented",
-              name: "TransfereeRepresentation",
+              name: "Transferee2Representation",
               text: "No"
             }
           ]
