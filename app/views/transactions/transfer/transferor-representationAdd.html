@@ -57,9 +57,12 @@
     <span class="govuk-caption-l">Transfer for value (TR1)</span>
     <h1 class="govuk-heading-l">Who is representing {{ data['transferor-individual-forename']}} {{ data['transferor-individual-surname']}}?</h1>
 
-    <!-- <form class="" action="/transactions/transfer/transferor-representation-answer"> -->
-    <div class="govuk-form-group">
+    <!-- -->
+    
+    <form class="" action="/transactions/transfer/transferor-representation-added"> 
 
+    <div class="govuk-form-group">
+<!--
         <div class="govuk-radios__item">
           <input class="govuk-radios__input" id="transferorRepresentation-conditional" name="transferorRepAnswer" type="radio" value="thisConveyancer">
           <label class="govuk-label govuk-radios__label" for="transferorRepresentation-conditional">UK Conveyancers Ltd</label>
@@ -95,12 +98,72 @@
           <label class="govuk-label govuk-radios__label" for="transferorRepresentation-conditional-3">Not represented by a conveyancer</label>
         </div>
       </div>
-
+-->
 
 
         <br>
         <div>
        
+
+          {% set otherTransferorHtml %}
+            {{ govukInput({
+              id: "TransferorConveyancerName",
+              name: "TransferorConveyancerName",
+              classes: "govuk-!-width-two-thirds",
+              label: {
+                text: "Conveyancer full name"
+              }
+            }) }}
+        
+            {{ govukTextarea({
+              id: "TransferorOtherAddress",
+              name: "TransferorOtherAddress",
+              classes: "govuk-!-width-two-thirds",
+              rows: "5",
+              label: {
+                text: "Registered address"
+              }
+            }) }}
+        
+        
+            {{ govukCharacterCount({
+              name: "OtherConveyancerReference",
+              id: "OtherConveyancerReference",
+              rows: "1",
+              classes: "govuk-!-width-two-thirds",
+              maxlength: 25,
+              label: {
+                text: "Conveyancer reference"
+              }
+            }) }}
+      
+          {% endset -%}
+      
+          {{ govukRadios({
+            name: "TransferorRepresentation",
+      
+            items: [            
+              {
+                value: "UKConveyancersLtd",
+                text: "UK Conveyancers Ltd",
+                name: "TransferorRepresentation"
+                },
+            
+              {
+                value: "OtherConveyancer",
+                text: "Other conveyancer",
+                name: "TransferorRepresentation",
+                conditional: {
+                  html: otherTransferorHtml
+                }
+              },
+              {
+                value: "NotRepresented",
+                name: "TransferorRepresentation",
+                text: "Not represented by a conveyancer"
+              }
+            ]
+          }) }}
 
         {{ govukCheckboxes({
           idPrefix: "represents-all",
@@ -127,10 +190,10 @@
 
       {{ govukButton({
         text: "Continue",
-        classes: "govuk-!-margin-top-5",
-        href: "transferor-representation-added"
+        classes: "govuk-!-margin-top-5"
+    
       }) }}
-<!-- </form> -->
+ </form>
       </div></div>
 
 
