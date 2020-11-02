@@ -46,38 +46,50 @@
     </div>
     </div>
 
-<div class="govuk-grid-column-full">
+<div class="govuk-grid-column-two-thirds">
   <form method="post">
     <span class="govuk-caption-l">Transfer for value (TR1)</span>
     <h1 class="govuk-heading-l">Verify identity</h1>
-    <p class="govuk-body-m">When a party is not represented by a conveyancer, you must personally verify or provide evidence of their identity.</p>
+    <p class="govuk-body-m">When a party is not represented by a conveyancer, you must provide evidence of their identify or confirm that evidence is not required.</p>
+    <p><a href="#">Practice 67</a> (link opens in a new window) tells you when you need to include evidence of identity.</p>
     <h2 class="govuk-heading-m">Declaration</h2>
-    <p>John Smith is not represented by a conveyancer.</P>
+    <p>John Smith is not represented by a conveyancer.</p>
 
-    <h3 class="govuk-heading-m">Select the correct statement:</h3><br>
+    <h3 class="govuk-heading-m">Select the correct statement:</h3>
 
+    
     <div class="govuk-form-group">
   <fieldset class="govuk-fieldset">
 
     <div class="govuk-radios">
+      {% if data['user-type'] === 'conveyancer' %}
       <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="verify-transferor-1" name="verify-transferor" type="radio" value="verified">
         <label class="govuk-label govuk-radios__label" for="verify-transferor-1">
           I am satisfied that sufficient steps have been taken to verify their identity and that they are the registered proprietor or have the right to be registered as the proprietor
         </label>
       </div>
+      {% endif %}
       <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="verify-transferor-1" name="verify-transferor" type="radio" value="evidence">
         <label class="govuk-label govuk-radios__label" for="verify-transferor-2">
-          I attach evidence of their identity with this application
+          I'll attach evidence of identity with this application
         </label>
-        <div class="govuk-inset-text">
-          See <a class="govuk-link" href="https://www.gov.uk/government/publications/evidence-of-identity-conveyancers"> Practice Guide 67</a> for information about providing proof of identity.
-        </div>
       </div>
+
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="verify-transferor-2" name="verify-transferor" type="radio" value="evidence">
+        <label class="govuk-label govuk-radios__label" for="verify-transferor-2">
+          I do not need to provide evidence of identity for this application
+        </label>
+      </div>
+
+
     </div>
   </fieldset>
 </div>
+
+
 
 {{ govukButton({
   text: "Continue",
@@ -100,7 +112,7 @@
 </footer>
 </div>
 
-
+</div>
 {% endblock %}
 
 
