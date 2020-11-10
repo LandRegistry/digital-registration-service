@@ -50,7 +50,7 @@
         <span class="govuk-caption-xl">Transfer for value (TR1)</span>
         <h1 class="govuk-heading-xl">Select consideration</h1>
 
-        <form method="post" action="/transactions/charge/tasks">
+        <form method="post" action="/task-consideration-complete">
 
           <div class="govuk-form-group">
               <fieldset class="govuk-fieldset" aria-describedby="consideration-conditional-hint">
@@ -60,7 +60,7 @@
                     <div class="govuk-radios__item">
                       <input checked="checked" class="govuk-radios__input" id="consideration-conditional" name="transferConsideration" type="radio" value="Received" data-aria-controls="conditional-consideration-conditional">
                       <label class="govuk-label govuk-radios__label" for="consideration-conditional">
-                        Transfer of £100,000 including £20,000 VAT received from transferee
+                        Transfer of £100,000 from transferee
                       </label>
                     </div>
 
@@ -87,7 +87,7 @@
                     <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="5000">
                     <div class="govuk-form-group">
                       <div id="event-name-hint" class="govuk-hint">
-                      Give details
+
                     </div>
                       <textarea class="govuk-textarea govuk-!-width-three-quarters govuk-js-character-count" id="considerationOther" name="considerationOther-Details" rows="6"></textarea>
                     </div>

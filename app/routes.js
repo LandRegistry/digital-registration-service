@@ -1020,19 +1020,19 @@ router.post('/transactions/transfer-date-complete', function (req, res) {
   let transaction = req.session.data['Transaction']
 
     if (transaction === 'DTC') {
-        req.session.data['transfer-date'] = 'true';
+        req.session.data['transfer-date-complete'] = 'true';
         res.redirect('/transactions/charge/tasks')
     } if (transaction === 'C') {
-        req.session.data['transfer-date'] = 'true';
+        req.session.data['transfer-date-complete'] = 'true';
         res.redirect('/transactions/charge-without-transfer/charge-without-transfer-tasks')
     } if (transaction === 'T') {
-        req.session.data['transfer-date'] = 'true';
+        req.session.data['transfer-date-complete'] = 'true';
         res.redirect('/transactions/transfer/transfer-tasks')
     } if (transaction === 'DT') {
-        req.session.data['transfer-date'] = 'true';
+        req.session.data['transfer-date-complete'] = 'true';
         res.redirect('/transactions/tasks')
     } if (transaction === 'TC') {
-        req.session.data['transfer-date'] = 'true';
+        req.session.data['transfer-date-complete'] = 'true';
         res.redirect('/transactions/charge/TC-tasks') }
 })
 
@@ -1043,19 +1043,60 @@ router.post('/transactions/transfer-declaration-complete', function (req, res) {
   let transaction = req.session.data['Transaction']
 
     if (transaction === 'DTC') {
-        req.session.data['transfer-declaration'] = 'true';
+        req.session.data['transfer-declaration-complete'] = 'true';
         res.redirect('/transactions/charge/tasks')
     } if (transaction === 'C') {
-        req.session.data['transfer-declaration'] = 'true';
+        req.session.data['transfer-declaration-complete'] = 'true';
         res.redirect('/transactions/charge-without-transfer/charge-without-transfer-tasks')
     } if (transaction === 'T') {
-        req.session.data['transfer-declaration'] = 'true';
+        req.session.data['transfer-declaration-complete'] = 'true';
         res.redirect('/transactions/transfer/transfer-tasks')
     } if (transaction === 'DT') {
-        req.session.data['transfer-declaration'] = 'true';
+        req.session.data['transfer-declaration-complete'] = 'true';
         res.redirect('/transactions/tasks')
     } if (transaction === 'TC') {
-        req.session.data['transfer-declaration'] = 'true';
+        req.session.data['transfer-declaration-complete'] = 'true';
+        res.redirect('/transactions/charge/TC-tasks') }
+})
+
+// transfer title guarantee
+router.post('/transactions/transfer/guarantee-complete', function (req, res) {
+
+  let transaction = req.session.data['Transaction']
+
+    if (transaction === 'DTC') {
+        req.session.data['title-guarantee-complete'] = 'true';
+        res.redirect('/transactions/charge/tasks')
+    } if (transaction === 'C') {
+        req.session.data['title-guarantee-complete'] = 'true';
+        res.redirect('/transactions/charge-without-transfer/charge-without-transfer-tasks')
+    } if (transaction === 'T') {
+        req.session.data['title-guarantee-complete'] = 'true';
+        res.redirect('/transactions/transfer/transfer-tasks')
+    } if (transaction === 'DT') {
+        req.session.data['title-guarantee-complete'] = 'true';
+        res.redirect('/transactions/tasks')
+    } if (transaction === 'TC') {
+        req.session.data['title-guarantee-complete'] = 'true';
+        res.redirect('/transactions/charge/TC-tasks') }
+})
+
+// transfer  download
+router.post('/transactions/transfer/downloaded', function (req, res) {
+
+  let transaction = req.session.data['Transaction']
+
+    if (transaction === 'DTC') {
+        req.session.data['download'] = 'true';
+        res.redirect('/transactions/charge/tasks')
+    }   if (transaction === 'T') {
+        req.session.data['download'] = 'true';
+        res.redirect('/transactions/transfer/transfer-tasks')
+    } if (transaction === 'DT') {
+        req.session.data['download'] = 'true';
+        res.redirect('/transactions/tasks')
+    } if (transaction === 'TC') {
+        req.session.data['download'] = 'true';
         res.redirect('/transactions/charge/TC-tasks') }
 })
 
@@ -1081,22 +1122,47 @@ router.post('/transactions/transfer/guarantee-complete', function (req, res) {
         res.redirect('/transactions/charge/TC-tasks') }
 })
 
-// transfer  download
-router.post('/transactions/transfer/downloaded', function (req, res) {
+// consideration complete
+router.post('/task-consideration-complete', function (req, res) {
 
   let transaction = req.session.data['Transaction']
 
     if (transaction === 'DTC') {
-        req.session.data['download'] = 'true';
+        req.session.data['transfer-consideration'] = 'true';
         res.redirect('/transactions/charge/tasks')
-    }   if (transaction === 'T') {
-        req.session.data['download'] = 'true';
+    } if (transaction === 'C') {
+        req.session.data['transfer-consideration'] = 'true';
+        res.redirect('/transactions/charge-without-transfer/charge-without-transfer-tasks')
+    } if (transaction === 'T') {
+        req.session.data['transfer-consideration'] = 'true';
         res.redirect('/transactions/transfer/transfer-tasks')
     } if (transaction === 'DT') {
-        req.session.data['download'] = 'true';
+        req.session.data['transfer-consideration'] = 'true';
         res.redirect('/transactions/tasks')
     } if (transaction === 'TC') {
-        req.session.data['download'] = 'true';
+        req.session.data['transfer-consideration'] = 'true';
+        res.redirect('/transactions/charge/TC-tasks') }
+})
+
+// provisions complete
+router.post('/transfer-provisions-complete', function (req, res) {
+
+  let transaction = req.session.data['Transaction']
+
+    if (transaction === 'DTC') {
+        req.session.data['transfer-provisions'] = 'true';
+        res.redirect('/transactions/charge/tasks')
+    } if (transaction === 'C') {
+        req.session.data['transfer-provisions'] = 'true';
+        res.redirect('/transactions/charge-without-transfer/charge-without-transfer-tasks')
+    } if (transaction === 'T') {
+        req.session.data['transfer-provisions'] = 'true';
+        res.redirect('/transactions/transfer/transfer-tasks')
+    } if (transaction === 'DT') {
+        req.session.data['transfer-provisions'] = 'true';
+        res.redirect('/transactions/tasks')
+    } if (transaction === 'TC') {
+        req.session.data['transfer-provisions'] = 'true';
         res.redirect('/transactions/charge/TC-tasks') }
 })
 
@@ -1259,17 +1325,7 @@ router.post('/transactions/charge/documents/CH2-attached', function (req, res) {
     res.redirect('/charge/documents/document_prompts')
 })
 
-// testing task list_
 
-router.post('/test-task-consideration', function (req, res) {
-  // Get the answer from session data
-  // The name between the quotes is the same as the 'name' attribute on the input elements
-  // However in JavaScript we can't use hyphens in variable names
-
-  req.session.data['transfer-consideration'] = 'true';
-    res.redirect('Sprint-26/consideration/task-test')
-
-    })
 
 
 

@@ -206,7 +206,7 @@
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell govuk-link"><a href="/transactions/transfer/transfer-date">Confirm transfer date</a></td>
                 <td class="govuk-table__cell">
-                  {% if data['transfer-date'] %}
+                  {% if data['transfer-date-complete'] %}
                     <strong class="govuk-tag app-task-list__task-completed">COMPLETED</strong>
                   {% endif %}
               </tr>
@@ -222,7 +222,7 @@
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell govuk-link"><a href="/../transactions/transfer/transfer-guarantee">Select title guarantee</a></td>
                 <td class="govuk-table__cell">
-                  {% if data['title-guarantee'] %}
+                  {% if data['title-guarantee-complete'] %}
                     <strong class="govuk-tag app-task-list__task-completed">Completed</strong>
                   {% endif %}
               </tr>
@@ -230,16 +230,18 @@
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell govuk-link"><a href="/transactions/transfer/transfer-declaration">Declaration of trust</a></td>
                 <td class="govuk-table__cell">
-                  {% if data['transfer-declaration'] %}
+                  {% if data['transfer-declaration-complete'] %}
                     <strong class="govuk-tag app-task-list__task-completed">Completed</strong>
                   {% endif %}
               </tr>
 
               <tr class="govuk-table__row">
-                <td class="govuk-table__cell govuk-link"><a href="#">Additional provisions (optional)</a></td>
+                <td class="govuk-table__cell govuk-link"><a href="/transactions/transfer/transfer-provisions">Additional provisions (optional)</a></td>
                 <td class="govuk-table__cell">
+                  {% if data['transfer-provisions'] %}
+                    <strong class="govuk-tag app-task-list__task-completed">Completed</strong>
+                  {% endif %}
               </tr>
-
 
 
             <tr class="govuk-table__row">

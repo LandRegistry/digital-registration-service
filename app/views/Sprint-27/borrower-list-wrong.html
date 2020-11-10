@@ -1,0 +1,135 @@
+{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
+{%- set assetPath = '/govuk/assets' -%}
+
+{% extends "govuk/template.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
+{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+
+
+
+{% block headIcons %}
+  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
+  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
+{% endblock %}
+
+{% block head %}
+  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full" id="headerdiv">
+    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
+    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Digital Registration Service</a></p>
+    <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+
+
+    <div class="govuk-phase-banner">
+        <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
+        <span class="govuk-phase-banner__text">
+        This is a prototype and not a real service.
+        </span></p>
+    </div></div>
+    </div>
+
+    <a href="/transactions/charge-without-transfer/charge-without-transfer-tasks" class="govuk-back-link">Return to task list</a>
+    <main class="govuk-main-wrapper " id="main-content" role="main">
+      <span class="govuk-caption-l">Charge</span>
+
+          <h1 class="govuk-heading-l">Check borrower details </h1>
+
+          <p>Select ‘Amend’ to change a name. If all names are correct and
+            consistent with supporting documents, select ‘Continue’.  </p>
+
+
+          <form method="post" action="/transactions/charge-without-transfer/borrower-representation" novalidate>
+
+
+            <table class="govuk-table">
+            <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Borrower type</th>
+              <th scope="col" class="govuk-table__header govuk-!-width-two-quarters">Borrower name</th>
+              <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Options</th>
+
+              </tr>
+            </thead>
+
+            <tbody class="govuk-table__body">
+                  <tr class="govuk-table__row">
+                    <tr class="govuk-table__row">
+                      <td class="govuk-table__cell">Private individual</td>
+                      <td class="govuk-table__cell">John Smith</td>
+                      <td class="govuk-table__cell"><a href="#">Amend / Remove</a></td>
+
+                    </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">Private individual</td>
+                    <td class="govuk-table__cell">Jane Smith</td>
+                    <td class="govuk-table__cell"><a href="#">Amend / Remove</a></td>
+                  </tr>
+            </tbody>
+          </table>
+
+          <details class="govuk-details" data-module="govuk-details">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">I don’t recognise any of these borrowers</span>
+              </summary>
+              <div class="govuk-details__text">
+              This is the information we hold for title number <b>LP123456</b>.
+              Sometimes the information retrieved from the register is outdated.
+              If this has happened, <a href="#">you can remove these and add new borrowers</a>.</div>
+          </details>
+
+
+          <div class="govuk-warning-text" style="margin-top: -50px;">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+              <span class="govuk-warning-text__assistive">Warning</span>
+            <br><br>  Naming errors lead to requisitions. By selecting ‘Continue’ you confirm all borrower names are correct.
+            </strong>
+          </div>
+
+            {{ govukButton({
+            classes: "",
+            text: "Continue"
+            }) }}
+
+          </form>
+
+
+</main>
+
+
+<hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+<br>
+<p class="govuk-body-s"> The following links open in a new window
+<br>
+<br>
+<a href="#"> Terms and conditions</a> | <a href="#">Freedom of information</a> | <a href="#">© Crown copyright</a></p>
+
+
+{% endblock %}
+
+
+{% block footer %}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}

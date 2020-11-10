@@ -12,6 +12,7 @@
 {% from "govuk/components/table/macro.njk" import govukTable %}
 {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
 {% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
 
 
 
@@ -49,71 +50,32 @@
     </div>
     </div>
 
+<form method="post" action="/transfer-provisions-complete">
     <div class="govuk-grid-column-full">
         <span class="govuk-caption-xl">Transfer for value (TR1)</span>
-        <h1 class="govuk-heading-xl">Confirm transfer date</h1>
-
-    <form method="post" action="/transactions/transfer-date-complete">
-          <div class="govuk-form-group">
+        <h1 class="govuk-heading-xl">Additional provisions (optional)</h1>
 
 
-            <fieldset class="govuk-fieldset" role="group" aria-describedby="transfer-date-hint">
-
-
-              <span id="transfer-date-hint" class="govuk-hint">
-                For example, 12 11 2007
-              </span>
-
-
-              <div class="govuk-date-input" id="transfer-date">
-
-                <div class="govuk-date-input__item">
-                  <div class="govuk-form-group">
-                    <label class="govuk-label govuk-date-input__label" for="transfer-date-day">
-                      Day
-                    </label>
-
-
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="transfer-date-day" name="transfer-date-day" type="number" pattern="[0-9]*">
-                  </div>
-                </div>
-
-                <div class="govuk-date-input__item">
-                  <div class="govuk-form-group">
-                    <label class="govuk-label govuk-date-input__label" for="transfer-date-month">
-                      Month
-                    </label>
-
-
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="transfer-date-month" name="transfer-date-month" type="number" pattern="[0-9]*">
-                  </div>
-                </div>
-
-                <div class="govuk-date-input__item">
-                  <div class="govuk-form-group">
-                    <label class="govuk-label govuk-date-input__label" for="transfer-date-year">
-                      Year
-                    </label>
-
-
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="transfer-date-year" name="transfer-date-year" type="number" pattern="[0-9]*">
-                  </div>
-                </div>
-
-              </div>
-              </fieldset>
-
-          </div>
+      <div class="govuk-grid-column-two-thirds" style="margin-left: -10px;">
 
 
 
-{{ govukButton({
-  text: "Continue"
-}) }}
+            {{ govukTextarea({
+            name: "provisions",
+            id: "provisions",
+            hint: {
+              text: "Enter the details of any additional covenants or agreements between transferors and transferees."
+            }
+          }) }}
 
 
-</form>
-</div>
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+            </div>
+  </form>
+
 
 <footer>
 <div class="govuk-grid-row">
