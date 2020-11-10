@@ -10,8 +10,12 @@
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 {% from "govuk/components/table/macro.njk" import govukTable %}
-{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
-{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+{% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+
+
+
 
 
 
@@ -39,82 +43,31 @@
     <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Digital Registration Service</a></p>
     <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
 
+    <a class="govuk-link--no-visited-state" style="text-decoration: none" id="show" href=# onclick="myFunctionshow()">+ Show full description</a>
 
-    <div class="govuk-phase-banner govuk-!-margin-bottom-5">
-        <p class="govuk-phase-banner__content">
-        <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
-        <span class="govuk-phase-banner__text">
-        This is a prototype and not a real service.
-        </span></p>
-    </div>
+    <div id="myDIV" hidden>
+      This is my DIV element.
     </div>
 
-    <div class="govuk-grid-column-full">
-        <span class="govuk-caption-xl">Transfer for value (TR1)</span>
-        <h1 class="govuk-heading-xl">Confirm transfer date</h1>
-
-    <form method="post" action="/transactions/transfer-date-complete">
-          <div class="govuk-form-group">
-
-
-            <fieldset class="govuk-fieldset" role="group" aria-describedby="transfer-date-hint">
-
-
-              <span id="transfer-date-hint" class="govuk-hint">
-                For example, 12 11 2007
-              </span>
-
-
-              <div class="govuk-date-input" id="transfer-date">
-
-                <div class="govuk-date-input__item">
-                  <div class="govuk-form-group">
-                    <label class="govuk-label govuk-date-input__label" for="transfer-date-day">
-                      Day
-                    </label>
-
-
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="transfer-date-day" name="transfer-date-day" type="number" pattern="[0-9]*">
-                  </div>
-                </div>
-
-                <div class="govuk-date-input__item">
-                  <div class="govuk-form-group">
-                    <label class="govuk-label govuk-date-input__label" for="transfer-date-month">
-                      Month
-                    </label>
-
-
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="transfer-date-month" name="transfer-date-month" type="number" pattern="[0-9]*">
-                  </div>
-                </div>
-
-                <div class="govuk-date-input__item">
-                  <div class="govuk-form-group">
-                    <label class="govuk-label govuk-date-input__label" for="transfer-date-year">
-                      Year
-                    </label>
-
-
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="transfer-date-year" name="transfer-date-year" type="number" pattern="[0-9]*">
-                  </div>
-                </div>
-
-              </div>
-              </fieldset>
-
-          </div>
-
-
-
-{{ govukButton({
-  text: "Continue"
-}) }}
-
-
-</form>
 </div>
 
+<script>
+  function myFunctionshow() {
+    var text = document.getElementById("myDIV");
+    var hide = document.getElementById("hide");
+    var show = document.getElementById("show");
+
+    if (text.style.display === "none") {
+      text.style.display = "block";
+      show.innerHTML = "- Hide full description";
+    } else {
+      text.style.display = "none";
+      show.innerHTML = "+ Show full description";
+    }
+  }
+</script>
+
+</div>
 <footer>
 <div class="govuk-grid-row">
 <div class="govuk-grid-column-full">
@@ -127,10 +80,10 @@
 </div>
 </div>
 </footer>
-</div>
 
 
 {% endblock %}
+
 
 {% block footer %}
 {% endblock %}
