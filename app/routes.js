@@ -1342,7 +1342,6 @@ router.post('/transactions/charge/documents/CH2-attached', function (req, res) {
 
 // Back links
 
-
 router.post('/transactions/charge-without-transfer/back-link-borrower', function (req, res) {
   req.session.data['borrowerDetails1'] = '';
     res.redirect('transactions/charge-tasks')
@@ -1378,7 +1377,6 @@ router.post('/DTC-CheckMD', function (req, res) {
       res.redirect('index.html')
     }
 })
-
 
 
 // Borrower names

@@ -1,5 +1,4 @@
-{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
-{%- set assetPath = '/govuk/assets' -%}
+{% extends "layout_unbranded.html" %}
 
 {% extends "govuk/template.njk" %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
@@ -9,6 +8,7 @@
 {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
 
 
 
@@ -24,6 +24,7 @@
 {% block head %}
   <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
 {% endblock %}
+
 
 {% block header %}
 {% endblock %}
@@ -42,8 +43,7 @@
         <span class="govuk-phase-banner__text">
         This is a prototype and not a real service.
         </span></p>
-    </div>
-    </div>
+    </div></div>
     </div>
 
 
@@ -51,47 +51,48 @@
     <main class="govuk-main-wrapper " id="main-content" role="main">
     <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+    <a href="transactions/charge-tasks" class="govuk-back-link">Return to task list</a>
 
 
+          <h1 class="govuk-heading-l">
+            <span class="govuk-caption-l">Transfer for value (TR1)</span>
+            Amend transferor details</h1>
+          <h2 class="govuk-heading-m">Name: {{ data['transferor1'] }}</h2>
 
-        <form method="post" action="lender-list">
-        <div class="govuk-form-group">
-        <fieldset class="govuk-fieldset">
-
-                  <span class="govuk-caption-l">Discharge of charge</span>
-            <h1 class="govuk-heading-l">
-              Enter existing lender
-            </h1>
-
-
-            {{ govukInput({
-            label: {
-              text: "Lender name"
+          <form method="post" action="/Sprint-24/transfer/transferor-list" novalidate>
+            {{ govukRadios({
+            idPrefix: "AmendTransferorName1",
+            name: "amendTransferorName1",
+            fieldset: {
+              legend: {
+                text: "Select if this transferor name needs to be:",
+                isPageHeading: false,
+                classes: "govuk-fieldset__legend--s"
+              }
             },
-            id: "lender-name-1",
-            classes: "govuk-input--width-20",
-            name: "lender-name"
+            items: [
+   {
+     value: "amended",
+     text: "amended"
+   },
+   {
+     value: "removed",
+     text: "removed"
+   }
+ ]
 }) }}
 
           <br>
-    <br>
-
-    <div class="govuk-warning-text govuk-!-width-full">
-      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-      <strong class="govuk-warning-text__text">
-        <span class="govuk-warning-text__assistive">Warning</span>
-        Naming errors lead to requisitions. By selecting 'Continue' you confirm the name is correct and consistent with supporting documents. If it isn't consistent, you must attach evidence of a name change.
-      </strong>
-    </div>
-
-  {{ govukButton({
-  classes: "",
-  text: "Continue"
-  }) }}
-    </div>
 
 
-</form>
+          {{ govukButton({
+          classes: "",
+          text: "Continue"
+          }) }}
+
+        </form>
+
+
 </main>
 
 
@@ -108,24 +109,8 @@
 </div>
 </footer>
 
-<script type="application/json" id="reference-form-validation">
- {
-   "reference": {
-     "presence": {
-       "message": "^Enter your reference for this application"
-     },
-     "length": {
-       "minimum": 1,
-       "maximum": 25,
-       "message": "^Your reference must be 25 characters or less"
-     }
-   }
- }
-</script>
-
-
-
 {% endblock %}
+
 
 
 {% block footer %}
