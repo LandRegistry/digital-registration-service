@@ -1,4 +1,5 @@
-{% extends "layout_unbranded.html" %}
+{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
+{%- set assetPath = '/govuk/assets' -%}
 
 {% extends "govuk/template.njk" %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
@@ -25,7 +26,6 @@
   <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
 {% endblock %}
 
-
 {% block header %}
 {% endblock %}
 
@@ -37,65 +37,65 @@
     <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
 
 
-    <div class="govuk-phase-banner">
+    <div class="govuk-phase-banner govuk-!-margin-bottom-5">
         <p class="govuk-phase-banner__content">
         <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
         <span class="govuk-phase-banner__text">
         This is a prototype and not a real service.
         </span></p>
-    </div></div>
+    </div>
     </div>
 
+<div class="govuk-grid-column-two-thirds">
+  <form method="post" action="/transfer-checklist-true">
+  <span class="govuk-caption-l">Transfer for value (TR1)</span>
+  <h1 class="govuk-heading-l">Attachment checklist</h1>
+
+        {{ govukCheckboxes({
+        idPrefix: "checklist",
+        name: "transfer-checklist",
+        hint: {
+          text: "Before attaching documents confirm you have made the following checks (where relevant) to avoid requisitions."
+        },
+        items: [
+          {
+            value: "1",
+            text: "Names you input are consistent with how they appear in deeds and on the register"
+          },
+          {
+            value: "2",
+            text: "Naming inconsistencies are explained by the appropriate documentation"
+          },
+          {
+            value: "3",
+            text: "Deeds contain, where appropriate, the correct title numbers and dates"
+          },
+          {
+            value: "4",
+            text: "Executions are complete and correct, and signed by all necessary witnesses"
+          },
+          {
+            value: "5",
+            text: "Plans show all necessary references and have been signed"
+          }
+        ]
+        }) }}
 
 
-    <main class="govuk-main-wrapper " id="main-content" role="main">
-    <a href="transactions/charge-tasks" class="govuk-back-link">Return to task list</a>
-    <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
 
-
-
-          <h1 class="govuk-heading-l">
-            <span class="govuk-caption-l">Transfer for value (TR1)</span>
-            Amend transferor details</h1>
-          <h2 class="govuk-heading-m">Name: {{ data['transferor1'] }}</h2>
-
-          <form method="post" action="/Sprint-24/transfer/transferor-list" novalidate>
-            {{ govukRadios({
-            idPrefix: "AmendTransferorName1",
-            name: "amendTransferorName1",
-            fieldset: {
-              legend: {
-                text: "Select if this transferor name needs to be:",
-                isPageHeading: false,
-                classes: "govuk-fieldset__legend--s"
-              }
-            },
-            items: [
-   {
-     value: "amended",
-     text: "amended"
-   },
-   {
-     value: "removed",
-     text: "removed"
-   }
- ]
+{{ govukButton({
+classes: "govuk-!-margin-top-5",
+text: "Continue"
 }) }}
 
-          <br>
 
+{{ govukButton({
+  text: "Return to task list",
+  classes: "govuk-button--secondary govuk-!-margin-top-5"
+}) }}
 
-          {{ govukButton({
-          classes: "",
-          text: "Continue"
-          }) }}
-
-        </form>
-
-
-</main>
-
+</form>
+</div>
 
 <footer>
 <div class="govuk-grid-row">
@@ -110,11 +110,35 @@
 </div>
 </footer>
 
+</div>
+
+<!-- <script>
+  function RemoveTransfereeIndividual() {
+  var x = document.getElementById("hidePI");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+
+  function RemoveTransfereeUK() {
+  var x = document.getElementById("hideUK");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+</script> -->
+
 {% endblock %}
 
 
-
 {% block footer %}
+
 {% endblock %}
 
 {% block bodyEnd %}

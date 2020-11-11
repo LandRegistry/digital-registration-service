@@ -47,12 +47,13 @@
     </div>
 
 <div class="govuk-grid-column-two-thirds">
-  <span class="govuk-caption-l">Discharge of charge</span>
+  <form method="post" action="/charge-checklist-true">
+  <span class="govuk-caption-l">Charge</span>
   <h1 class="govuk-heading-l">Attachment checklist</h1>
 
         {{ govukCheckboxes({
         idPrefix: "checklist",
-        name: "discharge-checklist",
+        name: "charge-checklist",
         hint: {
           text: "Before attaching documents confirm you have made the following checks (where relevant) to avoid requisitions."
         },
@@ -87,11 +88,13 @@ classes: "govuk-!-margin-top-5",
 text: "Continue"
 }) }}
 
+
 {{ govukButton({
   text: "Return to task list",
   classes: "govuk-button--secondary govuk-!-margin-top-5"
 }) }}
 
+</form>
 </div>
 
 <footer>
