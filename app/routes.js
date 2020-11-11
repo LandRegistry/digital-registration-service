@@ -1380,10 +1380,20 @@ router.post('/DTC-CheckMD', function (req, res) {
 
 
 
-
+// document checklist
 router.post('/discharge-checklist-true', function (req, res) {
   req.session.data['discharge-checklist'] = 'true';
     res.redirect('transactions/discharge/discharge-documents')
+})
+
+router.post('/transfer-checklist-true', function (req, res) {
+  req.session.data['transfer-checklist'] = 'true';
+    res.redirect('/transactions/transfer/documents/document_prompts-1.html')
+})
+
+router.post('/charge-checklist-true', function (req, res) {
+  req.session.data['charge-checklist'] = 'true';
+    res.redirect('/transactions/charge/documents/document_prompts')
 })
 
 
