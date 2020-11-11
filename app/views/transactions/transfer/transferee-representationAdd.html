@@ -55,14 +55,15 @@
 <div class="govuk-grid-column-two-thirds">
     <span class="govuk-caption-l">Transfer for value (TR1)</span>
     <h1 class="govuk-heading-l">Select representation</h1>
-    <h2 class="govuk-heading-s">Tell us who's representing:</h2>
+    <h2 class="govuk-heading-s">Tell us who's representing:
       {% if data['applicant-individual-transferee1'] %}
-        <p class="govuk-body"> {{ data['applicant-individual-forename'] }} {{ data['applicant-individual-surname'] }}</p>
+      {{ data['applicant-individual-forename'] }} {{ data['applicant-individual-surname'] }}
       {% endif %}
 
       {% if data['transferee-individual-forename'] %}
-      <p class="govuk-body">   {{ data['transferee-individual-forename'] }} {{ data['transferee-individual-surname'] }}</p>
+      {{ data['transferee-individual-forename'] }} {{ data['transferee-individual-surname'] }}
       {% endif %}
+      </h2>
 
 
 
@@ -166,7 +167,7 @@
       ]
     }) }}
 
-
+<h3 class="govuk-heading-m"> Apply to all (optional) </h3>
         {{ govukCheckboxes({
           idPrefix: "represents-all",
           name: "represents-all",
@@ -176,19 +177,20 @@
           },
           items: [
             {
-              value: "Selected conveyancer represents all transferees (optional).",
-              text: "Selected conveyancer represents all transferees (optional)."
+              value: "Selected conveyancer represents all transferees",
+              text: "Selected conveyancer represents all transferees"
             }
           ]
         }) }}
 
 
-        <div style="margin-left: 60px;">
-        {{ govukInsetText({
-            text: "Replaces any conveyancer details previously added."
-        }) }}
-
-      </div>
+        <div class="govuk-warning-text" style="margin-top: -50px;">
+          <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+          <strong class="govuk-warning-text__text" style="margin-top: 50px;">
+            <span class="govuk-warning-text__assistive">Warning</span>
+            Replaces any conveyancer details previously added
+          </strong>
+        </div>
 
       {{ govukButton({
         text: "Continue",

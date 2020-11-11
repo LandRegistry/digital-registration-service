@@ -5,6 +5,8 @@
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/tabs/macro.njk" import govukTabs %}
 {% from "govuk/components/table/macro.njk" import govukTable %}
+{% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
+
 
 
 {% block headIcons %}
@@ -40,40 +42,45 @@
     </div>
     </div>
 
-<form method="post" action="discharge-documents">
+<form method="post" action="name-change-attached">
 
 <div class="govuk-grid-column-full govuk-!-margin-top-7">
-  <span class="govuk-caption-xl">Discharge of charge</span>
+  <span class="govuk-caption-xl">Transfer for value (TR1)</span>
   <h1 class="govuk-heading-l"> Attach and certify document </h1>
   <p class="govuk-body">Files can be GIF, TIFF, JPG or PDF and must not exceed 20MB file size.</p>
+
   <p class="govuk-body">Document type</p>
-  <h2 class="govuk-heading-m govuk-!-margin-bottom-6" style="margin-top: -20px;">DS1</h2>
-  <p class="govuk-body">Attach a file</p>
-
-  <a href="#" type="file" id="suggested_upload" class="govuk-link--no-visited-state" onclick="fileupload()" style="cursor: pointer; text-decoration: none; font-size: 14px; color: black; border-style: solid;  border-width: 0.5px; padding: 5px; border-radius: 3px; position: absolute; ">Choose file</a>
-  <a  style="margin-left: 100px;" class="govuk-body" id="filename" for="ds1-upload"> No file chosen </a>
+  <h2 class="govuk-heading-m govuk-!-margin-bottom-6" style="margin-top: -20px;">Passport</h2>
 
 
+  <p class="govuk-body">Upload a file</p>
+  <a href="#" id="tr1-upload" class="" onclick="fileupload()" style=" background-color:#F0F0F0; text-decoration:none; color:#080808; border:1px solid #767676; padding:5px; border-radius:3px; cursor:pointer; ">Choose file</a>
 
+  <a class="govuk-body" id="filename" for="tr1-upload" > No file chosen </a>
 
-  <h3 class="govuk-heading-s govuk-!-margin-top-6">Certification</h3>
+  <div class="govuk-inset-text">
+    When you attach evidence of a name change, a new transaction <br>
+called ‘Change of name’ is added to your e-AP1.
+  </div>
+
+  <h3 class="govuk-heading-s govuk-!-margin-top-7">Certification</h3>
   <div class="govuk-form-group">
   <fieldset class="govuk-fieldset">
     <div class="govuk-radios govuk-!-width-two-thirds">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="DischargeCertified-1" name="DischargeCertified" value="Certified" type="radio">
+        <input class="govuk-radios__input" id="Certified-1" name="cert" value="Certified" type="radio">
         <label class="govuk-label govuk-radios__label">
           I/we certify this is a true copy of an original document
         </label>
       </div>
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="DischargeCertified-2" name="DischargeCertified" value="Certified" type="radio">
+        <input class="govuk-radios__input" id="Certified-2" name="cert" value="Certified" type="radio">
         <label class="govuk-label govuk-radios__label">
           I/we certify this attachment is a true copy of an original document which is certified by a conveyancer to be a true copy of the original
         </label>
       </div>
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="DischargeCertified-3" name="DischargeCertified" value="Not certified" type="radio">
+        <input class="govuk-radios__input" id="Certified-3" name="cert" value="Not certified" type="radio">
         <label class="govuk-label govuk-radios__label">
           This attachment is an uncertified copy
         </label>
@@ -90,6 +97,7 @@
 </div>
 </form>
 </div>
+
 <footer>
 <div class="govuk-grid-row">
 <div class="govuk-grid-column-full">
@@ -102,13 +110,14 @@
 </div>
 </div>
 </footer>
-</div>
+
+
 <script>
   function fileupload() {
 
   $(document).ready(function(){
     $("a").click(function(){
-      $(document.getElementById('filename')).text("ds1.pdf");
+      $(document.getElementById('filename')).text("document.pdf");
     });
   });
 

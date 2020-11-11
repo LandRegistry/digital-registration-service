@@ -1,0 +1,176 @@
+{% extends "layout_unbranded.html" %}
+
+{% extends "govuk/template.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+
+
+{% block headIcons %}
+  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
+  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
+{% endblock %}
+
+{% block head %}
+  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full" id="headerdiv">
+    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
+    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Digital Registration Service</a></p>
+    <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+
+
+    <div class="govuk-phase-banner">
+        <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
+        <span class="govuk-phase-banner__text">
+        This is a prototype and not a real service.
+        </span></p>
+    </div></div>
+    </div>
+
+    <main class="govuk-main-wrapper " id="main-content" role="main">
+      <a href="../transfer/task-list" class="govuk-back-link">Return to task list</a>
+      <span class="govuk-caption-l">Transfer for value (TR1)</span>
+
+          <h1 class="govuk-heading-l">Check transferor details</h1>
+
+          <p>Use the options menu to add or amend transferor details where necessary. When all <br> names are correct and consistent with supporting documents, select ‘Continue’.</p>
+
+
+          <form method="post" action="../transfer/task-list" novalidate>
+
+
+            <table class="govuk-table">
+            <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Transferor type</th>
+              <th scope="col" class="govuk-table__header govuk-!-width-one-quarters">Transferor name</th>
+              <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Company number</th>
+              <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Territory of incorporation</th>
+              <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Options</th>
+
+              </tr>
+            </thead>
+
+            <tbody class="govuk-table__body">
+                  <tr class="govuk-table__row">
+                    <tr class="govuk-table__row">
+                      <td class="govuk-table__cell">Private individual</td>
+                      <td class="govuk-table__cell" >
+                        {% if data['Transferor1Status'] === 'removed'%} <!-- if Transferor1Status = removed show transferor1 variable-->
+                        <p>{{ data['transferor1'] }} removed</p> <!-- show transferor1 variable-->
+
+                        {% elif data['Transferor1Status'] === 'amended'%} <!-- if Transferor1Status = amended show transferor1ameded (input) amended from  transferor1 variable-->
+                        <p> {{ data['nameChange'] }} amended from {{ data['transferor1'] }}</p>
+
+                        {% elif (data['Transferor1Status'] !== 'removed') or (data['Transferor1Status'] !== 'amended') %}
+                        <p>{{ data['transferor1'] }}</p>
+
+                        {% endif %}
+
+                     </td>
+                     <td class="govuk-table__cell">N/A</td>
+                     <td class="govuk-table__cell">N/A</td>
+<!-- Borrower status equals removed, it will display the name variable with 'removed', if it DOESN'T = removed or amended, it will display the name variable.<-->
+
+                      <td class="govuk-table__cell">
+                          {% if (data['Transferor1Status'] !== 'removed') %}
+                          <a href="/Sprint-24/transfer/transferor-details.html">Amend / Remove</a>
+
+                          {% elif (data['Transferor1Status'] == 'removed') %}
+                          <a id="undoButton" href="/../charge-without-transfer-borrower-list" name="undo" onclick="undo()">Undo remove</a>
+                          {% endif %}
+                    </td>
+                    </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">UK Company or LLP</td>
+                    <td class="govuk-table__cell">HSBC</td>
+                    <td class="govuk-table__cell">BOI123</td>
+                    <td class="govuk-table__cell">Ireland</td>
+                    <td class="govuk-table__cell"><a href="#">Amend</a></td>
+                  </tr>
+            </tbody>
+          </table>
+
+
+
+          <div class="govuk-warning-text">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+              <span class="govuk-warning-text__assistive">Warning</span>
+              Naming errors lead to requisitions. By selecting ‘Continue’ <br> you confirm all transferor names are correct.
+
+            </strong>
+          </div>
+
+            {{ govukButton({
+            classes: "",
+            text: "Continue"
+            }) }}
+
+          </form>
+
+
+</main>
+
+
+<footer>
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-full">
+<hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+<br>
+<p class="govuk-body-s" style="color: #747B7F"> The following links open in a new window
+<br>
+<br>
+<a href="#" style="color: #747B7F"> Terms and conditions</a> | <a href="/setup/accessibility-statement" target="_blank" rel="noopener noreferrer" style="color: #747B7F">Accessibility statement</a> |  <a href="#" style="color: #747B7F">Freedom of information</a> | <a href="#" style="color: #747B7F">© Crown copyright</a></p>
+</div>
+</div>
+</footer>
+
+
+<script type="application/json" id="reference-form-validation">
+ {
+   "reference": {
+     "presence": {
+       "message": "^Enter your reference for this application"
+     },
+     "length": {
+       "minimum": 1,
+       "maximum": 25,
+       "message": "^Your reference must be 25 characters or less"
+     }
+   }
+
+</script>
+
+
+<!-- {% set borrowerName1 = "Joe Bloggs" %} -->
+
+
+
+{% endblock %}
+
+
+
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}
