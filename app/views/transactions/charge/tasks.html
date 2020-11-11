@@ -111,8 +111,12 @@
 
             <tr class="govuk-table__row">
             <td class="govuk-table__cell">
+            {% if data['discharge-checklist'] %}
             <a href="/../transactions/discharge/discharge-documents" class="govuk-link">Attach documents</a>
+            {% else %}
+            <a href="/../transactions/discharge/discharge-checklist" class="govuk-link">Attach documents</a>
             </td>
+            {% endif %}
             <td class="govuk-table__cell">
               {% if data['DischargeCertified'] %}
               <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>

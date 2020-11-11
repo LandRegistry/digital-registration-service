@@ -1379,6 +1379,14 @@ router.post('/DTC-CheckMD', function (req, res) {
 })
 
 
+
+
+router.post('/discharge-checklist-true', function (req, res) {
+  req.session.data['discharge-checklist'] = 'true';
+    res.redirect('transactions/discharge/discharge-documents')
+})
+
+
 // Borrower names
 // Display borrower names
 // Option to change / remove borrower name
