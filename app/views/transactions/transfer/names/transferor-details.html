@@ -49,7 +49,7 @@
 
 
     <main class="govuk-main-wrapper " id="main-content" role="main">
-    <a href="transactions/charge-tasks" class="govuk-back-link">Return to task list</a>
+    <a href="" class="govuk-back-link">Return to task list</a>
     <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
@@ -58,9 +58,10 @@
           <h1 class="govuk-heading-l">
             <span class="govuk-caption-l">Transfer for value (TR1)</span>
             Amend transferor details</h1>
-          <h2 class="govuk-heading-m">Name: {{ data['transferor1'] }}</h2>
+          <h2 class="govuk-heading-m">Name: Bob Vance</h2>
 
-          <form method="post" action="/Sprint-24/transfer/transferor-list" novalidate>
+          <form method="post" action="/transferor-amend-remove">
+
             {{ govukRadios({
             idPrefix: "AmendTransferorName1",
             name: "amendTransferorName1",
@@ -69,19 +70,19 @@
                 text: "Select if this transferor name needs to be:",
                 isPageHeading: false,
                 classes: "govuk-fieldset__legend--s"
-              }
-            },
-            items: [
-   {
-     value: "amended",
-     text: "amended"
-   },
-   {
-     value: "removed",
-     text: "removed"
-   }
- ]
-}) }}
+                }
+              },
+              items: [
+     {
+       value: "amended",
+       text: "amended"
+     },
+     {
+       value: "removed",
+       text: "removed"
+     }
+   ]
+  }) }}
 
           <br>
 
