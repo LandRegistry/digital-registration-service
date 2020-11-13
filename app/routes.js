@@ -470,7 +470,7 @@ router.get('/docs/examples/pass-data/Solecharge', function (req, res) {
 
 router.get('/docs/examples/pass-data/charge', function (req, res) {
 	req.session.data = {
-    "reference": "JT/123/CH",
+    "reference": "ABC/123/DTC",
     "title": "LP12345",
     "whole-or-part": "Whole",
     "part": "",
