@@ -51,7 +51,7 @@
 
           <h1 class="govuk-heading-l">Check transferor details</h1>
 
-          <form method="post" action="" novalidate>
+          <form method="post" action="/transactions/transfer/transferor-details-complete" novalidate>
 
 
             <table class="govuk-table">
@@ -78,7 +78,7 @@
                         <p> {{ data['nameChange'] }} amended from {{ data['transferor1'] }}</p>
 
                         {% elif (data['Transferor1Status'] !== 'removed') or (data['Transferor1Status'] !== 'amended') %}
-                        <p>{{ data['transferor1'] }}</p>
+                        <p>Bob Vance</p>
 
                         {% endif %}
 
@@ -89,13 +89,14 @@
 
                       <td class="govuk-table__cell">
                           {% if (data['Transferor1Status'] !== 'removed') %}
-                          <a href="/Sprint-24/transfer/transferor-details.html">Amend / Remove</a>
+                          <a href="transferor-details.html">Amend / Remove</a>
 
                           {% elif (data['Transferor1Status'] == 'removed') %}
                           <a id="undoButton" href="/../charge-without-transfer-borrower-list" name="undo" onclick="undo()">Undo remove</a>
                           {% endif %}
                     </td>
                     </tr>
+
                   <tr class="govuk-table__row">
                     <td class="govuk-table__cell">UK Company or LLP</td>
                     <td class="govuk-table__cell">HSBC</td>
@@ -106,13 +107,23 @@
             </tbody>
           </table>
 
+          <details class="govuk-details" data-module="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                I don’t recognise any of these transferors
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              This is the information we hold for title number <b>LP123456</b>. Sometimes the transferor information is out of date. You can <a href="/transactions/transfer/add-transferor">remove all names from the list and add new transferors</a>.
+            </div>
+        </details>
 
 
-          <div class="govuk-warning-text">
+          <div class="govuk-warning-text" style="margin-top: -50px;">
             <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-            <strong class="govuk-warning-text__text">
+            <strong class="govuk-warning-text__text" style="margin-top: 50px;">
               <span class="govuk-warning-text__assistive">Warning</span>
-              Naming errors lead to requisitions. By selecting ‘Continue’ <br> you confirm all transferor names are correct.
+              Naming errors lead to requisitions. By selecting ‘Continue’ you confirm the name is correct. If the name is not consistent with supporting evidence, you must attach evidence of a name change.
 
             </strong>
           </div>

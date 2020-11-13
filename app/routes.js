@@ -470,7 +470,7 @@ router.get('/docs/examples/pass-data/Solecharge', function (req, res) {
 
 router.get('/docs/examples/pass-data/charge', function (req, res) {
 	req.session.data = {
-    "reference": "JT/123/CH",
+    "reference": "ABC/123/DTC",
     "title": "LP12345",
     "whole-or-part": "Whole",
     "part": "",
@@ -488,6 +488,7 @@ router.get('/docs/examples/pass-data/charge', function (req, res) {
     "applicant-individual-surname": "Smith",
     "applicant2-individual-forename-2": "Jane",
     "applicant2-individual-surname-2": "Smith",
+    "transferor1": "Bob Vance",
     "Transaction1": "Discharge",
     "Transaction2": "Transfer for value (TR1)",
     "Transaction3": "Charge",
@@ -627,6 +628,7 @@ router.get('/docs/examples/pass-data/task-list', function (req, res) {
   "Transaction3": "Select a transaction from the list",
   "fee3": "",
   "Price3": "",
+  "transferor1": "Bob Vance",
   "add-applicant": "individual",
   "applicant-individual-forename": "John",
   "applicant-individual-surname": "Smith",
@@ -666,7 +668,8 @@ router.get('/docs/examples/pass-data/task-list', function (req, res) {
   "applicant2-individual-forename-2": "Jane",
   "applicant2-individual-surname-2": "Smith",
   "applicant-company-name-2": "",
-  "applicant-company-number-2": ""
+  "applicant-company-number-2": "",
+  "transferor1": "Bob Vance"
 }
   res.redirect('/../transactions/tasks')
 })
@@ -691,6 +694,7 @@ router.get('/docs/examples/pass-data/TC', function (req, res) {
     "applicant-individual-surname": "Smith",
     "applicant2-individual-forename-2": "Jane",
     "applicant2-individual-surname-2": "Smith",
+      "transferor1": "Bob Vance",
     "Transaction1": "Transfer for value (TR1)",
     "Transaction2": "Charge",
     "Transaction3": "",
@@ -719,6 +723,7 @@ router.get('/testing/addresses', function (req, res) {
     "applicant-individual-surname": "Smith",
     "applicant2-individual-forename-2": "Jane",
     "applicant2-individual-surname-2": "Smith",
+      "transferor1": "Bob Vance",
     "Transaction1": "Transfer for value (TR1)",
     "Transaction2": "Charge",
     "Transaction3": "",
@@ -812,6 +817,7 @@ router.post('/transactions/which-task-list', function (req, res) {
           res.redirect('/transactions/charge/TC-tasks')
       }
     })
+
 
 
 // Charge completed tags
@@ -969,6 +975,29 @@ router.post('/transactions/transfer/add-transferor-complete', function (req, res
         res.redirect('/transactions/charge/TC-tasks') }
   })
 
+  // rep
+router.post('/transactions/transfer/transferor-details-complete', function (req, res) {
+
+  let transaction = req.session.data['Transaction']
+  let transferorComplete = req.session.data['transferorComplete']
+
+
+    if (transaction === 'DTC') {
+        req.session.data['transferorComplete'] = 'true';
+        res.redirect('/transactions/charge/tasks')
+    } if (transaction === 'C') {
+        req.session.data['transferorComplete'] = 'true';
+        res.redirect('/transactions/charge-without-transfer/charge-without-transfer-tasks')
+    } if (transaction === 'T') {
+        req.session.data['transferorComplete'] = 'true';
+        res.redirect('/transactions/transfer/transfer-tasks')
+    } if (transaction === 'DT') {
+        req.session.data['transferorComplete'] = 'true';
+        res.redirect('/transactions/tasks')
+    } if (transaction === 'TC') {
+        req.session.data['transferorComplete'] = 'true';
+        res.redirect('/transactions/charge/TC-tasks') }
+})
 
   // transferor rep
 router.post('/transactions/transfer/transferor-representation-confirmed', function (req, res) {
@@ -1431,17 +1460,17 @@ router.get('/docs/examples/pass-data/transfer1', function (req, res) {
 
 
 // Checking if transferor name needs to be removed or amended
-router.post('/testing/transfer/transferor-list', function (req, res) {
+router.post('/transferor-amend-remove', function (req, res) {
 
-  let amendTransferorName1 = req.session.data['amendTransferorName1']
+  let amendTransferor = req.session.data['amendTransferorName1']
 
-  if (amendTransferorName1 === 'amended') {
+  if (amendTransferor === 'amended') {
     req.session.data['Transferor1Status'] = 'amended'; //setting variable for transferor1Status to check for amended
-    res.redirect('change')
+    res.redirect('/transactions/transfer/names/change')
 }
-  if (amendTransferorName1 === 'removed') {
+  if (amendTransferor === 'removed') {
       req.session.data['Transferor1Status'] = 'removed'; //setting variable for transferor1Status to check for removed
-      res.redirect('transferor-list')
+      res.redirect('/transferor-list')
     }
 })
 
