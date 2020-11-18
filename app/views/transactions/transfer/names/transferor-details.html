@@ -1,5 +1,4 @@
-{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
-{%- set assetPath = '/govuk/assets' -%}
+{% extends "layout_unbranded.html" %}
 
 {% extends "govuk/template.njk" %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
@@ -10,9 +9,6 @@
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 {% from "govuk/components/table/macro.njk" import govukTable %}
-{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
-{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
-
 
 
 
@@ -29,6 +25,7 @@
   <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
 {% endblock %}
 
+
 {% block header %}
 {% endblock %}
 
@@ -40,80 +37,66 @@
     <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
 
 
-    <div class="govuk-phase-banner govuk-!-margin-bottom-5">
+    <div class="govuk-phase-banner">
         <p class="govuk-phase-banner__content">
         <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
         <span class="govuk-phase-banner__text">
         This is a prototype and not a real service.
         </span></p>
+    </div></div>
     </div>
-    </div>
-
-    <div class="govuk-grid-column-full">
-        <span class="govuk-caption-xl">Transfer for value (TR1)</span>
-        <h1 class="govuk-heading-xl">Confirm transfer date</h1>
-
-    <form method="post" action="/transactions/transfer-date-complete">
-          <div class="govuk-form-group">
-
-
-            <fieldset class="govuk-fieldset" role="group" aria-describedby="transfer-date-hint">
-
-
-              <span id="transfer-date-hint" class="govuk-hint">
-                For example, 12 11 2007
-              </span>
-
-
-              <div class="govuk-date-input" id="transfer-date">
-
-                <div class="govuk-date-input__item">
-                  <div class="govuk-form-group">
-                    <label class="govuk-label govuk-date-input__label" for="transfer-date-day">
-                      Day
-                    </label>
-
-
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="transfer-date-day" name="transfer-date-day" type="number" pattern="[0-9]*">
-                  </div>
-                </div>
-
-                <div class="govuk-date-input__item">
-                  <div class="govuk-form-group">
-                    <label class="govuk-label govuk-date-input__label" for="transfer-date-month">
-                      Month
-                    </label>
-
-
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="transfer-date-month" name="transfer-date-month" type="number" pattern="[0-9]*">
-                  </div>
-                </div>
-
-                <div class="govuk-date-input__item">
-                  <div class="govuk-form-group">
-                    <label class="govuk-label govuk-date-input__label" for="transfer-date-year">
-                      Year
-                    </label>
-
-
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="transfer-date-year" name="transfer-date-year" type="number" pattern="[0-9]*">
-                  </div>
-                </div>
-
-              </div>
-              </fieldset>
-
-          </div>
 
 
 
-{{ govukButton({
-  text: "Continue"
-}) }}
+    <main class="govuk-main-wrapper " id="main-content" role="main">
+    <a href="" class="govuk-back-link">Return to task list</a>
+    <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
 
-</form>
-</div>
+
+          <h1 class="govuk-heading-l">
+            <span class="govuk-caption-l">Transfer for value (TR1)</span>
+            Amend transferor details</h1>
+          <h2 class="govuk-heading-m">Name: Bob Vance</h2>
+
+          <form method="post" action="/transferor-amend-remove">
+
+            {{ govukRadios({
+            idPrefix: "AmendTransferorName1",
+            name: "amendTransferorName1",
+            fieldset: {
+              legend: {
+                text: "Select if this transferor name needs to be:",
+                isPageHeading: false,
+                classes: "govuk-fieldset__legend--s"
+                }
+              },
+              items: [
+     {
+       value: "amended",
+       text: "amended"
+     },
+     {
+       value: "removed",
+       text: "removed"
+     }
+   ]
+  }) }}
+
+          <br>
+
+
+          {{ govukButton({
+          classes: "",
+          text: "Continue"
+          }) }}
+
+        </form>
+
+
+</main>
+
 
 <footer>
 <div class="govuk-grid-row">
@@ -127,10 +110,10 @@
 </div>
 </div>
 </footer>
-</div>
-
 
 {% endblock %}
+
+
 
 {% block footer %}
 {% endblock %}

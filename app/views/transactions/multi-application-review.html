@@ -74,7 +74,7 @@
 
             <tr class="govuk-table__row">
               <th scope="row" class="govuk-table__header govuk-!-width-one-quarter">Description</th>
-              <td class="govuk-table__cell" colspan="2">11, St William Road, Littlehaxten, Wiltshire LH1 3AB</td>
+              <td class="govuk-table__cell" colspan="2">66 Edwards Walk, Littlehaxten, LH12 9PJ</td>
             </tr>
 
             <tr class="govuk-table__row">
@@ -615,6 +615,44 @@
                   {% endif %}
           </tbody>
         </table>
+
+
+          <h2 class="govuk-heading-m">Additional fields</h2>
+
+            <table class="govuk-table">
+
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header">Transfer date</th>
+                  <td class="govuk-table__cell">{{ data['transfer-date-day'] }} {{ data['transfer-date-month'] }} {{ data['transfer-date-year'] }}</td>
+                  <td class="govuk-table__cell"><a href="/transactions/transfer/transfer-date" style="float: right;">Change</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header">Consideration</th>
+                  <td class="govuk-table__cell">Transfer of £{{ data['priority2values'] }} from transferee</td>
+                  <td class="govuk-table__cell"><a href="/Sprint-26/consideration/transfer-consideration-v3" style="float: right;">Change</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header">Title guarantee</th>
+                  <td class="govuk-table__cell"> {{ data['title-guarantee'] }}</td>
+                  <td class="govuk-table__cell"><a href="/transactions/transfer/transfer-guarantee" style="float: right;">Change</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header">Declaration of trust</th>
+                  <td class="govuk-table__cell">{{ data['transferTrust'] }}</td>
+                  <td class="govuk-table__cell"><a href="/transactions/transfer/transfer-declaration" style="float: right;">Change</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header">Additional provisions</th>
+                  <td class="govuk-table__cell">{{ data['provisions'] }}</td>
+                  <td class="govuk-table__cell"><a href="/transactions/transfer/transfer-provisions" style="float: right;">Change</a></td>
+                </tr>
+
+              </tbody>
+            </table>
+
+
+
 
         <table class="govuk-table govuk-!-margin-bottom-9">
           <h2 class="govuk-heading-m">Attached documents</h2>
@@ -1326,6 +1364,7 @@
                           {% endif %}
                   </tbody>
                 </table>
+
 
                 <table class="govuk-table govuk-!-margin-bottom-9">
                   <h2 class="govuk-heading-m">Attached documents</h2>

@@ -55,7 +55,6 @@
 <div class="govuk-grid-column-two-thirds">
     <span class="govuk-caption-l">Transfer for value (TR1)</span>
 
-
 <h1 class="govuk-heading-l">
     {% if data['user-type'] === 'conveyancer' %}
 
@@ -76,6 +75,7 @@
         {{ data['transferee-individual-forename'] }} {{ data['transferee-individual-surname'] }}
         {% endif %}-->
     {% endif %}
+
 
 </h1>
 
@@ -183,7 +183,7 @@
       ]
     }) }}
 
-
+<h3 class="govuk-heading-m"> Apply to all (optional) </h3>
         {{ govukCheckboxes({
           idPrefix: "represents-all",
           name: "represents-all",
@@ -193,6 +193,7 @@
           },
           items: [
             {
+
               value: "This applies to all transferees (optional)",
               text: "This applies to all transferees (optional)",
               hint: {
@@ -201,6 +202,7 @@
             }
           ]
         }) }}
+
 
 
         {% else %}
@@ -281,6 +283,7 @@
             }) }}
 
         {% endif %}
+
 
       {{ govukButton({
         text: "Continue",
