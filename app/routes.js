@@ -1489,3 +1489,14 @@ router.post('/wes-yes-no-answer', function (req, res) {
       res.redirect('/testing/wes/task-list-dtc.html')
     }
 })
+
+// Is the user a conveyancer?
+router.post('/setup/user-type-answer', function (req, res) {
+  let userType = req.session.data['user-type'];
+  res.redirect('/setup/enter-title')
+  if (userType === 'conveyancer') {
+      req.session.data['user-type'] = 'conveyancer';
+  } else {
+    req.session.data['user-type'] = 'non-conveyancer';
+  }
+})

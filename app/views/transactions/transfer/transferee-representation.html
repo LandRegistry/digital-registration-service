@@ -63,6 +63,7 @@
   </thead>
   <tbody class="govuk-table__body">
     <tbody class="govuk-table_body">
+
       <!-- {% if data['transferee-select'] === 'yes' and data['applicant-individual-forename'] %}
       <tr class="govuk-table_row" id="hidePI">
       <td class="govuk-table__cell">Private individual</td>
@@ -118,15 +119,28 @@
         <td class="govuk-table__cell govuk-!-width-one-third">
         {{ data['applicant-individual-forename'] }} {{ data['applicant-individual-surname'] }}</td>
         <td class="govuk-table__cell" >
-        {% if not data['TransfereeRepresentation'] %} - No representation added - {% endif %}
 
-        {% if data['TransfereeRepresentation' ] == 'OtherConveyancer' %}
-        {{ data ['TransfereeOtherName'] }}, {{ data ['TransfereeOtherAddress'] }}, {{ data ['OtherConveyancerReference'] }}
-        {% endif %}
 
-        {% if data['TransfereeRepresentation' ] !== 'OtherConveyancer' %}
-        {{ data['TransfereeRepresentation']}}
-        {% endif %}
+          <!--Before user has made a selection-->
+          {% if not data['TransfereeRepresentation'] %}
+            No representation added 
+          {% endif %}
+
+          <!--If represented by default conveyancer-->
+          {% if data['TransfereeRepresentation'] == 'UKConveyancersLtd' %} 
+            {{ data['TransfereeRepresentation']}}
+          {% endif %}
+
+          <!--If represented by an other conveyancer-->
+          {% if data['TransfereeRepresentation'] == 'OtherConveyancer' %}
+            {{ data['TransfereeOtherName']}}
+          {% endif %}
+
+          <!--If person is not represented-->
+          {% if data['TransfereeRepresentation'] == 'NotRepresented' %}
+            Not represented
+          {% endif %}
+
         </td>
         <td class="govuk-table__cell" >
         {% if not data['TransfereeRepresentation'] %} <a href="transferee-representationAdd">Add representation </a> {% endif %}
@@ -137,12 +151,36 @@
         </tr>
         {% endif %}
 
-        {% if   data['applicant-individual-transferee2'] %}
+        {% if data['applicant-individual-transferee2'] %}
         <tr class="govuk-table_row" id="hidePI">
         <td class="govuk-table__cell">Private individual</td>
         <td class="govuk-table__cell govuk-!-width-one-third">
         {{ data['applicant2-individual-forename-2'] }} {{ data['applicant2-individual-surname-2'] }}
         <td class="govuk-table__cell" >
+
+
+          <!--Before user has made a selection-->
+          {% if not data['Transferee2Representation'] %}
+            No representation added 
+          {% endif %}
+
+          <!--If represented by default conveyancer-->
+          {% if data['Transferee2Representation'] == 'UKConveyancersLtd' %} 
+            {{ data['Transferee2Representation']}}
+          {% endif %}
+
+          <!--If represented by an other conveyancer-->
+          {% if data['Transferee2Representation'] == 'OtherConveyancer' %}
+            {{ data['Transferee2OtherName']}}
+          {% endif %}
+
+          <!--If person is not represented-->
+          {% if data['Transferee2Representation'] == 'NotRepresented' %}
+            Not represented
+          {% endif %}
+
+<!--
+
         {% if not data['TransfereeRepresentation'] or not data['represents-all'] %} - No representation added - {% endif %}
 
         {% if data['represents-all'] and data['TransfereeRepresentation' ] !== 'OtherConveyancer' %} {{ data['TransfereeRepresentation']}} {% endif %}
@@ -151,14 +189,33 @@
         {{ data ['TransfereeOtherName'] }}, {{ data ['TransfereeOtherAddress'] }}, {{ data ['OtherConveyancerReference'] }}
         {% endif %}
 
-        <!-- {% if data['TransfereeRepresentation' ] !== 'OtherConveyancer' %}
+         {% if data['TransfereeRepresentation' ] !== 'OtherConveyancer' %}
         {{ data['TransfereeRepresentation']}}
         {% endif %} -->
 
         </td>
         <td class="govuk-table__cell" >
+
+        {% if not data['Transferee2Representation'] %} 
+          <a href="transferee-representationadd2">Add representation </a>
+        {% endif %}
+        
+        {% if data['Transferee2Representation'] %} 
+          <a href="transferee-representationadd2">Change</a>
+          <br>
+          <a href="">Remove</a> 
+        {% endif %}
+        
+        <!--
+        {% if data['represents-all'] %} 
+
+        {% endif %}
+        -->
+        
+
         {% if not data['TransfereeRepresentation'] or not data['represents-all'] %} <a href="/transactions/transfer/transferee-representationAdd2">Add representation</a> {% endif %}
         {% if data['TransfereeRepresentation'] and data['represents-all'] %} <a href="/transactions/transfer/transferee-representationAdd2">Change</a><br><a href="">Remove</a> {% endif %}
+
         </td>
         </tr>
         {% endif %}
