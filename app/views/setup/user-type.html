@@ -9,6 +9,8 @@
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
 {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
 {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+
 
 
 
@@ -61,6 +63,18 @@
      <div>
       
 
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Which should I select?
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          Select ‘I am a conveyancer’ if you are (or are employed and supervised by) a solicitor or conveyancer authorised under the Legal Services Act 2007 to provide reserved legal services relating to land registration. Otherwise, select ‘I am not a conveyancer’. <a href='https://www.gov.uk/government/publications/evidence-of-identity-conveyancers/practice-guide-67-evidence-of-identity-conveyancers'>Find out more</a>
+        </div>
+      </details>
+
+
     <form method="post" action="user-type-answer" name="" data-validate="whole-form-validation" novalidate>
 
         {{ govukRadios({
@@ -73,9 +87,8 @@
       classes: "govuk-fieldset__legend--m"
     }
   },
-  hint: {
-    text: ""
-  },
+ 
+  
   items: [
     {
       value: "conveyancer",
@@ -111,7 +124,7 @@
   {
     "user-type": {
       "presence": {
-        "message": "^Select yes or no"
+        "message": "^Select if you are a conveyancer or not"
       }
     }
   }
