@@ -47,14 +47,10 @@
 
 <div class="govuk-grid-column-full">
     <span class="govuk-caption-l">Transfer for value (TR1)</span>
-    <h1 class="govuk-heading-l">Add transferor</h1>
+    <h1 class="govuk-heading-l">Add new transferor</h1>
 
-    <p class="govuk-body">Select the type of transferor and enter their name. Names entered here must match those in supporting documents.</p>
+    <p class="govuk-body">Select the type of transferor and enter their name. You can add more transferors in the next step.</p>
 
-
-      {{ govukInsetText({
-      text: "Names entered here must match those on the register and in supporting documents. If the names don’t match, you must attach evidence of a name change."
-    }) }}
 
 
     <form method="get" action="transferor-list" novalidate>
@@ -170,16 +166,20 @@
           </fieldset>
           </div>
 
+          <div class="govuk-warning-text" style="margin-top: -50px;">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text" style="margin-top: 50px;">
+              <span class="govuk-warning-text__assistive">Warning</span>
+              Naming errors lead to requisitions. By selecting ‘Continue’ you confirm the name is correct. If the name is not consistent with supporting evidence, you must attach evidence of a name change.
+
+            </strong>
+          </div>
 
 
   {{ govukButton({
   classes: "govuk-!-margin-top-5",
   text: "Continue"
   }) }}
-
-  {{ govukInsetText({
-  text: "You can add more transferors in the next step."
-    }) }}
 
 
     <footer>
