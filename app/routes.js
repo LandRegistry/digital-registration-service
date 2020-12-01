@@ -782,6 +782,13 @@ router.post('/transactions/charge-transactions', function (req, res) {
 
                   res.redirect('/transactions/calculate-fees')
             }
+            //Assent
+            if (transaction1 === 'Assent') {
+              req.session.data['Transaction'] = 'ASSENT';
+  
+              res.redirect('/transactions/calculate-fees')
+  
+        } 
 
 })
 
