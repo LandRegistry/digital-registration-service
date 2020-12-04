@@ -45,7 +45,7 @@
         </span></p>
     </div></div>
     </div>
-    <a href="../transfer/task-list" class="govuk-back-link">Return to task list</a>
+  <button onclick="goBack()" class="back-link">◄ Return to task list</button>
     <main class="govuk-main-wrapper " id="main-content" role="main">
       <span class="govuk-caption-l">Transfer for value (TR1)</span>
 
@@ -58,10 +58,10 @@
             <thead class="govuk-table__head">
             <tr class="govuk-table__row">
               <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Transferor type</th>
-              <th scope="col" class="govuk-table__header govuk-!-width-one-quarters">Transferor name</th>
+              <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Transferor name</th>
               <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Company number</th>
-              <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Territory of incorporation</th>
-              <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Options</th>
+              <th scope="col" class="govuk-table__header govuk-!-width-one-eighth">Territory of incorporation</th>
+              <th scope="col" class="govuk-table__header govuk-!-width-one-eighth">Options</th>
 
               </tr>
             </thead>
@@ -89,7 +89,7 @@
 
                       <td class="govuk-table__cell">
                           {% if (data['Transferor1Status'] !== 'removed') %}
-                          <a href="transferor-details.html">Amend / Remove</a>
+                          <a href="transferor-details.html">Amend/Remove</a>
 
                           {% elif (data['Transferor1Status'] == 'removed') %}
                           <a id="undoButton" href="/../charge-without-transfer-borrower-list" name="undo" onclick="undo()">Undo remove</a>
@@ -97,13 +97,37 @@
                     </td>
                     </tr>
 
-                  <tr class="govuk-table__row">
-                    <td class="govuk-table__cell">UK Company or LLP</td>
-                    <td class="govuk-table__cell">HSBC</td>
-                    <td class="govuk-table__cell">BOI123</td>
-                    <td class="govuk-table__cell">Ireland</td>
-                    <td class="govuk-table__cell"><a href="#">Amend</a></td>
-                  </tr>
+                    <tr class="govuk-table__row">
+                      <td class="govuk-table__cell">Private individual</td>
+                      <td class="govuk-table__cell" >
+                        {% if data['Transferor2Status'] === 'removed'%} <!-- if Transferor1Status = removed show transferor1 variable-->
+                        <p>{{ data['transferor2'] }} removed</p> <!-- show transferor1 variable-->
+
+                        {% elif data['Transferor2Status'] === 'amended'%} <!-- if Transferor1Status = amended show transferor1ameded (input) amended from  transferor1 variable-->
+                        <p> {{ data['nameChange'] }} amended from {{ data['transferor1'] }}</p>
+
+                        {% elif (data['Transferor2Status'] !== 'removed') or (data['Transferor1Status'] !== 'amended') %}
+                        <p>Phyllis Vance</p>
+
+                        {% endif %}
+
+                     </td>
+                     <td class="govuk-table__cell">N/A</td>
+                     <td class="govuk-table__cell">N/A</td>
+<!-- Borrower status equals removed, it will display the name variable with 'removed', if it DOESN'T = removed or amended, it will display the name variable.<-->
+
+                      <td class="govuk-table__cell">
+                          {% if (data['Transferor2Status'] !== 'removed') %}
+                          <a href="">Amend/Remove</a>
+
+                          {% elif (data['Transferor2Status'] == 'removed') %}
+                          <a id="undoButton" href="
+                          " name="undo" onclick="undo()">Undo remove</a>
+                          {% endif %}
+                    </td>
+                    </tr>
+
+
             </tbody>
           </table>
 
@@ -117,7 +141,45 @@
               This is the information we hold for title number <b>LP123456</b>. Sometimes the transferor information is out of date. You can <a href="/transactions/transfer/add-transferor">remove all names from the list and add new transferors</a>.
             </div>
         </details>
+<br>
+        <div>
+        <h2 class="govuk-heading-m"> Power of attorney (optional) </h2>
+        {% if data['attorney1'] %}
 
+        <table class="govuk-table">
+        <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Donor</th>
+          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Attorney(s)</th>
+          <th scope="col" class="govuk-table__header govuk-!-width-one-eighth">Options</th>
+        </tr>
+        </thead>
+
+        <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+
+                  <td class="govuk-table__cell">Bob Vance</td>
+
+                  <td class="govuk-table__cell">
+
+                    {{ data['attorney1'] }}<br>
+                    {{ data['attorney1'] }}
+
+                  </td>
+
+                  <td class="govuk-table__cell"><a href="#">Change</a> <a href="#">Remove</a><br><a href="#">Change</a> <a href="#">Remove</a></td>
+
+                </tr>
+
+        </tbody>
+        </table>
+        {% endif %}
+        <a class="govuk-link govuk-body" href="/../transactions/transfer/transferor-POA.html">Add an attorney</a>
+        </div>
+
+
+
+        <br><br><br>
 
           <div class="govuk-warning-text" style="margin-top: -50px;">
             <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
@@ -128,6 +190,7 @@
             </strong>
           </div>
 
+          <br>
             {{ govukButton({
             classes: "",
             text: "Continue"
@@ -165,9 +228,24 @@
        "message": "^Your reference must be 25 characters or less"
      }
    }
-
 </script>
 
+<style>
+  .back-link {
+  border: none;
+  background: none;
+  font-size: 16px;
+  text-decoration: underline;
+  margin-top: 25px;
+
+}
+</style>
+
+<script>
+  function goBack() {
+    window.history.back();
+  }
+</script>
 
 <!-- {% set borrowerName1 = "Joe Bloggs" %} -->
 
