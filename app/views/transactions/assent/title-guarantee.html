@@ -1,0 +1,78 @@
+{% block hmlrHeader %}
+  {% include "includes/header.html" %}
+  {% set pageTitle = { title: 'Select title guarantee' } %}
+{% endblock %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+{% block content %}
+
+<div>
+  <a href="/transactions/assent/tasks" class="govuk-back-link return-to-task-list">Return to task list</a>
+</div>
+
+<div>
+  <span class="govuk-caption-l">Assent</span>
+  <h1 class="govuk-heading-l">Select title guarantee</h1>
+
+  <form action="/transactions/assent/guarantee-complete" method="post">
+
+    <p class="govuk-body"> Select whether the transferor gives full or limited title guarantee with the transfer.</p>
+
+    {{ govukRadios({
+      idPrefix: "guarantee",
+      name: "title-guarantee",
+      fieldset: {
+      },
+      items: [
+        {
+          value: "full",
+          text: "full title guarantee"
+        },
+        {
+          value: "limited",
+          text: "limited title guarantees"
+        }
+      ]
+    }) }}
+
+  <details class="govuk-details" data-module="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      What are full and limited title guarantees?
+    </span>
+  </summary>
+    <div class="govuk-details__text">
+    Full title guarantee: the transferor(s) guarantee, to the best of their knowledge, that there are no financial charges/encumbrances
+    (such as mortgages) or other third party interests (such as rights of way/leases) which affect the property other than those already revealed
+    to the transferee(s)
+    <br><br>
+    Limited title guarantee: a more restricted set of promises by the transferor(s). This guarantees that the transferor(s) have
+    not themselves created, or allowed to be created, any charge, encumbrance or third party interest that still exists at the date of the transfer.
+    </div>
+  </details>
+
+
+
+  {{ govukButton({
+    classes: "",
+    text: "Continue to next step"
+    }) }}
+  
+    {{ govukButton({
+      classes: "govuk-button--secondary",
+      text: "Confirm and return to task list",
+      href: "tasks"
+    }) }}
+         </form>
+</div>
+
+{% endblock %}
+
+{% block hmlrFooter %}
+  {% include "includes/footer.html" %}
+{% endblock %}
