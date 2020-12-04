@@ -70,16 +70,51 @@
               <td class="govuk-table__cell">{% if data['transferorRepAnswer'] === 'thisConveyancer' %} UK Conveyancers Ltd {% endif %}</td>
               <td class="govuk-table__cell govuk-link"><a href="transferor-representationAdd">Add representation</td>
               </tr>
-              {% if data['transferor-individual-forename-2'] %}
+
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell">Private individual</td>
-                <td class="govuk-table__cell">{{ data['transferor-individual-forename-2']}} {{ data['transferor-individual-surname-2']}}</td>
+                <td class="govuk-table__cell">Phyllis Vance</td>
                 <td class="govuk-table__cell">{% if data['transferorrep'] %} UK Conveyancers Ltd {% endif %}</td>
                 <td class="govuk-table__cell govuk-link"><a href="transferor-representationAdd">Add representation</td>
                 </tr>
-              {% endif %}
+
 
       </tbody>
+    </table>
+
+    <h2 class="govuk-heading-m"> Power of attorney </h2>
+    <table class="govuk-table govuk-!-width-two-thirds">
+    <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header govuk-!-width-one-half">Attorney name</th>
+      <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Options</th>
+    </tr>
+    </thead>
+
+    <tbody class="govuk-table__body">
+            {% if data['attorney1'] %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">
+                {{ data ['attorney1'] }}
+              </td>
+              <td class="govuk-table__cell">
+                <a href="#"> Add representation </a>
+              </td>
+            </tr>
+            {% endif %}
+              {% if data['attorney2'] %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">
+                  {{ data ['attorney2'] }}
+                </td>
+                <td class="govuk-table__cell">
+                  <a href="#"> Add representation </a>
+                </td>
+              </tr>
+            {% endif %}
+
+
+    </tbody>
     </table>
 
 
