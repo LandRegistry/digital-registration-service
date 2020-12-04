@@ -1502,15 +1502,6 @@ router.post('/setup/user-type-answer', function (req, res) {
 })
 
 
+
 // Transferor POA
-
-router.post('transferor-poa-add', function (req, res) {
-  
-res.redirect('/transferor-POA-2')
-
-})
-
-// router.post('transferor-poa-complete', function (req, res) {
-// res.redirect('/names/transferor-list')
-//
-// })
+// Select donors for attorney 1

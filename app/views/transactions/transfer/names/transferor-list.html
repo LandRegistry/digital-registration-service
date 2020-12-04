@@ -156,6 +156,7 @@
         </thead>
 
         <tbody class="govuk-table__body">
+                {% if data['Donor1'] %}
                 <tr class="govuk-table__row">
 
                   <td class="govuk-table__cell">Bob Vance</td>
@@ -163,18 +164,41 @@
                   <td class="govuk-table__cell">
 
                     {{ data['attorney1'] }}<br>
-                    {{ data['attorney1'] }}
+                    {% if data['Donor1b'] === 'on' %}
+                    {{ data['attorney2'] }}
+                    {% endif %}
 
                   </td>
 
-                  <td class="govuk-table__cell"><a href="#">Change</a> <a href="#">Remove</a><br><a href="#">Change</a> <a href="#">Remove</a></td>
+                  <td class="govuk-table__cell"><a href="/transactions/transfer/transferor-change-POA">Change</a> <a href="#">Remove</a><br>{% if data['Donor2b'] === 'on' %}<a href="#">Change</a> <a href="#">Remove</a>{% endif %}</td>
 
                 </tr>
+                {% endif %}
+                  {% if data['Donor2'] %}
+                <tr class="govuk-table__row">
+
+                  <td class="govuk-table__cell">Phyllis Vance</td>
+
+                  <td class="govuk-table__cell">
+
+                    {{ data['attorney1'] }}<br>
+                    {% if data['Donor2b'] === 'on' %}
+                    {{ data['attorney2'] }}
+                    {% endif %}
+
+                  </td>
+
+                  <td class="govuk-table__cell"><a href="#">Change</a> <a href="#">Remove</a><br>{% if data['Donor2b'] === 'on' %}<a href="#">Change</a> <a href="#">Remove</a>{% endif %}</td>
+
+                </tr>
+                {% endif %}
+
 
         </tbody>
         </table>
         {% endif %}
-        <a class="govuk-link govuk-body" href="/../transactions/transfer/transferor-POA.html">Add an attorney</a>
+        {% if not data['attorney1'] %}<a class="govuk-link govuk-body" href="/../transactions/transfer/transferor-POA.html">Add an attorney</a>{% endif %}
+        {% if data['attorney1'] %}<a class="govuk-link govuk-body" href="/../transactions/transfer/transferor-POA-2.html">Add an attorney</a>{% endif %}
         </div>
 
 

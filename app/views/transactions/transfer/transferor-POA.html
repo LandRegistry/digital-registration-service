@@ -52,7 +52,7 @@
         <span class="govuk-caption-l"></span>
         <h1 class="govuk-heading-l">Add an attorney</h1>
 
-        <form method="post">
+        <form method="post" action="names/transferor-list">
 
 
           <div class="govuk-form-group">
@@ -62,13 +62,13 @@
               <fieldset class="govuk-fieldset">
                 <div class="govuk-checkboxes">
                   <div class="govuk-checkboxes__item">
-                    <input class="govuk-checkboxes__input" id="transferor1" name="transferor1POA" type="checkbox" value="transferor1POA">
+                    <input class="govuk-checkboxes__input" id="transferordonor1" name="Donor1" type="checkbox">
                     <label class="govuk-label govuk-checkboxes__label" for="bob">
                       Bob Vance
                     </label>
                   </div>
                   <div class="govuk-checkboxes__item">
-                    <input class="govuk-checkboxes__input" id="transferor2" type="checkbox" value="transferor2POA">
+                    <input class="govuk-checkboxes__input" id="transferordonor2" type="checkbox" name="Donor2">
                     <label class="govuk-label govuk-checkboxes__label" for="phyllis">
                       Phyllis Vance
                     </label>
@@ -99,13 +99,11 @@
 
             <br><br>
 
-           <button class="govuk-button" data-module="govuk-button" formaction="names/transferor-list">
+           <button class="govuk-button" data-module="govuk-button">
              Continue
            </button>
 
-           <button class="govuk-button govuk-button--secondary" data-module="govuk-button" formaction="transferor-POA-2">
-            Add another attorney
-            </button>
+
 
          </form>
          </div>

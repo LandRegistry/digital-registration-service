@@ -50,7 +50,7 @@
     <div class="govuk-grid-column-two-thirds">
       <button onclick="goBack()" class="back-link govuk-body">◄ Return to Check transferor details</button>
         <span class="govuk-caption-l"></span>
-        <h1 class="govuk-heading-l">Add an attorney</h1>
+        <h1 class="govuk-heading-l">Change an attorney</h1>
 
         <form method="post" action="names/transferor-list">
 
@@ -62,13 +62,13 @@
               <fieldset class="govuk-fieldset">
                 <div class="govuk-checkboxes">
                   <div class="govuk-checkboxes__item">
-                    <input class="govuk-checkboxes__input" id="transferordonor1b" name="Donor1b" type="checkbox">
+                    <input class="govuk-checkboxes__input" id="transferordonor1" name="Donor1" type="checkbox">
                     <label class="govuk-label govuk-checkboxes__label" for="bob">
                       Bob Vance
                     </label>
                   </div>
                   <div class="govuk-checkboxes__item">
-                    <input class="govuk-checkboxes__input" id="transferordonor2b" type="checkbox" name="Donor2b">
+                    <input class="govuk-checkboxes__input" id="transferordonor2" type="checkbox" name="Donor2">
                     <label class="govuk-label govuk-checkboxes__label" for="phyllis">
                       Phyllis Vance
                     </label>
@@ -81,7 +81,7 @@
             <h3 class="govuk-heading-m">Attorney</h3>
               <div class="govuk-form-group">
                 <label class="govuk-label">Full name</label>
-                <input class="govuk-input govuk-input--width-20" id="attorney1" name="attorney1" type="text">
+                <input class="govuk-input govuk-input--width-20" id="" name="" value="{{ data['attorney1'] }}" type="text">
               </div>
 
             </div>
