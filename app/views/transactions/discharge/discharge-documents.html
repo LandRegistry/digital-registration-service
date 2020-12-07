@@ -43,7 +43,7 @@
 <div class="govuk-grid-column-full govuk-!-margin-top-7">
   <span class="govuk-caption-xl">Discharge of charge</span>
   <h1 class="govuk-heading-xl"> Attach documents </h1>
-  <h2 class="govuk-heading-l"> Required documents </h2>
+  <h2 class="govuk-heading-l"> Required </h2>
   <p class="govuk-body">Documents you must attach to avoid requisitions.</p>
 
   <form method="post" action="/transactions/discharge/discharge-attached">
@@ -61,7 +61,7 @@
 
   <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
-          <td class="govuk-table__cell">Legal deed</td>
+          <td class="govuk-table__cell">Legal Deeds</td>
           <td class="govuk-table__cell">DS1</td>
           <td class="govuk-table__cell">{% if data['DischargeCertified']%} Certified {% endif %}</td>
           <td class="govuk-table__cell">{% if data['DischargeCertified']%} DS1.pdf {% endif %}</td>

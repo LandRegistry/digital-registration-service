@@ -52,7 +52,10 @@ $govuk-canvas-background-colour: $govuk-body-background-colour;
 
 .header-link:hover {
   text-decoration: underline;
+}
 
+.return-to-task-list {
+  margin: -35px 0 35px 0;
 }
 
 .upload_btn {

@@ -1,0 +1,146 @@
+{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
+{%- set assetPath = '/govuk/assets' -%}
+
+{% extends "govuk/template.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+
+
+{% block headIcons %}
+  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
+  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
+{% endblock %}
+
+{% block head %}
+  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full" id="headerdiv">
+    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
+    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Digital Registration Service</a></p>
+    <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+
+
+    <div class="govuk-phase-banner govuk-!-margin-bottom-5">
+        <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
+        <span class="govuk-phase-banner__text">
+        This is a prototype and not a real service.
+        </span></p>
+    </div>
+    </div>
+
+<div class="govuk-grid-column-two-thirds">
+  <form method="post" action="/transfer-checklist-true">
+  <span class="govuk-caption-l">Transfer for value (TR1)</span>
+  <h1 class="govuk-heading-l">Attachment checklist</h1>
+
+        {{ govukCheckboxes({
+        idPrefix: "checklist",
+        name: "transfer-checklist",
+        hint: {
+          text: "Before attaching documents confirm you have made the following checks (where relevant) to avoid requisitions."
+        },
+        items: [
+          {
+            value: "1",
+            text: "Names you input are consistent with how they appear in deeds and on the register"
+          },
+          {
+            value: "2",
+            text: "Naming inconsistencies are explained by the appropriate documentation"
+          },
+          {
+            value: "3",
+            text: "Deeds contain, where appropriate, the correct title numbers and dates"
+          },
+          {
+            value: "4",
+            text: "Executions are complete and correct, and signed by all necessary witnesses"
+          },
+          {
+            value: "5",
+            text: "Plans show all necessary references and have been signed"
+          }
+        ]
+        }) }}
+
+
+
+{{ govukButton({
+classes: "govuk-!-margin-top-5",
+text: "Continue"
+}) }}
+
+
+{{ govukButton({
+  text: "Return to task list",
+  classes: "govuk-button--secondary govuk-!-margin-top-5"
+}) }}
+
+</form>
+</div>
+
+<footer>
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-full">
+<hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+<br>
+<p class="govuk-body-s" style="color: #747B7F"> The following links open in a new window
+<br>
+<br>
+<a href="#" style="color: #747B7F"> Terms and conditions</a> | <a href="/setup/accessibility-statement" target="_blank" rel="noopener noreferrer" style="color: #747B7F">Accessibility statement</a> |  <a href="#" style="color: #747B7F">Freedom of information</a> | <a href="#" style="color: #747B7F">© Crown copyright</a></p>
+</div>
+</div>
+</footer>
+
+</div>
+
+<!-- <script>
+  function RemoveTransfereeIndividual() {
+  var x = document.getElementById("hidePI");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+
+  function RemoveTransfereeUK() {
+  var x = document.getElementById("hideUK");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+</script> -->
+
+{% endblock %}
+
+
+{% block footer %}
+
+{% endblock %}
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}
