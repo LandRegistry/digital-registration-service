@@ -1,0 +1,91 @@
+{% block hmlrHeader %}
+  {% include "includes/header.html" %}
+  {% set pageTitle = { title: 'Declaration of trust' } %}
+{% endblock %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+{% block content %}
+
+<div>
+  <a href="/transactions/assent/tasks" class="govuk-back-link return-to-task-list">Return to task list</a>
+</div>
+
+<div>
+  <div>
+      <span class="govuk-caption-l">Assent</span>
+      <h1 class="govuk-heading-l">Declaration of trust</h1>
+
+      <form action="/transactions/assent/declaration-complete" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="trust-conditional-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              The transferees are to hold the property:</legend>
+
+            <span id="trust-conditional-hint" class="govuk-hint">Select one option.</span>
+
+            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="trust-conditional" name="transferTrust" type="radio" value="jointTenants">
+                <label class="govuk-label govuk-radios__label" for="trust-conditional">on trust for themselves as joint tenants</label>
+              </div>
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="trust-conditional-2" name="transferTrust" type="radio" value="equalShares">
+                <label class="govuk-label govuk-radios__label" for="trust-conditional-2">on trust for themselves as tenants in common equal shares</label>
+              </div>
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="trust-conditional-3" name="transferTrust" type="radio" value="trustDetails" aria-controls="conditional-trust-conditional-3" aria-expanded="false">
+                <label class="govuk-label govuk-radios__label" for="trust-conditional-3">on trust - I will provide details</label>
+              </div>
+
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-trust-conditional-3">
+                <div class="govuk-form-group">
+                  <textarea class="govuk-textarea govuk-!-width-three-quarters" id="trustDetails" name="trust-Details" rows="6"></textarea>
+                </div>
+              </div>
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="trust-conditional-4" name="transferTrust" type="radio" value="trustAttached">
+                <label class="govuk-label govuk-radios__label" for="trust-conditional-4">on trust - I will attach <a href="https://www.gov.uk/government/publications/jointly-owned-property-trust-registration-jo" target="_blank" rel="noopener noreferrer">Form JO</a> (link opens in new window)</label>
+              </div>
+
+</div>
+</fieldset>
+
+
+</div>
+
+
+
+{{ govukButton({
+  classes: "",
+  text: "Continue to next step"
+  }) }}
+
+  {{ govukButton({
+    classes: "govuk-button--secondary",
+    text: "Confirm and return to task list",
+    href: "tasks"
+  }) }}
+
+        </form>
+  </div>
+</div>
+
+
+{% endblock %}
+
+{% block hmlrFooter %}
+  {% include "includes/footer.html" %}
+{% endblock %}
