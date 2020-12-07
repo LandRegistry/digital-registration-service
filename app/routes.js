@@ -483,11 +483,14 @@ router.get('/docs/examples/pass-data/charge', function (req, res) {
     "Transaction3": "Charge",
     "PriceInput3": "120000",
     "FeeInput3": "12",
+    "user-type": "conveyancer",
     "add-applicant": "individual",
     "applicant-individual-forename": "John",
     "applicant-individual-surname": "Smith",
     "applicant2-individual-forename-2": "Jane",
     "applicant2-individual-surname-2": "Smith",
+    "transferor-individual-forename": "Bob",
+    "transferor-individual-surname": "Vance",
     "transferor1": "Bob Vance",
     "Transaction1": "Discharge",
     "Transaction2": "Transfer for value (TR1)",
@@ -1500,3 +1503,8 @@ router.post('/setup/user-type-answer', function (req, res) {
     req.session.data['user-type'] = 'non-conveyancer';
   }
 })
+
+
+
+// Transferor POA
+// Select donors for attorney 1

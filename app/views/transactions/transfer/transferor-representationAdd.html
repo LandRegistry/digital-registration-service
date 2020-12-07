@@ -56,9 +56,9 @@
 <div class="govuk-grid-column-two-thirds">
     <span class="govuk-caption-l">Transfer for value (TR1)</span>
     <h1 class="govuk-heading-l">
-      Who is representing {{ data['transferor-individual-forename']}} {{ data['transferor-individual-surname']}}?</h1>
- 
-    <form class="" action="/transactions/transfer/transferor-representation-added"> 
+      Who is representing Bob Vance?</h1>
+
+    <form class="" action="/transactions/transfer/transferor-representation">
 
     <div class="govuk-form-group">
 <!--
@@ -67,7 +67,7 @@
           <label class="govuk-label govuk-radios__label" for="transferorRepresentation-conditional">UK Conveyancers Ltd</label>
         </div>
 
-        <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">    
+        <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
           <div class="govuk-radios__item">
             <input class="govuk-radios__input" id="transferorRepAnswer" name="transferorRepAnswer" type="radio" value="otherConveyancer">
             <label class="govuk-label govuk-radios__label" for="transferorRepresentation-conditional-2">
@@ -102,7 +102,7 @@
 
         <br>
         <div>
-       
+
           {% if data['user-type'] === 'conveyancer' %}
           {% set otherTransferorHtml %}
             {{ govukInput({
@@ -113,7 +113,7 @@
                 text: "Conveyancer full name"
               }
             }) }}
-        
+
             {{ govukTextarea({
               id: "TransferorOtherAddress",
               name: "TransferorOtherAddress",
@@ -123,8 +123,8 @@
                 text: "Registered address"
               }
             }) }}
-        
-        
+
+
             {{ govukCharacterCount({
               name: "OtherConveyancerReference",
               id: "OtherConveyancerReference",
@@ -135,19 +135,19 @@
                 text: "Conveyancer reference"
               }
             }) }}
-      
+
           {% endset -%}
-      
+
           {{ govukRadios({
             name: "TransferorRepresentation",
-      
-            items: [            
+
+            items: [
               {
                 value: "UKConveyancersLtd",
                 text: "UK Conveyancers Ltd",
                 name: "TransferorRepresentation"
                 },
-            
+
               {
                 value: "OtherConveyancer",
                 text: "Another conveyancer",
@@ -182,8 +182,8 @@
           ]
         }) }}
         {% else %}
-         
-       
+
+
         {% set otherTransferorHtml %}
             {{ govukInput({
               id: "TransferorConveyancerName",
@@ -193,7 +193,7 @@
                 text: "Conveyancer full name"
               }
             }) }}
-        
+
             {{ govukTextarea({
               id: "TransferorOtherAddress",
               name: "TransferorOtherAddress",
@@ -203,8 +203,8 @@
                 text: "Registered address"
               }
             }) }}
-        
-        
+
+
             {{ govukCharacterCount({
               name: "OtherConveyancerReference",
               id: "OtherConveyancerReference",
@@ -215,13 +215,13 @@
                 text: "Conveyancer reference"
               }
             }) }}
-      
+
           {% endset -%}
-      
+
           {{ govukRadios({
             name: "TransferorRepresentation",
-      
-            items: [                      
+
+            items: [
               {
                 value: "OtherConveyancer",
                 text: "A conveyancer",
@@ -265,7 +265,7 @@
       {{ govukButton({
         text: "Continue",
         classes: "govuk-!-margin-top-5"
-    
+
       }) }}
  </form>
       </div></div>
