@@ -838,21 +838,12 @@ router.post('/transactions/which-task-list', function (req, res) {
       } if (transaction === 'DT') {
           res.redirect('/transactions/tasks')
       } if (transaction === 'TC') {
-<<<<<<< HEAD
           res.redirect('/transactions/charge/TC-tasks') 
       } if (transaction === 'ASSENT') {
           res.redirect('/transactions/assent/tasks') 
       }
     })
 
-=======
-          res.redirect('/transactions/charge/TC-tasks')
-      }
-    })
-
-
-
->>>>>>> master
 // Charge completed tags
 
 router.post('/transactions/charge-without-transfer/charge-without-transfer-borrower1', function (req, res) {
@@ -1521,7 +1512,6 @@ router.post('/wes-yes-no-answer', function (req, res) {
     }
 })
 
-<<<<<<< HEAD
 
 //Assent: navigation
 
@@ -1646,7 +1636,7 @@ router.post('/transactions/assent/transferee-address-answer', function (req, res
           }
 
 })  
-=======
+
 // Is the user a conveyancer?
 router.post('/setup/user-type-answer', function (req, res) {
   let userType = req.session.data['user-type'];
@@ -1657,4 +1647,3 @@ router.post('/setup/user-type-answer', function (req, res) {
     req.session.data['user-type'] = 'non-conveyancer';
   }
 })
->>>>>>> master
