@@ -49,8 +49,7 @@
 <div class="govuk-grid-column-full">
     <span class="govuk-caption-l">Transfer for value (TR1)</span>
     <h1 class="govuk-heading-l">Add transferor representation</h1>
-    <p class="govuk-body-m">Select 'Add representation' for each transferor.</p>
-    <h2 class="govuk-heading-m">Transferor representation added</h2>
+
 
     <form method="post" action="/transactions/transfer/transferor-representation-confirmed">
     <table class="govuk-table">
@@ -67,30 +66,35 @@
             <tr class="govuk-table__row">
               <td class="govuk-table__cell">Private individual</td>
               <td class="govuk-table__cell">{{ data['transferor1']}}</td>
-              <td class="govuk-table__cell">{% if data['transferorrep'] %} UK Conveyancers Ltd {% endif %}</td>
-              {% if not data['transferorrep'] %}<td class="govuk-table__cell govuk-link"><a href="transferor-representationAdd">Add representation</td>{% endif %}
-              {% if data['transferorrep'] %}<td class="govuk-table__cell govuk-link"><a href="transferor-representationAdd">Remove</td>{% endif %}
+              <td class="govuk-table__cell">{% if data['TransferorRepresentation'] %} UK Conveyancers Ltd {% endif %}</td>
+              <td class="govuk-table__cell">
+              {% if data['TransferorRepresentation'] %} <a class="govuk-link--no-visited-state" href="#"> Remove </a> {% endif %}
+              {% if not data['TransferorRepresentation'] %}<a class="govuk-link--no-visited-state" href="transferor-representationAdd"> Add representation </a>{% endif %}
+              </td>
               </tr>
 
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell">Private individual</td>
                 <td class="govuk-table__cell">Phyllis Vance</td>
-                <td class="govuk-table__cell">{% if data['transferorrep'] %} UK Conveyancers Ltd {% endif %}</td>
-                {% if not data['transferorrep'] %}<td class="govuk-table__cell govuk-link"><a href="transferor-representationAdd">Add representation</td>{% endif %}
-                {% if data['transferorrep'] %}<td class="govuk-table__cell govuk-link"><a href="transferor-representationAdd">Remove</td>{% endif %}
+                <td class="govuk-table__cell">{% if data['represents-all'] %} UK Conveyancers Ltd {% endif %}</td>
+                <td class="govuk-table__cell">
+                  {% if data['represents-all'] %} <a class="govuk-link--no-visited-state" href="#"> Remove </a> {% endif %}
+                  {% if not data['represents-all'] %}<a class="govuk-link--no-visited-state" href="#"> Add representation </a>{% endif %}
+                </td>
                 </tr>
 
 
       </tbody>
     </table>
 
+    {% if data['attorney1'] %}
     <h2 class="govuk-heading-m"> Power of attorney </h2>
-    <table class="govuk-table">
+    <table class="govuk-table govuk-!-width-two-thirds">
     <thead class="govuk-table__head">
     <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Attorney name</th>
-      <th scope="col" class="govuk-table__header govuk-!-width-one-half">Represented by</th>
-      <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Options</th>
+      <th scope="col" class="govuk-table__header">Attorney name</th>
+      <th scope="col" class="govuk-table__header">Represented by</th>
+      <th scope="col" class="govuk-table__header">Options</th>
     </tr>
     </thead>
 
@@ -101,10 +105,11 @@
                 {{ data ['attorney1'] }}
               </td>
               <td class="govuk-table__cell">
-                <a> </a>
+              {% if data['represents-all'] %} UK Conveyancers Ltd {% endif %}
               </td>
               <td class="govuk-table__cell">
-                <a href="#"> Add representation </a>
+                {% if data['represents-all'] %} <a class="govuk-link--no-visited-state" href="#"> Remove </a> {% endif %}
+                {% if not data['represents-all'] %}<a class="govuk-link--no-visited-state" href="#"> Add representation </a>{% endif %}
               </td>
             </tr>
             {% endif %}
@@ -114,10 +119,11 @@
                   {{ data ['attorney2'] }}
                 </td>
                 <td class="govuk-table__cell">
-                  <a> </a>
+                {% if data['represents-all'] %} UK Conveyancers Ltd {% endif %}
                 </td>
                 <td class="govuk-table__cell">
-                  <a href="#"> Add representation </a>
+                  {% if data['represents-all'] %} <a class="govuk-link--no-visited-state" href="#"> Remove </a> {% endif %}
+                  {% if not data['represents-all'] %}<a class="govuk-link--no-visited-state" href="#"> Add representation </a>{% endif %}
                 </td>
               </tr>
             {% endif %}
@@ -125,6 +131,7 @@
 
     </tbody>
     </table>
+    {% endif %}
 
 
 {{ govukButton({

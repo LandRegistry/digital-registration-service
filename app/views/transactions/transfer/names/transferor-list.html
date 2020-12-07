@@ -89,7 +89,7 @@
 
                       <td class="govuk-table__cell">
                           {% if (data['Transferor1Status'] !== 'removed') %}
-                          <a href="transferor-details.html">Amend/Remove</a>
+                          <a class="govuk-link--no-visited-state" href="transferor-details.html">Amend/Remove</a>
 
                           {% elif (data['Transferor1Status'] == 'removed') %}
                           <a id="undoButton" href="/../charge-without-transfer-borrower-list" name="undo" onclick="undo()">Undo remove</a>
@@ -118,7 +118,7 @@
 
                       <td class="govuk-table__cell">
                           {% if (data['Transferor2Status'] !== 'removed') %}
-                          <a href="">Amend/Remove</a>
+                          <a class="govuk-link--no-visited-state" href="">Amend/Remove</a>
 
                           {% elif (data['Transferor2Status'] == 'removed') %}
                           <a id="undoButton" href="
@@ -164,13 +164,14 @@
                   <td class="govuk-table__cell">
 
                     {{ data['attorney1'] }}<br>
-                    {% if data['Donor1b'] === 'on' %}
+                    {% if data['Donor1b'] %}
                     {{ data['attorney2'] }}
                     {% endif %}
 
                   </td>
 
-                  <td class="govuk-table__cell"><a href="/transactions/transfer/transferor-change-POA">Change</a> <a href="#">Remove</a><br>{% if data['Donor2b'] === 'on' %}<a href="#">Change</a> <a href="#">Remove</a>{% endif %}</td>
+                  <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="/transactions/transfer/transferor-change-POA">Change</a> <a class="govuk-link--no-visited-state" href="#">Remove</a>
+                    <br>{% if data['Donor2b'] %}<a class="govuk-link--no-visited-state" href="#">Change</a> <a class="govuk-link--no-visited-state" href="#">Remove</a>{% endif %}</td>
 
                 </tr>
                 {% endif %}
@@ -183,13 +184,14 @@
 
                     {{ data['attorney1'] }}<br>
 
-                    {% if data['Donor2b'] === 'on' %}
+                    {% if data['Donor2b'] %}
                     {{ data['attorney2'] }}
                     {% endif %}
 
                   </td>
 
-                  <td class="govuk-table__cell"><a href="#">Change</a> <a href="#">Remove</a><br>{% if data['Donor2b'] === 'on' %}<a href="#">Change</a> <a href="#">Remove</a>{% endif %}</td>
+                  <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="#">Change</a> <a class="govuk-link--no-visited-state" href="#">Remove</a>
+                    <br>{% if data['Donor2b'] %}<a class="govuk-link--no-visited-state" href="#">Change</a> <a class="govuk-link--no-visited-state" href="#">Remove</a>{% endif %}</td>
 
                 </tr>
                 {% endif %}
@@ -198,8 +200,9 @@
         </tbody>
         </table>
         {% endif %}
-        {% if not data['attorney1'] %}<a class="govuk-link govuk-body" href="/../transactions/transfer/transferor-POA.html">Add an attorney</a>{% endif %}
-        {% if data['attorney1'] %}<a class="govuk-link govuk-body" href="/../transactions/transfer/transferor-POA-2.html">Add an attorney</a>{% endif %}
+        {% if not data['attorney1'] %}<a class="govuk-link govuk-body govuk-link--no-visited-state" href="/../transactions/transfer/transferor-POA.html">Add an attorney</a>{% endif %}
+        {% if data['attorney1'] and not data['attorney2']%}<a class="govuk-link govuk-body govuk-link--no-visited-state" href="/../transactions/transfer/transferor-POA-2.html">Add an attorney</a>{% endif %}
+        {% if data['attorney2'] and not data['attorney3']%}<a class="govuk-link govuk-body govuk-link--no-visited-state" href="#">Add an attorney</a>{% endif %}
         </div>
 
 
