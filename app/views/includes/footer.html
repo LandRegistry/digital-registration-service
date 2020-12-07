@@ -1,0 +1,27 @@
+<footer class="group js-footer" id="footer" role="contentinfo">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+            <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+            <br>
+            <p class="govuk-body-s" style="color: #747B7F"> The following links open in a new window
+                <br>
+                <br>
+                <a href="#" style="color: #747B7F"> Terms and conditions</a> | <a href="/setup/accessibility-statement" target="_blank" rel="noopener noreferrer" style="color: #747B7F">Accessibility statement</a> |  <a href="#" style="color: #747B7F">Freedom of information</a> | <a href="#" style="color: #747B7F">© Crown copyright</a>
+            </p>
+        </div>
+    </div>
+</footer>
+
+<div id="global-app-error" class="app-error hidden"></div>
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}
+   <!--
+<script src="{{ asset_path }}javascripts/govuk-template.js?0.18.3" type="text/javascript"></script>
+
+  
+
+ <script>if (typeof window.GOVUK === 'undefined') document.body.className = document.body.className.replace('js-enabled', '');</script>-->
+  </body>
+</html>
