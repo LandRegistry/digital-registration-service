@@ -1,0 +1,185 @@
+{% block hmlrHeader %}
+  {% include "includes/header.html" %}
+  {% set pageTitle = { title: 'Complete your application' } %}
+{% endblock %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+{% block content %}
+
+
+<div>
+  <span class="govuk-caption-l"></span>
+    <h1 class="govuk-heading-l">Complete your application</h1>
+    <p class="govuk-body-m">Provide all details and the documents you want to attach.</p>
+
+
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Your reference</th>
+          <td scope="col" class="govuk-table__cell">{{ data['reference'] }}</td>
+          <td scope="col" class="govuk-table__cell"><a style="float: right;" href="/setup/change-reference">Change</a></td>
+        </tr>
+      </thead>
+
+      <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Title</th>
+              <td class="govuk-table__cell" colspan="2">{{ data['title'] }}</td>
+    
+            </tr>
+
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Description</th>
+              <td class="govuk-table__cell" colspan="2">11, St William Road, Littlehaxten, Wiltshire LH1 3AB</td>
+            </tr>
+      </tbody>
+    </table>
+
+
+  <h2 class="govuk-heading-m govuk-!-padding-top-5">1. Assent</h2>
+
+  <div class="govuk-grid-column-full" style="margin-left: 40px; width: 97%;">
+
+    <table class="govuk-table govuk-!-width-two-thirds">
+      <th scope="col" class="govuk-table__header">1.1 Deceased proprietor details</th>
+      <td class="govuk-table__cell"></td>
+      <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell"><a href="confirm-name" class="govuk-link">Confirm name of deceased proprietor</a></td>
+
+              <td class="govuk-table__cell">{% if data['deceasedProprietor1'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
+            </tr>
+
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">
+                <a href="add-representative" class="govuk-link">Add personal representative of the deceased proprietor</a>
+              </td>
+
+              <td class="govuk-table__cell">
+                {% if data['add-representative'] %}
+                  <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
+                {% endif %}
+              </td>
+            </tr>
+
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">1.2 Transferee details</th>
+            </tr>
+
+            <tr class="govuk-table__row"></tr>
+              <td class="govuk-table__cell">
+                <a href="transferees-whichApplicants" class="govuk-link">Select transferees</a>
+              </td>
+              <td class="govuk-table__cell">
+                {% if data['whichapplicants'] %}
+                  <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
+                {% endif %}
+              </td>
+            </tr>
+
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">
+                <a href="transferee-representationAdd" class="govuk-link">Add transferee representation</a>
+              </td>
+              <td class="govuk-table__cell">
+                {% if data['xxxxxxxxxxxxxxxxxxx'] %}
+                  <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
+                {% endif %}
+              </td>
+            </tr>
+
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell"><a href="transfereeAddressList" class="govuk-link">Add addresses for service</a></td>
+              <td class="govuk-table__cell">{% if data['xxxxxxxxxxxxxxxxxxx'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
+            </tr>
+  
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">1.3 Additional fields</th>
+              </tr>
+              <tr class="govuk-table__row"></tr>
+                <td class="govuk-table__cell"><a href="confirm-date" class="govuk-link">Confirm assent date</a></td>
+                <td class="govuk-table__cell">{% if data['charge-date'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
+              </tr>
+
+              <tr class="govuk-table__row"></tr>
+              <td class="govuk-table__cell"><a href="title-guarantee" class="govuk-link">Select title guarantee</a></td>
+              <td class="govuk-table__cell">{% if data['title-guarantee'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
+            </tr>
+            
+            <tr class="govuk-table__row"></tr>
+            <td class="govuk-table__cell"><a href="declaration-of-trust" class="govuk-link">Declaration of trust</a></td>
+            <td class="govuk-table__cell">{% if data['transferTrust'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
+          </tr>
+
+          <tr class="govuk-table__row"></tr>
+          <td class="govuk-table__cell"><a href="additional-provisions" class="govuk-link">Additional provisions (optional)</a></td>
+          <td class="govuk-table__cell">{% if data['xxxxxxxxxxxxxxxxxxx'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
+        </tr>
+
+             
+
+            
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">1.4 Supporting documents</th>
+                <td class="govuk-table__cell"></td>
+              </tr>
+
+              <tr class="govuk-table__row">
+              <td class="govuk-table__cell"><a href="document-prompts" class="govuk-link">Attach documents</a></td>
+              <td class="govuk-table__cell">{% if data['mortgageAttached'] and data['certificateAttached'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
+            </tr>
+
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell"><a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/808672/AS1__2019-06-17_.pdf" class="govuk-link">Download part-completed AS1 (optional)</a></td>
+              <td class="govuk-table__cell">{% if data['mortgageAttached'] and data['certificateAttached'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
+            </tr>
+      </tbody>
+    </table>
+    </div>
+
+    {% if data['mortgageAttached'] %}
+    <div class="govuk-!-margin-bottom-9">
+    <h3 class="govuk-heading-l">Preview your e-AP1</h3>
+    <a href="#"><img src="/public/images/ap1-icon.svg" style="max-width:15%; height:auto; float: left; padding-right: 25px;" alt="ap1 icon"></a>
+    <h2><a href="#" class="govuk-link govuk-heading-m govuk-!-font-weight-regular">Download draft e-AP1 (PDF)</a></h2>
+    <p class="govuk-body"> PDF - opens in a new window</p><br><br>
+    </div>
+    {% endif %}
+
+
+
+
+    <div style="margin-top: 75px;">
+
+
+    {{ govukButton({
+        text: "Review application",
+        classes: "govuk-!-margin-top-9",
+        href: "/../transactions/multi-application-review"
+      }) }}
+
+
+      {{ govukButton({
+        text: "Save application and exit",
+        classes: "secondary-button-save govuk-!-margin-top-9",
+        href: "/../save-resume/save-confirmation"
+      }) }}
+
+
+      {{ govukInsetText({
+          text: "To avoid requisitions, attach all relevant documents."
+        }) }}
+
+      </div>
+
+
+{% endblock %}
+
+
+{% block hmlrFooter %}
+  {% include "includes/footer.html" %}
+{% endblock %}

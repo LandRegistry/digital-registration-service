@@ -1,0 +1,198 @@
+{% block hmlrHeader %}
+  {% include "includes/header.html" %}
+  {% set pageTitle = { title: 'Personal representatives' } %}
+{% endblock %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block content %}
+
+<div>
+  <a href="/transactions/assent/tasks" class="govuk-back-link return-to-task-list">Return to task list</a>
+</div>
+
+
+  <div>
+    <span class="govuk-caption-l">Assent</span>
+    <h1 class="govuk-heading-l">Personal representatives for Joe Bloggs</h1>
+    <p class="govuk-body">You can add more personal representatives in the next step.</p>
+
+    <form method="post" action="transferees-whichApplicants">
+      <table class="govuk-table" id="applicantlist">
+
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header ">Representative type</th>
+            <th scope="col" class="govuk-table__header">Full name</th>
+            <th scope="col" class="govuk-table__header">Company number</th>
+            <th scope="col" class="govuk-table__header">Territory of incorporation</th>
+            <th scope="col" class="govuk-table__header">Options</th>
+          </tr>
+        </thead>
+        {% if data['applicant-individual-forename'] %}
+          <tbody class="govuk-table_body">
+            <tr class="govuk-table_row" id="hidePI">
+            <td class="govuk-table__cell">Private individual</td>
+            <td class="govuk-table__cell govuk-!-width-one-third">{{ data['applicant-individual-forename'] }} {{ data['applicant-individual-surname'] }}</td>
+            <td class="govuk-table__cell">N/A</td>
+            <td class="govuk-table__cell govuk-!-width-one-quarter">N/A</td>
+            <td class="govuk-table__cell govuk-link"><a href="#">Change</a><br><a  href="#">Remove</a></td>
+          </tbody>
+          {% endif %}
+
+          {% if data['applicant2-individual-forename-2'] %}
+            <tbody class="govuk-table_body">
+              <tr class="govuk-table_row" id="hidePI">
+              <td class="govuk-table__cell">Private individual</td>
+              <td class="govuk-table__cell govuk-!-width-one-third">{{ data['applicant2-individual-forename-2'] }} {{ data['applicant2-individual-surname-2'] }}</td>
+              <td class="govuk-table__cell">N/A</td>
+              <td class="govuk-table__cell govuk-!-width-one-quarter">N/A</td>
+              <td class="govuk-table__cell govuk-link"><a href="#">Change</a><br><a  href="#">Remove</a></td>
+            </tbody>
+              {% endif %}
+
+              {% if data['applicant3-individual-forename-3'] %}
+                <tbody class="govuk-table_body">
+                  <tr class="govuk-table_row" id="hidePI">
+                  <td class="govuk-table__cell">Private individual</td>
+                  <td class="govuk-table__cell govuk-!-width-one-third">{{ data['applicant3-individual-forename-3'] }} {{ data['applicant3-individual-surname-3'] }}</td>
+                  <td class="govuk-table__cell">N/A</td>
+                  <td class="govuk-table__cell govuk-!-width-one-quarter">N/A</td>
+                  <td class="govuk-table__cell govuk-link"><a href="#">Change</a><br><a  href="#">Remove</a></td>
+                </tbody>
+                {% endif %}
+
+          {% if data['applicant-company-name'] %}
+          <tbody class="govuk-table_body">
+            <tr class="govuk-table_row" id="hidePI">
+            <td class="govuk-table__cell">UK Company or LLC</td>
+            <td class="govuk-table__cell govuk-!-width-one-third">{{ data['applicant-company-name'] }}</td>
+            <td class="govuk-table__cell"> {{ data['applicant-company-number'] }}</td>
+            <td class="govuk-table__cell govuk-!-width-one-quarter">N/A</td>
+            <td class="govuk-table__cell govuk-link"><a href="#">Change</a><br><a href="#">Remove</a></td>
+          </tbody>
+          {% endif %}
+
+          {% if data['applicant2-company-name-2'] %}
+          <tbody class="govuk-table_body">
+            <tr class="govuk-table_row" id="hidePI">
+            <td class="govuk-table__cell">UK Company or LLC</td>
+            <td class="govuk-table__cell govuk-!-width-one-third">{{ data['applicant2-company-name-2'] }}</td>
+            <td class="govuk-table__cell"> {{ data['applicant2-company-number-2'] }}</td>
+            <td class="govuk-table__cell govuk-!-width-one-quarter">N/A</td>
+            <td class="govuk-table__cell govuk-link"><a href="#">Change</a><br><a  href="#">Remove</a></td>
+          </tbody>
+            {% endif %}
+
+            {% if data['applicant3-company-name-3'] %}
+            <tbody class="govuk-table_body">
+              <tr class="govuk-table_row" id="hidePI">
+              <td class="govuk-table__cell">UK Company or LLC</td>
+              <td class="govuk-table__cell govuk-!-width-one-third">{{ data['applicant3-company-name-3'] }}</td>
+              <td class="govuk-table__cell"> {{ data['applicant3-company-number-3'] }}</td>
+              <td class="govuk-table__cell govuk-!-width-one-quarter">N/A</td>
+              <td class="govuk-table__cell govuk-link"><a href="#">Change</a><br><a  href="#">Remove</a></td>
+            </tbody>
+            {% endif %}
+
+            {% if data['applicant-overseas-name'] %}
+              <tbody class="govuk-table_body">
+                <tr class="govuk-table_row">
+                <td class="govuk-table__cell">Overseas company</td>
+                <td class="govuk-table__cell govuk-!-width-one-third">{{ data['applicant-overseas-name'] }}</td>
+                <td class="govuk-table__cell"> {% if data['applicant-overseas-number'] %}{{ data['applicant-overseas-number'] }}{% endif %}{% if not data['applicant-overseas-number'] %}N/A{% endif %}</td>
+                <td class="govuk-table__cell govuk-!-width-one-quarter"> {{ data['applicant-overseas-country'] }}</td>
+                <td class="govuk-table__cell govuk-link"><a href="#">Change</a><br><a  href="#">Remove</a></td>
+              </tbody>
+              {% endif %}
+
+              {% if data['applicant2-overseas-name'] %}
+                <tbody class="govuk-table_body">
+                  <tr class="govuk-table_row">
+                  <td class="govuk-table__cell">Overseas company</td>
+                  <td class="govuk-table__cell govuk-!-width-one-third">{{ data['applicant2-overseas-name'] }}</td>
+                  <td class="govuk-table__cell"> {% if data['applicant2-overseas-number'] %}{{ data['applicant2-overseas-number'] }}{% endif %}{% if not data['applicant2-overseas-number'] %}N/A{% endif %}</td>
+                  <td class="govuk-table__cell govuk-!-width-one-quarter"> {{ data['applicant2-overseas-country'] }}</td>
+                  <td class="govuk-table__cell govuk-link"><a href="#">Change</a><br><a  href="#">Remove</a></td>
+                </tbody>
+                  {% endif %}
+
+                  {% if data['applicant3-overseas-name'] %}
+                    <tbody class="govuk-table_body">
+                      <tr class="govuk-table_row">
+                      <td class="govuk-table__cell">Overseas company</td>
+                      <td class="govuk-table__cell govuk-!-width-one-third">{{ data['applicant3-overseas-name'] }}</td>
+                      <td class="govuk-table__cell"> {% if data['applicant3-overseas-number'] %}{{ data['applicant3-overseas-number'] }}{% endif %}{% if not data['applicant3-overseas-number'] %}N/A{% endif %}</td>
+                      <td class="govuk-table__cell govuk-!-width-one-quarter"> {{ data['applicant3-overseas-country'] }}</td>
+                      <td class="govuk-table__cell govuk-link"><a href="#">Change</a><br><a  href="#">Remove</a></td>
+                    </tbody>
+                    {% endif %}
+
+            {% if data['applicant-other-name'] %}
+            <tbody class="govuk-table_body">
+              <tr class="govuk-table_row">
+              <td class="govuk-table__cell">Other organisation</td>
+              <td class="govuk-table__cell govuk-!-width-one-third">{{ data['applicant-other-name'] }}</td>
+              <td class="govuk-table__cell">N/A</td>
+              <td class="govuk-table__cell govuk-!-width-one-quarter">N/A</td>
+              <td class="govuk-table__cell govuk-link"><a href="#">Change</a><br><a  href="#">Remove</a></td>
+            </tbody>
+            {% endif %}
+
+            {% if data['applicant2-other-name'] %}
+            <tbody class="govuk-table_body">
+              <tr class="govuk-table_row">
+              <td class="govuk-table__cell">Other organisation</td>
+              <td class="govuk-table__cell govuk-!-width-one-third">{{ data['applicant2-other-name'] }}</td>
+              <td class="govuk-table__cell">N/A</td>
+              <td class="govuk-table__cell govuk-!-width-one-quarter">N/A</td>
+              <td class="govuk-table__cell govuk-link"><a href="#">Change</a><br><a  href="#">Remove</a></td>
+            </tbody>
+            {% endif %}
+
+            {% if data['applicant3-other-name'] %}
+            <tbody class="govuk-table_body">
+              <tr class="govuk-table_row">
+              <td class="govuk-table__cell">Other organisation</td>
+              <td class="govuk-table__cell govuk-!-width-one-third">{{ data['applicant3-other-name'] }}</td>
+              <td class="govuk-table__cell">N/A</td>
+              <td class="govuk-table__cell govuk-!-width-one-quarter">N/A</td>
+              <td class="govuk-table__cell govuk-link"><a href="#">Change</a><br><a  href="#">Remove</a></td>
+            </tbody>
+            {% endif %}
+
+            </table>
+
+        <!-- {% if data['applicant-company-name'] or data['applicant-individual-forename'] or data['applicant-overseas-name'] or data['applicant-other-name'] %}
+        <a class="govuk-link" href="add-applicants-2">Add applicant</a><br>
+        {% endif %} -->
+
+        {% if data['applicant2-company-name-2'] or data['applicant2-individual-forename-2'] or data['applicant2-overseas-name'] or data['applicant2-other-name'] %}
+        <a class="govuk-link govuk-body" href="#">Add personal representative</a><br>
+        {% else %}
+        <a class="govuk-link govuk-body" href="#">Add personal representative</a><br>
+        {% endif %}
+
+<br>
+<br><br>
+
+        {{ govukButton({
+          classes: "",
+          text: "Continue to next step"
+          }) }}
+        
+          {{ govukButton({
+            classes: "govuk-button--secondary",
+            text: "Confirm and return to task list",
+            href: "tasks"
+          }) }}
+
+    </form>
+  </div>
+
+
+{% endblock %}
+
+{% block hmlrFooter %}
+  {% include "includes/footer.html" %}
+{% endblock %}
