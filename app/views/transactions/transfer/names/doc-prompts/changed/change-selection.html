@@ -3,13 +3,9 @@
 
 {% extends "govuk/template.njk" %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
-{% from "govuk/components/input/macro.njk" import govukInput %}
-{% from "govuk/components/radios/macro.njk" import govukRadios %}
-{% from "govuk/components/select/macro.njk" import govukSelect %}
-{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
-{% from "govuk/components/details/macro.njk" import govukDetails %}
-{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/tabs/macro.njk" import govukTabs %}
 {% from "govuk/components/table/macro.njk" import govukTable %}
+{% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
 
 
 
@@ -37,66 +33,70 @@
     <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
 
 
-    <div class="govuk-phase-banner govuk-!-margin-bottom-5">
+    <div class="govuk-phase-banner">
         <p class="govuk-phase-banner__content">
         <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
         <span class="govuk-phase-banner__text">
-        This is a prototype and not a real service.
+        This is a prototype and not a real service
         </span></p>
     </div>
     </div>
 
-<div class="govuk-grid-column-two-thirds">
-  <form method="post">
-    <span class="govuk-caption-l">Transfer for value (TR1)</span>
-    <h1 class="govuk-heading-l">Verify identity</h1>
-    <p class="govuk-body-m">When a party is not represented by a conveyancer, you must provide evidence of their identify or confirm that evidence is not required.</p>
-    <p><a href="#">Practice 67</a> (link opens in a new window) tells you when you need to include evidence of identity.</p>
-    <h2 class="govuk-heading-m">Declaration</h2>
-    <p>John Smith is not represented by a conveyancer.</p>
+<form method="post" action="name-change-attached">
 
-    <h3 class="govuk-heading-m">Select the correct statement:</h3>
+<div class="govuk-grid-column-full govuk-!-margin-top-7">
+  <span class="govuk-caption-xl">Transfer for value (TR1)</span>
+  <h1 class="govuk-heading-l"> Attach and certify document </h1>
+  <p class="govuk-body">Files can be GIF, TIFF, JPG or PDF and must not exceed 20MB file size.</p>
 
-    
-    <div class="govuk-form-group">
+  <p class="govuk-body">Document type</p>
+  <h2 class="govuk-heading-m govuk-!-margin-bottom-6" style="margin-top: -20px;">Passport</h2>
+
+
+  <p class="govuk-body">Upload a file</p>
+  <a href="#" id="tr1-upload" class="" onclick="fileupload()" style=" background-color:#F0F0F0; text-decoration:none; color:#080808; border:1px solid #767676; padding:5px; border-radius:3px; cursor:pointer; ">Choose file</a>
+
+  <a class="govuk-body" id="filename" for="tr1-upload" > No file chosen </a>
+
+  <div class="govuk-inset-text">
+    When you attach evidence of a name change, a new transaction <br>
+called ‘Change of name’ is added to your e-AP1.
+  </div>
+
+  <h3 class="govuk-heading-s govuk-!-margin-top-7">Certification</h3>
+  <div class="govuk-form-group">
   <fieldset class="govuk-fieldset">
-
-    <div class="govuk-radios">
-      {% if data['user-type'] === 'conveyancer' %}
+    <div class="govuk-radios govuk-!-width-two-thirds">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="verify-transferor-1" name="verify-transferor" type="radio" value="verified">
-        <label class="govuk-label govuk-radios__label" for="verify-transferor-1">
-          I am satisfied that sufficient steps have been taken to verify their identity and that they are the registered proprietor or have the right to be registered as the proprietor
+        <input class="govuk-radios__input" id="Certified-1" name="cert" value="Certified" type="radio">
+        <label class="govuk-label govuk-radios__label">
+          I/we certify this is a true copy of an original document
         </label>
       </div>
-      {% endif %}
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="verify-transferor-1" name="verify-transferor" type="radio" value="evidence">
-        <label class="govuk-label govuk-radios__label" for="verify-transferor-2">
-          I'll attach evidence of identity with this application
+        <input class="govuk-radios__input" id="Certified-2" name="cert" value="Certified" type="radio">
+        <label class="govuk-label govuk-radios__label">
+          I/we certify this attachment is a true copy of an original document which is certified by a conveyancer to be a true copy of the original
         </label>
       </div>
-
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="verify-transferor-2" name="verify-transferor" type="radio" value="evidence">
-        <label class="govuk-label govuk-radios__label" for="verify-transferor-2">
-          I do not need to provide evidence of identity for this application
+        <input class="govuk-radios__input" id="Certified-3" name="cert" value="Not certified" type="radio">
+        <label class="govuk-label govuk-radios__label">
+          This attachment is an uncertified copy
         </label>
       </div>
-
-
     </div>
   </fieldset>
+  </div>
+
+
+  <button type="submit" role="button" draggable="false" class="govuk-button" data-module="govuk-button">
+    Continue
+  </button>
+
 </div>
-
-
-
-{{ govukButton({
-  text: "Continue",
-  href: "transferor-representation"
-}) }}
-
 </form>
+</div>
 
 <footer>
 <div class="govuk-grid-row">
@@ -110,9 +110,23 @@
 </div>
 </div>
 </footer>
-</div>
 
-</div>
+
+<script>
+  function fileupload() {
+
+  $(document).ready(function(){
+    $("a").click(function(){
+      $(document.getElementById('filename')).text("document.pdf");
+    });
+  });
+
+}
+
+</script>
+
+
+
 {% endblock %}
 
 

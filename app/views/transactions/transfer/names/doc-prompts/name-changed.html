@@ -5,6 +5,7 @@
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/tabs/macro.njk" import govukTabs %}
 {% from "govuk/components/table/macro.njk" import govukTable %}
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
 
 {% block headIcons %}
@@ -39,14 +40,13 @@
         </span></p>
     </div>
     </div>
-
+<form method="post">
 <div class="govuk-grid-column-full govuk-!-margin-top-7">
-  <span class="govuk-caption-xl">Discharge of charge</span>
+  <span class="govuk-caption-xl">Transfer for value (TR1)</span>
   <h1 class="govuk-heading-xl"> Attach documents </h1>
-  <h2 class="govuk-heading-l"> Required </h2>
+  <h2 class="govuk-heading-l"> Required documents </h2>
   <p class="govuk-body">Documents you must attach to avoid requisitions.</p>
 
-  <form method="post" action="/transactions/discharge/discharge-attached">
   <table class="govuk-table">
 
   <thead class="govuk-table__head">
@@ -60,20 +60,25 @@
   </thead>
 
   <tbody class="govuk-table__body">
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">Legal Deeds</td>
-          <td class="govuk-table__cell">DS1</td>
-          <td class="govuk-table__cell">{% if data['DischargeCertified']%} Certified {% endif %}</td>
-          <td class="govuk-table__cell">{% if data['DischargeCertified']%} DS1.pdf {% endif %}</td>
-          {% if data['DischargeCertified']%}<td class="govuk-table__cell govuk-link"><a href="">Remove</a></td>{% endif %}
-          {% if not data['DischargeCertified'] %}<td class="govuk-table__cell govuk-link"><a href="discharge-upload.html">Attach</a></td>{% endif %}
-
+        <tr class="govuk-table__row btnDelete">
+          <td class="govuk-table__cell">Legal deed</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter">TR1 - Registered title(s): whole transfer</td>
+          <td class="govuk-table__cell">Certified</td>
+          <td class="govuk-table__cell govuk-!-width-one-third"><p id="tr1">TR1.pdf</p></td>
+          <td class="govuk-table__cell"><a class="govuk-link remove" onclick="addClass" name="remove">Remove</a></td>
+        </tr>
+        <tr class="govuk-table__row btnDelete">
+          <td class="govuk-table__cell">Evidence - Remove name: Joe Bloggs</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter">Various</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell govuk-!-width-one-third"><p id="tr1"></p></td>
+          <td class="govuk-table__cell"><a class="govuk-link remove" onclick="addClass" name="remove" href="remove-selection">Attach</a></td>
         </tr>
   </tbody>
 </table>
 
-{% if data['other_upload'] %}
-<h3 class="govuk-heading-l"> Other documents </h3>
+<h3 class="govuk-heading-l"> Suggested documents </h3>
+<p class="govuk-body">Documents you may need to attach if relevant to your application.</p>
 
 <table class="govuk-table">
   <thead class="govuk-table__head">
@@ -89,25 +94,66 @@
   <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">Evidence</td>
-          <td class="govuk-table__cell govuk-!-width-one-quarter">Form JO (Trust information)</td>
-          <td class="govuk-table__cell">Certified</td>
-          <td class="govuk-table__cell govuk-!-width-one-third">Document.pdf</td>
-          <td class="govuk-table__cell govuk-link"><a href="">Remove</a></td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter" name="filetype">Consent</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell govuk-!-width-one-third">{{ data['filenameconsent']}}</td>
+          <td class="govuk-table__cell govuk-link"><a href="documents/document_upload_consent">Attach</a></td>
         </tr>
+
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Evidence</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter">Conveyancers certificate</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell govuk-!-width-one-third"></td>
+          <td class="govuk-table__cell govuk-link">Attach</td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Evidence</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter">Death certificate</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell govuk-!-width-one-third"></td>
+          <td class="govuk-table__cell govuk-link">Attach</td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Evidence</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter">Marriage/civil partnership certificate</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell govuk-!-width-one-third"></td>
+          <td class="govuk-table__cell govuk-link">Attach</td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Evidence</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter">Stamp Duty Land Tax Certificate</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell govuk-!-width-one-third"></td>
+          <td class="govuk-table__cell govuk-link">Attach</td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Evidence</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter">Land Transaction Tax Certificate</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell govuk-!-width-one-third"></td>
+          <td class="govuk-table__cell govuk-link">Attach</td>
+        </tr>
+
+
   </tbody>
-  </table>
+</table>
 
-{% endif %}
-<p class='govuk-body'><a href="document_upload_other">Attach another type of document</a></p>
+<p class='govuk-body'><a href="#">Attach another type of document</a></p>
 
-{{ govukButton({
-  text: "Continue"
-}) }}
+  {{ govukButton({
+    text: "Continue",
+    href: "/transactions/tasks"
+  }) }}
+
+
 </form>
 
-
-</div>
-</div>
 <footer>
 <div class="govuk-grid-row">
 <div class="govuk-grid-column-full">
@@ -120,9 +166,7 @@
 </div>
 </div>
 </footer>
-
-
-
+</div>
 
 {% endblock %}
 

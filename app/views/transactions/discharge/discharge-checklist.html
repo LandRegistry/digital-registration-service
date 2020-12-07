@@ -46,74 +46,56 @@
     </div>
     </div>
 
-<div class="govuk-grid-column-full">
-    <span class="govuk-caption-l">Transfer for value (TR1)</span>
-    <h1 class="govuk-heading-l">Add transferor representation</h1>
-    <p class="govuk-body-m">Select 'Add representation' for each transferor.</p>
-    <h2 class="govuk-heading-m">Transferor representation added</h2>
+<div class="govuk-grid-column-two-thirds">
+  <form method="post" action="/discharge-checklist-true">
+  <span class="govuk-caption-l">Discharge of charge</span>
+  <h1 class="govuk-heading-l">Attachment checklist</h1>
 
-    <form method="post" action="/transactions/transfer/transferor-representation-confirmed">
-    <table class="govuk-table">
-      <thead class="govuk-table__head">
-        <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header govuk-!-width-one-fifth">Transferor type</th>
-          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Full name</th>
-          <th scope="col" class="govuk-table__header govuk-!-width-one-third">Represented by</th>
-          <th scope="col" class="govuk-table__header ">Options</th>
-        </tr>
-      </thead>
+        {{ govukCheckboxes({
+        idPrefix: "checklist",
+        name: "discharge-checklist",
+        hint: {
+          text: "Before attaching documents confirm you have made the following checks (where relevant) to avoid requisitions."
+        },
+        items: [
+          {
+            value: "1",
+            text: "Names you input are consistent with how they appear in deeds and on the register"
+          },
+          {
+            value: "2",
+            text: "Naming inconsistencies are explained by the appropriate documentation"
+          },
+          {
+            value: "3",
+            text: "Deeds contain, where appropriate, the correct title numbers and dates"
+          },
+          {
+            value: "4",
+            text: "Executions are complete and correct, and signed by all necessary witnesses"
+          },
+          {
+            value: "5",
+            text: "Plans show all necessary references and have been signed"
+          }
+        ]
+        }) }}
 
-      <tbody class="govuk-table__body">
-            <tr class="govuk-table__row">
-              <td class="govuk-table__cell">Private individual</td>
-
-              <td class="govuk-table__cell">{{ data['transferor-individual-forename']}} {{ data['transferor-individual-surname']}}</td>
-              <td class="govuk-table__cell">
-                
-                <!--Before user has made a selection-->
-                {% if not data['TransferorRepresentation'] %}
-                  No representation added 
-                {% endif %}
-
-                <!--If represented by default conveyancer-->
-                {% if data['TransferorRepresentation'] == 'UKConveyancersLtd' %} 
-                  {{ data['TransferorRepresentation']}}
-                {% endif %}
-        
-                <!--If represented by an other conveyancer-->
-                {% if data['TransferorRepresentation'] == 'OtherConveyancer' %}
-                  {{ data['TransferorConveyancerName']}}
-                {% endif %}
-
-                <!--If person is not represented-->
-                {% if data['TransferorRepresentation'] == 'NotRepresented' %}
-                  Not represented
-                {% endif %}
-              </td>
-
-              <td class="govuk-table__cell">{{ data['transferor1']}}</td>
-              <td class="govuk-table__cell">UK Conveyancers Ltd</td>
-
-              <td class="govuk-table__cell govuk-link"><a href="transferor-representationAdd">Change</td>
-              </tr>
-              {% if data['transferor-individual-forename-2'] %}
-              <tr class="govuk-table__row">
-                <td class="govuk-table__cell">Private individual</td>
-                <td class="govuk-table__cell">{{ data['transferor2']}}</td>
-                <td class="govuk-table__cell">UK Conveyancers Ltd</td>
-                <td class="govuk-table__cell govuk-link"><a href="transferor-representationAdd">Change</td>
-                </tr>
-              {% endif %}
-
-      </tbody>
-    </table>
 
 
 {{ govukButton({
-  text: "Continue"
+classes: "govuk-!-margin-top-5",
+text: "Continue"
+}) }}
+
+
+{{ govukButton({
+  text: "Return to task list",
+  classes: "govuk-button--secondary govuk-!-margin-top-5"
 }) }}
 
 </form>
+</div>
 
 <footer>
 <div class="govuk-grid-row">
@@ -130,11 +112,33 @@
 
 </div>
 
+<!-- <script>
+  function RemoveTransfereeIndividual() {
+  var x = document.getElementById("hidePI");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+
+  function RemoveTransfereeUK() {
+  var x = document.getElementById("hideUK");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+</script> -->
 
 {% endblock %}
 
 
 {% block footer %}
+
 {% endblock %}
 
 {% block bodyEnd %}

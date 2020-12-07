@@ -57,18 +57,53 @@
           <div class="govuk-form-group">
 
 
-              {{ govukDateInput({
-                  id: "transfer-date",
-                  namePrefix: "transfer-date",
-                  name: "transfer-date",
-                  fieldset: {
-                  },
-                  hint: {
-                    text: "For example, 12 11 2007"
-                  }
-              }) }}
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="transfer-date-hint">
 
-            <br><br>
+
+              <span id="transfer-date-hint" class="govuk-hint">
+                For example, 12 11 2007
+              </span>
+
+
+              <div class="govuk-date-input" id="transfer-date">
+
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="transfer-date-day">
+                      Day
+                    </label>
+
+
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="transfer-date-day" name="transfer-date-day" type="number" pattern="[0-9]*">
+                  </div>
+                </div>
+
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="transfer-date-month">
+                      Month
+                    </label>
+
+
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="transfer-date-month" name="transfer-date-month" type="number" pattern="[0-9]*">
+                  </div>
+                </div>
+
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="transfer-date-year">
+                      Year
+                    </label>
+
+
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="transfer-date-year" name="transfer-date-year" type="number" pattern="[0-9]*">
+                  </div>
+                </div>
+
+              </div>
+              </fieldset>
+
+          </div>
 
 
 

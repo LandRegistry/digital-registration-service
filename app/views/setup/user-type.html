@@ -4,12 +4,16 @@
 {% extends "govuk/template.njk" %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/input/macro.njk" import govukInput %}
-{% from "govuk/components/radios/macro.njk" import govukRadios %}
-{% from "govuk/components/select/macro.njk" import govukSelect %}
-{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
-{% from "govuk/components/details/macro.njk" import govukDetails %}
-{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
 {% from "govuk/components/table/macro.njk" import govukTable %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+
+
+
+
 
 
 
@@ -37,7 +41,7 @@
     <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
 
 
-    <div class="govuk-phase-banner govuk-!-margin-bottom-5">
+    <div class="govuk-phase-banner">
         <p class="govuk-phase-banner__content">
         <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
         <span class="govuk-phase-banner__text">
@@ -45,58 +49,87 @@
         </span></p>
     </div>
     </div>
-
-<div class="govuk-grid-column-two-thirds">
-  <form method="post">
-    <span class="govuk-caption-l">Transfer for value (TR1)</span>
-    <h1 class="govuk-heading-l">Verify identity</h1>
-    <p class="govuk-body-m">When a party is not represented by a conveyancer, you must provide evidence of their identify or confirm that evidence is not required.</p>
-    <p><a href="#">Practice 67</a> (link opens in a new window) tells you when you need to include evidence of identity.</p>
-    <h2 class="govuk-heading-m">Declaration</h2>
-    <p>John Smith is not represented by a conveyancer.</p>
-
-    <h3 class="govuk-heading-m">Select the correct statement:</h3>
-
-    
-    <div class="govuk-form-group">
-  <fieldset class="govuk-fieldset">
-
-    <div class="govuk-radios">
-      {% if data['user-type'] === 'conveyancer' %}
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="verify-transferor-1" name="verify-transferor" type="radio" value="verified">
-        <label class="govuk-label govuk-radios__label" for="verify-transferor-1">
-          I am satisfied that sufficient steps have been taken to verify their identity and that they are the registered proprietor or have the right to be registered as the proprietor
-        </label>
-      </div>
-      {% endif %}
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="verify-transferor-1" name="verify-transferor" type="radio" value="evidence">
-        <label class="govuk-label govuk-radios__label" for="verify-transferor-2">
-          I'll attach evidence of identity with this application
-        </label>
-      </div>
-
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="verify-transferor-2" name="verify-transferor" type="radio" value="evidence">
-        <label class="govuk-label govuk-radios__label" for="verify-transferor-2">
-          I do not need to provide evidence of identity for this application
-        </label>
-      </div>
-
-
     </div>
-  </fieldset>
-</div>
+
+    <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l"></span>
+  <h1 class="govuk-heading-l">Are you a conveyancer?</h1>
+
+  <div>
 
 
+     <div>
+      
 
-{{ govukButton({
-  text: "Continue",
-  href: "transferor-representation"
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Which should I select?
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          Select ‘Yes’ if you are (or are employed and supervised by) a solicitor or conveyancer authorised under the Legal Services Act 2007 to provide reserved legal services relating to land registration. Otherwise, select ‘No’. <a href='https://www.gov.uk/government/publications/evidence-of-identity-conveyancers/practice-guide-67-evidence-of-identity-conveyancers'>Find out more</a>
+        </div>
+      </details>
+
+
+    <form method="post" action="user-type-answer" name="" data-validate="whole-form-validation" novalidate>
+
+        {{ govukRadios({
+  idPrefix: "user-type",
+  name: "user-type",
+  fieldset: {
+    legend: {
+      text: "",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+ 
+  
+  items: [
+    {
+      value: "conveyancer",
+      text: "Yes, I'm a conveyancer or acting on behalf of a conveyancer",
+      conditional: {
+        html: wholeHtml
+      }
+    },
+    {
+      value: "non-conveyancer",
+      text: "No",
+      disabled: false,
+      conditional: {
+        html: partHtml
+      }
+    }
+  ]
 }) }}
 
-</form>
+
+    {{ govukButton({
+    text: "Continue"
+  }) }}
+
+    </form>
+    </div>
+    </div>
+    </main>
+
+
+
+<script type="application/json" id="whole-form-validation">
+  {
+    "user-type": {
+      "presence": {
+        "message": "^Select if you are a conveyancer or not"
+      }
+    }
+  }
+</script>
+
 
 <footer>
 <div class="govuk-grid-row">
@@ -110,9 +143,9 @@
 </div>
 </div>
 </footer>
-</div>
 
-</div>
+
+
 {% endblock %}
 
 

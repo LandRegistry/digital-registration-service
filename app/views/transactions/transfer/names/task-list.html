@@ -48,7 +48,7 @@
     </div>
 
     <div class="govuk-grid-column-full">
-      <span class="govuk-caption-l">Apply to update or create a registered title</span>
+      <span class="govuk-caption-l"></span>
         <h1 class="govuk-heading-l">Complete your application</h1>
         <p class="govuk-body-m">Provide all details and the documents you want to attach.</p>
 
@@ -75,7 +75,7 @@
     </table>
 </div>
 
-  
+
 
     <h2 class="govuk-heading-m govuk-!-padding-top-5">1. Transfer for value (TR1)</h2>
     </div>
@@ -92,8 +92,11 @@
 
       <tbody class="govuk-table__body">
             <tr class="govuk-table__row">
+
               <td class="govuk-table__cell govuk-link"><a href="/../transactions/transfer/transferees-whichApplicants">Select transferees</a></td>
               <td class="govuk-table__cell">
+              <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
+
 
             </td>
 
@@ -101,13 +104,12 @@
             <tr class="govuk-table__row">
               <td class="govuk-table__cell govuk-link"><a href="/transactions/transfer/transferee-representation">Add transferee representation</a></td>
               <td class="govuk-table__cell">
-
-              </td>
+                <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong></td>
             </tr>
             <tr class="govuk-table__row">
               <td class="govuk-table__cell govuk-link"><a href="/transactions/transfer/transfereeAddressList">Add addresses for service</a></td>
               <td class="govuk-table__cell">
-
+                      <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
 
             </td>
             </tr>
@@ -117,13 +119,15 @@
               <td class="govuk-table__cell"></td>
             </tr>
             <tr class="govuk-table__row">
-              <td class="govuk-table__cell govuk-link"><a href="/transactions/transfer/add-transferor.html">Transferor details</a></td>
-              <td class="govuk-table__cell">
-                    </td>
+              <td class="govuk-table__cell govuk-link"><a href="/Sprint-24/transfer/transferor-list.html">Transferor details</a></td>
+              <td class="govuk-table__cell">      {% if (data['Transferor1Status'] === 'removed') or (data['Transferor1Status'] === 'amended') %}
+                      <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
+                      {% endif %}</td>
             </tr>
             <tr class="govuk-table__row">
               <td class="govuk-table__cell govuk-link"><a href="/transactions/transfer/transferor-representation.html">Add transferor representation</a></td>
               <td class="govuk-table__cell">
+                      <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
 
                       </td>
             </tr>
@@ -135,22 +139,8 @@
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell govuk-link"><a href="/transactions/transfer/transfer-date">Confirm transfer date</a></td>
                 <td class="govuk-table__cell">
-                  {% if data['transfer-date'] %}
-                    <strong class="govuk-tag app-task-list__task-completed">COMPLETED</strong>
-                  {% endif %}
-              </tr>
 
-              <tr class="govuk-table__row">
-                <td class="govuk-table__cell govuk-link"><a href="transfer-consideration-v3">Select consideration</a></td>
-                <td class="govuk-table__cell">
-                  {% if data['transfer-consideration'] %}
                     <strong class="govuk-tag app-task-list__task-completed">COMPLETED</strong>
-                  {% endif %}
-              </tr>
-
-              <tr class="govuk-table__row">
-                <td class="govuk-table__cell govuk-link"><a href="/../transactions/transfer/transfer-guarantee">Select title guarantee</a></td>
-                <td class="govuk-table__cell">
 
               </tr>
 
@@ -158,14 +148,17 @@
                 <td class="govuk-table__cell govuk-link"><a href="/transactions/transfer/transfer-declaration">Declaration of trust</a></td>
                 <td class="govuk-table__cell">
 
-              </tr>
+                    <strong class="govuk-tag app-task-list__task-completed">Completed</strong>
 
+
+              </tr>
               <tr class="govuk-table__row">
-                <td class="govuk-table__cell govuk-link"><a href="#">Additional provisions (optional)</a></td>
+                <td class="govuk-table__cell govuk-link"><a href="/../transactions/transfer/transfer-guarantee">Select title guarantee</a></td>
                 <td class="govuk-table__cell">
 
-              </tr>
+                    <strong class="govuk-tag app-task-list__task-completed">Completed</strong>
 
+              </tr>
 
 
             <tr class="govuk-table__row">
@@ -173,13 +166,13 @@
               <td class="govuk-table__cell"></td>
             </tr>
             <tr class="govuk-table__row">
-              <td class="govuk-table__cell govuk-link"><a href="/transactions/transfer/transfer-download">Download part-completed TR1 (optional)</a></td>
+              <td class="govuk-table__cell govuk-link"><a href="/transactions/transfer/transfer-download">Get part-completed TR1 (optional)</a></td>
               <td class="govuk-table__cell">
             </tr>
             <tr class="govuk-table__row">
-              <td class="govuk-table__cell govuk-link"><a href="/transactions/transfer/documents/document_prompts-1">Attach documents</a></td>
+              <td class="govuk-table__cell govuk-link"><a href="/testing/transfer/doc-prompts/removed/name-removed.html">Attach documents</a></td>
               <td class="govuk-table__cell">
-                {% if data['attached'] %}
+                {% if data['sort'] or data['cert'] %}
                   <strong class="govuk-tag app-task-list__task-completed">Attached</strong>
                 {% endif %}
             </tr>

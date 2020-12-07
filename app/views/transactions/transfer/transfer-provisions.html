@@ -10,6 +10,10 @@
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 {% from "govuk/components/table/macro.njk" import govukTable %}
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
 
 
 
@@ -46,74 +50,32 @@
     </div>
     </div>
 
-<div class="govuk-grid-column-full">
-    <span class="govuk-caption-l">Transfer for value (TR1)</span>
-    <h1 class="govuk-heading-l">Add transferor representation</h1>
-    <p class="govuk-body-m">Select 'Add representation' for each transferor.</p>
-    <h2 class="govuk-heading-m">Transferor representation added</h2>
-
-    <form method="post" action="/transactions/transfer/transferor-representation-confirmed">
-    <table class="govuk-table">
-      <thead class="govuk-table__head">
-        <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header govuk-!-width-one-fifth">Transferor type</th>
-          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Full name</th>
-          <th scope="col" class="govuk-table__header govuk-!-width-one-third">Represented by</th>
-          <th scope="col" class="govuk-table__header ">Options</th>
-        </tr>
-      </thead>
-
-      <tbody class="govuk-table__body">
-            <tr class="govuk-table__row">
-              <td class="govuk-table__cell">Private individual</td>
-
-              <td class="govuk-table__cell">{{ data['transferor-individual-forename']}} {{ data['transferor-individual-surname']}}</td>
-              <td class="govuk-table__cell">
-                
-                <!--Before user has made a selection-->
-                {% if not data['TransferorRepresentation'] %}
-                  No representation added 
-                {% endif %}
-
-                <!--If represented by default conveyancer-->
-                {% if data['TransferorRepresentation'] == 'UKConveyancersLtd' %} 
-                  {{ data['TransferorRepresentation']}}
-                {% endif %}
-        
-                <!--If represented by an other conveyancer-->
-                {% if data['TransferorRepresentation'] == 'OtherConveyancer' %}
-                  {{ data['TransferorConveyancerName']}}
-                {% endif %}
-
-                <!--If person is not represented-->
-                {% if data['TransferorRepresentation'] == 'NotRepresented' %}
-                  Not represented
-                {% endif %}
-              </td>
-
-              <td class="govuk-table__cell">{{ data['transferor1']}}</td>
-              <td class="govuk-table__cell">UK Conveyancers Ltd</td>
-
-              <td class="govuk-table__cell govuk-link"><a href="transferor-representationAdd">Change</td>
-              </tr>
-              {% if data['transferor-individual-forename-2'] %}
-              <tr class="govuk-table__row">
-                <td class="govuk-table__cell">Private individual</td>
-                <td class="govuk-table__cell">{{ data['transferor2']}}</td>
-                <td class="govuk-table__cell">UK Conveyancers Ltd</td>
-                <td class="govuk-table__cell govuk-link"><a href="transferor-representationAdd">Change</td>
-                </tr>
-              {% endif %}
-
-      </tbody>
-    </table>
+<form method="post" action="/transfer-provisions-complete">
+    <div class="govuk-grid-column-full">
+        <span class="govuk-caption-xl">Transfer for value (TR1)</span>
+        <h1 class="govuk-heading-xl">Additional provisions (optional)</h1>
 
 
-{{ govukButton({
-  text: "Continue"
-}) }}
+      <div class="govuk-grid-column-two-thirds" style="margin-left: -10px;">
 
-</form>
+
+
+            {{ govukTextarea({
+            name: "provisions",
+            id: "provisions",
+            hint: {
+              text: "Enter the details of any additional covenants or agreements between transferors and transferees."
+            }
+          }) }}
+
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+            </div>
+  </form>
+
 
 <footer>
 <div class="govuk-grid-row">
@@ -127,12 +89,10 @@
 </div>
 </div>
 </footer>
-
 </div>
 
 
 {% endblock %}
-
 
 {% block footer %}
 {% endblock %}
