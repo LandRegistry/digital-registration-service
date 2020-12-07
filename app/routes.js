@@ -744,25 +744,6 @@ router.get('/testing/addresses', function (req, res) {
   res.redirect('/transactions/transfer/transfer-tasks')
 })
 
-//Assents: sole transaction
-router.get('/docs/examples/pass-data/assent', function (req, res) {
-	req.session.data = 	      		{
-  "reference": "JT/123/CH",
-  "title": "LP12345",
-  "whole-or-part": "Whole",
-  "part": "",
-  "Transaction1": "Assent",
-  "PriceInput1": "120000",
-  "FeeInput1": "12",
-  "add-applicant": "individual",
-  "applicant-individual-forename": "John",
-  "applicant-individual-surname": "Smith",
-  "Transaction": "ASSENT",
-  "borrower1": "Joe Bloggs",
-}
-  res.redirect('/transactions/assent/tasks')
-})
-
 
 // // Sprint 26 journey
 // // Set data
@@ -819,12 +800,7 @@ router.post('/transactions/charge-transactions', function (req, res) {
 
                   res.redirect('/transactions/calculate-fees')
             }
-            //Assent
-            if (transaction1 === 'Assent') {
-              req.session.data['Transaction'] = 'ASSENT';
-  
-              res.redirect('/transactions/calculate-fees')
-        } 
+
 })
 
 // Using the transaction type to go to a task list
@@ -841,11 +817,11 @@ router.post('/transactions/which-task-list', function (req, res) {
       } if (transaction === 'DT') {
           res.redirect('/transactions/tasks')
       } if (transaction === 'TC') {
-          res.redirect('/transactions/charge/TC-tasks') 
-      } if (transaction === 'ASSENT') {
-          res.redirect('/transactions/assent/tasks') 
+          res.redirect('/transactions/charge/TC-tasks')
       }
     })
+
+
 
 // Charge completed tags
 
@@ -964,8 +940,7 @@ router.post('/transactions/transfer/transferee-representation-confirmed', functi
         res.redirect('/transactions/tasks')
     } if (transaction === 'TC') {
         req.session.data['transfereerep'] = 'true';
-        res.redirect('/transactions/charge/TC-tasks')
-    } 
+        res.redirect('/transactions/charge/TC-tasks') }
 })
 
   // address
@@ -1324,8 +1299,11 @@ router.post('/transferee-list-complete', function (req, res) {
   } if (transaction === 'TC') {
       req.session.data['transfereelistcomplete'] = 'true';
       res.redirect('/transactions/charge/TC-tasks')
-  } 
+  }
+
 })
+
+
 
 router.post('/transactions/transfer/transferee-whichapplicants-answer', function (req, res){
   req.session.data["transfereesnone"]
@@ -1514,131 +1492,6 @@ router.post('/wes-yes-no-answer', function (req, res) {
       res.redirect('/testing/wes/task-list-dtc.html')
     }
 })
-
-
-//Assent: navigation
-
-router.post('/transactions/assent/deceased-proprietor-confirmation', function (req, res) {
-  req.session.data['deceasedProprietor1'] = 'completed';
-  res.redirect('/transactions/assent/add-representative')
-})
-
-//Assent: confirm date
-router.post('/transactions/assent/assent-date-confirmation', function (req, res) {
-  req.session.data['charge-date'] = 'completed';
-  res.redirect('/transactions/assent/title-guarantee')
-})
-
-//Assent: title guarantee
-router.post('/transactions/assent/guarantee-complete', function (req, res) {
-  req.session.data['chargeDateComplete'] = 'completed'; //???
-  res.redirect('/transactions/assent/declaration-of-trust')
-})
-
-//Assent: address for service
-router.post('/transactions/assent/transferee-address-for-service-complete', function (req, res) {
-  req.session.data['chargeDateComplete'] = 'completed'; //???
-  res.redirect('/transactions/assent/confirm-date')
-})
-
-//Assent: declaration of trust
-router.post('/transactions/assent/declaration-complete', function (req, res) {
-  req.session.data['chargeDateComplete'] = 'completed'; //???
-  res.redirect('/transactions/assent/additional-provisions')
-})
-
-router.post('/transactions/assent/declaration-complete', function (req, res) {
-  // Get the answer from session data
-  // The name between the quotes is the same as the 'name' attribute on the input elements
-  // However in JavaScript we can't use hyphens in variable names
-
-  let over18 = req.session.data['over-18']
-
-  if (over18 === 'false') {
-    res.redirect('/docs/examples/branching/under-18')
-  } else {
-    res.redirect('/docs/examples/branching/over-18')
-  }
-})
-
-
-
-// Assent: select/add transferees
-router.post('/transactions/assent/transferee-whichapplicants-answer', function (req, res) {
-
-  let applicantTransferee1 = req.session.data['applicant-individual-forename'];
-  let applicantTransferee2 = req.session.data['applicant2-individual-forename-2'];
-
-  var checkboxTicked1
-  var checkboxTicked2
-
-  if (applicantTransferee1 != '') {
-      let checkbox1 = req.body['applicant-individual-transferee1'];
-      if (checkbox1 === '_unchecked'){
-        checkboxTicked1 = false
-      } else {
-      checkboxTicked1 = true
-      }
-  }
-
-  if (applicantTransferee2 != '') {
-      let checkbox2 = req.body['applicant-individual-transferee2'];
-      if (checkbox2 === '_unchecked'){
-        checkboxTicked2 = false
-      } else {
-      checkboxTicked2 = true
-      }
-  }
-
-  if ((checkboxTicked1 === true) || (checkboxTicked2 === true)) {
-    res.redirect('/transactions/assent/transferee-list')
-  } else {
-    res.redirect('/transactions/assent/add-transferee')
-  }
-  })
-
-//Assent: transferee list
-router.post('/transactions/assent/transferee-list-complete', function (req, res) {
-  req.session.data['applicant-individual-forename'];
-  res.redirect('/transactions/assent/transferee-representationAdd')
-  })
-
-
-//Assent: transferee representation
-router.post('/transactions/assent/transferee-representation-confirmed', function (req, res) {
-  req.session.data['applicant-individual-forename'];
-  res.redirect('/transactions/assent/transfereeAddressList')
-  })  
-
-//Assent: transferee address playback
-router.post('/transactions/assent/transferee-address-answer', function (req, res) {
-
-  let lenderAddress = req.session.data['lenderAddressType']
-
-  if (lenderAddress === 'UK-postal') {
-    res.redirect('/transactions/charge-without-transfer/address-for-service/lender-UKaddress')
-}
-  if (lenderAddress === 'Overseas-postal') {
-      res.redirect('/transactions/charge-without-transfer/address-for-service/lender-overseasAddress')
-    }
-
-  if (lenderAddress === 'PO-box') {
-      res.redirect('/transactions/charge-without-transfer/address-for-service/lender-POboxAddress')
-    }
-
-    if (lenderAddress === 'email') {
-        res.redirect('/transactions/charge-without-transfer/address-for-service/lender-emailAddress')
-      }
-
-      if (lenderAddress === 'DX') {
-          res.redirect('/transactions/charge-without-transfer/address-for-service/lender-DX')
-        }
-
-        if (lenderAddress === 'BFPO') {
-            res.redirect('/transactions/charge-without-transfer/address-for-service/lender-BFPO')
-          }
-
-})  
 
 // Is the user a conveyancer?
 router.post('/setup/user-type-answer', function (req, res) {
