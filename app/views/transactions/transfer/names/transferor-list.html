@@ -131,7 +131,7 @@
             </tbody>
           </table>
 
-          <details class="govuk-details" data-module="govuk-details">
+          <details class="govuk-details" data-module="govuk-details" style="margin-top: -20px;">
             <summary class="govuk-details__summary">
               <span class="govuk-details__summary-text">
                 I don’t recognise any of these transferors
@@ -200,9 +200,11 @@
         </tbody>
         </table>
         {% endif %}
+        <div style="margin-top: -20px;">
         {% if not data['attorney1'] %}<a class="govuk-link govuk-body govuk-link--no-visited-state" href="/../transactions/transfer/transferor-POA.html">Add an attorney</a>{% endif %}
         {% if data['attorney1'] and not data['attorney2']%}<a class="govuk-link govuk-body govuk-link--no-visited-state" href="/../transactions/transfer/transferor-POA-2.html">Add an attorney</a>{% endif %}
         {% if data['attorney2'] and not data['attorney3']%}<a class="govuk-link govuk-body govuk-link--no-visited-state" href="#">Add an attorney</a>{% endif %}
+        </div>
         </div>
 
 
