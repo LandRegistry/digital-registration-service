@@ -22,12 +22,27 @@
 <form method="get" action="representative-list" data-validate="representation-form-validation" novalidate>
   <div class="govuk-form-group">
     <fieldset class="govuk-fieldset" aria-describedby="add-representative-conditional-hint">
-      <h2 class="govuk-heading-m">Select personal representative type</h2>
+      <h2 style="display: none;" class="govuk-heading-m">Select personal representative type</h2>
+
+
+    
+
+      
       <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+        
+        
+        
+        <div class="govuk-radios__item" id="conditional-add-representative-conditional-0">
+        <input id="default-representative" class="govuk-radios__input" name="add-representative" type="radio" value="Default">
+        <label class="govuk-label govuk-radios__label" id="default-representative" for="default-personal-representative">
+          Barry Bloggs
+        </label>
+      </div>
+
         <div class="govuk-radios__item">
           <input class="govuk-radios__input" id="add-representative-conditional" name="add-representative" type="radio" value="individual" data-aria-controls="conditional-add-representative-conditional">
           <label class="govuk-label govuk-radios__label" for="add-representative-conditional">
-            Private individual
+            Another private individual
           </label>
         </div>
 
