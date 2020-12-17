@@ -29,6 +29,17 @@
             <th scope="col" class="govuk-table__header">Options</th>
           </tr>
         </thead>
+
+        <tbody class="govuk-table_body">
+          <tr class="govuk-table_row" id="hidePI">
+          <td class="govuk-table__cell">Private individual</td>
+          <td class="govuk-table__cell govuk-!-width-one-third">Barry Bloggs</td>
+          <td class="govuk-table__cell">N/A</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter">N/A</td>
+          <td class="govuk-table__cell govuk-link"><a href="#">Change</a><br><a  href="#">Remove</a></td>
+        </tbody>
+
+<!--
         {% if data['applicant-individual-forename'] %}
           <tbody class="govuk-table_body">
             <tr class="govuk-table_row" id="hidePI">
@@ -161,6 +172,17 @@
             </tbody>
             {% endif %}
 
+            {% if data['default-representative'] %}
+            <tbody class="govuk-table_body">
+              <tr class="govuk-table_row">
+              <td class="govuk-table__cell">Person</td>
+              <td class="govuk-table__cell govuk-!-width-one-third">barry</td>
+              <td class="govuk-table__cell">N/A</td>
+              <td class="govuk-table__cell govuk-!-width-one-quarter">N/A</td>
+              <td class="govuk-table__cell govuk-link"><a href="#">Change</a><br><a  href="#">Remove</a></td>
+            </tbody>
+            {% endif %}
+          -->
             </table>
 
         <!-- {% if data['applicant-company-name'] or data['applicant-individual-forename'] or data['applicant-overseas-name'] or data['applicant-other-name'] %}

@@ -123,11 +123,11 @@
 
           <!--Before user has made a selection-->
           {% if not data['TransfereeRepresentation'] %}
-            No representation added 
+            No representation added
           {% endif %}
 
           <!--If represented by default conveyancer-->
-          {% if data['TransfereeRepresentation'] == 'UKConveyancersLtd' %} 
+          {% if data['TransfereeRepresentation'] == 'UKConveyancersLtd' %}
             {{ data['TransfereeRepresentation']}}
           {% endif %}
 
@@ -161,11 +161,11 @@
 
           <!--Before user has made a selection-->
           {% if not data['Transferee2Representation'] %}
-            No representation added 
+            No representation added
           {% endif %}
 
           <!--If represented by default conveyancer-->
-          {% if data['Transferee2Representation'] == 'UKConveyancersLtd' %} 
+          {% if data['Transferee2Representation'] == 'UKConveyancersLtd' %}
             {{ data['Transferee2Representation']}}
           {% endif %}
 
@@ -199,19 +199,19 @@
         {% if not data['Transferee2Representation'] %} 
           <a href="transferee-representationadd2">Add representation </a>
         {% endif %}
-        
-        {% if data['Transferee2Representation'] %} 
+
+        {% if data['Transferee2Representation'] %}
           <a href="transferee-representationadd2">Change</a>
           <br>
-          <a href="">Remove</a> 
+          <a href="">Remove</a>
         {% endif %}
-        
+
         <!--
-        {% if data['represents-all'] %} 
+        {% if data['represents-all'] %}
 
         {% endif %}
         -->
-        
+
 
         {% if not data['TransfereeRepresentation'] or not data['represents-all'] %} <a href="/transactions/transfer/transferee-representationAdd2">Add representation</a> {% endif %}
         {% if data['TransfereeRepresentation'] and data['represents-all'] %} <a href="/transactions/transfer/transferee-representationAdd2">Change</a><br><a href="">Remove</a> {% endif %}
