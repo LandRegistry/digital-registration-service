@@ -154,6 +154,19 @@
           </div>
     {% endif %}
 
+    {% if data['Transaction'] === 'ASSENT' %}
+    <div class="govuk-checkboxes__item">
+
+      <input class="govuk-checkboxes__input" id="" name="applicant-other-transferee1" type="checkbox" value="applicant-transferee-4">
+
+      <label class="govuk-label govuk-checkboxes__label" for="applicant-transferee">
+       Barry Bloggs
+      </label>
+    </div>
+{% endif %}
+
+    
+
     {{ govukInsetText({
       text: "You can add transferees in the next step."
     }) }}
