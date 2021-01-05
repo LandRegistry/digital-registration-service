@@ -42,7 +42,7 @@
       <tbody class="govuk-table_body">
 
 
-        <!-- {% if data['applicant-individual-forename'] %}
+        {% if data['applicant-individual-forename'] %}
 
         <tr class="govuk-table_row" id="hidePI">
         <td class="govuk-table__cell">Private individual</td>
@@ -174,7 +174,7 @@
           <td class="govuk-table__cell govuk-!-width-one-quarter">N/A</td>
           <td class="govuk-table__cell govuk-link"><a href="add-applicants">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
           </tr>
-          {% endif %} -->
+          {% endif %} 
 
 <!--- 'No' --->
 <!--
@@ -351,7 +351,7 @@
           <tr class="govuk-table_row" id="hidePI">
           <td class="govuk-table__cell">Private individual</td>
           <td class="govuk-table__cell govuk-!-width-one-third">
-            Barry Bloggs
+            {{ data['applicant-individual-forename'] }} {{ data['applicant-individual-surname'] }}
            </td>
           <td class="govuk-table__cell">N/A</td>
           <td class="govuk-table__cell govuk-!-width-one-quarter">N/A</td>
