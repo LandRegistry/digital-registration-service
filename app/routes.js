@@ -1154,7 +1154,12 @@ router.post('/transactions/transfer/downloaded', function (req, res) {
         res.redirect('/transactions/tasks')
     } if (transaction === 'TC') {
         req.session.data['download'] = 'true';
-        res.redirect('/transactions/charge/TC-tasks') }
+        res.redirect('/transactions/charge/TC-tasks') 
+    } if (transaction === 'ASSENT') {
+        req.session.data['download'] = 'true';
+        res.redirect('/transactions/assent/tasks')  
+      }
+        
 })
 
 // transfer title guarantee
