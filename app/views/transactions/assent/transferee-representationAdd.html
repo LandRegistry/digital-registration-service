@@ -23,12 +23,7 @@
 <div>
   <span class="govuk-caption-l">Assent</span>
   <h1 class="govuk-heading-l">Who is representing 
-    {% if data['applicant-individual-transferee1'] %}
-       {{ data['applicant-individual-forename'] }} {{ data['applicant-individual-surname'] }}?
-    {% endif %}
-    {% if data['transferee-individual-forename'] %}
-       {{ data['transferee-individual-forename'] }} {{ data['transferee-individual-surname'] }}?
-    {% endif %}
+    {{ data['applicant-individual-forename'] }} {{ data['applicant-individual-surname'] }}?
   </h1>
 <form method="post" action="/transactions/assent/transferee-representation">
   <div class="govuk-grid-column-two-thirds">
