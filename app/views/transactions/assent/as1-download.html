@@ -1,0 +1,71 @@
+{% block hmlrHeader %}
+  {% include "includes/header.html" %}
+  {% set pageTitle = { title: 'Download part-completed AS1' } %}
+{% endblock %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+
+{% block content %}
+<div class="govuk-grid-row">
+ 
+
+    <div class="govuk-grid-column-full">
+        <span class="govuk-caption-xl">Assent</span>
+        <h1 class="govuk-heading-xl">Download part-completed AS1</h1>
+
+    <form method="post" action="/transactions/transfer/downloaded">
+          <div class="govuk-form-group">
+          <p class="govuk-body">You need to supply a Whole of Registered Title: assent (AS1) form. You can either:</p>
+          <ul class="govuk-list">
+            <li>• attach your own completed AS1</li>
+            <li>• download this partial AS1, complete and attach it</li>
+          </ul>
+          <br>
+
+          <div>
+          <a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/808672/AS1__2019-06-17_.pdf"><img src="/public/images/as1.png" style="width: 20%; float: left; margin-right: 25px; border: 5px solid #ccc;" alt="tr1 icon"></a>
+          <h2><a href="/https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/808672/AS1__2019-06-17_.pdf" class="govuk-link govuk-heading-m govuk-!-font-weight-regular" style="">Whole of Registered Title: assent (AS1 - part completed)</a></h2>
+          <p class="govuk-body"> PDF - opens in a new window</p>
+          </div>
+
+
+
+        <div style="margin-top: 250px;">
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+      </div>
+
+</form>
+</div>
+
+<footer>
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-full">
+<hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+<br>
+<p class="govuk-body-s" style="color: #747B7F"> The following links open in a new window
+<br>
+<br>
+<a href="#" style="color: #747B7F"> Terms and conditions</a> | <a href="/setup/accessibility-statement" target="_blank" rel="noopener noreferrer" style="color: #747B7F">Accessibility statement</a> |  <a href="#" style="color: #747B7F">Freedom of information</a> | <a href="#" style="color: #747B7F">© Crown copyright</a></p>
+</div>
+</div>
+</footer>
+</div>
+
+
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}
