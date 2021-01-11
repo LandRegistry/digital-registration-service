@@ -32,33 +32,51 @@
 <div class="govuk-width-container">
   <main class="govuk-main-wrapper">
      <div class="govuk-grid-row">
-       <div class="govuk-grid-column-full" id="headerdiv">
+       <!-- <div class="govuk-grid-column-full" id="headerdiv">
          <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
          <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
-       </div>
+       </div> -->
 
        <div class="govuk-grid-column-two-thirds">
-        <h1 class="govuk-heading-xl govuk-!-margin-top-6"> Digital Registration Service </h1></div>
+        <h1 class="govuk-heading-xl govuk-!-margin-top-6"> Digital Registration Service </h1>
+      </div>
 
         <br>
         <div class="govuk-grid-column-full">
-          <ul class="govuk-list">
-            <li>
-              <a class="govuk-link" href="index-page.html">Index page</a>
-            </li>
-            <li>
-              <a class="govuk-link" href="using-the-prototype.html">Using the prototype</a>
-            </li>
-            <li>
-              <a class="govuk-link" href="#version-history">Version history</a>
-            </li>
-          </ul>
 
-          <br>
-          <h2 class="govuk-heading-l">Prototype shortcuts</h2>
+          <ul class="govuk-list">
+
+              <ul class="govuk-list">
+
+                <li>
+                  <a class="govuk-link govuk-link--no-visited-state" href="#version-history">Version history</a>
+                </li>
+                <li>
+                  <a class="govuk-link govuk-link--no-visited-state" href="index-page.html">Index page</a>
+                </li>
+                <li>
+                  <a class="govuk-link govuk-link--no-visited-state" href="#">Design patterns</a>
+                </li>
+              </ul>
+
+
+
+
+
+
+
+          <h2 class="govuk-heading-m" id="prototype-h2">Prototype shortcuts</h2>
+          <!-- <h3 class="govuk-heading-s" id="using">Using the prototype</h3>
+
+          <p class="govuk-body">
+          The prototype is primarily for user research sessions. Not all functionality will work and unexpected errors are likely to occur.<br><br>
+          When using the prototype, some pages will feature dynamic data, whilst others have set information for use in testing scenarios or to enable rapid prototyping.
+          Specific journeys with shortcuts to different stages of the service can be found below.<br><br>
+          For support using this prototype contact Ros Boyes, Chris Wensley or Jodie Page.</p> -->
+
+
 
           <table class="govuk-table">
-
             <tbody class="govuk-table__body">
                 <tr class="govuk-table__row">
                   <th scope="row" class="govuk-table__header">Start new application</th>
@@ -69,41 +87,36 @@
                   <td class="govuk-table__cell"><a href="/docs/examples/pass-data/charge">Complete your application</a> (No tasks completed)<br><a href="/docs/examples/pass-data/charge-DTC1">Complete your application</a> (Discharge, transfer tasks complete)</td>
                 </tr>
                 <tr class="govuk-table__row">
-                  <th scope="row" class="govuk-table__header">Discharge, transfer</th>
-                  <td class="govuk-table__cell"><a href="/docs/examples/pass-data/task-list">Complete your application</a><br></td>
+                  <th scope="row" class="govuk-table__header">Other transactions (to task list)</th>
+                  <td class="govuk-table__cell"><a href="/docs/examples/pass-data/task-list">Discharge, transfer</a><br>
+                  <a href="/docs/examples/pass-data/sole-charge">Charge without a transfer</a><br>
+                  </td>
                 </tr>
-                <tr class="govuk-table__row">
-                  <th scope="row" class="govuk-table__header">Discharge</th>
-                  <td class="govuk-table__cell"><a>Link pending</a><br></td>
-                </tr>
-                <tr class="govuk-table__row">
-                  <th scope="row" class="govuk-table__header">Transfer</th>
+                <!-- <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header">Transfer (not up to date)</th>
                   <td class="govuk-table__cell"><a href="/docs/examples/pass-data/transfer">Complete your application</a><br></td>
-                </tr>
-                <tr class="govuk-table__row">
+                </tr> -->
+                <!-- <tr class="govuk-table__row">
                   <th scope="row" class="govuk-table__header">Transfer, charge</th>
                   <td class="govuk-table__cell"><a href="/docs/examples/pass-data/TC">Complete your application</a><br></td>
-                </tr>
-                <tr class="govuk-table__row">
-                  <th scope="row" class="govuk-table__header">Charge</th>
-                  <td class="govuk-table__cell"><a href="/docs/examples/pass-data/sole-charge">Complete your application</a><br></td>
-                </tr>
+                </tr> -->
+
                 <tr class="govuk-table__row">
                   <th scope="row" class="govuk-table__header">Errors</th>
                   <td class="govuk-table__cell"><a href="/errors/error-index">Variable direct debit errors</a><br></td>
                 </tr>
-                <tr class="govuk-table__row">
+                <!-- <tr class="govuk-table__row">
                   <th scope="row" class="govuk-table__header">Fees</th>
                   <td class="govuk-table__cell"><a href="setup/app-start.html">Start new application</a><br></td>
-                </tr>
-                <tr class="govuk-table__row">
+                </tr> -->
+                <!-- <tr class="govuk-table__row">
                   <th scope="row" class="govuk-table__header">Feedback</th>
                   <td class="govuk-table__cell"><a href="/save-resume/save-confirmation-feedback">Application saved</a><br></td>
-                </tr>
-                <tr class="govuk-table__row">
+                </tr> -->
+                <!-- <tr class="govuk-table__row">
                   <th scope="row" class="govuk-table__header">Onboarding</th>
                   <td class="govuk-table__cell"><a href="/setup/landing">Landing page</a><br></td>
-                </tr>
+                </tr> -->
             </tbody>
 
           </table>
@@ -116,12 +129,17 @@
 
 
           <div class="govuk-grid-column-full govuk-!-margin-top-6">
-                    <h2 class="govuk-heading-l" id="version-history">Updates</h2>
+                    <h3 class="govuk-heading-s" id="version-history">Version history</h3>
                   <div class="govuk-tabs" data-module="govuk-tabs">
                       <h2 class="govuk-tabs__title">
                         Contents
                       </h2>
                       <ul class="govuk-tabs__list">
+                        <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                          <a class="govuk-tabs__tab" href="#december">
+                            December 2020
+                          </a>
+                        </li>
                         <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
                           <a class="govuk-tabs__tab" href="#sprint26">
                             Sprint 26
@@ -230,7 +248,19 @@
                         <ul class="govuk-list govuk-list--bullet">
                         <li><a class="govuk-link" href="/transactions/calculate-fees">VAT entry, charge amount</li>
                             <li><a class="govuk-link" href="/Sprint-26/consideration/transfer-consideration-v3">Select consideration options</li>
-                              <li><a class="govuk-link" href="/transactions/transfer/transfer-download">Rendered TR1</li>
+                              <li><a class="govuk-link" href="/transactions/transfer/transfer-download">Rendered TR1</a></li>
+                        </ul>
+                      </div>
+
+                      <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="december">
+                        <span class="govuk-caption-m">December 2020</span>
+                        <h2 class="govuk-heading-m">Sprint 30+</h2>
+
+                        <p class="govuk-body"> This sprint, user research will investigate:</p>
+                        <ul class="govuk-list govuk-list--bullet">
+                        <li><a class="govuk-body">Assents</li>
+                            <li><a class="govuk-body">Power of attorney</li>
+
                         </ul>
                       </div>
 
