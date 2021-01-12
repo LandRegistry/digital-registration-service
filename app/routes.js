@@ -491,7 +491,7 @@ router.get('/docs/examples/pass-data/charge', function (req, res) {
     "applicant2-individual-surname-2": "Smith",
     "transferor-individual-forename": "Bob",
     "transferor-individual-surname": "Vance",
-    "transferor1": "Bob Vance",
+    "transferor1": "Spencer Reid",
     "Transaction1": "Discharge",
     "Transaction2": "Transfer for value (TR1)",
     "Transaction3": "Charge",
@@ -631,7 +631,7 @@ router.get('/docs/examples/pass-data/task-list', function (req, res) {
   "Transaction3": "Select a transaction from the list",
   "fee3": "",
   "Price3": "",
-  "transferor1": "Bob Vance",
+  "transferor1": "Spencer Reid",
   "add-applicant": "individual",
   "applicant-individual-forename": "John",
   "applicant-individual-surname": "Smith",
@@ -672,7 +672,7 @@ router.get('/docs/examples/pass-data/task-list', function (req, res) {
   "applicant2-individual-surname-2": "Smith",
   "applicant-company-name-2": "",
   "applicant-company-number-2": "",
-  "transferor1": "Bob Vance"
+  "transferor1": "Spencer Reid"
 }
   res.redirect('/../transactions/tasks')
 })
@@ -697,7 +697,7 @@ router.get('/docs/examples/pass-data/TC', function (req, res) {
     "applicant-individual-surname": "Smith",
     "applicant2-individual-forename-2": "Jane",
     "applicant2-individual-surname-2": "Smith",
-      "transferor1": "Bob Vance",
+      "transferor1": "Spencer Reid",
     "Transaction1": "Transfer for value (TR1)",
     "Transaction2": "Charge",
     "Transaction3": "",
@@ -726,7 +726,7 @@ router.get('/testing/addresses', function (req, res) {
     "applicant-individual-surname": "Smith",
     "applicant2-individual-forename-2": "Jane",
     "applicant2-individual-surname-2": "Smith",
-      "transferor1": "Bob Vance",
+      "transferor1": "Spencer Reid",
     "Transaction1": "Transfer for value (TR1)",
     "Transaction2": "Charge",
     "Transaction3": "",
@@ -822,9 +822,9 @@ router.post('/transactions/charge-transactions', function (req, res) {
             //Assent
             if (transaction1 === 'Assent') {
               req.session.data['Transaction'] = 'ASSENT';
-  
+
               res.redirect('/transactions/calculate-fees')
-        } 
+        }
 })
 
 // Using the transaction type to go to a task list
@@ -841,9 +841,9 @@ router.post('/transactions/which-task-list', function (req, res) {
       } if (transaction === 'DT') {
           res.redirect('/transactions/tasks')
       } if (transaction === 'TC') {
-          res.redirect('/transactions/charge/TC-tasks') 
+          res.redirect('/transactions/charge/TC-tasks')
       } if (transaction === 'ASSENT') {
-          res.redirect('/transactions/assent/tasks') 
+          res.redirect('/transactions/assent/tasks')
       }
     })
 
@@ -965,7 +965,7 @@ router.post('/transactions/transfer/transferee-representation-confirmed', functi
     } if (transaction === 'TC') {
         req.session.data['transfereerep'] = 'true';
         res.redirect('/transactions/charge/TC-tasks')
-    } 
+    }
 })
 
   // address
@@ -1154,12 +1154,12 @@ router.post('/transactions/transfer/downloaded', function (req, res) {
         res.redirect('/transactions/tasks')
     } if (transaction === 'TC') {
         req.session.data['download'] = 'true';
-        res.redirect('/transactions/charge/TC-tasks') 
+        res.redirect('/transactions/charge/TC-tasks')
     } if (transaction === 'ASSENT') {
         req.session.data['download'] = 'true';
-        res.redirect('/transactions/assent/tasks')  
+        res.redirect('/transactions/assent/tasks')
       }
-        
+
 })
 
 // transfer title guarantee
@@ -1329,7 +1329,7 @@ router.post('/transferee-list-complete', function (req, res) {
   } if (transaction === 'TC') {
       req.session.data['transfereelistcomplete'] = 'true';
       res.redirect('/transactions/charge/TC-tasks')
-  } 
+  }
 })
 
 router.post('/transactions/transfer/transferee-whichapplicants-answer', function (req, res){
@@ -1613,7 +1613,7 @@ router.post('/transactions/assent/transferee-list-complete', function (req, res)
 router.post('/transactions/assent/transferee-representation-confirmed', function (req, res) {
   req.session.data['applicant-individual-forename'];
   res.redirect('/transactions/assent/transfereeAddressList')
-  })  
+  })
 
 //Assent: transferee address playback
 router.post('/transactions/assent/transferee-address-answer', function (req, res) {
@@ -1643,7 +1643,7 @@ router.post('/transactions/assent/transferee-address-answer', function (req, res
             res.redirect('/transactions/charge-without-transfer/address-for-service/lender-BFPO')
           }
 
-})  
+})
 
 // Is the user a conveyancer?
 router.post('/setup/user-type-answer', function (req, res) {

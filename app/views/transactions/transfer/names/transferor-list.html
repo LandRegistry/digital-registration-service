@@ -78,7 +78,7 @@
                         <p> {{ data['nameChange'] }} amended from {{ data['transferor1'] }}</p>
 
                         {% elif (data['Transferor1Status'] !== 'removed') or (data['Transferor1Status'] !== 'amended') %}
-                        <p>Bob Vance</p>
+                        <p>Spencer Reid</p>
 
                         {% endif %}
 
@@ -107,7 +107,7 @@
                         <p> {{ data['nameChange'] }} amended from {{ data['transferor1'] }}</p>
 
                         {% elif (data['Transferor2Status'] !== 'removed') or (data['Transferor1Status'] !== 'amended') %}
-                        <p>Phyllis Vance</p>
+                        <p>Mary Reid</p>
 
                         {% endif %}
 
@@ -144,14 +144,15 @@
 <br>
         <div>
         <h2 class="govuk-heading-m"> Power of attorney (optional) </h2>
+        <br>
         {% if data['attorney1'] %}
 
         <table class="govuk-table">
         <thead class="govuk-table__head">
         <tr class="govuk-table__row">
           <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Donor</th>
-          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Attorney(s)</th>
-          <th scope="col" class="govuk-table__header govuk-!-width-one-eighth">Options</th>
+          <th scope="col" class="govuk-table__header govuk-!-width-one-half">Attorney(s)</th>
+          <th scope="col" class="govuk-table__header govuk-!-width-two-thirds">Options</th>
         </tr>
         </thead>
 
@@ -159,30 +160,31 @@
                 {% if data['Donor1'] %}
                 <tr class="govuk-table__row">
 
-                  <td class="govuk-table__cell">Bob Vance</td>
+                  <td class="govuk-table__cell">Spencer Reid</td>
 
                   <td class="govuk-table__cell">
 
                     {{ data['attorney1'] }}<br>
-                    {% if data['Donor1b'] %}
+                    {% if data['Donor1b'] %}<br><br>
                     {{ data['attorney2'] }}
                     {% endif %}
 
                   </td>
 
-                  <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="/transactions/transfer/transferor-change-POA">Change</a> <a class="govuk-link--no-visited-state" href="#">Remove</a>
-                    <br>{% if data['Donor2b'] %}<a class="govuk-link--no-visited-state" href="#">Change</a> <a class="govuk-link--no-visited-state" href="#">Remove</a>{% endif %}</td>
+                  <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="/transactions/transfer/transferor-POA-3-removed#heading1">Change</a><br> <a class="govuk-link--no-visited-state" href="#">Remove</a>
+                    <br><br>{% if data['Donor2b'] %}<a class="govuk-link--no-visited-state" href="/transactions/transfer/transferor-POA-3-removed#heading2">Change</a><br> <a class="govuk-link--no-visited-state" href="#">Remove</a>{% endif %}</td>
 
                 </tr>
                 {% endif %}
+
                   {% if data['Donor2'] %}
                 <tr class="govuk-table__row">
 
-                  <td class="govuk-table__cell">Phyllis Vance</td>
+                  <td class="govuk-table__cell">Mary Reid</td>
 
                   <td class="govuk-table__cell">
 
-                    {{ data['attorney1'] }}<br>
+                    {{ data['attorney1'] }}<br><br><br>
 
                     {% if data['Donor2b'] %}
                     {{ data['attorney2'] }}
@@ -190,8 +192,8 @@
 
                   </td>
 
-                  <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="#">Change</a> <a class="govuk-link--no-visited-state" href="#">Remove</a>
-                    <br>{% if data['Donor2b'] %}<a class="govuk-link--no-visited-state" href="#">Change</a> <a class="govuk-link--no-visited-state" href="#">Remove</a>{% endif %}</td>
+                  <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="/transactions/transfer/transferor-POA-3-removed#heading1">Change</a> <br><a class="govuk-link--no-visited-state" href="#">Remove</a><br>
+                    <br>{% if data['Donor2b'] %}<a class="govuk-link--no-visited-state" href="/transactions/transfer/transferor-POA-3-removed#heading2">Change</a> <br><a class="govuk-link--no-visited-state" href="#">Remove</a>{% endif %}</td>
 
                 </tr>
                 {% endif %}

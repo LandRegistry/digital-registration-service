@@ -47,35 +47,69 @@
     </div>
 
 <form method="post" action="names/transferor-list">
-
     <div class="govuk-grid-column-two-thirds">
-    <button onclick="goBack()" class="back-link govuk-body">◄ Back</button>
+      <button onclick="goBack()" class="back-link govuk-body">◄ Back</button>
         <span class="govuk-caption-l"></span>
         <h1 class="govuk-heading-xl">Add an attorney</h1>
 
 
 
 
-          <div class="govuk-form-group">
+            <div class="govuk-form-group">
+              <h3 class="govuk-heading-l">Attorney</h3>
 
-            <h3 class="govuk-heading-l">Attorney</h3>
-              <div class="govuk-form-group">
-                <label class="govuk-label" style="font-weight: bold">Full name</label>
-                <input class="govuk-input govuk-input--width-20" id="attorney1" name="attorney1" type="text" value="{{ data['attorney1']}}">
+              <label class="govuk-label" style="font-weight: bold">Full name</label>
+              <input class="govuk-input govuk-input--width-20" id="attorney1" name="attorney1" value="Adam Brown" type="text">
+            </div>
+
+          <h2 class="govuk-heading-s">Select the donor(s)</h2>
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <div class="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="transferordonor1" name="Donor1" type="checkbox" checked>
+                  <label class="govuk-label govuk-checkboxes__label" for="bob">
+                    Spencer Reid
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="transferordonor2" type="checkbox" name="Donor2" checked>
+                  <label class="govuk-label govuk-checkboxes__label" for="phyllis">
+                    Mary Reid
+                  </label>
+                </div>
               </div>
+            </fieldset>
+          </div>
+          <br>
+          </div>
+
+          <div class="govuk-grid-column-two-thirds">
+          <h3 class="govuk-heading-l">Attorney</h3>
+          </div>
+          <div class="govuk-grid-column-one-third">
+          <a class="govuk-link govuk-link--no-visited-state" style="margin-left: 250px;" href="transferor-POA-removed">Remove</a>
+          </div>
+          <div class="govuk-grid-column-two-thirds">
+
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" style="font-weight: bold">Full name</label>
+              <input class="govuk-input govuk-input--width-20" id="attorney2" name="attorney2" type="text" value="Alice Brown">
+            </div>
 
             <h2 class="govuk-heading-s">Select the donor(s)</h2>
             <div class="govuk-form-group">
               <fieldset class="govuk-fieldset">
                 <div class="govuk-checkboxes">
                   <div class="govuk-checkboxes__item">
-                    <input class="govuk-checkboxes__input" id="transferordonor1" name="Donor1" type="checkbox">
+                    <input class="govuk-checkboxes__input" id="transferordonor1b" name="Donor1b" type="checkbox" checked>
                     <label class="govuk-label govuk-checkboxes__label" for="bob">
                       Spencer Reid
                     </label>
                   </div>
                   <div class="govuk-checkboxes__item">
-                    <input class="govuk-checkboxes__input" id="transferordonor2" type="checkbox" name="Donor2">
+                    <input class="govuk-checkboxes__input" id="transferordonor2b" type="checkbox" name="Donor2b" checked>
                     <label class="govuk-label govuk-checkboxes__label" for="phyllis">
                       Mary Reid
                     </label>
@@ -86,25 +120,55 @@
             <br>
             </div>
 
+
+            <div class="govuk-grid-column-two-thirds">
+            <h3 class="govuk-heading-l">Attorney</h3>
+            </div>
+            <div class="govuk-grid-column-one-third">
+            <a class="govuk-link govuk-link--no-visited-state" style="margin-left: 250px;" href="transferor-POA-3-removed">Remove</a>
+            </div>
+            <div class="govuk-grid-column-two-thirds">
+
+
+              <div class="govuk-form-group">
+                <label class="govuk-label" style="font-weight: bold">Full name</label>
+                <input class="govuk-input govuk-input--width-20" id="attorney2" name="attorney2" type="text">
+              </div>
+
+              <h2 class="govuk-heading-s">Select the donor(s)</h2>
+              <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                  <div class="govuk-checkboxes">
+                    <div class="govuk-checkboxes__item">
+                      <input class="govuk-checkboxes__input" id="transferordonor1b" name="Donor1b" type="checkbox" >
+                      <label class="govuk-label govuk-checkboxes__label" for="bob">
+                        Spencer Reid
+                      </label>
+                    </div>
+                    <div class="govuk-checkboxes__item">
+                      <input class="govuk-checkboxes__input" id="transferordonor2b" type="checkbox" name="Donor2b" >
+                      <label class="govuk-label govuk-checkboxes__label" for="phyllis">
+                        Mary Reid
+                      </label>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+
             <br><br>
 
-            </div>
+          </div>
 
+          <div class="govuk-grid-column-full">
+            <a class="govuk-button govuk-button--secondary" data-module="govuk-button" href="transferor-POA-3">
+            Add another attorney
+            </a>
 
-
-            <div class="govuk-grid-column-full">
-              <a class="govuk-button govuk-button--secondary" data-module="govuk-button" href="transferor-POA-2">
-              Add another attorney
-              </a>
-
-
-              <br><br>
-            <div class="govuk-!-width-full govuk-warning-text" style="margin-top: -50px;">
+            <div class="govuk-warning-text" style="margin-top: -50px;">
               <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
               <strong class="govuk-warning-text__text" style="margin-top: 50px;">
                 <span class="govuk-warning-text__assistive">Warning</span>
                 Naming errors lead to requisitions. By selecting ‘Continue’ you confirm names are correct.
-
               </strong>
             </div>
 
