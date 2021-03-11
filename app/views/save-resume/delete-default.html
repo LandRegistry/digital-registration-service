@@ -77,18 +77,23 @@
           </tbody>
 
       </table>
-      </div>
+
+      // If text is removed above, uncomment this text so the warning remains.
+  <!--  <div class="govuk-heading-s">
+        <b>
+          By selecting ‘Delete’ you will remove the application from the service.  
+        </b>
+      </div> -->
+
       <div class="govuk-grid-column-one-quarter" style="display: flex; align-items: center;">
-
-      <br>
-      {{ govukButton({
-        text: "Delete",
-        href: "saved-applications",
-        classes: "govuk-button--warning"
-      }) }}
-
-      <a href="saved-applications" style="padding-bottom: 20px; padding-left: 20px;">Cancel</a>
-    </div>
+        <br>
+        {{ govukButton({
+          text: "Delete",
+          href: "saved-applications",
+          classes: "govuk-button--warning"
+        }) }}
+        <a href="saved-applications" style="padding-bottom: 20px; padding-left: 20px;">Cancel</a>
+      </div>
 
 </div>
 </form>
