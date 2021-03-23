@@ -54,11 +54,6 @@
 
           <p class="govuk-body">If you change an applicant's name or other information, you must reconfirm any representation or address for service details you have added.</p>
 
-
-            {{ govukInsetText({
-            text: "Names entered here must match those in supporting documents. If the names don’t match, you must attach evidence of a name change."
-          }) }}
-
           <form method="get" action="applicants-list" novalidate>
             <div class="govuk-form-group">
               <fieldset class="govuk-fieldset" aria-describedby="add-applicant-conditional-hint">
@@ -172,7 +167,11 @@
                 </fieldset>
                 </div>
 
-
+                <div class="govuk-heading-s">
+                  <b>
+                    By selecting ‘Continue’ you confirm the details provided are correct and consistent with supporting documents.  
+                  </b>
+                </div>
 
 
   {{ govukButton({
