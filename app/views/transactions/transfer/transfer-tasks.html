@@ -53,12 +53,12 @@
         <p class="govuk-body-m">Provide all details and the documents you want to attach.</p>
 
 
-    <table class="govuk-table">
+    <table class="govuk-table govuk-!-width-full govuk-!-margin-bottom-9">
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
           <th scope="col" class="govuk-table__header">Your reference</th>
           <td scope="col" class="govuk-table__cell">{{ data['reference'] }}</td>
-          <td scope="col" class="govuk-table__cell"><a style="float: right;" href="/setup/change-reference">Change</a></td>
+        <!--  <td scope="col" class="govuk-table__cell"><a style="float: right;" href="/setup/change-reference">Change</a></td> -->
         </tr>
       </thead>
 
@@ -75,7 +75,6 @@
       </tbody>
     </table>
 </div>
-
 
 
     <h2 class="govuk-heading-m govuk-!-padding-top-5">1. Transfer for value (TR1)</h2>
@@ -198,28 +197,23 @@
     {% endif %}
 
 
+        <div class="govuk-button-group govuk-!-margin-bottom-6">
 
+          {{ govukButton({
+              text: "Review application",
+              classes: "govuk-!-margin-top-4",
+              href: "/../transactions/multi-application-review"
+            }) }}
 
-    <div style="margin-top: 75px;">
+            {{ govukButton({
+              text: "Save application and exit",
+              classes: "secondary-button-save govuk-!-margin-top-4",
+              href: "/../save-resume/save-confirmation"
+            }) }}
 
-
-    {{ govukButton({
-        text: "Review application",
-        classes: "govuk-!-margin-top-9",
-        href: "/../transactions/multi-application-review"
-      }) }}
-
-
-      {{ govukButton({
-        text: "Save application and exit",
-        classes: "secondary-button-save govuk-!-margin-top-9",
-        href: "/../save-resume/save-confirmation"
-      }) }}
-
-
-      {{ govukInsetText({
-          text: "To avoid requisitions, attach all relevant documents."
-        }) }}
+          <!--  {{ govukInsetText({
+                text: "To avoid requisitions, attach all relevant documents."
+              }) }} -->
 
         </div>
 
