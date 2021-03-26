@@ -34,19 +34,18 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds govuk-!-margin-top-5">
       <h1 class="govuk-heading-l">
-        Are you sure you want to delete this draft?
+        Are you sure you want to delete this saved application?
       </h1>
-    <h2 class="govuk-body-l">
-      This will clear delete the following draft application:</h2>
       </div>
       <div class="govuk-grid-column-full">
       <table class="govuk-table">
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header ">Your reference</th>
-            <th scope="col" class="govuk-table__header">Title number</th>
-            <th scope="col" class="govuk-table__header">Applicants</th>
-            <th scope="col" class="govuk-table__header">Created</th>
+            <th scope="col" class="govuk-table__header ">Reference</th>
+            <th scope="col" class="govuk-table__header">Title</th>
+            <th scope="col" class="govuk-table__header govuk-!-width-two-thirds">Property</th>
+            <th scope="col" class="govuk-table__header govuk-!-width-one-half">Applicants</th>
+            <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Created</th>
           </tr>
         </thead>
 
@@ -55,7 +54,8 @@
             {% if data['reference'] %}
             <tr class="govuk-table_row" id="">
             <td class="govuk-table__cell">{{ data['reference'] }}</td>
-            <td class="govuk-table__cell govuk-!-width-one-quarter">{{ data['title'] }}</td>
+            <td class="govuk-table__cell">{{ data['title'] }}</td>
+            <td class="govuk-table__cell">{{ data['property-description'] }}</td>
             <td class="govuk-table__cell">
                 {{ data['applicant-individual-forename'] }} {{ data['applicant-individual-surname'] }}<br>
                 {{ data['applicant-individual-forename-2'] }} {{ data['applicant-individual-surname-2'] }}<br>
