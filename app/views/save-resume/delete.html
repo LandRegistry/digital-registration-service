@@ -1,34 +1,7 @@
-
-{% extends "layout_unbranded.html" %}
-
-{% block pageTitle %}
-  Clear data? - GOV.UK Prototype Kit
-{% endblock %}
-
-{% block beforeContent %}
-<br>
-<br>
-<a href="javascript: window.history.go(-1)"> Back </a>
-
-{% endblock %}
+{% include "includes/header.html" %}
 
 {% block content %}
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-full" id="headerdiv">
-    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
-
-    <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
-
-
-  <div class="govuk-phase-banner">
-      <p class="govuk-phase-banner__content">
-      <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
-      <span class="govuk-phase-banner__text">
-      This is a prototype and not a real service.
-      </span></p>
-  </div>
-  </div>
-</div>
+<main class="govuk-main-wrapper " id="main-content" role="main">
 
 <form method="post">
   <div class="govuk-grid-row">
@@ -82,17 +55,8 @@
     </div>
 </div>
 </form>
-<footer>
-<div class="govuk-grid-row">
-<div class="govuk-grid-column-full">
-<hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
-<br>
-<p class="govuk-body-s" style="color: #747B7F"> The following links open in a new window
-<br>
-<br>
-<a href="#" style="color: #747B7F"> Terms and conditions</a> | <a href="/setup/accessibility-statement" target="_blank" rel="noopener noreferrer" style="color: #747B7F">Accessibility statement</a> |  <a href="#" style="color: #747B7F">Freedom of information</a> | <a href="#" style="color: #747B7F">© Crown copyright</a></p>
-</div>
-</div>
-</footer>
+
+</main>
 
 {% endblock %}
+{% include "includes/footer.html" %}
