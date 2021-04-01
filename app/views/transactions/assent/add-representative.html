@@ -7,8 +7,8 @@
 {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 
 {% block content %}
-
-<div>
+<main class="govuk-main-wrapper " id="main-content" role="main">
+<div class="navigation">
   <a href="/transactions/assent/tasks" class="govuk-back-link return-to-task-list">Return to task list</a>
 </div>
 
@@ -596,7 +596,7 @@
     href: "tasks"
   }) }}
 </form>
-
+</main>
 <script type="application/json" id="representation-form-validation">
  {
    "add-representative": {
