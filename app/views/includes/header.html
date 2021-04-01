@@ -3,8 +3,6 @@
 {#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
 {%- set assetPath = '/govuk/assets' -%}
 
-
-
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/input/macro.njk" import govukInput %}
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
@@ -18,6 +16,8 @@
 <!DOCTYPE html>
 <!--[if lt IE 9]><html class="lte-ie8 unbranded" lang="{{ html_lang|default('en') }}"><![endif]-->
 <!--[if gt IE 8]><!--><html class="unbranded" lang="{{ html_lang|default('en') }}"><!--<![endif]-->
+
+{% block head %}
   <head>
     <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -27,24 +27,20 @@
   })(window,document,'script','dataLayer','GTM-MLP5SFP');</script>
   <!-- End Google Tag Manager -->
 
-
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ pageTitle.title }}</title>
-  <link href="{{ asset_path }}stylesheets/unbranded.css" media="screen" rel="stylesheet" />
-
-
-    {% block head %}{% endblock %}
+    <title>Digital Registration Service</title>
+    <link href="{{ asset_path }}stylesheets/unbranded.css" media="screen" rel="stylesheet" />
   </head>
+    {% endblock %}
 
-  <body class="govuk-main-wrapper govuk-width-container {% block body_classes %}{% endblock %}">
+  <body class="govuk-main-wrapper govuk-width-container govuk-template__body {% block body_classes %}{% endblock %}">
 
     <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MLP5SFP"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MLP5SFP"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <!-- End Google Tag Manager (noscript) -->
 
-  
     <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
 
     {% block body_start %}{% endblock %}
@@ -81,8 +77,6 @@
           </div>
         </div>
       </div>
-
-
     </header>
     <!--end header-->
 
