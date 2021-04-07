@@ -46,25 +46,26 @@
     </div>
     </div>
 
-<div class="govuk-grid-column-two-thirds">
+<div class="govuk-grid-column-full-width">
   <form method="post" action="/discharge-checklist-true">
   <span class="govuk-caption-l">Discharge of charge</span>
-  <h1 class="govuk-heading-l">Attachment checklist</h1>
+  <h1 class="govuk-heading-l">Attachment checks</h1>
+  <p class="govuk-body">Make the following checks where relevant before attaching documents.
+    <br>Tick all that apply. </p>
 
         {{ govukCheckboxes({
         idPrefix: "checklist",
         name: "discharge-checklist",
-        hint: {
-          text: "Before attaching documents confirm you have made the following checks (where relevant) to avoid requisitions."
-        },
+
+
         items: [
           {
             value: "1",
-            text: "Names you input are consistent with how they appear in deeds and on the register"
+            text: "Names are consistent with how they appear in deeds and on the register"
           },
           {
             value: "2",
-            text: "Naming inconsistencies are explained by the appropriate documentation"
+            text: "Naming inconsistencies are explained in supporting documents"
           },
           {
             value: "3",

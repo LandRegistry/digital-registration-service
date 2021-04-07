@@ -61,11 +61,7 @@
     <p class="govuk-body">
       You can enter a BFPO address as an address for service. But we ask that, if possible, you provide a 'care of' address instead using the <a href="#"> UK postal address</a> option.
       <br><br>
-      This is because BFPO addresses:
-      <br>
-      • help to identify members of the armed forces
-      <br>
-      • tend to change often
+      This is because BFPO addresses tend to change often and can be used to identify members of the armed forces. </p>
 
 
 
@@ -104,10 +100,6 @@
       }
     }) }}
 
-
-
-  <h3 class="govuk-heading-m">More actions</h3>
-
   {{ govukInput({
     label: {
       html: 'Add c/o name (optional)'
@@ -119,18 +111,6 @@
     }
   }) }}
 
-  {% if data['applicant2-individual-forename-2'] %}
-  <p class="govuk-body">Add this address to the following transferees: (optional)</p>
-
-  <div class="govuk-checkboxes">
-      <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="applicant2-address1" name="applicant2address" type="checkbox" value="true">
-        <label class="govuk-label govuk-checkboxes__label" for="applicant2address">
-          {{ data['applicant2-individual-forename-2'] }} {{ data['applicant2-individual-surname-2'] }}
-        </label>
-        {% endif %}
-        </div>
-    </div>
     <br>
 
 
