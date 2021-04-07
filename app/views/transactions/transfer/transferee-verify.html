@@ -46,20 +46,20 @@
     </div>
     </div>
 
-<div class="govuk-grid-column-two-thirds">
+<div class="govuk-grid-column-full">
   <form method="post">
     <span class="govuk-caption-l">Transfer for value (TR1)</span>
     <h1 class="govuk-heading-l">Verify identity</h1>
-    <p class="govuk-body-m">When a party is not represented by a conveyancer, you must provide evidence of their identify or confirm that evidence is not required.</p>
-    <p><a href="#">Practice 67</a> (link opens in a new window) tells you when you need to include evidence of identity.</p>
+
     <h2 class="govuk-heading-m">Declaration</h2>
     <p>John Smith is not represented by a conveyancer.</p>
 
     <h3 class="govuk-heading-m">Select the correct statement:</h3>
 
-    
+
     <div class="govuk-form-group">
   <fieldset class="govuk-fieldset">
+      <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
 
     <div class="govuk-radios">
       {% if data['user-type'] === 'conveyancer' %}
@@ -71,20 +71,35 @@
       </div>
       {% endif %}
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="verify-transferor-1" name="verify-transferor" type="radio" value="evidence">
+        <input class="govuk-radios__input" id="verify-transferor-2" name="verify-transferor" type="radio" value="evidence" data-aria-controls="Verify-1-hint">
         <label class="govuk-label govuk-radios__label" for="verify-transferor-2">
-          I'll attach evidence of identity with this application
+          I will attach evidence of their identity with this application
         </label>
       </div>
+
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="Verify-1-hint">
+        <div class="govuk-hint govuk-!-width-full">
+          See <a href="#">Practice Guide 67</a> (link opens in a new window) for information about providing proof of identity.
+  </div>
+  </div>
+
+   <div class="govuk-radios__divider">or</div>
 
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="verify-transferor-2" name="verify-transferor" type="radio" value="evidence">
-        <label class="govuk-label govuk-radios__label" for="verify-transferor-2">
-          I do not need to provide evidence of identity for this application
+        <input class="govuk-radios__input" id="verify-transferor-3" name="verify-transferor" type="radio" value="evidence" data-aria-controls="Verify-2-hint">
+        <label class="govuk-label govuk-radios__label" for="verify-transferor-3">
+          I do not need to provide evidence of their identity
         </label>
       </div>
 
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="Verify-2-hint">
+        <div class="govuk-hint govuk-!-width-full">
+          See <a href="#">Practice Guide 67</a> (link opens in a new window) for details of when you do not need to prove their identity.
+  </div>
+  </div>
 
+
+    </div>
     </div>
   </fieldset>
 </div>

@@ -50,7 +50,6 @@
     <div class="govuk-grid-column-full">
       <span class="govuk-caption-l"></span>
         <h1 class="govuk-heading-l">Complete your application</h1>
-        <p class="govuk-body-m">Provide all details and the documents you want to attach.</p>
 
 
     <table class="govuk-table govuk-!-width-full govuk-!-margin-bottom-9">
@@ -78,6 +77,7 @@
 
 
     <h2 class="govuk-heading-m govuk-!-padding-top-5">1. Transfer for value (TR1)</h2>
+            <p class="govuk-body-m">Provide all details and the documents you want to attach.</p>
     </div>
     <div class="govuk-grid-column-full" style="margin-left: 25px; width: 97%;">
 
@@ -195,6 +195,12 @@
     <p class="govuk-body"> PDF - opens in a new window</p><br><br>
     </div>
     {% endif %}
+
+    {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+{{ govukInsetText({
+  text: "To avoid requisitions, attach all relevant documents."
+}) }}
 
 
         <div class="govuk-button-group govuk-!-margin-bottom-6">
