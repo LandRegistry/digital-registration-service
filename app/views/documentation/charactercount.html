@@ -57,8 +57,8 @@
         <h3 class="govuk-heading-m">Patterns</h3>
         <ul class="govuk-list">
         <li><a class="govuk-link  govuk-link--no-visited-state" href="AFS">Address for service</a></li>
-        <li><a class="govuk-link design-guide-selected govuk-link--no-visited-state" href="backlinks">Back links</a></li>
-        <li><a class="govuk-link  govuk-link--no-visited-state" href="charactercount">Character count</a></li>
+        <li><a class="govuk-link  govuk-link--no-visited-state" href="backlinks">Back links</a></li>
+        <li><a class="govuk-link design-guide-selected govuk-link--no-visited-state" href="charactercount">Character count</a></li>
         <li><a class="govuk-link  govuk-link--no-visited-state" href="checkbox">Checkboxes</a></li>
         <li><a class="govuk-link  govuk-link--no-visited-state" href="details">Details</a></li>
         <li><a class="govuk-link  govuk-link--no-visited-state" href="discharge-methods">Discharge methods</a></li>
@@ -77,12 +77,19 @@
 
 
        <div class="govuk-grid-column-two-thirds">
-        <h2 class="govuk-heading-l"> Back links </h2>
+        <h2 class="govuk-heading-l"> Character count </h2>
 
         <!-- <h3 class="govuk-heading-m">Section title</h3> -->
-        <p class="govuk-body">Back links are currently being updated as part of <a href="https://hmlandregistry.atlassian.net/browse/DRS-167">DRS-167</a>- documentation to be updated.</p>
-        <a class="govuk-link" href="#"> Link to documentation </a>
-          <!-- <img src="/public/images/declaration-screenshot.png" alt="declaration" style="width: 99%"> -->
+        <p class="govuk-body"><a href="https://design-system.service.gov.uk/components/character-count/">Character counts</a> are used in the service where an input has a limit which could regularly be exceeded by the user.
+          <br><br>The service currently only allows user references of 25 characters or fewer - this is due to database and legacy systems.
+          <br><br>
+          We've previously used character count on large text fields, however, due to an update to the GDS toolkit, we can no longer use the character count component on multi-line text fields.</p>
+
+          <h3 class="govuk-heading-m">User research</h3>
+          <p class="govuk-body">During the design process early in the project, testing was done and 25 characters was found to be a reasonable reference limit for users. Since implementing, there has been no feedback from users to suggest this limit needs to be raised.</p>
+
+          <h3 class="govuk-heading-m">Screenshot</h3>
+          <img src="/public/images/character.gif" alt="declaration" style="width: 99%">
 
 
 
