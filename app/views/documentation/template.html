@@ -1,0 +1,118 @@
+
+{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
+{%- set assetPath = '/govuk/assets' -%}
+
+{% extends "govuk/template.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
+{% from "govuk/components/tabs/macro.njk" import govukTabs %}
+
+
+
+
+{% block headIcons %}
+  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
+  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
+{% endblock %}
+
+{% block head %}
+  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+
+
+{% block pageTitle %}
+  DRS prototype
+{% endblock %}
+
+{% block header %}
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper">
+     <div class="govuk-grid-row">
+
+       <div class="govuk-grid-column-full-width">
+          <h1 class="govuk-heading-xl govuk-!-margin-top-6"> Design guide </h1>
+          <p class="govuk-body">Intro about following GDS guidance and LR content library. Link to HMLR design system spreadsheet.
+            <br>
+          Last updated: April 2021</p>
+        </div>
+
+        <br><br>
+        <hr>
+        <br><br>
+
+       <div class="govuk-grid-column-one-third" >
+        <h3 class="govuk-heading-m">Content</h3>
+        <ul class="govuk-list">
+          <li><a class="govuk-link design-guide-selected govuk-link--no-visited-state" href="covid">Covid-19</a></li>
+          <li><a class="govuk-link  govuk-link--no-visited-state" href="declaration">Declaration</a></li>
+          <li><a class="govuk-link  govuk-link--no-visited-state" href="links">Links</a></li>
+        </ul>
+
+        <h3 class="govuk-heading-m">Patterns</h3>
+        <ul class="govuk-list">
+        <li><a class="govuk-link  govuk-link--no-visited-state" href="AFS">Address for service</a></li>
+        <li><a class="govuk-link  govuk-link--no-visited-state" href="backlinks">Back links</a></li>
+        <li><a class="govuk-link  govuk-link--no-visited-state" href="charactercount">Character count</a></li>
+        <li><a class="govuk-link  govuk-link--no-visited-state" href="checkbox">Checkboxes</a></li>
+        <li><a class="govuk-link  govuk-link--no-visited-state" href="details">Details</a></li>
+        <li><a class="govuk-link  govuk-link--no-visited-state" href="discharge-methods">Discharge methods</a></li>
+
+        <li><a class="govuk-link  govuk-link--no-visited-state" href="file-downloads">File downloads</a></li>
+        <li><a class="govuk-link  govuk-link--no-visited-state" href="service-errors">Service status errors</a></li>
+
+        </ul>
+
+        <h3 class="govuk-heading-m">Styling</h3>
+        <ul class="govuk-list">
+        <li><a class="govuk-link  govuk-link--no-visited-state" href="header">Header</a></li>
+        <li><a class="govuk-link  govuk-link--no-visited-state" href="footer">Footer</a></li>
+        </ul>
+      </div>
+
+
+       <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-l"> Item title </h2>
+
+        <h3 class="govuk-heading-m">Section title</h3>
+        <p class="govuk-body">Item description</p>
+        <a class="govuk-link" href="#"> Link to documentation </a>
+          <img src="/public/images/declaration-screenshot.png" alt="declaration" style="width: 99%">
+
+
+
+
+
+            </div>
+          </main>
+
+          <div class="app-back-to-top app-back-to-top--fixed" data-module="app-back-to-top">
+            <a class="govuk-link govuk-link--no-visited-state app-back-to-top__link" href="#top">
+            <svg role="presentation" focusable="false" class="app-back-to-top__icon" xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">
+            <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"></path></svg> Back to top</a>
+          </div>
+
+      </div>
+
+
+<style>
+  .sidebar {
+  border-left: 3px solid navy;
+  height: 1100px;
+}
+
+  .headerpanel {
+  border: solid navy;
+  }
+</style>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}
