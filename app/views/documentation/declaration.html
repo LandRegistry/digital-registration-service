@@ -1,0 +1,169 @@
+
+{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
+{%- set assetPath = '/govuk/assets' -%}
+
+{% extends "govuk/template.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
+{% from "govuk/components/tabs/macro.njk" import govukTabs %}
+
+
+
+
+{% block headIcons %}
+  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
+  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
+{% endblock %}
+
+{% block head %}
+  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+
+
+{% block pageTitle %}
+  DRS prototype
+{% endblock %}
+
+{% block header %}
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper">
+     <div class="govuk-grid-row">
+
+       <div class="govuk-grid-column-full-width">
+          <h1 class="govuk-heading-xl govuk-!-margin-top-6"> Design guide </h1>
+          <p class="govuk-body">Intro about following GDS guidance and LR content library. Link to HMLR design system spreadsheet.
+            <br>
+          Last updated: April 2021</p>
+        </div>
+
+        <br><br>
+        <hr>
+        <br><br>
+
+       <div class="govuk-grid-column-one-third" >
+        <h3 class="govuk-heading-m">Content</h3>
+        <ul class="govuk-list">
+          <li class="govuk-link">Covid-19</li>
+          <li class="govuk-link" href="/declaration-anchor">Declaration</li>
+          <li class="govuk-link">Links</li>
+        </ul>
+
+        <h3 class="govuk-heading-m">Patterns</h3>
+        <ul class="govuk-list">
+        <li class="govuk-link">Address for service</li>
+        <li class="govuk-link">Back links</li>
+        <li class="govuk-link">Character count</li>
+        <li class="govuk-link">Checkboxes</li>
+        <li class="govuk-link">Details</li>
+        <li class="govuk-link">Discharge methods</li>
+
+        <li class="govuk-link">File downloads</li>
+        <li class="govuk-link">Service status errors</li>
+
+        </ul>
+
+        <h3 class="govuk-heading-m">Styling</h3>
+        <ul class="govuk-list">
+        <li class="govuk-link">Header</li>
+        <li class="govuk-link">Footer</li>
+        </ul>
+      </div>
+
+
+       <div class="govuk-grid-column-two-thirds">
+
+
+        <h3 class="govuk-heading-m govuk-!-margin-top-5" id="declaration-anchor">Declaration</h3>
+        <p class=govuk-body"><a class="govuk-link" href="https://design-system.service.gov.uk/components/details/">Details components</a> are used in the service to provide additional information to users, sometimes linking to practice guidance on GOV.UK. <br><br>
+          DRS deviates from the GOV.UK guidelines by collapsing the declaration statement in a details component on the Review your application screen. <br><br> After extensive user testing, it was decided to place the statement within a details component.
+        <br><br>
+        <img src="public/images/declaration-screenshot.png" alt="declaration" style="width: 99%">
+
+        <h4 class="govuk-heading-s govuk-!-margin-top-5">User research</h4>
+        <p class=govuk-body">
+        After extensive user testing, it was decided to place the statement within a details component.<br><br>The decision to have the declaration statement collapsed in a details component was extensively tested. Different methods of ensuring users would read and agree to the statement were tested, including a checkbox.<br><br>
+        Testing highlighted an unexpected issue - most users read the declaration when they are trained/first use a service and then never do so again.<br><br> Many said they would rather not have to scroll through the long statement each time they submitted an application (which for some users would be ten times per day).
+        <br><br>Users stated, if someone is going to break the law, a checkbox is not going to stop them. <br><br>Based on this it was decided to collapse the statement into the details component, which has been agreed to by legal and ops outside of the project.
+        </p>
+        <a class="govuk-link" href="https://docs.google.com/document/d/10qdQLnzSj8Fl4WQEoK5jT7H-H_1Y6so9BbTYTK2DYgY/edit?usp=sharing"> Documentation (HMLR design system) </a>
+        <br><br>
+
+        <h3 class="govuk-heading-m">Links</h3>
+        <a class="govuk-link" href="#"> Documentation </a>
+
+        <h2 class="govuk-heading-l"> Patterns </h2>
+
+        <h3 class="govuk-heading-m">Address for service</h3>
+        <a class="govuk-link" href="#"> Documentation </a>
+
+        <h3 class="govuk-heading-m">Back links</h3>
+        <a class="govuk-link" href="#"> Documentation </a>
+
+        <h3 class="govuk-heading-m">Character count</h3>
+        <p class="govuk-body"></p>
+        <a class="govuk-link" href="#"> Documentation </a>
+
+        <h3 class="govuk-heading-m">Checkboxes</h3>
+        <a class="govuk-link" href="#"> Documentation </a>
+
+        <h3 class="govuk-heading-m">Details</h3>
+        <a class="govuk-link" href="#"> Documentation </a>
+
+        <h3 class="govuk-heading-m">Discharge methods</h3>
+        <a class="govuk-link" href="#"> Documentation </a>
+
+        <h3 class="govuk-heading-m">Files</h3>
+        <a class="govuk-link" href="#"> Documentation </a>
+
+        <h3 class="govuk-heading-m">File downloads</h3>
+        <a class="govuk-link" href="#"> Documentation </a>
+
+        <h3 class="govuk-heading-m">Service status errors</h3>
+        <a class="govuk-link" href="#"> Documentation </a>
+
+
+        <h2 class="govuk-heading-l"> Styling </h2>
+        <h3 class="govuk-heading-m">Header</h3>
+        <a class="govuk-link" href="#"> Documentation </a>
+
+        <h3 class="govuk-heading-m">Footer</h3>
+        <a class="govuk-link" href="#"> Documentation </a>
+      </div>
+
+
+
+
+            </div>
+          </main>
+
+          <div class="app-back-to-top app-back-to-top--fixed" data-module="app-back-to-top">
+            <a class="govuk-link govuk-link--no-visited-state app-back-to-top__link" href="#top">
+            <svg role="presentation" focusable="false" class="app-back-to-top__icon" xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">
+            <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"></path></svg> Back to top</a>
+          </div>
+
+      </div>
+
+
+<style>
+  .sidebar {
+  border-left: 3px solid navy;
+  height: 1100px;
+}
+
+  .headerpanel {
+  border: solid navy;
+  }
+</style>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}
