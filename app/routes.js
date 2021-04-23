@@ -1659,17 +1659,7 @@ router.post('/transactions/assent/transferee-address-answer', function (req, res
 
 
 // Multi-titles whole or part
-router.post('whole-or-part', function (req, res) {
 
-  let wholepart = req.session.data['wholepart']
-
-  if (wholepart === 'yes') {
-    res.redirect('/Sprint-38/multi-titles/summary')
-}   if (wholepart === 'no') {
-    res.redirect('/Sprint-38/multi-titles/part')
-}
-
-})
 
 router.post('/wholepart-answer', function (req, res) {
   let wholepart = req.session.data['wholepart'];
