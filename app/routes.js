@@ -1648,7 +1648,7 @@ router.post('/transactions/assent/transferee-address-answer', function (req, res
 // Is the user a conveyancer?
 router.post('/setup/user-type-answer', function (req, res) {
   let userType = req.session.data['user-type'];
-  res.redirect('/setup/enter-title')
+  res.redirect('/sprint-38/multi-titles/enter')
   if (userType === 'conveyancer') {
       req.session.data['user-type'] = 'conveyancer';
   } else {
@@ -1656,6 +1656,31 @@ router.post('/setup/user-type-answer', function (req, res) {
   }
 })
 
+
+
+// Multi-titles whole or part
+router.post('whole-or-part', function (req, res) {
+
+  let wholepart = req.session.data['wholepart']
+
+  if (wholepart === 'yes') {
+    res.redirect('/Sprint-38/multi-titles/summary')
+}   if (wholepart === 'no') {
+    res.redirect('/Sprint-38/multi-titles/part')
+}
+
+})
+
+router.post('/wholepart-answer', function (req, res) {
+  let wholepart = req.session.data['wholepart'];
+
+  if (wholepart === 'yes') {
+      res.redirect('/sprint-38/multi-titles/summary')
+  } else {
+    res.redirect('/sprint-38/multi-titles/part')
+
+  }
+})
 
 
 // Transferor POA
