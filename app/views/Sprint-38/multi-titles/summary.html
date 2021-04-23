@@ -75,11 +75,6 @@
         </div>
       </details>
 
-
-
-
-
-
       <table class="govuk-table">
       <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
@@ -98,111 +93,64 @@
           <td class="govuk-table__cell govuk-!-width-one-quarter"><a class="govuk-link govuk-link--no-visited-state" href="#">Change</a></td>
         </tr>
         <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header"><p id="DOI-label" style="font-weight: bold;"></p></th>
-          <td class="govuk-table__cell">
-            <a class="govuk-link govuk-link--no-visited-state" id="DOI-link-1" href="">Add disclosable overriding interests</a>
-            <a class="govuk-body" id="doi-true" for=""></a>
-          </td>
-          <td class="govuk-table__cell govuk-!-width-one-quarter">
-            <a class="govuk-link govuk-link--no-visited-state" href="#" id="DOI-link-remove"></a>
-          </td>
+          <th scope="row" class="govuk-table__header"></th>
+          <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" onclick="DOI1" id="DOI-link-1" href="#">Add disclosable overriding interests</a></td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter"><a class="govuk-link govuk-link--no-visited-state" href="#"></a></td>
         </tr>
       </tbody>
     </table>
 
-
-
-<br>
-
-
-
-<table class="govuk-table">
-<tbody class="govuk-table__body">
-  <tr class="govuk-table__row">
-    <th scope="row" class="govuk-table__header govuk-!-width-one-third">Title number</th>
-    <td class="govuk-table__cell govuk-!-width-one-half">ABC456</td>
-    <td class="govuk-table__cell govuk-!-width-one-quarter"><a class="govuk-link govuk-link--no-visited-state" href="#">Remove title</a></td>
-  </tr>
-  <tr class="govuk-table__row">
-    <th scope="row" class="govuk-table__header">Property</th>
-    <td class="govuk-table__cell">4 Main Road, Littlehaxten, LH1 1AA</td>
-    <td class="govuk-table__cell"></td>
-  </tr>
-  <tr class="govuk-table__row">
-    <th scope="row" class="govuk-table__header">This application affects</th>
-    <td class="govuk-table__cell">part of the title</td>
-    <td class="govuk-table__cell govuk-!-width-one-quarter"><a class="govuk-link govuk-link--no-visited-state" href="#">Change</a></td>
-  </tr>
-  <tr class="govuk-table__row">
-    <th scope="row" class="govuk-table__header"><p id="DOI-label-2" style="font-weight: bold;"></p></th>
-    <td class="govuk-table__cell">
-      <a class="govuk-link govuk-link--no-visited-state" id="" href="">Add disclosable overriding interests</a>
-      <a class="govuk-body" id="" for=""></a>
-    </td>
-    <td class="govuk-table__cell govuk-!-width-one-quarter">
-      <a class="govuk-link govuk-link--no-visited-state" id=""></a>
-    </td>
-  </tr>
-</tbody>
-</table>
-
-<br>
-
-<table class="govuk-table">
-<tbody class="govuk-table__body">
-  <tr class="govuk-table__row">
-    <th scope="row" class="govuk-table__header govuk-!-width-one-third">Title number</th>
-    <td class="govuk-table__cell govuk-!-width-one-half">ABC789</td>
-    <td class="govuk-table__cell govuk-!-width-one-quarter"><a class="govuk-link govuk-link--no-visited-state" href="#">Remove title</a></td>
-  </tr>
-  <tr class="govuk-table__row">
-    <th scope="row" class="govuk-table__header">Property</th>
-    <td class="govuk-table__cell">5 Main Road, Littlehaxten, LH1 1AA</td>
-    <td class="govuk-table__cell"></td>
-  </tr>
-  <tr class="govuk-table__row">
-    <th scope="row" class="govuk-table__header">This application affects</th>
-    <td class="govuk-table__cell">the whole of the title</td>
-    <td class="govuk-table__cell govuk-!-width-one-quarter"><a class="govuk-link govuk-link--no-visited-state" href="#">Change</a></td>
-  </tr>
-  <tr class="govuk-table__row">
-    <th scope="row" class="govuk-table__header"><p id="DOI-label-2" style="font-weight: bold;"></p></th>
-    <td class="govuk-table__cell">
-      <a class="govuk-link govuk-link--no-visited-state" id="DOI-link-1" href="">Add disclosable overriding interests</a>
-      <a class="govuk-body" id="" for=""></a>
-    </td>
-    <td class="govuk-table__cell govuk-!-width-one-quarter">
-      <a class="govuk-link govuk-link--no-visited-state" id=""></a>
-    </td>
-  </tr>
-</tbody>
-</table>
-
-<script>
-
-window.onload = disclosable;
-
-
-function disclosable() {
-
-$(document).ready(function(){
-$('a').click(function(){
-  $(document.getElementById('doi-true')).text("affect this registered estate");
-  event.preventDefault()
-  $(document.getElementById('DOI-link-1')).text("");
-  $(document.getElementById('DOI-label')).text("Disclosable overriding interests");
-  $(document.getElementById('DOI-link-remove')).text("Remove");
-  });
-});
-
-}
-
-</script>
-
-
-
 <br><br>
 
+    <table class="govuk-table">
+    <tbody class="govuk-table__body">
+      <tr class="govuk-table__row">
+        <th scope="row" class="govuk-table__header govuk-!-width-one-third">Title number</th>
+        <td class="govuk-table__cell govuk-!-width-one-half">ABC456</td>
+        <td class="govuk-table__cell govuk-!-width-one-quarter"><a class="govuk-link govuk-link--no-visited-state" href="#">Remove title</a></td>
+      </tr>
+      <tr class="govuk-table__row">
+        <th scope="row" class="govuk-table__header">Property</th>
+        <td class="govuk-table__cell">4 Main Road, Littlehaxten, LH1 1AA</td>
+        <td class="govuk-table__cell"></td>
+      </tr>
+      <tr class="govuk-table__row">
+        <th scope="row" class="govuk-table__header">This application affects</th>
+        <td class="govuk-table__cell">part of the title<br><br>edged red on the plan to the transfer dated 01/01/2021</td>
+        <td class="govuk-table__cell govuk-!-width-one-quarter"><a class="govuk-link govuk-link--no-visited-state" href="#">Change</a></td>
+      </tr>
+      <tr class="govuk-table__row">
+        <th scope="row" class="govuk-table__header"></th>
+        <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="#">Add disclosable overriding interests</a></td>
+        <td class="govuk-table__cell govuk-!-width-one-quarter"><a class="govuk-link govuk-link--no-visited-state" href="#"></a></td>
+      </tr>
+    </tbody>
+  </table>
+<br><br>
+  <table class="govuk-table">
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header govuk-!-width-one-third">Title number</th>
+      <td class="govuk-table__cell govuk-!-width-one-half">ABC678</td>
+      <td class="govuk-table__cell govuk-!-width-one-quarter"><a class="govuk-link govuk-link--no-visited-state" href="#">Remove title</a></td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Property</th>
+      <td class="govuk-table__cell">5 Main Road, Littlehaxten, LH1 1AA</td>
+      <td class="govuk-table__cell"></td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">This application affects</th>
+      <td class="govuk-table__cell">part of the title<br><br>edged red on the plan to the transfer dated 01/01/2021</td>
+      <td class="govuk-table__cell govuk-!-width-one-quarter"><a class="govuk-link govuk-link--no-visited-state" href="#">Change</a></td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header"></th>
+      <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="#">Add disclosable overriding interests</a></td>
+      <td class="govuk-table__cell govuk-!-width-one-quarter"><a class="govuk-link govuk-link--no-visited-state" href="#"></a></td>
+    </tr>
+  </tbody>
+</table>
 
 <a class="govuk-link govuk-body govuk-!-margin-bottom-9" href="enter4">Add another title number</a>
 <br><br><br>
@@ -220,7 +168,12 @@ $('a').click(function(){
   </div>
   </main>
 
+  <script>
 
+
+
+
+  </script>
 
  <footer>
  <div class="govuk-grid-row">
