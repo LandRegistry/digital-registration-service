@@ -61,7 +61,7 @@
 
 
      <div>
-      
+
 
       <details class="govuk-details" data-module="govuk-details">
         <summary class="govuk-details__summary">
@@ -75,7 +75,8 @@
       </details>
 
 
-    <form method="post" action="user-type-answer" name="" data-validate="whole-form-validation" novalidate>
+    <!-- <form method="post" action="user-type-answer" name="" data-validate="whole-form-validation" novalidate>
+  routing removed temporarily for MT testing -->
 
         {{ govukRadios({
   idPrefix: "user-type",
@@ -87,8 +88,8 @@
       classes: "govuk-fieldset__legend--m"
     }
   },
- 
-  
+
+
   items: [
     {
       value: "conveyancer",
@@ -110,10 +111,11 @@
 
 
     {{ govukButton({
-    text: "Continue"
+    text: "Continue",
+    href: "/sprint-38/multi-titles/enter"
   }) }}
 
-    </form>
+
     </div>
     </div>
     </main>

@@ -1645,16 +1645,16 @@ router.post('/transactions/assent/transferee-address-answer', function (req, res
 
 })
 
-// Is the user a conveyancer?
-router.post('/setup/user-type-answer', function (req, res) {
-  let userType = req.session.data['user-type'];
-  res.redirect('/sprint-38/multi-titles/enter')
-  if (userType === 'conveyancer') {
-      req.session.data['user-type'] = 'conveyancer';
-  } else {
-    req.session.data['user-type'] = 'non-conveyancer';
-  }
-})
+// Is the user a conveyancer? - removed temporarily for MT testing
+// router.post('/setup/user-type-answer', function (req, res) {
+//   let userType = req.session.data['user-type'];
+//   res.redirect('/setup/enter-title')
+//   if (userType === 'conveyancer') {
+//       req.session.data['user-type'] = 'conveyancer';
+//   } else {
+//     req.session.data['user-type'] = 'non-conveyancer';
+//   }
+// })
 
 
 
