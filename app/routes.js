@@ -1665,9 +1665,9 @@ router.post('/wholepart-answer', function (req, res) {
   let wholepart = req.session.data['wholepart'];
 
   if (wholepart === 'yes') {
-      res.redirect('/../sprint-38/multi-titles/summary')
+      res.redirect('/sprint-38/multi-titles/summary')
   } else {
-    res.redirect('/../sprint-38/multi-titles/part')
+    res.redirect('/sprint-38/multi-titles/part')
 
   }
 })
