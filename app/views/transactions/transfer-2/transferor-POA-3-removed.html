@@ -1,0 +1,186 @@
+{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
+{%- set assetPath = '/govuk/assets' -%}
+
+{% extends "govuk/template.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+
+
+
+
+{% block headIcons %}
+  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
+  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
+{% endblock %}
+
+{% block head %}
+  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full" id="headerdiv">
+    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
+    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Digital Registration Service</a></p>
+    <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+
+
+    <div class="govuk-phase-banner govuk-!-margin-bottom-5">
+        <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
+        <span class="govuk-phase-banner__text">
+        This is a prototype and not a real service.
+        </span></p>
+    </div>
+    </div>
+
+<form method="post" action="names/transferor-list">
+    <div class="govuk-grid-column-two-thirds">
+      <button onclick="goBack()" class="back-link govuk-body">◄ Back</button>
+        <span class="govuk-caption-l"></span>
+        <h1 class="govuk-heading-xl">Add an attorney</h1>
+
+
+
+
+            <div class="govuk-form-group">
+              <h3 class="govuk-heading-l" id="heading1">Attorney</h3>
+
+              <label class="govuk-label" style="font-weight: bold">Full name</label>
+              <input class="govuk-input govuk-input--width-20" id="attorney1" name="attorney1" value="Adam Brown" type="text">
+            </div>
+
+          <h2 class="govuk-heading-s">Select the donor(s)</h2>
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <div class="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="transferordonor1" name="Donor1" type="checkbox" checked>
+                  <label class="govuk-label govuk-checkboxes__label" for="bob">
+                    Spencer Reid
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="transferordonor2" type="checkbox" name="Donor2" checked>
+                  <label class="govuk-label govuk-checkboxes__label" for="phyllis">
+                    Mary Reid
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <br>
+          </div>
+
+          <div class="govuk-grid-column-two-thirds">
+          <h3 class="govuk-heading-l" id="heading2">Attorney</h3>
+          </div>
+          <div class="govuk-grid-column-one-third">
+          <a class="govuk-link govuk-link--no-visited-state" style="margin-left: 250px;" href="transferor-POA-removed">Remove</a>
+          </div>
+          <div class="govuk-grid-column-two-thirds">
+
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" style="font-weight: bold">Full name</label>
+              <input class="govuk-input govuk-input--width-20" id="attorney2" name="attorney2" type="text" value="Alice Brown">
+            </div>
+
+            <h2 class="govuk-heading-s">Select the donor(s)</h2>
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                <div class="govuk-checkboxes">
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="transferordonor1b" name="Donor1b" type="checkbox" checked>
+                    <label class="govuk-label govuk-checkboxes__label" for="bob">
+                      Spencer Reid
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="transferordonor2b" type="checkbox" name="Donor2b" checked>
+                    <label class="govuk-label govuk-checkboxes__label" for="phyllis">
+                      Mary Reid
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            <br><br>
+
+          </div>
+
+          <div class="govuk-grid-column-full">
+            <a class="govuk-button govuk-button--secondary" data-module="govuk-button" href="transferor-POA-3">
+            Add another attorney
+            </a>
+
+            <div class="govuk-warning-text">
+              <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+              <strong class="govuk-warning-text__text">
+                <span class="govuk-warning-text__assistive">Warning</span>
+                Naming errors lead to requisitions. By selecting ‘Continue’ you confirm names are correct.
+              </strong>
+            </div>
+
+            <br><br>
+
+           <button class="govuk-button" data-module="govuk-button">
+             Continue
+           </button>
+
+
+
+         </form>
+         </div>
+
+           <footer>
+           <div class="govuk-grid-row">
+           <div class="govuk-grid-column-full">
+           <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+           <br>
+           <p class="govuk-body-s" style="color: #747B7F"> The following links open in a new window
+           <br>
+           <br>
+           <a href="#" style="color: #747B7F"> Terms and conditions</a> | <a href="/setup/accessibility-statement" target="_blank" rel="noopener noreferrer" style="color: #747B7F">Accessibility statement</a> |  <a href="#" style="color: #747B7F">Freedom of information</a> | <a href="#" style="color: #747B7F">© Crown copyright</a></p>
+           </div>
+           </div>
+           </footer>
+
+           <style>
+             .back-link {
+             border: none;
+             background: none;
+             font-size: 16px;
+             text-decoration: underline;
+             margin-top: 25px;
+
+           }
+           </style>
+
+           <script>
+             function goBack() {
+               window.history.back();
+             }
+           </script>
+
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}
