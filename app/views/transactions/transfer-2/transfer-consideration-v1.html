@@ -1,0 +1,132 @@
+{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
+{%- set assetPath = '/govuk/assets' -%}
+
+{% extends "govuk/template.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+
+
+
+
+{% block headIcons %}
+  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
+  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
+{% endblock %}
+
+{% block head %}
+  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full" id="headerdiv">
+    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
+    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Digital Registration Service</a></p>
+    <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+
+
+    <div class="govuk-phase-banner govuk-!-margin-bottom-5">
+        <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
+        <span class="govuk-phase-banner__text">
+        This is a prototype and not a real service.
+        </span></p>
+    </div>
+    </div>
+
+    <div class="govuk-grid-column-two-thirds">
+        <span class="govuk-caption-xl">Transfer for value (TR1)</span>
+        <h1 class="govuk-heading-xl">Consideration</h1>
+
+        <form action="/transactions/transfer-declaration-complete" method="post">
+
+        <h2 class="govuk-heading-m">Price paid</h2>
+        <p class="govuk-body">£180,000 (inclusive of VAT)</p>
+        <br>
+
+          <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset" aria-describedby="consideration-conditional-hint">
+              <p class="govuk-body">Select one of the following options.</p>
+                <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="consideration-conditional" name="transferConsideration" type="radio" value="transferReceived">
+                    <label class="govuk-label govuk-radios__label" for="consideration-conditional">
+                      Transfer received from transferee
+                    </label>
+                  </div>
+
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="consideration-conditional-2" name="transferConsideration" type="radio" value="transferNot" data-aria-controls="conditional-consideration-conditional-2">
+                    <label class="govuk-label govuk-radios__label" for="consideration-conditional-2">
+                      Transfer not for money or anything that has a monetary value
+                    </label>
+                  </div>
+                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-consideration-conditional-2">
+                    <div class="govuk-form-group">
+                      <textarea class="govuk-textarea govuk-!-width-three-quarters" id="considerationNot" name="consideration-Details" rows="6"></textarea>
+                    </div>
+
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="consideration-conditional-3" name="transferConsideration" type="radio" value="text" data-aria-controls="conditional-consideration-conditional-3">
+                    <label class="govuk-label govuk-radios__label" for="consideration-conditional-3">
+                      Other consideration
+                    </label>
+                  </div>
+                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-consideration-conditional-3">
+                    <div class="govuk-form-group">
+                      <textarea class="govuk-textarea govuk-!-width-three-quarters" id="considerationOther" name="considerationOther-Details" rows="6"></textarea>
+
+                    </div>
+
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+
+
+           <button class="govuk-button" data-module="govuk-button">
+             Continue
+           </button>
+
+         </form>
+         </div>
+</div>
+
+           <footer>
+           <div class="govuk-grid-row">
+           <div class="govuk-grid-column-full">
+           <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+           <br>
+           <p class="govuk-body-s" style="color: #747B7F"> The following links open in a new window
+           <br>
+           <br>
+           <a href="#" style="color: #747B7F"> Terms and conditions</a> | <a href="/setup/accessibility-statement" target="_blank" rel="noopener noreferrer" style="color: #747B7F">Accessibility statement</a> |  <a href="#" style="color: #747B7F">Freedom of information</a> | <a href="#" style="color: #747B7F">© Crown copyright</a></p>
+           </div>
+           </div>
+           </footer>
+
+
+
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}

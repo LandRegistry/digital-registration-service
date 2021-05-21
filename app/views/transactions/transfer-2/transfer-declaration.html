@@ -1,0 +1,130 @@
+{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
+{%- set assetPath = '/govuk/assets' -%}
+
+{% extends "govuk/template.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+
+
+
+
+{% block headIcons %}
+  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
+  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
+{% endblock %}
+
+{% block head %}
+  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full" id="headerdiv">
+    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
+    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Digital Registration Service</a></p>
+    <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+
+
+    <div class="govuk-phase-banner govuk-!-margin-bottom-5">
+        <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
+        <span class="govuk-phase-banner__text">
+        This is a prototype and not a real service.
+        </span></p>
+    </div>
+    </div>
+
+    <div class="govuk-grid-column-two-thirds">
+        <span class="govuk-caption-xl">Transfer for value (TR1)</span>
+        <h1 class="govuk-heading-xl">Declaration of trust</h1>
+
+        <form action="/transactions/transfer-declaration-complete" method="post">
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="trust-conditional-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                The transferees are to hold the property:</legend>
+
+              <span id="trust-conditional-hint" class="govuk-hint">Select one option.</span>
+
+              <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="trust-conditional" name="transferTrust" type="radio" value="on trust for themselves as joint tenants">
+                  <label class="govuk-label govuk-radios__label" for="trust-conditional">on trust for themselves as joint tenants</label>
+                </div>
+
+
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="trust-conditional-2" name="transferTrust" type="radio" value="on trust for themselves as tenants in  common equal shares">
+                  <label class="govuk-label govuk-radios__label" for="trust-conditional-2">on trust for themselves as tenants in  common equal shares</label>
+                </div>
+
+
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="trust-conditional-3" name="transferTrust" type="radio" value="on trust - I will provide details" aria-controls="conditional-trust-conditional-3" aria-expanded="false">
+                  <label class="govuk-label govuk-radios__label" for="trust-conditional-3">on trust - I will provide details</label>
+                </div>
+
+                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-trust-conditional-3">
+                  <div class="govuk-form-group">
+                    <textarea class="govuk-textarea govuk-!-width-three-quarters" id="trustDetails" name="trust-Details" rows="6"></textarea>
+                  </div>
+                </div>
+
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="trust-conditional-4" name="transferTrust" type="radio" value="trustAttached">
+                  <label class="govuk-label govuk-radios__label" for="trust-conditional-4">on trust - I will attach <a href="https://www.gov.uk/government/publications/jointly-owned-property-trust-registration-jo" target="_blank" rel="noopener noreferrer">Form JO (opens in new window)</a></label>
+                </div>
+
+  </div>
+  </fieldset>
+
+
+</div>
+
+
+
+           <button class="govuk-button" data-module="govuk-button">
+             Continue
+           </button>
+
+         </form>
+         </div>
+</div>
+
+           <footer>
+           <div class="govuk-grid-row">
+           <div class="govuk-grid-column-full">
+           <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+           <br>
+           <p class="govuk-body-s" style="color: #747B7F"> The following links open in a new window
+           <br>
+           <br>
+           <a href="#" style="color: #747B7F"> Terms and conditions</a> | <a href="/setup/accessibility-statement" target="_blank" rel="noopener noreferrer" style="color: #747B7F">Accessibility statement</a> |  <a href="#" style="color: #747B7F">Freedom of information</a> | <a href="#" style="color: #747B7F">© Crown copyright</a></p>
+           </div>
+           </div>
+           </footer>
+
+
+
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}

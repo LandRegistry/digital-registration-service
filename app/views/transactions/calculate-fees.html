@@ -54,6 +54,34 @@
 
         <p class="govuk-body"><a href="#">Find out about fees (opens in new tab)</a></p>
 
+        <!-- Transfer for value transaction -->
+        {% if data['Transaction'] === 'TRANSFER' %}
+
+        <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
+        <h2 class="govuk-heading-m govuk-!-margin-top-6"> <label class="govuk-label" style="opacity: 0.5" for="Select_transaction{{n}}">
+          Priority 1
+        </label>Assent</h2>
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="width-10" >
+            Value
+          </label>
+          <div id="account-number-hint" class="govuk-hint" >
+           For example, 145000
+         </div>
+         <div class="input-container"> <!-- add input and span into a container-->
+            <input type="text" class="govuk-input govuk-input--width-10" id="with-hint" name="priority1values"  value="{{ data['priority1values'] }}"  type="text" aria-describedby="with-hint-info with-hint-hint" style="padding-left : 30px;"> <!-- add padding to stop user typing behind £ sign-->
+            <span class="unit" id="with-hint">&pound</span>
+        </div>
+
+
+
+          </div>
+
+        </div>
+
+
+        {% endif %}
+
 
           <!-- Assent transaction -->
           {% if data['Transaction'] === 'ASSENT' %}

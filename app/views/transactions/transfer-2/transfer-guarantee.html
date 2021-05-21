@@ -1,0 +1,122 @@
+{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
+{%- set assetPath = '/govuk/assets' -%}
+
+{% extends "govuk/template.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+
+
+
+
+{% block headIcons %}
+  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
+  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
+{% endblock %}
+
+{% block head %}
+  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full" id="headerdiv">
+    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
+    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Digital Registration Service</a></p>
+    <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+
+
+    <div class="govuk-phase-banner govuk-!-margin-bottom-5">
+        <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
+        <span class="govuk-phase-banner__text">
+        This is a prototype and not a real service.
+        </span></p>
+    </div>
+    </div>
+
+    <div class="govuk-grid-column-full">
+        <span class="govuk-caption-xl">Transfer for value (TR1)</span>
+        <h1 class="govuk-heading-xl">Select title guarantee</h1>
+
+        <form action="/transactions/transfer/guarantee-complete" method="post">
+
+          <p class="govuk-body"> Select whether the transferor gives full or limited title guarantee with the transfer.</p>
+
+        {{ govukRadios({
+          idPrefix: "guarantee",
+          name: "title-guarantee",
+          fieldset: {
+          },
+          items: [
+            {
+              value: "full title guarantee",
+              text: "full title guarantee"
+            },
+            {
+              value: "limited title guarantees",
+              text: "limited title guarantees"
+            }
+          ]
+        }) }}
+
+
+
+        <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            What are full and limited title guarantees?
+          </span>
+        </summary>
+          <div class="govuk-details__text">
+          Full title guarantee: the transferors guarantee, to the best of their knowledge, that there are no financial charges/encumbrances
+          (such as mortgages) or other third party interests (such as rights of way/leases) which affect the property other than those already revealed
+          to the transferees.
+          <br><br>
+          Limited title guarantee: a more restricted set of promises by the transferors. This guarantees that the transferors have
+          not themselves created, or allowed to be created, any charge, encumbrance or third party interest that still exists at the date of the transfer.
+          </div>
+          </details>
+
+
+
+           <button class="govuk-button" data-module="govuk-button">
+             Continue
+           </button>
+
+         </form>
+
+
+         <footer>
+         <div class="govuk-grid-row">
+         <div class="govuk-grid-column-full">
+         <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+         <br>
+         <p class="govuk-body-s" style="color: #747B7F"> The following links open in a new window
+         <br>
+         <br>
+         <a href="#" style="color: #747B7F"> Terms and conditions</a> | <a href="/setup/accessibility-statement" target="_blank" rel="noopener noreferrer" style="color: #747B7F">Accessibility statement</a> |  <a href="#" style="color: #747B7F">Freedom of information</a> | <a href="#" style="color: #747B7F">© Crown copyright</a></p>
+         </div>
+         </div>
+         </footer>
+</div>
+
+
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}
