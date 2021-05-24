@@ -48,59 +48,58 @@
             <div class="govuk-grid-column-two-thirds">
 
     <span class="govuk-caption-xl"></span>
-    <h1 class="govuk-heading-xl"> Enter title numbers </h1>
-    <p class="govuk-body">You can add up to 25 titles per application.</p>
+    <h1 class="govuk-heading-xl"> Does this application affect the whole of the title?</h1>
 
-    <details class="govuk-details" data-module="govuk-details">
-      <summary class="govuk-details__summary">
-        <span class="govuk-details__summary-text">About applications relating to more than one title number</span>
-      </summary>
-      <div class="govuk-details__text">
-        You can use this service for applications of up to 25 title numbers. In order to register multiple title numbers in one application:
-        <br><br>
-        <ul class="govuk-list govuk-list--bullet">
-        <li>all titles must have the same proprietors registered against each title number
-        <li >transferors and transferees must be the the same for each title number
-        </ul>
-      </div>
-    </details>
 
-  <form>
-    <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
-      <div class="govuk-form-group">
-        <label class=" govuk-hint" for="govuk-input govuk-input--width-10">
-          For example, "A123" or "XY5678"
-        </label>
 
-        <input type="text" class="govuk-input govuk-!-width-one-quarter govuk-!-margin-bottom-5" id="with-hint" name="title_3" aria-describedby="with-hint-info with-hint-hint">
-      </div>
+  <form method="post" action="summary">
 
-      <a class="govuk-link govuk-body govuk-link--no-visited-state" href="#"> Add another title number</a>
+    <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
 
-      </div>
+        <div class="govuk-radios" data-module="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="whole" name="wholepart" type="radio" value="yes">
+            <label class="govuk-label govuk-radios__label" for="whole">
+              Yes
+            </label>
+          </div>
 
-      <table class="govuk-table">
-        <thead class="govuk-table__head">
-          <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header">Title numbers in this application</th>
-            <th scope="col" class="govuk-table__header"></th>
-          </tr>
-        </thead>
-        <tbody class="govuk-table__body">
-          <tr class="govuk-table__row">
-            <td scope="row" class="govuk-table__cell">ABC123</td>
-            <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="#">Remove</a></td>
-          </tr>
-          <tr class="govuk-table__row">
-            <td scope="row" class="govuk-table__cell">ABC456</td>
-            <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="#">Remove</a></td>
-          </tr>
-        </tbody>
-      </table>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="part" name="title2" type="radio" value="no" data-aria-controls="conditional-part">
+            <label class="govuk-label govuk-radios__label" for="part">
+              No - only part of the title is affected
+            </label>
+          </div>
+          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-part">
+            <div class="govuk-form-group govuk-width-one-third">
+              <label class="govuk-label" for="part">
+                Describe the parts affected
+              </label>
+
+              {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+
+              {{ govukCharacterCount({
+                name: "part-details-1",
+                id: "with-hint",
+                maxlength: 100,
+                hint: {
+                  text: "For example 'edged red on the plan to the transfer dated DD/MM/YYYY'"
+                }
+              }) }}
+
+            </div>
+            <div class="govuk-inset-text">
+              You'll need to upload the plan later
+            </div>
+          </div>
+
+      </fieldset>
+    </div>
+
 
     {{ govukButton({
-      text: "Continue",
-      href: "whole-part"
+      text: "Continue"
     }) }}
 
   </form>
@@ -108,15 +107,6 @@
   </div>
   </main>
 
-  <script type="application/json" id="title-form-validation">
-   {
-     "title": {
-       "presence": {
-         "message": "^Enter a title number"
-       }
-     }
-   }
- </script>
 
  <footer>
  <div class="govuk-grid-row">

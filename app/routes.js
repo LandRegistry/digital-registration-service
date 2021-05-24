@@ -1672,6 +1672,13 @@ router.post('/wholepart-answer', function (req, res) {
   }
 })
 
+router.post('/multi-titles_answer', function (req, res) {
+  let wholepart = req.session.data['wholepart'];
 
-// Transferor POA
-// Select donors for attorney 1
+  if (wholepart === 'yes') {
+      res.redirect('/setup/summary')
+  } else {
+    res.redirect('/setup/multi-titles_part')
+
+  }
+})
