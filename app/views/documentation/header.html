@@ -38,7 +38,7 @@
          <br><br>
         </div>
 
-       <div class="govuk-grid-column-one-third" >
+       <div id="menu" class="govuk-grid-column-one-third">
         <h3 class="govuk-heading-m">Content</h3>
         <ul class="govuk-list">
           <li><a class="govuk-link  govuk-link--no-visited-state" href="covid">Covid-19</a></li>
@@ -53,7 +53,7 @@
         <li><a class="govuk-link  govuk-link--no-visited-state" href="backlinks">Back links</a></li>
         <li><a class="govuk-link  govuk-link--no-visited-state" href="charactercount">Character count</a></li>
         <li><a class="govuk-link  govuk-link--no-visited-state" href="checkbox">Checkboxes</a></li>
-        <li><a class="govuk-link  govuk-link--no-visited-state" href="details">Details</a></li>
+
         <li><a class="govuk-link  govuk-link--no-visited-state" href="discharge-methods">Discharge methods</a></li>
 
         <li><a class="govuk-link  govuk-link--no-visited-state" href="file-downloads">File downloads</a></li>
@@ -72,7 +72,19 @@
 
        <div class="govuk-grid-column-two-thirds">
         <h2 class="govuk-heading-l"> Header </h2>
+        <p class="govuk-body">The header was created to align two new HMLR Portal-based services, View My Applications and Digital Registration Service. There are two variations of the header currently used in DRS. <BR><BR> The ownership of the header is ultimately the Head of Design's and therefore changes should be agreed with them and communicated to View My Applications.
 
+        <h3 class="govuk-heading-s"> Start screen header</h3>
+        <img src="/public/images/header-start.png" alt="checkboxes" style="width: 100%">
+        <br><br><br>
+        <h3 class="govuk-heading-s"> Mid-journey header</h3>
+        <p class="govuk-body">This header features the service name as a link to the start screen which was added to meet accessibility requirements. This follows the GOV.UK style header.<br><br>
+        <img src="/public/images/header-service.png" alt="checkboxes" style="width: 100%">
+
+        <h3>Adding the header to a page</h3>
+        The header can be added using the following code:
+        {% include "includes/hmlr-header.html" %}
+        
 
         </div>
           </main>
