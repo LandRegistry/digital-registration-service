@@ -44,7 +44,7 @@
         <ul class="govuk-list">
           <li><a class="govuk-link  govuk-link--no-visited-state" href="covid">Covid-19</a></li>
           <li><a class="govuk-link  govuk-link--no-visited-state" href="declaration">Declaration</a></li>
-          <li><a class="govuk-link  govuk-link--no-visited-state" href="links">Links</a></li>
+    
           <li><a class="govuk-link  govuk-link--no-visited-state" href="warnings">Warning statement</a></li>
         </ul>
 
@@ -77,10 +77,12 @@
         <p class="govuk-body"><a href="https://design-system.service.gov.uk/components/character-count/">Character counts</a> are used in the service where an input has a limit which could regularly be exceeded by the user.
           <br><br>The service currently only allows user references of 25 characters or fewer - this is due to database and legacy systems.
           <br><br>
-          We've previously used character count on large text fields, however, due to an update to the GDS toolkit, we can no longer use the character count component on multi-line text fields.</p>
+          We've previously used character count on large text fields abd single line fields, however, due to an update to the GDS toolkit, we can no longer use the character count component on single text fields - without additional technical work to implement.</p>
 
           <h3 class="govuk-heading-m">User research</h3>
-          <p class="govuk-body">During the design process early in the project, testing was done and 25 characters was found to be a reasonable reference limit for users. Since implementing, there has been no feedback from users to suggest this limit needs to be raised.</p>
+          <p class="govuk-body">There has been a limited amount of feedback around character limits - where the character count is not used, some users are unhappy they are able to enter information and then face a frontend error, these users would rather be told before they've clicked continue. </p>
+
+          <a class="govuk-link" href="https://landregistryuk.sharepoint.com/sites/DRS/Shared%20Documents/User%20Research/Live%20service%20-%20emerging%20themes%20&%20questions/Live%20service%20clips/Character%20limit%20for%20reference%20not%20adaptive/NM%20Character%20limit%20in%20reference%20is%20not%20easy%20to%20use.mp4"><p class="govuk-link">User research clip (MS Teams)</p></a>
 
           <h3 class="govuk-heading-m">Screenshot</h3>
           <img src="/public/images/character.gif" alt="declaration" style="width: 99%">
