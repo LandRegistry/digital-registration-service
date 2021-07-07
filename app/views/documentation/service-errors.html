@@ -43,7 +43,7 @@
         <ul class="govuk-list">
           <li><a class="govuk-link  govuk-link--no-visited-state" href="covid">Covid-19</a></li>
           <li><a class="govuk-link  govuk-link--no-visited-state" href="declaration">Declaration</a></li>
-          <li><a class="govuk-link  govuk-link--no-visited-state" href="links">Links</a></li>
+
           <li><a class="govuk-link  govuk-link--no-visited-state" href="warnings">Warning statement</a></li>
         </ul>
 
@@ -72,6 +72,43 @@
        <div class="govuk-grid-column-two-thirds">
         <h2 class="govuk-heading-l"> Service status errors </h2>
 
+        <p class="govuk-text">Service errors are potentially terminal points in a users journey, whether due to a problem with the service or user behaviour which is prohibited (e.g. bots) Below are the current templates for service errors.
+
+        <br><br>
+        Figma templates for these can be found <a href="https://www.figma.com/file/e2X1YCCNgz1DeIpsudwvbF/?node-id=30%3A14">here.</a>
+
+        <h3 class="govuk-heading-m"> Error screen templates </h3>
+        <h2 class="govuk-heading-s"> User-triggered error </h2>
+        <p class="govuk-body">For errors a user has caused, for example going to a forbidden page.</p>
+        <img src="/public/images/error-user.jpg" alt="user error" style="width: 100%">
+
+        <h2 class="govuk-heading-s"> User-triggered security error </h2>
+        <p class="govuk-body">For errors to stop unauthorised/fraudulant activity.</p>
+        <img src="/public/images/error-security.jpg" alt="security error" style="width: 100%">
+
+        <h2 class="govuk-heading-s"> Recoverable service or API errors </h2>
+        <p class="govuk-body">For use when it's our problem...</p>
+        <img src="/public/images/error-api.jpg" alt="api error" style="width: 100%">
+
+
+        <h2 class="govuk-heading-s"> Unrecoverable service or API errors </h2>
+        <p class="govuk-body">For use when it's our problem and we can't direct the user to the previous page. This isn't great from a user experience point of view, so should only be used when absolutely necessary. </p>
+        <img src="/public/images/error-unrecoverable.jpg" alt="unrecoverable error" style="width: 100%">
+
+        <br><br>
+
+        <h3 class="govuk-heading-m"> Existing frontend errors </h3>
+          <p class="govuk-text">Below is a list of specific errors that currently exist in the service. Most will eventually follow the above templates, however as of July 2021, they have not been updated.
+            Some do not follow the pattern as they require more specific content. <br><br>Designs and usage of these screens can be found <a class="govuk-link" href="https://www.figma.com/file/e2X1YCCNgz1DeIpsudwvbF/?node-id=30%3A14">here</a>.
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Variable direct debit errors</li>
+            <li>Document deletion error</li>
+            <li>User attempts to resubmit application</li>
+            <li>Unhandled error</li>
+            <li>404 error</li>
+            <li>Technical system failure</li>
+            <li>Multiple user error</li>
+          </ul>
 
         </div>
           </main>
