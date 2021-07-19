@@ -58,62 +58,106 @@
 
 
              <div class="govuk-form-group">
-               <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-                 <h2 class="govuk-fieldset__heading">
-                   Select if this transferor name:
-                 </h2>
-               <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
-
-
-                 <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
 
 
 
-                   <div class="govuk-radios__item">
-                     <input class="govuk-radios__input" id="misspelling" name="misspelling" type="radio" value="misspelling" data-aria-controls="conditional-misspelling">
-                     <label class="govuk-label govuk-radios__label" for="misspelling">
-                       Needs to be amended to correct a misspelling
-                     </label>
-                   </div>
-                   <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-misspelling">
-                     <div class="govuk-form-group">
-                       <label class="govuk-label" for="forename-misspelling">
-                         Forenames
-                       </label>
-                       <input class="govuk-input govuk-!-width-one-third" id="forename-misspelling" name="forename-misspelling" spellcheck="false"></div>
-                       <br>
-                       <label class="govuk-label" for="surname-misspelling">
-                         Surname
-                       </label>
-                       <input class="govuk-input govuk-!-width-one-third" id="surname-misspelling" name="surname-misspelling" spellcheck="false">
-                   </div>
+                  <form method="get" action="" data-validate="" novalidate>
+
+                    <div class="govuk-form-group">
+                      <fieldset class="govuk-fieldset" aria-describedby="change-transferor-conditional-hint">
+                        <h2 class="govuk-heading-s">Select if this transferor name:</h2>
+                        <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="transferor-1-correct" name="transferor-1-name" type="radio" value="correct">
+                            <label class="govuk-label govuk-radios__label" for="transferor-1-correct">
+                              Is correct
+                            </label>
+                          </div>
+
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="transferor-1-conditional-mispelling" name="transferor-1-name" type="radio" value="mispelling" data-aria-controls="change-transferor-conditional">
+                            <label class="govuk-label govuk-radios__label" for="transferor-1-conditional-mispelling">
+                              Needs to be amended to correct a misspelling
+                            </label>
+                          </div>
+
+                          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="change-transferor-conditional">
+                            <div class="govuk-form-group">
+
+                              <label class="govuk-label" for="transferor-mispelling-forename">
+                                Forenames
+                              </label>
+                              <input class="govuk-input govuk-!-width-one-half" id="transferor-mispelling-forename" name="transferor-forename" value="">
+                            </div>
+                            <div class="govuk-form-group">
+                              <label class="govuk-label" for="transferor-mispelling-surname">
+                                Surname
+                              </label>
+                              <input class="govuk-input govuk-!-width-one-half" id="transferor-mispelling-surname" name="transferor-surname" value="" type="surname"  >
+                            </div>
+
+                          </div>
+
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="transferor-1-conditional-change" name="transferor-1-name" type="radio" value="change" data-aria-controls="change-transferor-conditional-2">
+                            <label class="govuk-label govuk-radios__label" for="transferor-1-conditional-change">
+                              Needs to be amended to reflect a change of legal name
+                            </label>
+                          </div>
+
+                          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="change-transferor-conditional-2">
+                            <div class="govuk-form-group">
+                              <div id="change-hint" class="govuk-hint">
+                                You will need to supply evidence with this application.
+                              </div>
+                              <label class="govuk-label" for="transferor-change-forename">
+                                Forenames
+                              </label>
+                              <input class="govuk-input govuk-!-width-one-half" id="transferor-change-forename" name="transferor-forename" value="">
+                            </div>
+                            <div class="govuk-form-group">
+                              <label class="govuk-label" for="transferor-change-surname">
+                                Surname
+                              </label>
+                              <input class="govuk-input govuk-!-width-one-half" id="transferor-change-surname" name="transferor-surname" value="" type="surname"  >
+                            </div>
+
+                          </div>
+
+                          <div class="govuk-radios__item">
+
+                            <input class="govuk-radios__input" id="transferor-1-death" name="transferor-1-name" type="radio" value="death">
+
+                            <label class="govuk-label govuk-radios__label" for="transferor-1-death">
+                              Needs to be removed due to death
+                            </label>
+                            <div id="evidence-hint" class="govuk-hint govuk-radios__hint">
+                                You will need to supply evidence with this application
+                              </div>
+                          </div>
+
+                          <div class="govuk-radios__item">
+
+                            <input class="govuk-radios__input" id="transferor-1-other" name="transferor-1-name" type="radio" value="other">
+
+                            <label class="govuk-label govuk-radios__label" for="transferor-1-other">
+                              Needs to be removed for another reason
+                            </label>
+                            <div id="evidence-hint" class="govuk-hint govuk-radios__hint">
+                                You will need to supply evidence with this application
+                              </div>
+                          </div>
 
 
-                   <div class="govuk-radios__item">
-                     <input class="govuk-radios__input" id="legalchange" name="legalchange" type="radio" value="legalchange" data-aria-controls="conditional-legalchange">
-                     <label class="govuk-label govuk-radios__label" for="legalchange">
-                       Needs to be amended to reflect a change of legal name
-                       <div id="legalchange-hint" class="govuk-hint">You will need to supply evidence with this application.</div>
-                     </label>
-                   </div>
-
-                   <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-legalchange">
-                     <div class="govuk-form-group">
-                       <label class="govuk-label" for="forename-legalchange">
-                         Forenames
-                       </label>
-                       <input class="govuk-input govuk-!-width-one-third" id="forename-legalchange" name="forename-legalchange" spellcheck="false"></div>
-                       <br>
-                       <label class="govuk-label" for="surname-legalchange">
-                         Surname
-                       </label>
-                       <input class="govuk-input govuk-!-width-one-third" id="surname-legalchange" name="surname-legalchange" spellcheck="false">
-                   </div>
 
 
-                 </div>
-           </fieldset>
-          </div>
+
+
+                </fieldset>
+              </div>
+
+             </div>
 
 
         <footer>
