@@ -1,0 +1,267 @@
+{% extends "layout_unbranded.html" %}
+
+{% extends "govuk/template.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+
+
+{% block headIcons %}
+  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
+  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
+{% endblock %}
+
+{% block head %}
+  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full" id="headerdiv">
+    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
+    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link govuk-link--no-visited-state--no-visited-state">Digital Registration Service</a></p>
+    <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+
+
+    <div class="govuk-phase-banner govuk-!-margin-bottom-5">
+        <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
+        <span class="govuk-phase-banner__text">
+        This is a prototype and not a real service.
+        </span></p>
+    </div>
+    </div>
+
+<form method="post" action="/complete-tasks">
+<div class="govuk-grid-column-two-thirds">
+  <span class="govuk-caption-xl">Transfer for value (TR1)</span>
+    <h1 class="govuk-heading-xl">Transferor details</h1>
+
+    <p class="govuk-body">Check the details for each transferor. Names must match supporting documents and evidence may be required.</p>
+    <br><br>
+
+
+
+       <span class="govuk-caption-m">Transferor 1 of 4</span>
+         <h2 class="govuk-heading-m">Jon Smith</h2>
+
+         <table class="govuk-table govuk-!-margin-bottom-9">
+
+           <tbody class="govuk-table__body">
+             <tr class="govuk-table__row">
+               <th scope="row" class="govuk-table__header govuk-!-width-one-third">Transferor type</th>
+               <td class="govuk-table__cell">Private individual</td>
+               <td class="govuk-table__cell"></td>
+
+              </tr>
+
+             <tr class="govuk-table__row">
+               <th scope="row" class="govuk-table__header">Transferor name</th>
+               <td class="govuk-table__cell">
+
+                 {% if data['transferor-1-name'] == 'correct' %}
+
+                 is correct
+
+                 {% endif %}
+
+
+                 {% if data['transferor-1-name'] == 'misspelling' %}
+
+                 will be updated to <b>John Smith</b>
+                 <br><br>
+                 to correct a mispelling
+
+                 {% endif %}
+
+                 {% if data['transferor-1-name'] == 'change' %}
+
+                 will be updated to <b>John Smith</b>
+                 <br><br>
+                 to reflect a change of legal name (evidence required)
+
+                 {% endif %}
+
+                 {% if data['transferor-1-name'] == 'death' %}
+
+                 will be removed
+                 <br><br>
+                 due to death (evidence required)
+
+                 {% endif %}
+
+                 {% if data['transferor-1-name'] == 'other' %}
+
+                 will be removed (evidence required)
+                 <br><br>
+
+
+                 {% endif %}
+
+               </td>
+
+               <td class="govuk-table__cell"><a href="transferor-details-1">Change</a></td>
+
+             </tr>
+           </tbody>
+        </table>
+
+        <span class="govuk-caption-m">Transferor 2 of 4</span>
+          <h2 class="govuk-heading-m">Globex UK</h2>
+
+          <table class="govuk-table govuk-!-margin-bottom-9">
+
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header govuk-!-width-one-third">Transferor type</th>
+                <td class="govuk-table__cell">UK company or LLP</td>
+                <td class="govuk-table__cell"></td>
+
+               </tr>
+
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Transferor name</th>
+                <td class="govuk-table__cell">
+                Globex UK
+
+                </td>
+
+                <td class="govuk-table__cell"><a href="transferor-details-1">Change</a></td>
+
+              </tr>
+
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header govuk-!-width-one-third">Company number</th>
+                <td class="govuk-table__cell">{{ data['transferor-2-number'] }}</td>
+                <td class="govuk-table__cell"><a href="transferor-details-2">Change</a></td>
+
+               </tr>
+            </tbody>
+         </table>
+
+         <span class="govuk-caption-m">Transferor 3 of 4</span>
+           <h2 class="govuk-heading-m">Globex Global</h2>
+
+           <table class="govuk-table govuk-!-margin-bottom-9">
+
+             <tbody class="govuk-table__body">
+               <tr class="govuk-table__row">
+                 <th scope="row" class="govuk-table__header govuk-!-width-one-third">Transferor type</th>
+                 <td class="govuk-table__cell">Overseas company</td>
+                 <td class="govuk-table__cell"></td>
+
+                </tr>
+
+               <tr class="govuk-table__row">
+                 <th scope="row" class="govuk-table__header">Transferor name</th>
+                 <td class="govuk-table__cell">
+                 is correct
+
+                 </td>
+
+                 <td class="govuk-table__cell"><a href="transferor-details-3">Change</a></td>
+
+               </tr>
+
+               <tr class="govuk-table__row">
+                 <th scope="row" class="govuk-table__header govuk-!-width-one-third">Company number</th>
+                 <td class="govuk-table__cell">Not provided</td>
+                 <td class="govuk-table__cell"><a href="transferor-details-3">Change</a></td>
+
+                </tr>
+
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header govuk-!-width-one-third">Territory of incorporation</th>
+                  <td class="govuk-table__cell">{{ data['transferor-3-country'] }}</td>
+                  <td class="govuk-table__cell"><a href="transferor-details-3">Change</a></td>
+
+                 </tr>
+             </tbody>
+          </table>
+
+          <span class="govuk-caption-m">Transferor 4 of 4</span>
+            <h2 class="govuk-heading-m">Globex Corporation Charity Endeavour</h2>
+
+            <table class="govuk-table govuk-!-margin-bottom-5">
+
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header govuk-!-width-one-third">Transferor type</th>
+                  <td class="govuk-table__cell">Other organisation</td>
+                  <td class="govuk-table__cell"></td>
+
+                 </tr>
+
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header">Transferor name</th>
+                  <td class="govuk-table__cell">
+                  is correct
+
+                  </td>
+
+                  <td class="govuk-table__cell"><a href="transferor-details-4">Change</a></td>
+
+                </tr>
+
+              </tbody>
+           </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <button class="govuk-button govuk-!-margin-top-8" data-module="govuk-button">
+                      Continue
+                    </button>
+
+                  </form>
+
+            </div>
+
+
+
+        <footer>
+        <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+        <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+        <br>
+        <p class="govuk-body-s" style="color: #747B7F"> The following links open in a new window
+        <br>
+        <br>
+        <a href="#" style="color: #747B7F"> Terms and conditions</a> | <a href="/setup/accessibility-statement" target="_blank" rel="noopener noreferrer" style="color: #747B7F">Accessibility statement</a> |  <a href="#" style="color: #747B7F">Freedom of information</a> | <a href="#" style="color: #747B7F">© Crown copyright</a></p>
+        </div>
+        </div>
+        </footer>
+
+
+
+{% endblock %}
+
+
+{% block footer %}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}

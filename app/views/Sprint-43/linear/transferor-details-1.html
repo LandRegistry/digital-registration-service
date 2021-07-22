@@ -1,0 +1,194 @@
+{% extends "layout_unbranded.html" %}
+
+{% extends "govuk/template.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+
+
+{% block headIcons %}
+  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
+  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
+{% endblock %}
+
+{% block head %}
+  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full" id="headerdiv">
+    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
+    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link govuk-link--no-visited-state--no-visited-state">Digital Registration Service</a></p>
+    <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+
+
+    <div class="govuk-phase-banner govuk-!-margin-bottom-5">
+        <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
+        <span class="govuk-phase-banner__text">
+        This is a prototype and not a real service.
+        </span></p>
+    </div>
+    </div>
+<form method="post" action="transferor-details-2">
+<div class="govuk-grid-column-full">
+  <span class="govuk-caption-xl">Transfer for value (TR1)</span>
+    <h1 class="govuk-heading-xl">Check and complete transferor details</h1>
+
+    <p class="govuk-body">This information is retrieved from the register. Check the details are correct, make any required changes and complete any missing information. <br><br>
+  You may be asked to provide evidence of name changes where applicable. <br><br>  If none of the transferors are recognisable, <a href="#">enter the transferors manually</a>.</p>
+    <br><br>
+       <span class="govuk-caption-l">Transferor 1 of 4</span>
+         <h2 class="govuk-heading-l">Jon Smith</h2>
+
+
+
+             <div class="govuk-form-group">
+
+
+
+
+
+                    <div class="govuk-form-group">
+                      <fieldset class="govuk-fieldset" aria-describedby="change-transferor-conditional-hint">
+                        <h2 class="govuk-heading-s">Select if this transferor name:</h2>
+                        <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="transferor-1-correct" name="transferor-1-name" type="radio" value="correct">
+                            <label class="govuk-label govuk-radios__label" for="transferor-1-correct">
+                              Is correct
+                            </label>
+                          </div>
+
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="transferor-1-conditional-misspelling" name="transferor-1-name" type="radio" value="misspelling" data-aria-controls="change-transferor-conditional">
+                            <label class="govuk-label govuk-radios__label" for="transferor-1-conditional-misspelling">
+                              Needs to be amended to correct a misspelling
+                            </label>
+                          </div>
+
+                          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="change-transferor-conditional">
+                            <div class="govuk-form-group">
+
+                              <label class="govuk-label" for="transferor-misspelling-forename">
+                                Forenames
+                              </label>
+                              <input class="govuk-input govuk-!-width-one-half" id="transferor-misspelling-forename" name="transferor-forename">
+                            </div>
+                            <div class="govuk-form-group">
+                              <label class="govuk-label" for="transferor-misspelling-surname">
+                                Surname
+                              </label>
+                              <input class="govuk-input govuk-!-width-one-half" id="transferor-misspelling-surname" name="transferor-surname" type="surname"  >
+                            </div>
+
+                          </div>
+
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="transferor-1-conditional-change" name="transferor-1-name" type="radio" value="change" data-aria-controls="change-transferor-conditional-2">
+                            <label class="govuk-label govuk-radios__label" for="transferor-1-conditional-change">
+                              Needs to be amended to reflect a change of legal name
+                            </label>
+                          </div>
+
+                          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="change-transferor-conditional-2">
+                            <div class="govuk-form-group">
+                              <div id="change-hint" class="govuk-hint">
+                                You will need to supply evidence with this application.
+                              </div>
+                              <label class="govuk-label" for="transferor-change-forename">
+                                Forenames
+                              </label>
+                              <input class="govuk-input govuk-!-width-one-half" id="transferor-change-forename" name="transferor-forename" value="">
+                            </div>
+                            <div class="govuk-form-group">
+                              <label class="govuk-label" for="transferor-change-surname">
+                                Surname
+                              </label>
+                              <input class="govuk-input govuk-!-width-one-half" id="transferor-change-surname" name="transferor-surname" value="" type="surname"  >
+                            </div>
+
+                          </div>
+
+                          <div class="govuk-radios__item">
+
+                            <input class="govuk-radios__input" id="transferor-1-death" name="transferor-1-name" type="radio" value="death">
+
+                            <label class="govuk-label govuk-radios__label" for="transferor-1-death">
+                              Needs to be removed due to death
+                            </label>
+                            <div id="evidence-hint" class="govuk-hint govuk-radios__hint">
+                                You will need to supply evidence with this application
+                              </div>
+                          </div>
+
+                          <div class="govuk-radios__item">
+
+                            <input class="govuk-radios__input" id="transferor-1-other" name="transferor-1-name" type="radio" value="other">
+
+                            <label class="govuk-label govuk-radios__label" for="transferor-1-other">
+                              Needs to be removed for another reason
+                            </label>
+                            <div id="evidence-hint" class="govuk-hint govuk-radios__hint">
+                                You will need to supply evidence with this application
+                              </div>
+                          </div>
+
+
+
+
+
+
+
+
+                </fieldset>
+              </div>
+
+              <button class="govuk-button govuk-!-margin-top-8" data-module="govuk-button">
+              Continue
+            </button>
+
+             </div>
+  </form>
+
+
+        <footer>
+        <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+        <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+        <br>
+        <p class="govuk-body-s" style="color: #747B7F"> The following links open in a new window
+        <br>
+        <br>
+        <a href="#" style="color: #747B7F"> Terms and conditions</a> | <a href="/setup/accessibility-statement" target="_blank" rel="noopener noreferrer" style="color: #747B7F">Accessibility statement</a> |  <a href="#" style="color: #747B7F">Freedom of information</a> | <a href="#" style="color: #747B7F">© Crown copyright</a></p>
+        </div>
+        </div>
+        </footer>
+
+
+
+{% endblock %}
+
+
+{% block footer %}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}
