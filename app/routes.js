@@ -1682,3 +1682,27 @@ router.post('/multi-titles_answer', function (req, res) {
 
   }
 })
+
+
+// transferor details linear set existing names
+router.post('/start-transferors', function (req,res) {
+
+  req.session.data = 	      		{
+  "transferor-1-name": "John Smith",
+  "transferor-2-name": "Globex UK",
+  "transferor-3-name": "Globex Global",
+  "transferor-4-name": "Globex Corporation Charity Endeavour",
+  }
+
+  res.redirect('/../Sprint-43/linear/tasks')
+  })
+
+  // transferor details linear set existing names
+  router.post('/complete-tasks', function (req,res) {
+
+    req.session.data = 	      		{
+    "transferorComplete": "true"
+    }
+
+    res.redirect('/../Sprint-43/linear/tasks')
+    })

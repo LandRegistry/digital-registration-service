@@ -153,7 +153,7 @@ function errorSummary(errors) {
       newErrorSummaryList.appendChild(errorItem)
     }
   }
-  document.querySelector('span.govuk-caption-l').parentNode.insertBefore(newErrorSummary, document.querySelector('span.govuk-caption-l'))
+  document.querySelector('span.govuk-caption-xl').parentNode.insertBefore(newErrorSummary, document.querySelector('span.govuk-caption-xl'))
 
   newErrorSummary.focus()
 }

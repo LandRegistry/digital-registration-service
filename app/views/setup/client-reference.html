@@ -28,68 +28,72 @@
 {% endblock %}
 
 {% block content %}
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-full" id="headerdiv">
-    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
-    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Digital Registration Service</a></p>
-    <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full" id="headerdiv">
+        <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
+        <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Digital Registration Service</a></p>
+        <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
 
 
-    <div class="govuk-phase-banner">
-        <p class="govuk-phase-banner__content">
-        <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
-        <span class="govuk-phase-banner__text">
-        This is a prototype and not a real service.
-        </span></p>
+        <div class="govuk-phase-banner">
+            <p class="govuk-phase-banner__content">
+            <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
+            <span class="govuk-phase-banner__text">
+            This is a prototype and not a real service.
+            </span></p>
+        </div>
+        </div>
     </div>
-    </div>
-</div>
 
     <main class="govuk-main-wrapper " id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
 
-<form method="get" action="user-type" data-validate="reference-form-validation" novalidate>
-  <span class="govuk-caption-l"></span>
-  <h1 class="govuk-heading-l"> Enter your reference </h1>
+              <form method="get" action="user-type" data-validate="reference-form-validation" novalidate>
+
+                  <span class="govuk-caption-l"></span>
+                  <h1 class="govuk-heading-l"> Enter your reference </h1>
 
 
-    <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
-      <div class="govuk-form-group">
-        <label class="govuk-label" for="with-hint">
-          Type in your reference for this application
-        </label>
+                      <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
 
-        <input type="text" class="govuk-input govuk-js-character-count govuk-!-width-one-half" id="with-hint" name="reference" aria-describedby="with-hint-info with-hint-hint">
-      </div>
+                        <div class="govuk-form-group">
+                          <label class="govuk-label" for="with-hint">
+                            Type in your reference for this application
+                          </label>
 
-      <span id="with-hint-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
-        You can enter up to 25 characters
-      </span>
-    </div>
+                          <input type="text" class="govuk-input govuk-js-character-count govuk-!-width-one-half" id="with-hint" name="reference" aria-describedby="with-hint-info with-hint-hint">
+                        </div>
 
+                        <span id="with-hint-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
+                          You can enter up to 25 characters
+                        </span>
 
-    {{ govukButton({
-      text: "Continue"
-    }) }}
-  </form>
-  </div>
-  </div>
+                      </div>
 
 
+                    {{ govukButton({
+                      text: "Continue"
+                    }) }}
 
-  <footer>
-  <div class="govuk-grid-row">
-  <div class="govuk-grid-column-full">
-  <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
-  <br>
-  <p class="govuk-body-s" style="color: #747B7F"> The following links open in a new window
-  <br>
-  <br>
-  <a href="#" style="color: #747B7F"> Terms and conditions</a> | <a href="/setup/accessibility-statement" target="_blank" rel="noopener noreferrer" style="color: #747B7F">Accessibility statement</a> |  <a href="#" style="color: #747B7F">Freedom of information</a> | <a href="#" style="color: #747B7F">© Crown copyright</a></p>
-  </div>
-  </div>
-  </footer>
+              </form>
+            </div>
+        </div>
+
+
+
+        <footer>
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+              <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+              <br>
+              <p class="govuk-body-s" style="color: #747B7F"> The following links open in a new window
+              <br>
+              <br>
+              <a href="#" style="color: #747B7F"> Terms and conditions</a> | <a href="/setup/accessibility-statement" target="_blank" rel="noopener noreferrer" style="color: #747B7F">Accessibility statement</a> |  <a href="#" style="color: #747B7F">Freedom of information</a> | <a href="#" style="color: #747B7F">© Crown copyright</a></p>
+              </div>
+          </div>
+        </footer>
 
 
   <script type="application/json" id="reference-form-validation">

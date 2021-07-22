@@ -28,6 +28,7 @@
 {% block header %}
 {% endblock %}
 
+
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full" id="headerdiv">
@@ -44,7 +45,7 @@
         </span></p>
     </div>
     </div>
-<form method="post" action="/../transactions/multi-application-review">
+<form method="post" action="transferor-details-2">
 <div class="govuk-grid-column-full">
   <span class="govuk-caption-xl">Transfer for value (TR1)</span>
     <h1 class="govuk-heading-xl">Check and complete transferor details</h1>
@@ -53,7 +54,7 @@
   You may be asked to provide evidence of name changes where applicable. <br><br>  If none of the transferors are recognisable, <a href="#">enter the transferors manually</a>.</p>
     <br><br>
        <span class="govuk-caption-l">Transferor 1 of 4</span>
-         <h2 class="govuk-heading-l">John Smith</h2>
+         <h2 class="govuk-heading-l">Jon Smith</h2>
 
 
 
@@ -61,7 +62,7 @@
 
 
 
-                  <form method="get" action="" data-validate="" novalidate>
+
 
                     <div class="govuk-form-group">
                       <fieldset class="govuk-fieldset" aria-describedby="change-transferor-conditional-hint">
@@ -76,8 +77,8 @@
                           </div>
 
                           <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="transferor-1-conditional-mispelling" name="transferor-1-name" type="radio" value="mispelling" data-aria-controls="change-transferor-conditional">
-                            <label class="govuk-label govuk-radios__label" for="transferor-1-conditional-mispelling">
+                            <input class="govuk-radios__input" id="transferor-1-conditional-misspelling" name="transferor-1-name" type="radio" value="misspelling" data-aria-controls="change-transferor-conditional">
+                            <label class="govuk-label govuk-radios__label" for="transferor-1-conditional-misspelling">
                               Needs to be amended to correct a misspelling
                             </label>
                           </div>
@@ -85,16 +86,16 @@
                           <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="change-transferor-conditional">
                             <div class="govuk-form-group">
 
-                              <label class="govuk-label" for="transferor-mispelling-forename">
+                              <label class="govuk-label" for="transferor-misspelling-forename">
                                 Forenames
                               </label>
-                              <input class="govuk-input govuk-!-width-one-half" id="transferor-mispelling-forename" name="transferor-forename" value="">
+                              <input class="govuk-input govuk-!-width-one-half" id="transferor-misspelling-forename" name="transferor-forename">
                             </div>
                             <div class="govuk-form-group">
-                              <label class="govuk-label" for="transferor-mispelling-surname">
+                              <label class="govuk-label" for="transferor-misspelling-surname">
                                 Surname
                               </label>
-                              <input class="govuk-input govuk-!-width-one-half" id="transferor-mispelling-surname" name="transferor-surname" value="" type="surname"  >
+                              <input class="govuk-input govuk-!-width-one-half" id="transferor-misspelling-surname" name="transferor-surname" type="surname"  >
                             </div>
 
                           </div>
@@ -154,10 +155,17 @@
 
 
 
+
+
                 </fieldset>
               </div>
 
+              <button class="govuk-button govuk-!-margin-top-8" data-module="govuk-button">
+              Continue
+            </button>
+
              </div>
+  </form>
 
 
         <footer>
