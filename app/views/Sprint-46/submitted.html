@@ -1,0 +1,237 @@
+{% extends "layout_unbranded.html" %}
+
+{% extends "govuk/template.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+
+
+{% block headIcons %}
+  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
+  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
+{% endblock %}
+
+{% block head %}
+  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full" id="headerdiv" class="example-screen">
+    <a href="/../../setup/app-start" class="example-screen"><img src="/public/images/headerlogo.svg" alt="hmlrlogo" class="example-screen"></a>
+    <p class="govuk-heading-m " style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link govuk-link--no-visited-state--no-visited-state example-screen">Digital Registration Service</a></p>
+    <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+
+
+    <div class="govuk-phase-banner govuk-!-margin-bottom-5 example-screen">
+        <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
+        <span class="govuk-phase-banner__text">
+        This is a prototype and not a real service.
+        </span></p>
+    </div>
+    </div>
+
+    <div class="govuk-grid-column-full">
+
+    <div class="example-screen">
+    <div class="govuk-panel govuk-panel--confirmation">
+      <h1 class="govuk-panel__title">
+        Application submitted
+      </h1>
+      <div class="govuk-panel__body">
+        Your HM Land Registry reference number<br><strong>HDJ2123F</strong>
+      </div>
+      <br>
+      <div class="govuk-panel_body">
+        You must quote this reference number in any correspondence
+        </div>
+    </div>
+
+    <div>
+        <h1 class="govuk-heading-l" style="float: left;">
+        Application details
+        </h1>
+
+        <button class="govuk-button govuk-button--secondary" onclick="window.print();" data-module="govuk-button" style="float: right;">
+        Print submission receipt
+      </button>
+
+        <table class="govuk-table">
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header govuk-!-width-one-third">Priority date</th>
+            <td class="govuk-table__cell">7 June 2021</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Priority time</th>
+            <td class="govuk-table__cell">14:43:07</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Your reference</th>
+            <td class="govuk-table__cell">1206301/1</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Title numbers</th>
+            <td class="govuk-table__cell">LP12345, LP12346, LP12347, LP12348, LP12349, LP12350, LP12351, LP12352, LP12353, LP12354, LP12355, LP12356, LP12357, LP12358, LP12359, LP12360, LP12361, LP12362, LP12363, LP12364, LP12365, LP12366, LP12367, LP12366</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Property description</th>
+            <td class="govuk-table__cell">66 Edwards Walk, Littlehaxten, LH6 8SH <br> 67 Edwards Walk, Littlehaxten, LH6 8SH <br> 68 Edwards Walk, Littlehaxten, LH6 8SH <br> 69 Edwards Walk, Littlehaxten, LH6 8SH<br> 70 Edwards Walk, Littlehaxten, LH6 8SH<br>
+                                          71 Edwards Walk, Littlehaxten, LH6 8SH<br> 72 Edwards Walk, Littlehaxten, LH6 8SH <br> 73 Edwards Walk, Littlehaxten, LH6 8SH <br> 74 Edwards Walk, Littlehaxten, LH6 8SH <br> 75 Edwards Walk, Littlehaxten, LH6 8SH<br>
+                                          76 Edwards Walk, Littlehaxten, LH6 8SH <br> 77 Edwards Walk, Littlehaxten, LH6 8SH <br> 78 Edwards Walk, Littlehaxten, LH6 8SH <br> 79 Edwards Walk, Littlehaxten, LH6 8SH<br> 80 Edwards Walk, Littlehaxten, LH6 8SH<br>
+                                          81 Edwards Walk, Littlehaxten, LH6 8SH<br> 82 Edwards Walk, Littlehaxten, LH6 8SH <br> 83 Edwards Walk, Littlehaxten, LH6 8SH <br> 84 Edwards Walk, Littlehaxten, LH6 8SH <br> 85 Edwards Walk, Littlehaxten, LH6 8SH<br>
+                                          86 Edwards Walk, Littlehaxten, LH6 8SH<br> 87 Edwards Walk, Littlehaxten, LH6 8SH <br> 88 Edwards Walk, Littlehaxten, LH6 8SH <br> 89 Edwards Walk, Littlehaxten, LH6 8SH <br> 90 Edwards Walk, Littlehaxten, LH6 8SH<br>
+
+                                        </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Attachments</th>
+            <td class="govuk-table__cell">deed.pdf <br> evidence.pdf</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Contact email</th>
+            <td class="govuk-table__cell">admin@conveyancingfirm.co.uk</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+
+<!-- PRINTABLE AREA -->
+
+    <div class="example-print">
+      <h1 class="govuk-heading-l">
+        Application submitted
+      </h1>
+      <div class="govuk-body">
+        Your HM Land Registry reference number<br><strong>HDJ2123F</strong>
+      </div>
+      <br>
+      <div class="govuk-body">
+        You must quote this reference number in any correspondence
+        </div>
+
+
+    <div>
+        <h1 class="govuk-heading-l" style="float: left;">
+        Application details
+        </h1>
+
+        <table class="govuk-table">
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header govuk-!-width-one-quarter">Priority date</th>
+            <td class="govuk-table__cell">7 June 2021</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header govuk-!-width-one-quarter">Priority time</th>
+            <td class="govuk-table__cell">14:43:07</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header govuk-!-width-one-quarter">Your reference</th>
+            <td class="govuk-table__cell">1206301/1</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header govuk-!-width-one-quarter">Title numbers</th>
+            <td class="govuk-table__cell">LP12345, LP12346, LP12347, LP12348, LP12349, LP12350, LP12351, LP12352, LP12353, LP12354, LP12355, LP12356, LP12357, LP12358, LP12359, LP12360, LP12361, LP12362, LP12363, LP12364, LP12365, LP12366, LP12367, LP12366</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header govuk-!-width-one-quarter">Property description</th>
+            <td class="govuk-table__cell govuk-!-width-three-quarters">66 Edwards Walk, Littlehaxten, LH6 8SH <br> 67 Edwards Walk, Littlehaxten, LH6 8SH <br> 68 Edwards Walk, Littlehaxten, LH6 8SH <br> 69 Edwards Walk, Littlehaxten, LH6 8SH<br> 70 Edwards Walk, Littlehaxten, LH6 8SH<br>
+                                          71 Edwards Walk, Littlehaxten, LH6 8SH<br> 72 Edwards Walk, Littlehaxten, LH6 8SH <br> 73 Edwards Walk, Littlehaxten, LH6 8SH <br> 74 Edwards Walk, Littlehaxten, LH6 8SH <br> 75 Edwards Walk, Littlehaxten, LH6 8SH<br>
+                                          76 Edwards Walk, Littlehaxten, LH6 8SH <br> 77 Edwards Walk, Littlehaxten, LH6 8SH <br> 78 Edwards Walk, Littlehaxten, LH6 8SH <br> 79 Edwards Walk, Littlehaxten, LH6 8SH<br> 80 Edwards Walk, Littlehaxten, LH6 8SH<br>
+                                          81 Edwards Walk, Littlehaxten, LH6 8SH<br> 82 Edwards Walk, Littlehaxten, LH6 8SH <br> 83 Edwards Walk, Littlehaxten, LH6 8SH <br> 84 Edwards Walk, Littlehaxten, LH6 8SH <br> 85 Edwards Walk, Littlehaxten, LH6 8SH<br>
+                                          86 Edwards Walk, Littlehaxten, LH6 8SH<br> 87 Edwards Walk, Littlehaxten, LH6 8SH <br> 88 Edwards Walk, Littlehaxten, LH6 8SH <br> 89 Edwards Walk, Littlehaxten, LH6 8SH <br> 90 Edwards Walk, Littlehaxten, LH6 8SH<br>
+
+                                        </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Attachments</th>
+            <td class="govuk-table__cell">deed.pdf <br> evidence.pdf</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Contact email</th>
+            <td class="govuk-table__cell">admin@conveyancingfirm.co.uk</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+
+    <div class="example-screen">
+      <h2 class="govuk-heading-m">Next steps</h2>
+        <ul class="govuk-list">
+          <li>
+            <a class="govuk-link" href="#">Download completed AP1</a>
+          </li>
+          <li>
+            <a class="govuk-link" href="#">Start new application</a>
+          </li>
+          <li>
+            <a class="govuk-link" href="#">View your applications</a>
+          </li>
+          <li>
+            <a class="govuk-link" href="#">Go to portal homepage</a>
+          </li>
+          <li>
+            <p class="govuk-body">Got a moment? <a class="govuk-link" href="#">Tell us what you think</a></p>
+          </li>
+      </ul>
+  </div>
+
+
+
+
+    <footer class="example-screen">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+          <br>
+          <p class="govuk-body-s" style="color: #747B7F"> The following links open in a new window
+          <br>
+          <br>
+          <a href="#" style="color: #747B7F"> Terms and conditions</a> | <a href="/setup/accessibility-statement" target="_blank" rel="noopener noreferrer" style="color: #747B7F">Accessibility statement</a> |  <a href="#" style="color: #747B7F">Freedom of information</a> | <a href="#" style="color: #747B7F">© Crown copyright</a></p>
+        </div>
+      </div>
+    </footer>
+
+</div>
+
+<style>
+  .example-print {
+    display: none;
+}
+@media print {
+   .example-screen {
+       display: none;
+    }
+    .example-print {
+       display: block;
+    }
+}
+</style>
+
+
+{% endblock %}
+
+
+{% block footer %}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}
