@@ -41,33 +41,81 @@
     <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
 
 
-    <div class="govuk-phase-banner govuk-!-margin-bottom-5">
+    <div class="govuk-phase-banner">
         <p class="govuk-phase-banner__content">
         <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
         <span class="govuk-phase-banner__text">
         This is a prototype and not a real service.
         </span></p>
     </div>
-    </div>
+
+      <a href="#" class="govuk-back-link govuk-!-margin-bottom-6">Return to application</a>
+
 
 <form method="post" action="/transfer-provisions-complete">
     <div class="govuk-grid-column-full">
         <span class="govuk-caption-xl">Transfer for value (TR1)</span>
-        <h1 class="govuk-heading-xl">Additional provisions (optional)</h1>
+        <h1 class="govuk-heading-xl">Are there any additional provisions?</h1>
 
 
       <div class="govuk-grid-column-two-thirds" style="margin-left: -10px;">
 
+        <details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              About additional provisions
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            You must enter any required or permitted statement and any agreed covenants, declarations, etc.
+          </div>
+        </details>
 
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
 
-            {{ govukTextarea({
-            name: "provisions",
-            id: "provisions",
-            hint: {
-              text: "Enter the details of any additional covenants or agreements between transferors and transferees."
-            }
-          }) }}
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="additional-provisions" name="additional-provisions" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="additional-provisions">
+                  No
+                </label>
+              </div>
 
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="additional-provisions-2" name="additional-provisions" type="radio" value="yes">
+                <label class="govuk-label govuk-radios__label" for="additional-provisions-2">
+                  Yes - I will upload a completed TR1 form
+                </label>
+              </div>
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="additional-provisions-3" name="additional-provisions" type="radio" value="text" data-aria-controls="conditional-additional-provisions-3">
+                <label class="govuk-label govuk-radios__label" for="additional-provisions-3">
+                  Yes - I need to enter details
+                </label>
+              </div>
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-additional-provisions-3">
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="enter-details">
+                    Enter the details of any additional covenants or agreements between transferors and transferees.
+                  </label>
+                  <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="10000">
+                    <div class="govuk-form-group">
+                      <textarea class="govuk-textarea govuk-js-character-count" id="with-hint" name="with-hint" rows="10" aria-describedby="with-hint-info with-hint-hint"></textarea>
+                    </div>
+
+                    <div id="with-hint-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
+                      You can enter up to 10,000 characters
+                    </div>
+
+                </div>
+
+              </div>
+            </div>
+
+          </fieldset>
+        </div>
 
             {{ govukButton({
               text: "Continue"
