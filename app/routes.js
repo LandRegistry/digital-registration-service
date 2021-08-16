@@ -1706,3 +1706,26 @@ router.post('/start-transferors', function (req,res) {
 
     res.redirect('/../Sprint-43/linear/tasks')
     })
+
+    // transferor details simplify set existing names
+    router.post('/transferor-details-b', function (req,res) {
+
+      req.session.data = 	      		{
+      "show-individual": "TRUE",
+      "individual": "Joseph R. Bloggs",
+      "uk_comp": "UK Conveyancing and Legal Services Limited",
+      "uk_comp-number": "123456789",
+      "int_comp": "International Conveyancing and Legal Services Limited",
+      "int_comp-number": "234567891",
+      "int_comp-territory": "UNITED STATES OF AMERICA",
+      "other_org": "Community Trust for the Protection of Pets",
+      }
+
+      res.redirect('/../Sprint-43/simplify/tasks')
+      })
+
+      // transferor details simplify hide individual
+      router.post('/hide-transferor-individual', function (req, res) {
+        req.session.data['show-individual'] = 'FALSE';
+          res.redirect('/../Sprint-43/simplify/transferor-list-1')
+      })

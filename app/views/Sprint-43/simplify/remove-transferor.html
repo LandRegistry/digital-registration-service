@@ -53,61 +53,13 @@
       This is the information currently held on the register for the title numbers you have entered. If any information is incorrect, you must remove the entry and add another transferor.
     </p>
 
-    <form method="post" action="add-transferor-complete">
-    <table class="govuk-table">
-      <thead class="govuk-table__head">
-        <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header">Transferor type</th>
-          <th scope="col" class="govuk-table__header">Transferor name</th>
-          <th scope="col" class="govuk-table__header">Company number</th>
-          <th scope="col" class="govuk-table__header">Territory of incorporation</th>
-          <th scope="col" class="govuk-table__header"></th>
-        </tr>
-      </thead>
-
-      <tbody class="govuk-table__body">
-        {% if data['show-individual']=='TRUE'%}
-            <tr class="govuk-table__row">
-              <td class="govuk-table__cell">Private individual</td>
-              <td class="govuk-table__cell">Joe Bloggs</td>
-              <td class="govuk-table__cell">N/A</td>
-              <td class="govuk-table__cell">N/A</td>
-              <td class="govuk-table__cell govuk-link"><a href="remove-transferor">Remove</a></td>
-            </tr>
-        {% endif %}
-            <tr class="govuk-table__row">
-              <td class="govuk-table__cell">UK company or LLP</td>
-              <td class="govuk-table__cell">{{ data['uk_comp'] }}</td>
-              <td class="govuk-table__cell">{{ data['uk_comp-number'] }}</td>
-              <td class="govuk-table__cell">N/A</td>
-              <td class="govuk-table__cell govuk-link"><a href="#">Amend</a></td>
-            </tr>
-            <tr class="govuk-table__row">
-              <td class="govuk-table__cell">Overseas company</td>
-              <td class="govuk-table__cell">{{ data['int_comp'] }}</td>
-              <td class="govuk-table__cell">{{ data['int_comp-number'] }}</td>
-              <td class="govuk-table__cell">{{ data['int_comp-territory'] }}</td>
-              <td class="govuk-table__cell govuk-link"><a href="#">Amend</a></td>
-            </tr>
-            <tr class="govuk-table__row">
-              <td class="govuk-table__cell">Other organisation</td>
-              <td class="govuk-table__cell">{{ data['other_org'] }}</td>
-              <td class="govuk-table__cell">N/A</td>
-              <td class="govuk-table__cell">N/A</td>
-              <td class="govuk-table__cell govuk-link"><a href="#">Amend</a></td>
-            </tr>
-      </tbody>
-    </table>
-
-    {% if data['show-individual']=='FALSE'%}
+    <form method="post" action="/hide-transferor-individual">
 
     <div class="govuk-!-margin-bottom-5">
       <a class="govuk-link govuk-body" href="/Sprint-43/simplify/add-transferor">
         Add another transferor
       </a>
     </div>
-
-    {% endif %}
 
     <br>
 
