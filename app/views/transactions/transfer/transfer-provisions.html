@@ -67,7 +67,7 @@
             </span>
           </summary>
           <div class="govuk-details__text">
-            You must enter any required or permitted statement and any agreed covenants, declarations, etc.
+            Sometimes there are covenants or agreements between the transferors and transferees. You may wish to seek legal advice as such covenants or agreements are binding on the persons who gives them even after completion of the transfer.  <br><br>You must enter any required or permitted statement and any agreed covenants, declarations, etc.
           </div>
         </details>
 
@@ -85,7 +85,7 @@
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="additional-provisions-2" name="additional-provisions" type="radio" value="yes">
                 <label class="govuk-label govuk-radios__label" for="additional-provisions-2">
-                  Yes - I will upload a completed TR1 form
+                  Yes - I will upload a completed TR1 form later
                 </label>
               </div>
 
@@ -100,13 +100,13 @@
                   <label class="govuk-label" for="enter-details">
                     Enter the details of any additional covenants or agreements between transferors and transferees.
                   </label>
-                  <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="10000">
+                  <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="50000">
                     <div class="govuk-form-group">
                       <textarea class="govuk-textarea govuk-js-character-count" id="with-hint" name="with-hint" rows="10" aria-describedby="with-hint-info with-hint-hint"></textarea>
                     </div>
 
                     <div id="with-hint-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
-                      You can enter up to 10,000 characters
+                      You can enter up to 50,000 characters
                     </div>
 
                 </div>
@@ -117,6 +117,12 @@
           </fieldset>
         </div>
 
+        <p class="govuk-body" style="font-weight: bold">
+          By selecting ‘Continue’ you confirm any details provided are correct and consistent with supporting documents.  
+        </p>
+
+        <br>
+        
             {{ govukButton({
               text: "Continue"
             }) }}
