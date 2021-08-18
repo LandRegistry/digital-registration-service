@@ -7,8 +7,38 @@ if (window.console && window.console.info) {
 
 $(document).ready(function () {
   window.GOVUKFrontend.initAll()
+
+  let selectElement = document.querySelector('#select-transactions-select')
+    accessibleAutocomplete.enhanceSelectElement({
+      defaultValue: '',
+      selectElement: selectElement
+    })
+
 })
 
+let selectElement = document.querySelector('#choose-country')
+
+accessibleAutocomplete.enhanceSelectElement({
+  defaultValue: '',
+  source: (query, populateResults) => {
+    const options = selectElement.querySelectorAll('option')
+    let results = []
+
+    options.forEach(
+      (opt, i, list) => {
+        let queryRegExp = new RegExp(query.trim(), 'i')
+        let value = opt.getAttribute('value')
+        let text = opt.innerText.trim()
+        if (queryRegExp.test(value) || queryRegExp.test(text)) {
+          results.push(text)
+        }
+      }
+    )
+
+    populateResults(results)
+  },
+  selectElement: selectElement
+})
 
 // This updates the feeText that appears on the screen, it takes the total of all the feeFields
 function updateFeeText(feeFields) {

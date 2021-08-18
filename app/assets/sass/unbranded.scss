@@ -134,3 +134,8 @@ margin-top: 7px !important;
   font-weight: bold;
   text-decoration: none;
 }
+
+// accessible-autocomplete
+.autocomplete__wrapper * {
+  @include govuk-typography-common();
+}

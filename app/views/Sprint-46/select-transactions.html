@@ -31,13 +31,13 @@
 
 {% block content %}
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-full" id="headerdiv" class="example-screen">
+  <div class="govuk-grid-column-full" id="headerdiv" class="">
     <a href="/../../setup/app-start" class="example-screen"><img src="/public/images/headerlogo.svg" alt="hmlrlogo" class="example-screen"></a>
     <p class="govuk-heading-m " style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link govuk-link--no-visited-state--no-visited-state example-screen">Digital Registration Service</a></p>
     <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
 
 
-    <div class="govuk-phase-banner govuk-!-margin-bottom-5 example-screen">
+    <div class="govuk-phase-banner govuk-!-margin-bottom-5">
         <p class="govuk-phase-banner__content">
         <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
         <span class="govuk-phase-banner__text">
@@ -48,9 +48,19 @@
 
     <div class="govuk-grid-column-full">
 
+      <select class="govuk-select" name="select-transactions-select" id="select-transactions-select">
+        <option value="territory:AE-AZ">Abu Dhabi</option>
+        <option value="country:AF">Afghanistan</option>
+        <option value="territory:AE-AJ">Ajman</option>
+        <option value="territory:XQZ">Akrotiri</option>
+        <option value="country:AL">Albania</option>
+        ...
+        <option value="country:ZM">Zambia</option>
+        <option value="country:ZW">Zimbabwe</option>
+        <option value="territory:AX">Åland Islands</option>
+      </select>
 
-
-    <footer class="example-screen">
+    <footer class="">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
           <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">

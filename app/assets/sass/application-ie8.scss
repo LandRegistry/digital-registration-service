@@ -1,3 +1,7 @@
 $govuk-is-ie8: true;
 
 @import "application";
+
+.autocomplete__wrapper * {
+  @include govuk-typography-common();
+}
