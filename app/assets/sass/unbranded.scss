@@ -23,6 +23,10 @@ $govuk-canvas-background-colour: $govuk-body-background-colour;
 
 @import "node_modules/govuk-frontend/govuk/all";
 
+.autocomplete__wrapper * {
+  @include govuk-typography-common();
+}
+
 .h1 {
   font-family: "arial", sans-serif;
 }
