@@ -48,17 +48,124 @@
 
 <div class="govuk-grid-column-full">
     <span class="govuk-caption-l">Transfer for value (TR1)</span>
-    <h1 class="govuk-heading-xl">Transferors</h1>
+    <h1 class="govuk-heading-xl">Remove transferor</h1>
     <p class="govuk-body govuk-!-width-two-thirds">
-      This is the information currently held on the register for the title numbers you have entered. If any information is incorrect, you must remove the entry and add another transferor.
+      This is the information currently held on the register for the title numbers you have entered.
     </p>
 
     <form method="post" action="/hide-transferor-individual">
 
-    <div class="govuk-!-margin-bottom-5">
-      <a class="govuk-link govuk-body" href="/Sprint-43/simplify/add-transferor">
-        Add another transferor
-      </a>
+    <div>
+      <p class="govuk-heading-s govuk-!-width-two-thirds govuk-!-padding-top-5">
+        Transferor name:
+      </p>
+      <p class="govuk-body-l">
+        Joseph R. Bloggs
+      </p>
+    </div>
+
+    <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+          <h1 class="govuk-fieldset__heading">
+            This transferor needs to be removed due to:
+          </h1>
+        </legend>
+
+        <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="reason" name="reason" type="radio" data-aria-controls="conditional-contact">
+            <label class="govuk-label govuk-radios__label" for="reason">
+              Misspelling
+            </label>
+          </div>
+          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="contact-by-email">
+                You will need to add the correct transferor details later.
+              </label>
+              <input class="govuk-input govuk-!-width-one-third" id="contact-by-email" name="contact-by-email" type="email" spellcheck="false" autocomplete="email">
+            </div>
+          </div>
+
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="reason-2" name="reason" type="radio" data-aria-controls="conditional-contact-2">
+            <label class="govuk-label govuk-radios__label" for="reason-2">
+              Name change
+            </label>
+          </div>
+          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-2">
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="contact-by-phone">
+                You will need to supply evidence with this application.
+              </label>
+              <input class="govuk-input govuk-!-width-one-third" id="contact-by-phone" name="contact-by-phone" type="tel" autocomplete="tel">
+            </div>
+          </div>
+
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="reason-3" name="reason" type="radio" data-aria-controls="conditional-contact-3">
+            <label class="govuk-label govuk-radios__label" for="reason-3">
+              Death
+            </label>
+          </div>
+          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-3">
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="contact-by-text">
+                You will need to supply evidence with this application.
+              </label>
+              <input class="govuk-input govuk-!-width-one-third" id="contact-by-text" name="contact-by-text" type="tel" autocomplete="tel">
+            </div>
+          </div>
+
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="reason-4" name="reason" type="radio" data-aria-controls="conditional-contact-3">
+            <label class="govuk-label govuk-radios__label" for="reason-4">
+              Decree absolute or nullity of marriage
+            </label>
+          </div>
+          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-4">
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="contact-by-text">
+                You will need to supply evidence with this application.
+              </label>
+              <input class="govuk-input govuk-!-width-one-third" id="contact-by-text" name="contact-by-text" type="tel" autocomplete="tel">
+            </div>
+          </div>
+
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="reason-5" name="reason" type="radio" data-aria-controls="conditional-contact-3">
+            <label class="govuk-label govuk-radios__label" for="reason-5">
+              Order of dissolution or nulity of civil partnership
+            </label>
+          </div>
+          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-5">
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="contact-by-text">
+                You will need to supply evidence with this application.
+              </label>
+              <input class="govuk-input govuk-!-width-one-third" id="contact-by-text" name="contact-by-text" type="tel" autocomplete="tel">
+            </div>
+          </div>
+
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="reason-6" name="reason" type="radio" data-aria-controls="conditional-contact-3">
+            <label class="govuk-label govuk-radios__label" for="reason-6">
+              Court order
+            </label>
+          </div>
+          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-6">
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="contact-by-text">
+                You will need to supply evidence with this application.
+              </label>
+              <input class="govuk-input govuk-!-width-one-third" id="contact-by-text" name="contact-by-text" type="tel" autocomplete="tel">
+            </div>
+          </div>
+
+        </div>
+
+      </fieldset>
     </div>
 
     <br>
