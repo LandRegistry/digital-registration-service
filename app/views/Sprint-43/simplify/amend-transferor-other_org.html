@@ -48,66 +48,30 @@
 
 <div class="govuk-grid-column-full">
     <span class="govuk-caption-l">Transfer for value (TR1)</span>
-    <h1 class="govuk-heading-xl">Transferors</h1>
+    <h1 class="govuk-heading-xl">Amend transferor details</h1>
     <p class="govuk-body govuk-!-width-two-thirds">
-      This is the information currently held on the register for the title numbers you have entered. If any information is incorrect, you must remove the entry and add another transferor.
+      This is the information currently held on the register for the title numbers you have entered.
     </p>
 
-    <form method="post" action="tasks">
-    <table class="govuk-table">
-      <thead class="govuk-table__head">
-        <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header">Transferor type</th>
-          <th scope="col" class="govuk-table__header">Transferor name</th>
-          <th scope="col" class="govuk-table__header">Company number</th>
-          <th scope="col" class="govuk-table__header">Territory of incorporation</th>
-          <th scope="col" class="govuk-table__header"></th>
-        </tr>
-      </thead>
+    <form method="post" action="transferor-list-1">
 
-      <tbody class="govuk-table__body">
-        {% if data['show-individual']=='TRUE'%}
-            <tr class="govuk-table__row">
-              <td class="govuk-table__cell">Private individual</td>
-              <td class="govuk-table__cell">Joe Bloggs</td>
-              <td class="govuk-table__cell">N/A</td>
-              <td class="govuk-table__cell">N/A</td>
-              <td class="govuk-table__cell govuk-link"><a href="remove-transferor">Remove</a></td>
-            </tr>
-        {% endif %}
-            <tr class="govuk-table__row">
-              <td class="govuk-table__cell">UK company or LLP</td>
-              <td class="govuk-table__cell">{{ data['uk_comp'] }}</td>
-              <td class="govuk-table__cell">{{ data['uk_comp-number'] }}</td>
-              <td class="govuk-table__cell">N/A</td>
-              <td class="govuk-table__cell govuk-link"><a href="amend-transferor-uk_comp">Amend</a></td>
-            </tr>
-            <tr class="govuk-table__row">
-              <td class="govuk-table__cell">Overseas company</td>
-              <td class="govuk-table__cell">{{ data['int_comp'] }}</td>
-              <td class="govuk-table__cell">{{ data['int_comp-number'] }}</td>
-              <td class="govuk-table__cell">{{ data['int_comp-territory'] }}</td>
-              <td class="govuk-table__cell govuk-link"><a href="amend-transferor-int_comp">Amend</a></td>
-            </tr>
-            <tr class="govuk-table__row">
-              <td class="govuk-table__cell">Other organisation</td>
-              <td class="govuk-table__cell">{{ data['other_org'] }}</td>
-              <td class="govuk-table__cell">N/A</td>
-              <td class="govuk-table__cell">N/A</td>
-              <td class="govuk-table__cell govuk-link"><a href="amend-transferor-other_org">Amend</a></td>
-            </tr>
-      </tbody>
-    </table>
+      <div>
+        <p class="govuk-heading-s govuk-!-width-two-thirds govuk-!-padding-top-5">
+          Transferor type:
+        </p>
+        <p class="govuk-body-l">
+          Other organisation
+        </p>
+      </div>
 
-    {% if data['show-individual']=='FALSE'%}
-
-    <div class="govuk-!-margin-bottom-5">
-      <a class="govuk-link govuk-body" href="/Sprint-43/simplify/add-transferor">
-        Add another transferor
-      </a>
-    </div>
-
-    {% endif %}
+      <div class="govuk-form-group">
+        <p class="govuk-label-wrapper">
+          <label class="govuk-body" for="other_org-name">
+            Name of organisation
+          </label>
+        </p>
+        <input class="govuk-input govuk-!-width-one-half" id="other_org-name" name="other_org-name" type="text" aria-describedby="event-name-hint">
+      </div>
 
     <br>
 

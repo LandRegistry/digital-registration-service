@@ -48,53 +48,45 @@
 
 <div class="govuk-grid-column-full">
     <span class="govuk-caption-l">Transfer for value (TR1)</span>
-    <h1 class="govuk-heading-xl">Transferors</h1>
+    <h1 class="govuk-heading-xl">Amend transferor details</h1>
     <p class="govuk-body govuk-!-width-two-thirds">
-      This is the information currently held on the register for the title numbers you have entered. If any information is incorrect, you must remove the entry and add another transferor.
+      This is the information currently held on the register for the title numbers you have entered.
     </p>
 
     <form method="post" action="transferor-list-1">
-    <table class="govuk-table">
-      <thead class="govuk-table__head">
-        <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header">Transferor type</th>
-          <th scope="col" class="govuk-table__header">Transferor name</th>
-          <th scope="col" class="govuk-table__header">Company number</th>
-          <th scope="col" class="govuk-table__header">Territory of incorporation</th>
-          <th scope="col" class="govuk-table__header"></th>
-        </tr>
-      </thead>
 
-      <tbody class="govuk-table__body">
-            <tr class="govuk-table__row">
-              <td class="govuk-table__cell">Private individual</td>
-              <td class="govuk-table__cell">Joe Bloggs</td>
-              <td class="govuk-table__cell">N/A</td>
-              <td class="govuk-table__cell">N/A</td>
-              <td class="govuk-table__cell govuk-link"><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
-            </tr>
-            <tr class="govuk-table__row">
-              <td class="govuk-table__cell">UK company or LLP</td>
-              <td class="govuk-table__cell">Very Good Building Co.</td>
-              <td class="govuk-table__cell">123456789</td>
-              <td class="govuk-table__cell">N/A</td>
-              <td class="govuk-table__cell govuk-link"><a onclick="RemoveTransfereeIndividual ()">Amend</a></td>
-            </tr>
-            <tr class="govuk-table__row">
-              <td class="govuk-table__cell">Overseas company</td>
-              <td class="govuk-table__cell">International Construction Ltd</td>
-              <td class="govuk-table__cell">987654321</td>
-              <td class="govuk-table__cell">Argentina</td>
-              <td class="govuk-table__cell govuk-link"><a onclick="RemoveTransfereeIndividual ()">Amend</a></td>
-            </tr>
-      </tbody>
-    </table>
+      <div>
+        <p class="govuk-heading-s govuk-!-width-two-thirds govuk-!-padding-top-5">
+          Transferor type:
+        </p>
+        <p class="govuk-body-l">
+          UK company or LLP
+        </p>
+      </div>
 
-    <div class="govuk-!-margin-bottom-5">
-      <a class="govuk-link govuk-body" href="/Sprint-43/simplify/add-transferor">
-        Add another transferor
-      </a>
-    </div>
+      <div class="govuk-form-group">
+        <p class="govuk-label-wrapper">
+          <label class="govuk-body" for="uk_comp-name">
+            Company name
+          </label>
+        </p>
+        <div id="uk_comp-name-hint" class="govuk-hint">
+          Full name registered at Companies House
+        </div>
+        <input class="govuk-input govuk-!-width-one-half" id="uk_comp-name" name="uk_comp-name" type="text" aria-describedby="event-name-hint">
+      </div>
+
+      <div class="govuk-form-group">
+        <p class="govuk-label-wrapper">
+          <label class="govuk-body" for="uk_comp-number">
+            Company number
+          </label>
+        </p>
+        <div id="uk_company-name-hint" class="govuk-hint">
+          Companies House registration number, including any prefix
+        </div>
+        <input class="govuk-input govuk-!-width-one-quarter" id="uk_comp-number" name="uk_comp-number" type="number" aria-describedby="event-name-hint">
+      </div>
 
     <br>
 
