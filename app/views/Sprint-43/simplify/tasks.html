@@ -86,8 +86,7 @@
 
               <td class="govuk-table__cell govuk-link govuk-link--no-visited-state"><a href="/../transactions/transfer/transferees-whichApplicants">Select transferees</a></td>
               <td class="govuk-table__cell">
-              {% if data['transfereelistcomplete'] %}
-              <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}
+              <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
 
 
             </td>
@@ -96,16 +95,13 @@
             <tr class="govuk-table__row">
               <td class="govuk-table__cell govuk-link govuk-link--no-visited-state"><a href="/transactions/transfer/transferee-representation">Add transferee representation</a></td>
               <td class="govuk-table__cell">
-                {% if data['transfereerep'] %}
                 <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
-                {% endif %}</td>
+              </td>
             </tr>
             <tr class="govuk-table__row">
               <td class="govuk-table__cell govuk-link govuk-link--no-visited-state"><a href="/transactions/transfer/transfereeAddressList">Add addresses for service</a></td>
               <td class="govuk-table__cell">
-                {% if data['transfereeAddressType'] %}
                       <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
-                      {% endif %}
             </td>
             </tr>
 
