@@ -56,6 +56,8 @@
       </div>
     </div>
 
+    <form action="#" method="post" novalidate data-validate='RX1-validation'>
+
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
       <div class="govuk-form-group">
@@ -128,6 +130,7 @@
 
       </div>
     </div>
+    </form>
 
     <footer>
       <div class="govuk-grid-row">
@@ -142,6 +145,16 @@
       </div>
     </footer>
 
+
+    <script type="application/json" id="RX1-validation">
+     {
+       "Select_transaction": {
+         "presence": {
+           "message": "^Select a form type from the list"
+         }
+       }
+     }
+   </script>
 
 
 {% endblock %}
