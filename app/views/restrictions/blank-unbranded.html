@@ -1,0 +1,155 @@
+{% extends "layout_unbranded.html" %}
+
+{% extends "govuk/template.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+
+
+{% block headIcons %}
+  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
+  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
+{% endblock %}
+
+{% block head %}
+  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
+    <link href="/public/css/accessible-autocomplete.min.css" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full" id="headerdiv">
+    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
+    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Digital Registration Service</a></p>
+    <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+
+
+    <div class="govuk-phase-banner">
+        <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
+        <span class="govuk-phase-banner__text">
+        This is a prototype and not a real service.
+        </span></p>
+    </div>
+  </div>
+</div>
+
+<!-- header end -->
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <br><br>
+        <span class="govuk-caption-xl">Apply to add a restriction (RX1)</span>
+        <h1 class="govuk-heading-xl"> Select a form </h1>
+      </div>
+    </div>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="Select_transaction" style="opacity:">
+          Start typing to find a restriction
+        </label>
+        <label class="govuk-label" for="Select_transaction" style="opacity: 0.5">
+        For example, ‘AA’ or ‘freezing order on the registered estate’
+        </label>
+        <select class="govuk-select js-select-autocomplete" id="Select_transaction" name="form">
+          <option value=""></option>
+          <option value="Form A (Restriction on dispositions by sole proprietor)">Form A (Restriction on dispositions by sole proprietor)</option>
+          <option value="Form B (Dispositions by trustees of the legal estate – certificates required)">Form B (Dispositions by trustees of the legal estate – certificates required)</option>
+          <option value="Form C (Dispositions by personal representatives – certificate required)">Form C (Dispositions by personal representatives – certificate required)</option>
+          <option value="Form D (Parsonage, diocesan glebe, church or churchyard land)">Form D (Parsonage, diocesan glebe, church or churchyard land)</option>
+          <option value="Form E (Non-exempt charity – certificate required)">Form E (Non-exempt charity – certificate required)</option>
+          <option value="Form F (Land vested in official custodian on trust for non-exempt charity – authority required)">Form F (Land vested in official custodian on trust for non-exempt charity – authority required)</option>
+          <option value="Form G (Tenant for life as registered proprietor of settled land, where there are trustees of the settlement)">Form G (Tenant for life as registered proprietor of settled land, where there are trustees of the settlement)</option>
+          <option value="Form H (Statutory owners as trustees of the settlement and registered proprietors of settled land)">Form H (Statutory owners as trustees of the settlement and registered proprietors of settled land)</option>
+          <option value="Form I (Tenant for life as registered proprietor of settled land – no trustees of the settlement)">Form I (Tenant for life as registered proprietor of settled land – no trustees of the settlement)</option>
+          <option value="Form J (Trustee in bankruptcy and beneficial interest – certificate required)">Form J (Trustee in bankruptcy and beneficial interest – certificate required)</option>
+          <option value="Form K (Charging order affecting beneficial interest – certificate required)">Form K (Charging order affecting beneficial interest – certificate required)</option>
+          <option value="Form L (Disposition by registered proprietor of a registered estate or proprietor of charge – certificate required)">Form L (Disposition by registered proprietor of a registered estate or proprietor of charge – certificate required)</option>
+          <option value="Form K (Charging order affecting beneficial interest – certificate required)">Form K (Charging order affecting beneficial interest – certificate required)</option>
+          <option value="Form K (Charging order affecting beneficial interest – certificate required)">Form K (Charging order affecting beneficial interest – certificate required)</option>
+          <option value="Form M (Disposition by registered proprietor of registered estate or proprietor of charge – certificate of registered proprietor of specified title number required)">Form M (Disposition by registered proprietor of registered estate or proprietor of charge – certificate of registered proprietor of specified title number required)</option>
+          <option value="Form N (Disposition by registered proprietor of registered estate or proprietor of charge - consent required)">Form N (Disposition by registered proprietor of registered estate or proprietor of charge - consent required)</option>
+          <option value="Form O (Disposition by registered proprietor of registered estate or proprietor of charge – consent of registered proprietor of specified title number or certificate required)">Form O (Disposition by registered proprietor of registered estate or proprietor of charge – consent of registered proprietor of specified title number or certificate required)</option>
+          <option value="Form P (Disposition by registered proprietor of registered estate or proprietor of charge – consent of proprietor of specified charge or certificate required)">Form P (Disposition by registered proprietor of registered estate or proprietor of charge – consent of proprietor of specified charge or certificate required.</option>
+          <option value="Form Q (Disposition by registered proprietor of registered estate or proprietor of charge – consent of personal representatives required)">Form Q (Disposition by registered proprietor of registered estate or proprietor of charge – consent of personal representatives required)</option>
+          <option value="Form R (Disposition by registered proprietor of registered estate or proprietor of charge – evidence of compliance with club rules required)">Form R (Disposition by registered proprietor of registered estate or proprietor of charge – evidence of compliance with club rules required)</option>
+          <option value="Form S (Disposition by proprietor of charge – certificate of compliance required)">Form S (Disposition by proprietor of charge – certificate of compliance required)</option>
+          <option value="Form T (Disposition by proprietor of charge – consent required)">Form T (Disposition by proprietor of charge – consent required)</option>
+          <option value="Form U (Section 37 of the Housing Act 1985)">Form U (Section 37 of the Housing Act 1985)</option>
+          <option value="Form V (Section 157 of the Housing Act 1985)">Form V (Section 157 of the Housing Act 1985)</option>
+          <option value="Form W (Paragraph 4 of Schedule 9A to the Housing Act 1985)">Form W (Paragraph 4 of Schedule 9A to the Housing Act 1985)</option>
+          <option value="Form X (Section 133 of the Housing Act 1988 or section 173 of the Local Government and Housing Act 1989)">Form X (Section 133 of the Housing Act 1988 or section 173 of the Local Government and Housing Act 1989)</option>
+          <option value="Form Y (Section 13 of the Housing Act 1996)">Form Y (Section 13 of the Housing Act 1996)</option>
+          <option value="Form AA (Freezing order on the registered estate)">Form AA (Freezing order on the registered estate)</option>
+          <option value="Form BB (Freezing order on charge)">Form BB (Freezing order on charge)</option>
+          <option value="Form CC (Application for freezing order on the registered estate)">Form CC (Application for freezing order on the registered estate)</option>
+          <option value="Form DD (Application for freezing order on charge)">Form DD (Application for freezing order on charge)</option>
+          <option value="Form EE (Restraint order or interim receiving order on the registered estate)">Form EE (Restraint order or interim receiving order on the registered estate)</option>
+          <option value="Form FF (Restraint order or interim receiving order on charge)">Form FF (Restraint order or interim receiving order on charge)</option>
+          <option value="Form GG (Application for restraint order or interim receiving order on the registered estate)">Form GG (Application for restraint order or interim receiving order on the registered estate)</option>
+          <option value="Form HH (Application for restraint order or interim receiving order on charge)">Form HH (Application for restraint order or interim receiving order on charge)</option>
+          <option value="Form II (Beneficial interest that is a right or claim in relation to a registered estate)">Form II (Beneficial interest that is a right or claim in relation to a registered estate)</option>
+          <option value="Form JJ (Statutory charge of beneficial interest in favour of the Lord Chancellor)">Form JJ (Statutory charge of beneficial interest in favour of the Lord Chancellor)</option>
+          <option value="Form KK (Lease of property in Wales by registered social landlord)">Form KK (Lease of property in Wales by registered social landlord)</option>
+          <option value="Form LL (Restriction as to evidence of execution)">Form LL (Restriction as to evidence of execution)</option>
+          <option value="Form MM (Interest in beneficial joint tenancy subject to charge under section 22(1) of the Health and Social Services and Social Security Adjudications Act 1983 or section 71 of the Social Services and Well-being (Wales) Act 2014)">Form MM (Interest in beneficial joint tenancy subject to charge under section 22(1) of the Health and Social Services and Social Security Adjudications Act 1983 or section 71 of the Social Services and Well-being (Wales) Act 2014)</option>
+          <option value="Form NN (Disposition by registered proprietor of registered estate or proprietor of charge – consent or certificate required)">Form NN (Disposition by registered proprietor of registered estate or proprietor of charge – consent or certificate required)</option>
+          <option value="Form OO (Disposition by proprietor of charge – consent or certificate required)">Form OO (Disposition by proprietor of charge – consent or certificate required)</option>
+          <option value="Form PP (Disposition by registered proprietor of registered estate or proprietor of charge – certificate of landlord or of a conveyancer, required)">Form PP (Disposition by registered proprietor of registered estate or proprietor of charge – certificate of landlord or of a conveyancer, required)</option>
+          <option value="Form QQ (Land included in a list of assets of community value maintained under section 87(1) of the Localism Act 2011)">Form QQ (Land included in a list of assets of community value maintained under section 87(1) of the Localism Act 2011)</option>
+          <option value="Form RR (Deputy appointed under section 16 of the Mental Capacity Act 2005 – solely owned property)">Form RR (Deputy appointed under section 16 of the Mental Capacity Act 2005 – solely owned property)</option>
+          <option value="Form SS (Trustee appointed in place of a person who lacks capacity – jointly owned property)">Form SS (Trustee appointed in place of a person who lacks capacity – jointly owned property)</option>
+
+
+        </select>
+      </div>
+
+
+
+        {{ govukButton({
+        classes: "govuk-!-margin-top-5",
+        text: "Continue"
+        }) }}
+
+
+      </div>
+    </div>
+
+    <footer>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+          <br>
+          <p class="govuk-body-s" style="color: #747B7F"> The following links open in a new window
+          <br>
+          <br>
+          <a href="#" style="color: #747B7F"> Terms and conditions</a> | <a href="/setup/accessibility-statement" target="_blank" rel="noopener noreferrer" style="color: #747B7F">Accessibility statement</a> |  <a href="#" style="color: #747B7F">Freedom of information</a> | <a href="#" style="color: #747B7F">© Crown copyright</a></p>
+          </div>
+      </div>
+    </footer>
+
+
+
+{% endblock %}
+
+
+{% block footer %}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}

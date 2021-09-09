@@ -50,6 +50,7 @@ $(document).ready(function () {
     (selectElement, i, list) => {
       accessibleAutocomplete.enhanceSelectElement({
         defaultValue: '',
+        showAllValues: true,
         source: (query, populateResults) => {
           const options = selectElement.querySelectorAll('option')
           let results = []
