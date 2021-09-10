@@ -56,18 +56,18 @@
       </div>
     </div>
 
-    <form action="#" method="post" novalidate data-validate='RX1-validation'>
+    <form action="/restriction-form" method="post" novalidate data-validate='RX1-validation'>
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
       <div class="govuk-form-group">
-        <label class="govuk-label" for="Select_transaction" style="opacity:">
+        <label class="govuk-label" for="Select_restriction" style="opacity:">
           Start typing to find a restriction
         </label>
-        <label class="govuk-label" for="Select_transaction" style="opacity: 0.5">
+        <label class="govuk-label" for="Select_restriction" style="opacity: 0.5">
         For example, ‘AA’ or ‘freezing order on the registered estate’
         </label>
-        <select class="govuk-select js-select-autocomplete" id="Select_transaction" name="form">
+        <select class="govuk-select js-select-autocomplete" id="Select_restriction" name="form">
           <option value=""></option>
           <option value="Form A (Restriction on dispositions by sole proprietor)">Form A (Restriction on dispositions by sole proprietor)</option>
           <option value="Form B (Dispositions by trustees of the legal estate – certificates required)">Form B (Dispositions by trustees of the legal estate – certificates required)</option>
@@ -146,7 +146,7 @@
     </footer>
 
 
-    <script type="application/json" id="RX1-validation">
+    <!-- <script type="application/json" id="RX1-validation">
      {
        "Select_transaction": {
          "presence": {
@@ -154,7 +154,7 @@
          }
        }
      }
-   </script>
+   </script> -->
 
 
 {% endblock %}

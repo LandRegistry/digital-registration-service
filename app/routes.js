@@ -1729,3 +1729,14 @@ router.post('/start-transferors', function (req,res) {
         req.session.data['show-individual'] = 'FALSE';
           res.redirect('/../Sprint-43/simplify/transferor-list-1')
       })
+
+
+// restriction form selector
+router.post('/restriction-form', function (req, res) {
+
+let form = req.session.data['form']
+
+  if (form === 'Form A (Restriction on dispositions by sole proprietor)') {
+      res.redirect('/restrictions/formA-nature')
+ }
+})

@@ -1,0 +1,150 @@
+{% extends "layout_unbranded.html" %}
+
+{% extends "govuk/template.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+
+
+{% block headIcons %}
+  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
+  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
+{% endblock %}
+
+{% block head %}
+  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
+  <link href="/public/css/accessible-autocomplete.min.css" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full" id="headerdiv">
+    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
+    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Digital Registration Service</a></p>
+    <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+
+
+    <div class="govuk-phase-banner">
+        <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
+        <span class="govuk-phase-banner__text">
+        This is a prototype and not a real service.
+        </span></p>
+    </div>
+  </div>
+</div>
+
+<!-- header end -->
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <br><br>
+        <h1 class="govuk-heading-xl">Total fee</h1>
+      </div>
+    </div>
+
+    <form action="formA-review" method="post">
+
+      <div class="govuk-grid-row">
+          <div class="govuk-grid-column-full">
+          <div class="govuk-form-group">
+
+          <h2 class="govuk-heading-s">£20 will be taken by Direct Debit from account number 12345678</h2>
+
+          <details class="govuk-details" data-module="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                Help with fees
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              For a full breakdown of how we calculate the fees for your application, take a look at our <a class="govuk-link" href="#">guidance on Registration Service fees (opens in new window)</a>.
+            </div>
+          </details>
+
+            <table class="govuk-table">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th scope="col" class="govuk-table__header">Transaction</th>
+                  <th scope="col" class="govuk-table__header govuk-!-width-one-third">Priority</th>
+                  <th scope="col" class="govuk-table__header">Total value</th>
+                  <th scope="col" class="govuk-table__header">Fee</th>
+                  <th scope="col" class="govuk-table__header">Options</th>
+                </tr>
+              </thead>
+
+
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Restriction (RX1)</td>
+                  <td class="govuk-table__cell">1</td>
+                  <td class="govuk-table__cell">N/A</td>
+                  <td class="govuk-table__cell">£20</td>
+                  <td class="govuk-table__cell">N/A</td>
+                </tr>
+              </tbody>
+            </table>
+
+              <a class="govuk-link govuk-body">Add or change transaction types</a>
+
+          </div>
+
+
+        <p class="govuk-body">Select 'Continue' to confirm all details are correct.</p>
+
+        {{ govukButton({
+        classes: "govuk-!-margin-top-5",
+        text: "Continue"
+        }) }}
+
+
+      </div>
+    </div>
+    </form>
+
+    <footer>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+          <br>
+          <p class="govuk-body-s" style="color: #747B7F"> The following links open in a new window
+          <br>
+          <br>
+          <a href="#" style="color: #747B7F"> Terms and conditions</a> | <a href="/setup/accessibility-statement" target="_blank" rel="noopener noreferrer" style="color: #747B7F">Accessibility statement</a> |  <a href="#" style="color: #747B7F">Freedom of information</a> | <a href="#" style="color: #747B7F">© Crown copyright</a></p>
+          </div>
+      </div>
+    </footer>
+
+
+    <!-- <script type="application/json" id="RX1-validation">
+     {
+       "Select_transaction": {
+         "presence": {
+           "message": "^Select a form type from the list"
+         }
+       }
+     }
+   </script> -->
+
+
+{% endblock %}
+
+
+{% block footer %}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}

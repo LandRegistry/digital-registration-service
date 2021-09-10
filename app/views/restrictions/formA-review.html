@@ -1,0 +1,343 @@
+{% extends "layout_unbranded.html" %}
+
+{% extends "govuk/template.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+
+
+{% block headIcons %}
+  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
+  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
+{% endblock %}
+
+{% block head %}
+  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
+    <link href="/public/css/accessible-autocomplete.min.css" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full" id="headerdiv">
+    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
+    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Digital Registration Service</a></p>
+    <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+
+
+    <div class="govuk-phase-banner">
+        <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
+        <span class="govuk-phase-banner__text">
+        This is a prototype and not a real service.
+        </span></p>
+    </div>
+  </div>
+</div>
+
+<!-- header end -->
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <br><br>
+        <h1 class="govuk-heading-xl">Review your application</h1>
+      </div>
+    </div>
+
+
+      <div class="govuk-grid-row">
+          <div class="govuk-grid-column-full">
+
+            <h2 class="govuk-heading-l">Application details</h2>
+
+              <table class="govuk-table">
+                <tbody class="govuk-table__body">
+                  <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">Your reference</th>
+                    <td class="govuk-table__cell">754DF-34DS</td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">Application type</th>
+                    <td class="govuk-table__cell">Update an existing title (Document registration)</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <h2 class="govuk-heading-l govuk-!-margin-top-9">Property details</h2>
+
+                <table class="govuk-table">
+                  <thead class="govuk-table__head">
+                   <tr class="govuk-table__row">
+                     <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Title number</th>
+                     <th scope="col" class="govuk-table__header">Property description</th>
+                     <th scope="col" class="govuk-table__header">Additional details</th>
+                   </tr>
+                 </thead>
+                  <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row">
+                      <td class="govuk-table__cell">LP123456</td>
+                      <td class="govuk-table__cell">Ground Floor Flat, 66 Edwards Walk, Littlehaxten, LH12 1AA</td>
+                      <td class="govuk-table__cell">This application affects the whole of the title</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+             <h3 class="govuk-heading-m">Overriding interests</h3>
+
+                <table class="govuk-table">
+                  <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row">
+                      <th scope="col" class="govuk-table__header govuk-!-width-one-third">Are any titles affected by overriding interests?</th>
+                      <td class="govuk-table__cell">No</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <h2 class="govuk-heading-l govuk-!-margin-top-9">Applicants</h2>
+
+                  <table class="govuk-table">
+                    <thead class="govuk-table__head">
+                     <tr class="govuk-table__row">
+                       <th scope="col" class="govuk-table__header">Applicant type</th>
+                       <th scope="col" class="govuk-table__header">Full name</th>
+                       <th scope="col" class="govuk-table__header">Company number</th>
+                       <th scope="col" class="govuk-table__header">Territory of incorporation</th>
+                     </tr>
+                   </thead>
+                    <tbody class="govuk-table__body">
+                      <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">Private individual</td>
+                        <td class="govuk-table__cell">John Smith</td>
+                        <td class="govuk-table__cell">N/A</td>
+                        <td class="govuk-table__cell">N/A</td>
+                      </tr>
+                      <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">Private individual</td>
+                        <td class="govuk-table__cell">Jane Smith</td>
+                        <td class="govuk-table__cell">N/A</td>
+                        <td class="govuk-table__cell">N/A</td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+
+
+                <h2 class="govuk-heading-l govuk-!-margin-top-9">Transaction details</h2>
+                  <span class="govuk-caption-m">Priority 1</span>
+                  <h3 class="govuk-heading-m">Restriction (RX1)</h3>
+                  <table class="govuk-table">
+                    <tbody class="govuk-table__body">
+                      <tr class="govuk-table__row">
+                        <th scope="row" class="govuk-table__header">Restriction</th>
+                        <td class="govuk-table__cell">Form A</td>
+                        <td class="govuk-table__cell"><a href="#">Change</a></td>
+                      </tr>
+                      <tr class="govuk-table__row">
+                        <th scope="row" class="govuk-table__header">Nature of application</th>
+                        <td class="govuk-table__cell">This application to enter Form A restriction is based on severence of beneficial joint tenancy by notice</td>
+                        <td class="govuk-table__cell"><a href="#">Change</a></td>
+                      </tr>
+                      <tr class="govuk-table__row">
+                        <th scope="row" class="govuk-table__header">Entitlement</th>
+                        <td class="govuk-table__cell">The applicant is the registered proprietor of the registered estate</td>
+                        <td class="govuk-table__cell"><a href="#">Change</a></td>
+                      </tr>
+                      <tr class="govuk-table__row">
+                        <th scope="row" class="govuk-table__header">The restriction will be added to the register as:</th>
+                        <td class="govuk-table__cell">RESTRICTION: No disposition by a sole proprietor of the registered estate (except a trust corporation) under which capital money arises is to be registered unless authorised by an order of the court.</td>
+                        <td class="govuk-table__cell"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <h3 class="govuk-heading-m">Attached documents</h3>
+
+                  <table class="govuk-table">
+                    <thead class="govuk-table__head">
+                     <tr class="govuk-table__row">
+                       <th scope="col" class="govuk-table__header">Document type</th>
+                       <th scope="col" class="govuk-table__header">Certification</th>
+                       <th scope="col" class="govuk-table__header">File name</th>
+                     </tr>
+                   </thead>
+
+                  <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row">
+                      <td class="govuk-table__cell">Form</td>
+                      <td class="govuk-table__cell">Evidence</td>
+                      <td class="govuk-table__cell">evidence.pdf</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+
+
+              <h2 class="govuk-heading-l govuk-!-margin-top-9">Fees</h2>
+                <table class="govuk-table">
+                  <thead class="govuk-table__head">
+                   <tr class="govuk-table__row">
+                     <th scope="col" class="govuk-table__header">Transaction</th>
+                     <th scope="col" class="govuk-table__header">Priority</th>
+                     <th scope="col" class="govuk-table__header">Total value</th>
+                     <th scope="col" class="govuk-table__header">Fee</th>
+                     <th scope="col" class="govuk-table__header">Options</th>
+                   </tr>
+                 </thead>
+
+                <tbody class="govuk-table__body">
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">Restriction (RX1)</td>
+                    <td class="govuk-table__cell">1</td>
+                    <td class="govuk-table__cell">N/A</td>
+                    <td class="govuk-table__cell">£20</td>
+                    <td class="govuk-table__cell">N/A</td>
+                  </tr>
+                </tbody>
+              </table>
+              <a href="#" class="govuk-link govuk-body">Change transactions</a><br><br>
+              <h4 class="govuk-heading-s">£20 will be taken by Direct Debit from account number 12345678</h4>
+
+
+
+
+
+
+          <div class="govuk-form-group govuk-!-margin-top-9">
+        <fieldset class="govuk-fieldset" aria-describedby="how-contacted-conditional-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h2 class="govuk-fieldset__heading">
+              Your contact email for this application
+            </h2>
+          </legend>
+          <span id="how-contacted-conditional-hint" class="govuk-hint">
+            Choose where you want us to send correspondence or requisitions.
+          </span>
+          <div class="govuk-radios govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="how-contacted" name="how-contacted" type="radio" value="email1" data-aria-controls="conditional-how-contacted-conditional">
+              <label class="govuk-label govuk-radios__label" for="how-contacted">
+                me@ukconveyancers.co.uk
+              </label>
+            </div>
+            <div class="govuk-radios" id="conditional-how-contacted-conditional">
+              <div class="govuk-form-group">
+              </div>
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="how-contacted" name="how-contacted" type="radio" value="email2" data-aria-controls="conditional-how-contacted-conditional">
+                <label class="govuk-label govuk-radios__label" for="how-contacted">
+                  admin@ukconveyancers.co.uk
+                </label>
+              </div>
+              <div class="govuk-radios" id="conditional-how-contacted-conditional">
+                <div class="govuk-form-group">
+                </div>
+
+
+
+
+
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="how-contacted-conditional-2" name="how-contacted" type="radio" value="phone" data-aria-controls="conditional-how-contacted-conditional-2">
+              <label class="govuk-label govuk-radios__label" for="how-contacted-conditional-2">
+                Other
+              </label>
+            </div>
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-how-contacted-conditional-2">
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="contact-by-phone">
+                  Enter email address
+                </label>
+                <input class="govuk-input govuk-!-width-one-third" id="contact-by-phone" name="contact-by-phone" type="tel">
+              </div>
+
+
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <h2 class="govuk-heading-l">Declaration</h2>
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+        Warning statement
+        </span>
+        </summary>
+         <div class="govuk-details__text">
+        If you dishonestly enter information or make a statement that you know is, or might be, untrue or misleading,
+                and intend by doing so to make a gain for yourself or another person, or to cause loss or the risk of loss
+                to another person, you may commit the offence of fraud under section 1 of the <a href="https://www.legislation.gov.uk/ukpga/2006/35/contents">Fraud Act 2006</a>,
+                the maximum penalty for which is 10 years’ imprisonment or an unlimited fine, or both.<br><br>
+                Failure to complete this form with proper care may result in a loss of protection under the <a href="https://www.legislation.gov.uk/ukpga/2002/9/contents">Land Registration Act 2002</a> if,
+                 as a result, a mistake is made in the register. Under section 66 of the Land Registration Act 2002 most documents (including this form)
+                  kept by the registrar relating to an application to the registrar or referred to in the register are open to public inspection and copying.<br><br>
+                If you believe a document contains prejudicial information, you may apply for that part of the document to be made exempt using <a href="https://www.gov.uk/government/publications/exempt-information-document-registration-ex1">Form EX1</a>, under
+                rule 136 of the <a href="https://www.gov.uk/government/publications/land-registration-rules-2003">Land Registration Rules 2003.</a>
+              </div>
+             </details>
+
+      <p class="govuk-body"> By submitting this application you are confirming you have read and understood the warning statement.</p>
+
+          </div>
+      </div>
+
+      {{ govukButton({
+      classes: "govuk-!-margin-top-5",
+      text: "Confirm and submit"
+      }) }}
+
+
+      {{ govukButton({
+      text: "Save application and exit",
+      classes: "secondary-button-save govuk-!-margin-top-5",
+      href: "/../save-resume/save-confirmation"
+      }) }}
+
+    <footer>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+          <br>
+          <p class="govuk-body-s" style="color: #747B7F"> The following links open in a new window
+          <br>
+          <br>
+          <a href="#" style="color: #747B7F"> Terms and conditions</a> | <a href="/setup/accessibility-statement" target="_blank" rel="noopener noreferrer" style="color: #747B7F">Accessibility statement</a> |  <a href="#" style="color: #747B7F">Freedom of information</a> | <a href="#" style="color: #747B7F">© Crown copyright</a></p>
+          </div>
+      </div>
+    </footer>
+
+
+    <!-- <script type="application/json" id="RX1-validation">
+     {
+       "Select_transaction": {
+         "presence": {
+           "message": "^Select a form type from the list"
+         }
+       }
+     }
+   </script> -->
+
+
+{% endblock %}
+
+
+{% block footer %}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}
