@@ -50,50 +50,63 @@
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full">
-        <a href="formA-nature" class="govuk-back-link">Back</a>
-        <span class="govuk-caption-xl">Form A restriction</span>
-        <h1 class="govuk-heading-xl">Select entitlement</h1>
+        <a href="formP-consent" class="govuk-back-link">Back</a>
+        <span class="govuk-caption-xl">Form P restriction</span>
+        <h1 class="govuk-heading-xl">Certificate name</h1>
       </div>
     </div>
 
-    <form action="formA-summary" method="post">
+    <form action="formP-address-type" method="post">
 
       <div class="govuk-grid-row">
           <div class="govuk-grid-column-two-thirds">
+
           <div class="govuk-form-group">
-                <fieldset class="govuk-fieldset">
-                  <div class="govuk-radios">
-                    <div class="govuk-radios__item">
-                      <input class="govuk-radios__input" id="A-entitlement" name="A-entitlement" type="radio" value="proprietor">
-                      <label class="govuk-label govuk-radios__label" for="A-entitlement">
-                        The applicant is the registered proprietor of the registered estate
-                      </label>
-                    </div>
-                    <div class="govuk-radios__item">
-                      <input class="govuk-radios__input" id="A-entitlement-2" name="A-entitlement" type="radio" value="proprietor-entitled">
-                      <label class="govuk-label govuk-radios__label" for="A-entitlement-2">
-                        The applicant is the person entitled to be registered as proprietor of the registered estate
-                      </label>
-                    </div>
-                    <div class="govuk-radios__item">
-                      <input class="govuk-radios__input" id="A-entitlement-3" name="A-entitlement" type="radio" value="consent">
-                      <label class="govuk-label govuk-radios__label" for="A-entitlement-3">
-                        I certify that I hold the consent of the registered proprietors of the registered estate
-                      </label>
-                    </div>
-                    <div class="govuk-radios__item">
-                      <input class="govuk-radios__input" id="A-entitlement-4" name="A-entitlement" type="radio" value="consent-entitled">
-                      <label class="govuk-label govuk-radios__label" for="A-entitlement-4">
-                        I certify that I hold the consent of the persons entitled to be registered as proprietors of the registered estate
-                      </label>
-                    </div>
+              <fieldset class="govuk-fieldset" aria-describedby="add-applicant-conditional-hint">
+                <h2 class="govuk-heading-s">Select party type</h2>
+                <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="certificate-name-conditional" name="certificate-name" type="radio" value="individual" data-aria-controls="conditional-certificate-name-conditional">
+                    <label class="govuk-label govuk-radios__label" for="certificate-name-conditional">
+                      Private individual
+                    </label>
+                  </div>
+                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-certificate-name-conditional">
+                    <div class="govuk-form-group">
+                      <div id="individual-hint" class="govuk-hint">Name must be exactly as it appears on documents lodged with this application</div>
 
-
+                      <label class="govuk-label" for="certificate-name-individual-forename">
+                        Forenames
+                      </label>
+                      <input class="govuk-input govuk-!-width-two-thirds" id="certificate-name-individual-forename" name="certificate-name-individual-forename" value="" type="forename"  >
+                    </div>
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="certificate-name-individual-surname">
+                        Surname
+                      </label>
+                      <input class="govuk-input govuk-!-width-two-thirds" id="certificate-name-individual-surname" name="certificate-name-individual-surname" value="" type="surname"  >
+                    </div>
                   </div>
 
-                </fieldset>
-        </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="certificate-name-conditional-4" name="certificate-name" type="radio" value="Other" data-aria-controls="conditional-certificate-name-conditional-4">
+                    <label class="govuk-label govuk-radios__label" for="certificate-name-conditional-4">
+                      Organisation
+                    </label>
+                  </div>
 
+                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-certificate-name-conditional-4">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="certificate-name-other-name">
+                        Name of organisation
+                      </label>
+                      <input class="govuk-input govuk-!-width-two-thirds" id="certificate-name-other-name" name="certificate-name-other-name" type="text">
+                    </div>
+
+                </div>
+              </div>
+
+        <p class="govuk-heading-s govuk-!-margin-top-5">By selecting ‘Continue’ you confirm the details provided are correct and consistent with the register and any supporting documents.</p>
 
         {{ govukButton({
         classes: "govuk-!-margin-top-5",

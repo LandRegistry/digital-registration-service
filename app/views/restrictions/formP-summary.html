@@ -50,59 +50,34 @@
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full">
-        <a href="formA-nature" class="govuk-back-link">Back</a>
-        <span class="govuk-caption-xl">Form A restriction</span>
-        <h1 class="govuk-heading-xl">Select entitlement</h1>
+        <br><br>
+        <span class="govuk-caption-xl">Apply to add a restriction (RX1)</span>
+        <h1 class="govuk-heading-xl">Restriction summary</h1>
       </div>
     </div>
 
-    <form action="formA-summary" method="post">
+    <form action="formP-attach" method="post">
 
       <div class="govuk-grid-row">
-          <div class="govuk-grid-column-two-thirds">
-          <div class="govuk-form-group">
-                <fieldset class="govuk-fieldset">
-                  <div class="govuk-radios">
-                    <div class="govuk-radios__item">
-                      <input class="govuk-radios__input" id="A-entitlement" name="A-entitlement" type="radio" value="proprietor">
-                      <label class="govuk-label govuk-radios__label" for="A-entitlement">
-                        The applicant is the registered proprietor of the registered estate
-                      </label>
-                    </div>
-                    <div class="govuk-radios__item">
-                      <input class="govuk-radios__input" id="A-entitlement-2" name="A-entitlement" type="radio" value="proprietor-entitled">
-                      <label class="govuk-label govuk-radios__label" for="A-entitlement-2">
-                        The applicant is the person entitled to be registered as proprietor of the registered estate
-                      </label>
-                    </div>
-                    <div class="govuk-radios__item">
-                      <input class="govuk-radios__input" id="A-entitlement-3" name="A-entitlement" type="radio" value="consent">
-                      <label class="govuk-label govuk-radios__label" for="A-entitlement-3">
-                        I certify that I hold the consent of the registered proprietors of the registered estate
-                      </label>
-                    </div>
-                    <div class="govuk-radios__item">
-                      <input class="govuk-radios__input" id="A-entitlement-4" name="A-entitlement" type="radio" value="consent-entitled">
-                      <label class="govuk-label govuk-radios__label" for="A-entitlement-4">
-                        I certify that I hold the consent of the persons entitled to be registered as proprietors of the registered estate
-                      </label>
-                    </div>
+          <div class="govuk-grid-column-full">
 
-
-                  </div>
-
-                </fieldset>
-        </div>
-
-
-        {{ govukButton({
-        classes: "govuk-!-margin-top-5",
-        text: "Continue"
-        }) }}
-
-
+            <table class="govuk-table">
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header">Restriction</th>
+                  <td class="govuk-table__cell">Form P</td>
+                  <td class="govuk-table__cell"><a href="#">Change</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
       </div>
-    </div>
+
+      {{ govukButton({
+      classes: "govuk-!-margin-top-5",
+      text: "Continue"
+      }) }}
+
     </form>
 
     <footer>
