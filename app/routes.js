@@ -1768,7 +1768,7 @@ router.post('/formP-addresstype-answer', function (req, res) {
   let certificateAddress = req.session.data['certificateAddressType']
 
   if (certificateAddress === 'UK-postal') {
-    res.redirect('/tUK')
+    res.redirect('restrictions/formP-address-UK')
     }
   if (certificateAddress === 'Overseas-postal') {
       res.redirect('Overseas')
