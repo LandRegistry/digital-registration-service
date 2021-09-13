@@ -23,7 +23,7 @@
 
 {% block head %}
   <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
-    <link href="/public/css/accessible-autocomplete.min.css" rel="stylesheet" type="text/css" />
+  <link href="/public/css/accessible-autocomplete.min.css" rel="stylesheet" type="text/css" />
 {% endblock %}
 
 {% block header %}
@@ -50,50 +50,59 @@
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full">
-        <a href="formA-nature" class="govuk-back-link">Back</a>
-        <span class="govuk-caption-xl">Form A restriction</span>
-        <h1 class="govuk-heading-xl">Select entitlement</h1>
+        <br><br>
+        <h1 class="govuk-heading-xl">Total fee</h1>
       </div>
     </div>
 
-    <form action="formA-summary" method="post">
+    <form action="formP-review" method="post">
 
       <div class="govuk-grid-row">
-          <div class="govuk-grid-column-two-thirds">
+          <div class="govuk-grid-column-full">
           <div class="govuk-form-group">
-                <fieldset class="govuk-fieldset">
-                  <div class="govuk-radios">
-                    <div class="govuk-radios__item">
-                      <input class="govuk-radios__input" id="A-entitlement" name="A-entitlement" type="radio" value="proprietor">
-                      <label class="govuk-label govuk-radios__label" for="A-entitlement">
-                        The applicant is the registered proprietor of the registered estate
-                      </label>
-                    </div>
-                    <div class="govuk-radios__item">
-                      <input class="govuk-radios__input" id="A-entitlement-2" name="A-entitlement" type="radio" value="proprietor-entitled">
-                      <label class="govuk-label govuk-radios__label" for="A-entitlement-2">
-                        The applicant is the person entitled to be registered as proprietor of the registered estate
-                      </label>
-                    </div>
-                    <div class="govuk-radios__item">
-                      <input class="govuk-radios__input" id="A-entitlement-3" name="A-entitlement" type="radio" value="consent">
-                      <label class="govuk-label govuk-radios__label" for="A-entitlement-3">
-                        I certify that I hold the consent of the registered proprietors of the registered estate
-                      </label>
-                    </div>
-                    <div class="govuk-radios__item">
-                      <input class="govuk-radios__input" id="A-entitlement-4" name="A-entitlement" type="radio" value="consent-entitled">
-                      <label class="govuk-label govuk-radios__label" for="A-entitlement-4">
-                        I certify that I hold the consent of the persons entitled to be registered as proprietors of the registered estate
-                      </label>
-                    </div>
+
+          <h2 class="govuk-heading-s">£20 will be taken by Direct Debit from account number 12345678</h2>
+
+          <details class="govuk-details" data-module="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                Help with fees
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              For a full breakdown of how we calculate the fees for your application, take a look at our <a class="govuk-link" href="#">guidance on Registration Service fees (opens in new window)</a>.
+            </div>
+          </details>
+
+            <table class="govuk-table">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th scope="col" class="govuk-table__header">Transaction</th>
+                  <th scope="col" class="govuk-table__header govuk-!-width-one-third">Priority</th>
+                  <th scope="col" class="govuk-table__header">Total value</th>
+                  <th scope="col" class="govuk-table__header">Fee</th>
+                  <th scope="col" class="govuk-table__header">Options</th>
+                </tr>
+              </thead>
 
 
-                  </div>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Restriction (RX1)</td>
+                  <td class="govuk-table__cell">1</td>
+                  <td class="govuk-table__cell">N/A</td>
+                  <td class="govuk-table__cell">£20</td>
+                  <td class="govuk-table__cell">N/A</td>
+                </tr>
+              </tbody>
+            </table>
 
-                </fieldset>
-        </div>
+              <a class="govuk-link govuk-body">Add or change transaction types</a>
 
+          </div>
+
+
+        <p class="govuk-body">Select 'Continue' to confirm all details are correct.</p>
 
         {{ govukButton({
         classes: "govuk-!-margin-top-5",

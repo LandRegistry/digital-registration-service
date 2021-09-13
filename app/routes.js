@@ -1738,5 +1738,51 @@ let form = req.session.data['form']
 
   if (form === 'Form A (Restriction on dispositions by sole proprietor)') {
       res.redirect('/restrictions/formA-nature')
- }
+      }
+  if (form === 'Form P (Disposition by registered proprietor of registered estate or proprietor of charge – consent of proprietor of specified charge or certificate required)') {
+      res.redirect('/restrictions/formP-consent')
+      }
 })
+
+
+
+// Form P consent branching
+router.post('/formP-consent-answer', function (req, res) {
+
+let consent = req.session.data['P-consent']
+
+  if (consent === 'consent-required') {
+      res.redirect('/restrictions/FormP-period')
+      }
+  if (consent === 'consent-included') {
+     res.redirect('/restrictions/formP-certificate-name')
+      }
+  if (consent === 'consent-not-included') {
+    res.redirect('/restrictions/FormP-period')
+      }
+})
+
+// Form P address for Service
+router.post('/formP-addresstype-answer', function (req, res) {
+
+  let certificateAddress = req.session.data['certificateAddressType']
+
+  if (certificateAddress === 'UK-postal') {
+    res.redirect('/tUK')
+    }
+  if (certificateAddress === 'Overseas-postal') {
+      res.redirect('Overseas')
+    }
+  if (certificateAddress === 'PO-box') {
+      res.redirect('PO')
+    }
+  if (certificateAddress === 'email') {
+      res.redirect('email')
+    }
+  if (certificateAddress === 'DX') {
+      res.redirect('DX')
+    }
+  if (certificateAddress === 'BFPO') {
+      res.redirect('BFPO')
+    }
+  })
