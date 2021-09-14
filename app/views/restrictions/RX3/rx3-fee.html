@@ -23,7 +23,7 @@
 
 {% block head %}
   <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
-    <link href="/public/css/accessible-autocomplete.min.css" rel="stylesheet" type="text/css" />
+  <link href="/public/css/accessible-autocomplete.min.css" rel="stylesheet" type="text/css" />
 {% endblock %}
 
 {% block header %}
@@ -50,76 +50,59 @@
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full">
-        <a href="formP-certificate-name" class="govuk-back-link">Back</a>
-        <span class="govuk-caption-xl">Form P restriction</span>
-        <h1 class="govuk-heading-xl">Address for service</h1>
-        <p class="govuk-body">You can add up to 3 addresses for service, but one must be a postal address.</p>
+        <br><br>
+        <h1 class="govuk-heading-xl">Total fee</h1>
       </div>
     </div>
 
-    <form action="/formP-addresstype-answer" method="post">
+    <form action="rx3-review" method="post">
 
-      <div class="govuk-form-group">
-        <h2 class="govuk-heading-m">For certificate name:</h2>
-      <h3 class="govuk-heading-s"> Select address type </h3>
-      <fieldset class="govuk-fieldset">
-        <div class="govuk-radios">
+      <div class="govuk-grid-row">
+          <div class="govuk-grid-column-full">
+          <div class="govuk-form-group">
 
-          <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
-          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-certificateAddressType-conditional">
-            <div class="govuk-form-group">
-              <div class="govuk-checkboxes__item">
-           <input class="govuk-checkboxes__input" id="propertyapplyall" name="applyall" type="checkbox" value="true">
-           <label class="govuk-label govuk-checkboxes__label" for="propertyapplyall">
-             Apply to all transferees
-           </label>
-         </div>
-            </div>
-            </div>
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="select-address-type" name="certificateAddressType" type="radio" value="UK-postal">
-              <label class="govuk-label govuk-radios__label" for="select-address-type">
-            UK postal address
-          </label>
-            </div>
+          <h2 class="govuk-heading-s">£20 will be taken by Direct Debit from account number 12345678</h2>
 
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="select-address-type-2" name="certificateAddressType" type="radio" value="Overseas-postal">
-              <label class="govuk-label govuk-radios__label" for="select-address-type-2">
-            Overseas postal address
-          </label>
+          <details class="govuk-details" data-module="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                Help with fees
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              For a full breakdown of how we calculate the fees for your application, take a look at our <a class="govuk-link" href="#">guidance on Registration Service fees (opens in new window)</a>.
             </div>
+          </details>
 
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="select-address-type-3" name="certificateAddressType" type="radio" value="PO-box">
-              <label class="govuk-label govuk-radios__label" for="select-address-type-3">
-            PO Box (postal address)
-          </label>
-            </div>
+            <table class="govuk-table">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th scope="col" class="govuk-table__header">Transaction</th>
+                  <th scope="col" class="govuk-table__header govuk-!-width-one-third">Priority</th>
+                  <th scope="col" class="govuk-table__header">Total value</th>
+                  <th scope="col" class="govuk-table__header">Fee</th>
+                  <th scope="col" class="govuk-table__header">Options</th>
+                </tr>
+              </thead>
 
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="select-address-type-4" name="certificateAddressType" type="radio" value="email">
-              <label class="govuk-label govuk-radios__label" for="select-address-type-4">
-            Email address
-          </label>
-            </div>
 
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="select-address-type-5" name="certificateAddressType" type="radio" value="DX">
-              <label class="govuk-label govuk-radios__label" for="select-address-type-5">
-              DX address
-              </label>
-            </div>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Restriction (RX3)</td>
+                  <td class="govuk-table__cell">1</td>
+                  <td class="govuk-table__cell">N/A</td>
+                  <td class="govuk-table__cell">£20</td>
+                  <td class="govuk-table__cell">N/A</td>
+                </tr>
+              </tbody>
+            </table>
 
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="select-address-type-6" name="certificateAddressType" type="radio" value="BFPO">
-                <label class="govuk-label govuk-radios__label" for="select-address-type-6">
-                BFPO postal address (armed forces)
-                </label>
-            </div>
-      </div>
-        </fieldset>
-      </div>
+              <a class="govuk-link govuk-body">Add or change transaction types</a>
+
+          </div>
+
+
+        <p class="govuk-body">Select 'Continue' to confirm all details are correct.</p>
 
         {{ govukButton({
         classes: "govuk-!-margin-top-5",
@@ -127,6 +110,8 @@
         }) }}
 
 
+      </div>
+    </div>
     </form>
 
     <footer>

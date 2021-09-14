@@ -50,76 +50,74 @@
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full">
-        <a href="formP-certificate-name" class="govuk-back-link">Back</a>
-        <span class="govuk-caption-xl">Form P restriction</span>
-        <h1 class="govuk-heading-xl">Address for service</h1>
-        <p class="govuk-body">You can add up to 3 addresses for service, but one must be a postal address.</p>
+        <a href="reason"-summary" class="govuk-back-link">Back</a>
+        <span class="govuk-caption-xl">Apply to add a restriction (RX1)</span>
+        <h1 class="govuk-heading-xl">Attach documents</h1>
       </div>
     </div>
 
-    <form action="/formP-addresstype-answer" method="post">
+    <form action="rx3-fee" method="post">
 
-      <div class="govuk-form-group">
-        <h2 class="govuk-heading-m">For certificate name:</h2>
-      <h3 class="govuk-heading-s"> Select address type </h3>
-      <fieldset class="govuk-fieldset">
-        <div class="govuk-radios">
+      <div class="govuk-grid-row">
+          <div class="govuk-grid-column-full">
+          <div class="govuk-form-group">
 
-          <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
-          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-certificateAddressType-conditional">
-            <div class="govuk-form-group">
-              <div class="govuk-checkboxes__item">
-           <input class="govuk-checkboxes__input" id="propertyapplyall" name="applyall" type="checkbox" value="true">
-           <label class="govuk-label govuk-checkboxes__label" for="propertyapplyall">
-             Apply to all transferees
-           </label>
-         </div>
-            </div>
-            </div>
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="select-address-type" name="certificateAddressType" type="radio" value="UK-postal">
-              <label class="govuk-label govuk-radios__label" for="select-address-type">
-            UK postal address
-          </label>
-            </div>
+          <h2 class="govuk-heading-l">Required</h2>
+          <p class="govuk-body">Documents you must attach to avoid requisitions.</p>
 
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="select-address-type-2" name="certificateAddressType" type="radio" value="Overseas-postal">
-              <label class="govuk-label govuk-radios__label" for="select-address-type-2">
-            Overseas postal address
-          </label>
-            </div>
+            <table class="govuk-table">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th scope="col" class="govuk-table__header">Category</th>
+                  <th scope="col" class="govuk-table__header govuk-!-width-one-third">Document type</th>
+                  <th scope="col" class="govuk-table__header">Certification</th>
+                  <th scope="col" class="govuk-table__header">File name</th>
+                  <th scope="col" class="govuk-table__header">Options</th>
+                </tr>
+              </thead>
 
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="select-address-type-3" name="certificateAddressType" type="radio" value="PO-box">
-              <label class="govuk-label govuk-radios__label" for="select-address-type-3">
-            PO Box (postal address)
-          </label>
-            </div>
 
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="select-address-type-4" name="certificateAddressType" type="radio" value="email">
-              <label class="govuk-label govuk-radios__label" for="select-address-type-4">
-            Email address
-          </label>
-            </div>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell"></td>
+                  <td class="govuk-table__cell"></td>
+                  <td class="govuk-table__cell"></td>
+                  <td class="govuk-table__cell"></td>
+                  <td class="govuk-table__cell"></td>
+                </tr>
+              </tbody>
+            </table>
 
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="select-address-type-5" name="certificateAddressType" type="radio" value="DX">
-              <label class="govuk-label govuk-radios__label" for="select-address-type-5">
-              DX address
-              </label>
-            </div>
+            <h2 class="govuk-heading-l">Suggested</h2>
+            <p class="govuk-body">Documents you may need to attach if relevant to your application.</p>
 
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="select-address-type-6" name="certificateAddressType" type="radio" value="BFPO">
-                <label class="govuk-label govuk-radios__label" for="select-address-type-6">
-                BFPO postal address (armed forces)
-                </label>
-            </div>
-      </div>
-        </fieldset>
-      </div>
+              <table class="govuk-table">
+                <thead class="govuk-table__head">
+                  <tr class="govuk-table__row">
+                    <th scope="col" class="govuk-table__header">Category</th>
+                    <th scope="col" class="govuk-table__header govuk-!-width-one-third">Document type</th>
+                    <th scope="col" class="govuk-table__header">Certification</th>
+                    <th scope="col" class="govuk-table__header">File name</th>
+                    <th scope="col" class="govuk-table__header">Options</th>
+                  </tr>
+                </thead>
+
+
+                <tbody class="govuk-table__body">
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell"></td>
+                    <td class="govuk-table__cell"></td>
+                    <td class="govuk-table__cell"></td>
+                    <td class="govuk-table__cell"></td>
+                    <td class="govuk-table__cell"></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <a class="govuk-link govuk-body">Attach another type of document</a>
+
+          </div>
+
 
         {{ govukButton({
         classes: "govuk-!-margin-top-5",
@@ -127,6 +125,8 @@
         }) }}
 
 
+      </div>
+    </div>
     </form>
 
     <footer>

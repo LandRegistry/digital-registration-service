@@ -50,81 +50,46 @@
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full">
-        <a href="formP-certificate-name" class="govuk-back-link">Back</a>
+        <a href="formP-address-UK" class="govuk-back-link">Back</a>
         <span class="govuk-caption-xl">Form P restriction</span>
-        <h1 class="govuk-heading-xl">Address for service</h1>
-        <p class="govuk-body">You can add up to 3 addresses for service, but one must be a postal address.</p>
+        <h1 class="govuk-heading-xl">Select UK postal address</h1>
       </div>
     </div>
 
-    <form action="/formP-addresstype-answer" method="post">
+    <form action="formP-address-list" method="post">
 
       <div class="govuk-form-group">
-        <h2 class="govuk-heading-m">For certificate name:</h2>
-      <h3 class="govuk-heading-s"> Select address type </h3>
-      <fieldset class="govuk-fieldset">
-        <div class="govuk-radios">
+        <h2 class="govuk-heading-m">For certificate name:</h2><br>
 
-          <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
-          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-certificateAddressType-conditional">
+            <h3 class="govuk-body"><b>Postcode:</b> {{ data['UKpostcode'] }}<a class="govuk-link govuk-body" href='#' style="margin-left: 10px;">Change </a></h3>
+
+            <h4 class="govuk-heading-s">Select address</h4>
             <div class="govuk-form-group">
-              <div class="govuk-checkboxes__item">
-           <input class="govuk-checkboxes__input" id="propertyapplyall" name="applyall" type="checkbox" value="true">
-           <label class="govuk-label govuk-checkboxes__label" for="propertyapplyall">
-             Apply to all transferees
-           </label>
-         </div>
+              <select class="govuk-select govuk-!-width-one-half" id="addressResults" name="addressResults">
+                <option value="addressresults0" selected>11 addresses found</option>
+                <option value="1, King's Road,	Greater Haxten,	Wiltshire, LH17 1AA">1, King's Road,	Greater Haxten,	Wiltshire, LH17 1AA</option>
+                <option value="2a, King's Road,	Greater Haxten,	Wiltshire, LH17 1AA" >2a, King's Road,	Greater Haxten,	Wiltshire, LH17 1AA</option>
+                <option value="2b, King's Road,	Greater Haxten,	Wiltshire, LH17 1AA" >2b, King's Road,	Greater Haxten,	Wiltshire, LH17 1AA</option>
+                <option value="addressresult3">3, King's Road,	Greater Haxten,	Wiltshire, LH17 1AA</option>
+                <option value="addressresult4">4, King's Road,	Greater Haxten,	Wiltshire, LH17 1AA</option>
+                <option value="addressresult4">5, King's Road,	Greater Haxten,	Wiltshire, LH17 1AA</option>
+                <option value="addressresult4">6, King's Road,	Greater Haxten,	Wiltshire, LH17 1AA</option>
+                <option value="addressresult4">7, King's Road,	Greater Haxten,	Wiltshire, LH17 1AA</option>
+                <option value="addressresult4">8, King's Road,	Greater Haxten,	Wiltshire, LH17 1AA</option>
+                <option value="addressresult4">9, King's Road,	Greater Haxten,	Wiltshire, LH17 1AA</option>
+                <option value="addressresult4">10, King's Road,	Greater Haxten,	Wiltshire, LH17 1AA</option>
+              </select>
             </div>
-            </div>
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="select-address-type" name="certificateAddressType" type="radio" value="UK-postal">
-              <label class="govuk-label govuk-radios__label" for="select-address-type">
-            UK postal address
-          </label>
-            </div>
+            <br>
+            <p class="govuk-body"> <a href="transferee-ukmanual" class="govuk-link">I can't find address in the list</a></p>
 
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="select-address-type-2" name="certificateAddressType" type="radio" value="Overseas-postal">
-              <label class="govuk-label govuk-radios__label" for="select-address-type-2">
-            Overseas postal address
-          </label>
-            </div>
 
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="select-address-type-3" name="certificateAddressType" type="radio" value="PO-box">
-              <label class="govuk-label govuk-radios__label" for="select-address-type-3">
-            PO Box (postal address)
-          </label>
-            </div>
 
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="select-address-type-4" name="certificateAddressType" type="radio" value="email">
-              <label class="govuk-label govuk-radios__label" for="select-address-type-4">
-            Email address
-          </label>
-            </div>
-
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="select-address-type-5" name="certificateAddressType" type="radio" value="DX">
-              <label class="govuk-label govuk-radios__label" for="select-address-type-5">
-              DX address
-              </label>
-            </div>
-
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="select-address-type-6" name="certificateAddressType" type="radio" value="BFPO">
-                <label class="govuk-label govuk-radios__label" for="select-address-type-6">
-                BFPO postal address (armed forces)
-                </label>
-            </div>
-      </div>
-        </fieldset>
-      </div>
-
-        {{ govukButton({
-        classes: "govuk-!-margin-top-5",
-        text: "Continue"
-        }) }}
+          {{ govukButton({
+          classes: "govuk-!-margin-top-5",
+          text: "Continue"
+          }) }}
+        </div>
 
 
     </form>
