@@ -1,0 +1,155 @@
+{% extends "layout_unbranded.html" %}
+
+{% extends "govuk/template.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+
+
+{% block headIcons %}
+  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
+  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
+{% endblock %}
+
+{% block head %}
+  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full" id="headerdiv">
+    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
+    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Digital Registration Service</a></p>
+    <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+
+
+    <div class="govuk-phase-banner govuk-!-margin-bottom-5">
+        <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
+        <span class="govuk-phase-banner__text">
+        This is a prototype and not a real service.
+        </span></p>
+    </div>
+  </div>
+</div>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <a href="#" class="govuk-back-link govuk-!-margin-bottom-5">Back</a>
+        <span class="govuk-caption-xl">Form L restriction</span>
+          <h1 class="govuk-heading-xl">Address for service</h1>
+
+
+      <form action="/signatory1-addresstype-answer" method="post">
+
+        <div class="govuk-form-group">
+          <h2 class="govuk-heading-m">
+            For signatory name:
+            {{ data['signatory-individual-forenames'] }}
+            {{ data['signatory-individual-surname'] }}
+            {{ data['signatory-organisation-name'] }}
+            {{ data['signatory-name-1'] }}
+          </h2>
+
+        <h3 class="govuk-heading-s"> Select address type </h3>
+        <fieldset class="govuk-fieldset">
+          <div class="govuk-radios">
+
+            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-certificateAddressType-conditional">
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="select-address-type" name="signatory1AddressType" type="radio" value="UK-postal">
+                <label class="govuk-label govuk-radios__label" for="select-address-type">
+              UK postal address
+            </label>
+              </div>
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="select-address-type-2" name="signatory1AddressType" type="radio" value="Overseas-postal">
+                <label class="govuk-label govuk-radios__label" for="select-address-type-2">
+              Overseas postal address
+            </label>
+              </div>
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="select-address-type-3" name="signatory1AddressType" type="radio" value="PO-box">
+                <label class="govuk-label govuk-radios__label" for="select-address-type-3">
+              PO Box (postal address)
+            </label>
+              </div>
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="select-address-type-4" name="signatory1AddressType" type="radio" value="email">
+                <label class="govuk-label govuk-radios__label" for="select-address-type-4">
+              Email address
+            </label>
+              </div>
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="select-address-type-5" name="signatory1AddressType" type="radio" value="DX">
+                <label class="govuk-label govuk-radios__label" for="select-address-type-5">
+                DX address
+                </label>
+              </div>
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="select-address-type-6" name="signatory1AddressType" type="radio" value="BFPO">
+                  <label class="govuk-label govuk-radios__label" for="select-address-type-6">
+                  BFPO postal address (armed forces)
+                  </label>
+              </div>
+        </div>
+          </fieldset>
+
+
+          {{ govukButton({
+          classes: "govuk-!-margin-top-5",
+          text: "Continue"
+          }) }}
+
+
+      </form>
+      </div>
+      </div>
+
+
+
+        <div class="govuk-grid-column-full">
+          <footer>
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-full">
+                <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+                  <br>
+                    <p class="govuk-body-s" style="color: #747B7F"> The following links open in a new window
+                  <br>
+                  <br>
+                <a href="#" style="color: #747B7F"> Terms and conditions</a> | <a href="/setup/accessibility-statement" target="_blank" rel="noopener noreferrer" style="color: #747B7F">Accessibility statement</a> |  <a href="#" style="color: #747B7F">Freedom of information</a> | <a href="#" style="color: #747B7F">© Crown copyright</a></p>
+                </div>
+            </div>
+          </footer>
+        </div>
+
+
+{% endblock %}
+
+
+{% block footer %}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}
