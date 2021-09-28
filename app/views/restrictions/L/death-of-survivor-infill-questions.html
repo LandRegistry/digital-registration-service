@@ -177,17 +177,35 @@
           This is usually the document the above clause is taken from, for example “The deed” or “The transfer dated 10/07/2018”</div>
           <textarea class="govuk-textarea" id="one-infill-details" name="one-infill-details" rows="5" aria-describedby="more-detail-hint"></textarea>
 
-          <br><br>
+          <br>
+
 
           <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-          <h4 class="govuk-heading-m">Statement 4 (optional):</h4>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="one-infill-5" name="one-infill-5" type="checkbox" value="or that they do not apply to the disposition">
-                <label class="govuk-label govuk-checkboxes__label" for="one-infill-2">
-                  or that they do not apply to the disposition
+            <span class="govuk-caption-m">Statement 4</span>
+            <h4 class="govuk-heading-m">Would you like to include the option to certify that the above clause does not apply to the disposition?</h4>
+            <div id="sign-in-hint" class="govuk-hint">
+             'or that they do not apply to the disposition' will be added to the restriction text
+           </div>
+            <div class="govuk-radios govuk-radios--inline">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="clause-1" name="clause" type="radio" value="yes">
+                <label class="govuk-label govuk-radios__label" for="clause-1">
+                  Yes
                 </label>
               </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="clause-2" name="clause" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="clause-1">
+                  No
+                </label>
+              </div>
+
+            </div>
           </div>
+
+
+
+
 
           </div>
 
