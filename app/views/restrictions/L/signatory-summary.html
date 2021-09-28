@@ -72,15 +72,15 @@
               <td class="govuk-table__cell">{{ data['signatoryAddressResults'] }}</td>
               <td class="govuk-table__cell"><a href="#">Change</a></td>
             </tr>
-            {% if data['signatory-individual-forenames-2'] or data['signatory-name-2'] %}
+            {% if data['signatory-name-2'] %}
             <tr class="govuk-table__row">
               <th scope="row" class="govuk-table__header">Second signatory</th>
-              <td class="govuk-table__cell"></td>
+              <td class="govuk-table__cell">Jane Smith</td>
               <td class="govuk-table__cell"><a href="#">Change</a></td>
             </tr>
             <tr class="govuk-table__row">
               <th scope="row" class="govuk-table__header">Second signatory addresses for service</th>
-              <td class="govuk-table__cell"></td>
+              <td class="govuk-table__cell">{{ data['signatoryAddressResults'] }}</td>
               <td class="govuk-table__cell"><a href="#">Change</a></td>
             </tr>
             {% endif %}

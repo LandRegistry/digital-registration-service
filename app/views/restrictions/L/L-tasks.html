@@ -82,44 +82,67 @@
 
         <div class="govuk-grid-column-full" style="margin-left: 40px; width: 97%;">
           <table class="govuk-table govuk-!-width-two-thirds">
-            <th scope="col" class="govuk-table__header">1.1 Restriction details</th>
-            <td class="govuk-table__cell"></td>
-            <tbody class="govuk-table__body">
-                  <tr class="govuk-table__row">
-                    <td class="govuk-table__cell"><a href="standard" class="govuk-link govuk-link--no-visited-state">Select restriction type</a></td>
-            </tbody>
-            </table>
+              <th scope="col" class="govuk-table__header">1.1 Restriction details</th>
+                <td class="govuk-table__cell"></td>
+                <tbody class="govuk-table__body">
+                      <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a href="standard" class="govuk-link govuk-link--no-visited-state">Is the restriction standard or non-standard?</a></td>
+                        <td class="govuk-table__cell">{% if data['standard-nonstandard'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
+
+                      <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a href="/restrictions/select-form" class="govuk-link govuk-link--no-visited-state">Select form</a></td>
+                        <td class="govuk-table__cell">{% if data['form'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
+                      <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a href="certification" class="govuk-link govuk-link--no-visited-state">Select signatories</a></td>
+                        <td class="govuk-table__cell">{% if data['signatory1AddressType'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
+
+                      <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a href="limitation" class="govuk-link govuk-link--no-visited-state">Select limitation</a></td>
+                        <td class="govuk-table__cell">{% if data['limitation'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
+
+                      <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a href="death-of-survivor-infill" class="govuk-link govuk-link--no-visited-state">Restriction text</a></td>
+                      <td class="govuk-table__cell">{% if data['one-infills-type'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
+                      <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a href="entitlement" class="govuk-link govuk-link--no-visited-state">Entitlement</a></td>
+                        <td class="govuk-table__cell">{% if data['entitlement'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
+              </tbody>
+
+                <th scope="col" class="govuk-table__header">1.2 Supporting documents</th>
+                  <td class="govuk-table__cell"></td>
+                  <tbody class="govuk-table__body">
+                        <tr class="govuk-table__row">
+                          <td class="govuk-table__cell"><a href="attach-documents" class="govuk-link govuk-link--no-visited-state">Attach documents</a></td>
+                          <td class="govuk-table__cell">{% if data[''] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
+
+
+
+
+
+          </table>
+
+
+
+
           </div>
       </div>
 
       <div class="govuk-grid-column-full">
 
 
-        {% if data['attached'] %}
-        <div class="govuk-!-margin-bottom-9">
-        <h3 class="govuk-heading-l">Preview your e-AP1</h3>
-        <a href="#"><img src="/public/images/ap1-icon.svg" style="max-width:15%; height:auto; float: left; padding-right: 25px;" alt="ap1 icon"></a>
-        <h2><a href="#" class="govuk-link govuk-heading-m govuk-!-font-weight-regular" style="">Download draft e-AP1 (PDF)</a></h2>
-        <p class="govuk-body"> PDF - opens in a new window</p><br><br>
-        </div>
-        {% endif %}
-
-
-
-    <div style="margin-top: 75px;">
 
 
     {{ govukButton({
         text: "Review application",
         classes: "govuk-!-margin-top-9",
-        href: "/../transactions/multi-application-review"
+        href: "#"
       }) }}
 
 
       {{ govukButton({
         text: "Save application and exit",
         classes: "secondary-button-save govuk-!-margin-top-9",
-        href: "/../save-resume/save-confirmation"
+        href: "#"
       }) }}
 
 

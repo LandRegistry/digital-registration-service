@@ -45,68 +45,38 @@
     </div>
     </div>
 
-<form action="/restrictions/select-form" method="post">
-      <div class="govuk-grid-column-two-thirds">
-        <a href="L-tasks" class="govuk-back-link govuk-!-margin-bottom-5">Return to application</a>
-        <span class="govuk-caption-xl">Apply to add a restriction (RX1)</span>
-          <h1 class="govuk-heading-xl">Is the restriction standard or non-standard?</h1>
+        <form action="entitlement" method="post">
+      <div class="govuk-grid-column-full">
 
-          <div class="govuk-form-group">
-            <fieldset class="govuk-fieldset">
-              <div class="govuk-radios">
-                <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="standard-nonstandard" name="standard-nonstandard" type="radio" value="standard">
-                  <label class="govuk-label govuk-radios__label" for="standard-nonstandard">
-                    Standard
-                  </label>
-                </div>
-                <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="standard-nonstandard-2" name="standard-nonstandard" type="radio" value="non-standard">
-                  <label class="govuk-label govuk-radios__label" for="standard-nonstandard-2">
-                    Non-standard
-                  </label>
-                </div>
-              </div>
-            </fieldset>
-        </div>
+        <a href="#" class="govuk-back-link govuk-!-margin-bottom-5">Return to application</a>
+        <span class="govuk-caption-xl">Form L restriction</span>
+          <h1 class="govuk-heading-xl">Infill statments</h1>
+          <p class="govuk-body">Details entered here will be added to the restriction and presented to you on the next screen for confirmation.</p>
 
-        <details class="govuk-details" data-module="govuk-details">
-          <summary class="govuk-details__summary">
-            <span class="govuk-details__summary-text">
-              Which restriction type do I need?
-            </span>
-          </summary>
-            <div class="govuk-details__text">
-              A standard restriction will use the wording set out in <a href="https://www.gov.uk/government/publications/notices-restrictions-and-the-protection-of-third-party-interests-in-the-register/practice-guide-19-notices-restrictions-and-the-protection-of-third-party-interests-in-the-register">Practice guide 19 (opens in new tab)</a> and usually refer to a specific clause in a deed. There are 44 standard restrictions.
 
-              Using a standard restriction is less likely to result in requisitions. Check the practice guide to see if there is a restriction that meets the needs of your application.
 
-              You should use non-standard restrictions where:
-              <ul>
-              <li>the restriction refers to compliance with the whole deed, rather than a specific clause</li>
-              <li>the restriction requires additional descriptive text that cannot be entered using the standard form</li>
-              <li>the wording set out in the practice guide does not meet the needs of the restriction</li>
-              </ul>
+          <div class="govuk-inset-text">
+            Until the death of the survivor of John Smith and Jane Smith no transfer of the
+            registered estate (other than a charge) by the proprietor of the registered estate , or by the proprietor of any registered charge, not being a charge registered before the entry of this restriction,
+            is to be registered without a certificate signed by the applicant for registration or their conveyancer that the provisions of Clause 12.6.2 of
+            the deed have been complied with or that they do not apply to the disposition.
           </div>
 
-        </details>
+          <br>
+          <a class="govuk-link govuk-body govuk-link--no-visited-state" href="death-of-survivor-infill">Change</a>
 
 
 
-
-
-        <div style="margin-top: 75px;">
-
-
+        <div style="margin-top: 50px;">
           {{ govukButton({
               text: "Continue",
               classes: ""
             }) }}
-
-
         </div>
-        </div>
-</form>
+
+      </form>
+
+    </div>
 
         <div class="govuk-grid-column-full">
           <footer>

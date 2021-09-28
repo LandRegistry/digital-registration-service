@@ -1844,7 +1844,7 @@ router.post('/formP-addresstype-answer', function (req, res) {
         res.redirect('/restrictions/L/limitation-sole')
         }
       if (limitation === 'death of survivor') {
-        res.redirect('/restrictions/L/limitation-1')
+        res.redirect('/restrictions/L/death-of-survivor-infill')
         }
       if (limitation === 'limitation date') {
         res.redirect('/restrictions/L/date-infills')

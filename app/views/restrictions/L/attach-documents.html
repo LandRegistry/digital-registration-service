@@ -45,68 +45,58 @@
     </div>
     </div>
 
-<form action="/restrictions/select-form" method="post">
-      <div class="govuk-grid-column-two-thirds">
-        <a href="L-tasks" class="govuk-back-link govuk-!-margin-bottom-5">Return to application</a>
+        <form action="L-tasks" method="post">
+      <div class="govuk-grid-column-full">
+
+        <a href="#" class="govuk-back-link govuk-!-margin-bottom-5">Return to application</a>
         <span class="govuk-caption-xl">Apply to add a restriction (RX1)</span>
-          <h1 class="govuk-heading-xl">Is the restriction standard or non-standard?</h1>
+          <h1 class="govuk-heading-xl">Attach documents</h1>
 
-          <div class="govuk-form-group">
-            <fieldset class="govuk-fieldset">
-              <div class="govuk-radios">
-                <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="standard-nonstandard" name="standard-nonstandard" type="radio" value="standard">
-                  <label class="govuk-label govuk-radios__label" for="standard-nonstandard">
-                    Standard
-                  </label>
-                </div>
-                <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="standard-nonstandard-2" name="standard-nonstandard" type="radio" value="non-standard">
-                  <label class="govuk-label govuk-radios__label" for="standard-nonstandard-2">
-                    Non-standard
-                  </label>
-                </div>
-              </div>
-            </fieldset>
-        </div>
 
-        <details class="govuk-details" data-module="govuk-details">
-          <summary class="govuk-details__summary">
-            <span class="govuk-details__summary-text">
-              Which restriction type do I need?
-            </span>
-          </summary>
-            <div class="govuk-details__text">
-              A standard restriction will use the wording set out in <a href="https://www.gov.uk/government/publications/notices-restrictions-and-the-protection-of-third-party-interests-in-the-register/practice-guide-19-notices-restrictions-and-the-protection-of-third-party-interests-in-the-register">Practice guide 19 (opens in new tab)</a> and usually refer to a specific clause in a deed. There are 44 standard restrictions.
+          <h3 class="govuk-heading-l"> Suggested </h3>
+          <p class="govuk-body">Documents you may need to attach if relevant to your application. If your application contains a restriction, you will likely need to provide evidence to support this.</p>
 
-              Using a standard restriction is less likely to result in requisitions. Check the practice guide to see if there is a restriction that meets the needs of your application.
+          <table class="govuk-table">
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header">Category</th>
+                <th scope="col" class="govuk-table__header govuk-!-width-one-third">Document type</th>
+                <th scope="col" class="govuk-table__header">Certification</th>
+                <th scope="col" class="govuk-table__header">File name</th>
+                <th scope="col" class="govuk-table__header">Options</th>
+              </tr>
+            </thead>
 
-              You should use non-standard restrictions where:
-              <ul>
-              <li>the restriction refers to compliance with the whole deed, rather than a specific clause</li>
-              <li>the restriction requires additional descriptive text that cannot be entered using the standard form</li>
-              <li>the wording set out in the practice guide does not meet the needs of the restriction</li>
-              </ul>
-          </div>
+            <tbody class="govuk-table__body">
 
-        </details>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell"></td>
+                    <td class="govuk-table__cell govuk-!-width-one-quarter"></td>
+                    <td class="govuk-table__cell"></td>
+                    <td class="govuk-table__cell govuk-!-width-one-third"></td>
+                    <td class="govuk-table__cell govuk-link">Attach</td>
+                  </tr>
+
+            </tbody>
+          </table>
+
+          <p class='govuk-body'><a href="document_upload_other">Attach another type of document</a></p>
 
 
 
 
-
-        <div style="margin-top: 75px;">
-
-
+        <div style="margin-top: 50px;">
           {{ govukButton({
               text: "Continue",
               classes: ""
             }) }}
+        </div>
+
+      </form>
+      </div>
 
 
-        </div>
-        </div>
-</form>
+
 
         <div class="govuk-grid-column-full">
           <footer>

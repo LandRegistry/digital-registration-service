@@ -1,0 +1,211 @@
+{% extends "layout_unbranded.html" %}
+
+{% extends "govuk/template.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+
+
+{% block headIcons %}
+  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
+  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
+{% endblock %}
+
+{% block head %}
+  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full" id="headerdiv">
+    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
+    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Digital Registration Service</a></p>
+    <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+
+
+    <div class="govuk-phase-banner govuk-!-margin-bottom-5">
+        <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
+        <span class="govuk-phase-banner__text">
+        This is a prototype and not a real service.
+        </span></p>
+    </div>
+    </div>
+
+        <form action="restriction-text" method="post">
+      <div class="govuk-grid-column-full">
+
+        <a href="limitation" class="govuk-back-link govuk-!-margin-bottom-5">Back</a>
+        <span class="govuk-caption-xl">Form L restriction</span>
+          <h1 class="govuk-heading-xl">Infill statments</h1>
+          <p class="govuk-body">Details entered here will be added to the restriction and presented to you on the next screen for confirmation.</p>
+
+
+          <div class="govuk-inset-text">
+          <p class="govuk-body">RESTRICTION: Until the death of the survivor of John Smith and Jane Smith no [restriction type] of
+                                the registered estate [statement 1 - optional] by the proprietor of the registered estate [statement 2 - optional] is to be
+                                registered without a certificate signed by [statement 3 - optional] that the provisions of [clause, paragraph or other particulars]
+                                of [details] have been complied with [statement 4 - optional].
+          </div>
+        </div>
+
+        <div class="govuk-grid-column-two-thirds">
+          <div class="govuk-form-group">
+          <label class="govuk-heading-m" for="one-infills-type">
+            Restriction type
+          </label>
+          <select class="govuk-select" id="one-infills-type" name="one-infills-type">
+            <option value="disposition">disposition</option>
+            <option value="transfer">transfer</option>
+            <option value="lease">lease</option>
+            <option value="charge">charge</option>
+            <option value="sub-charge">sub-charge</option>
+            <option value="transfer or lease">transfer or lease</option>
+            <option value="transfer or charge">transfer or charge</option>
+            <option value="transfer or sub-charge">transfer or sub-charge</option>
+            <option value="lease or charge">lease or charge</option>
+            <option value="lease or sub-charge">lease or sub-charge</option>
+            <option value="lease, charge or sub-charge">lease, charge or sub-charge</option>
+            <option value="transfer, lease or charge">transfer, lease or charge</option>
+            <option value="transfer, lease or sub-charge">transfer, lease or sub-charge</option>
+            <option value="transfer, charge or sub-charge">transfer, charge or sub-charge</option>
+            <option value="transfer, charge or sub-charge">transfer, lease, charge or sub-charge</option>
+          </select>
+
+          <br>  <br>
+
+          <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+          <h4 class="govuk-heading-m">Statement 1 (optional):</h4>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="one-infill-1" name="one-infill-1" type="checkbox" value="(other than a charge)">
+                <label class="govuk-label govuk-checkboxes__label" for="one-infill-1">
+                  (other than a charge)
+                </label>
+              </div>
+          </div>
+
+          <br>  <br>
+
+          <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+          <h4 class="govuk-heading-m">Statement 2 (optional):</h4>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="one-infill-2" name="one-infill-2" type="checkbox" value=", or by the proprietor of any registered charge, not being a charge registered before the entry of this restriction,">
+                <label class="govuk-label govuk-checkboxes__label" for="one-infill-2">
+                  , or by the proprietor of any registered charge, not being a charge registered before the entry of this restriction,
+                </label>
+              </div>
+          </div>
+
+          <br> <br>
+
+          <fieldset class="govuk-fieldset">
+          <h4 class="govuk-heading-m">Statement 3:</h4>
+              <div class="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="one-infill-3" name="one-infill-3" type="radio" value="a conveyancer">
+                  <label class="govuk-label govuk-radios__label" for="one-infill-3">
+                    a conveyancer
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="one-infill-3" name="one-infill-3" type="radio" value="the applicant for registration">
+                  <label class="govuk-label govuk-radios__label" for="one-infill-3">
+                    the applicant for registration
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="one-infill-3" name="one-infill-3" type="radio" value="the applicant for registration or their conveyancer">
+                  <label class="govuk-label govuk-radios__label" for="one-infill-3">
+                    the applicant for registration
+                  </label>
+                </div>
+
+              </div>
+          </fieldset>
+
+          <br> <br>
+
+          <h4 class="govuk-heading-m">Clauses, paragraph or other particulars:</h4>
+          <div id="one-infill-clause" class="govuk-hint">
+          Enter the specific part of the deed or document which requires compliance, for example “Clause 12.6.2”</div>
+          <textarea class="govuk-textarea" id="one-infill-clause" name="one-infill-clause" rows="5" aria-describedby="more-detail-hint"></textarea>
+
+          <br>
+
+          <h4 class="govuk-heading-m">Details:</h4>
+          <div id="one-infill-details" class="govuk-hint">
+          This is usually the document the above clause is taken from, for example “The deed” or “The transfer dated 10/07/2018”</div>
+          <textarea class="govuk-textarea" id="one-infill-details" name="one-infill-details" rows="5" aria-describedby="more-detail-hint"></textarea>
+
+          <br><br>
+
+          <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+          <h4 class="govuk-heading-m">Statement 4 (optional):</h4>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="one-infill-5" name="one-infill-5" type="checkbox" value="or that they do not apply to the disposition">
+                <label class="govuk-label govuk-checkboxes__label" for="one-infill-2">
+                  or that they do not apply to the disposition
+                </label>
+              </div>
+          </div>
+
+          </div>
+
+
+
+          <br>
+            <p class="govuk-heading-s govuk-!-margin-top-5">By selecting ‘Continue’ you confirm the details provided are correct and consistent with the register and any supporting documents.</p>
+
+
+
+
+
+        <div style="margin-top: 75px;">
+          {{ govukButton({
+              text: "Save and continue",
+              classes: ""
+            }) }}
+        </div>
+        <a class="govuk-link govuk-body govuk-link--no-visited-state" href="death-of-survivor-infill-questions">Alternative</a>
+</form>
+
+    </div>
+
+        <div class="govuk-grid-column-full">
+          <footer>
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-full">
+                <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+                  <br>
+                    <p class="govuk-body-s" style="color: #747B7F"> The following links open in a new window
+                  <br>
+                  <br>
+                <a href="#" style="color: #747B7F"> Terms and conditions</a> | <a href="/setup/accessibility-statement" target="_blank" rel="noopener noreferrer" style="color: #747B7F">Accessibility statement</a> |  <a href="#" style="color: #747B7F">Freedom of information</a> | <a href="#" style="color: #747B7F">© Crown copyright</a></p>
+                </div>
+            </div>
+          </footer>
+        </div>
+
+
+{% endblock %}
+
+
+{% block footer %}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}
