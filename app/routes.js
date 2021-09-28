@@ -1742,6 +1742,9 @@ let form = req.session.data['form']
   if (form === 'Form P (Disposition by registered proprietor of registered estate or proprietor of charge – consent of proprietor of specified charge or certificate required)') {
       res.redirect('/restrictions/formP-consent')
       }
+  if (form === 'Form L (Disposition by registered proprietor of a registered estate or proprietor of charge – certificate required)') {
+      res.redirect('/restrictions/L/certification')
+      }
 })
 
 
@@ -1786,3 +1789,69 @@ router.post('/formP-addresstype-answer', function (req, res) {
       res.redirect('BFPO')
     }
   })
+
+  // Form L certification branching
+  router.post('/certification-answer', function (req, res) {
+
+  let certification = req.session.data['L-Certification']
+
+  if (certification === 'conveyancer') {
+    res.redirect('/restrictions/L/limitation')
+  }
+  if (certification === 'single') {
+    res.redirect('/restrictions/L/signatory-sole')
+  }
+  if (certification === 'two-named') {
+    res.redirect('/restrictions/L/signatory-1')
+  }
+  if (certification === 'one-of-two') {
+    res.redirect('/restrictions/L/signatory-1')
+  }
+
+  })
+
+  // Form L 1st Signatory address answer
+  router.post('/signatory1-addresstype-answer', function (req, res) {
+
+    let signatoryAddress = req.session.data['signatory1AddressType']
+
+    if (signatoryAddress === 'UK-postal') {
+      res.redirect('/restrictions/L/Signatory-1-UK')
+      }
+    if (signatoryAddress === 'Overseas-postal') {
+        res.redirect('Overseas')
+      }
+    if (signatoryAddress === 'PO-box') {
+        res.redirect('PO')
+      }
+    if (signatoryAddress === 'email') {
+        res.redirect('email')
+      }
+    if (signatoryAddress === 'DX') {
+        res.redirect('DX')
+      }
+    if (signatoryAddress === 'BFPO') {
+        res.redirect('BFPO')
+      }
+    })
+
+    // Form L limitation answer
+    router.post('/limitation-answer', function (req, res) {
+
+      let limitation = req.session.data['limitation']
+
+      if (limitation === 'death of one person') {
+        res.redirect('/restrictions/L/limitation-sole')
+        }
+      if (limitation === 'death of survivor') {
+        res.redirect('/restrictions/L/death-of-survivor-infill')
+        }
+      if (limitation === 'limitation date') {
+        res.redirect('/restrictions/L/date-infills')
+        }
+      if (limitation === 'no limitation') {
+        res.redirect('/restrictions/L/no-limitation-infills')
+        }
+
+
+      })
