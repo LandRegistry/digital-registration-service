@@ -41,14 +41,16 @@
 
     <main class="govuk-main-wrapper " id="main-content" role="main">
         <div class="govuk-grid-row">
-            <div class="govuk-grid-column-two-thirds">
-
+          <div class="govuk-grid-column-full">
             <h1 class="govuk-heading-xl">Apply to update a registered title</h1>
-            <p class="govuk-body">You can use this service to submit an AP1 form to update an existing title. </p>
 
-            <div class="govuk-inset-text">
-              This service can be used for applications of up to 25 titles where the same proprietors are registered against each title.
-            </div>
+          </div>
+          <div class="govuk-grid-column-two-thirds">
+
+            <p class="govuk-body">You can use this service to submit an AP1 form to update an existing title. </p>
+            <p class="govuk-body">This service can be used for applications of up to 25 titles where the same proprietors are registered against each title.</p>
+
+
 <br>
 
             {{ govukButton({
@@ -90,6 +92,12 @@
           </ul>
 
           <p class="govuk-body">For these applications, please use the <a href="#"> Document Registration Service</a>.</p>
+          <h2 class="govuk-heading-m govuk-!-padding-top-4">For applications of more than 25 titles</h2>
+          <p class="govuk-body">You cannot currently use the Digital Registration Service for applications of more than 25 titles. For these applications:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>use the <a href="#">Document Registration Service</a> for applications of 26-50 titles</li>
+            <li><a href="#">contact the Bulk Application Team</a> for applications of over 50 titles</li>
+          </ul>
           </div>
           </div>
           </main>
@@ -107,7 +115,7 @@
           <br>
           <br>
           <a href="#" style="color: #747B7F"> Terms and conditions</a> | <a href="/setup/accessibility-statement" target="_blank" rel="noopener noreferrer" style="color: #747B7F">Accessibility statement</a> |  <a href="#" style="color: #747B7F">Freedom of information</a> | <a href="#" style="color: #747B7F">© Crown copyright</a></p>
-          </div>
+        </div>
           </div>
           </footer>
 
