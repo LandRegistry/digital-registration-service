@@ -1,0 +1,129 @@
+{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
+{%- set assetPath = '/govuk/assets' -%}
+
+{% extends "govuk/template.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+
+{% block headIcons %}
+  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
+  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
+{% endblock %}
+
+{% block head %}
+  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full" id="headerdiv">
+      <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
+      <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+
+
+    <div class="govuk-phase-banner">
+        <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
+        <span class="govuk-phase-banner__text">
+        This is a prototype and not a real service.
+        </span></p>
+    </div>
+    </div>
+  </div>
+
+    <main class="govuk-main-wrapper " id="main-content" role="main">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+
+            <h1 class="govuk-heading-xl"> Digital Registration Service</h1>
+            <p class="govuk-body">You can use this service to submit an AP1 form to update an existing title. </p>
+
+            <div class="govuk-inset-text">
+              This service can be used for applications of up to 25 titles where the same proprietors are registered against each title.
+            </div>
+
+            <h2 class="govuk-heading-m">Coronavirus (COVID-19): temporary rules on identity</h2>
+            <p>HM Land Registry has introduced a range of temporary measures for verifying identity during the coronavirus (COVID-19) outbreak.</p>
+
+            <p>The measures are set out in <a href="https://www.gov.uk/government/publications/temporary-changes-to-hm-land-registrys-evidence-of-identity-requirements-pg67a/practice-guide-67a-temporary-changes-to-hm-land-registrys-evidence-of-identity-requirements" target="_blank">Practice Guide 67A (opens in new tab)</a>, which accompanies <a href="https://www.gov.uk/government/publications/evidence-of-identity-conveyancers" target="_blank">Practice Guide 67 (opens in new tab)</a>.</p>
+
+<br>
+
+            {{ govukButton({
+            text: "Start now",
+            href: "client-reference",
+            isStartButton: true
+          }) }}
+
+
+            {{ govukButton({
+            text: "Go to saved applications",
+            classes: "secondary-button",
+            href: "/save-resume/saved-applications",
+            isStartButton: false
+          }) }}
+
+
+          <h2 class="govuk-heading-m govuk-!-padding-top-4"> Before you start </h2>
+
+          <p class="govuk-body"> You'll need to provide: </p>
+
+          <ul class="govuk-list govuk-list--bullet">
+            <li>title numbers</li>
+            <li>applicant details</li>
+            <li>scanned documents, if needed</li>
+          </ul>
+
+          <p class="govuk-body"> You cannot use this service to: </p>
+
+          <ul class="govuk-list govuk-list--bullet">
+            <li>register a transfer of charge</li>
+            <li>register a transfer by operation of law</li>
+            <li>register a transfer of residue</li>
+            <li>register a transfer of part applications</li>
+            <li>submit applications for personal representation</li>
+            <li>submit applications against a pending new title where it involves a transfer of charge</li>
+            <li>submit applications with more than 25 title numbers</li>
+            <li>merge multiple title numbers</li>
+          </ul>
+
+          <p class="govuk-body">For these applications, please use the <a href="#"> Document Registration Service</a>.</p>
+          </div>
+          </div>
+          </main>
+
+
+
+
+
+          <footer>
+          <div class="govuk-grid-row">
+          <div class="govuk-grid-column-full">
+          <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+          <br>
+          <p class="govuk-body-s" style="color: #747B7F"> The following links open in a new window
+          <br>
+          <br>
+          <a href="#" style="color: #747B7F"> Terms and conditions</a> | <a href="/setup/accessibility-statement" target="_blank" rel="noopener noreferrer" style="color: #747B7F">Accessibility statement</a> |  <a href="#" style="color: #747B7F">Freedom of information</a> | <a href="#" style="color: #747B7F">© Crown copyright</a></p>
+          </div>
+          </div>
+          </footer>
+
+
+{% endblock %}
+
+
+{% block footer %}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}
