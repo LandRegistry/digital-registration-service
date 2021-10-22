@@ -6,7 +6,22 @@ const path = require('path')
 router.use('/node_modules', express.static('node_modules'))
 
 
+// Run this code when a form is submitted to 'whole-part'
+router.post('/whole-part-answer', function (req, res) {
 
+  // Make a variable and give it the value from 'how-many-balls'
+  var applicationAffectWhole = req.session.data['yes-or-no']
+
+  // Check whether the variable matches a condition
+  if (applicationAffectWhole == "No - only part of the title is affected for some"){
+    // Send user to next page
+    res.redirect('whole-part_single-title.html')
+  } else {
+    // Send user to ineligible page
+    res.redirect('/app-start')
+  }
+
+})
 
 // Select/add transferees
 router.post('/transactions/transfer/transferee-whichapplicants-answer', function (req, res) {
