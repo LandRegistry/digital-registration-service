@@ -1,0 +1,97 @@
+{% extends "drs-layout.html" %}
+
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l"></span>
+  <h1 class="govuk-heading-l">Are you a conveyancer?</h1>
+
+  <div>
+
+
+     <div>
+
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Which should I select?
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          Select ‘Yes’ if you are (or are employed and supervised by) a solicitor or conveyancer authorised under the Legal Services Act 2007 to provide reserved legal services relating to land registration. Otherwise, select ‘No’.
+          <br>
+          <br>Find out more in <a href='https://www.gov.uk/government/publications/evidence-of-identity-conveyancers/practice-guide-67-evidence-of-identity-conveyancers'>Practice Guide 67 (opens in new tab)</a>.
+        </div>
+      </details>
+
+
+    <!-- <form method="post" action="user-type-answer" name="" data-validate="whole-form-validation" novalidate>
+  routing removed temporarily for MT testing -->
+
+
+<form method="get" action="/enhancements/enter-title-numbers.html">
+        {{ govukRadios({
+  idPrefix: "user-type",
+  name: "user-type",
+  fieldset: {
+    legend: {
+      text: "",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+
+
+  items: [
+    {
+      value: "conveyancer",
+      text: "Yes, I'm a conveyancer or acting on behalf of a conveyancer",
+      conditional: {
+        html: wholeHtml
+      }
+    },
+    {
+      value: "non-conveyancer",
+      text: "No",
+      disabled: false,
+      conditional: {
+        html: partHtml
+      }
+    }
+  ]
+}) }}
+
+
+    {{ govukButton({
+    text: "Continue"
+  }) }}
+
+
+    </div>
+    </div>
+
+
+
+<script type="application/json" id="whole-form-validation">
+  {
+    "user-type": {
+      "presence": {
+        "message": "^Select if you are a conveyancer or not"
+      }
+    }
+  }
+</script>
+
+
+
+
+{% endblock %}
+
+
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}
