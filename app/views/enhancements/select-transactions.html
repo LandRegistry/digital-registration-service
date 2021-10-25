@@ -25,6 +25,8 @@
 
 {% block head %}
   <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
+  <link href="/public/css/accessible-autocomplete.min.css" rel="stylesheet" type="text/css" />
+
 {% endblock %}
 
 {% block header %}
@@ -63,12 +65,12 @@
 
 
       <div class="govuk-form-group">
-        <label class="govuk-label" for="Select_transaction{{n}}" style="opacity: 0.5">
+        <label class="govuk-label" for="Select_transaction" style="opacity: 0.5">
           Priority 1
         </label>
 
-        <select class="govuk-select" id="Select_transaction{{n}}" name="Transaction1">
-          <option value="Select a transaction from the list">Select a transaction from the list</option>
+        <select class="govuk-select js-select-autocomplete" id="Select_transaction" name="Transaction1" >
+          <option value=""></option>
           <option value="Acquisition of right to manage">Acquisition of right to manage</option>
           <option value="Agreed maximum amount of security (CH3)">Agreed maximum amount of security (CH3)</option>
           <option value="Agreed notice (AN1)">Agreed notice (AN1)</option>
@@ -151,6 +153,7 @@
           <option value="Withdraw a restriction (RX4)">Withdraw a restriction (RX4)</option>
           <option value="Withdrawal of caution (WCT)">Withdrawal of caution (WCT)</option>
     </select>
+
       </div>
 
 
@@ -158,12 +161,12 @@
 
 
         <div class="govuk-form-group" id="displaytest">
-          <label class="govuk-label" for="Select_transaction{{n}}" style="opacity: 0.5">
+          <label class="govuk-label" for="Select_transaction" style="opacity: 0.5">
             Priority 2 - (optional)
           </label>
 
-          <select class="govuk-select" id="Select_transaction{{n}}" name="Transaction2">
-            <option value="Select a transaction from the list">Select a transaction from the list</option>
+          <select class="govuk-select js-select-autocomplete" id="Select_transaction" name="Transaction1">
+            <option value=""></option>
             <option value="Acquisition of right to manage">Acquisition of right to manage</option>
             <option value="Agreed maximum amount of security (CH3)">Agreed maximum amount of security (CH3)</option>
             <option value="Agreed notice (AN1)">Agreed notice (AN1)</option>
