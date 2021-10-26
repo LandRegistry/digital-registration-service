@@ -1,50 +1,13 @@
-{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
-{%- set assetPath = '/govuk/assets' -%}
-
-{% extends "govuk/template.njk" %}
-{% from "govuk/components/button/macro.njk" import govukButton %}
-{% from "govuk/components/input/macro.njk" import govukInput %}
-{% from "govuk/components/radios/macro.njk" import govukRadios %}
-{% from "govuk/components/select/macro.njk" import govukSelect %}
-{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
-{% from "govuk/components/details/macro.njk" import govukDetails %}
-{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
-{% from "govuk/components/table/macro.njk" import govukTable %}
-
-
-
-{% block headIcons %}
-  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
-  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
-  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
-  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
-  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
-  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
-{% endblock %}
-
-{% block head %}
-  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
-{% endblock %}
-
-{% block header %}
-{% endblock %}
+{% extends "drs-layout.html" %}
 
 {% block content %}
+<style>
+  .govuk-table__cell{
+    vertical-align: middle;
+  }
+</style>
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-full" id="headerdiv">
-    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
-    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Digital Registration Service</a></p>
-    <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
 
-
-    <div class="govuk-phase-banner govuk-!-margin-bottom-5">
-        <p class="govuk-phase-banner__content">
-        <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
-        <span class="govuk-phase-banner__text">
-        This is a prototype and not a real service.
-        </span></p>
-    </div>
-    </div>
 
 <div class="govuk-grid-column-full">
   <span class="govuk-caption-l"></span>
@@ -59,134 +22,47 @@
 
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header ">Transaction</th>
-          <th scope="col" class="govuk-table__header">Priority</th>
-          <th scope="col" class="govuk-table__header">Value or price paid</th>
-          <th scope="col" class="govuk-table__header">Fee</th>
+          <th scope="col" class="govuk-table__header" style="width:30%;">Transaction</th>
+          <th scope="col" class="govuk-table__header" style="width:15%;">Priority</th>
+          <th scope="col" class="govuk-table__header" style="width:30%;">Value or price paid</th>
+          <th scope="col" class="govuk-table__header" style="width:15%;">Fee</th>
           <th scope="col" class="govuk-table__header">Options</th>
         </tr>
       </thead>
 
-          {% if data['Transaction'] === 'DTC' %}
-          <tbody class="govuk-table_body">
-              <tr class="govuk-table_row" id="hidePI">
-                <td class="govuk-table__cell">Discharge of charge</td>
-                <td class="govuk-table__cell">1</td>
-                <td class="govuk-table__cell">N/A</td>
-                <td class="govuk-table__cell">N/A</td>
-                <td class="govuk-table__cell">N/A</td>
-              </tr>
-
-              <tr class="govuk-table_row" id="hidePI">
-                <td class="govuk-table__cell">Transfer for value (TR1)</td>
-                <td class="govuk-table__cell">2</td>
-                <td class="govuk-table__cell"><p><b style="margin-right : 4px;">£</b>{{ data['priority2values'] }}</p></td>
-                <td class="govuk-table__cell"><b style="margin-right : 4px;">£</b>22</td>
-                <td class="govuk-table__cell"><a class="govuk-link" href="calculate-fees">Change</a></td>
-              </tr>
-
-              <tr class="govuk-table_row" id="hidePI">
-                <td class="govuk-table__cell">Charge</td>
-                <td class="govuk-table__cell">3</td>
-                <td class="govuk-table__cell"><p><b style="margin-right : 4px;">£</b>{{ data['priority3value'] }}</p></td>
-                <td class="govuk-table__cell"><b style="margin-right : 4px;">£</b>22</td>
-
-                <td class="govuk-table__cell"><a class="govuk-link" href="calculate-fees">Change</a></td>
-              </tr>
-          </tbody>
-        {% endif %}
-
-        {% if data['Transaction'] === 'DT' %}
         <tbody class="govuk-table_body">
             <tr class="govuk-table_row" id="hidePI">
               <td class="govuk-table__cell">Discharge of charge</td>
               <td class="govuk-table__cell">1</td>
-              <td class="govuk-table__cell">N/a</td>
-              <td class="govuk-table__cell">N/a</td>
-              <td class="govuk-table__cell">N/a</td>
+              <td class="govuk-table__cell">N/A</td>
+              <td class="govuk-table__cell">£0</td>
+              <td class="govuk-table__cell">N/A</td>
             </tr>
 
             <tr class="govuk-table_row" id="hidePI">
               <td class="govuk-table__cell">Transfer for value (TR1)</td>
               <td class="govuk-table__cell">2</td>
-              <td class="govuk-table__cell"><p><b style="margin-right : 4px;">£</b>{{ data['priority2values'] }}</p></td>
-              <td class="govuk-table__cell"><b style="margin-right : 4px;">£</b>22</td>
-              <td class="govuk-table__cell"><a class="govuk-link" href="calculate-fees">Amend value</a></td>
-            </tr>
-        </tbody>
-      {% endif %}
-
-      {% if data['Transaction'] === 'TC' %}
-      <tbody class="govuk-table_body">
-          <tr class="govuk-table_row" id="hidePI">
-            <td class="govuk-table__cell">Transfer for value (TR1)</td>
-            <td class="govuk-table__cell">1</td>
-            <td class="govuk-table__cell"><p><b style="margin-right : 4px;">£</b>{{ data['priority2values'] }}</p></td>
-            <td class="govuk-table__cell"><b style="margin-right : 4px;">£</b>22</td>
-            <td class="govuk-table__cell"><a class="govuk-link" href="calculate-fees">Amend value</a></td>
-          </tr>
-
-          <tr class="govuk-table_row" id="hidePI">
-            <td class="govuk-table__cell">Charge</td>
-            <td class="govuk-table__cell">3</td>
-            <td class="govuk-table__cell"><p><b style="margin-right : 4px;">£</b>{{ data['priority3value'] }}</p></td>
-            <td class="govuk-table__cell"><b style="margin-right : 4px;">£</b>22</td>
-
-            <td class="govuk-table__cell"><a class="govuk-link" href="calculate-fees">Amend amount</a></td>
-          </tr>
-      </tbody>
-    {% endif %}
-
-    {% if data['Transaction'] === 'T' %}
-    <tbody class="govuk-table_body">
-
-        <tr class="govuk-table_row" id="hidePI">
-          <td class="govuk-table__cell">Transfer for value (TR1)</td>
-          <td class="govuk-table__cell">1</td>
-          <td class="govuk-table__cell"><p><b style="margin-right : 4px;">£</b>{{ data['priority2values'] }}</p></td>
-          <td class="govuk-table__cell"><b style="margin-right : 4px;">£</b>22</td>
-          <td class="govuk-table__cell"><a class="govuk-link" href="calculate-fees">Amend value</a></td>
-        </tr>
-
-
-    </tbody>
-  {% endif %}
-
-  {% if data['Transaction'] === 'C' %}
-  <tbody class="govuk-table_body">
-
-      <tr class="govuk-table_row" id="hidePI">
-        <td class="govuk-table__cell">Charge</td>
-        <td class="govuk-table__cell">1</td>
-        <td class="govuk-table__cell"><p><b style="margin-right : 4px;">£</b>{{ data['priority3value'] }}</p></td>
-        <td class="govuk-table__cell"><b style="margin-right : 4px;">£</b>22</td>
-
-        <td class="govuk-table__cell"><a class="govuk-link" href="calculate-fees">Amend amount</a></td>
-      </tr>
-  </tbody>
-{% endif %}
-
-
-{% if data['Transaction'] === 'ASSENT' %}
-        <tbody class="govuk-table_body">
-            <tr class="govuk-table_row" id="hidePI">
-              <td class="govuk-table__cell">Assent</td>
-              <td class="govuk-table__cell">1</td>
               <td class="govuk-table__cell">£200,000</td>
-              <td class="govuk-table__cell">£44</td>
-              <td class="govuk-table__cell"><a href="#">Change</a></td>
+              <td class="govuk-table__cell">£95</td>
+              <td class="govuk-table__cell"><a class="govuk-link" href="calculate-fees">Change</a></td>
             </tr>
 
+            <tr class="govuk-table_row" id="hidePI" style="vertical-align: middle;">
+              <td class="govuk-table__cell">Charge</td>
+              <td class="govuk-table__cell">3</td>
+              <td class="govuk-table__cell">£200,000</td>
+              <td class="govuk-table__cell" style="vertical-align: middle;">£0</td>
 
+              <td class="govuk-table__cell"><a class="govuk-link" href="calculate-fees">Change</a></td>
+            </tr>
         </tbody>
-      {% endif %}
 
       </table>
 
       <a class="govuk-link govuk-body" href="select-transactions">Add or change transactions</a><br>
   <br>
   <br>
-  <h3 class="govuk-body" style="font-weight: bold">£44 will be taken by Direct Debit from account no 123456789</h3>
+  <h3 class="govuk-body" style="font-weight: bold">£95 will be taken by Direct Debit from account no 123456789</h3>
 
 
 
@@ -196,11 +72,12 @@
 classes: "govuk-!-margin-top-9",
 
 text: "Continue",
-href: "/transactions/add-applicants"
+href: "/enhancements/add-applicants"
 
 }) }}
 
-
+</div>
+</div>
 <footer>
 <div class="govuk-grid-row">
 <div class="govuk-grid-column-full">
