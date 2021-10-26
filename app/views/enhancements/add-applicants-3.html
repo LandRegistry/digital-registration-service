@@ -1,68 +1,20 @@
-{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
-{%- set assetPath = '/govuk/assets' -%}
-
-{% extends "govuk/template.njk" %}
-{% from "govuk/components/button/macro.njk" import govukButton %}
-{% from "govuk/components/input/macro.njk" import govukInput %}
-{% from "govuk/components/radios/macro.njk" import govukRadios %}
-{% from "govuk/components/select/macro.njk" import govukSelect %}
-{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
-{% from "govuk/components/details/macro.njk" import govukDetails %}
-{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
-
-
-
-{% block headIcons %}
-  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
-  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
-  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
-  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
-  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
-  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
-{% endblock %}
-
-{% block head %}
-  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
-{% endblock %}
-
-{% block header %}
-{% endblock %}
+{% extends "drs-layout.html" %}
 
 {% block content %}
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-full" id="headerdiv">
-    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
-    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Digital Registration Service</a></p>
-    <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
 
-
-    <div class="govuk-phase-banner govuk-!-margin-bottom-5">
-        <p class="govuk-phase-banner__content">
-        <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
-        <span class="govuk-phase-banner__text">
-        This is a prototype and not a real service.
-        </span></p>
-    </div>
-    </div>
-
-
-
-
-      <div class="govuk-grid-column-full">
+      <div class="govuk-grid-column-two-thirds">
         <span class="govuk-caption-l"></span>
           <h1 class="govuk-heading-l">Add applicant</h1>
 
           <p class="govuk-body">Tell us who you’re lodging the application for. If you’re a conveyancer, this may be your client. </p>
 
-
-            {{ govukInsetText({
-            text: "Names entered here must match those in supporting documents. If the names don’t match, you must attach evidence of a name change."
-          }) }}
+<br>
 
           <form method="get" action="applicants-list" novalidate>
             <div class="govuk-form-group">
               <fieldset class="govuk-fieldset" aria-describedby="add-applicant3-conditional-hint">
-
+                <h2 class="govuk-heading-s">Select applicant type</h2>
                 <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
                   <div class="govuk-radios__item">
                     <input class="govuk-radios__input" id="add-applicant3-conditional" name="add-applicant3" type="radio" value="individual" data-aria-controls="conditional-add-applicant3-conditional">
@@ -714,6 +666,15 @@
                   </div>
                 </fieldset>
                 </div>
+                
+                <div class="govuk-warning-text">
+                  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                  <strong class="govuk-warning-text__text">
+                    <span class="govuk-warning-text__assistive">Warning</span>
+                    Naming errors lead to requisitions. By selecting 'Continue' you confirm
+                    the name is correct and consistent with supporting documents. If it isn't consistent, you must attach evidence of a name change.
+                  </strong>
+                </div>
 
 
 
@@ -725,19 +686,9 @@
 
 </form>
 
-<footer>
-<div class="govuk-grid-row">
-<div class="govuk-grid-column-full">
-<hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
-<br>
-<p class="govuk-body-s" style="color: #747B7F"> The following links open in a new window
-<br>
-<br>
-<a href="#" style="color: #747B7F"> Terms and conditions</a> | <a href="/setup/accessibility-statement" target="_blank" rel="noopener noreferrer" style="color: #747B7F">Accessibility statement</a> |  <a href="#" style="color: #747B7F">Freedom of information</a> | <a href="#" style="color: #747B7F">© Crown copyright</a></p>
-</div>
-</div>
-</footer>
 
+
+</div>
 </div>
 
 <script type="application/json" id="reference-form-validation">
@@ -757,10 +708,6 @@
 
 
 
-{% endblock %}
-
-
-{% block footer %}
 {% endblock %}
 
 {% block bodyEnd %}

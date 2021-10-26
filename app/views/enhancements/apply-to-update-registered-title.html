@@ -1,0 +1,74 @@
+{% extends "drs-layout.html" %}
+
+{% block content %}
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-full">
+            <h1 class="govuk-heading-xl">Apply to update a registered title</h1>
+
+          </div>
+          <div class="govuk-grid-column-two-thirds">
+
+            <p class="govuk-body">You can use this service to submit an AP1 form to update an existing title. </p>
+            <p class="govuk-body">This service can be used for applications of up to 25 titles where the same proprietors are registered against each title.</p>
+
+
+<br>
+
+            {{ govukButton({
+            text: "Start now",
+            href: "enter-reference",
+            isStartButton: true
+          }) }}
+
+
+            {{ govukButton({
+            text: "Go to saved applications",
+            classes: "secondary-button",
+            href: "/save-resume/saved-applications",
+            isStartButton: false
+          }) }}
+
+
+          <h2 class="govuk-heading-m govuk-!-padding-top-4"> Before you start </h2>
+
+          <p class="govuk-body"> You'll need to provide: </p>
+
+          <ul class="govuk-list govuk-list--bullet">
+            <li>title numbers</li>
+            <li>applicant details</li>
+            <li>scanned documents, if needed</li>
+          </ul>
+
+          <p class="govuk-body"> You cannot use this service to: </p>
+
+          <ul class="govuk-list govuk-list--bullet">
+            <li>register a transfer of charge</li>
+            <li>register a transfer by operation of law</li>
+            <li>register a transfer of residue</li>
+            <li>register a transfer of part applications</li>
+            <li>submit applications for personal representation</li>
+            <li>submit applications against a pending new title where it involves a transfer of charge</li>
+            <li>submit applications with more than 25 title numbers</li>
+            <li>merge multiple title numbers</li>
+          </ul>
+
+          <p class="govuk-body">For these applications, please use the <a href="#"> Document Registration Service</a>.</p>
+          <h2 class="govuk-heading-m govuk-!-padding-top-4">For applications of more than 25 titles</h2>
+          <p class="govuk-body">You cannot currently use the Digital Registration Service for applications of more than 25 titles. For these applications:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>use the <a href="#">Document Registration Service</a> for applications of 26-50 titles</li>
+            <li><a href="#">contact the Bulk Application Team</a> for applications of over 50 titles</li>
+          </ul>
+          </div>
+          </div>
+
+
+
+
+{% endblock %}
+
+
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}
