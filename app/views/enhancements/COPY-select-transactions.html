@@ -1,34 +1,5 @@
-{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
-{%- set assetPath = '/govuk/assets' -%}
+{% extends "drs-layout.html" %}
 
-{% extends "govuk/template.njk" %}
-{% from "govuk/components/button/macro.njk" import govukButton %}
-{% from "govuk/components/input/macro.njk" import govukInput %}
-{% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
-{% from "govuk/components/table/macro.njk" import govukTable %}
-{% from "govuk/components/radios/macro.njk" import govukRadios %}
-{% from "govuk/components/select/macro.njk" import govukSelect %}
-{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
-{% from "govuk/components/details/macro.njk" import govukDetails %}
-{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
-
-
-
-{% block headIcons %}
-  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
-  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
-  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
-  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
-  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
-  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
-{% endblock %}
-
-{% block head %}
-  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
-{% endblock %}
-
-{% block header %}
-{% endblock %}
 
 {% block content %}
 <div class="govuk-grid-row">
@@ -67,8 +38,8 @@
           Priority 1
         </label>
 
-        <select class="govuk-select" id="Select_transaction{{n}}" name="Transaction1">
-          <option value="Select a transaction from the list">Select a transaction from the list</option>
+        <select class="govuk-select js-select-autocomplete" id="Select_transaction{{n}}" name="Transaction1">
+          <option value=""></option>
           <option value="Acquisition of right to manage">Acquisition of right to manage</option>
           <option value="Agreed maximum amount of security (CH3)">Agreed maximum amount of security (CH3)</option>
           <option value="Agreed notice (AN1)">Agreed notice (AN1)</option>
@@ -162,8 +133,8 @@
             Priority 2 - (optional)
           </label>
 
-          <select class="govuk-select" id="Select_transaction{{n}}" name="Transaction2">
-            <option value="Select a transaction from the list">Select a transaction from the list</option>
+          <select class="govuk-select js-select-autocomplete" id="Select_transaction{{n}}" name="Transaction2">
+            <option value=""></option>
             <option value="Acquisition of right to manage">Acquisition of right to manage</option>
             <option value="Agreed maximum amount of security (CH3)">Agreed maximum amount of security (CH3)</option>
             <option value="Agreed notice (AN1)">Agreed notice (AN1)</option>
@@ -253,8 +224,8 @@
         Priority 3 - (optional)
       </label>
 
-      <select class="govuk-select" id="Select_transaction3" name="Transaction3">
-        <option value="Select a transaction from the list">Select a transaction from the list</option>
+      <select class="govuk-select js-select-autocomplete" id="Select_transaction3" name="Transaction3">
+        <option value=""></option>
         <option value="Acquisition of right to manage">Acquisition of right to manage</option>
         <option value="Agreed maximum amount of security (CH3)">Agreed maximum amount of security (CH3)</option>
         <option value="Agreed notice (AN1)">Agreed notice (AN1)</option>
@@ -343,8 +314,8 @@
         Priority 4 - (optional)
       </label>
 
-      <select class="govuk-select" id="Select_transaction4" name="Transaction4">
-        <option value="Select a transaction from the list">Select a transaction from the list</option>
+      <select class="govuk-select js-select-autocomplete" id="Select_transaction4" name="Transaction4">
+        <option value=""></option>
         <option value="Acquisition of right to manage">Acquisition of right to manage</option>
         <option value="Agreed maximum amount of security (CH3)">Agreed maximum amount of security (CH3)</option>
         <option value="Agreed notice (AN1)">Agreed notice (AN1)</option>
@@ -432,7 +403,7 @@
 
 
     <div class="govuk-grid-column-full govuk-!-margin-top-9">
-      {{ govukCheckboxes({
+      <!-- {{ govukCheckboxes({
       idPrefix: "DOI",
       id: "DOI",
       name: "DOI",
@@ -447,9 +418,9 @@
           text: "Select if disclosable overriding interests affect the registered estate."
         }
       ]
-    }) }}
+    }) }} -->
 
-<details class="govuk-details" data-module="govuk-details">
+<!-- <details class="govuk-details" data-module="govuk-details">
   <summary class="govuk-details__summary">
     <span class="govuk-details__summary-text">
       About disclosable overriding interests
@@ -467,11 +438,11 @@
       <br>
     For more information see <a href="#">Practice Guide 15 (opens in new tab)</a>.
   </div>
-</details>
+</details> -->
 
 
 {{ govukButton({
-classes: "govuk-!-margin-top-5",
+classes: "",
 text: "Continue"
 }) }}
 
@@ -481,27 +452,12 @@ text: "Continue"
 
 </form>
 
-<footer>
-<div class="govuk-grid-row">
-<div class="govuk-grid-column-full">
-<hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
-<br>
-<p class="govuk-body-s" style="color: #747B7F"> The following links open in a new window
-<br>
-<br>
-<a href="#" style="color: #747B7F"> Terms and conditions</a> | <a href="/setup/accessibility-statement" target="_blank" rel="noopener noreferrer" style="color: #747B7F">Accessibility statement</a> |  <a href="#" style="color: #747B7F">Freedom of information</a> | <a href="#" style="color: #747B7F">© Crown copyright</a></p>
-</div>
-</div>
-</footer>
-<a href="/prototype-admin/clear-data">Clear data</a>
 
 
 
 {% endblock %}
 
 
-{% block footer %}
-{% endblock %}
 
 {% block bodyEnd %}
   {% include "includes/scripts.html" %}
