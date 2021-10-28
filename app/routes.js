@@ -795,9 +795,9 @@ router.get('/stored-data', function (req, res) {
   res.render('stored-data')
 })
 
-// Identifying the transaction type
+// Identifying the transaction type - LAUREN COMMENTING OUT BELOW
 
-router.post('/transactions/charge-transactions', function (req, res) {
+router.post('/enhancements/lauren', function (req, res) {
       let transaction1 = req.session.data['Transaction1']
       let transaction2 = req.session.data['Transaction2']
       let transaction3 = req.session.data['Transaction3']
@@ -813,7 +813,7 @@ router.post('/transactions/charge-transactions', function (req, res) {
       }  if (transaction1 === 'Charge') {
             req.session.data['Transaction'] = 'C';
 
-            res.redirect('/transactions/calculate-fees')
+            res.redirect('/transactions/calculate-fees');
 
       }   if (transaction1 === 'Discharge (DS1)' && transaction2 === 'Transfer for value (TR1)' && transaction3 === 'Select a transaction from the list') {
             req.session.data['Transaction'] = 'DT';
@@ -826,13 +826,12 @@ router.post('/transactions/charge-transactions', function (req, res) {
 
         }  if (transaction1 === 'Discharge (DS1)' && transaction2 === 'Transfer for value (TR1)' && transaction3 === 'Charge') {
               req.session.data['Transaction'] = 'DTC';
-
-              res.redirect('/transactions/calculate-fees')
+              res.redirect('COPY-calculate-fees');
 
           } if (transaction1 === 'Transfer for value (TR1)' && transaction2 === 'Charge' && transaction3 === 'Select a transaction from the list') {
                   req.session.data['Transaction'] = 'TC';
 
-                  res.redirect('/transactions/calculate-fees')
+                  res.redirect('/transactions/calculate-fees');
             }
             //Assent
             if (transaction1 === 'Assent') {
