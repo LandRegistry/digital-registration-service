@@ -5,8 +5,8 @@ const path = require('path')
 // Add your routes here - above the module.exports line
 router.use('/node_modules', express.static('node_modules'))
 
-
-// Run this code when a form is submitted to 'whole-part'
+// Lauren's routes
+// Does this application affect the whole of the title?
 router.post('/whole-part-answer', function (req, res) {
 
   // Make a variable and give it the value from 'how-many-balls'
@@ -19,6 +19,23 @@ router.post('/whole-part-answer', function (req, res) {
   } else {
     // Send user to ineligible page
     res.redirect('/app-start')
+  }
+
+})
+
+// Run this code when a form is submitted to '/affect-whole-title'
+router.post('/affect-whole-title', function (req, res) {
+
+  // Make a variable and give it the value from 'wholepart'
+  var applicationAffectWhole = req.session.data['wholepart']
+
+  // Check whether the variable matches a condition
+  if (applicationAffectWhole == "no"){
+    req.session.data['whole-title-impacted'] = 'no';
+    res.redirect('/enhancements/titles-in-this-application')
+  } else {
+    req.session.data['whole-title-impacted'] = 'yes';
+    res.redirect('/enhancements/titles-in-this-application')
   }
 
 })
@@ -828,11 +845,15 @@ router.post('/enhancements/lauren', function (req, res) {
               req.session.data['Transaction'] = 'DTC';
               res.redirect('COPY-calculate-fees');
 
-          } if (transaction1 === 'Transfer for value (TR1)' && transaction2 === 'Charge' && transaction3 === 'Select a transaction from the list') {
-                  req.session.data['Transaction'] = 'TC';
+          } if (transaction1 === 'Transfer for value (TR1)' && transaction2 === 'Charge' && transaction3 === '') {
+                  req.session.data['Transaction'] = 'TransferCharge';
 
-                  res.redirect('/transactions/calculate-fees');
+                  res.redirect('COPY-calculate-fees');
             }
+            if (transaction1 === 'Transfer for value (TR1)' && transaction2 === 'Charge' && transaction3 === 'Select a transaction from the list') {
+              req.session.data['Transaction'] = 'TC';
+
+              res.redirect('/transactions/calculate-fees');}
             //Assent
             if (transaction1 === 'Assent') {
               req.session.data['Transaction'] = 'ASSENT';

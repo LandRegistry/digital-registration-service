@@ -90,83 +90,17 @@
 
       </tbody>
     </table>
-</div>
 
-  <h2 class="govuk-heading-m govuk-!-padding-top-5">1. Discharge of charge</h2>
+<h2 class="govuk-heading-l" style="margin-bottom:0px; padding-top:20px;">Transaction details</h2>
 
-  <div class="govuk-grid-column-full" style="margin-left: 40px; width: 97%;">
-
-    <table class="govuk-table govuk-!-width-two-thirds">
-      <th scope="col" class="govuk-table__header">1.1 Add discharge details</th>
-      <td class="govuk-table__cell"></td>
-      <tbody class="govuk-table__body">
-            <tr class="govuk-table__row">
-              <td class="govuk-table__cell"><a href="discharge/discharge-method" class="govuk-link">Select discharge method</a></td>
-              {% if data['discharge-method'] %}
-              <td class="govuk-table__cell"><strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong></td>
-              {% endif %}</tr>
-
-              <td class="govuk-table__cell"><a href="discharge/discharge-lenders" class="govuk-link">Add lenders</a></td>
-              <td class="govuk-table__cell">{% if data['lender-name'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
-
-
-            {% if data['discharge-method'] === 'Form' %}
-
-
-            <tr class="govuk-table__row">
-            <td class="govuk-table__cell">
-            <a href="discharge/lender-representation" class="govuk-link">Add lender representation</a>
-            </td>
-
-            <td class="govuk-table__cell">
-              {% if data['lenderReptype'] %}
-              <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
-                {% endif %}</td>
-
-            </tr>
-
-            <th scope="col" class="govuk-table__header">1.2 Supporting documents</th>
-            <td class="govuk-table__cell"></td>
-
-            <tr class="govuk-table__row">
-            <td class="govuk-table__cell">
-            <a href="discharge/discharge-documents" class="govuk-link">Attach documents</a>
-            </td>
-            <td class="govuk-table__cell">
-              {% if data['DischargeCertified'] %}
-              <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
-                {% endif %}</td>
-            </tr>
-              {% endif %}
-
-              {% if data['discharge-method'] === 'Later' %}
-
-              <tr class="govuk-table__row">
-              <td class="govuk-table__cell">
-              <a href="discharge/lender-representation" class="govuk-link">Add lender representation</a>
-              </td>
-
-              <td class="govuk-table__cell">
-                {% if data['lenderReptype'] %}
-                <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
-                  {% endif %}</td>
-
-                </tr>
-
-                {% endif %}
-
-      </tbody>
-    </table>
-  </div>
-
-  <h2 class="govuk-heading-m govuk-!-padding-top-5">2. Transfer for value (TR1)</h2>
+  <h2 class="govuk-heading-m govuk-!-padding-top-5">1. Transfer for value (TR1)</h2>
 
   <div class="govuk-grid-column-full" style="margin-left: 35px; width: 97%;">
 
     <table class="govuk-table govuk-!-width-two-thirds">
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header">2.1 Transferee details</th>
+          <th scope="col" class="govuk-table__header">1.1 Transferee details</th>
           <td class="govuk-table__cell"></td>
         </tr>
 
@@ -201,7 +135,7 @@
             </tr>
 
             <tr class="govuk-table__row">
-              <th scope="row" class="govuk-table__header">2.2 Transferor details</th>
+              <th scope="row" class="govuk-table__header">1.2 Transferor details</th>
               <td class="govuk-table__cell"></td>
             </tr>
             <tr class="govuk-table__row">
@@ -219,7 +153,7 @@
             </tr>
 
             <tr class="govuk-table__row">
-                <th scope="row" class="govuk-table__header">2.3 Additional fields</th>
+                <th scope="row" class="govuk-table__header">1.3 Additional fields</th>
                 <td class="govuk-table__cell"></td>
               </tr>
               <tr class="govuk-table__row">
@@ -303,6 +237,8 @@
         }) }}
 
         </div>
+      </div>
+
 
         <footer>
         <div class="govuk-grid-row">
