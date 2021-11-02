@@ -55,16 +55,16 @@
     <table class="govuk-table govuk-!-width-full govuk-!-margin-bottom-9">
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header">Your reference</th>
-          <td scope="col" class="govuk-table__cell">{{ data['reference'] }}</td>
+          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Your reference</th>
+          <td scope="col" class="govuk-table__cell">ABC123</td>
         <!--  <td scope="col" class="govuk-table__cell"><a style="float: right;" href="/setup/change-reference">Change</a></td> -->
         </tr>
       </thead>
 
       <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">Title</th>
-          <td class="govuk-table__cell" colspan="2">{{ data['title_number_1'] }} {{ data['title_number_2'] }} {{ data['title_number_3'] }} {{ data['title_number_4'] }}</td>
+          <th scope="row" class="govuk-table__header govuk-!-width-one-quarter">Title Numbers</th>
+          <td class="govuk-table__cell" colspan="2">XX3001</td>
         </tr>
       </tbody>
     </table>
@@ -89,27 +89,23 @@
             <tr class="govuk-table__row">
 
               <td class="govuk-table__cell govuk-link"><a href="/../transactions/transfer/transferees-whichApplicants">Select transferees</a></td>
-              <td class="govuk-table__cell">
-              {% if data['transfereelistcomplete'] %}
-              <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}
-
-
-            </td>
-
+                <td class="govuk-table__cell">
+                  <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
+              </td>
             </tr>
+
             <tr class="govuk-table__row">
               <td class="govuk-table__cell govuk-link"><a href="/transactions/transfer/transferee-representation">Add transferee representation</a></td>
               <td class="govuk-table__cell">
-                {% if data['transfereerep'] %}
                 <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
-                {% endif %}</td>
+              </td>
             </tr>
+
             <tr class="govuk-table__row">
               <td class="govuk-table__cell govuk-link"><a href="/transactions/transfer/transfereeAddressList">Add addresses for service</a></td>
               <td class="govuk-table__cell">
-                {% if data['transfereeAddressType'] %}
-                      <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
-                      {% endif %}
+                <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
+
             </td>
             </tr>
 
@@ -119,15 +115,15 @@
             </tr>
             <tr class="govuk-table__row">
               <td class="govuk-table__cell govuk-link"><a href="/transactions/transfer/add-transferor.html">Add transferors</a></td>
-              <td class="govuk-table__cell">  {% if data['add-transferor'] %}
+              <td class="govuk-table__cell">
                       <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
-                      {% endif %}</td>
+                  </td>
             </tr>
             <tr class="govuk-table__row">
               <td class="govuk-table__cell govuk-link"><a href="/transactions/transfer/transferor-representation.html">Add transferor representation</a></td>
-              <td class="govuk-table__cell">  {% if data['transferorrep'] %}
+              <td class="govuk-table__cell">
                       <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
-                      {% endif %}
+
                       </td>
             </tr>
 
@@ -138,23 +134,31 @@
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell govuk-link"><a href="/transactions/transfer/transfer-date">Confirm transfer date</a></td>
                 <td class="govuk-table__cell">
-                  {% if data['transfer-date'] %}
+
                     <strong class="govuk-tag app-task-list__task-completed">COMPLETED</strong>
-                  {% endif %}
+
               </tr>
 
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell govuk-link"><a href="/transactions/transfer/transfer-declaration">Declaration of trust</a></td>
                 <td class="govuk-table__cell">
-                  {% if data['transfer-declaration'] %}
+
                     <strong class="govuk-tag app-task-list__task-completed">Completed</strong>
-                  {% endif %}
 
               </tr>
+
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell govuk-link"><a href="/../transactions/transfer/transfer-guarantee">Select title guarantee</a></td>
                 <td class="govuk-table__cell">
-                  {% if data['title-guarantee'] %}
+
+                    <strong class="govuk-tag app-task-list__task-completed">Completed</strong>
+
+              </tr>
+
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell govuk-link"><a href="/Sprint-46/additional_provisions/transfer-provisions">Additional provisions</a></td>
+                <td class="govuk-table__cell">
+                  {% if data['additional-provisions'] %}
                     <strong class="govuk-tag app-task-list__task-completed">Completed</strong>
                   {% endif %}
               </tr>

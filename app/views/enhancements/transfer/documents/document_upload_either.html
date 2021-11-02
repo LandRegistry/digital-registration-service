@@ -1,0 +1,150 @@
+{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
+{%- set assetPath = '/govuk/assets' -%}
+
+{% extends "govuk/template.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/tabs/macro.njk" import govukTabs %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
+{% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
+
+
+
+{% block headIcons %}
+  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
+  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
+{% endblock %}
+
+{% block head %}
+  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full" id="headerdiv">
+    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
+    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Digital Registration Service</a></p>
+    <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+
+
+    <div class="govuk-phase-banner">
+        <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
+        <span class="govuk-phase-banner__text">
+        This is a prototype and not a real service
+        </span></p>
+    </div>
+    </div>
+
+<form method="post" action="TR1-attached">
+
+<div class="govuk-grid-column-full govuk-!-margin-top-7">
+  <span class="govuk-caption-xl">Transfer for value (TR1)</span>
+  <h1 class="govuk-heading-l"> Attach and certify document </h1>
+  <p class="govuk-body">Files can be GIF, TIFF, JPG or PDF and must not exceed 20MB file size.</p>
+
+  <p class="govuk-body">Category</p>
+  <h2 class="govuk-heading-m govuk-!-margin-bottom-6" style="margin-top: -20px;">Evidence of corporate status</h2>
+
+
+
+    <div class="govuk-form-group govuk-!-margin-top-7">
+    <label class="govuk-label" for="sort">
+      Select a document type for each file you attach
+    </label>
+    <select class="govuk-select govuk-!-width-one-half" id="sort" name="sort">
+      <option value="" selected>Select document type</option>
+      <option value="" >Document type A</option>
+      <option value="">Document type B</option>
+      <option value="">Document type C</option>
+    </select>
+  </div>
+
+
+  <!-- <p class="govuk-body">Upload a file</p>
+  <a href="#" id="tr1-upload" class="" onclick="fileupload()" style="border-style: solid; border-width: 1px; border-color: #D9D9D9; padding: 5px; border-radius: 3px; cursor: pointer;">Choose file</a>
+  <a class="govuk-body" id="filename" for="tr1-upload"> No file chosen </a> -->
+
+<a href="#" type="file" id="suggested_upload" class="govuk-link--no-visited-state" onclick="fileupload()" style="cursor: pointer; text-decoration: none; font-size: 14px; color: black; border-style: solid;  border-width: 0.5px; padding: 5px; border-radius: 3px; position: absolute; ">Choose file</a>
+  <a class="govuk-link" href="#">Find out about registering overseas companies</a>
+
+
+  <h3 class="govuk-heading-s govuk-!-margin-top-7">Certification</h3>
+  <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <div class="govuk-radios govuk-!-width-two-thirds">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="Certified-1" name="cert" value="Certified" type="radio">
+        <label class="govuk-label govuk-radios__label">
+          I/we certify this is a true copy of an original document
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="Certified-2" name="cert" value="Certified" type="radio">
+        <label class="govuk-label govuk-radios__label">
+          I/we certify this attachment is a true copy of an original document which is certified by a conveyancer to be a true copy of the original
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="Certified-3" name="cert" value="Not certified" type="radio">
+        <label class="govuk-label govuk-radios__label">
+          This attachment is an uncertified copy
+        </label>
+      </div>
+    </div>
+  </fieldset>
+  </div>
+
+
+  <button type="submit" role="button" draggable="false" class="govuk-button" data-module="govuk-button">
+    Continue
+  </button>
+
+</form>
+<footer>
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-full">
+<hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+<br>
+<p class="govuk-body-s" style="color: #747B7F"> The following links open in a new window
+<br>
+<br>
+<a href="#" style="color: #747B7F"> Terms and conditions</a> | <a href="/setup/accessibility-statement" target="_blank" rel="noopener noreferrer" style="color: #747B7F">Accessibility statement</a> |  <a href="#" style="color: #747B7F">Freedom of information</a> | <a href="#" style="color: #747B7F">© Crown copyright</a></p>
+</div>
+</div>
+</footer>
+</div>
+
+
+
+
+<script>
+  function fileupload() {
+
+  $(document).ready(function(){
+    $("a").click(function(){
+      $(document.getElementById('filename')).text("TR1.pdf");
+    });
+  });
+
+}
+
+</script>
+
+
+
+{% endblock %}
+
+
+{% block footer %}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}
