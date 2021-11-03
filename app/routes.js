@@ -87,67 +87,82 @@ router.post('/enhancements/transfer/transferee-whichapplicants-answer', function
   let ApplicantTransferee1 = req.session.data['applicant-individual-forename'];
   let ApplicantTransferee2 = req.session.data['applicant2-individual-forename-2'];
   let companyTransferee1 = req.session.data['applicant-company-name'];
+  let companyTransferee2 = req.session.data['applicant2-company-name-2'];
+
   // let applicantTransferee3 = req.session.data['applicant-individual-forename-3'];
   var checkboxTicked1 = false;
   var checkboxTicked2 = false;
   var checkboxTicked3 = false;
+  var checkboxTicked4 = false;
 
-  // if (help === '') {
-  //     req.session.data['is-empty'] = 'yes';
-  //   } else {
-  //     req.session.data['is-empty'] = 'no';
-  //   }
   
-    if (ApplicantTransferee1 != null) {
+  if ((ApplicantTransferee1 != null) || (companyTransferee1 != null)) {
+    req.session.data['first applicant'] = 'inputted';
+    if (ApplicantTransferee1 != '') {
       let checkbox1 = req.body['applicant-individual-transferee1'];
-      req.session.data['first applicant checkbox'] = 'applicant 1 exists';
+      req.session.data['first applicant type'] = 'individual';
       if (checkbox1 == 'applicant1-transferee-1'){
         checkboxTicked1 = true;
-        req.session.data['box'] = 'was ticked';
+        req.session.data['boxIndividual-1'] = 'was ticked';
 
       } else {
       checkboxTicked1 = false;
-      req.session.data['box'] = 'was not ticked';
+      req.session.data['boxIndividual-1'] = 'was not ticked';
 
       }
-  }
-    else{
-      req.session.data['first applicant checkbox'] = 'applicant 1 doesnt exist';
     }
+    // else{
+    //   req.session.data['first applicant checkbox'] = 'applicant 1 hasnt been inputted';
+    // }
 
-    if (ApplicantTransferee2 != null) {
-      let checkbox2 = req.body['applicant-individual-transferee2'];
-      req.session.data['second applicant checkbox'] = 'applicant 2 exists';
-      if (checkbox2 == 'applicant1-transferee-1'){
-        checkboxTicked2 = true;
-        req.session.data['box2'] = 'was ticked';
-
-      } else {
-      checkboxTicked2 = false;
-      req.session.data['box2'] = 'was not ticked';
-
-      }
-  }
-    else{
-      req.session.data['second applicant checkbox'] = 'applicant 2 doesnt exist';
-    }
-
-    if (companyTransferee1 != null) { 
-      let checkbox3 = req.body['company1-checkbox'];
-      req.session.data['company applicant'] = 'exists';
+    if (companyTransferee1 != '') { 
+      let checkbox3 = req.body['applicant-company-transferee1'];
+      req.session.data['first applicant type'] = 'company';
       if (checkbox3 == 'applicant1-company-transferee-1'){
         checkboxTicked3 = true;
-        req.session.data['box2'] = 'was ticked';
+        req.session.data['boxCompany-1'] = 'was ticked';
 
       } else {
       checkboxTicked3 = false;
-      req.session.data['box2'] = 'was not ticked';
+      req.session.data['boxCompany-1'] = 'was not ticked';
 
       }
-  }
-    else{
-      req.session.data['company applicant'] = 'null';
     }
+   
+    }
+
+    if (ApplicantTransferee2 != null) {
+      req.session.data['second applicant'] = 'inputted';
+      if (ApplicantTransferee2 != '') {
+        let checkbox2 = req.body['applicant-individual-transferee2'];
+        req.session.data['second applicant type'] = 'individual';
+        if (checkbox2 == 'applicant2-transferee-2'){
+          checkboxTicked2 = true;
+          req.session.data['boxIndividual-2'] = 'was ticked';
+
+        } else {
+        checkboxTicked2 = false;
+        req.session.data['boxIndividual-2'] = 'was not ticked';
+
+        }
+    }
+    if (companyTransferee2 != '') { 
+      let checkbox4 = req.body['applicant-company-transferee2'];
+      req.session.data['second applicant type'] = 'company';
+      if (checkbox4 == 'applicant2-company-transferee-2'){
+        checkboxTicked4 = true;
+        req.session.data['boxCompany-2'] = 'was ticked';
+
+      } else {
+      checkboxTicked4 = false;
+      req.session.data['boxCompany-2'] = 'was not ticked';
+
+      }
+    }
+
+  }
+
+
 
 
   // if (ApplicantTransferee1 != '') {
@@ -187,7 +202,7 @@ router.post('/enhancements/transfer/transferee-whichapplicants-answer', function
   //   res.redirect('/enhancements/transfer/add-transferee');
   // }
 
-  if ((checkboxTicked1 === true) || (checkboxTicked2 === true)) {
+  if ((checkboxTicked1 === true) || (checkboxTicked2 === true) || (checkboxTicked3 === true) || (checkboxTicked4 === true)) {
     res.redirect('/enhancements/transfer/transferee-list');
   } else {
     res.redirect('/enhancements/transfer/add-transferee');
@@ -1501,6 +1516,10 @@ router.post('/transferee-list-complete', function (req, res) {
       req.session.data['transfereelistcomplete'] = 'true';
       res.redirect('/transactions/charge/TC-tasks')
   }
+  if (transaction === 'TransferCharge') {
+    req.session.data['transfereelistcomplete'] = 'true';
+    res.redirect('/enhancements/transfer/transferee-representation');
+}
 })
 
 router.post('/transactions/transfer/transferee-whichapplicants-answer', function (req, res){

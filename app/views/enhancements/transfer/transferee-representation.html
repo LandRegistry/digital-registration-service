@@ -1,51 +1,11 @@
-{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
-{%- set assetPath = '/govuk/assets' -%}
-
-{% extends "govuk/template.njk" %}
-{% from "govuk/components/button/macro.njk" import govukButton %}
-{% from "govuk/components/input/macro.njk" import govukInput %}
-{% from "govuk/components/radios/macro.njk" import govukRadios %}
-{% from "govuk/components/select/macro.njk" import govukSelect %}
-{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
-{% from "govuk/components/details/macro.njk" import govukDetails %}
-{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
-{% from "govuk/components/table/macro.njk" import govukTable %}
-
-
-
-{% block headIcons %}
-  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
-  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
-  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
-  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
-  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
-  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
-{% endblock %}
-
-{% block head %}
-  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
-{% endblock %}
-
-{% block header %}
-{% endblock %}
+{% extends "drs-layout.html" %}
 
 {% block content %}
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-full" id="headerdiv">
-    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
-    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Digital Registration Service</a></p>
-    <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
 
-
-    <div class="govuk-phase-banner govuk-!-margin-bottom-5">
-        <p class="govuk-phase-banner__content">
-        <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
-        <span class="govuk-phase-banner__text">
-        This is a prototype and not a real service.
-        </span></p>
-    </div>
-    </div>
-
+<div class="govuk-grid-column-two-thirds" style="margin-top: -35px;">
+  <a href="/enhancements/Transfer-Charge/tasks-complete-your-application" class="govuk-back-link" style="padding-bottom:15px;">Return to task list</a>
+</div>
 <div class="govuk-grid-column-full">
     <span class="govuk-caption-l">Transfer for value (TR1)</span>
     <h1 class="govuk-heading-l">Add transferee representation</h1>
@@ -55,14 +15,14 @@
   <table class="govuk-table">
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header">Transferee type</th>
-      <th scope="col" class="govuk-table__header">Full name</th>
-      <th scope="col" class="govuk-table__header">Represented by</th>
-      <th scope="col" class="govuk-table__header">Options</th>
+      <th scope="col" class="govuk-table__header" style="width:27%;">Transferee type</th>
+      <th scope="col" class="govuk-table__header" style="width:27%;">Full name</th>
+      <th scope="col" class="govuk-table__header" style="width:27%;">Represented by</th>
+      <th scope="col" class="govuk-table__header" style="width:19%;">Options</th>
     </tr>
   </thead>
   <tbody class="govuk-table__body">
-    <tbody class="govuk-table_body">
+  
 
       <!-- {% if data['transferee-select'] === 'yes' and data['applicant-individual-forename'] %}
       <tr class="govuk-table_row" id="hidePI">
@@ -116,7 +76,7 @@
         {% if   data['applicant-individual-transferee1'] %}
         <tr class="govuk-table_row" id="hidePI">
         <td class="govuk-table__cell">Private individual</td>
-        <td class="govuk-table__cell govuk-!-width-one-third">
+        <td class="govuk-table__cell">
         {{ data['applicant-individual-forename'] }} {{ data['applicant-individual-surname'] }}</td>
         <td class="govuk-table__cell" >
 
@@ -154,7 +114,7 @@
         {% if data['applicant-individual-transferee2'] %}
         <tr class="govuk-table_row" id="hidePI">
         <td class="govuk-table__cell">Private individual</td>
-        <td class="govuk-table__cell govuk-!-width-one-third">
+        <td class="govuk-table__cell">
         {{ data['applicant2-individual-forename-2'] }} {{ data['applicant2-individual-surname-2'] }}
         <td class="govuk-table__cell" >
 
@@ -223,7 +183,7 @@
         {% if   data['applicant2-individual-transferee2'] %}
         <tr class="govuk-table_row" id="hidePI">
         <td class="govuk-table__cell">Private individual</td>
-        <td class="govuk-table__cell govuk-!-width-one-third">
+        <td class="govuk-table__cell">
         {{ data['applicant-individual-forename-2'] }} {{ data['applicant-individual-surname-2'] }}
          </td><td class="govuk-table__cell" >UK Conveyancers Ltd</td>
         </tr>
@@ -232,7 +192,7 @@
         {% if   data['applicant-individual-transferee3'] %}
         <tr class="govuk-table_row" id="hidePI">
         <td class="govuk-table__cell">Private individual</td>
-        <td class="govuk-table__cell govuk-!-width-one-third">
+        <td class="govuk-table__cell">
         {{ data['applicant3-individual-forename-3'] }} {{ data['applicant3-individual-surname-3'] }}
          </td><td class="govuk-table__cell" >UK Conveyancers Ltd</td>
         </tr>
@@ -241,7 +201,7 @@
         {% if   data['applicant-company-transferee1'] %}
         <tr class="govuk-table_row" id="hidePI">
         <td class="govuk-table__cell">UK Company or LLC</td>
-        <td class="govuk-table__cell govuk-!-width-one-third">
+        <td class="govuk-table__cell">
         {{ data['applicant-company-name'] }}
          </td><td class="govuk-table__cell" >UK Conveyancers Ltd</td>
         </tr>
@@ -250,7 +210,7 @@
         {% if   data['applicant-company-transferee2'] %}
         <tr class="govuk-table_row" id="hidePI">
         <td class="govuk-table__cell">UK Company or LLC</td>
-        <td class="govuk-table__cell govuk-!-width-one-third">
+        <td class="govuk-table__cell">
         {{ data['applicant2-company-name-2'] }}
          </td><td class="govuk-table__cell" >UK Conveyancers Ltd</td>
         </tr>
@@ -259,7 +219,7 @@
         {% if   data['applicant-overseas-transferee1'] %}
         <tr class="govuk-table_row" id="hidePI">
         <td class="govuk-table__cell">UK Company or LLC</td>
-        <td class="govuk-table__cell govuk-!-width-one-third">
+        <td class="govuk-table__cell">
         {{ data['applicant-overseas-name'] }}
          </td><td class="govuk-table__cell" >UK Conveyancers Ltd</td>
         </tr>
@@ -268,7 +228,7 @@
         {% if   data['applicant-overseas-transferee1'] %}
         <tr class="govuk-table_row" id="hidePI">
         <td class="govuk-table__cell">UK Company or LLC</td>
-        <td class="govuk-table__cell govuk-!-width-one-third">
+        <td class="govuk-table__cell">
         {{ data['applicant-overseas-name'] }}
          </td><td class="govuk-table__cell" >UK Conveyancers Ltd</td>
         </tr>
@@ -278,7 +238,7 @@
         {% if   data['applicant-overseas-transferee2'] %}
         <tr class="govuk-table_row" id="hidePI">
         <td class="govuk-table__cell">UK Company or LLC</td>
-        <td class="govuk-table__cell govuk-!-width-one-third">
+        <td class="govuk-table__cell">
         {{ data['applicant2-overseas-name'] }}</td>
         <td class="govuk-table__cell" >UK Conveyancers Ltd</td>
         </tr>
@@ -287,7 +247,7 @@
         {% if   data['applicant-overseas-transferee3'] %}
         <tr class="govuk-table_row" id="hidePI">
         <td class="govuk-table__cell">UK Company or LLC</td>
-        <td class="govuk-table__cell govuk-!-width-one-third">
+        <td class="govuk-table__cell">
         {{ data['applicant3-overseas-name'] }}
          </td>
          <td class="govuk-table__cell" >UK Conveyancers Ltd</td>
@@ -297,7 +257,7 @@
         {% if   data['applicant-other-transferee1'] %}
         <tr class="govuk-table_row" id="hidePI">
         <td class="govuk-table__cell">UK Company or LLC</td>
-        <td class="govuk-table__cell govuk-!-width-one-third">
+        <td class="govuk-table__cell">
           {{ data['applicant-other-name'] }}
          </td>
         <td class="govuk-table__cell"></td>
@@ -308,7 +268,7 @@
         {% if   data['transferee-individual-forename'] %}
         <tr class="govuk-table_row" id="hidePI">
         <td class="govuk-table__cell">Private individual</td>
-        <td class="govuk-table__cell govuk-!-width-one-third">
+        <td class="govuk-table__cell">
           {{ data['transferee-individual-forename'] }} {{ data['transferee-individual-surname'] }}
          </td>
         <td class="govuk-table__cell">UK Conveyancers Ltd</td>
@@ -318,10 +278,10 @@
         {% if   data['transferee-individual-forename-2'] %}
         <tr class="govuk-table_row" id="hidePI">
         <td class="govuk-table__cell">Private individual</td>
-        <td class="govuk-table__cell govuk-!-width-one-third">
+        <td class="govuk-table__cell">
           {{ data['transferee-individual-forename-2'] }} {{ data['transferee-individual-surname-2'] }}
          </td>
-        <td class="govuk-table__cell govuk-!-width-one-quarter">UK Conveyancers Ltd</td>
+        <td class="govuk-table__cell">UK Conveyancers Ltd</td>
 
         {% endif %}
 
@@ -334,26 +294,12 @@
 Continue</button>
 
 </form>
-<footer>
-<div class="govuk-grid-row">
-<div class="govuk-grid-column-full">
-<hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
-<br>
-<p class="govuk-body-s" style="color: #747B7F"> The following links open in a new window
-<br>
-<br>
-<a href="#" style="color: #747B7F"> Terms and conditions</a> | <a href="/setup/accessibility-statement" target="_blank" rel="noopener noreferrer" style="color: #747B7F">Accessibility statement</a> |  <a href="#" style="color: #747B7F">Freedom of information</a> | <a href="#" style="color: #747B7F">© Crown copyright</a></p>
-</div>
-</div>
-</footer>
+
 </div>
 </div>
 
 {% endblock %}
 
-
-{% block footer %}
-{% endblock %}
 
 {% block bodyEnd %}
   {% include "includes/scripts.html" %}
