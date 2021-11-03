@@ -79,6 +79,122 @@ router.post('/transactions/transfer/transferee-whichapplicants-answer', function
 
   })
 
+  // Select/add transferees - ENHANCEMENTS VERSION
+router.post('/enhancements/transfer/transferee-whichapplicants-answer', function (req, res) {
+  req.session.data['testing-testing'] = 'HELLO';
+  // let help = req.session.data['testingtesting'];
+
+  let ApplicantTransferee1 = req.session.data['applicant-individual-forename'];
+  let ApplicantTransferee2 = req.session.data['applicant2-individual-forename-2'];
+  let companyTransferee1 = req.session.data['applicant-company-name'];
+  // let applicantTransferee3 = req.session.data['applicant-individual-forename-3'];
+  var checkboxTicked1 = false;
+  var checkboxTicked2 = false;
+  var checkboxTicked3 = false;
+
+  // if (help === '') {
+  //     req.session.data['is-empty'] = 'yes';
+  //   } else {
+  //     req.session.data['is-empty'] = 'no';
+  //   }
+  
+    if (ApplicantTransferee1 != null) {
+      let checkbox1 = req.body['applicant-individual-transferee1'];
+      req.session.data['first applicant checkbox'] = 'applicant 1 exists';
+      if (checkbox1 == 'applicant1-transferee-1'){
+        checkboxTicked1 = true;
+        req.session.data['box'] = 'was ticked';
+
+      } else {
+      checkboxTicked1 = false;
+      req.session.data['box'] = 'was not ticked';
+
+      }
+  }
+    else{
+      req.session.data['first applicant checkbox'] = 'applicant 1 doesnt exist';
+    }
+
+    if (ApplicantTransferee2 != null) {
+      let checkbox2 = req.body['applicant-individual-transferee2'];
+      req.session.data['second applicant checkbox'] = 'applicant 2 exists';
+      if (checkbox2 == 'applicant1-transferee-1'){
+        checkboxTicked2 = true;
+        req.session.data['box2'] = 'was ticked';
+
+      } else {
+      checkboxTicked2 = false;
+      req.session.data['box2'] = 'was not ticked';
+
+      }
+  }
+    else{
+      req.session.data['second applicant checkbox'] = 'applicant 2 doesnt exist';
+    }
+
+    if (companyTransferee1 != null) { 
+      let checkbox3 = req.body['company1-checkbox'];
+      req.session.data['company applicant'] = 'exists';
+      if (checkbox3 == 'applicant1-company-transferee-1'){
+        checkboxTicked3 = true;
+        req.session.data['box2'] = 'was ticked';
+
+      } else {
+      checkboxTicked3 = false;
+      req.session.data['box2'] = 'was not ticked';
+
+      }
+  }
+    else{
+      req.session.data['company applicant'] = 'null';
+    }
+
+
+  // if (ApplicantTransferee1 != '') {
+  //     let checkbox1 = req.body['applicant-individual-transferee1'];
+  //     if (checkbox1 === 'applicant-transferee-1'){
+  //       checkboxTicked1 = true;
+  //       req.session.data['first-checkbox'] = 'YES';
+  //     } else {
+  //     checkboxTicked1 = false;
+  //     }
+
+  // }
+
+  // if (ApplicantTransferee2 != '') {
+  //     let checkbox2 = req.body['applicant-individual-transferee2'];
+  //     if (checkbox2 === 'applicant2-transferee-2'){
+  //       checkboxTicked2 = true;
+  //     } else {
+  //     checkboxTicked2 = false;
+  //     }
+  // }
+
+//   if (companyTransferee != '') {
+//     let checkbox3 = req.body['applicant-company-transferee1'];
+//     if (checkbox3 === 'applicant1-company-transferee-1'){
+//       checkboxTicked3 = true;
+//     } else {
+//     checkboxTicked3 = false;
+//     }
+
+// }
+
+
+  // if ((checkboxTicked1 === true) || (checkboxTicked2 === true)) {
+  //   res.redirect('/enhancements/transfer/transferee-list');
+  // } else {
+  //   res.redirect('/enhancements/transfer/add-transferee');
+  // }
+
+  if ((checkboxTicked1 === true) || (checkboxTicked2 === true)) {
+    res.redirect('/enhancements/transfer/transferee-list');
+  } else {
+    res.redirect('/enhancements/transfer/add-transferee');
+  }
+
+  })
+
 
 
 // charge without transfer Select/add lenders
@@ -881,6 +997,26 @@ router.post('/transactions/which-task-list', function (req, res) {
           res.redirect('/transactions/assent/tasks')
       }
     })
+
+// Using the transaction type to go to a task list ENHANCEMENTS VERSION
+router.post('/enhancements/which-task-list', function (req, res) {
+  let transaction = req.session.data['Transaction']
+  let sprint = req.session.data['sprint']
+
+  if (transaction === 'DTC') {
+      res.redirect('/transactions/charge/tasks')
+  } if (transaction === 'C') {
+      res.redirect('/transactions/charge-without-transfer/charge-without-transfer-tasks')
+  } if (transaction === 'T') {
+      res.redirect('/transactions/transfer/transfer-tasks')
+  } if (transaction === 'DT') {
+      res.redirect('/transactions/tasks')
+  } if (transaction === 'TransferCharge') {
+      res.redirect('/enhancements/Transfer-Charge/tasks-complete-your-application')
+  } if (transaction === 'ASSENT') {
+      res.redirect('/transactions/assent/tasks')
+  }
+})
 
 // Charge completed tags
 

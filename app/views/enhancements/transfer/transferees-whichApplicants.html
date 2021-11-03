@@ -51,7 +51,7 @@
     <h1 class="govuk-heading-l">Which applicants are transferees?</h1>
     <p class="govuk-body">Select all that apply. If no applicants are transferees, select 'Continue'. </p>
 
-<form method="post" action="/transactions/transfer/transferee-whichapplicants-answer" name="whichapplicants" class="">
+<form method="post" action="/enhancements/transfer/transferee-whichapplicants-answer" name="whichapplicants" class="">
 
     <div class="govuk-form-group">
     <fieldset class="govuk-fieldset" id="ApplicantTransfereesCheckboxes">
@@ -110,7 +110,7 @@
     {% if data['applicant-company-name'] %}
           <div class="govuk-checkboxes__item">
 
-            <input class="govuk-checkboxes__input" id="" name="applicant-company-transferee1" type="checkbox" value="applicant1-transferee-1">
+            <input class="govuk-checkboxes__input" id="company1-checkbox" name="applicant-company-transferee1" type="checkbox" value="applicant1-company-transferee-1">
 
             <label class="govuk-label govuk-checkboxes__label" for="applicant-company-transfere">
               {{ data['applicant-company-name'] }}
@@ -120,7 +120,7 @@
 
     {% if data['applicant2-company-name-2'] %}
           <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="" name="applicant-company-transferee2" type="checkbox" value="applicant2-company-transferee">
+            <input class="govuk-checkboxes__input" id="company2-checkbox" name="applicant-company-transferee2" type="checkbox" value="applicant2-company-transferee">
             <label class="govuk-label govuk-checkboxes__label" for="applicant-transferee">
               {{ data['applicant2-company-name-2'] }}
             </label>
@@ -211,7 +211,7 @@
 
 {% endblock %}
 
-<script>
+<!-- <script>
   function checkChecked('whichapplicants') {
     var anyBoxesChecked = false;
     $('#' + 'whichapplicants' + 'input[type="checkbox"]').each(function() {
@@ -225,7 +225,9 @@
       return false;
     }
 }
-</script>
+</script> -->
+
+
 
 {% block footer %}
 {% endblock %}
