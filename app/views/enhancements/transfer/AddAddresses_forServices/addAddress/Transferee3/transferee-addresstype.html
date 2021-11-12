@@ -1,0 +1,107 @@
+{% extends "drs-layout.html" %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds" style="margin-top: -35px; margin-bottom:10px;">
+    <a href="/enhancements/Transfer-Charge/tasks-complete-your-application" class="govuk-back-link">Return to task list</a>
+    </div>
+
+<div class="govuk-grid-column-full">
+    <span class="govuk-caption-l">Transfer for value (TR1)</span>
+    <h1 class="govuk-heading-l">Add address for service</h1>
+    <h2 class="govuk-heading-m">For transferee:
+      {{ data['applicant-individual-forename']}} {{ data['applicant-individual-surname']}}</h2>
+
+      <br>
+
+    <form method="post" action="/transactions/transfer/transferee-addresstype-answer">
+
+  <div class="govuk-form-group">
+  <h3 class="govuk-heading-s"> Select address type </h3>
+  <fieldset class="govuk-fieldset">
+    <div class="govuk-radios">
+
+      <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="transfereeAddressType-conditional" name="transfereeAddressType" type="radio" value="property" data-aria-controls="conditional-transfereeAddressType-conditional">
+        <label class="govuk-label govuk-radios__label" for="transfereeAddressType-conditional">
+          Property description: 1 Main Road, Littlehaxten, LH1
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-transfereeAddressType-conditional">
+        <div class="govuk-form-group">
+          <div class="govuk-checkboxes__item">
+       <input class="govuk-checkboxes__input" id="propertyapplyall" name="applyall" type="checkbox" value="true">
+       <label class="govuk-label govuk-checkboxes__label" for="propertyapplyall">
+         Apply to all transferees
+       </label>
+     </div>
+        </div>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="select-address-type" name="transfereeAddressType" type="radio" value="UK-postal">
+          <label class="govuk-label govuk-radios__label" for="select-address-type">
+        UK postal address
+      </label>
+        </div>
+
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="select-address-type-2" name="transfereeAddressType" type="radio" value="Overseas-postal">
+          <label class="govuk-label govuk-radios__label" for="select-address-type-2">
+        Overseas postal address
+      </label>
+        </div>
+
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="select-address-type-3" name="transfereeAddressType" type="radio" value="PO-box">
+          <label class="govuk-label govuk-radios__label" for="select-address-type-3">
+        PO Box (postal address)
+      </label>
+        </div>
+
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="select-address-type-4" name="transfereeAddressType" type="radio" value="email">
+          <label class="govuk-label govuk-radios__label" for="select-address-type-4">
+        Email address
+      </label>
+        </div>
+
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="select-address-type-5" name="transfereeAddressType" type="radio" value="DX">
+          <label class="govuk-label govuk-radios__label" for="select-address-type-5">
+          DX address
+          </label>
+        </div>
+
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="select-address-type-6" name="transfereeAddressType" type="radio" value="BFPO">
+            <label class="govuk-label govuk-radios__label" for="select-address-type-6">
+            BFPO postal address (armed forces)
+            </label>
+        </div>
+  </div>
+    </fieldset>
+  </div>
+
+
+
+{{ govukButton({
+  classes: "govuk-!-margin-top-9",
+  text: "Continue",
+  type: "Submit",
+  value: "Submit"
+}) }}
+
+</form>
+
+
+</div>
+
+
+{% endblock %}
+
+
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}

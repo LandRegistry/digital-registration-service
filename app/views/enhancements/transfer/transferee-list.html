@@ -236,6 +236,19 @@
           </tr>
           {% endif %}
 
+          {% if data['applicant-company-transferee3'] %}
+
+          <tr class="govuk-table_row" id="hidePI">
+          <td class="govuk-table__cell">UK Company or LLC</td>
+          <td class="govuk-table__cell">
+          {{ data['applicant3-company-name-3'] }}
+           </td>
+          <td class="govuk-table__cell">  {{ data['applicant3-company-number-3'] }}</td>
+          <td class="govuk-table__cell">N/a</td>
+          <td class="govuk-table__cell govuk-link"><a href="add-applicants">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
+          </tr>
+          {% endif %}
+
           {% if data['applicant-overseas-transferee1'] %}
           <tr class="govuk-table_row" id="hidePI">
           <td class="govuk-table__cell">UK Company or LLC</td>

@@ -2,8 +2,8 @@
 
 {% block content %}
 <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds" style="margin-top: -35px;">
-      <a href="/enhancements/Transfer-Charge/tasks-complete-your-application" class="govuk-back-link" style="padding-bottom:15px;">Return to task list</a>
+    <div class="govuk-grid-column-two-thirds" style="margin-top: -35px; margin-bottom:10px;">
+      <a href="/enhancements/Transfer-Charge/tasks-complete-your-application" class="govuk-back-link">Return to task list</a>
       </div>
 <div class="govuk-grid-column-full">
     <span class="govuk-caption-l">Transfer for value (TR1)</span>
@@ -40,7 +40,7 @@
           </div>
     {% endif %}
 
-    {% if data['applicant-individual-forename-3'] %}
+    {% if data['applicant3-individual-forename-3'] %}
           <div class="govuk-checkboxes__item">
 
             <input class="govuk-checkboxes__input" id="" name="applicant-individual-transferee3" type="checkbox" value="applicant3-transferee-3">

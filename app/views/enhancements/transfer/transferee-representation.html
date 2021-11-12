@@ -3,15 +3,15 @@
 {% block content %}
 <div class="govuk-grid-row">
 
-<div class="govuk-grid-column-two-thirds" style="margin-top: -35px;">
-  <a href="/enhancements/Transfer-Charge/tasks-complete-your-application" class="govuk-back-link" style="padding-bottom:15px;">Return to task list</a>
+<div class="govuk-grid-column-two-thirds" style="margin-top: -35px; margin-bottom:10px;">
+  <a href="/enhancements/Transfer-Charge/tasks-complete-your-application" class="govuk-back-link">Return to task list</a>
 </div>
 <div class="govuk-grid-column-full">
     <span class="govuk-caption-l">Transfer for value (TR1)</span>
     <h1 class="govuk-heading-l">Add transferee representation</h1>
     <p class="govuk-body">Select 'Add representation' for each transferee.</p>
 
-<form method="post" action="transferee-representation-confirmed">
+<form method="post" action="/transactions/transfer/transferee-representation-confirmed">
   <table class="govuk-table">
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
@@ -103,8 +103,8 @@
 
         </td>
         <td class="govuk-table__cell" >
-        {% if not data['TransfereeRepresentation'] %} <a href="transferee-representationAdd">Add representation </a> {% endif %}
-        {% if data['TransfereeRepresentation'] %} <a href="transferee-representationAdd">Change</a><br><a href="">Remove</a> {% endif %}
+        {% if not data['TransfereeRepresentation'] %} <a href="transferee-representationAdd-new">Add representation </a> {% endif %}
+        {% if data['TransfereeRepresentation'] %} <a href="transferee-representationAdd-new">Change</a><br><a href="">Remove</a> {% endif %}
         </td>
 
 
@@ -117,85 +117,72 @@
         <td class="govuk-table__cell">
         {{ data['applicant2-individual-forename-2'] }} {{ data['applicant2-individual-surname-2'] }}
         <td class="govuk-table__cell" >
-
-
-          <!--Before user has made a selection-->
-          {% if not data['Transferee2Representation'] %}
+            <!--Before user has made a selection-->
+            {% if not data['TransfereeRepresentation2'] %}
             No representation added
-          {% endif %}
+            {% endif %}
 
-          <!--If represented by default conveyancer-->
-          {% if data['Transferee2Representation'] == 'UKConveyancersLtd' %}
-            {{ data['Transferee2Representation']}}
-          {% endif %}
+            <!--If represented by default conveyancer-->
+            {% if data['TransfereeRepresentation2'] == 'UKConveyancersLtd' %}
+            {{ data['TransfereeRepresentation2']}}
+            {% endif %}
 
-          <!--If represented by an other conveyancer-->
-          {% if data['Transferee2Representation'] == 'OtherConveyancer' %}
-            {{ data['Transferee2OtherName']}}
-          {% endif %}
+            <!--If represented by an other conveyancer-->
+            {% if data['TransfereeRepresentation2'] == 'OtherConveyancer' %}
+            {{ data['TransfereeOtherName']}}
+            {% endif %}
 
-          <!--If person is not represented-->
-          {% if data['Transferee2Representation'] == 'NotRepresented' %}
+            <!--If person is not represented-->
+            {% if data['TransfereeRepresentation2'] == 'NotRepresented' %}
             Not represented
-          {% endif %}
+            {% endif %}
 
-<!--
-
-        {% if not data['TransfereeRepresentation'] or not data['represents-all'] %} - No representation added - {% endif %}
-
-        {% if data['represents-all'] and data['TransfereeRepresentation' ] !== 'OtherConveyancer' %} {{ data['TransfereeRepresentation']}} {% endif %}
-
-        {% if data['TransfereeRepresentation' ] == 'OtherConveyancer' and data['represents-all'] %}
-        {{ data ['TransfereeOtherName'] }}, {{ data ['TransfereeOtherAddress'] }}, {{ data ['OtherConveyancerReference'] }}
-        {% endif %}
-
-         {% if data['TransfereeRepresentation' ] !== 'OtherConveyancer' %}
-        {{ data['TransfereeRepresentation']}}
-        {% endif %} -->
-
-        </td>
-        <td class="govuk-table__cell" >
-
-        {% if not data['Transferee2Representation'] %} 
-          <a href="transferee-representationadd2">Add representation </a>
-        {% endif %}
-
-        {% if data['Transferee2Representation'] %}
-          <a href="transferee-representationadd2">Change</a>
-          <br>
-          <a href="">Remove</a>
-        {% endif %}
-
-        <!--
-        {% if data['represents-all'] %}
-
-        {% endif %}
-        -->
+            </td>
+            <td class="govuk-table__cell" >
+            {% if not data['TransfereeRepresentation2'] %} <a href="transferee-representationAdd-new2">Add representation </a> {% endif %}
+            {% if data['TransfereeRepresentation2'] %} <a href="transferee-representationAdd-new2">Change</a><br><a href="">Remove</a> {% endif %}
+            </td>
 
 
-        {% if not data['TransfereeRepresentation'] or not data['represents-all'] %} <a href="/transactions/transfer/transferee-representationAdd2">Add representation</a> {% endif %}
-        {% if data['TransfereeRepresentation'] and data['represents-all'] %} <a href="/transactions/transfer/transferee-representationAdd2">Change</a><br><a href="">Remove</a> {% endif %}
+            </tr>
+            {% endif %}
 
-        </td>
-        </tr>
-        {% endif %}
-
-        {% if   data['applicant2-individual-transferee2'] %}
-        <tr class="govuk-table_row" id="hidePI">
-        <td class="govuk-table__cell">Private individual</td>
-        <td class="govuk-table__cell">
-        {{ data['applicant-individual-forename-2'] }} {{ data['applicant-individual-surname-2'] }}
-         </td><td class="govuk-table__cell" >UK Conveyancers Ltd</td>
-        </tr>
-        {% endif %}
+        
 
         {% if   data['applicant-individual-transferee3'] %}
         <tr class="govuk-table_row" id="hidePI">
         <td class="govuk-table__cell">Private individual</td>
         <td class="govuk-table__cell">
         {{ data['applicant3-individual-forename-3'] }} {{ data['applicant3-individual-surname-3'] }}
-         </td><td class="govuk-table__cell" >UK Conveyancers Ltd</td>
-        </tr>
+         </td>
+         <td class="govuk-table__cell" >
+
+
+          <!--Before user has made a selection-->
+          {% if not data['TransfereeRepresentation3'] %}
+            No representation added
+          {% endif %}
+
+          <!--If represented by default conveyancer-->
+          {% if data['TransfereeRepresentation3'] == 'UKConveyancersLtd' %}
+            {{ data['TransfereeRepresentation3']}}
+          {% endif %}
+
+          <!--If represented by an other conveyancer-->
+          {% if data['TransfereeRepresentation3'] == 'OtherConveyancer' %}
+            {{ data['TransfereeOtherName']}}
+          {% endif %}
+
+          <!--If person is not represented-->
+          {% if data['TransfereeRepresentation3'] == 'NotRepresented' %}
+            Not represented
+          {% endif %}
+
+        </td>
+        <td class="govuk-table__cell" >
+        {% if not data['TransfereeRepresentation3'] %} <a href="transferee-representationAdd-new3">Add representation </a> {% endif %}
+        {% if data['TransfereeRepresentation3'] %} <a href="transferee-representationAdd-new3">Change</a><br><a href="">Remove</a> {% endif %}
+        </td>        </tr>
         {% endif %}
 
         {% if   data['applicant-company-transferee1'] %}
@@ -203,8 +190,35 @@
         <td class="govuk-table__cell">UK Company or LLC</td>
         <td class="govuk-table__cell">
         {{ data['applicant-company-name'] }}
-         </td><td class="govuk-table__cell" >UK Conveyancers Ltd</td>
-        </tr>
+         </td>
+         <td class="govuk-table__cell" >
+
+
+          <!--Before user has made a selection-->
+          {% if not data['TransfereeRepresentation'] %}
+            No representation added
+          {% endif %}
+
+          <!--If represented by default conveyancer-->
+          {% if data['TransfereeRepresentation'] == 'UKConveyancersLtd' %}
+            {{ data['TransfereeRepresentation']}}
+          {% endif %}
+
+          <!--If represented by an other conveyancer-->
+          {% if data['TransfereeRepresentation'] == 'OtherConveyancer' %}
+            {{ data['TransfereeOtherName']}}
+          {% endif %}
+
+          <!--If person is not represented-->
+          {% if data['TransfereeRepresentation'] == 'NotRepresented' %}
+            Not represented
+          {% endif %}
+
+        </td>
+        <td class="govuk-table__cell" >
+        {% if not data['TransfereeRepresentation'] %} <a href="transferee-representationAdd-new">Add representation </a> {% endif %}
+        {% if data['TransfereeRepresentation'] %} <a href="transferee-representationAdd-new">Change</a><br><a href="">Remove</a> {% endif %}
+        </td>        </tr>
         {% endif %}
 
         {% if   data['applicant-company-transferee2'] %}
@@ -212,8 +226,73 @@
         <td class="govuk-table__cell">UK Company or LLC</td>
         <td class="govuk-table__cell">
         {{ data['applicant2-company-name-2'] }}
-         </td><td class="govuk-table__cell" >UK Conveyancers Ltd</td>
+         </td>
+         <td class="govuk-table__cell" >
+
+
+          <!--Before user has made a selection-->
+          {% if not data['TransfereeRepresentation2'] %}
+            No representation added
+          {% endif %}
+
+          <!--If represented by default conveyancer-->
+          {% if data['TransfereeRepresentation2'] == 'UKConveyancersLtd' %}
+            {{ data['TransfereeRepresentation2']}}
+          {% endif %}
+
+          <!--If represented by an other conveyancer-->
+          {% if data['TransfereeRepresentation2'] == 'OtherConveyancer' %}
+            {{ data['TransfereeOtherName']}}
+          {% endif %}
+
+          <!--If person is not represented-->
+          {% if data['TransfereeRepresentation2'] == 'NotRepresented' %}
+            Not represented
+          {% endif %}
+
+        </td>
+        <td class="govuk-table__cell" >
+        {% if not data['TransfereeRepresentation2'] %} <a href="transferee-representationAdd-new2">Add representation </a> {% endif %}
+        {% if data['TransfereeRepresentation2'] %} <a href="transferee-representationAdd-new2">Change</a><br><a href="">Remove</a> {% endif %}
+        </td>        </tr>
+        {% endif %}
+
+        {% if   data['applicant-company-transferee3'] %}
+        <tr class="govuk-table_row" id="hidePI">
+        <td class="govuk-table__cell">UK Company or LLC</td>
+        <td class="govuk-table__cell">
+        {{ data['applicant3-company-name-3'] }}
+         </td>
+         <td class="govuk-table__cell" >
+
+
+          <!--Before user has made a selection-->
+          {% if not data['TransfereeRepresentation3'] %}
+            No representation added
+          {% endif %}
+
+          <!--If represented by default conveyancer-->
+          {% if data['TransfereeRepresentation3'] == 'UKConveyancersLtd' %}
+            {{ data['TransfereeRepresentation3']}}
+          {% endif %}
+
+          <!--If represented by an other conveyancer-->
+          {% if data['TransfereeRepresentation3'] == 'OtherConveyancer' %}
+            {{ data['TransfereeOtherName']}}
+          {% endif %}
+
+          <!--If person is not represented-->
+          {% if data['TransfereeRepresentation3'] == 'NotRepresented' %}
+            Not represented
+          {% endif %}
+
+        </td>
+        <td class="govuk-table__cell" >
+        {% if not data['TransfereeRepresentation3'] %} <a href="transferee-representationAdd-new3">Add representation </a> {% endif %}
+        {% if data['TransfereeRepresentation3'] %} <a href="transferee-representationAdd-new3">Change</a><br><a href="">Remove</a> {% endif %}
+        </td>        
         </tr>
+
         {% endif %}
 
         {% if   data['applicant-overseas-transferee1'] %}

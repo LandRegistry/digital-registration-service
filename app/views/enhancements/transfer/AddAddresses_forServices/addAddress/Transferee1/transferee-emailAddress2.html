@@ -1,0 +1,59 @@
+{% extends "drs-layout.html" %}
+
+{% block content %}
+<div class="govuk-grid-row">
+
+
+    <form method="post" action="../../transfereeAddressList">
+
+    <div class="govuk-grid-column-full">
+        <span class="govuk-caption-xl">Transfer for value (TR1)</span>
+        <h1 class="govuk-heading-xl">Add email address</h1>
+        <h2 class="govuk-heading-m">For transferee:</h2>
+        <p class="govuk-body">
+          {{ data['applicant-individual-forename']}} {{ data['applicant-individual-surname']}}
+          </p>
+          <br>
+
+    {{ govukInput({
+      name: 'emailAddress-1-2',
+      label: {
+        html: 'Email address'
+      },
+      classes: "govuk-input--width-20"
+    }) }}
+
+
+
+
+  {% if data['applicant2-individual-forename-2'] %}
+  <p class="govuk-body">Add this address to the following transferees: (optional)</p>
+
+  <div class="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="applicant2-address1" name="applicant2address" type="checkbox" value="true">
+        <label class="govuk-label govuk-checkboxes__label" for="applicant2address">
+          {{ data['applicant2-individual-forename-2'] }} {{ data['applicant2-individual-surname-2'] }}
+        </label>
+        {% endif %}
+        </div>
+    </div>
+    <br>
+
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+</form>
+
+
+</div>
+
+
+{% endblock %}
+
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}

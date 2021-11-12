@@ -1,0 +1,88 @@
+{% extends "drs-layout.html" %}
+
+{% block content %}
+<div class="govuk-grid-row">
+
+
+<form method="post" action="../../transfereeAddressList">
+
+<div class="govuk-grid-column-full">
+    <span class="govuk-caption-xl">Transfer for value (TR1)</span>
+    <h1 class="govuk-heading-xl">Add BFPO address</h1>
+    <h2 class="govuk-heading-m">For transferee:</h2>
+    <p class="govuk-body">
+      {{ data['applicant-individual-forename']}} {{ data['applicant-individual-surname']}}
+      </p>
+      <br>
+    <p class="govuk-body">
+      You can enter a BFPO address as an address for service. But we ask that, if possible, you provide a 'care of' address instead using the <a href="#"> UK postal address</a> option.
+      <br><br>
+      This is because BFPO addresses tend to change often and can be used to identify members of the armed forces. </p>
+
+
+
+    {{ govukInput({
+      name: 'BFPOserviceNo-1-2',
+      label: {
+        html: 'Service number and rank'
+      },
+      classes: "govuk-input--width-20"
+    }) }}
+
+    {{ govukInput({
+      name: 'BFPOunit-1-2',
+      label: {
+        html: 'Unit or regiment'
+      },
+      classes: "govuk-input--width-20"
+    }) }}
+
+    <!-- {{ govukInput({
+      name: 'BFPOlocation',
+      label: {
+        html: 'Operation or location name (optional)'
+      },
+      classes: "govuk-input--width-20"
+    }) }} -->
+
+    {{ govukInput({
+      name: 'BFPOnumber-1-2',
+      label: {
+        html: 'BFPO number'
+      },
+      classes: "govuk-input--width-20",
+      hint: {
+        text: "For example, 'BFPO 61'"
+      }
+    }) }}
+
+  {{ govukInput({
+    label: {
+      html: 'Add c/o name (optional)'
+    },
+    classes: "govuk-input--width-20",
+    id: "CareOf",
+    hint: {
+      text: "If it's a 'care of' address, enter the addressee's name"
+    }
+  }) }}
+
+    <br>
+
+
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+
+</div>
+
+
+{% endblock %}
+
+
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}

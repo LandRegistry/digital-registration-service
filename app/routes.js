@@ -281,7 +281,10 @@ router.post('/transactions/transfer/transferee-addresstype-answer', function (re
 
   let transfereeAddress = req.session.data['transfereeAddressType']
 
-  if (transfereeAddress === 'property') {
+  let transaction = req.session.data['Transaction']
+
+
+    if (transfereeAddress === 'property') {
       res.redirect('/transactions/transfer/transfereeAddressList')
     }
   if (transfereeAddress === 'UK-postal') {
@@ -302,6 +305,67 @@ router.post('/transactions/transfer/transferee-addresstype-answer', function (re
   if (transfereeAddress === 'BFPO') {
       res.redirect('/transactions/transfer/transferee-BFPOAddress')
     }
+  })
+
+
+  // Transferee add address for service
+router.post('/transactions/transfer/transferee-addresstype-answer_1', function (req, res) {
+
+  let transfereeAddress_1_1 = req.session.data['transfereeAddressType-1']
+
+
+    if (transfereeAddress_1_1 === 'property') {
+        res.redirect('/enhancements/transfer/AddAddresses_forServices/transfereeAddressList')
+      }
+    if (transfereeAddress_1_1 === 'UK-postal') {
+      res.redirect('/enhancements/transfer/AddAddresses_forServices/addAddress/Transferee1/transferee-UKaddress')
+      }
+    if (transfereeAddress_1_1 === 'Overseas-postal') {
+        res.redirect('/enhancements/transfer/AddAddresses_forServices/addAddress/Transferee1/transferee-overseasAddress')
+      }
+    if (transfereeAddress_1_1 === 'PO-box') {
+        res.redirect('/enhancements/transfer/AddAddresses_forServices/addAddress/Transferee1/transferee-POboxAddress')
+      }
+    if (transfereeAddress_1_1 === 'email') {
+        res.redirect('/enhancements/transfer/AddAddresses_forServices/addAddress/Transferee1/transferee-emailAddress')
+      }
+    if (transfereeAddress_1_1 === 'DX') {
+        res.redirect('/enhancements/transfer/AddAddresses_forServices/addAddress/Transferee1/transferee-dxAddress')
+      }
+    if (transfereeAddress_1_1 === 'BFPO') {
+        res.redirect('/enhancements/transfer/AddAddresses_forServices/addAddress/Transferee1/transferee-BFPOAddress')
+      }
+  
+})
+
+  // Transferee add address for service
+  router.post('/transactions/transfer/transferee-addresstype-answer_1_2', function (req, res) {
+
+    let transfereeAddress_1_2 = req.session.data['transfereeAddressType-1-2']
+  
+  
+      if (transfereeAddress_1_2 === 'property') {
+          res.redirect('/enhancements/transfer/AddAddresses_forServices/transfereeAddressList2')
+        }
+      if (transfereeAddress_1_2 === 'UK-postal') {
+        res.redirect('/enhancements/transfer/AddAddresses_forServices/addAddress/Transferee1/transferee-UKaddress2')
+        }
+      if (transfereeAddress_1_2 === 'Overseas-postal') {
+          res.redirect('/enhancements/transfer/AddAddresses_forServices/addAddress/Transferee1/transferee-overseasAddress2')
+        }
+      if (transfereeAddress_1_2 === 'PO-box') {
+          res.redirect('/enhancements/transfer/AddAddresses_forServices/addAddress/Transferee1/transferee-POboxAddress2')
+        }
+      if (transfereeAddress_1_2 === 'email') {
+          res.redirect('/enhancements/transfer/AddAddresses_forServices/addAddress/Transferee1/transferee-emailAddress2')
+        }
+      if (transfereeAddress_1_2 === 'DX') {
+          res.redirect('/enhancements/transfer/AddAddresses_forServices/addAddress/Transferee1/transferee-dxAddress2')
+        }
+      if (transfereeAddress_1_2 === 'BFPO') {
+          res.redirect('/enhancements/transfer/AddAddresses_forServices/addAddress/Transferee1/transferee-BFPOAddress2')
+        }
+    
   })
 
 // // Transferee 2 address
@@ -1152,6 +1216,10 @@ router.post('/transactions/transfer/transferee-representation-confirmed', functi
         req.session.data['transfereerep'] = 'true';
         res.redirect('/transactions/charge/TC-tasks')
     }
+    if (transaction === 'TransferCharge') {
+      req.session.data['transfereerep'] = 'true';
+      res.redirect('/enhancements/transfer/AddAddresses_forServices/transfereeAddressList')
+  }
 })
 
   // address
