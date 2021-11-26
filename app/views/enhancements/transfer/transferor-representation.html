@@ -53,20 +53,24 @@
 
     {% if (data['spencer-attorney-1']) or (data['mary-attorney-1']) %}
     <h2 class="govuk-heading-m"> Power of attorney </h2>
-    <table class="govuk-table govuk-!-width-two-thirds">
+    <table class="govuk-table">
     <thead class="govuk-table__head">
     <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header">Attorney name</th>
-      <th scope="col" class="govuk-table__header">Represented by</th>
-      <th scope="col" class="govuk-table__header">Options</th>
+      <th scope="col" class="govuk-table__header" style="box-sizing: border-box; width: 25%;">Donor name</th>
+      <th scope="col" class="govuk-table__header" style="box-sizing: border-box; width: 25%;">Attorney name</th>
+      <th scope="col" class="govuk-table__header" style="box-sizing: border-box; width: 60%;">Represented by</th>
+      <th scope="col" class="govuk-table__header" style="box-sizing: border-box; width: 15%;">Options</th>
     </tr>
     </thead>
 
     <tbody class="govuk-table__body">
-            {% if data['attorney1'] %}
+            {% if data['spencer-attorney-1'] %}
             <tr class="govuk-table__row">
               <td class="govuk-table__cell">
-                {{ data ['attorney1'] }}
+                Spencer Reid
+              </td>
+              <td class="govuk-table__cell">
+                {{ data ['spencer-attorney-1'] }}
               </td>
               <td class="govuk-table__cell">
               {% if data['represents-all'] %} UK Conveyancers Ltd {% endif %}
@@ -77,10 +81,13 @@
               </td>
             </tr>
             {% endif %}
-              {% if data['attorney2'] %}
+              {% if data['mary-attorney-1'] %}
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell">
-                  {{ data ['attorney2'] }}
+                  Mary Reid
+                </td>
+                <td class="govuk-table__cell">
+                  {{ data ['mary-attorney-1'] }}
                 </td>
                 <td class="govuk-table__cell">
                 {% if data['represents-all'] %} UK Conveyancers Ltd {% endif %}
