@@ -17,11 +17,11 @@
     <table class="govuk-table">
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header" style="width:17.5%; background-color: aqua;">Transferee type</th>
+          <th scope="col" class="govuk-table__header" style="width:17.5%;">Transferee type</th>
           <th scope="col" class="govuk-table__header" style="width:17.5%;">Full name</th>
-          <th scope="col" class="govuk-table__header" style="width:25%; background-color: aqua;">Address type</th>
-          <th scope="col" class="govuk-table__header" style="width:28%; background-color: pink;">Address for service</th>
-          <th scope="col" class="govuk-table__header" style="width:12%; background-color: aqua;">Options</th>
+          <th scope="col" class="govuk-table__header" style="width:25%;">Address type</th>
+          <th scope="col" class="govuk-table__header" style="width:28%;">Address for service</th>
+          <th scope="col" class="govuk-table__header" style="width:12%;">Options</th>
         </tr>
       </thead>
 
@@ -39,7 +39,7 @@
               <td class="govuk-table__cell">
                     {% if not data['transfereeAddressType-1'] %}
                     <p class="govuk-body">
-                    - No address added -</p>
+                    -No address added-</p>
                     {% endif %}
 
                     {% if data['transfereeAddressType-1'] === 'property' %}

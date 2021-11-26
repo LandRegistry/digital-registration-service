@@ -15,10 +15,10 @@
   <table class="govuk-table">
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header" style="width:27%;">Transferee type</th>
-      <th scope="col" class="govuk-table__header" style="width:27%;">Full name</th>
-      <th scope="col" class="govuk-table__header" style="width:27%;">Represented by</th>
-      <th scope="col" class="govuk-table__header" style="width:19%;">Options</th>
+      <th scope="col" class="govuk-table__header" style="width:25%;">Transferee type</th>
+      <th scope="col" class="govuk-table__header" style="width:30%;">Full name</th>
+      <th scope="col" class="govuk-table__header" style="width:38%;">Represented by</th>
+      <th scope="col" class="govuk-table__header" style="width:7%;">Options</th>
     </tr>
   </thead>
   <tbody class="govuk-table__body">
@@ -88,7 +88,7 @@
 
           <!--If represented by default conveyancer-->
           {% if data['TransfereeRepresentation'] == 'UKConveyancersLtd' %}
-            {{ data['TransfereeRepresentation']}}
+            UK Convenyancers Ltd
           {% endif %}
 
           <!--If represented by an other conveyancer-->

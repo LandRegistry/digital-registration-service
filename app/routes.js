@@ -1237,6 +1237,8 @@ let transaction = req.session.data['Transaction']
       res.redirect('/transactions/tasks')
   } if (transaction === 'TC') {
       res.redirect('/transactions/charge/TC-tasks') }
+    if (transaction === 'TransferCharge') {
+      res.redirect('/transactions/charge/TC-tasks') }
 })
 
 
@@ -1254,7 +1256,32 @@ router.post('/transactions/transfer/add-transferor-complete', function (req, res
     } if (transaction === 'DT') {
         res.redirect('/transactions/tasks')
     } if (transaction === 'TC') {
-        res.redirect('/transactions/charge/TC-tasks') }
+        res.redirect('/transactions/charge/TC-tasks')
+        req.session.data['transfereeAddressComplete'] = 'true'; }
+  })
+
+  
+
+  router.post('/spencer-attorney-1', function (req, res) {
+    let Attorney = req.session.data['spencer-attorney-1'];
+
+    let maryIncluded = req.body['also-mary'];
+      if (maryIncluded == 'also-mary'){
+        req.session.data['mary-attorney-1'] = Attorney; 
+      }
+    res.redirect('/enhancements/transfer/transferor-list')
+
+     } )
+
+  router.post('/mary-attorney-1', function (req, res) {
+    let attorney = req.session.data['mary-attorney-1'];
+
+    let spencerIncluded = req.body['also-spencer'];
+      if (spencerIncluded == 'also-spencer'){
+        req.session.data['spencer-attorney-1'] = attorney; 
+      }
+    
+      res.redirect('/enhancements/transfer/transferor-list')
   })
 
   // rep
@@ -1279,6 +1306,9 @@ router.post('/transactions/transfer/transferor-details-complete', function (req,
     } if (transaction === 'TC') {
         req.session.data['transferorComplete'] = 'true';
         res.redirect('/transactions/charge/TC-tasks') }
+      if (transaction === 'TransferCharge') {
+        req.session.data['transferorComplete'] = 'true';
+        res.redirect('/enhancements/transfer/transferor-representation') }
 })
 
   // transferor rep

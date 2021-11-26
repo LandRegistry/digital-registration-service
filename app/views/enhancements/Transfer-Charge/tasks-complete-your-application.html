@@ -103,9 +103,9 @@
             <tr class="govuk-table__row">
               <td class="govuk-table__cell govuk-link"><a href="/enhancements/transfer/AddAddresses_forServices/transfereeAddressList">Add addresses for service</a></td>
               <td class="govuk-table__cell">
-                {% if data['transfereeAddressType'] %}
+                {% if data['transfereeAddressComplete'] %}
                       <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
-                      {% endif %}
+                {% endif %}
             </td>
             </tr>
 
@@ -138,13 +138,13 @@
                     <strong class="govuk-tag app-task-list__task-completed">COMPLETED</strong>
                   {% endif %}
               </tr>
-
               <tr class="govuk-table__row">
-                <td class="govuk-table__cell govuk-link"><a href="/transactions/transfer/transfer-declaration">Declaration of trust</a></td>
+                <td class="govuk-table__cell govuk-link"><a href="/transactions/transfer/transfer-date">Confirm consideration</a></td>
                 <td class="govuk-table__cell">
-                  {% if data['transfer-declaration'] %}
-                    <strong class="govuk-tag app-task-list__task-completed">Completed</strong>
+                  {% if data['transfer-date'] %}
+                    <strong class="govuk-tag app-task-list__task-completed">COMPLETED</strong>
                   {% endif %}
+              </tr>
 
               </tr>
               <tr class="govuk-table__row">
@@ -154,7 +154,21 @@
                     <strong class="govuk-tag app-task-list__task-completed">Completed</strong>
                   {% endif %}
               </tr>
-
+              {% if data['transfer-declaration'] %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell govuk-link"><a href="/transactions/transfer/transfer-declaration">Declaration of trust</a></td>
+                <td class="govuk-table__cell">
+                  {% if data['transfer-declaration'] %}
+                    <strong class="govuk-tag app-task-list__task-completed">Completed</strong>
+                  {% endif %}
+              {% endif %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell govuk-link"><a href="/../transactions/transfer/transfer-guarantee">Additional provisions (optional)</a></td>
+                <td class="govuk-table__cell">
+                  {% if data['title-guarantee'] %}
+                    <strong class="govuk-tag app-task-list__task-completed">Completed</strong>
+                  {% endif %}
+              </tr>
 
             <tr class="govuk-table__row">
               <th scope="row" class="govuk-table__header">1.4 Supporting documents</th>
