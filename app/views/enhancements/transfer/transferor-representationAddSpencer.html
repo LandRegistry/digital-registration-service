@@ -1,64 +1,19 @@
-{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
-{%- set assetPath = '/govuk/assets' -%}
-
-{% extends "govuk/template.njk" %}
-{% from "govuk/components/button/macro.njk" import govukButton %}
-{% from "govuk/components/input/macro.njk" import govukInput %}
-{% from "govuk/components/radios/macro.njk" import govukRadios %}
-{% from "govuk/components/select/macro.njk" import govukSelect %}
-{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
-{% from "govuk/components/details/macro.njk" import govukDetails %}
-{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
-{% from "govuk/components/table/macro.njk" import govukTable %}
-{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
-{% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
-{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
-
-
-
-
-
-
-
-{% block headIcons %}
-  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
-  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
-  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
-  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
-  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
-  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
-{% endblock %}
-
-{% block head %}
-  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
-{% endblock %}
-
-{% block header %}
-{% endblock %}
+{% extends "drs-layout.html" %}
 
 {% block content %}
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-full" id="headerdiv">
-    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
-    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Digital Registration Service</a></p>
-    <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
-
-
-    <div class="govuk-phase-banner govuk-!-margin-bottom-5">
-        <p class="govuk-phase-banner__content">
-        <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
-        <span class="govuk-phase-banner__text">
-        This is a prototype and not a real service.
-        </span></p>
-    </div>
-    </div>
+  <div class="govuk-grid-column-two-thirds" style="margin-top: -35px; margin-bottom:10px;">
+    <a href="/enhancements/Transfer-Charge/tasks-complete-your-application" class="govuk-back-link">Return to task list</a>
+  </div>
 
 <div class="govuk-grid-column-two-thirds">
     <span class="govuk-caption-l">Transfer for value (TR1)</span>
     <h1 class="govuk-heading-l">
-      Who is representing Bob Vance?</h1>
+      Select representation</h1>
 
-    <form class="" action="/transactions/transfer/transferor-representation">
+    <h2 class="govuk-heading-m">Tell us who's representing: Spencer Reid</h2>
+
+    <form class="" action="/enhancements/transfer/transferor-representation">
 
     <div class="govuk-form-group">
 <!--
@@ -139,45 +94,49 @@
           {% endset -%}
 
           {{ govukRadios({
-            name: "TransferorRepresentation",
+            name: "TransferorRepresentationSpencer",
 
             items: [
               {
-                value: "UKConveyancersLtd",
+                value: "UK Conveyancers Ltd",
                 text: "UK Conveyancers Ltd",
-                name: "TransferorRepresentation"
+                name: "UKConveyancersLtd"
                 },
 
               {
-                value: "OtherConveyancer",
+                value: "Other Conveyancer",
                 text: "Another conveyancer",
-                name: "TransferorRepresentation",
+                name: "OtherConveyancer",
                 conditional: {
                   html: otherTransferorHtml
                 }
               },
               {
                 value: "NotRepresented",
-                name: "TransferorRepresentation",
+                name: "NotRepresented",
                 text: "Not represented by a conveyancer"
               }
             ]
           }) }}
+              
 
         {{ govukCheckboxes({
           idPrefix: "represents-all",
           name: "represents-all",
           classes: "govuk-checkboxes",
           fieldset: {
+            legend: {
+              text: "Applies to all (optional)",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
 
           },
           items: [
             {
               value: "This applies to all transferors and transferor's attorneys (optional)",
-              text: "This applies to all transferor and transferor's attorneys (optional)",
-              hint: {
-                text: "This replaces any conveyancer details previously added"
-              }
+              text: "This applies to all transferor and transferor's attorneys (optional)"
+              
             }
           ]
         }) }}
@@ -185,12 +144,13 @@
 
 
         {% set otherTransferorHtml %}
+
             {{ govukInput({
               id: "TransferorConveyancerName",
               name: "TransferorConveyancerName",
               classes: "govuk-!-width-two-thirds",
               label: {
-                text: "Conveyancer full name"
+                text: "Full name"
               }
             }) }}
 
@@ -205,12 +165,10 @@
             }) }}
 
 
-            {{ govukCharacterCount({
+            {{ govukInput({
               name: "OtherConveyancerReference",
               id: "OtherConveyancerReference",
-              rows: "1",
               classes: "govuk-!-width-two-thirds",
-              maxlength: 25,
               label: {
                 text: "Conveyancer reference"
               }
@@ -219,20 +177,26 @@
           {% endset -%}
 
           {{ govukRadios({
-            name: "TransferorRepresentation",
+            name: "TransferorRepresentationSpencer",
 
             items: [
               {
+                value: "UK Conveyancers Ltd",
+                text: "UK Conveyancers Ltd",
+                name: "TransferorRepresentationSpencer"
+
+              },
+              {
                 value: "OtherConveyancer",
-                text: "A conveyancer",
-                name: "TransferorRepresentation",
+                text: "Other conveyancer",
+                name: "TransferorRepresentationSpencer",
                 conditional: {
                   html: otherTransferorHtml
                 }
               },
               {
                 value: "NotRepresented",
-                name: "TransferorRepresentation",
+                name: "TransferorRepresentationSpencer",
                 text: "Not represented by a conveyancer"
               }
             ]
@@ -243,22 +207,35 @@
           name: "represents-all",
           classes: "govuk-checkboxes",
           fieldset: {
+            legend: {
+              text: "Applies to all (optional)",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
 
 
           },
           items: [
             {
               value: "This applies to all transferors and transferor's attorneys (optional)",
-              text: "This applies to all transferors and transferor's attorneys (optional)",
-              hint: {
-                text: "This replaces any conveyancer details previously added"
-              }
+              text: "This applies to all transferors and transferor's attorneys (optional)"
+
             }
           ]
         }) }}
 
     {% endif %}
 
+      </div>
+
+      <br>
+      <br>
+      <div class="govuk-warning-text" style="">
+        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+        <strong class="govuk-warning-text__text" style="margin-top: 10px;">
+          <span class="govuk-warning-text__assistive">Warning</span>
+          Replaces any conveyancer details previously added
+        </strong>
       </div>
 
 
@@ -271,26 +248,12 @@
       </div></div>
 
 
-      <footer>
-      <div class="govuk-grid-row">
-      <div class="govuk-grid-column-full">
-      <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
-      <br>
-      <p class="govuk-body-s" style="color: #747B7F"> The following links open in a new window
-      <br>
-      <br>
-      <a href="#" style="color: #747B7F"> Terms and conditions</a> | <a href="/setup/accessibility-statement" target="_blank" rel="noopener noreferrer" style="color: #747B7F">Accessibility statement</a> |  <a href="#" style="color: #747B7F">Freedom of information</a> | <a href="#" style="color: #747B7F">© Crown copyright</a></p>
-      </div>
-      </div>
-      </footer>
 </div>
 
 
 {% endblock %}
 
 
-{% block footer %}
-{% endblock %}
 
 {% block bodyEnd %}
   {% include "includes/scripts.html" %}

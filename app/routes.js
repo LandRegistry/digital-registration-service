@@ -1238,7 +1238,9 @@ let transaction = req.session.data['Transaction']
   } if (transaction === 'TC') {
       res.redirect('/transactions/charge/TC-tasks') }
     if (transaction === 'TransferCharge') {
-      res.redirect('/transactions/charge/TC-tasks') }
+      req.session.data['transfereeAddressComplete'] = 'true';
+      res.redirect('/enhancements/transfer/transferor-list') 
+    }
 })
 
 
@@ -1307,8 +1309,15 @@ router.post('/transactions/transfer/transferor-details-complete', function (req,
         req.session.data['transferorComplete'] = 'true';
         res.redirect('/transactions/charge/TC-tasks') }
       if (transaction === 'TransferCharge') {
-        req.session.data['transferorComplete'] = 'true';
+        req.session.data['add-transferor'] = 'true';
         res.redirect('/enhancements/transfer/transferor-representation') }
+})
+
+
+router.post('/enhancements/transfer/dateConfirmed', function (req, res) {
+  req.session.data['transfer-date'] = 'true';
+  res.redirect('/enhancements/transfer/transfer-guarantee') 
+
 })
 
   // transferor rep
@@ -1331,7 +1340,17 @@ if (transaction === 'DTC') {
 } if (transaction === 'TC') {
     req.session.data['transferorrep'] = 'true';
     res.redirect('/transactions/charge/TC-tasks') }
+  if (transaction === 'TransferCharge') {
+    req.session.data['transferorrep'] = 'true';
+    res.redirect('/transactions/charge/TC-tasks') }
 })
+
+
+
+  // transferor rep
+  // router.post('/enhancements/transfer/spencer-representation-page', function (req, res) {
+  //       res.redirect('/enhancements/transfer/transferor-representation');
+  //   })
 
   // docs attached
 router.post('/transactions/transfer/documents/attached-required-documents', function (req, res) {
