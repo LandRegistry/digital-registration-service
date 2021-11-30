@@ -494,6 +494,30 @@ router.post('/transactions/charge-without-transfer/mdrefanswer', function (req, 
   }
 })
 
+// does charge have MD REF
+router.post('/enhancements/charge/mdrefanswer', function (req, res) {
+
+  // Name of input
+let mdreference = req.session.data['MDreferenceinput']
+let transaction = req.session.data['Transaction']
+
+if (mdreference != '') {
+req.session.data['charge-lender-company-name'] = 'Barclays Ltd';
+req.session.data['charge-lender-name'] = 'Barclays Ltd';
+req.session.data['add-lender'] = 'true';
+req.session.data['AddRepTask'] = 'true';
+req.session.data['AddAddressTask'] = 'true';
+res.redirect('/enhancements/charge/lender-representationAdd')
+
+} else{
+// req.session.data['AddLendersTask'] = 'true';
+// req.session.data['AddRepTask'] = 'true';
+// req.session.data['AddAddressTask'] = 'true';
+res.redirect('/enhancements/charge/add-lender')
+
+}
+})
+
 // charge with transfer md ref
 router.post('/transactions/charge/mdrefanswer', function (req, res) {
 
@@ -1440,6 +1464,14 @@ router.post('/transactions/transfer/guarantee-complete', function (req, res) {
         req.session.data['title-guarantee-complete'] = 'true';
         res.redirect('/transactions/charge/TC-tasks') }
 })
+
+// transfer  download
+router.post('/enhancements/transfer/downloaded', function (req, res) {
+  req.session.data['download'] = 'true';
+  res.redirect('/transactions/charge/tasks')
+
+})
+
 
 // transfer  download
 router.post('/transactions/transfer/downloaded', function (req, res) {

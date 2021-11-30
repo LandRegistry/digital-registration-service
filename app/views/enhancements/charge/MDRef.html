@@ -1,0 +1,92 @@
+{% extends "drs-layout.html" %}
+
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds" style="margin-top: -35px; margin-bottom:10px;">
+        <a href="/enhancements/Transfer-Charge/tasks-complete-your-application" class="govuk-back-link">Return to task list</a>
+        </div>
+    <div class="govuk-grid-column-two-thirds">
+
+
+        <span class="govuk-caption-l">Charge</span>
+
+          <h1 class="govuk-heading-l">Do you have an MD reference?</h1>
+
+          {{ govukDetails({
+          summaryText: "What's an MD reference?",
+          text: "An MD reference is a unique number given to each mortgage. It's often found at the foot of the mortgage deed."
+            }) }}
+
+          <form method="post" action="/enhancements/charge/mdrefanswer" novalidate="">
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+              <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="MDref-conditional" name="MDRef" type="radio" value="MDRefYes" aria-controls="conditional-MDref-conditional" aria-expanded="false">
+                      <label class="govuk-label govuk-radios__label" for="MDref-conditional">Yes</label>
+                    </div>
+
+                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-MDref-conditional">
+                      <div class="govuk-form-group">
+                        <label class="govuk-label" for="MDref-yes">
+                          MD reference
+                        </label>
+                        <div id="event-name-hint" class="govuk-hint">
+                          For example, 'MD1122123'
+                        </div>
+                        <input class="govuk-input govuk-!-width-one-half" id="MDref-yes" name="MDreferenceinput" type="text">
+                      </div>
+                  </div>
+
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="MDref-conditional-2" name="MDRef" type="radio" value="MDRefNo" aria-controls="conditional-MDref-conditional-2" aria-expanded="false">
+                    <label class="govuk-label govuk-radios__label" for="MDref-conditional-2">No</label>
+                      </div>
+                      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-MDref-conditional-2"></div>
+
+              </div>
+              </fieldset>
+
+            </div>
+
+
+
+          {{ govukButton({
+          classes: "",
+          text: "Continue"
+          }) }}
+
+        </form>
+
+        </div>
+        </div>
+
+
+
+
+
+<script type="application/json" id="reference-form-validation">
+ {
+   "reference": {
+     "presence": {
+       "message": "^Enter your reference for this application"
+     },
+     "length": {
+       "minimum": 1,
+       "maximum": 25,
+       "message": "^Your reference must be 25 characters or less"
+     }
+   }
+</script>
+
+
+
+{% endblock %}
+
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}
