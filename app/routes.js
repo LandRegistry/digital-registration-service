@@ -651,6 +651,18 @@ router.post('/transactions/charge/lender-representation-answer', function (req, 
       }
 })
 
+// charge with transfer representation
+router.post('/enhancements/charge/lender-representation-answer', function (req, res) {
+  let lenderRep = req.session.data['charge-LenderRepresentation']
+  if (lenderRep === 'NotRepresented') {
+      req.session.data['charge-lenderReptype'] = 'Not represented';
+      res.redirect('/enhancements/charge/lender-representation')
+  } else {
+    req.session.data['charge-lenderReptype'] = 'UK Conveyancers Ltd';
+    res.redirect('/enhancements/charge/lender-representation')
+  }
+})
+
 // charge docs attached
 router.post('/transactions/charge/documentscomplete', function (req, res) {
 
