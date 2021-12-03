@@ -47,17 +47,13 @@
     </div>
 
 <div class="govuk-grid-column-full">
-  <form method="post" action="/transferee-AddressList">
-    <span class="govuk-caption-xl">Transfer for value (TR1)</span>
+  <form method="post" action="address-list">
+    <span class="govuk-caption-xl">Charge</span>
     <h1 class="govuk-heading-xl">Select UK postal address</h1>
-    <h2 class="govuk-heading-m">For transferee:</h2>
-    <p class="govuk-body">
-      {{ data['applicant-individual-forename']}} {{ data['applicant-individual-surname']}}
-    </p>
 
 
     <h3 class="govuk-heading-s">Postcode</h3>
-    <p class="govuk-body">{{ data['UKpostcode'] }}<a class="govuk-link" href='/transactions/transfer/transferee-UKaddress.html' style="margin-left: 10px;">Change </a></p>
+    <p class="govuk-body">{{ data['lenderUKpostcode'] }}<a class="govuk-link" href='#' style="margin-left: 10px;">Change </a></p>
 
     <h4 class="govuk-heading-s">Select address</h4>
     <div class="govuk-form-group">
@@ -77,7 +73,7 @@
       </select>
     </div>
 
-    <p class="govuk-body"> <a href="transferee-ukmanual" class="govuk-link">I can't find address in the list</a></p>
+    <p class="govuk-body"> <a href="#" class="govuk-link">I can't find address in the list</a></p>
 
 
     <h5 class="govuk-heading-m">More actions</h5>
@@ -95,7 +91,7 @@
       classes: "govuk-!-width-one-half"
     }) }}
 
-    {% if data['applicant2-individual-forename-2'] %}
+    <!-- {% if data['applicant2-individual-forename-2'] %}
     <p class="govuk-body">Add this address to the following transferees: (optional)</p>
 
     <div class="govuk-checkboxes">
@@ -104,9 +100,8 @@
           <label class="govuk-label govuk-checkboxes__label" for="applicant2address">
             {{ data['applicant2-individual-forename-2'] }} {{ data['applicant2-individual-surname-2'] }}
           </label>
-          {% endif %}
-          </div>
-      </div>
+          {% endif %} -->
+
           <br>
 
 
@@ -117,6 +112,9 @@
   Value: "yes"
 }) }}
 </form>
+
+
+
 
 <footer>
 <div class="govuk-grid-row">
@@ -130,7 +128,6 @@
 </div>
 </div>
 </footer>
-</div>
 
 
 

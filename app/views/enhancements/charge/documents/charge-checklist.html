@@ -46,77 +46,56 @@
     </div>
     </div>
 
-<div class="govuk-grid-column-full">
-  <form method="post" action="/transferee-AddressList">
-    <span class="govuk-caption-xl">Transfer for value (TR1)</span>
-    <h1 class="govuk-heading-xl">Select UK postal address</h1>
-    <h2 class="govuk-heading-m">For transferee:</h2>
-    <p class="govuk-body">
-      {{ data['applicant-individual-forename']}} {{ data['applicant-individual-surname']}}
-    </p>
+<div class="govuk-grid-column-two-thirds">
+  <form method="post" action="/charge-checklist-true">
+  <span class="govuk-caption-l">Charge</span>
+  <h1 class="govuk-heading-l">Attachment checklist</h1>
 
-
-    <h3 class="govuk-heading-s">Postcode</h3>
-    <p class="govuk-body">{{ data['UKpostcode'] }}<a class="govuk-link" href='/transactions/transfer/transferee-UKaddress.html' style="margin-left: 10px;">Change </a></p>
-
-    <h4 class="govuk-heading-s">Select address</h4>
-    <div class="govuk-form-group">
-      <select class="govuk-select govuk-!-width-one-half" id="addressResults" name="addressResults">
-        <option value="addressresults0" selected>11 addresses found</option>
-        <option value="addressresult1">1, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-        <option value="addressresult2" >2a, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-        <option value="addressresult2" >2b, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-        <option value="addressresult3">3, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-        <option value="addressresult4">4, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-        <option value="addressresult4">5, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-        <option value="addressresult4">6, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-        <option value="addressresult4">7, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-        <option value="addressresult4">8, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-        <option value="addressresult4">9, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-        <option value="addressresult4">10, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-      </select>
-    </div>
-
-    <p class="govuk-body"> <a href="transferee-ukmanual" class="govuk-link">I can't find address in the list</a></p>
-
-
-    <h5 class="govuk-heading-m">More actions</h5>
-
-
-    {{ govukInput({
-      label: {
-        text: "Add c/o name (optional)"
-      },
-      hint: {
-        text: "If it's a 'care of' address, enter the addressee's name"
-      },
-      id: "care-of",
-      name: "care-of",
-      classes: "govuk-!-width-one-half"
-    }) }}
-
-    {% if data['applicant2-individual-forename-2'] %}
-    <p class="govuk-body">Add this address to the following transferees: (optional)</p>
-
-    <div class="govuk-checkboxes">
-        <div class="govuk-checkboxes__item">
-          <input class="govuk-checkboxes__input" id="applicant2-address1" name="applicant2address" type="checkbox" value="true">
-          <label class="govuk-label govuk-checkboxes__label" for="applicant2address">
-            {{ data['applicant2-individual-forename-2'] }} {{ data['applicant2-individual-surname-2'] }}
-          </label>
-          {% endif %}
-          </div>
-      </div>
-          <br>
-
+        {{ govukCheckboxes({
+        idPrefix: "checklist",
+        name: "charge-checklist",
+        hint: {
+          text: "Before attaching documents confirm you have made the following checks (where relevant) to avoid requisitions."
+        },
+        items: [
+          {
+            value: "1",
+            text: "Names you input are consistent with how they appear in deeds and on the register"
+          },
+          {
+            value: "2",
+            text: "Naming inconsistencies are explained by the appropriate documentation"
+          },
+          {
+            value: "3",
+            text: "Deeds contain, where appropriate, the correct title numbers and dates"
+          },
+          {
+            value: "4",
+            text: "Executions are complete and correct, and signed by all necessary witnesses"
+          },
+          {
+            value: "5",
+            text: "Plans show all necessary references and have been signed"
+          }
+        ]
+        }) }}
 
 
 
 {{ govukButton({
-  text: "Continue",
-  Value: "yes"
+classes: "govuk-!-margin-top-5",
+text: "Continue"
 }) }}
+
+
+{{ govukButton({
+  text: "Return to task list",
+  classes: "govuk-button--secondary govuk-!-margin-top-5"
+}) }}
+
 </form>
+</div>
 
 <footer>
 <div class="govuk-grid-row">
@@ -130,14 +109,36 @@
 </div>
 </div>
 </footer>
+
 </div>
 
+<!-- <script>
+  function RemoveTransfereeIndividual() {
+  var x = document.getElementById("hidePI");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
 
+
+  function RemoveTransfereeUK() {
+  var x = document.getElementById("hideUK");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+</script> -->
 
 {% endblock %}
 
 
 {% block footer %}
+
 {% endblock %}
 
 {% block bodyEnd %}

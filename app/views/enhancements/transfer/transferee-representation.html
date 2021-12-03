@@ -125,12 +125,12 @@
 
             <!--If represented by default conveyancer-->
             {% if data['TransfereeRepresentation2'] == 'UKConveyancersLtd' %}
-            {{ data['TransfereeRepresentation2']}}
+            Uk Conveyancers Ltd
             {% endif %}
 
             <!--If represented by an other conveyancer-->
             {% if data['TransfereeRepresentation2'] == 'OtherConveyancer' %}
-            {{ data['TransfereeOtherName']}}
+            {{ data['TransfereeOtherName2']}}
             {% endif %}
 
             <!--If person is not represented-->

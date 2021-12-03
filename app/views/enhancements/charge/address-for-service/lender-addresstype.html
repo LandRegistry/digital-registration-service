@@ -47,76 +47,72 @@
     </div>
 
 <div class="govuk-grid-column-full">
-  <form method="post" action="/transferee-AddressList">
-    <span class="govuk-caption-xl">Transfer for value (TR1)</span>
-    <h1 class="govuk-heading-xl">Select UK postal address</h1>
-    <h2 class="govuk-heading-m">For transferee:</h2>
-    <p class="govuk-body">
-      {{ data['applicant-individual-forename']}} {{ data['applicant-individual-surname']}}
-    </p>
+  <a href="/charge-without-transfer/transactions/charge-tasks" class="govuk-back-link">Return to task list</a>
+
+    <span class="govuk-caption-l">Charge</span>
+    <h1 class="govuk-heading-l">Add address for service</h1>
+    <h2 class="govuk-heading-m">For lender:   {{ data['charge-lender-company-name']}}</h2>
 
 
-    <h3 class="govuk-heading-s">Postcode</h3>
-    <p class="govuk-body">{{ data['UKpostcode'] }}<a class="govuk-link" href='/transactions/transfer/transferee-UKaddress.html' style="margin-left: 10px;">Change </a></p>
+      <br>
 
-    <h4 class="govuk-heading-s">Select address</h4>
-    <div class="govuk-form-group">
-      <select class="govuk-select govuk-!-width-one-half" id="addressResults" name="addressResults">
-        <option value="addressresults0" selected>11 addresses found</option>
-        <option value="addressresult1">1, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-        <option value="addressresult2" >2a, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-        <option value="addressresult2" >2b, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-        <option value="addressresult3">3, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-        <option value="addressresult4">4, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-        <option value="addressresult4">5, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-        <option value="addressresult4">6, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-        <option value="addressresult4">7, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-        <option value="addressresult4">8, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-        <option value="addressresult4">9, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-        <option value="addressresult4">10, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
-      </select>
-    </div>
+    <form method="post" action="/transactions/charge/charge-lender-addresstype-answer">
+      <h3 class="govuk-heading-s">Select address type</h3>
+    <div class="govuk-radios">
 
-    <p class="govuk-body"> <a href="transferee-ukmanual" class="govuk-link">I can't find address in the list</a></p>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="select-address-type" name="lenderAddressType" type="radio" value="UK-postal">
+          <label class="govuk-label govuk-radios__label" for="select-address-type">
+        UK postal address
+      </label>
+        </div>
 
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="select-address-type-2" name="lenderAddressType" type="radio" value="Overseas-postal">
+          <label class="govuk-label govuk-radios__label" for="select-address-type-2">
+        Overseas postal address
+      </label>
+        </div>
 
-    <h5 class="govuk-heading-m">More actions</h5>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="select-address-type-3" name="lenderAddressType" type="radio" value="PO-box">
+          <label class="govuk-label govuk-radios__label" for="select-address-type-3">
+        PO Box (postal address)
+      </label>
+        </div>
 
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="select-address-type-4" name="lenderAddressType" type="radio" value="email">
+          <label class="govuk-label govuk-radios__label" for="select-address-type-4">
+        Email address
+      </label>
+        </div>
 
-    {{ govukInput({
-      label: {
-        text: "Add c/o name (optional)"
-      },
-      hint: {
-        text: "If it's a 'care of' address, enter the addressee's name"
-      },
-      id: "care-of",
-      name: "care-of",
-      classes: "govuk-!-width-one-half"
-    }) }}
-
-    {% if data['applicant2-individual-forename-2'] %}
-    <p class="govuk-body">Add this address to the following transferees: (optional)</p>
-
-    <div class="govuk-checkboxes">
-        <div class="govuk-checkboxes__item">
-          <input class="govuk-checkboxes__input" id="applicant2-address1" name="applicant2address" type="checkbox" value="true">
-          <label class="govuk-label govuk-checkboxes__label" for="applicant2address">
-            {{ data['applicant2-individual-forename-2'] }} {{ data['applicant2-individual-surname-2'] }}
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="select-address-type-5" name="lenderAddressType" type="radio" value="DX">
+          <label class="govuk-label govuk-radios__label" for="select-address-type-5">
+          DX address
           </label>
-          {% endif %}
-          </div>
-      </div>
-          <br>
+        </div>
 
-
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="select-address-type-6" name="lenderAddressType" type="radio" value="BFPO">
+            <label class="govuk-label govuk-radios__label" for="select-address-type-6">
+            BFPO postal address (armed forces)
+            </label>
+        </div>
+  </div>
 
 
 {{ govukButton({
+  classes: "govuk-!-margin-top-9",
   text: "Continue",
-  Value: "yes"
+  type: "Submit",
+  value: "Submit"
 }) }}
+
 </form>
+
 
 <footer>
 <div class="govuk-grid-row">
@@ -131,7 +127,6 @@
 </div>
 </footer>
 </div>
-
 
 
 {% endblock %}

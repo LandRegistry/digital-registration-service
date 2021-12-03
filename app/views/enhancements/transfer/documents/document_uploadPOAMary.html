@@ -3,18 +3,20 @@
 
 {% block content %}
 <div class="govuk-grid-row">
-
   <div class="govuk-grid-column-two-thirds" style="margin-top: -35px; margin-bottom:10px;">
     <a href="/enhancements/Transfer-Charge/tasks-complete-your-application" class="govuk-back-link">Return to task list</a>
     </div>
-<form method="post" action="/enhancements/transfer/documents/TR1attached">
 
-<div class="govuk-grid-column-full">
+<form method="post" action="/enhancements/transfer/documents/POAMaryattached">
+
+<div class="govuk-grid-column-full govuk-!-margin-top-7">
   <span class="govuk-caption-xl">Transfer for value (TR1)</span>
   <h1 class="govuk-heading-l"> Attach and certify document </h1>
   <p class="govuk-body">Files can be GIF, TIFF, JPG or PDF and must not exceed 20MB file size.</p>
+  <p class="govuk-body">Category</p>
+  <h2 class="govuk-heading-m govuk-!-margin-bottom-6" style="margin-top: -20px;">Evidence - power of attorney: Mary Reid</h2>
   <p class="govuk-body">Document type</p>
-  <h2 class="govuk-heading-m govuk-!-margin-bottom-6" style="margin-top: -20px;">Transfer for value (TR1)</h2>
+  <h2 class="govuk-heading-m govuk-!-margin-bottom-6" style="margin-top: -20px;">Power of attorney</h2>
   <p class="govuk-body">Attach a file</p>
 
   <a href="#" type="file" id="suggested_upload" class="govuk-link--no-visited-state" onclick="fileupload()" style="cursor: pointer; text-decoration: none; font-size: 14px; color: black; border-style: solid;  border-width: 0.5px; padding: 5px; border-radius: 3px; position: absolute; ">Choose file</a>
@@ -64,7 +66,7 @@
 
   $(document).ready(function(){
     $("a").click(function(){
-      $(document.getElementById('filename')).text("TR1.pdf");
+      $(document.getElementById('filename')).text("POA-MaryReid.pdf");
     });
   });
 
@@ -75,6 +77,7 @@
 
 
 {% endblock %}
+
 
 {% block bodyEnd %}
   {% include "includes/scripts.html" %}

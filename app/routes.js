@@ -341,29 +341,29 @@ router.post('/transactions/transfer/transferee-addresstype-answer_1', function (
   // Transferee add address for service
   router.post('/transactions/transfer/transferee-addresstype-answer_1_2', function (req, res) {
 
-    let transfereeAddress_1_2 = req.session.data['transfereeAddressType-1-2']
+    let transfereeAddress_1_2 = req.session.data['transfereeAddressType-2']
   
   
       if (transfereeAddress_1_2 === 'property') {
-          res.redirect('/enhancements/transfer/AddAddresses_forServices/transfereeAddressList2')
+          res.redirect('/enhancements/transfer/AddAddresses_forServices/transfereeAddressList')
         }
       if (transfereeAddress_1_2 === 'UK-postal') {
-        res.redirect('/enhancements/transfer/AddAddresses_forServices/addAddress/Transferee1/transferee-UKaddress2')
+        res.redirect('/enhancements/transfer/AddAddresses_forServices/addAddress/Transferee2/transferee-UKaddress')
         }
       if (transfereeAddress_1_2 === 'Overseas-postal') {
-          res.redirect('/enhancements/transfer/AddAddresses_forServices/addAddress/Transferee1/transferee-overseasAddress2')
+          res.redirect('/enhancements/transfer/AddAddresses_forServices/addAddress/Transferee2/transferee-overseasAddress')
         }
       if (transfereeAddress_1_2 === 'PO-box') {
-          res.redirect('/enhancements/transfer/AddAddresses_forServices/addAddress/Transferee1/transferee-POboxAddress2')
+          res.redirect('/enhancements/transfer/AddAddresses_forServices/addAddress/Transferee2/transferee-POboxAddress')
         }
       if (transfereeAddress_1_2 === 'email') {
-          res.redirect('/enhancements/transfer/AddAddresses_forServices/addAddress/Transferee1/transferee-emailAddress2')
+          res.redirect('/enhancements/transfer/AddAddresses_forServices/addAddress/Transferee2/transferee-emailAddress')
         }
       if (transfereeAddress_1_2 === 'DX') {
-          res.redirect('/enhancements/transfer/AddAddresses_forServices/addAddress/Transferee1/transferee-dxAddress2')
+          res.redirect('/enhancements/transfer/AddAddresses_forServices/addAddress/Transferee2/transferee-dxAddress')
         }
       if (transfereeAddress_1_2 === 'BFPO') {
-          res.redirect('/enhancements/transfer/AddAddresses_forServices/addAddress/Transferee1/transferee-BFPOAddress2')
+          res.redirect('/enhancements/transfer/AddAddresses_forServices/addAddress/Transferee2/transferee-BFPOAddress')
         }
     
   })
@@ -510,9 +510,9 @@ req.session.data['AddAddressTask'] = 'true';
 res.redirect('/enhancements/charge/lender-representationAdd')
 
 } else{
-// req.session.data['AddLendersTask'] = 'true';
-// req.session.data['AddRepTask'] = 'true';
-// req.session.data['AddAddressTask'] = 'true';
+req.session.data['AddLendersTask'] = 'true';
+req.session.data['AddRepTask'] = 'true';
+req.session.data['AddAddressTask'] = 'true';
 res.redirect('/enhancements/charge/add-lender')
 
 }
@@ -1194,6 +1194,26 @@ router.post('/transactions/charge/MDyes', function (req, res) {
       }
 })
 
+router.post('/enhancements/charge/MDyes', function (req, res) {
+  let mdref = req.session.data['MDreferenceinput']
+  if (mdref != '') {
+      res.redirect('/enhancements/charge/documents/document_prompts')
+  } else {
+    res.redirect('/enhancements/charge/address-for-service/lender-addresstype')
+  }
+})
+
+
+
+router.post('/transferee-AddressList', function (req, res) {
+  let mdref = req.session.data['MDreferenceinput']
+  if (mdref != '') {
+      res.redirect('/enhancements/charge/documents/document_prompts')
+  } else {
+    res.redirect('/enhancements/charge/address-for-service/lender-addresstype')
+  }
+})
+
 router.post('/transactions/charge-without-transfer/borrower-representation-answer', function (req, res) {
       let borrowerRep = req.session.data['Borrower1Representation'] //variable req data from name
       if (borrowerRep === 'NotRepresented') { // if variable equals value
@@ -1409,6 +1429,11 @@ router.post('/transactions/transfer/documents/attached-required-documents', func
       res.redirect('/transactions/charge/TC-tasks') }
 })
 
+router.post('/enhancements/attachedDocuments', function (req, res) {
+    req.session.data['attached'] = 'true';
+    res.redirect('/enhancements/Transfer-Charge/tasks-complete-your-application') 
+})
+
 
 // transfer date
 router.post('/transactions/transfer-date-complete', function (req, res) {
@@ -1580,6 +1605,21 @@ router.post('/transfer-provisions-complete', function (req, res) {
 
 router.post('/transactions/transfer/documents/TR1-attached', function (req, res) {
   req.session.data['tr1attached'] = 'true';
+    res.redirect('document_prompts-1')
+})
+
+router.post('/enhancements/transfer/documents/TR1attached', function (req, res) {
+  req.session.data['tr1attached'] = 'true';
+    res.redirect('document_prompts-1')
+})
+
+router.post('/enhancements/transfer/documents/POAMaryattached', function (req, res) {
+  req.session.data['poaMaryattached'] = 'true';
+    res.redirect('document_prompts-1')
+})
+
+router.post('/enhancements/transfer/documents/POASpencerattached', function (req, res) {
+  req.session.data['poaSpencerattached'] = 'true';
     res.redirect('document_prompts-1')
 })
 
@@ -1799,6 +1839,11 @@ router.post('/discharge-checklist-true', function (req, res) {
 router.post('/transfer-checklist-true', function (req, res) {
   req.session.data['transfer-checklist'] = 'true';
     res.redirect('/transactions/transfer/documents/document_prompts-1.html')
+})
+
+router.post('/enhancements/transfer-checklist', function (req, res) {
+  req.session.data['transfer-checklist'] = 'true';
+    res.redirect('/enhancements/transfer/documents/document_prompts-1.html')
 })
 
 router.post('/charge-checklist-true', function (req, res) {

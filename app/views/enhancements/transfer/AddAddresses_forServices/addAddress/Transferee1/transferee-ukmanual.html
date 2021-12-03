@@ -1,0 +1,121 @@
+{% extends "drs-layout.html" %}
+
+{% block content %}
+<form method="post" action="/enhancements/transfer/AddAddresses_forServices/transfereeAddressList" novalidate>
+
+<div class="govuk-grid-row">
+
+<div class="govuk-grid-column-full">
+    <span class="govuk-caption-l">Transfer for value (TR1)</span>
+    <h1 class="govuk-heading-l">Add address for service</h1>
+    <h2 class="govuk-heading-m">Address type</h2>
+    <p class="govuk-body">UK postal address</p>
+
+
+  {% call govukFieldset({
+    legend: {
+
+    }
+  }) %}
+
+    {{ govukInput({
+      label: {
+        html: 'Flat name or number (optional) <span class="govuk-visually-hidden">line 1 of 2</span>'
+      },
+      classes: "govuk-input--width-20",
+      name: 'flat',
+      hint: {
+     text: "For example, 'The Garden Flat' or 'Flat 2'"
+   }
+    }) }}
+
+    {{ govukInput({
+      label: {
+        html: 'House name or number<span class="govuk-visually-hidden">line 2 of 2</span>'
+      },
+      classes: "govuk-input--width-20",
+      id: "house",
+      name: 'house-number'
+    }) }}
+
+    {{ govukInput({
+      label: {
+        html: 'Street (optional)'
+      },
+      classes: "govuk-input--width-20",
+      id: "Street",
+      name: 'house-street'
+
+    }) }}
+
+    {{ govukInput({
+      label: {
+        html: 'Place name (optional)'
+      },
+      classes: "govuk-input--width-20",
+      id: "place",
+      name: 'place-name',
+      hint: {
+        text: "For example, 'Croydon' or 'Redruth'"
+      }
+    }) }}
+
+    {{ govukInput({
+      label: {
+        html: 'Town or city'
+      },
+      classes: "govuk-input--width-20",
+      id: "TownCity",
+      name: 'town-city'
+    }) }}
+
+    {{ govukInput({
+      label: {
+        html: 'Postcode'
+      },
+      classes: "govuk-input--width-10",
+      id: "postcode",
+      name: 'postcode'
+
+    }) }}
+
+  {% endcall %}
+
+  <h3 class="govuk-heading-m">More actions</h3>
+
+  {{ govukInput({
+    label: {
+      html: 'Add c/o name (optional)'
+    },
+    classes: "govuk-input--width-20",
+    id: "CareOf",
+    hint: {
+      text: "If it's a 'care of' address, enter the addressee's name"
+    }
+  }) }}
+
+  <p class="govuk-body">Add this address to the following transferees: (optional)</p>
+  <p class="govuk-body">- No other transferees to select -</p>
+
+
+
+{{ govukButton({
+  text: "Continue"
+
+}) }}
+
+
+</div>
+
+</div>
+</form>
+
+
+
+{% endblock %}
+
+
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}
