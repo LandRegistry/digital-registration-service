@@ -472,6 +472,44 @@ router.post('/transactions/charge/charge-lender-addresstype-answer', function (r
 
 })
 
+// charge with transfer addresses
+router.post('/enhancements/charge/charge-lender-addresstype-answer', function (req, res) {
+
+  let lenderAddress = req.session.data['lenderAddressType']
+
+  if (lenderAddress === 'UK-postal') {
+    res.redirect('/enhancements/charge/address-for-service/lender-UKaddress')
+}
+  if (lenderAddress === 'Overseas-postal') {
+      res.redirect('/enhancements/charge/address-for-service/lender-overseasAddress')
+    }
+
+  if (lenderAddress === 'PO-box') {
+      res.redirect('/enhancements/charge/address-for-service/lender-POboxAddress')
+    }
+
+    if (lenderAddress === 'email') {
+        res.redirect('/enhancements/charge/address-for-service/lender-emailAddress')
+      }
+
+      if (lenderAddress === 'DX') {
+          res.redirect('/enhancements/charge/address-for-service/lender-DX')
+        }
+
+        if (lenderAddress === 'BFPO') {
+            res.redirect('/enhancements/charge/address-for-service/lender-BFPO')
+          }
+
+})
+
+
+router.post('/ChargeLender-addresscomplete', function (req, res) {
+
+  req.session.data['lenderAddressComplete'] = 'true';
+  res.redirect('/enhancements/charge/documents/document_prompts')
+
+})
+
 // sole charge md ref
 router.post('/transactions/charge-without-transfer/mdrefanswer', function (req, res) {
 
@@ -516,6 +554,21 @@ req.session.data['AddAddressTask'] = 'true';
 res.redirect('/enhancements/charge/add-lender')
 
 }
+})
+
+
+// date of charge entered
+router.post('/enhancements/charge/date-entered', function (req, res) {
+  let day = req.session.data['day']
+  let month = req.session.data['month']
+  let year = req.session.data['year']
+
+  if ((day != '') && (month != '') && (year != '')) {
+    req.session.data['charge-date'] = 'true';
+
+    } 
+res.redirect('/enhancements/charge/MDRef')
+
 })
 
 // charge with transfer md ref
@@ -653,12 +706,19 @@ router.post('/transactions/charge/lender-representation-answer', function (req, 
 
 // charge with transfer representation
 router.post('/enhancements/charge/lender-representation-answer', function (req, res) {
-  let lenderRep = req.session.data['charge-LenderRepresentation']
+  let lenderRep = req.session.data['LenderRepresentation']
+  let otherConveyancer = req.session.data['LenderOtherName']
+
   if (lenderRep === 'NotRepresented') {
-      req.session.data['charge-lenderReptype'] = 'Not represented';
+      req.session.data['charge-lenderReptype'] = '-Not represented-';
       res.redirect('/enhancements/charge/lender-representation')
-  } else {
+  } 
+  if (lenderRep === 'UKConveyancersLtd')  {
     req.session.data['charge-lenderReptype'] = 'UK Conveyancers Ltd';
+    res.redirect('/enhancements/charge/lender-representation')
+  }
+  if (lenderRep === 'OtherConveyancer')  {
+    req.session.data['charge-lenderReptype'] = otherConveyancer;
     res.redirect('/enhancements/charge/lender-representation')
   }
 })
@@ -1744,6 +1804,11 @@ router.post('/transactions/charge/documents/Mortgage-attached', function (req, r
     res.redirect('/transactions/charge/documents/document_prompts')
 })
 
+router.post('/enhancements/charge/documents/Mortgage-attached', function (req, res) {
+  req.session.data['mortgageAttached'] = 'true';
+    res.redirect('/enhancements/charge/documents/document_prompts')
+})
+
 router.post('/transactions/charge-without-transfer/documents/evidence-attached', function (req, res) {
   req.session.data['certificateAttached'] = 'true';
     res.redirect('document_prompts')
@@ -1754,6 +1819,10 @@ router.post('/transactions/charge/documents/evidence-attached', function (req, r
     res.redirect('document_prompts')
 })
 
+router.post('/enhancements/charge/documents/evidence-attached', function (req, res) {
+  req.session.data['certificateAttached'] = 'true';
+    res.redirect('document_prompts')
+})
 
 router.post('/transactions/charge-without-transfer/documents/RX1-attached', function (req, res) {
   req.session.data['RX1Attached'] = 'true';

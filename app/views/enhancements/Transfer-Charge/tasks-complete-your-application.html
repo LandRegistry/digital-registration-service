@@ -32,9 +32,10 @@
 
       </tbody>
     </table>
+    <h2 class="govuk-heading-m govuk-!-padding-top-5">1. Transfer for value (TR1)</h2>
+
 </div>
 
-  <h2 class="govuk-heading-m govuk-!-padding-top-5">1. Transfer for value (TR1)</h2>
 
   <div class="govuk-grid-column-full" style="margin-left: 35px; width: 97%;">
 
@@ -85,7 +86,7 @@
             </tr>
             <tr class="govuk-table__row">
               <td class="govuk-table__cell govuk-link"><a href="/enhancements/transfer/transferor-representation.html">Add transferor representation</a></td>
-              <td class="govuk-table__cell">  {% if data['transferorrep'] %}
+              <td class="govuk-table__cell">  {% if data['TransferorRepresentationSpencer'] and data['TransferorRepresentationMary'] %}
                       <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
                       {% endif %}
                       </td>
@@ -129,9 +130,9 @@
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell govuk-link"><a href="/enhancements/transfer/transfer-provisions">Additional provisions (optional)</a></td>
                 <td class="govuk-table__cell">
-                  {% if data['title-guarantee'] %}
+                  <!-- {% if data['title-guarantee'] %}
                     <strong class="govuk-tag app-task-list__task-completed">Completed</strong>
-                  {% endif %}
+                  {% endif %} -->
               </tr>
 
             <tr class="govuk-table__row">
@@ -154,9 +155,10 @@
             </tr>
       </tbody>
     </table>
+    <h2 class="govuk-heading-m govuk-!-padding-top-5">2. Charge</h2>
+
     </div>
 
-    <h2 class="govuk-heading-m govuk-!-padding-top-5">2. Charge</h2>
 
   <div class="govuk-grid-column-full" style="margin-left: 40px; width: 97%;">
 
@@ -187,27 +189,22 @@
               <td class="govuk-table__cell">{% if data['MDRef'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
               </tr>
 
-
-              {% if data['AddLendersTask'] %}
+              {% if data['MDRef'] %}
+              {% if not data['MDreferenceinput'] %}
               <tr class="govuk-table__row">
               <td class="govuk-table__cell"><a href="/enhancements/charge/add-lender" class="govuk-link">Add lenders</a></td>
               <td class="govuk-table__cell">{% if data['add-lender'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
               </tr>
-              {% endif %}
 
-              {% if data['AddRepTask'] %}
               <tr class="govuk-table__row">
               <td class="govuk-table__cell"><a href="/enhancements/charge/lender-representation" class="govuk-link">Add lender representation</a></td>
               <td class="govuk-table__cell">{% if data['cwt-lenderReptype'] or data['charge-lenderReptype'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
               </tr>
-              {% endif %}
 
-              {% if not data['MDreferenceinput'] %}
-              {% if data['AddAddressTask'] %}
               <tr class="govuk-table__row">
               <td class="govuk-table__cell">
-              <a href="address-for-service/address-list" class="govuk-link">Add address for service</a>
-              <td class="govuk-table__cell">{% if data['lenderAddressType'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
+              <a href="/enhancements/charge/address-for-service/lender-addresstype" class="govuk-link">Add address for service</a>
+              <td class="govuk-table__cell">{% if data['lenderAddressComplete'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
               </tr>
               {% endif %}
               {% endif %}
@@ -218,14 +215,14 @@
               </tr>
 
               <tr class="govuk-table__row">
-              <td class="govuk-table__cell"><a href="documents/document_prompts" class="govuk-link">Attach documents</a></td>
+              <td class="govuk-table__cell"><a href="enhancements/charge/documents/document_prompts" class="govuk-link">Attach documents (optional)</a></td>
               <td class="govuk-table__cell">{% if data['mortgageAttached'] and data['certificateAttached'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
             </tr>
       </tbody>
     </table>
     </div>
 
-      {% if data['attached'] %}
+      {% if data['mortgageAttached'] and data['certificateAttached'] %}
       <div class="govuk-!-margin-bottom-9">
       <h3 class="govuk-heading-l">Preview your e-AP1</h3>
       <a href="#"><img src="/public/images/ap1-icon.svg" style="max-width:15%; height:auto; float: left; padding-right: 25px;" alt="ap1 icon"></a>
@@ -237,7 +234,7 @@
 
 
 
-    <div style="margin-top: 75px;">
+    <div class="govuk-grid-column-full">
 
 
     {{ govukButton({
@@ -258,6 +255,7 @@
           text: "To avoid requisitions, attach all relevant documents."
         }) }}
 
+        </div>
         </div>
 
 

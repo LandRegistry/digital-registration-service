@@ -28,6 +28,16 @@
     </tr>
   </thead>
 
+  {% if data['charge-lender-individual-forename'] %}
+  <tbody class="govuk-table_body">
+    <tr class="govuk-table_row" id="hidePI">
+    <td class="govuk-table__cell">UK Company or LLC</td>
+    <td class="govuk-table__cell govuk-!-width-one-third">{{ data['charge-lender-individual-forename'] }} {{ data['charge-lender-individual-surname'] }}</td>
+    <td class="govuk-table__cell"> N/A</td>
+    <td class="govuk-table__cell govuk-!-width-one-quarter">N/A</td>
+    <td class="govuk-table__cell govuk-link"><a href="add-lenders-change">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
+  </tbody>
+   {% endif %}
 
     {% if data['charge-lender-company-name'] %}
     <tbody class="govuk-table_body">

@@ -12,7 +12,12 @@
   <br>
     <span class="govuk-caption-l">Charge</span>
     <h1 class="govuk-heading-l">Select representation</h1>
+    {% if data['charge-lender-company-name'] %}
     <h2 class="govuk-heading-s">Tell us who's representing: {{ data['charge-lender-company-name']}}</h2>
+    {% endif %}
+    {% if data['charge-lender-individual-forename'] %}
+    <h2 class="govuk-heading-s">Tell us who's representing: {{ data['charge-lender-individual-forename']}} {{ data['charge-lender-individual-surname']}}</h2>
+    {% endif %}
 
 
 

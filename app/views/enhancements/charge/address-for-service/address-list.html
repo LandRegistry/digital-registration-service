@@ -13,7 +13,7 @@
     <p class="govuk-body">Each lender can add up to 3 addresses for service to the register. One must be a postal address.</p>
 
 
-
+<form method="post" action="/ChargeLender-addresscomplete" novalidate>
     <table class="govuk-table">
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
@@ -59,10 +59,8 @@
                  BFPO postal address (armed forces)
                  {% endif %}
 
-                 <br><br><br>
-                 {% if not data['lenderAddressType2'] and data['lenderAddressType'] %}
-                 <a href="lender-addresstype-2" class="govuk-link"> Add another address </a>
-                 {% endif %}</td>
+                 
+                </td>
 
               <td class="govuk-table__cell">
               {% if data['lenderAddressType'] === 'UK-postal' %}
@@ -112,6 +110,11 @@
                   {% if data['cwt-lenderAddressType'] %}
                     <a href="remove-address-one">Remove</a><br>
                   {% endif %}
+
+                  <br><br>
+                 {% if not data['lenderAddressType2'] and data['lenderAddressType'] %}
+                 <a href="lender-addresstype-2" class="govuk-link"> Add another address </a>
+                 {% endif %}
 
               </td>
             </tr>
@@ -350,9 +353,9 @@
     </table>
 
 {{ govukButton({
-  text: "Continue",
-  href: "../documents/document_prompts"
+  text: "Continue"
 }) }}
+</form>
 
 
 </div>

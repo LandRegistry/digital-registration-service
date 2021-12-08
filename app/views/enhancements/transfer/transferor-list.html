@@ -111,9 +111,9 @@
         <table class="govuk-table">
         <thead class="govuk-table__head">
         <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header" style="box-sizing: border-box; width: 25%;">Donor</th>
-          <th scope="col" class="govuk-table__header" style="box-sizing: border-box; width: 60%;">Attorney(s)</th>
-          <th scope="col" class="govuk-table__header" style="box-sizing: border-box; width: 15%;">Options</th>
+          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Donor</th>
+          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Attorney(s)</th>
+          <th scope="col" class="govuk-table__header" style="padding-left: 35%;">Options</th>
         </tr>
         </thead>
 
@@ -136,7 +136,7 @@
 
                   </td>
 
-                  <td class="govuk-table__cell">
+                  <td class="govuk-table__cell" style="padding-left: 35%;">
                     {% if not data['spencer-attorney-1'] %}
                     <a class="govuk-link--no-visited-state" href="/enhancements/transfer/POA-spencer.html">Add an attorney</a>
                     {% endif %}
@@ -161,7 +161,7 @@
   
                     </td>
   
-                    <td class="govuk-table__cell">
+                    <td class="govuk-table__cell" style="padding-left: 35%;">
                       {% if not data['mary-attorney-1'] %}
                       <a class="govuk-link--no-visited-state" href="/enhancements/transfer/POA-mary.html">Add an attorney</a>
                       {% endif %}
