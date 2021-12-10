@@ -1,0 +1,97 @@
+{% extends "drs-layout.html" %}
+
+
+{% block content %}
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-xl"></span>
+    <h1 class="govuk-heading-xl"> Enter title numbers </h1>
+    <p class="govuk-body">You can add up to 25 titles per application.</p>
+
+    <details class="govuk-details" data-module="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">About applications relating to more than one title number</span>
+      </summary>
+      <div class="govuk-details__text">
+        You can use this service for applications of up to 25 title numbers. In order to register multiple title numbers in one application:
+        <br><br>
+        <ul class="govuk-list govuk-list--bullet">
+        <li>all titles must have the same proprietors registered against each title number
+        <li >transferors and transferees must be the the same for each title number
+        </ul>
+      </div>
+    </details>
+
+  <form action="#">
+    <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
+      <div class="govuk-form-group">
+        <label class=" govuk-hint" for="govuk-input govuk-input--width-10">
+          For example, "A123" or "XY5678"
+        </label>
+
+        <input type="text" class="govuk-input govuk-!-width-one-quarter govuk-!-margin-bottom-5" id="with-hint" name="title_2" aria-describedby="with-hint-info with-hint-hint">
+      </div>
+
+      <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+        Add to application
+      </button>
+      </div>
+
+      <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Title number</th>
+            <th scope="col" class="govuk-table__header">Property description</th>
+            <th scope="col" class="govuk-table__header"></th>
+
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">ABC123</td>
+            <td scope="row" class="govuk-table__cell">1 Main Road, Littlehaxten, LH1</td>
+
+            <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="enter">Remove</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="govuk-inset-text" style="margin: 55px 0px;">
+        You can amend title numbers later.
+      </div>
+
+    {{ govukButton({
+      text: "Continue",
+      href: "titles-in-this-application"
+    }) }}
+
+
+
+  </form>
+  </div>
+  </div>
+
+  <script type="application/json" id="title-form-validation">
+   {
+     "title": {
+       "presence": {
+         "message": "^Enter a title number"
+       }
+     }
+   }
+ </script>
+
+
+
+
+
+
+{% endblock %}
+
+
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}
