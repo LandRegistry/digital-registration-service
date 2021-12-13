@@ -1890,3 +1890,34 @@ router.post('/formP-addresstype-answer', function (req, res) {
 
 
       })
+
+  // Single journey transaction routing
+
+  // router.post('/single-transaction-branching', function (req, res) {
+  //
+  // let transaction = req.session.data['singleJourneyTransactions']
+  // let transaction1 = req.session.data['Transaction1']
+  //
+  //
+  // if (transaction1 === 'New lease') {
+  //       res.redirect('/single-journey/enter-titles');
+  //
+  // if (transaction1 === 'Transfer of Part (TP1)')
+  //       res.redirect('enter-titles');
+  //
+  // if (transaction1 === 'Transfer for value (TR1)')
+  //       res.redirect('enter-titles'); }
+  //
+  // })
+
+// Single journey branching from titles
+  router.post('/titles-branching', function (req, res) {
+
+    let transaction1 = req.session.data['Transaction1']
+
+    if (transaction1 === 'Transfer for value (TR1)') {
+      res.redirect('single-journey/calculate-fee');
+    } else {
+      res.redirect('single-journey/document_prompts-1');
+    }
+  })
