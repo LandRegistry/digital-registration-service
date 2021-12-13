@@ -6,22 +6,42 @@
     <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <span class="govuk-caption-l"></span>
-        <h1 class="govuk-heading-l">Calculate fees</h1>
-        <p class="govuk-body">Enter prices, values and estimated fees where required.</p>
+        <h1 class="govuk-heading-xl">Enter fees</h1>
         <a class="govuk-link govuk-body" href="#">Find out about fees (opens in new tab)</a>
 
           <div>
             <div>
 
-                <span class="govuk-caption-m govuk-!-margin-top-5">Priority 1</span>
-                <h1 class="govuk-heading-m">Transfer of part (TP1)</h1>
+
+
+              {% if data['Transaction1'] === 'New lease' %}
+              <span class="govuk-caption-m govuk-!-margin-top-5">Priority 1</span>
+              <h1 class="govuk-heading-m">New Lease</h1>
+                <div class="govuk-form-group">
+                  <p class="govuk-label-wrapper">
+                    <label class="govuk-label" for="">Estimated fee</label>
+                  </p>
+                  <div class="govuk-hint">For example, 99</div>
+                  <input class="govuk-input govuk-input--width-10">
+                </div>
+                <hr>
+
+                <span class="govuk-caption-m govuk-!-margin-top-5">Priority 2</span>
+                <h1 class="govuk-heading-m">Transfer for value (TR1)</h1>
                   <div class="govuk-form-group">
                     <p class="govuk-label-wrapper">
-                      <label class="govuk-label" for="">Total price paid for all titles, including VAT if applicable</label>
+                      <label class="govuk-label" for="">Estimated fee</label>
                     </p>
-                    <div class="govuk-hint">For example, 145000</div>
+                    <div class="govuk-hint">For example, 99</div>
                     <input class="govuk-input govuk-input--width-10">
                   </div>
+
+
+                {% endif %}
+
+                {% if data['Transaction1'] === 'Transfer of part (TP1)' %}
+                <span class="govuk-caption-m govuk-!-margin-top-5">Priority 1</span>
+                <h1 class="govuk-heading-m">Transfer of part (TP1)</h1>
                   <div class="govuk-form-group">
                     <p class="govuk-label-wrapper">
                       <label class="govuk-label" for="">Estimated fee</label>
@@ -35,18 +55,25 @@
                   <h1 class="govuk-heading-m">Charge</h1>
                     <div class="govuk-form-group">
                       <p class="govuk-label-wrapper">
-                        <label class="govuk-label" for="">Total value for all titles, including VAT if applicable</label>
-                      </p>
-                      <div class="govuk-hint">For example, 145000</div>
-                      <input class="govuk-input govuk-input--width-10">
-                    </div>
-                    <div class="govuk-form-group">
-                      <p class="govuk-label-wrapper">
                         <label class="govuk-label" for="">Estimated fee</label>
                       </p>
                       <div class="govuk-hint">For example, 99</div>
                       <input class="govuk-input govuk-input--width-10">
                     </div>
+
+                    <hr>
+
+                    <span class="govuk-caption-m govuk-!-margin-top-5">Priority 3</span>
+                    <h1 class="govuk-heading-m">Restriction (standard wording) (RX1)</h1>
+                      <div class="govuk-form-group">
+                        <p class="govuk-label-wrapper">
+                          <label class="govuk-label" for="">Estimated fee</label>
+                        </p>
+                        <div class="govuk-hint">For example, 99</div>
+                        <input class="govuk-input govuk-input--width-10">
+                      </div>
+
+                  {% endif %}
 
 
 
