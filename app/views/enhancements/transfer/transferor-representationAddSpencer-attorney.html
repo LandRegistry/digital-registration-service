@@ -13,7 +13,7 @@
 
     <h2 class="govuk-heading-m">Tell us who's representing: {{data['spencer-attorney-1']}}</h2>
 
-    <form class="" action="/spencer-attorney-representation">
+    <form method="post" action="/spencer-attorney-representation" novalidate>
 
     <div class="govuk-form-group">
 
@@ -21,7 +21,7 @@
         <br>
         <div>
 
-          {% if data['user-type'] === 'conveyancer' %}
+          <!-- {% if data['user-type'] === 'conveyancer' %}
           {% set otherTransferorHtml %}
             {{ govukInput({
               id: "TransferorConveyancerName",
@@ -103,14 +103,14 @@
             }
           ]
         }) }}
-        {% else %}
+        {% else %} -->
 
 
         {% set otherTransferorHtml %}
 
             {{ govukInput({
               id: "TransferorConveyancerName",
-              name: "TransferorConveyancerNameSpencer",
+              name: "TransferorConveyancerNameSpencer-attorney",
               classes: "govuk-!-width-two-thirds",
               label: {
                 text: "Full name"
@@ -140,26 +140,26 @@
           {% endset -%}
 
           {{ govukRadios({
-            name: "TransferorRepresentationSpencer",
+            name: "TransferorRepresentationSpencer-attorney",
 
             items: [
               {
-                value: "UK Conveyancers Ltd",
+                value: "UKConveyancersLtd",
                 text: "UK Conveyancers Ltd",
-                name: "TransferorRepresentationSpencer"
+                name: "UKConveyancersLtd"
 
               },
               {
                 value: "OtherConveyancer",
                 text: "Other conveyancer",
-                name: "TransferorRepresentationSpencer",
+                name: "OtherConveyancer",
                 conditional: {
                   html: otherTransferorHtml
                 }
               },
               {
                 value: "NotRepresented",
-                name: "TransferorRepresentationSpencer",
+                name: "NotRepresented",
                 text: "Not represented by a conveyancer"
               }
             ]
@@ -180,14 +180,14 @@
           },
           items: [
             {
-              value: "This applies to all transferors and transferor's attorneys (optional)",
+              value: "true",
               text: "This applies to all transferors and transferor's attorneys (optional)"
 
             }
           ]
         }) }}
 
-    {% endif %}
+    <!-- {% endif %} -->
 
       </div>
 
