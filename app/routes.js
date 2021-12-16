@@ -1402,6 +1402,38 @@ router.post('/transactions/transfer/add-transferor-complete', function (req, res
       res.redirect('/enhancements/transfer/transferor-list')
   })
 
+  router.post('/spencer-attorney-representation', function (req, res) {
+    let spencerAttorneyRep = req.session.data['TransferorRepresentationSpencer-attorney'];
+    let spencerAttorneyRepName = req.session.data['TransferorConveyancerNameSpencer-attorney'];
+    let representsAll = req.session.data['represents-all'];
+    let spencerAttorney = req.session.data['spencer-attorney-1'];
+    let maryAttorney = req.session.data['mary-attorney-1'];
+
+    if(spencerAttorney === maryAttorney){
+      req.session.data['TransferorRepresentationMary-attorney'] = spencerAttorney;
+      if(spencerAttorneyRep === 'OtherConveyancer'){
+        req.session.data['TransferorConveyancerNameMary-attorney'] = spencerAttorneyRepName;
+      } 
+    }
+    if(representsAll === 'true'){
+      if(spencerAttorneyRep === 'UKConveyancersLtd'){
+        req.session.data['TransferorRepresentationMary-attorney'] = spencerAttorney; 
+        req.session.data['TransferorRepresentationSpencer'] = spencerAttorney; 
+        req.session.data['TransferorRepresentationMary'] = spencerAttorney; 
+      }
+      if(spencerAttorneyRep === 'OtherConveyancer'){
+        req.session.data['TransferorRepresentationMary-attorney'] = spencerAttorney; 
+        req.session.data['TransferorRepresentationSpencer'] = spencerAttorney; 
+        req.session.data['TransferorRepresentationMary'] = spencerAttorney; 
+        req.session.data['TransferorConveyancerNameMary-attorney'] = spencerAttorneyRepName; 
+        req.session.data['TransferorConveyancerNameSpencer'] = spencerAttorneyRepName; 
+        req.session.data['TransferorConveyancerNameMary'] = spencerAttorneyRepName; 
+      }
+    }
+    res.redirect('/enhancements/transfer/transferor-representation')
+
+  } )
+
   // rep
 router.post('/transactions/transfer/transferor-details-complete', function (req, res) {
 

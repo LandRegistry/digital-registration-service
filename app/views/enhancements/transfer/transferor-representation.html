@@ -26,9 +26,15 @@
             <tr class="govuk-table__row">
               <td class="govuk-table__cell">Private individual</td>
               <td class="govuk-table__cell">Spencer Reid</td>
-              <td class="govuk-table__cell">{% if data['TransferorRepresentationSpencer'] %} {{data['TransferorRepresentationSpencer']}} {% endif %}
+              <td class="govuk-table__cell">
+                {% if data['TransferorRepresentationSpencer'] %} 
+                  {% if data['TransferorRepresentationSpencer'] === 'UKConveyancersLtd' %}UK Conveyancers Ltd
+                  {% endif %}
+                  {% if data['TransferorRepresentationSpencer'] === 'OtherConveyancer' %}{{data['TransferorConveyancerNameSpencer']}}
+                  {% endif %}
+                {% endif %}
                 {% if not data['represents-all'] %}{% if not data['TransferorRepresentationSpencer'] %} -No representation added- {% endif %}{% endif %}
-                {% if data['represents-all'] %}{% if not data['TransferorRepresentationSpencer'] %} UK Conveyancers Ltd {% endif %}{% endif %}
+                <!-- {% if data['represents-all'] %}{% if not data['TransferorRepresentationSpencer'] %} UK Conveyancers Ltd {% endif %}{% endif %} -->
               </td>
               <td class="govuk-table__cell">
               {% if data['TransferorRepresentationSpencer'] %} <a class="govuk-link--no-visited-state" href="#"> Remove </a> {% endif %}
@@ -40,16 +46,19 @@
                 <td class="govuk-table__cell">Private individual</td>
                 <td class="govuk-table__cell">Mary Reid</td>
                 <td class="govuk-table__cell">
-                  {% if data['TransferorRepresentationMary'] %} {{data['TransferorRepresentationMary']}} {% endif %}
+                  {% if data['TransferorRepresentationMary'] %} 
+                  {% if data['TransferorRepresentationMary'] === 'UKConveyancersLtd' %}UK Conveyancers Ltd {% endif %}
+                  {% if data['TransferorRepresentationMary'] === 'OtherConveyancer' %} {{data['TransferorConveyancerNameMary']}} {% endif %}
+                  {% endif %}
                   {% if not data['represents-all'] %}{% if not data['TransferorRepresentationMary'] %} -No representation added- {% endif %}{% endif %}
-                {% if data['represents-all'] %}{% if not data['TransferorRepresentationMary'] %} UK Conveyancers Ltd {% endif %}{% endif %}
+                <!-- {% if data['represents-all'] %}{% if not data['TransferorRepresentationMary'] %} UK Conveyancers Ltd {% endif %}{% endif %} -->
 
                   <!-- {% if data['represents-all'] %} UK Conveyancers Ltd {% endif %}
                   {% if not data['represents-all'] %} -No representation added- {% endif %} -->
                 </td>
                 <td class="govuk-table__cell">
-                  {% if data['represents-all'] %} <a class="govuk-link--no-visited-state" href="#"> Remove </a> {% endif %}
-                  {% if not data['represents-all'] %}<a class="govuk-link--no-visited-state" href="transferor-representationAddMary.html"> Add representation </a>{% endif %}
+                  {% if data['represents-all'] or data['TransferorRepresentationMary'] %} <a class="govuk-link--no-visited-state" href="#"> Remove </a> {% endif %}
+                  {% if not data['represents-all'] and not data['TransferorRepresentationMary'] %}<a class="govuk-link--no-visited-state" href="transferor-representationAddMary.html"> Add representation </a>{% endif %}
                 </td>
                 </tr>
 
@@ -79,13 +88,19 @@
                 {{ data ['spencer-attorney-1'] }}
               </td>
               <td class="govuk-table__cell">
-              {% if data['TransferorRepresentationSpencerAttorney'] %} {{data['TransferorRepresentationSpencerAttorney']}} {% endif %}
-                {% if not data['TransferorRepresentationSpencerAttorney'] %}{% if not data['represents-all'] %} -No representation added- {% endif %}{% endif %}
-                {% if not data['TransferorRepresentationSpencerAttorney'] %}{% if data['represents-all'] %} UK Conveyancers Ltd {% endif %}{% endif %}
+                {% if data['TransferorRepresentationSpencer-attorney'] %} 
+                  {% if data['TransferorRepresentationSpencer-attorney'] === 'UKConveyancersLtd' %}UK Conveyancers Ltd{% endif %}
+                  {% if data['TransferorRepresentationSpencer-attorney'] === 'OtherConveyancer' %}{{data['TransferorConveyancerNameSpencer-attorney']}}{% endif %}
+                {% endif %}
+                {% if not data['TransferorRepresentationSpencer-attorney'] and not data['represents-all']%}-No representation added- 
+                {% endif %}
+                <!-- {% if not data['TransferorRepresentationSpencerAttorney'] and data['represents-all']%}
+                UK Conveyancers Ltd 
+                {% endif %} -->
               </td>
               <td class="govuk-table__cell">
-                {% if data['represents-all'] %} <a class="govuk-link--no-visited-state" href="#"> Remove </a> {% endif %}
-                {% if not data['represents-all'] %}<a class="govuk-link--no-visited-state" href="#"> Add representation </a>{% endif %}
+                {% if data['represents-all'] or data['TransferorRepresentationSpencer-attorney']%} <a class="govuk-link--no-visited-state" href="#"> Remove </a> {% endif %}
+                {% if not data['represents-all'] and not data['TransferorRepresentationSpencer-attorney']%}<a class="govuk-link--no-visited-state" href="transferor-representationAddSpencer-attorney.html"> Add representation </a>{% endif %}
               </td>
             </tr>
             {% endif %}
@@ -98,13 +113,19 @@
                   {{ data ['mary-attorney-1'] }}
                 </td>
                 <td class="govuk-table__cell">
-                  {% if data['TransferorRepresentationMaryAttorney'] %} {{data['TransferorRepresentationMaryAttorney']}} {% endif %}
-                {% if not data['TransferorRepresentationMaryAttorney'] %}{% if not data['represents-all'] %} -No representation added- {% endif %}{% endif %}
-                {% if not data['TransferorRepresentationMaryAttorney'] %}{% if data['represents-all'] %} UK Conveyancers Ltd {% endif %}{% endif %}            
+                  {% if data['TransferorRepresentationMary-attorney'] %} 
+                    {% if data['TransferorRepresentationMary-attorney'] === 'UKConveyancersLtd' %}UK Conveyancers Ltd{% endif %}
+                    {% if data['TransferorRepresentationMary-attorney'] === 'OtherConveyancer' %}{{data['TransferorConveyancerNameMary-attorney']}}{% endif %}
+                  {% endif %}
+                  {% if not data['TransferorRepresentationMary-attorney'] and not data['represents-all']%}-No representation added- 
+                  {% endif %}
+                  <!-- {% if not data['TransferorRepresentationMary-attorney'] and data['represents-all']%}
+                  UK Conveyancers Ltd 
+                  {% endif %} -->
                 </td>
                 <td class="govuk-table__cell">
-                  {% if data['represents-all'] %} <a class="govuk-link--no-visited-state" href="#"> Remove </a> {% endif %}
-                  {% if not data['represents-all'] %}<a class="govuk-link--no-visited-state" href="#"> Add representation </a>{% endif %}
+                  {% if data['represents-all'] or data['TransferorRepresentationMary-attorney']%} <a class="govuk-link--no-visited-state" href="#"> Remove </a> {% endif %}
+                  {% if not data['represents-all'] and not data['TransferorRepresentationMary-attorney']%}<a class="govuk-link--no-visited-state" href="transferor-representationAddMary-attorney.html"> Add representation </a>{% endif %}
                 </td>
               </tr>
             {% endif %}

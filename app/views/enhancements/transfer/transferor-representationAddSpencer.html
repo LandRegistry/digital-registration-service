@@ -62,7 +62,7 @@
           {% set otherTransferorHtml %}
             {{ govukInput({
               id: "TransferorConveyancerName",
-              name: "TransferorConveyancerName",
+              name: "TransferorConveyancerNameSpencer",
               classes: "govuk-!-width-two-thirds",
               label: {
                 text: "Conveyancer full name"
@@ -71,7 +71,7 @@
 
             {{ govukTextarea({
               id: "TransferorOtherAddress",
-              name: "TransferorOtherAddress",
+              name: "TransferorOtherAddressSpencer",
               classes: "govuk-!-width-two-thirds",
               rows: "5",
               label: {
@@ -81,7 +81,7 @@
 
 
             {{ govukCharacterCount({
-              name: "OtherConveyancerReference",
+              name: "OtherConveyancerReferenceSpencer",
               id: "OtherConveyancerReference",
               rows: "1",
               classes: "govuk-!-width-two-thirds",
@@ -98,13 +98,13 @@
 
             items: [
               {
-                value: "UK Conveyancers Ltd",
+                value: "UKConveyancersLtd",
                 text: "UK Conveyancers Ltd",
                 name: "UKConveyancersLtd"
                 },
 
               {
-                value: "Other Conveyancer",
+                value: "OtherConveyancer",
                 text: "Another conveyancer",
                 name: "OtherConveyancer",
                 conditional: {
@@ -147,7 +147,7 @@
 
             {{ govukInput({
               id: "TransferorConveyancerName",
-              name: "TransferorConveyancerName",
+              name: "TransferorConveyancerNameSpencer",
               classes: "govuk-!-width-two-thirds",
               label: {
                 text: "Full name"
@@ -156,7 +156,7 @@
 
             {{ govukTextarea({
               id: "TransferorOtherAddress",
-              name: "TransferorOtherAddress",
+              name: "TransferorOtherAddressSpencer",
               classes: "govuk-!-width-two-thirds",
               rows: "5",
               label: {
@@ -166,7 +166,7 @@
 
 
             {{ govukInput({
-              name: "OtherConveyancerReference",
+              name: "OtherConveyancerReferenceSpencer",
               id: "OtherConveyancerReference",
               classes: "govuk-!-width-two-thirds",
               label: {

@@ -11,48 +11,11 @@
     <h1 class="govuk-heading-l">
       Select representation</h1>
 
-    <h2 class="govuk-heading-m">Tell us who's representing: Mary Reid</h2>
+    <h2 class="govuk-heading-m">Tell us who's representing: {{data['spencer-attorney-1']}}</h2>
 
-    <form class="" action="/enhancements/transfer/transferor-representation">
+    <form class="" action="/spencer-attorney-representation">
 
     <div class="govuk-form-group">
-<!--
-        <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="transferorRepresentation-conditional" name="transferorRepAnswer" type="radio" value="thisConveyancer">
-          <label class="govuk-label govuk-radios__label" for="transferorRepresentation-conditional">UK Conveyancers Ltd</label>
-        </div>
-
-        <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
-          <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="transferorRepAnswer" name="transferorRepAnswer" type="radio" value="otherConveyancer">
-            <label class="govuk-label govuk-radios__label" for="transferorRepresentation-conditional-2">
-              Other conveyancer
-            </label>
-          </div>
-          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="transferorRepresentation-conditional-2">
-            <div class="govuk-form-group">
-              <label class="govuk-label" for="transferorRepresentation-name">Full name</label>
-              <input class="govuk-input govuk-!-width-two-thirds" id="transferorRepresentation-name" name="transferorRepresentation-name" type="text">
-
-              <label class="govuk-label" for="transferorRepresentation-address">Registered address</label>
-              <textarea class="govuk-textarea govuk-!-width-two-thirds" rows="5" id="transferorRepresentation-address" name="transferorRepresentation-address"></textarea>
-
-              <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
-              <label class="govuk-label" for="transferorRepresentation-reference">Conveyancer reference</label>
-              <input class="govuk-input govuk-js-character-count govuk-!-width-one-half" id="transferorRepresentation-reference" name="transferorRepresentation-reference" type="text">
-              <span id="with-hint-info" class="govuk-hint govuk-character-count__message" aria-live="polite"></span>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="transferorRepresentation-conditional-3" name="transferorRepAnswer" type="radio" value="noConveyancer" >
-          <label class="govuk-label govuk-radios__label" for="transferorRepresentation-conditional-3">Not represented by a conveyancer</label>
-        </div>
-      </div>
--->
 
 
         <br>
@@ -62,7 +25,7 @@
           {% set otherTransferorHtml %}
             {{ govukInput({
               id: "TransferorConveyancerName",
-              name: "TransferorConveyancerNameMary",
+              name: "TransferorConveyancerNameSpencer-attorney",
               classes: "govuk-!-width-two-thirds",
               label: {
                 text: "Conveyancer full name"
@@ -71,7 +34,7 @@
 
             {{ govukTextarea({
               id: "TransferorOtherAddress",
-              name: "TransferorOtherAddressMary",
+              name: "TransferorOtherAddressSpencer-attorney",
               classes: "govuk-!-width-two-thirds",
               rows: "5",
               label: {
@@ -81,7 +44,7 @@
 
 
             {{ govukCharacterCount({
-              name: "OtherConveyancerReferenceMary",
+              name: "OtherConveyancerReferenceSpencer-attorney",
               id: "OtherConveyancerReference",
               rows: "1",
               classes: "govuk-!-width-two-thirds",
@@ -94,7 +57,7 @@
           {% endset -%}
 
           {{ govukRadios({
-            name: "TransferorRepresentationMary",
+            name: "TransferorRepresentationSpencer-attorney",
 
             items: [
               {
@@ -134,7 +97,7 @@
           },
           items: [
             {
-              value: "This applies to all transferors and transferor's attorneys (optional)",
+              value: "true",
               text: "This applies to all transferor and transferor's attorneys (optional)"
               
             }
@@ -147,7 +110,7 @@
 
             {{ govukInput({
               id: "TransferorConveyancerName",
-              name: "TransferorConveyancerNameMary",
+              name: "TransferorConveyancerNameSpencer",
               classes: "govuk-!-width-two-thirds",
               label: {
                 text: "Full name"
@@ -155,8 +118,8 @@
             }) }}
 
             {{ govukTextarea({
-              id: "TransferorOtherAddressMary",
-              name: "TransferorOtherAddress",
+              id: "TransferorOtherAddress",
+              name: "TransferorOtherAddressSpencer",
               classes: "govuk-!-width-two-thirds",
               rows: "5",
               label: {
@@ -166,7 +129,7 @@
 
 
             {{ govukInput({
-              name: "OtherConveyancerReferenceMary",
+              name: "OtherConveyancerReferenceSpencer",
               id: "OtherConveyancerReference",
               classes: "govuk-!-width-two-thirds",
               label: {
@@ -177,26 +140,26 @@
           {% endset -%}
 
           {{ govukRadios({
-            name: "TransferorRepresentationMary",
+            name: "TransferorRepresentationSpencer",
 
             items: [
               {
                 value: "UK Conveyancers Ltd",
                 text: "UK Conveyancers Ltd",
-                name: "TransferorRepresentationMary"
+                name: "TransferorRepresentationSpencer"
 
               },
               {
                 value: "OtherConveyancer",
                 text: "Other conveyancer",
-                name: "TransferorRepresentationMary",
+                name: "TransferorRepresentationSpencer",
                 conditional: {
                   html: otherTransferorHtml
                 }
               },
               {
                 value: "NotRepresented",
-                name: "TransferorRepresentationMary",
+                name: "TransferorRepresentationSpencer",
                 text: "Not represented by a conveyancer"
               }
             ]
