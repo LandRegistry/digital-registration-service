@@ -119,11 +119,11 @@
                     <strong class="govuk-tag app-task-list__task-completed">Completed</strong>
                   {% endif %}
               </tr>
-              {% if data['transfer-declaration'] %}
+              {% if data['applicant-individual-transferee1'] and data['applicant-individual-transferee2'] %}
               <tr class="govuk-table__row">
-                <td class="govuk-table__cell govuk-link"><a href="/transactions/transfer/transfer-declaration">Declaration of trust</a></td>
+                <td class="govuk-table__cell govuk-link"><a href="/enhancements/transfer/transfer-declaration">Declaration of trust</a></td>
                 <td class="govuk-table__cell">
-                  {% if data['transfer-declaration'] %}
+                  {% if data['transferTrust'] %}
                     <strong class="govuk-tag app-task-list__task-completed">Completed</strong>
                   {% endif %}
               {% endif %}

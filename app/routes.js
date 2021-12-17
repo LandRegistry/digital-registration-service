@@ -160,47 +160,8 @@ router.post('/enhancements/transfer/transferee-whichapplicants-answer', function
       }
     }
 
+
   }
-
-
-
-
-  // if (ApplicantTransferee1 != '') {
-  //     let checkbox1 = req.body['applicant-individual-transferee1'];
-  //     if (checkbox1 === 'applicant-transferee-1'){
-  //       checkboxTicked1 = true;
-  //       req.session.data['first-checkbox'] = 'YES';
-  //     } else {
-  //     checkboxTicked1 = false;
-  //     }
-
-  // }
-
-  // if (ApplicantTransferee2 != '') {
-  //     let checkbox2 = req.body['applicant-individual-transferee2'];
-  //     if (checkbox2 === 'applicant2-transferee-2'){
-  //       checkboxTicked2 = true;
-  //     } else {
-  //     checkboxTicked2 = false;
-  //     }
-  // }
-
-//   if (companyTransferee != '') {
-//     let checkbox3 = req.body['applicant-company-transferee1'];
-//     if (checkbox3 === 'applicant1-company-transferee-1'){
-//       checkboxTicked3 = true;
-//     } else {
-//     checkboxTicked3 = false;
-//     }
-
-// }
-
-
-  // if ((checkboxTicked1 === true) || (checkboxTicked2 === true)) {
-  //   res.redirect('/enhancements/transfer/transferee-list');
-  // } else {
-  //   res.redirect('/enhancements/transfer/add-transferee');
-  // }
 
   if ((checkboxTicked1 === true) || (checkboxTicked2 === true) || (checkboxTicked3 === true) || (checkboxTicked4 === true)) {
     res.redirect('/enhancements/transfer/transferee-list');
@@ -1359,7 +1320,6 @@ let transaction = req.session.data['Transaction']
     }
 })
 
-
   // transferor
 router.post('/transactions/transfer/add-transferor-complete', function (req, res) {
 
@@ -1378,7 +1338,74 @@ router.post('/transactions/transfer/add-transferor-complete', function (req, res
         req.session.data['transfereeAddressComplete'] = 'true'; }
   })
 
-  
+  router.post('/declaration-or-provisions', function (req, res) {
+    // let spencerAttorneyRep = req.session.data['TransferorRepresentationSpencer-attorney'];
+    let individual1 = req.session.data['applicant-individual-transferee1'];
+    let individual2 = req.session.data['applicant-individual-transferee2'];
+
+    if (typeof individual1 !== 'undefined' && typeof individual2 !== 'undefined'){
+      res.redirect('/enhancements/transfer/transfer-declaration')
+    }
+    else{
+      res.redirect('/enhancements/transfer/transfer-provisions')
+    }
+
+  } )
+
+  router.post('/transfereeone-address', function (req, res) {
+    // let spencerAttorneyRep = req.session.data['TransferorRepresentationSpencer-attorney'];
+    let flat = req.session.data['flat'];
+    let houseNumber = req.session.data['house-number'];
+    let houseStreet = req.session.data['house-street'];
+    let placeName = req.session.data['place-name'];
+    let townCity = req.session.data['town-city'];
+    let postcode = req.session.data['postcode'];
+    let Addresscheckbox1 = req.session.data['transfereeAddress-add'];
+    let individual2 = req.session.data['applicant2-individual-forename-2'];
+
+    if (typeof Addresscheckbox1 !== 'undefined'){
+      if(typeof individual2 !== 'undefined'){
+        req.session.data['transfereeAddressType-2'] = 'UK-postal'; 
+        req.session.data['flat2'] = flat; 
+        req.session.data['house-number2'] = houseNumber; 
+        req.session.data['house-street2'] = houseStreet; 
+        req.session.data['place-name2'] = placeName; 
+        req.session.data['town-city2'] = townCity; 
+        req.session.data['postcode2'] = postcode; 
+      }
+    }
+
+    res.redirect('/enhancements/transfer/AddAddresses_forServices/transfereeAddressList')
+
+  } )
+
+  router.post('/transfereetwo-address', function (req, res) {
+    // let spencerAttorneyRep = req.session.data['TransferorRepresentationSpencer-attorney'];
+    let flat2 = req.session.data['flat2'];
+    let houseNumber2 = req.session.data['house-number2'];
+    let houseStreet2 = req.session.data['house-street2'];
+    let placeName2 = req.session.data['place-name2'];
+    let townCity2 = req.session.data['town-city2'];
+    let postcode2 = req.session.data['postcode2'];
+    let Addresscheckbox2 = req.session.data['transfereeAddress-add2'];
+    let individual1 = req.session.data['applicant-individual-forename'];
+
+    if (typeof Addresscheckbox2 !== 'undefined'){
+      if(typeof individual1 !== 'undefined'){
+        req.session.data['transfereeAddressType-1'] = 'UK-postal'; 
+        req.session.data['flat'] = flat2; 
+        req.session.data['house-number'] = houseNumber2; 
+        req.session.data['house-street'] = houseStreet2; 
+        req.session.data['place-name'] = placeName2; 
+        req.session.data['town-city'] = townCity2; 
+        req.session.data['postcode'] = postcode2; 
+      }
+    }
+
+    res.redirect('/enhancements/transfer/AddAddresses_forServices/transfereeAddressList')
+
+  } )
+
 
   router.post('/spencer-attorney-1', function (req, res) {
     let Attorney = req.session.data['spencer-attorney-1'];
@@ -1581,6 +1608,7 @@ router.post('/transactions/transfer/add-transferor-complete', function (req, res
     res.redirect('/enhancements/transfer/transferor-representation')
 
   } )
+
 
   // rep
 router.post('/transactions/transfer/transferor-details-complete', function (req, res) {

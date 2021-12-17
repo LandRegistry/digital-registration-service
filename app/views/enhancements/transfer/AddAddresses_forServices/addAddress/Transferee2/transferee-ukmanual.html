@@ -1,7 +1,7 @@
 {% extends "drs-layout.html" %}
 
 {% block content %}
-<form method="post" action="/enhancements/transfer/AddAddresses_forServices/transfereeAddressList" novalidate>
+<form method="post" action="/transfereetwo-address" novalidate>
 
 <div class="govuk-grid-row">
 
@@ -94,8 +94,31 @@
     }
   }) }}
 
+  {% if not data['applicant-individual-forename'] %}
+
   <p class="govuk-body">Add this address to the following transferees: (optional)</p>
   <p class="govuk-body">- No other transferees to select -</p>
+  
+  {% endif%}
+
+  {% if data['applicant-individual-forename'] %}
+
+  <p class="govuk-body" style="margin-top: 60px;">Add this address to the following transferees: (optional)</p>
+  <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+      <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="transfereeAddress-add2" name="transfereeAddress-add2" type="checkbox" value="true">
+          <label class="govuk-label govuk-checkboxes__label" for="transfereeAddress-add2">
+            <p class="govuk-body">{{data['applicant-individual-forename']}} {{data['applicant-individual-surname']}}</p>
+          </label>
+        </div>
+      </div>
+  
+    </fieldset>
+  </div>
+  
+  {% endif%}
 
 
 

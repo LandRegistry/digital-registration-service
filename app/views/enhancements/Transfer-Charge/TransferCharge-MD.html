@@ -261,7 +261,7 @@
              {{ data['applicant-individual-forename'] }} {{ data['applicant-individual-surname'] }}
            </td>
           <td class="govuk-table__cell">
-            {% if data['TransfereeRepresentation'] === 'UKConveyancersLtd'%}Uk Conveyancers Ltd{% endif %}
+            {% if data['TransfereeRepresentation'] === 'UKConveyancersLtd'%}UK Conveyancers Ltd{% endif %}
             {% if data['TransfereeRepresentation'] === 'OtherConveyancer'%}{{data['TransfereeOtherName']}}{% endif %}
 
           </td>
@@ -279,7 +279,7 @@
           {{ data['applicant2-individual-forename-2'] }} {{ data['applicant2-individual-surname-2'] }}
            </td>
           <td class="govuk-table__cell">
-            {% if data['TransfereeRepresentation2'] === 'UKConveyancersLtd'%}Uk Conveyancers Ltd{% endif %}
+            {% if data['TransfereeRepresentation2'] === 'UKConveyancersLtd'%}UK Conveyancers Ltd{% endif %}
             {% if data['TransfereeRepresentation2'] === 'OtherConveyancer'%}{{data['TransfereeOtherName2']}}{% endif %}
           </td>
           <td class="govuk-table__cell">{{ data['house-number2'] }} {{ data['house-street2'] }}, {{ data['town-city2'] }}, {{ data['postcode2'] }}</td>
@@ -498,7 +498,14 @@
             <td class="govuk-table__cell">Spencer Reid <br> Mary Reid</td>
             <td class="govuk-table__cell">{{data['spencer-attorney-1']}}</td>
             {% if data['represents-all'] %}
-            <td class="govuk-table__cell">{{ data['TransferorRepresentationSpencer']}}</td>
+            <td class="govuk-table__cell">
+              {% if data['TransferorRepresentationSpencer-attorney'] === 'UKConveyancersLtd'%}
+              UK Conveyancers Ltd
+              {% endif %}
+              {% if data['TransferorRepresentationSpencer-attorney'] === 'OtherConveyancer'%}
+              {{ data['TransferorConveyancerNameSpencer-attorney']}}
+              {% endif %}
+            </td>
             {% endif %}
             <td class="govuk-table__cell"></td>
           </tr>
@@ -508,9 +515,10 @@
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">Spencer Reid</td>
             <td class="govuk-table__cell">{{data['spencer-attorney-1']}}</td>
-            {% if data['represents-all'] %}
-            <td class="govuk-table__cell">{{ data['TransferorRepresentationSpencer']}}</td>
-            {% endif %}
+            <td class="govuk-table__cell">
+              {% if data['TransferorRepresentationSpencer-attorney'] === 'UKConveyancersLtd'%}UK Conveyancers Ltd{% endif %}
+              {% if data['TransferorRepresentationSpencer-attorney'] === 'OtherConveyancer'%}{{data['TransferorConveyancerNameSpencer-attorney']}}{% endif %}
+            </td>
             <td class="govuk-table__cell"></td>
           </tr>
           {% endif %}
@@ -519,9 +527,10 @@
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">Mary Reid</td>
             <td class="govuk-table__cell">{{data['mary-attorney-1']}}</td>
-            {% if data['represents-all'] %}
-            <td class="govuk-table__cell">{{ data['TransferorRepresentationSpencer']}}</td>
-            {% endif %}
+            <td class="govuk-table__cell">{{ data['TransferorRepresentationSpencer']}}
+              {% if data['TransferorRepresentationMary-attorney'] === 'UKConveyancersLtd'%}UK Conveyancers Ltd{% endif %}
+              {% if data['TransferorRepresentationMary-attorney'] === 'OtherConveyancer'%}{{data['TransferorConveyancerNameMary-attorney']}}{% endif %}
+            </td>
             <td class="govuk-table__cell"></td>
           </tr>
           {% endif %}
@@ -551,6 +560,13 @@
                 {% if data['title-guarantee'] === 'full title guarantee' %}
                 <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Title guarantee</th>
                 <td class="govuk-table__cell govuk-!-width-two-thirds">full title guarantee <br><br> details added by user in the declaration of trust textarea, details added by user in the declaration of trust textarea, details added by user in the declaration of trust textarea, details added by user in the declaration of trust textarea.</td>
+                <td class="govuk-table__cell"><a href="" style="float: right;">Change</a></td>
+                {% endif %}
+              </tr>
+              <tr class="govuk-table__row">
+                {% if data['transferTrust']%}
+                <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Declaration of trust</th>
+                <td class="govuk-table__cell govuk-!-width-two-thirds">{{data['transferTrust']}}</td>
                 <td class="govuk-table__cell"><a href="" style="float: right;">Change</a></td>
                 {% endif %}
               </tr>
