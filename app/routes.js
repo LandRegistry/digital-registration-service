@@ -1402,10 +1402,10 @@ router.post('/transactions/transfer/add-transferor-complete', function (req, res
       res.redirect('/enhancements/transfer/transferor-list')
   })
 
-  router.post('/spencer-attorney-representation', function (req, res) {
+  router.post('/spencer-representation', function (req, res) {
     // let spencerAttorneyRep = req.session.data['TransferorRepresentationSpencer-attorney'];
-    let spencerAttorneyRepType = req.session.data['TransferorRepresentationSpencer-attorney'];
-    // let spencerAttorneyRepName = req.session.data['TransferorConveyancerNameSpencer-attorney'];
+    let spencerRepType = req.session.data['TransferorRepresentationSpencer'];
+    let spencerRepName = req.session.data['TransferorConveyancerNameSpencer'];
     let representsAll = req.session.data['represents-all'];
     // let spencerAttorney = req.session.data['spencer-attorney-1'];
     // let maryAttorney = req.session.data['mary-attorney-1'];
@@ -1417,23 +1417,63 @@ router.post('/transactions/transfer/add-transferor-complete', function (req, res
     //   } 
     // }
 
-    if (representsAll === 'true'){
+    // for this one could use     if (representsAll == 'true') instead
+    if (typeof representsAll !== 'undefined'){
       req.session.data['code'] = 'is executing here'; 
-      // if(spencerAttorneyRepType === 'UKConveyancersLtd'){
-      //   req.session.data['codee'] = 'is executing here also'; 
-      //   req.session.data['TransferorRepresentationMary-attorney'] = spencerAttorneyRepType; 
-      //   req.session.data['TransferorRepresentationSpencer'] = spencerAttorneyRepType; 
-      //   req.session.data['TransferorRepresentationMary'] = spencerAttorneyRepType; 
-      // }
-      // if(spencerAttorneyRepType === 'OtherConveyancer'){
-      //   req.session.data['TransferorRepresentationMary-attorney'] = spencerAttorney; 
-      //   req.session.data['TransferorRepresentationSpencer'] = spencerAttorney; 
-      //   req.session.data['TransferorRepresentationMary'] = spencerAttorney; 
-      //   req.session.data['TransferorConveyancerNameMary-attorney'] = spencerAttorneyRepName; 
-      //   req.session.data['TransferorConveyancerNameSpencer'] = spencerAttorneyRepName; 
-      //   req.session.data['TransferorConveyancerNameMary'] = spencerAttorneyRepName; 
-      // }
+      if(spencerRepType === 'UKConveyancersLtd'){
+        req.session.data['codee'] = 'is executing here also'; 
+        req.session.data['TransferorRepresentationMary-attorney'] = spencerRepType; 
+        req.session.data['TransferorRepresentationSpencer-attorney'] = spencerRepType; 
+        req.session.data['TransferorRepresentationMary'] = spencerRepType; 
+      }
+      if(spencerAttorneyRepType === 'OtherConveyancer'){
+        req.session.data['TransferorRepresentationMary-attorney'] = spencerAttorneyRepType; 
+        req.session.data['TransferorRepresentationSpencer-attorney'] = spencerAttorneyRepType; 
+        req.session.data['TransferorRepresentationMary'] = spencerAttorneyRepType; 
+        req.session.data['TransferorConveyancerNameMary-attorney'] = spencerRepName; 
+        req.session.data['TransferorConveyancerNameSpencer-attorney'] = spencerRepName; 
+        req.session.data['TransferorConveyancerNameMary'] = spencerRepName; 
+      }
     }
+
+    res.redirect('/enhancements/transfer/transferor-representation')
+
+  } )
+
+  router.post('/spencer-attorney-representation', function (req, res) {
+    // let spencerAttorneyRep = req.session.data['TransferorRepresentationSpencer-attorney'];
+    let spencerAttorneyRepType = req.session.data['TransferorRepresentationSpencer-attorney'];
+    let spencerAttorneyRepName = req.session.data['TransferorConveyancerNameSpencer-attorney'];
+    let representsAll = req.session.data['represents-all'];
+    let spencerAttorney = req.session.data['spencer-attorney-1'];
+    let maryAttorney = req.session.data['mary-attorney-1'];
+
+    if(spencerAttorney === maryAttorney){
+      req.session.data['TransferorRepresentationMary-attorney'] = spencerAttorneyRepType;
+      if(spencerAttorneyRepType === 'OtherConveyancer'){
+        req.session.data['TransferorConveyancerNameMary-attorney'] = spencerAttorneyRepName;
+      } 
+    }
+
+    // for this one could use     if (representsAll == 'true') instead
+    if (typeof representsAll !== 'undefined'){
+      req.session.data['code'] = 'is executing here'; 
+      if(spencerAttorneyRepType === 'UKConveyancersLtd'){
+        req.session.data['codee'] = 'is executing here also'; 
+        req.session.data['TransferorRepresentationMary-attorney'] = spencerAttorneyRepType; 
+        req.session.data['TransferorRepresentationSpencer'] = spencerAttorneyRepType; 
+        req.session.data['TransferorRepresentationMary'] = spencerAttorneyRepType; 
+      }
+      if(spencerAttorneyRepType === 'OtherConveyancer'){
+        req.session.data['TransferorRepresentationMary-attorney'] = spencerAttorneyRepType; 
+        req.session.data['TransferorRepresentationSpencer'] = spencerAttorneyRepType; 
+        req.session.data['TransferorRepresentationMary'] = spencerAttorneyRepType; 
+        req.session.data['TransferorConveyancerNameMary-attorney'] = spencerAttorneyRepName; 
+        req.session.data['TransferorConveyancerNameSpencer'] = spencerAttorneyRepName; 
+        req.session.data['TransferorConveyancerNameMary'] = spencerAttorneyRepName; 
+      }
+    }
+
     res.redirect('/enhancements/transfer/transferor-representation')
 
   } )

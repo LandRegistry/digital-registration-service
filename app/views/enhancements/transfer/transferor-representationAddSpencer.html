@@ -13,7 +13,7 @@
 
     <h2 class="govuk-heading-m">Tell us who's representing: Spencer Reid</h2>
 
-    <form class="" action="/enhancements/transfer/transferor-representation">
+    <form class="" action="/spencer-representation">
 
     <div class="govuk-form-group">
 <!--
@@ -58,7 +58,7 @@
         <br>
         <div>
 
-          {% if data['user-type'] === 'conveyancer' %}
+          <!-- {% if data['user-type'] === 'conveyancer' %}
           {% set otherTransferorHtml %}
             {{ govukInput({
               id: "TransferorConveyancerName",
@@ -140,7 +140,7 @@
             }
           ]
         }) }}
-        {% else %}
+        {% else %} -->
 
 
         {% set otherTransferorHtml %}
@@ -181,7 +181,7 @@
 
             items: [
               {
-                value: "UK Conveyancers Ltd",
+                value: "UKConveyancersLtd",
                 text: "UK Conveyancers Ltd",
                 name: "TransferorRepresentationSpencer"
 
@@ -217,14 +217,14 @@
           },
           items: [
             {
-              value: "This applies to all transferors and transferor's attorneys (optional)",
+              value: "true",
               text: "This applies to all transferors and transferor's attorneys (optional)"
 
             }
           ]
         }) }}
 
-    {% endif %}
+    <!-- {% endif %} -->
 
       </div>
 
