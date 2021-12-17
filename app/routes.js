@@ -1407,32 +1407,82 @@ router.post('/transactions/transfer/add-transferor-complete', function (req, res
     let spencerRepType = req.session.data['TransferorRepresentationSpencer'];
     let spencerRepName = req.session.data['TransferorConveyancerNameSpencer'];
     let representsAll = req.session.data['represents-all'];
-    // let spencerAttorney = req.session.data['spencer-attorney-1'];
-    // let maryAttorney = req.session.data['mary-attorney-1'];
+    let spencerAttorney = req.session.data['spencer-attorney-1'];
+    let maryAttorney = req.session.data['mary-attorney-1'];
 
-    // if(spencerAttorney === maryAttorney){
-    //   req.session.data['TransferorRepresentationMary-attorney'] = spencerAttorneyRepType;
-    //   if(spencerAttorneyRepType === 'OtherConveyancer'){
-    //     req.session.data['TransferorConveyancerNameMary-attorney'] = spencerAttorneyRepName;
-    //   } 
-    // }
 
     // for this one could use     if (representsAll == 'true') instead
     if (typeof representsAll !== 'undefined'){
       req.session.data['code'] = 'is executing here'; 
       if(spencerRepType === 'UKConveyancersLtd'){
-        req.session.data['codee'] = 'is executing here also'; 
-        req.session.data['TransferorRepresentationMary-attorney'] = spencerRepType; 
-        req.session.data['TransferorRepresentationSpencer-attorney'] = spencerRepType; 
         req.session.data['TransferorRepresentationMary'] = spencerRepType; 
+        req.session.data['codee'] = 'is executing here also'; 
+        if (typeof spencerAttorney !== 'undefined'){ 
+        req.session.data['TransferorRepresentationSpencer-attorney'] = spencerRepType;
+        } 
+        if (typeof maryAttorney !== 'undefined'){ 
+          req.session.data['TransferorRepresentationMary-attorney'] = spencerRepType;
+
+        } 
       }
-      if(spencerAttorneyRepType === 'OtherConveyancer'){
-        req.session.data['TransferorRepresentationMary-attorney'] = spencerAttorneyRepType; 
-        req.session.data['TransferorRepresentationSpencer-attorney'] = spencerAttorneyRepType; 
-        req.session.data['TransferorRepresentationMary'] = spencerAttorneyRepType; 
-        req.session.data['TransferorConveyancerNameMary-attorney'] = spencerRepName; 
-        req.session.data['TransferorConveyancerNameSpencer-attorney'] = spencerRepName; 
+      if(spencerRepType === 'OtherConveyancer'){
+        req.session.data['TransferorRepresentationMary'] = spencerRepType; 
         req.session.data['TransferorConveyancerNameMary'] = spencerRepName; 
+
+        if (typeof maryAttorney !== 'undefined'){ 
+          req.session.data['TransferorRepresentationMary-attorney'] = spencerRepType; 
+          req.session.data['TransferorConveyancerNameMary-attorney'] = spencerRepName;         
+        } 
+
+        if (typeof spencerAttorney !== 'undefined'){ 
+          req.session.data['TransferorConveyancerNameSpencer-attorney'] = spencerRepName; 
+          req.session.data['TransferorRepresentationSpencer-attorney'] = spencerRepType; 
+        } 
+        
+
+      }
+    }
+
+    res.redirect('/enhancements/transfer/transferor-representation')
+
+  } )
+
+  router.post('/mary-representation', function (req, res) {
+    // let spencerAttorneyRep = req.session.data['TransferorRepresentationSpencer-attorney'];
+    let maryRepType = req.session.data['TransferorRepresentationMary'];
+    let maryRepName = req.session.data['TransferorConveyancerNameMary'];
+    let representsAll = req.session.data['represents-all'];
+    let spencerAttorney = req.session.data['spencer-attorney-1'];
+    let maryAttorney = req.session.data['mary-attorney-1'];
+
+
+    // for this one could use     if (representsAll == 'true') instead
+    if (typeof representsAll !== 'undefined'){
+      req.session.data['code'] = 'is executing here'; 
+      if(maryRepType === 'UKConveyancersLtd'){
+        req.session.data['TransferorRepresentationSpencer'] = maryRepType; 
+        req.session.data['codee'] = 'is executing here also'; 
+        if (typeof spencerAttorney !== 'undefined'){ 
+        req.session.data['TransferorRepresentationSpencer-attorney'] = maryRepType;
+        } 
+        if (typeof maryAttorney !== 'undefined'){ 
+          req.session.data['TransferorRepresentationMary-attorney'] = maryRepType;
+
+        } 
+      }
+      if(maryRepType === 'OtherConveyancer'){
+        req.session.data['TransferorRepresentationSpencer'] = maryRepType; 
+        req.session.data['TransferorConveyancerNameSpencer'] = maryRepName; 
+
+        if (typeof maryAttorney !== 'undefined'){ 
+          req.session.data['TransferorConveyancerNameMary-attorney'] = maryRepName;   
+          req.session.data['TransferorRepresentationMary-attorney'] = maryRepType;       
+        } 
+
+        if (typeof spencerAttorney !== 'undefined'){ 
+          req.session.data['TransferorRepresentationSpencer-attorney'] = maryRepType; 
+          req.session.data['TransferorConveyancerNameSpencer-attorney'] = maryRepName; 
+        } 
       }
     }
 
@@ -1448,11 +1498,13 @@ router.post('/transactions/transfer/add-transferor-complete', function (req, res
     let spencerAttorney = req.session.data['spencer-attorney-1'];
     let maryAttorney = req.session.data['mary-attorney-1'];
 
-    if(spencerAttorney === maryAttorney){
-      req.session.data['TransferorRepresentationMary-attorney'] = spencerAttorneyRepType;
-      if(spencerAttorneyRepType === 'OtherConveyancer'){
-        req.session.data['TransferorConveyancerNameMary-attorney'] = spencerAttorneyRepName;
-      } 
+    if(typeof maryAttorney !== 'undefined'){
+      if(spencerAttorney === maryAttorney){
+        req.session.data['TransferorRepresentationMary-attorney'] = spencerAttorneyRepType;
+        if(spencerAttorneyRepType === 'OtherConveyancer'){
+          req.session.data['TransferorConveyancerNameMary-attorney'] = spencerAttorneyRepName;
+        } 
+      }
     }
 
     // for this one could use     if (representsAll == 'true') instead
@@ -1460,20 +1512,72 @@ router.post('/transactions/transfer/add-transferor-complete', function (req, res
       req.session.data['code'] = 'is executing here'; 
       if(spencerAttorneyRepType === 'UKConveyancersLtd'){
         req.session.data['codee'] = 'is executing here also'; 
-        req.session.data['TransferorRepresentationMary-attorney'] = spencerAttorneyRepType; 
-        req.session.data['TransferorRepresentationSpencer'] = spencerAttorneyRepType; 
         req.session.data['TransferorRepresentationMary'] = spencerAttorneyRepType; 
+        req.session.data['TransferorRepresentationSpencer'] = spencerAttorneyRepType;  
+        
+        if (typeof maryAttorney !== 'undefined'){ 
+          req.session.data['TransferorRepresentationMary-attorney'] = spencerAttorneyRepType; 
+        } 
       }
       if(spencerAttorneyRepType === 'OtherConveyancer'){
-        req.session.data['TransferorRepresentationMary-attorney'] = spencerAttorneyRepType; 
-        req.session.data['TransferorRepresentationSpencer'] = spencerAttorneyRepType; 
         req.session.data['TransferorRepresentationMary'] = spencerAttorneyRepType; 
-        req.session.data['TransferorConveyancerNameMary-attorney'] = spencerAttorneyRepName; 
-        req.session.data['TransferorConveyancerNameSpencer'] = spencerAttorneyRepName; 
         req.session.data['TransferorConveyancerNameMary'] = spencerAttorneyRepName; 
+
+        req.session.data['TransferorRepresentationSpencer'] = spencerAttorneyRepType; 
+        req.session.data['TransferorConveyancerNameSpencer'] = spencerAttorneyRepName; 
+
+        if (typeof maryAttorney !== 'undefined'){ 
+          req.session.data['TransferorRepresentationMary-attorney'] = spencerAttorneyRepType; 
+          req.session.data['TransferorConveyancerNameMary-attorney'] = spencerAttorneyRepName;         } 
+        
+      }
+    }
+    res.redirect('/enhancements/transfer/transferor-representation')
+
+  } )
+
+  router.post('/mary-attorney-representation', function (req, res) {
+    // let spencerAttorneyRep = req.session.data['TransferorRepresentationSpencer-attorney'];
+    let maryAttorneyRepType = req.session.data['TransferorRepresentationMary-attorney'];
+    let maryAttorneyRepName = req.session.data['TransferorConveyancerNameMary-attorney'];
+    let representsAll = req.session.data['represents-all'];
+    let spencerAttorney = req.session.data['spencer-attorney-1'];
+    let maryAttorney = req.session.data['mary-attorney-1'];
+
+    if(typeof maryAttorney !== 'undefined'){
+      if(spencerAttorney === maryAttorney){
+        req.session.data['TransferorRepresentationMary-attorney'] = maryAttorneyRepType;
+        if(maryAttorneyRepType === 'OtherConveyancer'){
+          req.session.data['TransferorConveyancerNameMary-attorney'] = maryAttorneyRepName;
+        } 
       }
     }
 
+    // for this one could use     if (representsAll == 'true') instead
+    if (typeof representsAll !== 'undefined'){
+      req.session.data['code'] = 'is executing here'; 
+      if(maryAttorneyRepType === 'UKConveyancersLtd'){
+        req.session.data['codee'] = 'is executing here also'; 
+        req.session.data['TransferorRepresentationMary'] = maryAttorneyRepType; 
+        req.session.data['TransferorRepresentationSpencer'] = maryAttorneyRepType;  
+        
+        if (typeof maryAttorney !== 'undefined'){ 
+          req.session.data['TransferorRepresentationMary-attorney'] = maryAttorneyRepType; 
+        } 
+      }
+      if(maryAttorneyRepType === 'OtherConveyancer'){
+        req.session.data['TransferorRepresentationMary'] = maryAttorneyRepType; 
+        req.session.data['TransferorConveyancerNameMary'] = maryAttorneyRepName; 
+
+        req.session.data['TransferorRepresentationSpencer'] = maryAttorneyRepType; 
+        req.session.data['TransferorConveyancerNameSpencer'] = maryAttorneyRepName; 
+
+        if (typeof spencerAttorney !== 'undefined'){ 
+          req.session.data['TransferorRepresentationSpencer-attorney'] = maryAttorneyRepType; 
+          req.session.data['TransferorConveyancerNameSpencer-attorney'] = maryAttorneyRepName;         } 
+        
+      }
+    }
     res.redirect('/enhancements/transfer/transferor-representation')
 
   } )
