@@ -1064,6 +1064,18 @@ router.get('/stored-data', function (req, res) {
   res.render('stored-data')
 })
 
+
+router.post('/enhancements/transactionsSelected', function (req, res) {
+  let transaction1 = req.session.data['Transaction1']
+  let transaction2 = req.session.data['Transaction2']
+
+  if (transaction1 === 'Transfer for value (TR1, TR5)' && transaction2 === 'Charge'){
+    req.session.data['Transaction'] = 'TransferCharge';
+    res.redirect('COPY-calculate-fees');
+  }
+})
+
+
 // Identifying the transaction type - LAUREN COMMENTING OUT BELOW
 
 router.post('/enhancements/lauren', function (req, res) {
@@ -1102,7 +1114,7 @@ router.post('/enhancements/lauren', function (req, res) {
 
                   res.redirect('COPY-calculate-fees');
             }
-            if (transaction1 === 'Transfer for value (TR1)' && transaction2 === 'Charge' && transaction3 === 'Select a transaction from the list') {
+            if (transaction1 === 'Transfer for value (TR1)' && transaction2 === 'Charge') {
               req.session.data['Transaction'] = 'TC';
 
               res.redirect('/transactions/calculate-fees');}
@@ -1224,6 +1236,26 @@ router.post('/enhancements/charge/MDyes', function (req, res) {
   }
 })
 
+router.post('/filterTransactions', function (req, res) {
+  let applicationType = req.session.data['application-type']
+  let wholeORpart = req.session.data['wholepart']
+  let leaseExtension = req.session.data['extend-lease']
+  if (leaseExtension === 'no') {
+    if (applicationType === 'update-register' && wholeORpart === 'yes') {
+        res.redirect('/enhancements/transactions-updateRegisterWHOLE')
+    } 
+    if (applicationType === 'update-register' && wholeORpart === 'no') {
+      res.redirect('/enhancements/transactions-updateRegisterPART')
+    } 
+  }
+  if (leaseExtension === 'yes'){
+    if (applicationType === 'register-new-lease') {
+      res.redirect('/enhancements/transactions-newLease')
+    } 
+  }
+
+})
+
 
 
 router.post('/transferee-AddressList', function (req, res) {
@@ -1268,6 +1300,8 @@ router.post('/transactions/charge-without-transfer/borrower2-representation-answ
           req.session.data['chargeDateComplete'] = 'completed';
           res.redirect('/transactions/charge/MDRef')
     })
+
+
 
 // Transfer completed tags
   // rep
