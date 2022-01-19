@@ -23,6 +23,45 @@ router.post('/whole-part-answer', function (req, res) {
 
 })
 
+// Run this code when a form is submitted to '/application-type-selected'
+router.post('/application-type-selected', function (req, res) {
+
+  // Make a variable and give it the value from 'wholepart'
+  var applicationType = req.session.data['application-type']
+
+  // Check whether the variable matches a condition
+  if (applicationType == "update-register" || applicationType == 'remove-jp1-restriction'){
+    res.redirect('/enhancements/enter-title-numbers')
+  } 
+  if (applicationType == "register-update-lease"){
+    res.redirect('/enhancements/register-new-lease')
+  } 
+
+})
+
+// Run this code when a form is submitted to '/application-type-selected'
+router.post('/whole-or-part-or-transactions', function (req, res) {
+
+  // Make a variable and give it the value from 'wholepart'
+  var applicationType = req.session.data['application-type']
+  var leaseType = req.session.data['register-extend-lease']
+
+
+  // Check whether the variable matches a condition
+  if (applicationType == "update-register"){
+    res.redirect('/enhancements/does-application-affect-whole-title')
+  } 
+  if (applicationType == "register-update-lease"){
+    if(leaseType == "new-lease"){
+      res.redirect('/enhancements/transactions-newLease')
+    }
+    if(leaseType == "extend-lease"){
+      res.redirect('/enhancements/transactions-extendLease')
+    }
+  } 
+
+})
+
 // Run this code when a form is submitted to '/affect-whole-title'
 router.post('/affect-whole-title', function (req, res) {
 
@@ -1239,20 +1278,12 @@ router.post('/enhancements/charge/MDyes', function (req, res) {
 router.post('/filterTransactions', function (req, res) {
   let applicationType = req.session.data['application-type']
   let wholeORpart = req.session.data['wholepart']
-  let leaseExtension = req.session.data['extend-lease']
-  if (leaseExtension === 'no') {
     if (applicationType === 'update-register' && wholeORpart === 'yes') {
         res.redirect('/enhancements/transactions-updateRegisterWHOLE')
     } 
     if (applicationType === 'update-register' && wholeORpart === 'no') {
       res.redirect('/enhancements/transactions-updateRegisterPART')
-    } 
-  }
-  if (leaseExtension === 'yes'){
-    if (applicationType === 'register-new-lease') {
-      res.redirect('/enhancements/transactions-newLease')
-    } 
-  }
+    }
 
 })
 

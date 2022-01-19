@@ -19,7 +19,7 @@
   routing removed temporarily for MT testing -->
 
 
-<form method="get" action="/enhancements/register-new-lease.html">
+<form method="post" action="/application-type-selected" novalidate>
         {{ govukRadios({
   idPrefix: "application-type",
   name: "application-type",
@@ -38,8 +38,8 @@
       text: "Update existing titles in the Register"
     },
     {
-      value: "register-new-lease",
-      text: "Register a new lease",
+      value: "register-update-lease",
+      text: "Register or update a lease",
       disabled: false
 
     },
@@ -56,13 +56,13 @@
     {{ govukButton({
     text: "Continue"
   }) }}
-
+</form>
 
     </div>
     </div>
 
 
-
+  
 <script type="application/json" id="whole-form-validation">
   {
     "user-type": {
