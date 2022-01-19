@@ -59,6 +59,9 @@ router.post('/whole-or-part-or-transactions', function (req, res) {
       res.redirect('/enhancements/transactions-extendLease')
     }
   } 
+  if (applicationType == "remove-jp1-restriction"){
+    res.redirect('/enhancements/document_uploadRemoveJP1')
+  } 
 
 })
 
