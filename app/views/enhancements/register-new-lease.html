@@ -1,0 +1,77 @@
+{% extends "drs-layout.html" %}
+
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l"></span>
+  <h1 class="govuk-heading-l">What type of application are you making?</h1>
+
+  <div>
+
+
+     <div>
+
+
+
+    <!-- <form method="post" action="user-type-answer" name="" data-validate="whole-form-validation" novalidate>
+  routing removed temporarily for MT testing -->
+
+
+<form method="get" action="/enhancements/enter-title-numbers.html">
+        {{ govukRadios({
+  idPrefix: "register-extend-lease",
+  name: "register-extend-lease",
+  fieldset: {
+    legend: {
+      text: "",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+
+
+  items: [
+    {
+      value: "new-lease",
+      text: "Register new lease"
+    },
+    {
+      value: "extend-lease",
+      text: "Update an existing lease"
+    }
+  ]
+}) }}
+
+
+    {{ govukButton({
+    text: "Continue"
+  }) }}
+
+
+    </div>
+    </div>
+
+
+
+<script type="application/json" id="whole-form-validation">
+  {
+    "user-type": {
+      "presence": {
+        "message": "^Select if you are a conveyancer or not"
+      }
+    }
+  }
+</script>
+
+
+
+
+{% endblock %}
+
+
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}

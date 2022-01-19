@@ -1,0 +1,85 @@
+{% extends "drs-layout.html" %}
+
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l"></span>
+  <h1 class="govuk-heading-l">What do you need to do?</h1>
+
+  <div>
+
+
+     <div>
+
+
+
+    <!-- <form method="post" action="user-type-answer" name="" data-validate="whole-form-validation" novalidate>
+  routing removed temporarily for MT testing -->
+
+
+<form method="post" action="/application-type-selected" novalidate>
+        {{ govukRadios({
+  idPrefix: "application-type",
+  name: "application-type",
+  fieldset: {
+    legend: {
+      text: "",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+
+
+  items: [
+    {
+      value: "update-register",
+      text: "Update existing titles in the Register"
+    },
+    {
+      value: "register-update-lease",
+      text: "Register or update a lease",
+      disabled: false
+
+    },
+    {
+      value: "remove-jp1-restriction",
+      text: "Remove a Form A (JP1) restriction",
+      disabled: false
+
+    }
+  ]
+}) }}
+
+
+    {{ govukButton({
+    text: "Continue"
+  }) }}
+</form>
+
+    </div>
+    </div>
+
+
+  
+<script type="application/json" id="whole-form-validation">
+  {
+    "user-type": {
+      "presence": {
+        "message": "^Select if you are a conveyancer or not"
+      }
+    }
+  }
+</script>
+
+
+
+
+{% endblock %}
+
+
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}

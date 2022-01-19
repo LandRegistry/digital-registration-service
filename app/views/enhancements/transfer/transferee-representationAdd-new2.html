@@ -1,0 +1,121 @@
+{% extends "drs-layout.html" %}
+
+
+{% block content %}
+<div class="govuk-grid-row">
+
+<div class="govuk-grid-column-two-thirds" style="margin-top: -35px; margin-bottom:10px;">
+<a href="/enhancements/Transfer-Charge/tasks-complete-your-application" class="govuk-back-link">Return to task list</a>
+</div>
+
+<form method="post" action="/enhancements/transfer/transferee-representation">
+<div class="govuk-grid-column-full">
+    <span class="govuk-caption-l">Transfer for value (TR1)</span>
+    <h1 class="govuk-heading-l">Select representation</h1>
+    {% if   data['applicant2-individual-forename-2'] != '' %}
+    <h3 class="govuk-heading-m">Tell us who's representing: {{ data['applicant2-individual-forename-2']}} {{ data['applicant2-individual-surname-2']}} </h3>
+    {% endif %}
+
+    {% if   data['applicant2-company-name-2'] != '' %}
+    <h3 class="govuk-heading-m">Tell us who's representing: {{ data['applicant2-company-name-2']}}</h3>
+    {% endif %}
+<!-- <h1 class="govuk-heading-l">
+    {% if data['user-type'] === 'conveyancer' %}
+
+      {% if data['applicant-individual-transferee1'] %}
+        <span>Who is representing {{ data['applicant-individual-forename'] }} {{ data['applicant-individual-surname'] }}?</span>
+        {% endif %}
+        
+    {% else %}
+      {% if data['applicant-individual-transferee1'] %}
+        <span>Is {{ data['applicant-individual-forename'] }} {{ data['applicant-individual-surname'] }} represented by a conveyancer?</span>
+      {% endif %}
+    {% endif %}
+
+
+</h1> -->
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="UKConveyancersLtd" name="TransfereeRepresentation2" type="radio" value="UKConveyancersLtd" data-aria-controls="UKConveyancersLtd">
+        <label class="govuk-label govuk-radios__label" for="UKConveyancersLtd">
+          UK Conveyancers Ltd
+        </label>
+      </div>
+
+
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="OtherConveyancer" name="TransfereeRepresentation2" type="radio" value="OtherConveyancer" data-aria-controls="OtherConveyancerInput">
+        <label class="govuk-label govuk-radios__label" for="OtherConveyancer">
+          Other conveyancer
+        </label>
+      </div>
+
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="OtherConveyancerInput">
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="TransfereeOtherName">
+            Conveyancer full name
+          </label>
+          <input class="govuk-input govuk-!-width-two-thirds" id="TransfereeOtherName" name="TransfereeOtherName2">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="TransfereeOtherAddress">
+            Registered address
+          </label>
+          <textarea class="govuk-textarea govuk-!-width-two-thirds" id="TransfereeOtherAddress" name="TransfereeOtherAddress2" rows="5"></textarea>
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="OtherConveyancerReference">
+            Conveyancer reference
+          </label>
+          <input class="govuk-input govuk-!-width-two-thirds" id="OtherConveyancerReference" name="OtherConveyancer2" maxlength="25">
+        </div>
+
+      </div>
+
+
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="NotRepresented" name="TransfereeRepresentation2" type="radio" value="NotRepresented" data-aria-controls="NotRepresented-hint">
+        <label class="govuk-label govuk-radios__label" for="NotRepresented">
+          Not represented by a conveyancer
+        </label>
+      </div>
+
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="NotRepresented-hint">
+        <div class="govuk-hint govuk-!-width-two-thirds">
+          When a party is not represented by a conveyancer you must personally verify or provide evidence of their identity.
+  </div>
+
+    </div>
+
+  </fieldset>
+</div>
+
+
+
+
+
+
+      {{ govukButton({
+        text: "Continue",
+        classes: "govuk-!-margin-top-5"
+      }) }}
+      </div>
+
+</form>
+</div>
+
+
+
+{% endblock %}
+
+
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}

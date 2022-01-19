@@ -1,0 +1,39 @@
+{% extends "drs-layout.html" %}
+
+{% block content %}
+<div class="govuk-grid-row">
+
+
+<div class="govuk-grid-column-full">
+    <span class="govuk-caption-xl">Transfer for value (TR1)</span>
+    <h1 class="govuk-heading-xl">Add UK postal address (postcode search)</h1>
+    <h2 class="govuk-heading-m">For transferee:</h2>
+    <p class="govuk-body">
+      {{ data['applicant2-individual-forename-2']}} {{ data['applicant2-individual-surname-2']}}
+    </p>
+
+
+    <form method="post" action="transferee-UKaddressResults">
+      <label class="govuk-label" for="postcode-finder">
+        Enter postcode
+      </label>
+      <input class="govuk-input govuk-!-width-one-quarter" id="" name="UKpostcode2" value="">
+      <br><br>
+      <a href="transferee-ukmanual" class="govuk-link"> Enter address manually</a>
+      <br><br><br>
+
+
+{{ govukButton({
+  text: "Find address"
+}) }}
+</form>
+
+</div>
+
+
+{% endblock %}
+
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}

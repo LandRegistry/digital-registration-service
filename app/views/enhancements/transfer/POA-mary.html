@@ -1,0 +1,107 @@
+{% extends "drs-layout.html" %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds" style="margin-top: -35px; margin-bottom:10px;">
+    <a href="/enhancements/Transfer-Charge/tasks-complete-your-application" class="govuk-back-link">Return to task list</a>
+    </div>
+  <div class="govuk-grid-column-full" id="headerdiv">
+    
+    
+      <span class="govuk-caption-l">Transfer for value (TR1)</span>
+
+          <h1 class="govuk-heading-l">Add an attorney</h1>
+          <h2 class="govuk-heading-m">For donor: Mary Reid</h2>
+
+
+          <form method="post" action="/mary-attorney-1" novalidate>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="width-20">
+                Full name
+              </label>
+              <input class="govuk-input govuk-input--width-20" id="mary-attorney-1" name="mary-attorney-1" type="text"></div>
+              
+              <div class="govuk-form-group" style="margin: 50px 0px;">
+                <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+                  <p class="govuk-body">Add this attorney to the following donors (optional)</p>
+                  <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                    <div class="govuk-checkboxes__item">
+                      <input class="govuk-checkboxes__input" id="also-spencer" name="also-spencer" type="checkbox" value="also-spencer" data-aria-controls="conditional-contact">
+                      <label class="govuk-label govuk-checkboxes__label" for="also-spencer">
+                        Spencer Reid
+                      </label>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+        <div>
+
+
+      
+        </div>
+
+
+
+
+          <div class="govuk-warning-text" style="">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text" style="margin-top:10px;">
+              <span class="govuk-warning-text__assistive">Warning</span>
+              Naming errors lead to requisitions. By selecting ‘Continue’ you confirm the name is correct.
+            </strong>
+          </div>
+
+          <br>
+            {{ govukButton({
+            classes: "",
+            text: "Continue"
+            }) }}
+
+          </form>
+
+
+</main>
+
+
+
+
+<script type="application/json" id="reference-form-validation">
+ {
+   "reference": {
+     "presence": {
+       "message": "^Enter your reference for this application"
+     },
+     "length": {
+       "minimum": 1,
+       "maximum": 25,
+       "message": "^Your reference must be 25 characters or less"
+     }
+   }
+</script>
+
+<style>
+  .back-link {
+  border: none;
+  background: none;
+  font-size: 16px;
+  text-decoration: underline;
+  margin-top: 25px;
+
+}
+</style>
+
+<script>
+  function goBack() {
+    window.history.back();
+  }
+</script>
+
+<!-- {% set borrowerName1 = "Joe Bloggs" %} -->
+
+
+
+{% endblock %}
+
+
+

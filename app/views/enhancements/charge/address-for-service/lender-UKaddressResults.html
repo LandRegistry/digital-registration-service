@@ -1,0 +1,142 @@
+{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
+{%- set assetPath = '/govuk/assets' -%}
+
+{% extends "govuk/template.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+
+
+{% block headIcons %}
+  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
+  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
+{% endblock %}
+
+{% block head %}
+  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full" id="headerdiv">
+    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
+    <p class="govuk-heading-m" style="text-align: center; margin-top:-45px;"><a href="/../../setup/app-start" class="header-link govuk-link--no-visited-state">Digital Registration Service</a></p>
+    <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+
+
+    <div class="govuk-phase-banner govuk-!-margin-bottom-5">
+        <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
+        <span class="govuk-phase-banner__text">
+        This is a prototype and not a real service.
+        </span></p>
+    </div>
+    </div>
+
+<div class="govuk-grid-column-full">
+  <form method="post" action="address-list">
+    <span class="govuk-caption-xl">Charge</span>
+    <h1 class="govuk-heading-xl">Select UK postal address</h1>
+
+
+    <h3 class="govuk-heading-s">Postcode</h3>
+    <p class="govuk-body">{{ data['lenderUKpostcode'] }}<a class="govuk-link" href='#' style="margin-left: 10px;">Change </a></p>
+
+    <h4 class="govuk-heading-s">Select address</h4>
+    <div class="govuk-form-group">
+      <select class="govuk-select govuk-!-width-one-half" id="addressResults" name="addressResults">
+        <option value="addressresults0" selected>11 addresses found</option>
+        <option value="addressresult1">1, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
+        <option value="addressresult2" >2a, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
+        <option value="addressresult2" >2b, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
+        <option value="addressresult3">3, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
+        <option value="addressresult4">4, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
+        <option value="addressresult4">5, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
+        <option value="addressresult4">6, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
+        <option value="addressresult4">7, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
+        <option value="addressresult4">8, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
+        <option value="addressresult4">9, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
+        <option value="addressresult4">10, King's Road,	Greater Haxten,	Wiltshire, LH17 7EQ</option>
+      </select>
+    </div>
+
+    <p class="govuk-body"> <a href="#" class="govuk-link">I can't find address in the list</a></p>
+
+
+    <h5 class="govuk-heading-m">More actions</h5>
+
+
+    {{ govukInput({
+      label: {
+        text: "Add c/o name (optional)"
+      },
+      hint: {
+        text: "If it's a 'care of' address, enter the addressee's name"
+      },
+      id: "care-of",
+      name: "care-of",
+      classes: "govuk-!-width-one-half"
+    }) }}
+
+    <!-- {% if data['applicant2-individual-forename-2'] %}
+    <p class="govuk-body">Add this address to the following transferees: (optional)</p>
+
+    <div class="govuk-checkboxes">
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="applicant2-address1" name="applicant2address" type="checkbox" value="true">
+          <label class="govuk-label govuk-checkboxes__label" for="applicant2address">
+            {{ data['applicant2-individual-forename-2'] }} {{ data['applicant2-individual-surname-2'] }}
+          </label>
+          {% endif %} -->
+
+          <br>
+
+
+
+
+{{ govukButton({
+  text: "Continue",
+  Value: "yes"
+}) }}
+</form>
+
+
+
+
+<footer>
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-full">
+<hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+<br>
+<p class="govuk-body-s" style="color: #747B7F"> The following links open in a new window
+<br>
+<br>
+<a href="#" style="color: #747B7F"> Terms and conditions</a> | <a href="/setup/accessibility-statement" target="_blank" rel="noopener noreferrer" style="color: #747B7F">Accessibility statement</a> |  <a href="#" style="color: #747B7F">Freedom of information</a> | <a href="#" style="color: #747B7F">© Crown copyright</a></p>
+</div>
+</div>
+</footer>
+
+
+
+{% endblock %}
+
+
+{% block footer %}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}

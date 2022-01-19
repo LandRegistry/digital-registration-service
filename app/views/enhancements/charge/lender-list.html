@@ -1,0 +1,173 @@
+{% extends "drs-layout.html" %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds" style="margin-top: -35px; margin-bottom:10px;">
+    <a href="/enhancements/Transfer-Charge/tasks-complete-your-application" class="govuk-back-link">Return to task list</a>
+    </div>
+
+<div class="govuk-grid-column-full">
+  <span class="govuk-caption-l">Charge</span>
+
+
+    <h1 class="govuk-heading-l">Lenders</h1>
+
+
+<form method="post" action="/enhancements/charge/lender-representation">
+
+
+<table class="govuk-table" id="lenderlist">
+
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Lender type</th>
+      <th scope="col" class="govuk-table__header">Lender name</th>
+      <th scope="col" class="govuk-table__header">Company number</th>
+      <th scope="col" class="govuk-table__header">Territory of incorporation</th>
+      <th scope="col" class="govuk-table__header">Options</th>
+    </tr>
+  </thead>
+
+  {% if data['charge-lender-individual-forename'] %}
+  <tbody class="govuk-table_body">
+    <tr class="govuk-table_row" id="hidePI">
+    <td class="govuk-table__cell">UK Company or LLC</td>
+    <td class="govuk-table__cell govuk-!-width-one-third">{{ data['charge-lender-individual-forename'] }} {{ data['charge-lender-individual-surname'] }}</td>
+    <td class="govuk-table__cell"> N/A</td>
+    <td class="govuk-table__cell govuk-!-width-one-quarter">N/A</td>
+    <td class="govuk-table__cell govuk-link"><a href="add-lenders-change">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
+  </tbody>
+   {% endif %}
+
+    {% if data['charge-lender-company-name'] %}
+    <tbody class="govuk-table_body">
+      <tr class="govuk-table_row" id="hidePI">
+      <td class="govuk-table__cell">UK Company or LLC</td>
+      <td class="govuk-table__cell govuk-!-width-one-third">{{ data['charge-lender-company-name'] }}</td>
+      <td class="govuk-table__cell"> {{ data['charge-lender-company-number'] }}</td>
+      <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+      <td class="govuk-table__cell govuk-link"><a href="add-lenders-change">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
+    </tbody>
+     {% endif %}
+
+     {% if data['charge-lender2-company-name-2'] %}
+     <tbody class="govuk-table_body">
+       <tr class="govuk-table_row" id="hidePI">
+       <td class="govuk-table__cell">UK Company or LLC</td>
+       <td class="govuk-table__cell govuk-!-width-one-third">{{ data['charge-lender2-company-name-2'] }}</td>
+       <td class="govuk-table__cell"> {{ data['charge-lender2-company-number-2'] }}</td>
+       <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+       <td class="govuk-table__cell govuk-link"><a href="add-lenders-change">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
+     </tbody>
+      {% endif %}
+
+      {% if data['charge-lender3-company-name-3'] %}
+      <tbody class="govuk-table_body">
+        <tr class="govuk-table_row" id="hidePI">
+        <td class="govuk-table__cell">UK Company or LLC</td>
+        <td class="govuk-table__cell govuk-!-width-one-third">{{ data['charge-lender3-company-name-3'] }}</td>
+        <td class="govuk-table__cell"> {{ data['charge-lender3-company-number-3'] }}</td>
+        <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+        <td class="govuk-table__cell govuk-link"><a href="add-lenders-change">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
+      </tbody>
+       {% endif %}
+
+      {% if data['charge-lender-overseas-name'] %}
+        <tbody class="govuk-table_body">
+          <tr class="govuk-table_row">
+          <td class="govuk-table__cell">Overseas company</td>
+          <td class="govuk-table__cell govuk-!-width-one-third">{{ data['charge-lender-overseas-name'] }}</td>
+          <td class="govuk-table__cell"> {% if data['charge-lender-overseas-number'] %}{{ data['charge-lender-overseas-number'] }}{% endif %}{% if not data['charge-lender-overseas-number'] %}N/a{% endif %}</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter"> {{ data['charge-lender-overseas-country'] }}</td>
+          <td class="govuk-table__cell govuk-link"><a href="add-lenders-change">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
+        </tbody>
+         {% endif %}
+
+         {% if data['charge-lender2-overseas-name'] %}
+           <tbody class="govuk-table_body">
+             <tr class="govuk-table_row">
+             <td class="govuk-table__cell">Overseas company</td>
+             <td class="govuk-table__cell govuk-!-width-one-third">{{ data['charge-lender2-overseas-name'] }}</td>
+             <td class="govuk-table__cell"> {% if data['charge-lender2-overseas-number'] %}{{ data['charge-lender2-overseas-number'] }}{% endif %}{% if not data['charge-lender2-overseas-number'] %}N/a{% endif %}</td>
+             <td class="govuk-table__cell govuk-!-width-one-quarter"> {{ data['charge-lender2-overseas-country'] }}</td>
+             <td class="govuk-table__cell govuk-link"><a href="add-lenders-change">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
+           </tbody>
+            {% endif %}
+
+            {% if data['charge-lender3-overseas-name'] %}
+              <tbody class="govuk-table_body">
+                <tr class="govuk-table_row">
+                <td class="govuk-table__cell">Overseas company</td>
+                <td class="govuk-table__cell govuk-!-width-one-third">{{ data['charge-lender3-overseas-name'] }}</td>
+                <td class="govuk-table__cell"> {% if data['charge-lender3-overseas-number'] %}{{ data['charge-lender3-overseas-number'] }}{% endif %}{% if not data['charge-lender3-overseas-number'] %}N/a{% endif %}</td>
+                <td class="govuk-table__cell govuk-!-width-one-quarter"> {{ data['charge-lender3-overseas-country'] }}</td>
+                <td class="govuk-table__cell govuk-link"><a href="add-lenders-change">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
+              </tbody>
+               {% endif %}
+
+       {% if data['charge-lender-other-name'] %}
+       <tbody class="govuk-table_body">
+         <tr class="govuk-table_row">
+         <td class="govuk-table__cell">Other organisation</td>
+         <td class="govuk-table__cell govuk-!-width-one-third">{{ data['charge-lender-other-name'] }}</td>
+         <td class="govuk-table__cell">N/a</td>
+         <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+         <td class="govuk-table__cell govuk-link"><a href="add-lenders-change">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
+       </tbody>
+       {% endif %}
+
+       {% if data['charge-lender2-other-name'] %}
+       <tbody class="govuk-table_body">
+         <tr class="govuk-table_row">
+         <td class="govuk-table__cell">Other organisation</td>
+         <td class="govuk-table__cell govuk-!-width-one-third">{{ data['charge-lender2-other-name'] }}</td>
+         <td class="govuk-table__cell">N/a</td>
+         <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+         <td class="govuk-table__cell govuk-link"><a href="add-lenders-change">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
+       </tbody>
+       {% endif %}
+
+       {% if data['charge-lender3-other-name'] %}
+       <tbody class="govuk-table_body">
+         <tr class="govuk-table_row">
+         <td class="govuk-table__cell">Other organisation</td>
+         <td class="govuk-table__cell govuk-!-width-one-third">{{ data['charge-lender3-other-name'] }}</td>
+         <td class="govuk-table__cell">N/a</td>
+         <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+         <td class="govuk-table__cell govuk-link"><a href="add-lenders-change">Change</a><br><a onclick="RemoveTransfereeIndividual ()">Remove</a></td>
+       </tbody>
+       {% endif %}
+
+      </table>
+
+    <!-- {% if data['charge-lender-company-name'] or data['charge-lender-individual-forename'] or data['charge-lender-overseas-name'] or data['charge-lender-other-name'] %}
+    <a class="govuk-link" href="add-lenders-2">Add lender</a><br>
+    {% endif %} -->
+
+    {% if data['charge-lender2-company-name-2'] or data['charge-lender2-individual-forename-2'] or data['charge-lender2-overseas-name'] or data['charge-lender2-other-name'] %}
+    <a class="govuk-link" href="add-lenders-3">Add another lender</a><br>
+    {% else %}
+    <a class="govuk-link" href="add-lenders-2">Add another lender</a><br>
+    {% endif %}
+
+
+
+
+{{ govukButton({
+classes: "govuk-!-margin-top-5",
+text: "Continue"
+}) }}
+
+</form>
+
+
+
+
+
+{% endblock %}
+
+
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}
