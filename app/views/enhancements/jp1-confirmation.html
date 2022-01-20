@@ -1,0 +1,44 @@
+{% extends "drs-layout.html" %}
+
+
+{% block content %}
+<div class="govuk-grid-row">
+
+
+<form method="post" action="/jp1Declaration">
+
+<div class="govuk-grid-column-two-thirds">
+  <div class="govuk-panel govuk-panel--confirmation">
+    <h1 class="govuk-panel__title">
+      Form A restriction (JP1) removed
+    </h1>
+    <div class="govuk-panel__body">
+      JP1 reference:<br><strong>{{data['jp1-reference']}}</strong>
+    </div>
+  </div>
+</div>
+</form>
+
+</div>
+<script>
+  function fileupload() {
+
+  $(document).ready(function(){
+    $("a").click(function(){
+      $(document.getElementById('filenameOther')).text("document.pdf");
+    });
+  });
+
+}
+
+</script>
+
+
+
+{% endblock %}
+
+
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}

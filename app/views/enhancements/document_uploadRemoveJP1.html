@@ -5,27 +5,18 @@
 <div class="govuk-grid-row">
 
 
-<form method="post" action="document_prompts-other-attached">
+<form method="post" action="/enhancements/jp1-declaration">
 
 <div class="govuk-grid-column-full">
   <span class="govuk-caption-xl">Remove a Form A (JP1) restriction</span>
   <h1 class="govuk-heading-l"> Attach and certify document </h1>
+
+  <h3 class="govuk-heading-m">Enter Form A restriction (JP1) reference</h3>
+  <input class="govuk-input govuk-input--width-20" id="jp1-reference" name="jp1-reference" type="text">
+
+
+  <h3 class="govuk-heading-m" style="margin-top:50px;">Attach a file</h3>
   <p class="govuk-body">Files can be GIF, TIFF, JPG or PDF and must not exceed 20MB file size.</p>
-
-
-    <div class="govuk-form-group govuk-!-margin-top-7">
-    <label class="govuk-label" for="sort">
-      Select a document type for each file you attach
-    </label>
-    <select class="govuk-select govuk-!-width-one-half" id="sort" name="sort">
-      <option value="" selected>Select document type</option>
-      <option value="">Document type A</option>
-      <option value="">Document type B</option>
-      <option value="">Document type C</option>
-    </select>
-  </div>
-
-  <p class="govuk-body">Attach a file</p>
   <a href="#" type="file" id="suggested_upload" class="govuk-link--no-visited-state" onclick="fileupload()" style="cursor: pointer; text-decoration: none; font-size: 14px; color: black; border-style: solid;  border-width: 0.5px; padding: 5px; border-radius: 3px; position: absolute; ">Choose file</a>
   <a style="margin-left: 100px;" class="govuk-body" id="filenameOther" for="other_upload"> No file chosen </a>
 

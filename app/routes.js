@@ -30,11 +30,14 @@ router.post('/application-type-selected', function (req, res) {
   var applicationType = req.session.data['application-type']
 
   // Check whether the variable matches a condition
-  if (applicationType == "update-register" || applicationType == 'remove-jp1-restriction'){
-    res.redirect('/enhancements/enter-title-numbers')
+  if (applicationType == "update-register"){
+    res.redirect('/enhancements/lease-extension')
   } 
   if (applicationType == "register-update-lease"){
     res.redirect('/enhancements/register-new-lease')
+  } 
+  if (applicationType == 'remove-jp1-restriction'){
+    res.redirect('/enhancements/enter-title-numbers')
   } 
 
 })
@@ -44,26 +47,47 @@ router.post('/whole-or-part-or-transactions', function (req, res) {
 
   // Make a variable and give it the value from 'wholepart'
   var applicationType = req.session.data['application-type']
-  var leaseType = req.session.data['register-extend-lease']
+  var extendLease = req.session.data['extend-lease']
 
 
   // Check whether the variable matches a condition
   if (applicationType == "update-register"){
-    res.redirect('/enhancements/does-application-affect-whole-title')
+    if (extendLease == "yes"){
+      res.redirect('/enhancements/transactions-extendLease')
+    } 
+    if (extendLease == "no"){
+      res.redirect('/enhancements/does-application-affect-whole-title')
+    } 
   } 
   if (applicationType == "register-update-lease"){
-    if(leaseType == "new-lease"){
-      res.redirect('/enhancements/transactions-newLease')
-    }
-    if(leaseType == "extend-lease"){
-      res.redirect('/enhancements/transactions-extendLease')
-    }
+    res.redirect('/enhancements/transactions-newLease')
+    
   } 
   if (applicationType == "remove-jp1-restriction"){
     res.redirect('/enhancements/document_uploadRemoveJP1')
   } 
 
 })
+
+
+router.post('/jp1Declaration', function (req, res) {
+
+  // Make a variable and give it the value from 'wholepart'
+  var jp1declarationCheckbox = req.session.data['jp1-declaration']
+
+  // Check whether the variable matches a condition
+  if (jp1declarationCheckbox == "declared"){
+
+    res.redirect('/enhancements/jp1-confirmation')
+  }
+  else{
+    res.redirect('/enhancements/jp1-declaration')
+
+  }
+
+})
+
+
 
 // Run this code when a form is submitted to '/affect-whole-title'
 router.post('/affect-whole-title', function (req, res) {
@@ -1287,7 +1311,6 @@ router.post('/filterTransactions', function (req, res) {
     if (applicationType === 'update-register' && wholeORpart === 'no') {
       res.redirect('/enhancements/transactions-updateRegisterPART')
     }
-
 })
 
 

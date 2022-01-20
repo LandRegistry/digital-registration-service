@@ -1,0 +1,56 @@
+{% extends "drs-layout.html" %}
+
+
+{% block content %}
+<div class="govuk-grid-row">
+
+
+<form method="post" action="/jp1Declaration">
+
+<div class="govuk-grid-column-two-thirds">
+  <span class="govuk-caption-xl">Remove a Form A  restriction (JP1)</span>
+  <h1 class="govuk-heading-l">Confirm removal of Form A restriction (JP1) </h1>
+
+  <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+      <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="jp1-declaration" name="jp1-declaration" type="checkbox" value="declared">
+          <label class="govuk-label govuk-checkboxes__label" for="waste">
+            I agree for the joint proprietor restriction to be removed from the register when I submit this application.
+          </label>
+        </div>
+      </div>
+  
+    </fieldset>
+  </div>
+  
+  <button type="submit" role="button" draggable="false" class="govuk-button" data-module="govuk-button">
+    Continue
+  </button>
+</div>
+</form>
+
+</div>
+<script>
+  function fileupload() {
+
+  $(document).ready(function(){
+    $("a").click(function(){
+      $(document.getElementById('filenameOther')).text("document.pdf");
+    });
+  });
+
+}
+
+</script>
+
+
+
+{% endblock %}
+
+
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}
