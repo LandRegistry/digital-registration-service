@@ -31,7 +31,7 @@ router.post('/application-type-selected', function (req, res) {
 
   // Check whether the variable matches a condition
   if (applicationType == "update-register"){
-    res.redirect('/enhancements/lease-extension')
+    res.redirect('/enhancements/enter-title-numbers')
   } 
   if (applicationType == "register-update-lease"){
     res.redirect('/enhancements/register-new-lease')
@@ -47,20 +47,20 @@ router.post('/whole-or-part-or-transactions', function (req, res) {
 
   // Make a variable and give it the value from 'wholepart'
   var applicationType = req.session.data['application-type']
-  var extendLease = req.session.data['extend-lease']
+  var applicationLease = req.session.data['register-extend-lease']
 
 
   // Check whether the variable matches a condition
   if (applicationType == "update-register"){
-    if (extendLease == "yes"){
-      res.redirect('/enhancements/transactions-extendLease')
-    } 
-    if (extendLease == "no"){
-      res.redirect('/enhancements/does-application-affect-whole-title')
-    } 
+    res.redirect('/enhancements/does-application-affect-whole-title')
   } 
   if (applicationType == "register-update-lease"){
-    res.redirect('/enhancements/transactions-newLease')
+    if (applicationLease == "new-lease"){
+      res.redirect('/enhancements/transactions-newLease')
+    } 
+    if (applicationLease == "extend-lease"){
+      res.redirect('/enhancements/transactions-extendLease')
+    } 
     
   } 
   if (applicationType == "remove-jp1-restriction"){
