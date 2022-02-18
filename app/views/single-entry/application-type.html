@@ -1,0 +1,72 @@
+{% extends "drs-layout.html" %}
+
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l"></span>
+  <h1 class="govuk-heading-l">What does your application include?</h1>
+
+  <div>
+     <div>
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+      {{ govukRadios({
+        idPrefix: "application-type",
+          name: "application-type",
+  
+      items: [
+      {
+        value: "transfer-of-part",
+        text: "A transfer of part"
+      },
+      {
+        value: "new-lease",
+        text: "Creating a new lease"
+      },
+      {
+        value: "remove-jp1-restriction",
+        text: "Removing a Form A (JP1) restriction"
+      },
+      {
+        divider: "or"
+      },
+      {
+        value: "register-update",
+        text: "My application does not include these register updates"
+      }
+      ]
+      }) }}
+
+    {{ govukButton({
+    text: "Continue"
+  }) }}
+</form>
+
+    </div>
+    </div>
+
+
+
+<script type="application/json" id="whole-form-validation">
+  {
+    "user-type": {
+      "presence": {
+        "message": "^Select if you are a conveyancer or not"
+      }
+    }
+  }
+</script>
+
+
+
+
+{% endblock %}
+
+
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}

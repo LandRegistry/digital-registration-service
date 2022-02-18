@@ -1,0 +1,84 @@
+{% extends "drs-layout.html" %}
+
+
+{% block content %}
+
+<a href="/single-entry/reference" class="govuk-back-link">Back</a>
+
+    <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l"></span>
+  <h1 class="govuk-heading-l">Are you a conveyancer?</h1>
+
+  <div>
+
+
+     <div>
+
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Which should I select?
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          Select ‘Yes’ if you are (or are employed and supervised by) a solicitor or conveyancer authorised under the Legal Services Act 2007 to provide reserved legal services relating to land registration. Otherwise, select ‘No’.
+          <br>
+          <br>Find out more in <a href='https://www.gov.uk/government/publications/evidence-of-identity-conveyancers/practice-guide-67-evidence-of-identity-conveyancers'>Practice Guide 67 (opens in new tab)</a>.
+        </div>
+      </details>
+
+
+      <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset">
+      <div class="govuk-radios" data-module="govuk-radios">
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="conveyancer" name="conveyancer" type="radio" value="Yes, I'm a conveyancer or acting on behalf of a conveyancer">
+          <label class="govuk-label govuk-radios__label" for="conveyancer">
+            Yes, I'm a conveyancer or acting on behalf of a conveyancer
+          </label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="conveyancer-2" name="conveyancer" type="radio" value="No">
+          <label class="govuk-label govuk-radios__label" for="conveyancer-2">
+            No
+          </label>
+        </div>
+
+    </fieldset>
+  </div>
+
+
+
+    {{ govukButton({
+    text: "Continue",
+    href: "application-type"
+  }) }}
+
+
+    </div>
+    </div>
+
+
+
+<script type="application/json" id="whole-form-validation">
+  {
+    "user-type": {
+      "presence": {
+        "message": "^Select if you are a conveyancer or not"
+      }
+    }
+  }
+</script>
+
+
+
+
+{% endblock %}
+
+
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}
