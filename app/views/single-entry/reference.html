@@ -2,25 +2,23 @@
 
 {% block content %}
 
+<a href="/single-entry/start" class="govuk-back-link">Back</a>
+
         <div class="govuk-grid-row">
-            <div class="govuk-grid-column-two-thirds">
+            <div class="govuk-grid-column-full">
 
               <form method="get" action="user-type" data-validate="reference-form-validation" novalidate>
 
-                  <h1 class="govuk-heading-l"> Enter your reference </h1>
+                  <h1 class="govuk-heading-l"> What is your reference? </h1>
 
-
-                      <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
 
                         <div class="govuk-form-group">
-                          <label class="govuk-label" for="with-hint">
-                            Type in your reference for this application
-                          </label>
+                          <div id="account-number-hint" class="govuk-hint">
+                            For example "ABC123"
+                          </div>
 
-                          <input type="text" class="govuk-input govuk-js-character-count govuk-!-width-one-half" id="with-hint" name="reference" aria-describedby="with-hint-info with-hint-hint">
+                          <input type="text" class="govuk-input govuk-js-character-count govuk-!-width-one-third" id="with-hint" name="reference" aria-describedby="with-hint-info with-hint-hint">
                         </div>
-
-                      </div>
 
 
                     {{ govukButton({
