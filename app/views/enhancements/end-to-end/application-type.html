@@ -6,51 +6,66 @@
     <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <span class="govuk-caption-l"></span>
-  <h1 class="govuk-heading-l">What do you need to do?</h1>
+  <h1 class="govuk-heading-l">Select application type</h1>
 
-  <div>
-
-
-     <div>
 
 
 
     <!-- <form method="post" action="user-type-answer" name="" data-validate="whole-form-validation" novalidate>
   routing removed temporarily for MT testing -->
-
+  <div class="govuk-inset-text"  style="margin-top: 0px;">
+    Additional register updates can accompany each application type.
+  </div>
 
 <form method="post" action="/application-type-selected" novalidate>
-        {{ govukRadios({
-  idPrefix: "application-type",
-  name: "application-type",
-  fieldset: {
-    legend: {
-      text: "",
-      isPageHeading: true,
-      classes: "govuk-fieldset__legend--m"
-    }
-  },
-
-
-  items: [
-    {
-      value: "update-register",
-      text: "Update existing titles in the Register"
-    },
-    {
-      value: "register-update-lease",
-      text: "Register a new lease",
-      disabled: false
-
-    },
-    {
-      value: "remove-jp1-restriction",
-      text: "Remove a Form A restriction (JP1)",
-      disabled: false
-
-    }
-  ]
-}) }}
+  <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset" aria-describedby="sign-in-hint">
+      <div class="govuk-radios" data-module="govuk-radios">
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="register-updates" name="application-type" type="radio" value="register-updates" aria-describedby="sign-in-item-hint">
+          <label class="govuk-label govuk-radios__label" for="register-updates">
+            Register updates 
+          </label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="transfer-of-part" name="application-type" type="radio" value="transfer-of-part" aria-describedby="sign-in-2-item-hint">
+          <label class="govuk-label govuk-radios__label" for="transfer-of-part">
+            Transfer of part
+          </label>
+          <div id="transfer-of-part-item-hint" class="govuk-hint govuk-radios__hint">
+            If you want to sell part of a registered title.          
+          </div>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="new-lease" name="application-type" type="radio" value="new-lease" aria-describedby="sign-in-2-item-hint">
+          <label class="govuk-label govuk-radios__label" for="new-lease">
+            New lease
+          </label>
+          <div id="new-lease-item-hint" class="govuk-hint govuk-radios__hint">
+            If your application includes the creation of a new lease, without updating other existing leases.          
+          </div>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="lease-extension" name="application-type" type="radio" value="lease-extension" aria-describedby="sign-in-2-item-hint">
+          <label class="govuk-label govuk-radios__label" for="lease-extension">
+            Lease extension
+          </label>
+          <div id="lease-extension-item-hint" class="govuk-hint govuk-radios__hint">
+            If your application includes the creation of a new lease along with updates to existing leases.
+          </div>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="FormA" name="application-type" type="radio" value="formA" aria-describedby="sign-in-2-item-hint">
+          <label class="govuk-label govuk-radios__label" for="formA">
+            Removal of a Form A restriction (JP1)
+          </label>
+          <div id="formA-item-hint" class="govuk-hint govuk-radios__hint">
+            To change a registered property from Tenants in Common to Joint Tenants. Other register updates cannot be included in the application.          
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
 
     {{ govukButton({
     text: "Continue"

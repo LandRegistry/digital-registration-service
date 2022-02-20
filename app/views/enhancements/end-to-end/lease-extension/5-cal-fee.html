@@ -1,0 +1,85 @@
+{% extends "drs-layout.html" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-full">
+  <span class="govuk-caption-l"></span>
+
+
+  <h1 class="govuk-heading-l">Total fee </h1>
+  <h3 class="govuk-body" style="font-weight: bold">£95 will be taken by Direct Debit from account no 1270797</h3>
+
+  <details class="govuk-details" data-module="govuk-details">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+        Help with fees
+      </span>
+    </summary>
+    <div class="govuk-details__text"> 
+      For a full breakdown of how we calculate the fees for your application, take a look at our <a href="#" class="govuk-link">guidance on Registration Service fees (opens in a new window)</a>.
+     </div>
+  </details>
+
+
+    <table class="govuk-table" id="">
+
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header" style="width:30%;">Transaction</th>
+          <th scope="col" class="govuk-table__header" style="width:15%;">Priority</th>
+          <th scope="col" class="govuk-table__header" style="width:30%;">Value or price paid</th>
+          <th scope="col" class="govuk-table__header" style="width:15%;">Fee</th>
+          <th scope="col" class="govuk-table__header">Options</th>
+        </tr>
+      </thead>
+
+      <tbody class="govuk-table_body">
+          <tr class="govuk-table_row" id="hidePI">
+            <td class="govuk-table__cell">Surrender a lease</td>
+            <td class="govuk-table__cell">1</td>
+            <td class="govuk-table__cell">£{{ data['priority2values'] }}</td>
+            <td class="govuk-table__cell">£95</td>
+            <td class="govuk-table__cell"><a class="govuk-link" href="calculate-fees">Amend value</a></td>
+          </tr>
+
+          <tr class="govuk-table_row" id="hidePI">
+            <td class="govuk-table__cell">New lease</td>
+            <td class="govuk-table__cell">2</td>
+            <td class="govuk-table__cell">£{{ data['priority3value'] }}</td>
+            <td class="govuk-table__cell">£50</td>
+
+            <td class="govuk-table__cell"><a class="govuk-link" href="calculate-fees">Amend amount</a></td>
+          </tr>
+      </tbody>
+
+      </table>
+
+      <a class="govuk-link govuk-body" href="select-transactions">Add or change transactions</a><br>
+  <br>
+  <br>
+
+  <p class="govuk-body" style="margin-bottom: 0px;"> Select 'Continue' to confirm all details are correct.</p>
+
+
+
+
+{{ govukButton({
+classes: "govuk-!-margin-top-9",
+
+text: "Continue",
+href: "/enhancements/add-applicants"
+
+}) }}
+
+
+</div>
+</div>
+
+
+{% endblock %}
+
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}
