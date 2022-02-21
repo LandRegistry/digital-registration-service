@@ -23,6 +23,30 @@ router.post('/whole-part-answer', function (req, res) {
 
 })
 
+
+// Run this code when a form is submitted to '/Application-type-selected'
+router.post('/type-selected', function (req, res) {
+
+  // Make a variable and give it the value from 'wholepart'
+  var ApplicationType = req.session.data['Application-type'];
+  req.session.data['function-executing'] = 'yes';
+
+  // Check whether the variable matches a condition
+  if (ApplicationType == "register-updates"){
+    res.redirect('/enhancements/end-to-end/register-updates/1-title-no');
+  } 
+  if (ApplicationType == "transfer-of-part"){
+    res.redirect('/enhancements/end-to-end/transfer-of-part/1-title-no');
+  } 
+  if (ApplicationType == 'new-lease'){
+    res.redirect('/enhancements/end-to-end/new-lease/1-title-no');
+  } 
+  if (ApplicationType == 'lease-extension'){
+    res.redirect('/enhancements/end-to-end/lease-extension/1-title-no');
+  } 
+
+})
+
 // Run this code when a form is submitted to '/application-type-selected'
 router.post('/application-type-selected', function (req, res) {
 
