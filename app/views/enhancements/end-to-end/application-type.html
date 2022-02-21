@@ -1,7 +1,38 @@
 {% extends "drs-layout.html" %}
+{% include "includes/scripts.html" %}
+
+<script src="/public/javascripts/jquery-1.11.3.js"></script>
 
 
 {% block content %}
+
+
+<script>
+
+
+
+  $('.govuk-button').click(function() {
+  
+    $("#register-updates").attr('checked')
+    go(www.google.com);
+  
+  
+    $("#transfer-of-part").attr('checked')
+    go(www.bbc.co.uk);
+  
+  
+    $("#new-lease").attr('checked')
+    go(www.yahoo.com);
+  
+  
+    $("#lease-extension").attr('checked')
+    go(www.itv.co.uk);
+  
+  })
+  
+  
+  </script>
+
 
     <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
@@ -65,16 +96,20 @@
         </div>
       </div>
     </fieldset>
-  </div>
 
+
+    <button class="govuk-button" data-module="govuk-button">
+      Continue
+  </button> 
+  </div>
+<!-- 
     {{ govukButton({
     text: "Continue"
-  }) }}
+  }) }} -->
 </form>
 
     </div>
     </div>
-
 
 
 <script type="application/json" id="whole-form-validation">
@@ -95,5 +130,4 @@
 
 
 {% block bodyEnd %}
-  {% include "includes/scripts.html" %}
 {% endblock %}

@@ -31,6 +31,8 @@
 
 {% block head %}
   {% include "includes/head.html" %}
+  {% include "includes/scripts.html" %}
+
 {% endblock %}
 
 {% block pageTitle %}
@@ -71,7 +73,6 @@
 
 {% block bodyEnd %}
   {% block scripts %}
-    {% include "includes/scripts.html" %}
     {% block pageScripts %}{% endblock %}
   {% endblock %}
   <!-- GOV.UK Prototype Kit {{releaseVersion}} -->

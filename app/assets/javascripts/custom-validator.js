@@ -6,3 +6,6 @@ validate.validators.postcode = function(value, options, key, attributes) {
  console.log(attributes);
  return "format is totally wrong";
 };
+function go(location) {
+    window.location.href = location;
+  }
