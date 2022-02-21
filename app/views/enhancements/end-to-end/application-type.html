@@ -1,37 +1,11 @@
 {% extends "drs-layout.html" %}
-{% include "includes/scripts.html" %}
 
-<script src="/public/javascripts/jquery-1.11.3.js"></script>
 
 
 {% block content %}
 
 
-<script>
 
-
-
-  $('.govuk-button').click(function() {
-  
-    $("#register-updates").attr('checked')
-    go(www.google.com);
-  
-  
-    $("#transfer-of-part").attr('checked')
-    go(www.bbc.co.uk);
-  
-  
-    $("#new-lease").attr('checked')
-    go(www.yahoo.com);
-  
-  
-    $("#lease-extension").attr('checked')
-    go(www.itv.co.uk);
-  
-  })
-  
-  
-  </script>
 
 
     <div class="govuk-grid-row">
@@ -94,13 +68,17 @@
             To change a registered property from Tenants in Common to Joint Tenants. Other register updates cannot be included in the application.          
           </div>
         </div>
+
+
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+      </button>
+      
       </div>
-    </fieldset>
+      </fieldset>
 
 
-    <button class="govuk-button" data-module="govuk-button">
-      Continue
-  </button> 
+
   </div>
 <!-- 
     {{ govukButton({
@@ -110,7 +88,31 @@
 
     </div>
     </div>
+    <script>
 
+
+
+      $('.govuk-button').click(function() {
+      
+        $("#register-updates").attr('checked')
+        go(www.bbc.co.uk);
+      
+      
+        $("#transfer-of-part").attr('checked')
+        go(www.bbc.co.uk);
+      
+      
+        $("#new-lease").attr('checked')
+        go(www.bbc.co.uk);
+      
+      
+        $("#lease-extension").attr('checked')
+        go(www.bbc.co.uk);
+      
+      })
+      
+      
+      </script>
 
 <script type="application/json" id="whole-form-validation">
   {
@@ -126,6 +128,7 @@
 
 
 {% endblock %}
+  {% include "includes/scripts.html" %}
 
 
 
