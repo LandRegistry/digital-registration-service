@@ -12,7 +12,7 @@
 You can add more applicants in the next step. </p>
 
       <br>
-          <form method="get" action="applicants-list" data-validate="applicant-form-validation" novalidate>
+          <!-- <form method="get" action="applicants-list" data-validate="applicant-form-validation" novalidate> -->
             <div class="govuk-form-group">
               <fieldset class="govuk-fieldset" aria-describedby="add-applicant-conditional-hint">
                 <h2 class="govuk-heading-s">Select applicant type</h2>
@@ -26,7 +26,7 @@ You can add more applicants in the next step. </p>
 
                   <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-add-applicant-conditional">
                     <div class="govuk-form-group">
-                      <label class="govuk-label" for="add-applicant-individual-forename">
+                      <label class="govuk-label nametest" for="add-applicant-individual-forename">
                         Forenames
                       </label>
                       <input class="govuk-input govuk-!-width-one-half" id="add-applicant-individual-forename" name="applicant-individual-forename"  type="forename"  >
@@ -562,7 +562,7 @@ You can add more applicants in the next step. </p>
                   </div>
                 </fieldset>
                 </div>
-
+            
 
                 <div class="govuk-warning-text">
                   <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
@@ -573,18 +573,35 @@ You can add more applicants in the next step. </p>
                   </strong>
                 </div>
 
+                <button class="govuk-button" data-module="govuk-button">
+                  Continue
+              </button>
 
 
-
-                {{ govukButton({
+            <!--    {{ govukButton({
                   text: "Continue",
                   classes: "govuk-!-margin-top-5",
                   href:"7-applicants"
                 }) }}
 
-</form>
+ </form> -->
+
+<script>
 
 
+$('.govuk-button').click(function() {
+
+var nameTest = $(".nametest").val();
+
+member.nameTest = nameTest;
+console.log('hi')
+
+go('7-applicants');
+
+}) 
+
+
+</script>
 
 
 <script type="application/json" id="applicant-form-validation">
