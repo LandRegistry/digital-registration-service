@@ -5,7 +5,7 @@
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
 
-              <form method="get" action="/enhancements/end-to-end/conveyancer.html" data-validate="reference-form-validation" novalidate>
+              <!-- <form method="get" action="/enhancements/end-to-end/conveyancer.html" data-validate="reference-form-validation" novalidate> -->
 
                   <span class="govuk-caption-l">Apply to update or create a registered title</span>
                   <h1 class="govuk-heading-l"> Enter your reference </h1>
@@ -18,24 +18,40 @@
                             Type in your reference for this application
                           </label>
 
-                          <input type="text" class="govuk-input govuk-js-character-count govuk-!-width-one-half" id="with-hint" name="reference" aria-describedby="with-hint-info with-hint-hint">
+                          <input type="text" class="govuk-input govuk-js-character-count govuk-!-width-one-half validatethis" id="with-hint" name="reference" aria-describedby="with-hint-info with-hint-hint">
                         </div>
 
                       </div>
+                     
+                      <button class="govuk-button" data-module="govuk-button">
+                        Continue
+                    </button>
 
-
-                    {{ govukButton({
+                    <!-- {{ govukButton({
                       text: "Continue",
                       href: "conveyancer.html"
                     }) }}
 
-              </form>
+              </form> -->
             </div>
         </div>
 
+<script>
 
+  $('.govuk-button').click(function () {
 
+    // var input = $('.validatethis').val();
 
+    if ($('.validatethis').val().length === 0) {
+      $('.validatethis').css({ border: 'solid 5px red' });
+    }
+
+    if ($('.validatethis').val().length >= 1) {
+    go('conveyancer');
+  }
+
+  })
+</script>
 
   <script type="application/json" id="reference-form-validation">
    {
