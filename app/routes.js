@@ -23,6 +23,47 @@ router.post('/whole-part-answer', function (req, res) {
 
 })
 
+
+// Run this code when a form is submitted to '/type-selected'
+router.post('/type-selected', function (req, res) {
+
+  // Make a variable and give it the value from 'wholepart'
+  var ApplicationType = req.session.data['Application-type'];
+  req.session.data['function-executing'] = 'yes';
+
+  // Check whether the variable matches a condition
+  if (ApplicationType == "register-updates"){
+    res.redirect('/enhancements/end-to-end/register-updates/1-title-no');
+  } 
+  if (ApplicationType == "transfer-of-part"){
+    res.redirect('/enhancements/end-to-end/transfer-of-part/1-title-no');
+  } 
+  if (ApplicationType == 'new-lease'){
+    res.redirect('/enhancements/end-to-end/new-lease/1-title-no');
+  } 
+  if (ApplicationType == 'lease-extension'){
+    res.redirect('/enhancements/end-to-end/lease-extension/1-title-no');
+  } 
+
+})
+
+
+router.post('/transaction-order-selected', function (req, res) {
+
+  // Make a variable and give it the value from 'wholepart'
+  var FirstTransaction = req.session.data['Transaction1'];
+
+  // Check whether the variable matches a condition
+  if (FirstTransaction == "Transfer for value (TR1, TR5)"){
+    res.redirect('/enhancements/end-to-end/register-updates/5-cal-a');
+  } 
+
+  if (FirstTransaction == "Surrender of lease"){
+    res.redirect('/enhancements/end-to-end/register-updates/5-cal-b');
+  } 
+
+})
+
 // Run this code when a form is submitted to '/application-type-selected'
 router.post('/application-type-selected', function (req, res) {
 
