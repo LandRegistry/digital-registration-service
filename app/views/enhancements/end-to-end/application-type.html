@@ -1,4 +1,5 @@
 {% extends "drs-layout.html" %}
+{% include "includes/scripts.html" %}
 
 
 
@@ -89,32 +90,24 @@
     </div>
     </div>
     <script>
+      $('.govuk-button').click(function () {
 
-
-
-      $('.govuk-button').click(function() {
-      
-        $("#register-updates").attr('checked')
-        go(www.bbc.co.uk);
-      
-      
-        $("#transfer-of-part").attr('checked')
-        go(www.bbc.co.uk);
-      
-      
-        $("#new-lease").attr('checked')
-        go(www.bbc.co.uk);
-      
-      
-        $("#lease-extension").attr('checked')
-        go(www.bbc.co.uk);
-      
+        $("#register-updates").attr('checked');
+        go('register-updates/1-title-no.html');
+        console.log("Hello world!");
+    
+        $("#transfer-of-part").attr('checked');
+        go('transfer-of-part/1-title-no.html');
+        console.log("SUP DUDE!");
       })
-      
-      
-      </script>
+    </script>
 
-<script type="application/json" id="whole-form-validation">
+
+
+
+
+
+<!-- <script type="application/json" id="whole-form-validation">
   {
     "user-type": {
       "presence": {
@@ -122,13 +115,12 @@
       }
     }
   }
-</script>
+</script> -->
 
 
 
 
 {% endblock %}
-  {% include "includes/scripts.html" %}
 
 
 
