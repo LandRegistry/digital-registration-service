@@ -23,8 +23,8 @@
     Additional register updates can accompany each application type.
   </div>
 
-<form method="post" action="/type-selected" novalidate>
-  <div class="govuk-form-group">
+  <!-- <form method="post" action="/type-selected" novalidate> -->
+      <div class="govuk-form-group">
     <fieldset class="govuk-fieldset" aria-describedby="sign-in-hint">
       <div class="govuk-radios" data-module="govuk-radios">
         <div class="govuk-radios__item">
@@ -86,20 +86,33 @@
     {{ govukButton({
     text: "Continue"
   }) }} -->
-</form>
+<!-- </form> -->
 
     </div>
     </div>
     <script>
       $('.govuk-button').click(function () {
 
-        $("#register-updates").attr('checked');
-        go('register-updates/1-title-no.html');
-        console.log("Hello world!");
-    
-        $("#transfer-of-part").attr('checked');
-        go('transfer-of-part/1-title-no.html');
-        console.log("SUP DUDE!");
+        if ($("#register-updates").prop('checked')) {
+          go('register-updates/1-title-no.html');
+        }
+
+        if ($("#transfer-of-part").prop('checked')) {
+          go('transfer-of-part/1-title-no.html');
+        }
+
+        if ($("#new-lease").prop('checked')) {
+          go('new-lease/1-title-no.html');
+        }
+
+        if ($("#lease-extension").prop('checked')) {
+          go('lease-extension/1-title-no.html');
+        }
+
+        if ($("#FormA").prop('checked')) {
+          alert('Is not ready for this protoype');
+        }
+        
       })
     </script>
 
