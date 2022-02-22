@@ -64,6 +64,22 @@ router.post('/transaction-order-selected', function (req, res) {
 
 })
 
+router.post('/go-to-task-list', function (req, res) {
+
+  // Make a variable and give it the value from 'wholepart'
+  var FirstTransaction = req.session.data['Transaction1'];
+
+  // Check whether the variable matches a condition
+  if (FirstTransaction == "Transfer for value (TR1, TR5)"){
+    res.redirect('/enhancements/end-to-end/register-updates/9-task-list-a');
+  } 
+
+  if (FirstTransaction == "Surrender of lease"){
+    res.redirect('/enhancements/end-to-end/register-updates/9-task-list-b');
+  } 
+
+})
+
 // Run this code when a form is submitted to '/application-type-selected'
 router.post('/application-type-selected', function (req, res) {
 
