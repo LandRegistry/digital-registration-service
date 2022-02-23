@@ -1,0 +1,154 @@
+{% extends "drs-layout.html" %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds" style="margin-top: -35px; margin-bottom:10px;">
+    <a href="/enhancements/end-to-end/register-updates/" class="govuk-back-link">Return to task list</a>
+    </div>
+
+<div class="govuk-grid-column-full">
+  <span class="govuk-caption-xl">Transfer of Part</span>
+  <h1 class="govuk-heading-xl"> Attach documents </h1>
+  <h2 class="govuk-heading-l"> Required </h2>
+
+  <form method="post" action="/enhancements/attachedDocuments">
+  <table class="govuk-table">
+
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Category</th>
+      <th scope="col" class="govuk-table__header govuk-!-width-one-third">Document type</th>
+      <th scope="col" class="govuk-table__header">Certification</th>
+      <th scope="col" class="govuk-table__header">File name</th>
+      <th scope="col" class="govuk-table__header">Options</th>
+    </tr>
+  </thead>
+
+  <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Legal deeds</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter">TP1 Registered Title(s): Part Transfer</td>
+          <td class="govuk-table__cell">Certified</td>
+          <td class="govuk-table__cell govuk-!-width-one-third">tp1-JohnSmith.pdf</td>
+          {% if data['tr1attached']%}<td class="govuk-table__cell govuk-link"><a href="">Remove</a></td>{% endif %}
+          {% if not data['tr1attached'] %}<td class="govuk-table__cell govuk-link"><a href="document_upload.html">Attach</a></td>{% endif %}
+        </tr>
+
+  </tbody>
+</table>
+
+<h3 class="govuk-heading-l"> Suggested </h3>
+<p class="govuk-body">Documents you may need to attach if relevant to your application.</p>
+
+<table class="govuk-table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Category</th>
+      <th scope="col" class="govuk-table__header govuk-!-width-one-third">Document type</th>
+      <th scope="col" class="govuk-table__header">Certification</th>
+      <th scope="col" class="govuk-table__header">File name</th>
+      <th scope="col" class="govuk-table__header">Options</th>
+    </tr>
+  </thead>
+
+  <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Evidence</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter">Consent</td>
+          <td class="govuk-table__cell">{% if data['suggested_upload']%} Certified {% endif %}</td>
+          <td class="govuk-table__cell govuk-!-width-one-third">{% if data['suggested_upload']%} Consent.pdf {% endif %}</td>
+          {% if data['suggested_upload']%}<td class="govuk-table__cell govuk-link"><a href="">Remove</a></td>{% endif %}
+          {% if not data['suggested_upload'] %}<td class="govuk-table__cell govuk-link"><a href="/../transactions/transfer/documents/document_upload_suggested">Attach</a></td>{% endif %}
+        </tr>
+
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Evidence</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter">Conveyancers certificate</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell govuk-!-width-one-third"></td>
+          <td class="govuk-table__cell govuk-link">Attach</td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Evidence</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter">Death certificate</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell govuk-!-width-one-third"></td>
+          <td class="govuk-table__cell govuk-link">Attach</td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Evidence</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter">Marriage/civil partnership certificate</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell govuk-!-width-one-third"></td>
+          <td class="govuk-table__cell govuk-link">Attach</td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Evidence</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter">Stamp Duty Land Tax Certificate</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell govuk-!-width-one-third"></td>
+          <td class="govuk-table__cell govuk-link">Attach</td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Evidence</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter">Land Transaction Tax Certificate</td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell govuk-!-width-one-third"></td>
+          <td class="govuk-table__cell govuk-link">Attach</td>
+        </tr>
+
+
+  </tbody>
+</table>
+
+{% if data['other_upload'] %}
+<h3 class="govuk-heading-l"> Other </h3>
+
+<table class="govuk-table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Category</th>
+      <th scope="col" class="govuk-table__header govuk-!-width-one-third">Document type</th>
+      <th scope="col" class="govuk-table__header">Certification</th>
+      <th scope="col" class="govuk-table__header">File name</th>
+      <th scope="col" class="govuk-table__header">Options</th>
+    </tr>
+  </thead>
+
+  <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Evidence</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter">Form JO (Trust information)</td>
+          <td class="govuk-table__cell">Certified</td>
+          <td class="govuk-table__cell govuk-!-width-one-third">Document.pdf</td>
+          <td class="govuk-table__cell govuk-link"><a href="">Remove</a></td>
+        </tr>
+  </tbody>
+  </table>
+
+{% endif %}
+<p class='govuk-body'><a href="document_upload_other">Attach another type of document</a></p>
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+</form>
+
+
+</div>
+</div>
+
+
+
+
+{% endblock %}
+
+
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}
