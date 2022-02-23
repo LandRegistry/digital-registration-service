@@ -3,11 +3,11 @@
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds" style="margin-top: -35px; margin-bottom:10px;">
-    <a href="/enhancements/Transfer-Charge/tasks-complete-your-application" class="govuk-back-link">Return to task list</a>
+    <a href="/enhancements/end-to-end/register-updates/" class="govuk-back-link">Return to task list</a>
     </div>
 
 <div class="govuk-grid-column-full">
-  <span class="govuk-caption-xl">Transfer for value (TR1)</span>
+  <span class="govuk-caption-xl">Transfer of Part</span>
   <h1 class="govuk-heading-xl"> Attach documents </h1>
   <h2 class="govuk-heading-l"> Required </h2>
 
@@ -26,34 +26,14 @@
 
   <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
-          <td class="govuk-table__cell">Legal deed</td>
-          <td class="govuk-table__cell govuk-!-width-one-quarter">TR1 - Registered titles: whole transfer</td>
-          <td class="govuk-table__cell">{% if data['tr1attached']%} Certified {% endif %}</td>
-          <td class="govuk-table__cell govuk-!-width-one-third">{% if data['tr1attached']%} TR1.pdf {% endif %}</td>
+          <td class="govuk-table__cell">Legal deeds</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter">TP1 Registered Title(s): Part Transfer</td>
+          <td class="govuk-table__cell">Certified</td>
+          <td class="govuk-table__cell govuk-!-width-one-third">tp1-JohnSmith.pdf</td>
           {% if data['tr1attached']%}<td class="govuk-table__cell govuk-link"><a href="">Remove</a></td>{% endif %}
           {% if not data['tr1attached'] %}<td class="govuk-table__cell govuk-link"><a href="document_upload.html">Attach</a></td>{% endif %}
+        </tr>
 
-        </tr>
-        {% if data['spencer-attorney-1']%}
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">Evidence - power of attorney: Spencer Reid</td>
-          <td class="govuk-table__cell govuk-!-width-one-quarter">Power of attorney</td>
-          <td class="govuk-table__cell">{% if data['poaSpencerattached']%} Certified {% endif %}</td>
-          <td class="govuk-table__cell govuk-!-width-one-third">{% if data['poaSpencerattached']%} POA-SpencerReid.pdf {% endif %}</td>
-          {% if data['poaSpencerattached']%}<td class="govuk-table__cell govuk-link"><a href="">Remove</a></td>{% endif %}
-          {% if not data['poaSpencerattached'] %}<td class="govuk-table__cell govuk-link"><a href="document_uploadPOASpencer.html">Attach</a></td>{% endif %}
-        </tr>
-        {% endif %}
-        {% if data['mary-attorney-1']%}
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">Evidence - power of attorney: Mary Reid</td>
-          <td class="govuk-table__cell govuk-!-width-one-quarter">Power of attorney</td>
-          <td class="govuk-table__cell">{% if data['poaMaryattached']%} Certified {% endif %}</td>
-          <td class="govuk-table__cell govuk-!-width-one-third">{% if data['poaMaryattached']%} POA-MaryReid.pdf {% endif %}</td>
-          {% if data['poaMaryattached']%}<td class="govuk-table__cell govuk-link"><a href="">Remove</a></td>{% endif %}
-          {% if not data['poaMaryattached'] %}<td class="govuk-table__cell govuk-link"><a href="document_uploadPOAMary.html">Attach</a></td>{% endif %}
-        </tr>
-        {% endif %}
   </tbody>
 </table>
 
@@ -153,10 +133,8 @@
 {% endif %}
 <p class='govuk-body'><a href="document_upload_other">Attach another type of document</a></p>
 
-
 {{ govukButton({
-  text: "Continue",
-  href:"10-complete-application"
+  text: "Continue"
 }) }}
 </form>
 
