@@ -5,19 +5,38 @@
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
 
-              <!-- <form method="get" action="/enhancements/end-to-end/conveyancer.html" data-validate="reference-form-validation" novalidate> -->
 
-                  <span class="govuk-caption-l">Apply to update or create a registered title</span>
-                  <h1 class="govuk-heading-l"> Enter your reference </h1>
+              <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary">
+                <h2 class="govuk-error-summary__title" id="error-summary-title">
+                  There is a problem
+                </h2>
+                <div class="govuk-error-summary__body">
+                  <ul class="govuk-list govuk-error-summary__list">
+                    <li>
+                      <a href="#with-hint">Enter a reference number</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+
+              <!-- <form method="get" action="/enhancements/end-to-end/conveyancer.html" data-validate="reference-form-validation" novalidate> -->
+                <div class="govuk-form-group"> 
+                <span class="govuk-caption-l">Apply to update or create a registered title</span>
+                  
+                 
+                  <h1 class="govuk-heading-l "> Enter your reference </h1>
 
 
                       <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
 
-                        <div class="govuk-form-group">
+                     
                           <label class="govuk-label" for="with-hint">
                             Type in your reference for this application
                           </label>
-
+                          <p id="national-insurance-number-error" class="govuk-error-message">
+                            <span class="govuk-visually-hidden">Error:</span> Enter a reference number
+                          </p>
                           <input type="text" class="govuk-input govuk-js-character-count govuk-!-width-one-half validatethis" id="with-hint" name="reference" aria-describedby="with-hint-info with-hint-hint">
                         </div>
 
@@ -37,18 +56,22 @@
         </div>
 
 <script>
+  $('.govuk-error-message').hide();
+  $('.govuk-error-summary').hide();
 
   $('.govuk-button').click(function () {
-
-    // var input = $('.validatethis').val();
-
+    
     if ($('.validatethis').val().length === 0) {
-      $('.validatethis').css({ border: 'solid 5px red' });
+      $('.validatethis').css({ border: 'solid 2px #d4351c' });
+      // $('.govuk-input').addClass('.govuk-input--error').removeClass('.govuk-input'); 
+      $('.govuk-error-message').show();
+      $('.govuk-error-summary').show();
+      $('.govuk-form-group').addClass('govuk-form-group--error').removeClass('govuk-form-group');
     }
 
     if ($('.validatethis').val().length >= 1) {
-    go('conveyancer');
-  }
+      go('conveyancer');
+    }
 
   })
 </script>
