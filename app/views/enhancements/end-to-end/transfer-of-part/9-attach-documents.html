@@ -11,7 +11,7 @@
   <h1 class="govuk-heading-xl"> Attach documents </h1>
   <h2 class="govuk-heading-l"> Required </h2>
 
-  <form method="post" action="/enhancements/attachedDocuments">
+  <form method="post" action="/enhancements/end-to-end/transfer-of-part/10-complete-application">
   <table class="govuk-table">
 
   <thead class="govuk-table__head">
@@ -29,7 +29,7 @@
           <td class="govuk-table__cell">Legal deeds</td>
           <td class="govuk-table__cell govuk-!-width-one-quarter">TP1 Registered Title(s): Part Transfer</td>
           <td class="govuk-table__cell">Certified</td>
-          <td class="govuk-table__cell govuk-!-width-one-third">tp1-JohnSmith.pdf</td>
+          <td class="govuk-table__cell govuk-!-width-one-third">tp1-{{ data['applicant-individual-forename'] }}{{ data['applicant-individual-surname'] }}.pdf</td>
           {% if data['tr1attached']%}<td class="govuk-table__cell govuk-link"><a href="">Remove</a></td>{% endif %}
           {% if not data['tr1attached'] %}<td class="govuk-table__cell govuk-link"><a href="document_upload.html">Attach</a></td>{% endif %}
         </tr>

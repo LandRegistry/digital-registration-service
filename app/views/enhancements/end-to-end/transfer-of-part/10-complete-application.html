@@ -18,21 +18,22 @@
     <table class="govuk-table">
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header">Your reference</th>
-          <td scope="col" class="govuk-table__cell">{{ data['reference'] }}</td>
+          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Your reference</th>
+          <td scope="col" class="govuk-table__cell">Reference</td>
           <td scope="col" class="govuk-table__cell"><a style="float: right;" href="/setup/change-reference">Change</a></td>
         </tr>
       </thead>
-
+  
       <tbody class="govuk-table__body">
             <tr class="govuk-table__row">
-              <th scope="row" class="govuk-table__header">Title number(s)</th>
-              <td class="govuk-table__cell" colspan="2">{{ data['title_1'] }}</td>
+              <th scope="row" class="govuk-table__header govuk-!-width-one-quarter">Title number(s)</th>
+              <td class="govuk-table__cell" colspan="2">ABC123{% if data['title_2'] %}, ABC456 {% endif %}</td>
+              <td class="govuk-table__cell"></td>
             </tr>
-
+  
       </tbody>
     </table>
-    <h2 class="govuk-heading-m govuk-!-padding-top-5">1. Transfer for value (TR1)</h2>
+    <h2 class="govuk-heading-m govuk-!-padding-top-5">1. Transfer of Part</h2>
 
 </div>
 
@@ -40,201 +41,36 @@
   <div class="govuk-grid-column-full" style="margin-left: 35px; width: 97%;">
 
     <table class="govuk-table govuk-!-width-two-thirds">
-      <thead class="govuk-table__head">
-        <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header">1.1 Transferee details</th>
-          <td class="govuk-table__cell"></td>
-        </tr>
-
-      </thead>
-
-      <tbody class="govuk-table__body">
-            <tr class="govuk-table__row">
-
-              <td class="govuk-table__cell govuk-link"><a href="/../enhancements/transfer/transferees-whichApplicants">Select transferees</a></td>
-              <td class="govuk-table__cell">
-              {% if data['transfereelistcomplete'] %}
-              <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}
-            </td>
-
-            </tr>
-            <tr class="govuk-table__row">
-              <td class="govuk-table__cell govuk-link"><a href="/enhancements/transfer/transferee-representation">Add transferee representation</a></td>
-              <td class="govuk-table__cell">
-                {% if data['transfereerep'] %}
-                <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
-                {% endif %}</td>
-            </tr>
-            <tr class="govuk-table__row">
-              <td class="govuk-table__cell govuk-link"><a href="/enhancements/transfer/AddAddresses_forServices/transfereeAddressList">Add addresses for service</a></td>
-              <td class="govuk-table__cell">
-                {% if data['transfereeAddressComplete'] %}
-                      <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
-                {% endif %}
-            </td>
-            </tr>
-
-            <tr class="govuk-table__row">
-              <th scope="row" class="govuk-table__header">1.2 Transferor details</th>
-              <td class="govuk-table__cell"></td>
-            </tr>
-            <tr class="govuk-table__row">
-              <td class="govuk-table__cell govuk-link"><a href="/enhancements/transfer/transferor-list.html">Transferor details</a></td>
-              <td class="govuk-table__cell">  {% if data['add-transferor'] %}
-                      <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
-                      {% endif %}</td>
-            </tr>
-            <tr class="govuk-table__row">
-              <td class="govuk-table__cell govuk-link"><a href="/enhancements/transfer/transferor-representation.html">Add transferor representation</a></td>
-              <td class="govuk-table__cell">  {% if data['TransferorRepresentationSpencer'] and data['TransferorRepresentationMary'] %}
-                      <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
-                      {% endif %}
-                      </td>
-            </tr>
-
-            <tr class="govuk-table__row">
-                <th scope="row" class="govuk-table__header">1.3 Additional fields</th>
-                <td class="govuk-table__cell"></td>
-              </tr>
-              <tr class="govuk-table__row">
-                <td class="govuk-table__cell govuk-link"><a href="/enhancements/transfer/transfer-date">Confirm transfer date</a></td>
-                <td class="govuk-table__cell">
-                  {% if data['transfer-date'] %}
-                    <strong class="govuk-tag app-task-list__task-completed">COMPLETED</strong>
-                  {% endif %}
-              </tr>
-              <tr class="govuk-table__row">
-                <td class="govuk-table__cell govuk-link"><a href="/enhancements/transfer/transfer-confirm-consideration">Confirm consideration</a></td>
-                <td class="govuk-table__cell">
-                  {% if data['transfer-date'] %}
-                    <strong class="govuk-tag app-task-list__task-completed">COMPLETED</strong>
-                  {% endif %}
-              </tr>
-
-              </tr>
-              <tr class="govuk-table__row">
-                <td class="govuk-table__cell govuk-link"><a href="/enhancements/transfer/transfer-guarantee">Select title guarantee</a></td>
-                <td class="govuk-table__cell">
-                  {% if data['title-guarantee'] %}
-                    <strong class="govuk-tag app-task-list__task-completed">Completed</strong>
-                  {% endif %}
-              </tr>
-              {% if data['applicant-individual-transferee1'] and data['applicant-individual-transferee2'] %}
-              <tr class="govuk-table__row">
-                <td class="govuk-table__cell govuk-link"><a href="/enhancements/transfer/transfer-declaration">Declaration of trust</a></td>
-                <td class="govuk-table__cell">
-                  {% if data['transferTrust'] %}
-                    <strong class="govuk-tag app-task-list__task-completed">Completed</strong>
-                  {% endif %}
-              {% endif %}
-              <tr class="govuk-table__row">
-                <td class="govuk-table__cell govuk-link"><a href="/enhancements/transfer/transfer-provisions">Additional provisions (optional)</a></td>
-                <td class="govuk-table__cell">
-                  <!-- {% if data['title-guarantee'] %}
-                    <strong class="govuk-tag app-task-list__task-completed">Completed</strong>
-                  {% endif %} -->
-              </tr>
-
-            <tr class="govuk-table__row">
-              <th scope="row" class="govuk-table__header">1.4 Supporting documents</th>
-              <td class="govuk-table__cell"></td>
-            </tr>
-            <tr class="govuk-table__row">
-              <td class="govuk-table__cell govuk-link"><a href="/enhancements/transfer/transfer-download">Get part-completed TR1 (optional)</a></td>
-              <td class="govuk-table__cell">
-                {% if data['download'] %}
-                  <strong class="govuk-tag app-task-list__task-completed">Downloaded</strong>
-                {% endif %}
-            </tr>
-            <tr class="govuk-table__row">
-              <td class="govuk-table__cell govuk-link"><a href="/enhancements/transfer/documents/document_prompts-1.html">Attach documents</a></td>
-              <td class="govuk-table__cell">
-                {% if data['attached'] %}
-                  <strong class="govuk-tag app-task-list__task-completed">Attached</strong>
-                {% endif %}
-            </tr>
-      </tbody>
-    </table>
-    <h2 class="govuk-heading-m govuk-!-padding-top-5">2. Charge</h2>
-
+        <th scope="col" class="govuk-table__header">1.1 Attach documents</th>
+        <td class="govuk-table__cell"></td>
+        <tbody class="govuk-table__body">
+  
+                <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><a href="#" class="govuk-link">Attach documents</a></td>
+                <td class="govuk-table__cell"><strong style="float: right;" class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Attached</strong></td>
+                </tr>
+  
+        </tbody>
+      </table>
     </div>
 
+    <div class="govuk-grid-column-full">
 
-  <div class="govuk-grid-column-full" style="margin-left: 40px; width: 97%;">
-
-    <table class="govuk-table govuk-!-width-two-thirds">
-      <th scope="col" class="govuk-table__header">2.1 Add charge details</th>
-      <td class="govuk-table__cell"></td>
-      <tbody class="govuk-table__body">
-            <!-- <tr class="govuk-table__row">
-              <td class="govuk-table__cell"><a href="charge-without-transfer-borrower-list" class="govuk-link">Borrower details</a></td>
-
-              <td class="govuk-table__cell">{% if data['borrowerDetails1'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
-            </tr>
-
-            <tr class="govuk-table__row">
-              <td class="govuk-table__cell"><a href="borrower-representation" class="govuk-link">Add borrower representation</a></td>
-
-              <td class="govuk-table__cell">{% if data['borrowerReptype'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
-            </tr> -->
-
-
-              <tr class="govuk-table__row">
-              <td class="govuk-table__cell"><a href="/enhancements/charge/charge-date" class="govuk-link">Enter charge date</a></td>
-              <td class="govuk-table__cell">{% if data['charge-date'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
-              </tr>
-
-              <tr class="govuk-table__row">
-              <td class="govuk-table__cell"><a href="/enhancements/charge/MDRef" class="govuk-link">Do you have an MD reference?</a></td>
-              <td class="govuk-table__cell">{% if data['MDRef'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
-              </tr>
-
-              {% if data['MDRef'] %}
-              {% if not data['MDreferenceinput'] %}
-              <tr class="govuk-table__row">
-              <td class="govuk-table__cell"><a href="/enhancements/charge/add-lender" class="govuk-link">Add lenders</a></td>
-              <td class="govuk-table__cell">{% if data['add-lender'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
-              </tr>
-
-              <tr class="govuk-table__row">
-              <td class="govuk-table__cell"><a href="/enhancements/charge/lender-representation" class="govuk-link">Add lender representation</a></td>
-              <td class="govuk-table__cell">{% if data['cwt-lenderReptype'] or data['charge-lenderReptype'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
-              </tr>
-
-              <tr class="govuk-table__row">
-              <td class="govuk-table__cell">
-              <a href="/enhancements/charge/address-for-service/lender-addresstype" class="govuk-link">Add address for service</a>
-              <td class="govuk-table__cell">{% if data['lenderAddressComplete'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
-              </tr>
-              {% endif %}
-              {% endif %}
-
-              <tr class="govuk-table__row">
-                <th scope="row" class="govuk-table__header">2.2 Supporting documents</th>
-                <td class="govuk-table__cell"></td>
-              </tr>
-
-              <tr class="govuk-table__row">
-              <td class="govuk-table__cell"><a href="enhancements/charge/documents/document_prompts" class="govuk-link">Attach documents (optional)</a></td>
-              <td class="govuk-table__cell">{% if data['mortgageAttached'] and data['certificateAttached'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
-            </tr>
-      </tbody>
-    </table>
-    </div>
-
-      {% if data['mortgageAttached'] and data['certificateAttached'] %}
-      <div class="govuk-!-margin-bottom-9">
-      <h3 class="govuk-heading-l">Preview your e-AP1</h3>
-      <a href="#"><img src="/public/images/ap1-icon.svg" style="max-width:15%; height:auto; float: left; padding-right: 25px;" alt="ap1 icon"></a>
-      <h2><a href="#" class="govuk-link govuk-heading-m govuk-!-font-weight-regular" style="">Download draft e-AP1 (PDF)</a></h2>
-      <p class="govuk-body"> PDF - opens in a new window</p><br><br>
-      </div>
-      {% endif %}
-
+</div>
 
 
 
     <div class="govuk-grid-column-full">
+        <div style="display:block;">
+        <h3 class="govuk-heading-l">Preview your e-AP1</h3>
+        <a href="#"><img src="/public/images/ap1-icon.svg" style="max-width:15%; height:auto; float: left; padding-right: 25px;" alt="ap1 icon"></a>
+        <h2><a href="#" class="govuk-link govuk-heading-m govuk-!-font-weight-regular">Download draft e-AP1 (PDF)</a></h2>
+        <p class="govuk-body"> PDF - opens in a new window</p><br><br>
+        </div>
+
+
+
+
 
 
     {{ govukButton({
@@ -254,6 +90,7 @@
       {{ govukInsetText({
           text: "To avoid requisitions, attach all relevant documents."
         }) }}
+    </div>
 
         </div>
         </div>

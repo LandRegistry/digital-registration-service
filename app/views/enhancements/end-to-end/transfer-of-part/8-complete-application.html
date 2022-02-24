@@ -27,7 +27,7 @@
       <tbody class="govuk-table__body">
             <tr class="govuk-table__row">
               <th scope="row" class="govuk-table__header govuk-!-width-one-quarter">Title number(s)</th>
-              <td class="govuk-table__cell" colspan="2">ABC123, ABC456</td>
+              <td class="govuk-table__cell" colspan="2">ABC123{% if data['title_2'] %}, ABC456 {% endif %}</td>
               <td class="govuk-table__cell"></td>
             </tr>
   
@@ -46,7 +46,7 @@
         <tbody class="govuk-table__body">
   
                 <tr class="govuk-table__row">
-                <td class="govuk-table__cell"><a href="/enhancements/charge/charge-date" class="govuk-link">Attach documents</a></td>
+                <td class="govuk-table__cell"><a href="/enhancements/end-to-end/transfer-of-part/9-attach-documents" class="govuk-link">Attach documents</a></td>
                 <td class="govuk-table__cell">{% if data['charge-date'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
                 </tr>
   
