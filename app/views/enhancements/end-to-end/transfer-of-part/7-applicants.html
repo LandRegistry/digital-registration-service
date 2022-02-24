@@ -10,7 +10,7 @@
     <h1 class="govuk-heading-l">Applicants</h1>
     
 
-<form method="post" action="/enhancements/which-task-list">
+<form method="post" action="/enhancements/end-to-end/transfer-of-part/8-complete-application">
 
 
 <table class="govuk-table" id="applicantlist">
@@ -24,15 +24,6 @@
       <th scope="col" class="govuk-table__header" style="width: 10%;box-sizing: border-box;">Options</th>
     </tr>
   </thead>
-
-  <tbody class="govuk-table_body">
-    <tr class="govuk-table_row" id="hidePI">
-    <td class="govuk-table__cell">Private individual</td>
-    <td class="govuk-table__cell">John Smith</td>
-    <td class="govuk-table__cell">N/A</td>
-    <td class="govuk-table__cell">N/A</td>
-    <td class="govuk-table__cell govuk-link"><a href="add-applicants-change">Change</a><br><a  href="">Remove</a></td>
-  </tbody>
 
   {% if data['applicant-individual-forename'] %}
     <tbody class="govuk-table_body">

@@ -38,7 +38,7 @@
           <tr class="govuk-table_row" id="hidePI">
             <td class="govuk-table__cell">New lease</td>
             <td class="govuk-table__cell">1</td>
-            <td class="govuk-table__cell">£{{ data['priority2values'] }}</td>
+            <td class="govuk-table__cell price">£{{ data['priority2values'] }}</td>
             <td class="govuk-table__cell">£95</td>
             <td class="govuk-table__cell"><a class="govuk-link" href="calculate-fees">Amend value</a></td>
           </tr>
@@ -64,8 +64,9 @@
 
 </div>
 </div>
-
-
+<script>
+$('.price').html(' ' +  '£' + member.price);
+</script>
 {% endblock %}
 
 

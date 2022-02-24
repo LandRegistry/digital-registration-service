@@ -3,7 +3,7 @@
 
 {% block content %}
   <div class="govuk-grid-row">
-    <form method="post" action="/enhancements/COPY-total-fees" data-validate="select-form-validation" novalidate> <!--data-validate="reference-form-validation" novalidate-->
+    <!-- <form method="post" action="/enhancements/COPY-total-fees" data-validate="select-form-validation" novalidate> data-validate="reference-form-validation" novalidate -->
       <div class="govuk-grid-column-two-thirds">
         <h1 class="govuk-heading-l">Calculate fee</h1>
         <p class="govuk-body"> Enter prices and values where requested, then select 'Calculate fee'.</p>
@@ -32,23 +32,41 @@
           <hr style="opacity: 0.5;">
           <br>
 
-
         <a class="govuk-link govuk-body" href="select">Add/ change transactions</a><br>
-
-
+<br>
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+      </button>
+<!-- 
         {{ govukButton({
           text: "Continue",
           classes: "govuk-!-margin-top-5",
           href:"5-cal-fee"
-        }) }}
+        }) }} -->
 
         </div>
           </div>
-          </form>
+          <!-- </form> -->
         </div>
 
 
+        <script>
 
+
+          $('.govuk-button').click(function() {
+          
+          var price = $(".govuk-input").val();
+          
+          member.price = price;
+          
+
+          
+          go('5-cal-fee');
+          
+          }) 
+          
+          
+          </script>
 {% endblock %}
 
 

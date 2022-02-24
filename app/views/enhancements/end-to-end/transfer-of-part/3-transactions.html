@@ -3,7 +3,7 @@
 
 {% block content %}
 
-    <form method="post" action="/enhancements/end-to-end/transfer-of-part/4-cal" data-validate="select-form-validation" novalidate>
+    <!-- <form method="post" action="/enhancements/end-to-end/transfer-of-part/4-cal" data-validate="select-form-validation" novalidate> -->
     <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
       <span class="govuk-caption-l"></span>
@@ -377,38 +377,31 @@
 
 
     <div class="govuk-grid-column-full govuk-!-margin-top-9">
-       <!-- <button class="govuk-button"  data-module="govuk-button">
+       <button class="govuk-button"  data-module="govuk-button">
         Continue
-    </button> -->
+    </button>
 
-{{ govukButton({
+<!-- {{ govukButton({
 classes: "",
 text: "Continue"
-}) }}
+}) }} -->
 
 
 </div>
 </div>
 
-</form>
+<!-- </form> -->
 
-<!-- <script>
-    
-    $(".govuk-button").click(function () {
-    
-      if $('option[value="Transfer of part (TP1)"]').prop("selected", true){
-
-      // if $(".govuk-select option:selected").text()
-        go('4-cal');
-      }
-      else {
-        go('../hardstop');
-      }
-    })    
-
-
-  </script> -->
-
+<script>
+  $(".govuk-button").click(function () {
+    if ($(".js-select-autocomplete option:selected").text() == "Transfer of part (TP1)") {
+      go('4-cal');
+    }
+    else {
+      go('../hardstop');
+    }
+  })    
+</script>
 
 {% endblock %}
 
