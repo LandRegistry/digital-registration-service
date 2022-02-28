@@ -3,7 +3,7 @@
 
 {% block content %}
   <div class="govuk-grid-row">
-    <form method="post" action="5-cal-fee.html" data-validate="select-form-validation" novalidate> <!--data-validate="reference-form-validation" novalidate-->
+    <!-- <form method="post" action="/enhancements/COPY-total-fees" data-validate="select-form-validation" novalidate> data-validate="reference-form-validation" novalidate -->
       <div class="govuk-grid-column-two-thirds">
         <h1 class="govuk-heading-l">Calculate fee</h1>
         <p class="govuk-body"> Enter prices and values where requested, then select 'Calculate fee'.</p>
@@ -23,77 +23,79 @@
 
              </div>
              <div class="input-container"> <!-- add input and span into a container-->
-                <input type="text" class="govuk-input govuk-input--width-10" id="with-hint" name="priority2values"  value="{{ data['priority2values'] }}"  type="text" aria-describedby="with-hint-info with-hint-hint" style="padding-left : 30px;"> <!-- add padding to stop user typing behind £ sign-->
+                <input type="text" class="le1 govuk-input govuk-input--width-10" id="with-hint" name="priority2values"  value="{{ data['priority2values'] }}"  type="text" aria-describedby="with-hint-info with-hint-hint" style="padding-left : 30px;"> <!-- add padding to stop user typing behind £ sign-->
                 <span class="unit" id="with-hint">&pound</span>
             </div>
             </div>
 
 
-          <hr style="opacity: 0.5;">
-          <br>
-
-          <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
-            <h2 class="govuk-heading-m">
-            <label class="govuk-label" style="opacity: 0.5" for="Select_transaction{{n}}">
-              Priority 2
-            </label>
-              New lease 
-            </h2>
-            <div class="govuk-form-group">
+        <h2 class="govuk-heading-m govuk-!-margin-top-6">
+          <label class="govuk-label" style="opacity: 0.5" for="Select_transaction{{n}}">
+            Priority 2
+          </label>New lease</h2>
+              <div class="govuk-form-group">
                 <label class="govuk-label" for="width-10" >
-                    Total price paid for all titles, including VAT if applicable
-                  </label>
-                  <div id="account-number-hint" class="govuk-hint" style="color: #8C8C8C;">
-                    For example, 145000          
-                 </div>
-             <div class="input-container"> <!-- add input and span into a container-->
-                <input type="text" class="govuk-input govuk-input--width-10" id="with-hint" name="priority3value"  value="{{ data['priority3value'] }}"  type="text" aria-describedby="with-hint-info with-hint-hint" style="padding-left : 30px;"> <!-- add padding to stop user typing behind £ sign-->
-                <span class="unit" id="with-hint">&pound</span>
-            </div>
-            </div>
-          </div>
-
+                  Total price paid for all titles, including VAT if applicable
+                </label>
+                <div id="account-number-hint" class="govuk-hint" style="color: #8C8C8C;">
+                  For example, 145000          
+  
+               </div>
+               <div class="input-container"> <!-- add input and span into a container-->
+                  <input type="text" class="le2 govuk-input govuk-input--width-10" id="with-hint" name="priority2values"  value="{{ data['priority2values'] }}"  type="text" aria-describedby="with-hint-info with-hint-hint" style="padding-left : 30px;"> <!-- add padding to stop user typing behind £ sign-->
+                  <span class="unit" id="with-hint">&pound</span>
+              </div>
+              </div>
+  
+  
 
           <hr style="opacity: 0.5;">
           <br>
-
 
         <a class="govuk-link govuk-body" href="select">Add/ change transactions</a><br>
-
+<br>
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+      </button>
+<!-- 
         {{ govukButton({
           text: "Continue",
           classes: "govuk-!-margin-top-5",
           href:"5-cal-fee"
-        }) }}
+        }) }} -->
 
         </div>
           </div>
-          </form>
+          <!-- </form> -->
         </div>
 
 
+        <script>
 
+
+          $('.govuk-button').click(function() {
+          
+          var pricele = $(".le1").val();
+          
+          member.pricele = pricele;
+          
+          var pricele2 = $(".le2").val();
+          
+          member.pricele2 = pricele2;
+          
+        
+        
+        
+        
+          go('5-cal-fee');
+          
+          }) 
+          
+          
+          </script>
 {% endblock %}
 
 
-
-<!-- <script>
-  function RemoveTransfereeIndividual() {
-  var x = document.getElementById("hidePI");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-} function RemoveTransfereeUK() {
-  var x = document.getElementById("hideUK");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-}
--->
 
 
 

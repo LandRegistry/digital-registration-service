@@ -38,7 +38,7 @@
           <tr class="govuk-table_row" id="hidePI">
             <td class="govuk-table__cell">Surrender a lease</td>
             <td class="govuk-table__cell">1</td>
-            <td class="govuk-table__cell">£{{ data['priority2values'] }}</td>
+            <td class="govuk-table__cell le1">£{{ data['priority2values'] }}</td>
             <td class="govuk-table__cell">£95</td>
             <td class="govuk-table__cell"><a class="govuk-link" href="calculate-fees">Amend value</a></td>
           </tr>
@@ -46,7 +46,7 @@
           <tr class="govuk-table_row" id="hidePI">
             <td class="govuk-table__cell">New lease</td>
             <td class="govuk-table__cell">2</td>
-            <td class="govuk-table__cell">£{{ data['priority3value'] }}</td>
+            <td class="govuk-table__cell le2">£{{ data['priority3value'] }}</td>
             <td class="govuk-table__cell">£50</td>
 
             <td class="govuk-table__cell"><a class="govuk-link" href="calculate-fees">Amend amount</a></td>
@@ -73,7 +73,10 @@
 
 </div>
 </div>
-
+<script>
+  $('.le1').html(' ' +  '£' + member.pricele);
+  $('.le2').html(' ' +  '£' + member.pricele2);
+  </script>
 
 {% endblock %}
 
