@@ -23,7 +23,7 @@
       </div>
     </details>
 
-  <form action="1-title-no___.html">
+  <form action="#">
     <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
       <div class="govuk-form-group">
         <h3 class="govuk-heading-s" id="titlehere">Landlord title number (required)</h3>
@@ -73,7 +73,17 @@
               <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="enter">Remove</a></td>
             </tr>
           </tbody>
+
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td scope="row" class="govuk-table__cell">ABC123</td>
+              <td scope="row" class="govuk-table__cell">Landlord</td>
+              <td scope="row" class="govuk-table__cell">1 Main Road, Littlehaxten, LH1</td>
+              <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="enter">Remove</a></td>
+            </tr>
+          </tbody>
       </table>
+      
 
       <div class="govuk-inset-text">
         You can amend title numbers later.
@@ -83,7 +93,7 @@
       {{ govukButton({
         text: "Continue",
         classes: "govuk-!-margin-top-5",
-        href:"1-title-no__"
+        href:"2-title-app2"
       }) }}
 
   </form>

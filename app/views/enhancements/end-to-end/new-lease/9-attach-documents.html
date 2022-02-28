@@ -31,7 +31,7 @@
           <td class="govuk-table__cell">Certified</td>
           <td class="govuk-table__cell govuk-!-width-one-third">lease-certificate.pdf</td>
           {% if data['tr1attached']%}<td class="govuk-table__cell govuk-link"><a href="">Remove</a></td>{% endif %}
-          {% if not data['tr1attached'] %}<td class="govuk-table__cell govuk-link"><a href="document_upload.html">Attach</a></td>{% endif %}
+          {% if not data['tr1attached'] %}<td class="govuk-table__cell govuk-link"><a href="#">Attach</a></td>{% endif %}
 
         </tr>
         {% if data['spencer-attorney-1']%}
@@ -41,7 +41,7 @@
           <td class="govuk-table__cell">{% if data['poaSpencerattached']%} Certified {% endif %}</td>
           <td class="govuk-table__cell govuk-!-width-one-third">{% if data['poaSpencerattached']%} POA-SpencerReid.pdf {% endif %}</td>
           {% if data['poaSpencerattached']%}<td class="govuk-table__cell govuk-link"><a href="">Remove</a></td>{% endif %}
-          {% if not data['poaSpencerattached'] %}<td class="govuk-table__cell govuk-link"><a href="document_uploadPOASpencer.html">Attach</a></td>{% endif %}
+          {% if not data['poaSpencerattached'] %}<td class="govuk-table__cell govuk-link"><a href="#">Attach</a></td>{% endif %}
         </tr>
         {% endif %}
         {% if data['mary-attorney-1']%}
@@ -151,7 +151,7 @@
   </table>
 
 {% endif %}
-<p class='govuk-body'><a href="document_upload_other">Attach another type of document</a></p>
+<p class='govuk-body'><a href="#">Attach another type of document</a></p>
 
 
 

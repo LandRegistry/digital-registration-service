@@ -23,7 +23,7 @@
       </div>
     </details>
 
-  <form action="/enhancements/end-to-end/new-lease/1-title-no__#titlehere">
+  <form action="1-title-no__.html">
     <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
       <div class="govuk-form-group">
         <h3 class="govuk-heading-s" id="titlehere">Landlord title number (required)</h3>
@@ -32,6 +32,8 @@
       <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
         Add to application
       </button>
+    </form>
+    <form action="#">
       <div class="govuk-form-group">
         <h3 class="govuk-heading-s">Additional title number (optional)</h3>
         <input type="text" class="govuk-input govuk-!-width-one-quarter govuk-!-margin-bottom-5" name="title_1" aria-describedby="with-hint-info with-hint-hint">
@@ -68,11 +70,12 @@
         You can amend title numbers later.
       </div>
 
-    {{ govukButton({
-      text: "Continue",
-      classes: "govuk-!-margin-top-5",
-      href:"2-title-app"
-    }) }}
+
+      {{ govukButton({
+        text: "Continue",
+        classes: "govuk-!-margin-top-5",
+        href:"2-title-app"
+      }) }}
 
   </form>
   </div>
