@@ -5,6 +5,14 @@
 {% endblock %}
 
 {% block content %}
+<script>
+  document.addEventListener("DOMContentLoaded", function(event){
+  console.log('hello');
+  localStorage.clear();
+  console.log('clear data working');
+})
+</script>
+
 
   <h1 class="govuk-heading-m">
     Data cleared
