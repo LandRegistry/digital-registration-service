@@ -2,7 +2,9 @@
 
 
 {% block content %}
-
+<style>
+  .down {background-image: none;}
+  </style>
     <form method="post" action="/enhancements/end-to-end/register-updates/4a-surrender-lease-titles" data-validate="select-form-validation" novalidate>
     <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
@@ -12,7 +14,7 @@
   <p class="govuk-body">Select your transactions in priority order.<br>You can apply for up to 10 transactions. </p>
   </div>
 
-  <div class="govuk-grid-column-one-half">
+  <div class="govuk-grid-column-one-half down">
     <h2 class="govuk-heading-m govuk-!-margin-bottom-7" style="font-weight: bold"> Transactions </h2>
 
 
@@ -22,7 +24,7 @@
         </label>
 
         <select class="govuk-select js-select-autocomplete" id="Select_transaction{{n}}" name="Transaction1" required>
-          <option value="" selected disabled hidden>Type to search</option>
+          <option selected>Type to search</option>
           <option value="Acquisition of right to manage">Acquisition of right to manage</option>
           <option value="Adverse possession: first notice (ADV1)">Adverse possession: first notice (ADV1)</option>
           <option value="Adverse possession: notification (ADV2)">Adverse possession: notification (ADV2)</option>
@@ -119,6 +121,7 @@
           </label>
 
           <select class="govuk-select js-select-autocomplete" id="Select_transaction{{n}}" name="Transaction2">
+            
             <option value=""></option>
           <option value="Acquisition of right to manage">Acquisition of right to manage</option>
           <option value="Adverse possession: first notice (ADV1)">Adverse possession: first notice (ADV1)</option>
@@ -446,7 +449,23 @@ text: "Continue"
 
 </form>
 
+<!-- <script>
+  // $(".govuk-error-message, .govuk-error-summary").hide();
 
+  $(".govuk-button").click(function () {
+
+    if ($(".govuk-select").val().length === 0) {
+      $(".govuk-input").addClass("govuk-input--error");
+      $(".govuk-form-group").addClass("govuk-form-group--error");
+      $(".govuk-error-message, .govuk-error-summary").show();
+    }
+
+    if ($(".govuk-input").val().length >= 1) {
+      go('conveyancer');
+    }
+
+  })
+</script> -->
 
 
 {% endblock %}
