@@ -1,0 +1,148 @@
+{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
+{%- set assetPath = '/govuk/assets' -%}
+
+{% extends "govuk/template.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+
+{% block headIcons %}
+  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
+  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
+{% endblock %}
+
+{% block head %}
+  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full" id="headerdiv">
+      <a href="/../../startpage-testing/index.html"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
+      <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+
+
+    <div class="govuk-phase-banner">
+        <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
+        <span class="govuk-phase-banner__text">
+        This is a prototype and not a real service.
+        </span></p>
+    </div>
+    </div>
+  </div>
+
+    <main class="govuk-main-wrapper " id="main-content" role="main">
+        <div class="govuk-grid-row">
+
+            <h1 class="govuk-grid-column-two-thirds govuk-heading-xl">Apply to update or create a registered title</h1>
+
+            <div class="govuk-grid-column-two-thirds">
+
+            <p class="govuk-body">Use this service to:</p>
+
+            <ul class="govuk-list govuk-list--bullet">
+              <li>update existing titles</li>
+              <li>create new leases</li>
+              <li>make changes to existing leases</li>
+              <li>create new titles through transfer of part applications</li>
+              <li>remove defaut Form A restrictions</li>
+            </ul>
+
+            <div class="govuk-inset-text">
+              You can only use this service for applications with <b>up to 25 titles</b> (where the same proprietors are registered against each title).
+            </div>
+
+            <details class="govuk-details" data-module="govuk-details">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">
+                  Temporary measures for verifying identity
+                </span>
+              </summary>
+              <div class="govuk-details__text">
+                In May 2020, HM Land Registry introduced a range of temporary measures for verifying identity, which remain under review. The measures are set out in <a href="https://www.gov.uk/government/publications/temporary-changes-to-hm-land-registrys-evidence-of-identity-requirements-pg67a/practice-guide-67a-temporary-changes-to-hm-land-registrys-evidence-of-identity-requirements" class="govuk-link">Practice Guide 67A (opens in new tab)</a>, which accompanies <a href="https://www.gov.uk/government/publications/evidence-of-identity-conveyancers" class="govuk-link">Practice Guide 67 (opens in new tab)</a>.
+              </div>
+            </details>
+
+          <br>
+
+          {% from "govuk/components/button/macro.njk" import govukButton %}
+
+          {{ govukButton({
+            text: "Go to saved applications",
+            href: "/startpage-testing/saved-applications.html",
+            classes: "govuk-button--secondary"
+          }) }}
+
+          <br>
+
+          {% from "govuk/components/button/macro.njk" import govukButton %}
+
+          {{ govukButton({
+            text: "Start a new application",
+            href: "/startpage-testing/enter-reference.html",
+            isStartButton: true
+          }) }}
+
+
+          <h2 class="govuk-heading-m govuk-!-padding-top-4">When to use a different service</h2>
+
+          <p class="govuk-body">Use the <a href="#" class="govuk-link">small scale applications service (name TBC)</a>:</p>
+
+          <ul class="govuk-list govuk-list--bullet">
+            <li>for applications with 26 to 199 titles</li>
+            <li>to submit personal representation applications</li>
+            <li>to submit applications against a pending new title which involves a transfer of charge</li>
+          </ul>
+
+          <p class="govuk-body">For applications with more than 200 titles, <a href="#" class="govuk-link">contact the bulk application team</a>.</p>
+
+          <p class="govuk-body">For first registrations (FR1), you shouldsubmit applications by post.</p>
+
+          </div>
+
+          <div class="govuk-grid-column-one-third" style="padding: 0; padding-top: 15px; border-top: 2px solid #1e6fb8;">
+
+              <h2 class="govuk-heading-m">Related content</h2>
+
+              <ul class="govuk-list">
+                <li><a href="#" class="govuk-link">Get help using this service</a></li>
+                <li><a href="#" class="govuk-link">View submitted applications</a></li>
+              </ul>
+
+          </div>
+
+          </div>
+          </main>
+
+
+          <footer>
+          <div class="govuk-grid-row">
+          <div class="govuk-grid-column-full">
+          <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+          <br>
+          <p class="govuk-body-s" style="color: #747B7F"> The following links open in a new tab.
+          <br>
+          <br>
+          <a href="#" style="color: #747B7F"> Terms and conditions</a> | <a href="/setup/accessibility-statement" target="_blank" rel="noopener noreferrer" style="color: #747B7F">Accessibility statement</a> |  <a href="#" style="color: #747B7F">Cookies</a> | <a href="#" style="color: #747B7F">Freedom of information</a> | <a href="#" style="color: #747B7F">© Crown copyright</a></p>
+          </div>
+          </div>
+          </footer>
+
+
+{% endblock %}
+
+
+{% block footer %}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}
