@@ -1,0 +1,119 @@
+{% extends "drs-layout.html" %}
+{% include "includes/scripts.html" %}
+
+
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l"></span>
+  <h1 class="govuk-heading-xl">Select application type</h1>
+
+  <form method="post" action="user-type-answer">
+
+  <div id="sign-in-hint" class="govuk-hint">
+    If your application includes a specific transaction (such as transfer of part), select that as your application type. You can add additional register updates later in the application.
+  </div>
+
+<br>
+
+  <form method="post" action="/type-selected" novalidate>
+      <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset" aria-describedby="sign-in-hint">
+      <div class="govuk-radios" data-module="govuk-radios">
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="register-updates" name="Application-type" type="radio" value="register-updates" aria-describedby="sign-in-item-hint">
+          <label class="govuk-label govuk-radios__label" for="register-updates">
+            Register updates
+          </label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="transfer-of-part" name="Application-type" type="radio" value="transfer-of-part" aria-describedby="sign-in-2-item-hint">
+          <label class="govuk-label govuk-radios__label" for="transfer-of-part">
+            Transfer of part
+          </label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="new-lease" name="Application-type" type="radio" value="new-lease" aria-describedby="sign-in-2-item-hint">
+          <label class="govuk-label govuk-radios__label" for="new-lease">
+            New lease
+          </label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="lease-extension" name="Application-type" type="radio" value="lease-extension" aria-describedby="sign-in-2-item-hint">
+          <label class="govuk-label govuk-radios__label" for="lease-extension">
+            Lease extension
+          </label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="FormA" name="Application-type" type="radio" value="formA" aria-describedby="sign-in-2-item-hint">
+          <label class="govuk-label govuk-radios__label" for="formA">
+            Removal of a default Form A restriction (JP1)
+          </label>
+        </div>
+
+      </div>
+      </fieldset>
+
+
+  </div>
+
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+
+</form>
+
+    </div>
+    </div>
+    <script>
+      $('.govuk-button').click(function () {
+
+        if ($("#register-updates").prop('checked')) {
+          go('register-updates/1-title-no.html');
+        }
+
+        if ($("#transfer-of-part").prop('checked')) {
+          go('transfer-of-part/1-title-no.html');
+        }
+
+        if ($("#new-lease").prop('checked')) {
+          go('new-lease/1-title-no.html');
+        }
+
+        if ($("#lease-extension").prop('checked')) {
+          go('lease-extension/1-title-no.html');
+        }
+
+        if ($("#FormA").prop('checked')) {
+          alert('Is not ready for this protoype');
+        }
+
+      })
+    </script>
+
+
+
+
+
+
+<!-- <script type="application/json" id="whole-form-validation">
+  {
+    "user-type": {
+      "presence": {
+        "message": "^Select if you are a conveyancer or not"
+      }
+    }
+  }
+</script> -->
+
+
+
+
+{% endblock %}
+
+
+
+{% block bodyEnd %}
+{% endblock %}

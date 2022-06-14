@@ -1,0 +1,379 @@
+
+{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
+{%- set assetPath = '/govuk/assets' -%}
+
+{% extends "govuk/template.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+  {% from "govuk/components/accordion/macro.njk" import govukAccordion %}
+
+
+{% block headIcons %}
+  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
+  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
+{% endblock %}
+
+{% block head %}
+  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+
+
+{% block pageTitle %}
+  DRS prototype
+{% endblock %}
+
+{% block header %}
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper">
+     <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <div class="govuk-!-padding-bottom-6"><a class="govuk-link" href="index"> < Back</a></div>
+        </div>
+
+
+        <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl" style="margin-bottom: 20px;">Digital Registration Service</h1>
+        <strong class="govuk-tag app-task-list__task-completed" id="read-declaration-completed">public beta</strong><br><br><br>
+        </div>
+
+        <div class="govuk-grid-column-full">
+          <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+              <div class="govuk-accordion__section ">
+                <div class="govuk-accordion__section-header">
+                  <h2 class="govuk-accordion__section-heading">
+                    <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                      Introduction to DRS
+                    </span>
+                  </h2>
+                </div>
+                <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+                      <h3 class="govuk-heading-s">The problem</h3>
+                        <p class='govuk-body'>Conveyancers applying to change the register generate a lot of
+                          requisitions, especially when using the AP1 form, which is needed for many transactions.
+                          It’s a complex, multi-purpose form wrapped in legalese guidance that’s not always understood by users.
+                          Our users are often clerical staff at conveyancers, some of whom have learned to complete the form by rote.
+                          It’s easy to make mistakes of accuracy or omission, and most lead to requisitions. This project took replacing the paper
+                          AP1 with a digital system as a starting point.
+                        </p>
+
+                      <h3 class="govuk-heading-s">Aims of the service:</h3>
+                        <ul class="govuk-list govuk-list--bullet">
+                          <li>make it easier for users to provide exactly (and only) the data needed</li>
+                          <li>reduce requisitions caused by inaccurate data or missing documents</li>
+                          <li>save HMLR time and expense in handling paper forms, and issuing and handling requisitions</li>
+                          <li>save customers time and expense in completing forms and managing requisitions</li>
+                          <li>make it easier for customers to manage their applications</li>
+                          <li>ongoing, clean the data in applications and on the register</li>
+                        </ul>
+
+                      <h3 class="govuk-heading-s">Methods to achieve this:</h3>
+                        <ul class="govuk-list govuk-list--bullet">
+                    		  <li>digitised data capture</li>
+                    		  <li>validated formats and data where possible</li>
+                    		  <li>prompts and guidance around common requisition points</li>
+                    		  <li>save and resume applications</li>
+                    		  <li>enabling automation where possible</li>
+                    		  <li>enabling integration of compatible applications where possible</li>
+                  		  </ul>
+
+                      <h4 class="govuk-heading-s">Project so far</h4>
+                      <p>In 2020, we designed, tested, developed and deployed discharges, transfers for value and charges,
+                          allowing users to submit some of the most common transaction combinations. We created an
+                         accessibility statement for the service, tested and settled on an MVP for fees calculation and created an in-service feedback form for users.<br>
+                         In 2021, we've designed, researched, iterated and delivered multi-title applications and Power of Attorney to users.</p>
+
+                          <p> Last updated: September 2021 </p>
+                </div>
+
+              </div>
+              <div class="govuk-accordion__section ">
+                <div class="govuk-accordion__section-header">
+                  <h2 class="govuk-accordion__section-heading">
+                    <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+                      Design links
+                    </span>
+                  </h2>
+                </div>
+                <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li><a href="/documentation/01-design-guide">Design guide</a></li>
+                    <li><a href="https://www.figma.com/files/project/34284389/Digital-Registration-Service?fuid=913039910196968815">Figma repository</a></li>
+                    <li><a href="https://www.figma.com/file/e2X1YCCNgz1DeIpsudwvbF/Digital-Registration-Service---design-history">Design history</a></li>
+                    <li><a href="https://app.mural.co/t/helensharpslandregistrygovuk6700/m/helensharpslandregistrygovuk6700/1612444665365/aa54e6573cab9f9f00f0802e16cb30dcb62fcba3?sender=rosboyes8556">Experience map<a/></li>
+                    <li><a href="https://www.figma.com/file/AzccyMFl0rlzkk4gPw6Wnn/Design-roadmap?node-id=0%3A1">Design roadmap</a></li>
+                    <li><a href="https://github.com/LandRegistry/digital-registration-service">Prototype Github</a></li>
+                    <li><a href="https://www.figma.com/file/6n9gKspOknGjqkJoTBgF7U/DRS-journey-design-template?node-id=0%3A1">Lo-fi journey template (Figma)</a></li>
+                    <li><a href="https://app.mural.co/invitation/room/1593687955214?code=5e4e260d364b489bafe8e596d47cba03&sender=rosboyes8556">DRS Mural room</a></li>
+                </div>
+              </div>
+
+              <div class="govuk-accordion__section ">
+                <div class="govuk-accordion__section-header">
+                  <h2 class="govuk-accordion__section-heading">
+                    <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
+                      Prototype shortcuts
+                    </span>
+                  </h2>
+                </div>
+                <div id="accordion-default-content-3" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-3">
+                  <table class="govuk-table">
+                    <tbody class="govuk-table__body">
+                        <tr class="govuk-table__row">
+                          <th scope="row" class="govuk-table__header">Start new application</th>
+                          <td class="govuk-table__cell"><a href="setup/app-start.html">Start</a></td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                          <th scope="row" class="govuk-table__header">Discharge, transfer, charge</th>
+                          <td class="govuk-table__cell"><a href="/docs/examples/pass-data/charge">Complete your application</a> (No tasks completed)<br><a href="/docs/examples/pass-data/charge-DTC1">Complete your application</a> (Discharge, transfer tasks complete)</td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                          <th scope="row" class="govuk-table__header">Other transactions (to task list)</th>
+                          <td class="govuk-table__cell"><a href="/docs/examples/pass-data/task-list">Discharge, transfer</a><br>
+                          <a href="/docs/examples/pass-data/sole-charge">Charge without a transfer</a><br>
+                          </td>
+                        </tr>
+                        <!-- <tr class="govuk-table__row">
+                          <th scope="row" class="govuk-table__header">Transfer (not up to date)</th>
+                          <td class="govuk-table__cell"><a href="/docs/examples/pass-data/transfer">Complete your application</a><br></td>
+                        </tr> -->
+                        <!-- <tr class="govuk-table__row">
+                          <th scope="row" class="govuk-table__header">Transfer, charge</th>
+                          <td class="govuk-table__cell"><a href="/docs/examples/pass-data/TC">Complete your application</a><br></td>
+                        </tr> -->
+
+                        <tr class="govuk-table__row">
+                          <th scope="row" class="govuk-table__header">Errors</th>
+                          <td class="govuk-table__cell"><a href="/errors/error-index">Variable direct debit errors</a><br></td>
+                        </tr>
+                        <!-- <tr class="govuk-table__row">
+                          <th scope="row" class="govuk-table__header">Fees</th>
+                          <td class="govuk-table__cell"><a href="setup/app-start.html">Start new application</a><br></td>
+                        </tr> -->
+                        <!-- <tr class="govuk-table__row">
+                          <th scope="row" class="govuk-table__header">Feedback</th>
+                          <td class="govuk-table__cell"><a href="/save-resume/save-confirmation-feedback">Application saved</a><br></td>
+                        </tr> -->
+                        <!-- <tr class="govuk-table__row">
+                          <th scope="row" class="govuk-table__header">Onboarding</th>
+                          <td class="govuk-table__cell"><a href="/setup/landing">Landing page</a><br></td>
+                        </tr> -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+
+
+          <div class="govuk-grid-column-full govuk-!-margin-top-6">
+                    <h3 class="govuk-heading-s" id="version-history">Version history</h3>
+                  <div class="govuk-tabs" data-module="govuk-tabs">
+                      <h2 class="govuk-tabs__title">
+                        Contents
+                      </h2>
+                      <ul class="govuk-tabs__list">
+                        <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                          <a class="govuk-tabs__tab" href="#may">
+                            May 2021
+                          </a>
+                        </li>
+                        <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                          <a class="govuk-tabs__tab" href="#december">
+                            December 2020
+                          </a>
+                        </li>
+                        <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                          <a class="govuk-tabs__tab" href="#sprint26">
+                            Sprint 26
+                          </a>
+                        </li>
+                        <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                          <a class="govuk-tabs__tab" href="#sprint24">
+                            Sprint 24
+                          </a>
+                        </li>
+                        <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                          <a class="govuk-tabs__tab" href="#september">
+                            Sprint 22
+                          </a>
+                        </li>
+                        <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                          <a class="govuk-tabs__tab" href="#august">
+                            August 2020
+                          </a>
+                        </li>
+                      </ul>
+
+
+
+                      <div class="govuk-tabs__panel" id="august">
+
+                        <span class="govuk-caption-m">August 2020</span>
+                        <h2 class="govuk-heading-m">Sprints 20 & 21</h2>
+
+                          <p class="govuk-body"> This month, user research will investigate:</p>
+                            <ul class="govuk-list govuk-list--bullet">
+                            <li>fees</li>
+                            <li>feedback functionality (DRS-69)</li>
+                            </ul>
+
+                          <h3 class="govuk-heading-s">General updates</h3>
+                            <ul class="govuk-list govuk-list--bullet">
+                            <li>transferees fixes</li>
+                            <li>discharge fixes</li>
+                            <li>index page restructure</li>
+                            <li>single review application</li>
+                            <li>header and footer updated</li>
+                            <li>index updated</li>
+                            </ul>
+                          </div>
+
+
+
+                          <div class="govuk-tabs__panel" id="sprint24">
+
+                            <span class="govuk-caption-m">17th September 2020</span>
+                            <h2 class="govuk-heading-m">Sprint 24</h2>
+
+                              <p class="govuk-body"> User research will investigate:</p>
+                              <ul class="govuk-list govuk-list--bullet">
+                                <li>
+                                  <a class="govuk-link" href="/Sprint-24/fees/app-start-fees">Fees - (No fee - Discharge of charge)</a>
+                                </li>
+                                <li>
+                                  <a class="govuk-link" href="/Sprint-24/fees2/app-start-fees">Fees - (Enter values - DTC)</a>
+                                </li>
+                                <li>
+                                Transfer for value (TR1) Consideration <a class="govuk-link" href="/transactions/transfer/transfer-consideration">version 1</a> <a class="govuk-link" href="/transactions/transfer/transfer-consideration-v2">version 2</a>
+                                </li>
+                                <li>
+                                  <a class="govuk-link" href="/Sprint-24/address/list">Add address for service</a>
+                                </li>
+                                <li>
+                                  <a class="govuk-link" href="/docs/examples/pass-data/transfer1">New transaction added for name removal/change</a>
+                                </li>
+                                <li>
+                                  <a class="govuk-link" href="Sprint-24/wes/task-list-dtc">Witnessed electronic signatures</a>
+                                </li>
+                              </ul>
+                              <h3 class="govuk-heading-s">General updates</h3>
+                                <ul class="govuk-list govuk-list--bullet">
+                                <li><a class="govuk-link" href="/setup/landing">onboarding page</a></li>
+                                </ul>
+
+                              </div>
+
+                      <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="september">
+                        <span class="govuk-caption-m">3rd September 2020</span>
+                        <h2 class="govuk-heading-m">Sprint 22</h2>
+
+                        <p class="govuk-body"> This sprint, user research will investigate:</p>
+                        <ul class="govuk-list govuk-list--bullet">
+                        <li><a class="govuk-link" href="/transactions/transfer/transfer-consideration">consideration (TR1 Panel 8) v1</li>
+                        <li>change to select transactions screen</li>
+                        <li><a class="govuk-link" href="/testing/addresses">property description as address for service</li>
+                        <li><a class="govuk-link" href="/testing/fees/app-start-fees">No fee required</a></li>
+                        <li><a class="govuk-link" href="/testing/fees2/app-start-fees">Entering price paid/value</a></li>
+                        </ul>
+                        <h3 class="govuk-heading-s">General updates</h3>
+                          <ul class="govuk-list govuk-list--bullet">
+                          <li>index page</li>
+                          </ul>
+
+                      </div>
+
+                      <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="sprint26">
+                        <span class="govuk-caption-m">October 2020</span>
+                        <h2 class="govuk-heading-m">Sprint 26</h2>
+
+                        <p class="govuk-body"> This sprint, user research will investigate:</p>
+                        <ul class="govuk-list govuk-list--bullet">
+                        <li><a class="govuk-link" href="/transactions/calculate-fees">VAT entry, charge amount</li>
+                            <li><a class="govuk-link" href="/Sprint-26/consideration/transfer-consideration-v3">Select consideration options</li>
+                              <li><a class="govuk-link" href="/transactions/transfer/transfer-download">Rendered TR1</a></li>
+                        </ul>
+                      </div>
+
+                      <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="december">
+                        <span class="govuk-caption-m">December 2020</span>
+                        <h2 class="govuk-heading-m">Sprint 30+</h2>
+
+                        <p class="govuk-body"> This sprint, user research will investigate:</p>
+                        <ul class="govuk-list govuk-list--bullet">
+                        <li><a class="govuk-body">Assents</li>
+                            <li><a class="govuk-body">Power of attorney</li>
+
+                        </ul>
+                      </div>
+
+                      <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="may">
+                        <span class="govuk-caption-m">May 2021</span>
+                        <h2 class="govuk-heading-m">Sprint 37+</h2>
+
+                        <p class="govuk-body"> This sprint, user research will investigate:</p>
+                        <ul class="govuk-list govuk-list--bullet">
+                        <li><a href="/Sprint-38/multi-titles/enter.html" class="govuk-body">Multi-titles (entering title numbers)</a></li><br>
+                        <p class="govuk-body"> These designs were iterated upon following this phase of research and the main journey in the prototype is now up-to-date with the final designs.</p>
+
+
+
+                        </ul>
+                      </div>
+
+                    </div>
+                </div>
+
+            <div class="govuk-grid-row">
+              <div class="govuk-section-break--xl">
+                <div class="govuk-grid-column-one-third govuk-section-break--xl" align="center">
+                    <img src="../../public/images/service-icon.svg" alt="Service History icon" height="100">
+                    <div class="govuk-section-break--m"></div>
+                    <h2 class="govuk-heading-m">Service History</h2>
+                    <p class="govuk-body"> View design iterations based on user research findings in <a href="https://www.figma.com/file/e2X1YCCNgz1DeIpsudwvbF/Digital-Registration-Service---design-history">Figma</a>.<br><br> You may have to request access.</p>
+                </div>
+
+                <div class="govuk-grid-column-one-third govuk-section-break--xl" align="center">
+                    <img src="../../public/images/timeline-icon.svg" alt="Timeline icon" height="100">
+                    <div class="govuk-section-break--m"></div>
+                    <h2 class="govuk-heading-m">Timeline</h2>
+                    <p class="govuk-body"> The project started as Front-end validation in 2018. We are currently in public beta. </p>
+                </div>
+
+                <div class="govuk-grid-column-one-third govuk-section-break--xl" align="center">
+                    <img src="../../public/images/assessment-icon.svg" alt="Assessments icon" height="100">
+                    <div class="govuk-section-break--m"></div>
+                    <h2 class="govuk-heading-m">Assessment</h2>
+                    <p class="govuk-body">Digital Registration Service is not subject to a service assessment.</p>
+                </div>
+
+              </div>
+            </main>
+
+
+              <div class="app-back-to-top app-back-to-top--fixed" data-module="app-back-to-top">
+                <a class="govuk-link govuk-link--no-visited-state app-back-to-top__link" href="#top">
+                <svg role="presentation" focusable="false" class="app-back-to-top__icon" xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">
+                <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"></path></svg> Back to top</a>
+              </div>
+            </div>
+
+
+
+
+
+
+
+
+          {% endblock %}
+
+          {% block footer %}
+          {% endblock %}
+
+          {% block bodyEnd %}
+            {% include "includes/scripts.html" %}
+          {% endblock %}
