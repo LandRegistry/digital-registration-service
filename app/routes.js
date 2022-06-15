@@ -2700,15 +2700,15 @@ router.post('/formP-addresstype-answer', function (req, res) {
     switch (ApplicationType) {
 
       case 'register-updates':
-        res.redirect('/startpage-testing/register-updates/enter_titles');
+        res.redirect('/startpage-testing/version-1/register-updates/enter_titles');
         break;
 
       case 'transfer-of-part':
-        res.redirect('/startpage-testing/transfer-part/enter_titles');
+        res.redirect('/startpage-testing/version-1/transfer-part/enter_titles');
         break;
 
       case 'FormA':
-        res.redirect('/startpage-testing/JP1/enter_title');
+        res.redirect('/startpage-testing/version-1/JP1/enter_title.html');
         break;
 
     }
@@ -2725,23 +2725,23 @@ router.post('/formP-addresstype-answer', function (req, res) {
     switch (ApplicationType) {
 
       case 'register-updates':
-        res.redirect('/startpage-testing/register-updates/enter_titles');
+        res.redirect('/startpage-testing/version-2/register-updates/enter_titles');
         break;
 
       case 'transfer-of-part':
-        res.redirect('/startpage-testing/transfer-part/enter_titles');
+        res.redirect('/startpage-testing/version-2/transfer-part/enter_titles');
         break;
 
       case 'new-lease':
-        res.redirect('/startpage-testing/new-lease/enter_titles');
+        res.redirect('/startpage-testing/version-2/new-lease/enter_titles');
         break;
 
       case 'lease-extension':
-        res.redirect('/startpage-testing/lease-extension/enter_titles');
+        res.redirect('/startpage-testing/version-2/lease-extension/enter_titles');
         break;
 
       case 'FormA':
-        res.redirect('/startpage-testing/JP1/enter_title');
+        res.redirect('/startpage-testing/version-2/JP1/enter_title');
         break;
 
     }
