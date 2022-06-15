@@ -41,86 +41,60 @@
 
     <main class="govuk-main-wrapper" style="padding: 0; padding-bottom: 20px;" id="main-content" role="main">
 
-        <a href="#" class="govuk-back-link">Return to select application type</a>
+        <a href="/startpage-testing/version-2/application-type.html" class="govuk-back-link">Return to select application type</a>
 
-        <div class="govuk-grid-row">
+    <div class="govuk-grid-row">
 
-            <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-grid-column-two-thirds govuk-heading-xl">Enter title number</h1>
 
-    <span class="govuk-caption-xl"></span>
-    <h1 class="govuk-heading-xl"> Enter title numbers </h1>
+    <div class="govuk-grid-column-two-thirds">
 
-    <p class="govuk-body">You can add up to 25 titles per application.</p>
+    <div class="govuk-warning-text">
+      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+        <strong class="govuk-warning-text__text">
+          <span class="govuk-warning-text__assistive">Warning</span>
+            You cannot use this service if the Form A restriction (JP1) was not entered by default.
+        </strong>
+    </div>
 
-    <details class="govuk-details" data-module="govuk-details">
-      <summary class="govuk-details__summary">
-        <span class="govuk-details__summary-text">About applications relating to more than one title number</span>
-      </summary>
-      <div class="govuk-details__text">
-        TBC
-      </div>
-    </details>
-
-  <form method="post" action="#">
+  <form method="post">
 
     <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
       <div class="govuk-form-group">
-        <h2 class="govuk-heading-s">Landlord (Freehold) title number</h2>
         <label class="govuk-hint for="govuk-input govuk-input--width-10">
           For example, "A123" or "XY5678"
         </label>
         <input type="text" class="govuk-input govuk-!-width-one-third govuk-!-margin-bottom-5" name="title_1" aria-describedby="with-hint-info with-hint-hint">
       </div>
-      <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
-        Add to application
-      </button>
-      </div>
+    </div>
 
   </form>
-
-  <form method="post" action="#">
-
-    <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
-      <div class="govuk-form-group">
-        <h3 class="govuk-heading-s">Tenant (Leasehold) title number</h3>
-        <label class="govuk-hint for="govuk-input govuk-input--width-10">
-          For example, "A123" or "XY5678"
-        </label>
-        <input type="text" class="govuk-input govuk-!-width-one-third govuk-!-margin-bottom-5" name="title_1" aria-describedby="with-hint-info with-hint-hint">
-      </div>
-      <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
-        Add to application
-      </button>
-      </div>
-
-  </form>
-
-  <form method="post" action="#">
-
-    <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
-      <div class="govuk-form-group">
-        <h4 class="govuk-heading-s">Additional title number (optional)</h4>
-        <label class="govuk-hint for="govuk-input govuk-input--width-10">
-          For example, "A123" or "XY5678"
-        </label>
-        <input type="text" class="govuk-input govuk-!-width-one-third govuk-!-margin-bottom-5" name="title_1" aria-describedby="with-hint-info with-hint-hint">
-      </div>
-      <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
-        Add to application
-      </button>
-      </div>
-
-  </form>
-
-  <div class="govuk-inset-text">
-    You can amend title numbers later.
-  </div>
 
   {{ govukButton({
     text: "Continue",
-    href: "#"
+    href: "title_details"
   }) }}
+
+</div>
+
+  <div class="govuk-grid-column-one-third">
+
+    <details class="govuk-details" data-module="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Help with Form A resctricions not entered by default
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        To remove a Form A restriction not entered by default, use Cancellation of a restriction (RX3) in Digital Registration Service.
+        <br><br>
+        For a full breakdown, take a look at <a href="#" class="govuk-link">Practice Guide 24: private trusts of land (opens in new window)</a>.
+      </div>
+    </details>
+
   </div>
+
+
   </div>
 
 </main>
