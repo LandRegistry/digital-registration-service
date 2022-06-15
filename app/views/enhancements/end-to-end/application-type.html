@@ -30,7 +30,7 @@
         <div class="govuk-radios__item">
           <input class="govuk-radios__input" id="register-updates" name="Application-type" type="radio" value="register-updates" aria-describedby="sign-in-item-hint">
           <label class="govuk-label govuk-radios__label" for="register-updates">
-            Register updates 
+            Register updates
           </label>
         </div>
         <div class="govuk-radios__item">
@@ -39,7 +39,7 @@
             Transfer of part
           </label>
           <div id="transfer-of-part-item-hint" class="govuk-hint govuk-radios__hint">
-            If you want to sell part of a registered title.          
+            If you want to sell part of a registered title.
           </div>
         </div>
         <div class="govuk-radios__item">
@@ -48,7 +48,7 @@
             New lease
           </label>
           <div id="new-lease-item-hint" class="govuk-hint govuk-radios__hint">
-            If your application includes the creation of a new lease, without updating other existing leases.          
+            If your application includes the creation of a new lease, without updating other existing leases.
           </div>
         </div>
         <div class="govuk-radios__item">
@@ -66,13 +66,13 @@
             Removal of a Form A restriction (JP1)
           </label>
           <div id="formA-item-hint" class="govuk-hint govuk-radios__hint">
-            To change a registered property from Tenants in Common to Joint Tenants. Other register updates cannot be included in the application.          
+            To change a registered property from Tenants in Common to Joint Tenants. Other register updates cannot be included in the application.
           </div>
         </div>
 
 
- 
-      
+
+
       </div>
       </fieldset>
 
@@ -82,7 +82,7 @@
   <button class="govuk-button" data-module="govuk-button">
     Continue
 </button>
-<!-- 
+<!--
     {{ govukButton({
     text: "Continue"
   }) }} -->
@@ -110,27 +110,11 @@
         }
 
         if ($("#FormA").prop('checked')) {
-          alert('Is not ready for this protoype');
+          go('app/views/startpage-testing/JP1/enter_title.html');
         }
 
       })
     </script>
-
-
-
-
-
-
-<!-- <script type="application/json" id="whole-form-validation">
-  {
-    "user-type": {
-      "presence": {
-        "message": "^Select if you are a conveyancer or not"
-      }
-    }
-  }
-</script> -->
-
 
 
 
