@@ -1,0 +1,38 @@
+{% extends "drs-layout.html" %}
+
+{% block content %}
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+
+              <form method="get" action="are-you-a-conveyancer" data-validate="reference-form-validation" novalidate>
+
+                  <h1 class="govuk-heading-xl"> Enter your reference </h1>
+
+                      <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
+
+                        <div class="govuk-form-group">
+                          <label class="govuk-label" for="with-hint">
+                            Type in your reference for this application
+                          </label>
+
+                          <input type="text" class="govuk-input govuk-!-width-two-thirds" id="with-hint" name="reference" aria-describedby="with-hint-info with-hint-hint">
+                        </div>
+
+                      </div>
+
+
+                    {{ govukButton({
+                      text: "Continue",
+                      href: "/startpage-testing/version-2/are-you-a-conveyancer.html"
+                    }) }}
+
+              </form>
+            </div>
+        </div>
+
+{% endblock %}
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}

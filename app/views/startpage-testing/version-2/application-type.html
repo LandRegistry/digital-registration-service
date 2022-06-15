@@ -10,7 +10,7 @@
       <span class="govuk-caption-l"></span>
   <h1 class="govuk-heading-xl">Select application type</h1>
 
-  <form method="post" action="user-type-answer">
+  <form method="post" action="Application-type">
 
   <div id="sign-in-hint" class="govuk-hint">
     If your application includes a specific transaction (such as transfer of part), select that as your application type. You can add additional register updates later in the application.
@@ -68,46 +68,6 @@
     </div>
     </div>
 
-    <script>
-      $('.govuk-button').click(function () {
-
-        if ($("#register-updates").prop('checked')) {
-          go('/startpage-testing/register-updates/enter_titles.html');
-        }
-
-        if ($("#transfer-of-part").prop('checked')) {
-          go('/startpage-testing/transfer-of-part/enter_titles.html');
-        }
-
-        if ($("#new-lease").prop('checked')) {
-          go('/startpage-testing/new-lease/enter_titles.html');
-        }
-
-        if ($("#lease-extension").prop('checked')) {
-          go('/startpage-testing/lease-extension/enter_titles.html');
-        }
-
-        if ($("#FormA").prop('checked')) {
-          go('/startpage-testing/JP1/enter_title');
-        }
-
-      })
-    </script>
-
-
-
-
-
-
-<!-- <script type="application/json" id="whole-form-validation">
-  {
-    "user-type": {
-      "presence": {
-        "message": "^Select if you are a conveyancer or not"
-      }
-    }
-  }
-</script> -->
 
 
 
