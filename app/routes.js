@@ -34,16 +34,16 @@ router.post('/type-selected', function (req, res) {
   // Check whether the variable matches a condition
   if (ApplicationType == "register-updates"){
     res.redirect('/enhancements/end-to-end/register-updates/1-title-no');
-  } 
+  }
   if (ApplicationType == "transfer-of-part"){
     res.redirect('/enhancements/end-to-end/transfer-of-part/1-title-no');
-  } 
+  }
   if (ApplicationType == 'new-lease'){
     res.redirect('/enhancements/end-to-end/new-lease/1-title-no');
-  } 
+  }
   if (ApplicationType == 'lease-extension'){
     res.redirect('/enhancements/end-to-end/lease-extension/1-title-no');
-  } 
+  }
 
 })
 
@@ -56,11 +56,11 @@ router.post('/transaction-order-selected', function (req, res) {
   // Check whether the variable matches a condition
   if (FirstTransaction == "Transfer for value (TR1, TR5)"){
     res.redirect('/enhancements/end-to-end/register-updates/5-cal-a');
-  } 
+  }
 
   if (FirstTransaction == "Surrender of lease"){
     res.redirect('/enhancements/end-to-end/register-updates/5-cal-b');
-  } 
+  }
 
 })
 
@@ -72,11 +72,11 @@ router.post('/go-to-task-list', function (req, res) {
   // Check whether the variable matches a condition
   if (FirstTransaction == "Transfer for value (TR1, TR5)"){
     res.redirect('/enhancements/end-to-end/register-updates/9-task-list-a');
-  } 
+  }
 
   if (FirstTransaction == "Surrender of lease"){
     res.redirect('/enhancements/end-to-end/register-updates/9-task-list-b');
-  } 
+  }
 
 })
 
@@ -89,13 +89,13 @@ router.post('/application-type-selected', function (req, res) {
   // Check whether the variable matches a condition
   if (applicationType == "update-register"){
     res.redirect('/enhancements/enter-title-numbers')
-  } 
+  }
   if (applicationType == "register-update-lease"){
     res.redirect('/enhancements/register-new-lease')
-  } 
+  }
   if (applicationType == 'remove-jp1-restriction'){
     res.redirect('/enhancements/enter-title-numbers')
-  } 
+  }
 
 })
 
@@ -110,19 +110,19 @@ router.post('/whole-or-part-or-transactions', function (req, res) {
   // Check whether the variable matches a condition
   if (applicationType == "update-register"){
     res.redirect('/enhancements/does-application-affect-whole-title')
-  } 
+  }
   if (applicationType == "register-update-lease"){
     if (applicationLease == "new-lease"){
       res.redirect('/enhancements/transactions-newLease')
-    } 
+    }
     if (applicationLease == "extend-lease"){
       res.redirect('/enhancements/transactions-extendLease')
-    } 
-    
-  } 
+    }
+
+  }
   if (applicationType == "remove-jp1-restriction"){
     res.redirect('/enhancements/document_uploadRemoveJP1')
-  } 
+  }
 
 })
 
@@ -218,7 +218,7 @@ router.post('/enhancements/transfer/transferee-whichapplicants-answer', function
   var checkboxTicked3 = false;
   var checkboxTicked4 = false;
 
-  
+
   if ((ApplicantTransferee1 != null) || (companyTransferee1 != null)) {
     req.session.data['first applicant'] = 'inputted';
     if (ApplicantTransferee1 != '') {
@@ -238,7 +238,7 @@ router.post('/enhancements/transfer/transferee-whichapplicants-answer', function
     //   req.session.data['first applicant checkbox'] = 'applicant 1 hasnt been inputted';
     // }
 
-    if (companyTransferee1 != '') { 
+    if (companyTransferee1 != '') {
       let checkbox3 = req.body['applicant-company-transferee1'];
       req.session.data['first applicant type'] = 'company';
       if (checkbox3 == 'applicant1-company-transferee-1'){
@@ -251,7 +251,7 @@ router.post('/enhancements/transfer/transferee-whichapplicants-answer', function
 
       }
     }
-   
+
     }
 
     if (ApplicantTransferee2 != null) {
@@ -269,7 +269,7 @@ router.post('/enhancements/transfer/transferee-whichapplicants-answer', function
 
         }
     }
-    if (companyTransferee2 != '') { 
+    if (companyTransferee2 != '') {
       let checkbox4 = req.body['applicant-company-transferee2'];
       req.session.data['second applicant type'] = 'company';
       if (checkbox4 == 'applicant2-company-transferee-2'){
@@ -419,15 +419,15 @@ router.post('/transactions/transfer/transferee-addresstype-answer_1', function (
     if (transfereeAddress_1_1 === 'BFPO') {
         res.redirect('/enhancements/transfer/AddAddresses_forServices/addAddress/Transferee1/transferee-BFPOAddress')
       }
-  
+
 })
 
   // Transferee add address for service
   router.post('/transactions/transfer/transferee-addresstype-answer_1_2', function (req, res) {
 
     let transfereeAddress_1_2 = req.session.data['transfereeAddressType-2']
-  
-  
+
+
       if (transfereeAddress_1_2 === 'property') {
           res.redirect('/enhancements/transfer/AddAddresses_forServices/transfereeAddressList')
         }
@@ -449,7 +449,7 @@ router.post('/transactions/transfer/transferee-addresstype-answer_1', function (
       if (transfereeAddress_1_2 === 'BFPO') {
           res.redirect('/enhancements/transfer/AddAddresses_forServices/addAddress/Transferee2/transferee-BFPOAddress')
         }
-    
+
   })
 
 // // Transferee 2 address
@@ -650,7 +650,7 @@ router.post('/enhancements/charge/date-entered', function (req, res) {
   if ((day != '') && (month != '') && (year != '')) {
     req.session.data['charge-date'] = 'true';
 
-    } 
+    }
 res.redirect('/enhancements/charge/MDRef')
 
 })
@@ -796,7 +796,7 @@ router.post('/enhancements/charge/lender-representation-answer', function (req, 
   if (lenderRep === 'NotRepresented') {
       req.session.data['charge-lenderReptype'] = '-Not represented-';
       res.redirect('/enhancements/charge/lender-representation')
-  } 
+  }
   if (lenderRep === 'UKConveyancersLtd')  {
     req.session.data['charge-lenderReptype'] = 'UK Conveyancers Ltd';
     res.redirect('/enhancements/charge/lender-representation')
@@ -1364,7 +1364,7 @@ router.post('/filterTransactions', function (req, res) {
   let wholeORpart = req.session.data['wholepart']
     if (applicationType === 'update-register' && wholeORpart === 'yes') {
         res.redirect('/enhancements/transactions-updateRegisterWHOLE')
-    } 
+    }
     if (applicationType === 'update-register' && wholeORpart === 'no') {
       res.redirect('/enhancements/transactions-updateRegisterPART')
     }
@@ -1464,7 +1464,7 @@ let transaction = req.session.data['Transaction']
       res.redirect('/transactions/charge/TC-tasks') }
     if (transaction === 'TransferCharge') {
       req.session.data['transfereeAddressComplete'] = 'true';
-      res.redirect('/enhancements/transfer/transferor-list') 
+      res.redirect('/enhancements/transfer/transferor-list')
     }
 })
 
@@ -1513,13 +1513,13 @@ router.post('/transactions/transfer/add-transferor-complete', function (req, res
 
     if (typeof Addresscheckbox1 !== 'undefined'){
       if(typeof individual2 !== 'undefined'){
-        req.session.data['transfereeAddressType-2'] = 'UK-postal'; 
-        req.session.data['flat2'] = flat; 
-        req.session.data['house-number2'] = houseNumber; 
-        req.session.data['house-street2'] = houseStreet; 
-        req.session.data['place-name2'] = placeName; 
-        req.session.data['town-city2'] = townCity; 
-        req.session.data['postcode2'] = postcode; 
+        req.session.data['transfereeAddressType-2'] = 'UK-postal';
+        req.session.data['flat2'] = flat;
+        req.session.data['house-number2'] = houseNumber;
+        req.session.data['house-street2'] = houseStreet;
+        req.session.data['place-name2'] = placeName;
+        req.session.data['town-city2'] = townCity;
+        req.session.data['postcode2'] = postcode;
       }
     }
 
@@ -1540,13 +1540,13 @@ router.post('/transactions/transfer/add-transferor-complete', function (req, res
 
     if (typeof Addresscheckbox2 !== 'undefined'){
       if(typeof individual1 !== 'undefined'){
-        req.session.data['transfereeAddressType-1'] = 'UK-postal'; 
-        req.session.data['flat'] = flat2; 
-        req.session.data['house-number'] = houseNumber2; 
-        req.session.data['house-street'] = houseStreet2; 
-        req.session.data['place-name'] = placeName2; 
-        req.session.data['town-city'] = townCity2; 
-        req.session.data['postcode'] = postcode2; 
+        req.session.data['transfereeAddressType-1'] = 'UK-postal';
+        req.session.data['flat'] = flat2;
+        req.session.data['house-number'] = houseNumber2;
+        req.session.data['house-street'] = houseStreet2;
+        req.session.data['place-name'] = placeName2;
+        req.session.data['town-city'] = townCity2;
+        req.session.data['postcode'] = postcode2;
       }
     }
 
@@ -1560,7 +1560,7 @@ router.post('/transactions/transfer/add-transferor-complete', function (req, res
 
     let maryIncluded = req.body['also-mary'];
       if (maryIncluded == 'also-mary'){
-        req.session.data['mary-attorney-1'] = Attorney; 
+        req.session.data['mary-attorney-1'] = Attorney;
       }
     res.redirect('/enhancements/transfer/transferor-list')
 
@@ -1571,9 +1571,9 @@ router.post('/transactions/transfer/add-transferor-complete', function (req, res
 
     let spencerIncluded = req.body['also-spencer'];
       if (spencerIncluded == 'also-spencer'){
-        req.session.data['spencer-attorney-1'] = attorney; 
+        req.session.data['spencer-attorney-1'] = attorney;
       }
-    
+
       res.redirect('/enhancements/transfer/transferor-list')
   })
 
@@ -1588,32 +1588,32 @@ router.post('/transactions/transfer/add-transferor-complete', function (req, res
 
     // for this one could use     if (representsAll == 'true') instead
     if (typeof representsAll !== 'undefined'){
-      req.session.data['code'] = 'is executing here'; 
+      req.session.data['code'] = 'is executing here';
       if(spencerRepType === 'UKConveyancersLtd'){
-        req.session.data['TransferorRepresentationMary'] = spencerRepType; 
-        req.session.data['codee'] = 'is executing here also'; 
-        if (typeof spencerAttorney !== 'undefined'){ 
+        req.session.data['TransferorRepresentationMary'] = spencerRepType;
+        req.session.data['codee'] = 'is executing here also';
+        if (typeof spencerAttorney !== 'undefined'){
         req.session.data['TransferorRepresentationSpencer-attorney'] = spencerRepType;
-        } 
-        if (typeof maryAttorney !== 'undefined'){ 
+        }
+        if (typeof maryAttorney !== 'undefined'){
           req.session.data['TransferorRepresentationMary-attorney'] = spencerRepType;
 
-        } 
+        }
       }
       if(spencerRepType === 'OtherConveyancer'){
-        req.session.data['TransferorRepresentationMary'] = spencerRepType; 
-        req.session.data['TransferorConveyancerNameMary'] = spencerRepName; 
+        req.session.data['TransferorRepresentationMary'] = spencerRepType;
+        req.session.data['TransferorConveyancerNameMary'] = spencerRepName;
 
-        if (typeof maryAttorney !== 'undefined'){ 
-          req.session.data['TransferorRepresentationMary-attorney'] = spencerRepType; 
-          req.session.data['TransferorConveyancerNameMary-attorney'] = spencerRepName;         
-        } 
+        if (typeof maryAttorney !== 'undefined'){
+          req.session.data['TransferorRepresentationMary-attorney'] = spencerRepType;
+          req.session.data['TransferorConveyancerNameMary-attorney'] = spencerRepName;
+        }
 
-        if (typeof spencerAttorney !== 'undefined'){ 
-          req.session.data['TransferorConveyancerNameSpencer-attorney'] = spencerRepName; 
-          req.session.data['TransferorRepresentationSpencer-attorney'] = spencerRepType; 
-        } 
-        
+        if (typeof spencerAttorney !== 'undefined'){
+          req.session.data['TransferorConveyancerNameSpencer-attorney'] = spencerRepName;
+          req.session.data['TransferorRepresentationSpencer-attorney'] = spencerRepType;
+        }
+
 
       }
     }
@@ -1633,31 +1633,31 @@ router.post('/transactions/transfer/add-transferor-complete', function (req, res
 
     // for this one could use     if (representsAll == 'true') instead
     if (typeof representsAll !== 'undefined'){
-      req.session.data['code'] = 'is executing here'; 
+      req.session.data['code'] = 'is executing here';
       if(maryRepType === 'UKConveyancersLtd'){
-        req.session.data['TransferorRepresentationSpencer'] = maryRepType; 
-        req.session.data['codee'] = 'is executing here also'; 
-        if (typeof spencerAttorney !== 'undefined'){ 
+        req.session.data['TransferorRepresentationSpencer'] = maryRepType;
+        req.session.data['codee'] = 'is executing here also';
+        if (typeof spencerAttorney !== 'undefined'){
         req.session.data['TransferorRepresentationSpencer-attorney'] = maryRepType;
-        } 
-        if (typeof maryAttorney !== 'undefined'){ 
+        }
+        if (typeof maryAttorney !== 'undefined'){
           req.session.data['TransferorRepresentationMary-attorney'] = maryRepType;
 
-        } 
+        }
       }
       if(maryRepType === 'OtherConveyancer'){
-        req.session.data['TransferorRepresentationSpencer'] = maryRepType; 
-        req.session.data['TransferorConveyancerNameSpencer'] = maryRepName; 
+        req.session.data['TransferorRepresentationSpencer'] = maryRepType;
+        req.session.data['TransferorConveyancerNameSpencer'] = maryRepName;
 
-        if (typeof maryAttorney !== 'undefined'){ 
-          req.session.data['TransferorConveyancerNameMary-attorney'] = maryRepName;   
-          req.session.data['TransferorRepresentationMary-attorney'] = maryRepType;       
-        } 
+        if (typeof maryAttorney !== 'undefined'){
+          req.session.data['TransferorConveyancerNameMary-attorney'] = maryRepName;
+          req.session.data['TransferorRepresentationMary-attorney'] = maryRepType;
+        }
 
-        if (typeof spencerAttorney !== 'undefined'){ 
-          req.session.data['TransferorRepresentationSpencer-attorney'] = maryRepType; 
-          req.session.data['TransferorConveyancerNameSpencer-attorney'] = maryRepName; 
-        } 
+        if (typeof spencerAttorney !== 'undefined'){
+          req.session.data['TransferorRepresentationSpencer-attorney'] = maryRepType;
+          req.session.data['TransferorConveyancerNameSpencer-attorney'] = maryRepName;
+        }
       }
     }
 
@@ -1678,33 +1678,33 @@ router.post('/transactions/transfer/add-transferor-complete', function (req, res
         req.session.data['TransferorRepresentationMary-attorney'] = spencerAttorneyRepType;
         if(spencerAttorneyRepType === 'OtherConveyancer'){
           req.session.data['TransferorConveyancerNameMary-attorney'] = spencerAttorneyRepName;
-        } 
+        }
       }
     }
 
     // for this one could use     if (representsAll == 'true') instead
     if (typeof representsAll !== 'undefined'){
-      req.session.data['code'] = 'is executing here'; 
+      req.session.data['code'] = 'is executing here';
       if(spencerAttorneyRepType === 'UKConveyancersLtd'){
-        req.session.data['codee'] = 'is executing here also'; 
-        req.session.data['TransferorRepresentationMary'] = spencerAttorneyRepType; 
-        req.session.data['TransferorRepresentationSpencer'] = spencerAttorneyRepType;  
-        
-        if (typeof maryAttorney !== 'undefined'){ 
-          req.session.data['TransferorRepresentationMary-attorney'] = spencerAttorneyRepType; 
-        } 
+        req.session.data['codee'] = 'is executing here also';
+        req.session.data['TransferorRepresentationMary'] = spencerAttorneyRepType;
+        req.session.data['TransferorRepresentationSpencer'] = spencerAttorneyRepType;
+
+        if (typeof maryAttorney !== 'undefined'){
+          req.session.data['TransferorRepresentationMary-attorney'] = spencerAttorneyRepType;
+        }
       }
       if(spencerAttorneyRepType === 'OtherConveyancer'){
-        req.session.data['TransferorRepresentationMary'] = spencerAttorneyRepType; 
-        req.session.data['TransferorConveyancerNameMary'] = spencerAttorneyRepName; 
+        req.session.data['TransferorRepresentationMary'] = spencerAttorneyRepType;
+        req.session.data['TransferorConveyancerNameMary'] = spencerAttorneyRepName;
 
-        req.session.data['TransferorRepresentationSpencer'] = spencerAttorneyRepType; 
-        req.session.data['TransferorConveyancerNameSpencer'] = spencerAttorneyRepName; 
+        req.session.data['TransferorRepresentationSpencer'] = spencerAttorneyRepType;
+        req.session.data['TransferorConveyancerNameSpencer'] = spencerAttorneyRepName;
 
-        if (typeof maryAttorney !== 'undefined'){ 
-          req.session.data['TransferorRepresentationMary-attorney'] = spencerAttorneyRepType; 
-          req.session.data['TransferorConveyancerNameMary-attorney'] = spencerAttorneyRepName;         } 
-        
+        if (typeof maryAttorney !== 'undefined'){
+          req.session.data['TransferorRepresentationMary-attorney'] = spencerAttorneyRepType;
+          req.session.data['TransferorConveyancerNameMary-attorney'] = spencerAttorneyRepName;         }
+
       }
     }
     res.redirect('/enhancements/transfer/transferor-representation')
@@ -1724,33 +1724,33 @@ router.post('/transactions/transfer/add-transferor-complete', function (req, res
         req.session.data['TransferorRepresentationMary-attorney'] = maryAttorneyRepType;
         if(maryAttorneyRepType === 'OtherConveyancer'){
           req.session.data['TransferorConveyancerNameMary-attorney'] = maryAttorneyRepName;
-        } 
+        }
       }
     }
 
     // for this one could use     if (representsAll == 'true') instead
     if (typeof representsAll !== 'undefined'){
-      req.session.data['code'] = 'is executing here'; 
+      req.session.data['code'] = 'is executing here';
       if(maryAttorneyRepType === 'UKConveyancersLtd'){
-        req.session.data['codee'] = 'is executing here also'; 
-        req.session.data['TransferorRepresentationMary'] = maryAttorneyRepType; 
-        req.session.data['TransferorRepresentationSpencer'] = maryAttorneyRepType;  
-        
-        if (typeof maryAttorney !== 'undefined'){ 
-          req.session.data['TransferorRepresentationMary-attorney'] = maryAttorneyRepType; 
-        } 
+        req.session.data['codee'] = 'is executing here also';
+        req.session.data['TransferorRepresentationMary'] = maryAttorneyRepType;
+        req.session.data['TransferorRepresentationSpencer'] = maryAttorneyRepType;
+
+        if (typeof maryAttorney !== 'undefined'){
+          req.session.data['TransferorRepresentationMary-attorney'] = maryAttorneyRepType;
+        }
       }
       if(maryAttorneyRepType === 'OtherConveyancer'){
-        req.session.data['TransferorRepresentationMary'] = maryAttorneyRepType; 
-        req.session.data['TransferorConveyancerNameMary'] = maryAttorneyRepName; 
+        req.session.data['TransferorRepresentationMary'] = maryAttorneyRepType;
+        req.session.data['TransferorConveyancerNameMary'] = maryAttorneyRepName;
 
-        req.session.data['TransferorRepresentationSpencer'] = maryAttorneyRepType; 
-        req.session.data['TransferorConveyancerNameSpencer'] = maryAttorneyRepName; 
+        req.session.data['TransferorRepresentationSpencer'] = maryAttorneyRepType;
+        req.session.data['TransferorConveyancerNameSpencer'] = maryAttorneyRepName;
 
-        if (typeof spencerAttorney !== 'undefined'){ 
-          req.session.data['TransferorRepresentationSpencer-attorney'] = maryAttorneyRepType; 
-          req.session.data['TransferorConveyancerNameSpencer-attorney'] = maryAttorneyRepName;         } 
-        
+        if (typeof spencerAttorney !== 'undefined'){
+          req.session.data['TransferorRepresentationSpencer-attorney'] = maryAttorneyRepType;
+          req.session.data['TransferorConveyancerNameSpencer-attorney'] = maryAttorneyRepName;         }
+
       }
     }
     res.redirect('/enhancements/transfer/transferor-representation')
@@ -1788,7 +1788,7 @@ router.post('/transactions/transfer/transferor-details-complete', function (req,
 
 router.post('/enhancements/transfer/dateConfirmed', function (req, res) {
   req.session.data['transfer-date'] = 'true';
-  res.redirect('/enhancements/transfer/transfer-guarantee') 
+  res.redirect('/enhancements/transfer/transfer-guarantee')
 
 })
 
@@ -1847,7 +1847,7 @@ router.post('/transactions/transfer/documents/attached-required-documents', func
 
 router.post('/enhancements/attachedDocuments', function (req, res) {
     req.session.data['attached'] = 'true';
-    res.redirect('/enhancements/Transfer-Charge/tasks-complete-your-application') 
+    res.redirect('/enhancements/Transfer-Charge/tasks-complete-your-application')
 })
 
 
@@ -2677,25 +2677,6 @@ router.post('/formP-addresstype-answer', function (req, res) {
 
       })
 
-  // Single journey transaction routing
-
-  // router.post('/single-transaction-branching', function (req, res) {
-  //
-  // let transaction = req.session.data['singleJourneyTransactions']
-  // let transaction1 = req.session.data['Transaction1']
-  //
-  //
-  // if (transaction1 === 'New lease') {
-  //       res.redirect('/single-journey/enter-titles');
-  //
-  // if (transaction1 === 'Transfer of Part (TP1)')
-  //       res.redirect('enter-titles');
-  //
-  // if (transaction1 === 'Transfer for value (TR1)')
-  //       res.redirect('enter-titles'); }
-  //
-  // })
-
 // Single journey branching from titles
   router.post('/titles-branching', function (req, res) {
 
@@ -2706,4 +2687,63 @@ router.post('/formP-addresstype-answer', function (req, res) {
     } else {
       res.redirect('single-journey/document_prompts-1');
     }
+  })
+
+
+  router.post('/startpage-testing/version-1/application-type', function (req, res) {
+    // Get the answer from session data
+    // The name between the quotes is the same as the 'name' attribute on the input elements
+    // However in JavaScript we can't use hyphens in variable names
+
+    const ApplicationType = req.session.data['Application-type']
+
+    switch (ApplicationType) {
+
+      case 'register-updates':
+        res.redirect('/startpage-testing/register-updates/enter_titles');
+        break;
+
+      case 'transfer-of-part':
+        res.redirect('/startpage-testing/transfer-part/enter_titles');
+        break;
+
+      case 'FormA':
+        res.redirect('/startpage-testing/JP1/enter_title');
+        break;
+
+    }
+
+  })
+
+  router.post('/startpage-testing/version-2/application-type', function (req, res) {
+    // Get the answer from session data
+    // The name between the quotes is the same as the 'name' attribute on the input elements
+    // However in JavaScript we can't use hyphens in variable names
+
+    const ApplicationType = req.session.data['Application-type']
+
+    switch (ApplicationType) {
+
+      case 'register-updates':
+        res.redirect('/startpage-testing/register-updates/enter_titles');
+        break;
+
+      case 'transfer-of-part':
+        res.redirect('/startpage-testing/transfer-part/enter_titles');
+        break;
+
+      case 'new-lease':
+        res.redirect('/startpage-testing/new-lease/enter_titles');
+        break;
+
+      case 'lease-extension':
+        res.redirect('/startpage-testing/lease-extension/enter_titles');
+        break;
+
+      case 'FormA':
+        res.redirect('/startpage-testing/JP1/enter_title');
+        break;
+
+    }
+
   })
