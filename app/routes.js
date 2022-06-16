@@ -24,29 +24,6 @@ router.post('/whole-part-answer', function (req, res) {
 })
 
 
-// Run this code when a form is submitted to '/type-selected'
-router.post('/type-selected', function (req, res) {
-
-  // Make a variable and give it the value from 'wholepart'
-  var ApplicationType = req.session.data['Application-type'];
-  req.session.data['function-executing'] = 'yes';
-
-  // Check whether the variable matches a condition
-  if (ApplicationType == "register-updates"){
-    res.redirect('/enhancements/end-to-end/register-updates/1-title-no');
-  }
-  if (ApplicationType == "transfer-of-part"){
-    res.redirect('/enhancements/end-to-end/transfer-of-part/1-title-no');
-  }
-  if (ApplicationType == 'new-lease'){
-    res.redirect('/enhancements/end-to-end/new-lease/1-title-no');
-  }
-  if (ApplicationType == 'lease-extension'){
-    res.redirect('/enhancements/end-to-end/lease-extension/1-title-no');
-  }
-
-})
-
 
 router.post('/transaction-order-selected', function (req, res) {
 
@@ -2700,11 +2677,11 @@ router.post('/formP-addresstype-answer', function (req, res) {
     switch (ApplicationType) {
 
       case 'register-updates':
-        res.redirect('/startpage-testing/version-1/register-updates/enter_titles');
+        res.redirect('/startpage-testing/version-1/register-updates/enter_titles-0');
         break;
 
       case 'transfer-of-part':
-        res.redirect('/startpage-testing/version-1/transfer-part/enter_titles');
+        res.redirect('/startpage-testing/version-1/transfer-part/enter_titles-0');
         break;
 
       case 'FormA':
@@ -2725,19 +2702,19 @@ router.post('/formP-addresstype-answer', function (req, res) {
     switch (ApplicationType) {
 
       case 'register-updates':
-        res.redirect('/startpage-testing/version-2/register-updates/enter_titles');
+        res.redirect('/startpage-testing/version-2/register-updates/enter_titles-0');
         break;
 
       case 'transfer-of-part':
-        res.redirect('/startpage-testing/version-2/transfer-part/enter_titles');
+        res.redirect('/startpage-testing/version-2/transfer-part/enter_titles-0');
         break;
 
       case 'new-lease':
-        res.redirect('/startpage-testing/version-2/new-lease/enter_titles');
+        res.redirect('/startpage-testing/version-2/new-lease/enter_titles-0');
         break;
 
       case 'lease-extension':
-        res.redirect('/startpage-testing/version-2/lease-extension/enter_titles');
+        res.redirect('/startpage-testing/version-2/lease-extension/enter_titles-0');
         break;
 
       case 'FormA':
