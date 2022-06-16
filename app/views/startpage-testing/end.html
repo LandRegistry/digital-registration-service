@@ -42,39 +42,20 @@
     <main class="govuk-main-wrapper " id="main-content" role="main">
         <div class="govuk-grid-row">
 
-          <h1 class="govuk-grid-column-two-thirds govuk-heading-xl">Digital registration service</h1>
-
             <div class="govuk-grid-column-two-thirds">
 
-              <h2 class="govuk-heading-l govuk-!-padding-top-5">User research</h2>
+              <h1 class="govuk-heading-xl">Scenario completed</h1>
 
-              <h3 class="govuk-heading-m govuk-!-padding-top-5">Version 1</h3>
-
-            <p class="govuk-body">Description of scenario</p>
+              <p class="govuk-body">Thank you for completing the usability testing scenario.<br><br>Please select 'Continue' to return to the homepage.</p>
 
           <br>
 
           {% from "govuk/components/button/macro.njk" import govukButton %}
 
           {{ govukButton({
-            text: "Start now",
-            href: "version-1/start.html"
+            text: "Continue",
+            href: "index.html"
           }) }}
-
-          <br><br>
-
-          <h3 class="govuk-heading-m govuk-!-padding-top-5">Version 2</h3>
-
-        <p class="govuk-body">Description of scenario</p>
-
-      <br>
-
-        {% from "govuk/components/button/macro.njk" import govukButton %}
-
-        {{ govukButton({
-          text: "Start now",
-          href: "version-2/start.html"
-        }) }}
 
           </div>
 
