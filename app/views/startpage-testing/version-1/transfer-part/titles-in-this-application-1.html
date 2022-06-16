@@ -8,7 +8,7 @@
     <span class="govuk-caption-xl"></span>
     <h1 class="govuk-heading-xl"> Titles in this application</h1>
 
-    <form method="post" action="/filterTransactions">
+    <form method="post">
 
     <p class="govuk-body">Check the details of the title numbers in the application and add any disclosable overriding interests.</p>
 
@@ -38,28 +38,23 @@
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header govuk-!-width-one-third">Title number</th>
           <td class="govuk-table__cell govuk-!-width-one-half">ABC123</td>
-          <td class="govuk-table__cell govuk-!-width-one-quarter" style="text-align: right"><a class="govuk-link govuk-link--no-visited-state" href="#">Remove</a></td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter" style="text-align: right"><a class="govuk-link govuk-link--no-visited-state" href="/startpage-testing/version-1/transfer-part/enter_titles-1">Change</a></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-width-one-third">Title number type</th>
+          <td class="govuk-table__cell govuk-!-width-one-half">Transferor</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter" style="text-align: right"><a class="govuk-link govuk-link--no-visited-state" href="#"></a></td>
         </tr>
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header">Property</th>
           <td class="govuk-table__cell">1 Main Road, Littlehaxten, LH1 1AA</td>
           <td class="govuk-table__cell"></td>
         </tr>
-        {% if data['whole-title-impacted'] === 'yes' %}
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header">This application affects</th>
           <td class="govuk-table__cell">the whole of the title</td>
           <td class="govuk-table__cell govuk-!-width-one-quarter" style="text-align: right"><a class="govuk-link govuk-link--no-visited-state" href="#">Change</a></td>
         </tr>
-        {% endif %}
-
-        {% if data['whole-title-impacted'] === 'no' %}
-        <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">This application affects</th>
-          <td class="govuk-table__cell">part of the title <br>{{data['with-hint']}}</td>
-          <td class="govuk-table__cell govuk-!-width-one-quarter" style="text-align: right"><a class="govuk-link govuk-link--no-visited-state" href="#">Change</a></td>
-        </tr>
-        {% endif %}
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header"></th>
           <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" onclick="DOI1" id="DOI-link-1" href="#">Add disclosable overriding interests</a></td>
@@ -67,8 +62,8 @@
         </tr>
       </tbody>
     </table>
- 
-<a class="govuk-link govuk-body govuk-!-margin-bottom-9" href="enter-title-numbers_.html">Add another title number</a>
+
+<a class="govuk-link govuk-body govuk-!-margin-bottom-9" href="/startpage-testing/version-1/transfer-part/enter_titles-1.html">Add another title number</a>
 <br><br><br>
 
 <p class="govuk-body" style="font-weight: bold">Ensure all details are correct before continuing. You will not be able <br> to change the title numbers later in the application.</p>
@@ -76,7 +71,8 @@
 <br><br>
 
     {{ govukButton({
-      text: "Continue"
+      text: "Continue",
+      href: "/startpage-testing/version-1/transfer-part/TP-transactions"
         }) }}
 
   </form>
