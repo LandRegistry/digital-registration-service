@@ -43,7 +43,7 @@
         <div class="govuk-radios__item">
           <input class="govuk-radios__input" id="lease-extension" name="Application-type" type="radio" value="lease-extension" aria-describedby="sign-in-2-item-hint">
           <label class="govuk-label govuk-radios__label" for="lease-extension">
-            Lease extension
+            Lease extension (for example, surrender of lease)
           </label>
         </div>
         <div class="govuk-radios__item">
@@ -56,8 +56,19 @@
       </div>
       </fieldset>
 
+</div>
 
-  </div>
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            What is a register update?
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          A register update is an application to update an existing registered title only. For example, if you need to apply for transfer of whole.
+        </div>
+      </details>
+
 
   {{ govukButton({
     text: "Continue"

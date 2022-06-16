@@ -12,9 +12,9 @@
 
   <form method="post" action="Application-type">
 
-  <div id="sign-in-hint" class="govuk-hint">
-    If your application includes a specific transaction (such as transfer of part), select that as your application type. You can add additional register updates later in the application.
-  </div>
+  <p class="govuk-body">
+    Select the main purpose of your applictaion. This should be the transaction you need to complete first. You can add additional transactions later in the application.
+  </p>
 
 <br>
 
@@ -46,6 +46,18 @@
 
 
   </div>
+
+  <details class="govuk-details" data-module="govuk-details">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+        What is a register update?
+      </span>
+    </summary>
+    <div class="govuk-details__text">
+      A register update is an application to update an existing registered title only. For example, if you need to apply for transfer of whole.
+    </div>
+  </details>
+
 
   {{ govukButton({
     text: "Continue"

@@ -50,27 +50,21 @@
     <span class="govuk-caption-xl"></span>
     <h1 class="govuk-heading-xl"> Enter title numbers </h1>
 
-    <p class="govuk-body">You can add up to 25 titles per application.</p>
+    <p class="govuk-body">
+      You can add up to 25 titles per application.To add multiple title numbers:
+      <ul class="govuk-list govuk-list--bullet">
+      <li>all titles must have the same proprietors registered against each title number
+      <li>landlords (freehold) and tenants (lleasehold) must be the same for each title number
+      </ul>
+    </p>
 
-    <details class="govuk-details" data-module="govuk-details">
-      <summary class="govuk-details__summary">
-        <span class="govuk-details__summary-text">About applications relating to more than one title number</span>
-      </summary>
-      <div class="govuk-details__text">
-        You can use this service for applications of up to 25 title numbers. In order to register multiple title numbers in one application:
-        <br><br>
-        <ul class="govuk-list govuk-list--bullet">
-        <li>all titles must have the same proprietors registered against each title number
-        <li >transferors and transferees must be the the same for each title number
-        </ul>
-      </div>
-    </details>
+    <br>
 
   <form method="post" action="enter_titles-1">
 
     <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
       <div class="govuk-form-group">
-        <h2 class="govuk-heading-s">Landlord title number</h2>
+        <h2 class="govuk-heading-s">Landlord (freehold) title number</h2>
         <label class="govuk-hint for="govuk-input govuk-input--width-10">
           For example, "A123" or "XY5678"
         </label>
@@ -87,12 +81,24 @@
 
     <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
       <div class="govuk-form-group">
-        <h3 class="govuk-heading-s">Additional title number (optional)</h3>
+        <h3 class="govuk-heading-s">Related title number (optional)</h3>
         <label class="govuk-hint for="govuk-input govuk-input--width-10">
           For example, "A123" or "XY5678"
         </label>
         <input type="text" class="govuk-input govuk-!-width-one-third govuk-!-margin-bottom-5" name="title_1" aria-describedby="with-hint-info with-hint-hint">
       </div>
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            What are related titles?
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          A related title is affected by your application, but not the main purpose of it. For example, adjourning land affected by an easement.
+        </div>
+      </details>
+
       <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
         Add to application
       </button>
