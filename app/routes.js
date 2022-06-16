@@ -2534,9 +2534,9 @@ router.post('/restriction-form', function (req, res) {
 
 let form = req.session.data['form']
 
-  if (form === 'Form A (Restriction on dispositions by sole proprietor)') {
-      res.redirect('/restrictions/formA-nature')
-      }
+//  if (form === 'Form A (Restriction on dispositions by sole proprietor)') {
+//      res.redirect('/restrictions/formA-nature')
+//      }
   if (form === 'Form P (Disposition by registered proprietor of registered estate or proprietor of charge – consent of proprietor of specified charge or certificate required)') {
       res.redirect('/restrictions/formP-consent')
       }
