@@ -50,21 +50,15 @@
     <span class="govuk-caption-xl"></span>
     <h1 class="govuk-heading-xl"> Enter title numbers </h1>
 
-    <p class="govuk-body">You can add up to 25 titles per application.</p>
+    <p class="govuk-body">
+      You can add up to 25 titles per application if:
+      <ul class="govuk-list govuk-list--bullet">
+      <li>all titles have the same proprietors registered against each title number
+      <li>transferors and transferees are the same for each title number
+      </ul>
+    </p>
 
-    <details class="govuk-details" data-module="govuk-details">
-      <summary class="govuk-details__summary">
-        <span class="govuk-details__summary-text">About applications relating to more than one title number</span>
-      </summary>
-      <div class="govuk-details__text">
-        You can use this service for applications of up to 25 title numbers. In order to register multiple title numbers in one application:
-        <br><br>
-        <ul class="govuk-list govuk-list--bullet">
-        <li>all titles must have the same proprietors registered against each title number
-        <li >transferors and transferees must be the the same for each title number
-        </ul>
-      </div>
-    </details>
+    <br>
 
   <form method="post" action="/startpage-testing/version-2/register-updates/enter_titles-2">
     <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
