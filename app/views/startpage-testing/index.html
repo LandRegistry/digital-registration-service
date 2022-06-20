@@ -52,13 +52,12 @@
 
             <p class="govuk-body">Description of scenario</p>
 
-          <br>
-
           {% from "govuk/components/button/macro.njk" import govukButton %}
 
           {{ govukButton({
             text: "Start now",
-            href: "version-1/portal.html"
+            href: "version-1/portal.html",
+            isStartButton: true
           }) }}
 
           <br><br>
@@ -67,13 +66,12 @@
 
         <p class="govuk-body">Description of scenario</p>
 
-      <br>
-
-        {% from "govuk/components/button/macro.njk" import govukButton %}
+      {% from "govuk/components/button/macro.njk" import govukButton %}
 
         {{ govukButton({
-          text: "Start now",
-          href: "version-2/portal.html"
+        text: "Start now",
+        href: "version-2/portal.html",
+        isStartButton: true
         }) }}
 
           </div>

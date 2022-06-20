@@ -52,25 +52,11 @@
 
     <p class="govuk-body">You can add up to 25 titles per application.</p>
 
-    <details class="govuk-details" data-module="govuk-details">
-      <summary class="govuk-details__summary">
-        <span class="govuk-details__summary-text">About applications relating to more than one title number</span>
-      </summary>
-      <div class="govuk-details__text">
-        You can use this service for applications of up to 25 title numbers. In order to register multiple title numbers in one application:
-        <br><br>
-        <ul class="govuk-list govuk-list--bullet">
-        <li>all titles must have the same proprietors registered against each title number
-        <li >transferors and transferees must be the the same for each title number
-        </ul>
-      </div>
-    </details>
-
     <form method="post" action="#">
 
       <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
         <div class="govuk-form-group">
-          <h2 class="govuk-heading-s">Freehold title number</h2>
+          <h2 class="govuk-heading-m">Landlord (freehold) title number</h2>
           <label class="govuk-hint for="govuk-input govuk-input--width-10">
             For example, "A123" or "XY5678"
           </label>
@@ -87,7 +73,7 @@
 
       <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
         <div class="govuk-form-group">
-          <h2 class="govuk-heading-s">Leasehold title number</h2>
+          <h2 class="govuk-heading-m">Tenant (leasehold) title number</h2>
           <label class="govuk-hint for="govuk-input govuk-input--width-10">
             For example, "A123" or "XY5678"
           </label>
@@ -104,9 +90,9 @@
 
       <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
         <div class="govuk-form-group">
-          <h3 class="govuk-heading-s">Related title number (optional)</h3>
+          <h3 class="govuk-heading-m">Related title number (optional)</h3>
           <label class="govuk-hint for="govuk-input govuk-input--width-10">
-            For example, "A123" or "XY5678"
+            For example, a title related to a grant of easement.
           </label>
           <input type="text" class="govuk-input govuk-!-width-one-third govuk-!-margin-bottom-5" name="title_1" aria-describedby="with-hint-info with-hint-hint">
         </div>
@@ -114,7 +100,7 @@
         <details class="govuk-details" data-module="govuk-details">
           <summary class="govuk-details__summary">
             <span class="govuk-details__summary-text">
-              What are related titles?
+              What is a related title?
             </span>
           </summary>
           <div class="govuk-details__text">
@@ -143,13 +129,13 @@
     <tbody class="govuk-table__body">
       <tr class="govuk-table__row">
         <td scope="row" class="govuk-table__cell">ABC123</td>
-        <td scope="row" class="govuk-table__cell">Freehold</td>
+        <td scope="row" class="govuk-table__cell">Landlord</td>
         <td scope="row" class="govuk-table__cell">1 Main Road, Littlehaxten, LH1</td>
         <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="enter_titles-0">Remove</a></td>
       </tr>
       <tr class="govuk-table__row">
         <td scope="row" class="govuk-table__cell">ABC456</td>
-        <td scope="row" class="govuk-table__cell">Leasehold</td>
+        <td scope="row" class="govuk-table__cell">Tenant</td>
         <td scope="row" class="govuk-table__cell">2 Main Road, Littlehaxten, LH1</td>
         <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="enter_titles-1">Remove</a></td>
       </tr>
