@@ -1,18 +1,10 @@
-{% extends "layout_unbranded.html" %}
+{% extends "layout.html" %}
 
 {% block pageTitle %}
-  Data cleared - GOV.UK Prototype Kit
+  Data cleared – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
-<script>
-  document.addEventListener("DOMContentLoaded", function(event){
-  console.log('hello');
-  localStorage.clear();
-  console.log('clear data working');
-})
-</script>
-
 
   <h1 class="govuk-heading-m">
     Data cleared
@@ -23,7 +15,9 @@
   </p>
 
   <p>
-    <a class="govuk-link govuk-heading-s" href="/enhancements/end-to-end/application-type">Select application type</a>
+    <a href="/">
+      Prototype home page
+    </a>
   </p>
 
 {% endblock %}
