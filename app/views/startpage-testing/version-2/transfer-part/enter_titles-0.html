@@ -60,32 +60,33 @@
 
     <br>
 
-  <form method="post" action="enter_titles-1">
+  <form method="post" action="#">
 
-    <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
       <div class="govuk-form-group">
         <h2 class="govuk-heading-m">Transferor title number</h2>
-        <label class="govuk-hint for="govuk-input govuk-input--width-10">
+        <label class="govuk-hint" for="govuk-input govuk-input--width-10">
           For example, "A123" or "XY5678"
         </label>
-        <input type="text" class="govuk-input govuk-!-width-one-third govuk-!-margin-bottom-5" name="title_1" aria-describedby="with-hint-info with-hint-hint">
-      </div>
-      <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
-        Add to application
-      </button>
+        <input type="text" class="govuk-input govuk-!-width-one-third" name="title_1" id="transferor-title" aria-describedby="with-hint-info with-hint-hint">
       </div>
 
   </form>
+
+  <button class="govuk-button govuk-button--secondary" id="add-transferor-title" data-module="govuk-button">
+    Add to application
+  </button>
+
+  <br>
 
   <form method="post" action="#">
 
     <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
       <div class="govuk-form-group">
         <h3 class="govuk-heading-m">Related title number (optional)</h3>
-        <label class="govuk-hint for="govuk-input govuk-input--width-10">
+        <label class="govuk-hint" for="govuk-input govuk-input--width-10">
           For example, a title related to a grant of easement.
         </label>
-        <input type="text" class="govuk-input govuk-!-width-one-third govuk-!-margin-bottom-5" name="title_1" aria-describedby="with-hint-info with-hint-hint">
+        <input type="text" class="govuk-input govuk-!-width-one-third govuk-!-margin-bottom-5" name="title_1" id="related-title" aria-describedby="with-hint-info with-hint-hint">
       </div>
 
       <details class="govuk-details" data-module="govuk-details">
@@ -98,13 +99,13 @@
           A related title is affected by your application, but not the main purpose of it. For example, adjoining land affected by an easement.
         </div>
       </details>
-
-      <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
-        Add to application
-      </button>
       </div>
 
   </form>
+
+  <button class="govuk-button govuk-button--secondary" id="add-related-title" data-module="govuk-button">
+    Add to application
+  </button>
 
   <div class="govuk-inset-text">
     You can amend title numbers later.
@@ -142,4 +143,26 @@
 
 {% block bodyEnd %}
 {% include "includes/scripts.html" %}
+
+<script>
+
+//  $('#transferor-title').val()
+//  alert($('#transferor-title').val())
+
+  var addTransferorTitle = function () {
+  alert($('#transferor-title').val())
+  }
+
+  // event handlers
+  $('#add-transferor-title').on('click', addTransferorTitle)
+
+  var addRelatedTitle = function () {
+  alert($('#related-title').val())
+  }
+
+  // event handlers
+  $('#add-related-title').on('click', addRelatedTitle)
+
+</script>
+
 {% endblock %}
