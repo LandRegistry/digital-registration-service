@@ -3,15 +3,15 @@
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds" style="margin-top: -35px; margin-bottom:10px;">
-    <a href="/enhancements/Transfer-Charge/tasks-complete-your-application" class="govuk-back-link">Return to task list</a>
+    <a href="/enhancements/end-to-end/register-updates/10-task-completed-a" class="govuk-back-link">Return to task list</a>
     </div>
 
 <div class="govuk-grid-column-full">
-  <span class="govuk-caption-xl">New lease</span>
+  <span class="govuk-caption-xl">Surrender a lease</span>
   <h1 class="govuk-heading-xl"> Attach documents </h1>
   <h2 class="govuk-heading-l"> Required </h2>
 
-  <form method="post" action="/enhancements/attachedDocuments">
+  <form method="post" action="12-task-completed-a">
   <table class="govuk-table">
 
   <thead class="govuk-table__head">
@@ -26,34 +26,14 @@
 
   <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
-          <td class="govuk-table__cell">Legal deeds</td>
-          <td class="govuk-table__cell govuk-!-width-one-quarter">Lease</td>
+          <td class="govuk-table__cell">Deed</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter">Deed</td>
           <td class="govuk-table__cell">Certified</td>
-          <td class="govuk-table__cell govuk-!-width-one-third">lease-certificate.pdf</td>
+          <td class="govuk-table__cell govuk-!-width-one-third">lease-surrender-JohnSmith.pdf</td>
           {% if data['tr1attached']%}<td class="govuk-table__cell govuk-link"><a href="">Remove</a></td>{% endif %}
           {% if not data['tr1attached'] %}<td class="govuk-table__cell govuk-link"><a href="#">Attach</a></td>{% endif %}
+        </tr>
 
-        </tr>
-        {% if data['spencer-attorney-1']%}
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">Evidence - power of attorney: Spencer Reid</td>
-          <td class="govuk-table__cell govuk-!-width-one-quarter">Power of attorney</td>
-          <td class="govuk-table__cell">{% if data['poaSpencerattached']%} Certified {% endif %}</td>
-          <td class="govuk-table__cell govuk-!-width-one-third">{% if data['poaSpencerattached']%} POA-SpencerReid.pdf {% endif %}</td>
-          {% if data['poaSpencerattached']%}<td class="govuk-table__cell govuk-link"><a href="">Remove</a></td>{% endif %}
-          {% if not data['poaSpencerattached'] %}<td class="govuk-table__cell govuk-link"><a href="#">Attach</a></td>{% endif %}
-        </tr>
-        {% endif %}
-        {% if data['mary-attorney-1']%}
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">Evidence - power of attorney: Mary Reid</td>
-          <td class="govuk-table__cell govuk-!-width-one-quarter">Power of attorney</td>
-          <td class="govuk-table__cell">{% if data['poaMaryattached']%} Certified {% endif %}</td>
-          <td class="govuk-table__cell govuk-!-width-one-third">{% if data['poaMaryattached']%} POA-MaryReid.pdf {% endif %}</td>
-          {% if data['poaMaryattached']%}<td class="govuk-table__cell govuk-link"><a href="">Remove</a></td>{% endif %}
-          {% if not data['poaMaryattached'] %}<td class="govuk-table__cell govuk-link"><a href="document_uploadPOAMary.html">Attach</a></td>{% endif %}
-        </tr>
-        {% endif %}
   </tbody>
 </table>
 
@@ -78,7 +58,7 @@
           <td class="govuk-table__cell">{% if data['suggested_upload']%} Certified {% endif %}</td>
           <td class="govuk-table__cell govuk-!-width-one-third">{% if data['suggested_upload']%} Consent.pdf {% endif %}</td>
           {% if data['suggested_upload']%}<td class="govuk-table__cell govuk-link"><a href="">Remove</a></td>{% endif %}
-          {% if not data['suggested_upload'] %}<td class="govuk-table__cell govuk-link"><a href="/../transactions/transfer/documents/document_upload_suggested">Attach</a></td>{% endif %}
+          {% if not data['suggested_upload'] %}<td class="govuk-table__cell govuk-link"><a href="#">Attach</a></td>{% endif %}
         </tr>
 
         <tr class="govuk-table__row">
@@ -153,12 +133,8 @@
 {% endif %}
 <p class='govuk-body'><a href="#">Attach another type of document</a></p>
 
-
-
 {{ govukButton({
-  text: "Continue",
-  classes: "govuk-!-margin-top-5",
-  href:"10-complete-application"
+  text: "Continue"
 }) }}
 </form>
 

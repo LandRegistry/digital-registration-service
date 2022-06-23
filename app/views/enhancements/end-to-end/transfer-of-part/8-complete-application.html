@@ -23,14 +23,14 @@
           <td scope="col" class="govuk-table__cell"><a style="float: right;" href="/setup/change-reference">Change</a></td>
         </tr>
       </thead>
-  
+
       <tbody class="govuk-table__body">
             <tr class="govuk-table__row">
               <th scope="row" class="govuk-table__header govuk-!-width-one-quarter">Title number(s)</th>
               <td class="govuk-table__cell" colspan="2">ABC123, ABC456	{% if data['title_2'] %}, ABC456 {% endif %}</td>
               <td class="govuk-table__cell"></td>
             </tr>
-  
+
       </tbody>
     </table>
     <h2 class="govuk-heading-m govuk-!-padding-top-5">1. Transfer of Part</h2>
@@ -44,12 +44,12 @@
         <th scope="col" class="govuk-table__header">1.1 Attach documents</th>
         <td class="govuk-table__cell"></td>
         <tbody class="govuk-table__body">
-  
+
                 <tr class="govuk-table__row">
                 <td class="govuk-table__cell"><a href="/enhancements/end-to-end/transfer-of-part/9-attach-documents" class="govuk-link">Attach documents</a></td>
                 <td class="govuk-table__cell">{% if data['charge-date'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
                 </tr>
-  
+
         </tbody>
       </table>
     </div>
@@ -79,7 +79,7 @@
     {{ govukButton({
         text: "Review application",
         classes: "govuk-!-margin-top-9",
-        href: "#"
+        href: "9-attach-documents"
       }) }}
 
 

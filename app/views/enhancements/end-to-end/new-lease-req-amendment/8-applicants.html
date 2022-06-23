@@ -1,0 +1,89 @@
+{% extends "drs-layout.html" %}
+
+{% block content %}
+<div class="govuk-grid-row">
+
+<div class="govuk-grid-column-full">
+  <span class="govuk-caption-l"></span>
+
+
+    <h1 class="govuk-heading-l">Applicants</h1>
+    
+
+<form method="post" action="10-task-completed-a">
+
+
+<table class="govuk-table" id="applicantlist">
+
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header" style="width: 20%; box-sizing: border-box;">Applicant type</th>
+      <th scope="col" class="govuk-table__header" style="width: 20%;box-sizing: border-box;">Full name</th>
+      <th scope="col" class="govuk-table__header" style="width: 25%;box-sizing: border-box;">Company number</th>
+      <th scope="col" class="govuk-table__header" style="width: 25%;box-sizing: border-box;" >Territory of incorporation</th>
+      <th scope="col" class="govuk-table__header" style="width: 10%;box-sizing: border-box;">Options</th>
+    </tr>
+  </thead>
+
+  <tbody class="govuk-table_body">
+    <tr class="govuk-table_row" id="hidePI">
+    <td class="govuk-table__cell">Private individual</td>
+    <td class="govuk-table__cell">{{ data['applicant-individual-forename'] }} {{ data['applicant-individual-surname'] }}</td>
+    <td class="govuk-table__cell">N/A</td>
+    <td class="govuk-table__cell">N/A</td>
+    <td class="govuk-table__cell govuk-link"><a href="add-applicants-change">Change</a><br><a  href="">Remove</a></td>
+  </tbody>
+</table>
+
+    <!-- {% if data['applicant-company-name'] or data['applicant-individual-forename'] or data['applicant-overseas-name'] or data['applicant-other-name'] %}
+    <a class="govuk-link" href="add-applicants-2">Add applicant</a><br>
+    {% endif %} -->
+
+    {% if data['applicant2-company-name-2'] or data['applicant2-individual-forename-2'] or data['applicant2-overseas-name'] or data['applicant2-other-name'] %}
+    <a class="govuk-link govuk-body" href="add-applicants-3">Add applicant</a><br>
+    {% else %}
+    <a class="govuk-link govuk-body" href="add-applicants-2">Add applicant</a><br>
+    {% endif %}
+
+
+
+
+{{ govukButton({
+classes: "govuk-!-margin-top-5",
+text: "Continue"
+
+}) }}
+
+</form>
+
+</div>
+</div>
+
+<!-- <script>
+  function RemoveTransfereeIndividual() {
+  var x = document.getElementById("hidePI");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+
+  function RemoveTransfereeUK() {
+  var x = document.getElementById("hideUK");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+</script> -->
+
+{% endblock %}
+
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}
