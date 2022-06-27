@@ -58,8 +58,16 @@
 
   <form method="post" action="enter_titles-1">
 
-    <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
-      <div class="govuk-form-group">
+        <div class="govuk-form-group">
+          <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="event-name">
+              Landlord (freehold) title number
+            </label>
+          </h1>
+          <div id="event-name-hint" class="govuk-hint">
+            For example, "A123" or "XY5678"
+          </div>
+          <input class="govuk-input" id="event-name" name="event-name" type="text" aria-describedby="event-name-hint">
+        </div>
         <h2 class="govuk-heading-m">Landlord (freehold) title number</h2>
         <label class="govuk-hint for="govuk-input govuk-input--width-10">
           For example, "A123" or "XY5678"
