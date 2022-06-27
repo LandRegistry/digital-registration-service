@@ -107,12 +107,33 @@
     Add to application
   </button>
 
+<br>
+
+<div style="display: none;" id="titles_table">
+  <h2 class="govuk-heading-m">Titles in this application</h2>
+  <table class="govuk-table">
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th scope="col" class="govuk-table__header">Title number</th>
+        <th scope="col" class="govuk-table__header">Type</th>
+        <th scope="col" class="govuk-table__header">Property description</th>
+        <th scope="col" class="govuk-table__header"></th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body" id="titles_table-entry">
+    </tbody>
+  </table>
+
+</div>
+
+
   <div class="govuk-inset-text">
     You can amend title numbers later.
   </div>
 
   {{ govukButton({
-    text: "Continue"
+    text: "Continue",
+    href: "titles-in-this-application-1"
   }) }}
   </div>
   </div>
@@ -146,18 +167,45 @@
 
 <script>
 
+  function createHouseNumber() {
+  // return Math.floor(Math.random() * (max - min + 1) + min)
+  return Math.floor(Math.random() * (50 - 1 + 1) + 1)
+  };
+
 //  $('#transferor-title').val()
 //  alert($('#transferor-title').val())
 
   var addTransferorTitle = function () {
-  alert($('#transferor-title').val())
+  var titleNumber = $('#transferor-title').val();
+  $('#transferor-title').val('');
+  var houseNumber = createHouseNumber();
+  var HTML = '';
+  HTML = HTML + '<tr class="govuk-table__row">'
+                  + '<td scope="row" class="govuk-table__cell">' + titleNumber + '</td>'
+                  + '<td scope="row" class="govuk-table__cell">' + 'Transferor' + '</td>'
+                  + '<td scope="row" class="govuk-table__cell">' + houseNumber + ' Main Road, Littlehaxten, LH1' + '</td>'
+                  + '<td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="#">Remove</a>' + '</td>'
+                + '</tr>'
+  $('#titles_table').show();
+  $('#titles_table-entry').append(HTML)
   }
 
   // event handlers
   $('#add-transferor-title').on('click', addTransferorTitle)
 
   var addRelatedTitle = function () {
-  alert($('#related-title').val())
+  var titleNumber = $('#related-title').val();
+  $('#related-title').val('');
+  var houseNumber = createHouseNumber();
+  var HTML = '';
+  HTML = HTML + '<tr class="govuk-table__row">'
+                  + '<td scope="row" class="govuk-table__cell">' + titleNumber + '</td>'
+                  + '<td scope="row" class="govuk-table__cell">' + 'Related' + '</td>'
+                  + '<td scope="row" class="govuk-table__cell">' + houseNumber + ' Main Road, Littlehaxten, LH1' + '</td>'
+                  + '<td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="#">Remove</a>' + '</td>'
+                + '</tr>'
+  $('#titles_table').show();
+  $('#titles_table-entry').append(HTML)
   }
 
   // event handlers
