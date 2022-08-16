@@ -1,0 +1,194 @@
+{% extends "drs-layout.html" %}
+
+{% block content %}
+<style>
+  .govuk-table__header{
+    width: 80%;
+  }
+</style>
+<div class="govuk-grid-row">
+
+
+<div class="govuk-grid-column-full">
+  <span class="govuk-caption-l"></span>
+    <h1 class="govuk-heading-l">Complete your application</h1>
+    <p class="govuk-body-m">Provide all details and the documents you want to attach.</p>
+
+
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Your reference</th>
+          <td scope="col" class="govuk-table__cell">Reference</td>
+          <td scope="col" class="govuk-table__cell"><a style="float: right;" href="/setup/change-reference">Change</a></td>
+        </tr>
+      </thead>
+
+      <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header govuk-!-width-one-quarter">Title number(s)</th>
+              <td class="govuk-table__cell" colspan="2">ABC123, ABC456</td>
+              <td class="govuk-table__cell"></td>
+            </tr>
+
+      </tbody>
+    </table>
+    <h2 class="govuk-heading-m govuk-!-padding-top-5">New lease</h2>
+
+
+
+  <div class="govuk-grid-column-full" style="margin-left: 35px; width: 97%;">
+
+    <table class="govuk-table govuk-!-width-two-thirds">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">1.1 Tenant details</th>
+          <td class="govuk-table__cell"></td>
+        </tr>
+
+      </thead>
+
+      <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+
+              <td class="govuk-table__cell govuk-link"><a href="#">Tenant details</a></td>
+              <td class="govuk-table__cell">
+              <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
+            </td>
+
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell govuk-link"><a href="#">Add tenant representation</a></td>
+              <td class="govuk-table__cell">
+                <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">1.2 Landlord details</th>
+              <td class="govuk-table__cell"></td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell govuk-link"><a href="#">Landlord details</a></td>
+              <td class="govuk-table__cell">
+                      <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell govuk-link"><a href="#">Landlord representation</a></td>
+              <td class="govuk-table__cell">
+                      <strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>
+              </td>
+            </tr>
+<!--
+            <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">1.3 Additional fields</th>
+                <td class="govuk-table__cell"></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell govuk-link"><a href="#">Confirm transfer date</a></td>
+                <td class="govuk-table__cell">
+                    <strong class="govuk-tag app-task-list__task-completed">COMPLETED</strong>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell govuk-link"><a href="#">Confirm consideration</a></td>
+                <td class="govuk-table__cell">
+                    <strong class="govuk-tag app-task-list__task-completed">COMPLETED</strong>
+              </tr>
+
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell govuk-link"><a href="#">Select title guarantee</a></td>
+                <td class="govuk-table__cell">
+                    <strong class="govuk-tag app-task-list__task-completed">Completed</strong>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell govuk-link"><a href="#">Additional provisions (optional)</a></td>
+                <td class="govuk-table__cell">
+                 {% if data['title-guarantee'] %}
+                    <strong class="govuk-tag app-task-list__task-completed">Completed</strong>
+                  {% endif %} -->
+              </tr>
+
+             <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">1.4 Supporting documents</th>
+              <td class="govuk-table__cell"></td>
+            </tr>
+            <!-- <tr class="govuk-table__row">
+              <td class="govuk-table__cell govuk-link"><a href="#">Get part-completed TR1 (optional)</a></td>
+              <td class="govuk-table__cell">
+                {% if data['download'] %}
+                  <strong class="govuk-tag app-task-list__task-completed">Downloaded</strong>
+                {% endif %}
+            </tr> -->
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell govuk-link"><a href="#">Attach documents</a></td>
+              <td class="govuk-table__cell">
+                  <strong class="govuk-tag app-task-list__task-completed">Attached</strong>
+
+      </tbody>
+    </table>
+
+    <!-- </div>
+    <h2 class="govuk-heading-m govuk-!-padding-top-5">2. Surrender a lease</h2>
+
+    </div> -->
+
+
+  <!-- <div class="govuk-grid-column-full" style="margin-left: 40px; width: 97%;">
+
+    <table class="govuk-table govuk-!-width-two-thirds">
+      <th scope="col" class="govuk-table__header">2.1 Attach documents</th>
+      <td class="govuk-table__cell"></td>
+      <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+              <td class="govuk-table__cell"><a href="/enhancements/end-to-end/register-updates/11-document-upload-a" class="govuk-link">Attach documents</a></td>
+              <td class="govuk-table__cell">{% if data['mortgageAttached'] and data['certificateAttached'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
+            </tr>
+      </tbody>
+    </table>
+  </div>
+
+      {% if data['mortgageAttached'] and data['certificateAttached'] %}
+      <div class="govuk-!-margin-bottom-9">
+      <h3 class="govuk-heading-l">Preview your e-AP1</h3>
+      <a href="#"><img src="/public/images/ap1-icon.svg" style="max-width:15%; height:auto; float: left; padding-right: 25px;" alt="ap1 icon"></a>
+      <h2><a href="#" class="govuk-link govuk-heading-m govuk-!-font-weight-regular" style="">Download draft e-AP1 (PDF)</a></h2>
+      <p class="govuk-body"> PDF - opens in a new window</p><br><br>
+      </div>
+      {% endif %}
+
+
+
+
+    <div class="govuk-grid-column-full"> -->
+
+
+    {{ govukButton({
+        text: "Review application",
+        classes: "govuk-!-margin-top-9",
+        href: "13-review-application"
+      }) }}
+
+
+      {{ govukButton({
+        text: "Save application and exit",
+        classes: "secondary-button-save govuk-!-margin-top-9",
+        href: "/../save-resume/save-confirmation"
+      }) }}
+
+
+      {{ govukInsetText({
+          text: "To avoid requisitions, attach all relevant documents."
+        }) }}
+
+        </div>
+        </div>
+
+
+
+{% endblock %}
+
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}

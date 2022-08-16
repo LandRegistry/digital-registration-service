@@ -4,7 +4,7 @@
     <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-        <span class="govuk-caption-l"></span>
+        <span class="govuk-caption-l">Apply to update or create a registered title</span>
 
           <h1 class="govuk-heading-l">Add applicant</h1>
 
@@ -12,7 +12,7 @@
 You can add more applicants in the next step. </p>
 
       <br>
-          <!-- <form method="get" action="applicants-list" data-validate="applicant-form-validation" novalidate> -->
+          <form method="get" action="/enhancements/end-to-end/register-updates/8-applicants" data-validate="applicant-form-validation" novalidate>
             <div class="govuk-form-group">
               <fieldset class="govuk-fieldset" aria-describedby="add-applicant-conditional-hint">
                 <h2 class="govuk-heading-s">Select applicant type</h2>
@@ -22,20 +22,22 @@ You can add more applicants in the next step. </p>
                     <label class="govuk-label govuk-radios__label" for="add-applicant-conditional">
                       Private individual
                     </label>
+
                   </div>
 
                   <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-add-applicant-conditional">
+                    <p>Name must be exactly as it appears on documents lodged with this application</p>
                     <div class="govuk-form-group">
                       <label class="govuk-label" for="add-applicant-individual-forename">
                         Forenames
                       </label>
-                      <input class="govuk-input govuk-!-width-one-half nametest" id="add-applicant-individual-forename" name="applicant-individual-forename"  type="forename"  >
+                      <input class="govuk-input govuk-!-width-one-half" id="add-applicant-individual-forename" name="applicant-individual-forename"  type="forename"  >
                     </div>
                     <div class="govuk-form-group">
                       <label class="govuk-label" for="add-applicant-individual-surname">
                         Surname
                       </label>
-                      <input class="govuk-input govuk-!-width-one-half nametest2" id="add-applicant-individual-surname" name="applicant-individual-surname"  type="surname"  >
+                      <input class="govuk-input govuk-!-width-one-half" id="add-applicant-individual-surname" name="applicant-individual-surname"  type="surname"  >
                     </div>
 
                   </div>
@@ -562,7 +564,7 @@ You can add more applicants in the next step. </p>
                   </div>
                 </fieldset>
                 </div>
-            
+
 
                 <div class="govuk-warning-text">
                   <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
@@ -573,38 +575,17 @@ You can add more applicants in the next step. </p>
                   </strong>
                 </div>
 
-                <button class="govuk-button" data-module="govuk-button">
-                  Continue
-              </button>
 
 
-            <!--    {{ govukButton({
-                  text: "Continue",
-                  classes: "govuk-!-margin-top-5",
-                  href:"7-applicants"
-                }) }}
+  {{ govukButton({
+  classes: "",
+  text: "Continue",
+  href:"8-applicants"
+  }) }}
 
- </form> -->
-
-<script>
+</form>
 
 
-$('.govuk-button').click(function() {
-
-var nameTest = $(".nametest").val();
-
-member.nameTest = nameTest;
-
-var nameTest2 = $(".nametest2").val();
-
-member.nameTest2 = nameTest2;
-
-go('7-applicants');
-
-}) 
-
-
-</script>
 
 
 <script type="application/json" id="applicant-form-validation">

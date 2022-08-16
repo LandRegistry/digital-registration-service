@@ -1,0 +1,374 @@
+{% extends "drs-layout.html" %}
+
+{% block content %}
+<div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-full">
+
+    <div class="example-screen">
+    <div class="govuk-panel govuk-panel--confirmation">
+      <h1 class="govuk-panel__title">
+        Application submitted
+      </h1>
+      <div class="govuk-panel__body">
+        Your HM Land Registry reference number<br><strong>HDJ2123F</strong>
+      </div>
+      <br>
+      <div class="govuk-panel_body">
+        You must quote this reference number in any correspondence
+        </div>
+    </div>
+
+    <div>
+        <h1 class="govuk-heading-l" style="float: left;">
+          Priority details
+        </h1>
+        <!-- <button class="govuk-button govuk-button--secondary" onclick="window.print();" data-module="govuk-button" style="float: right;">
+        Print submission receipt
+      </button> -->
+
+        <table class="govuk-table">
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header govuk-!-width-one-third">Priority date</th>
+            <td class="govuk-table__cell">7 March 2022</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Priority time</th>
+            <td class="govuk-table__cell">14:43:07</td>
+          </tr>
+
+        </table>
+        <h1 class="govuk-heading-l" style="float: left;">
+          Application details
+        </h1>
+        <table class="govuk-table">
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Your reference</th>
+            <td class="govuk-table__cell">{{data['reference']}}</td>
+          </tr>
+
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Title numbers</th>
+            <td class="govuk-table__cell">ABC123, ABC456</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Fee (£)</th>
+            <td class="govuk-table__cell">
+              40
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <h2 class="govuk-heading-l">Property details</h2>
+      <table class="govuk-table" id="applicantlist">
+
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header" style="width: 20%; box-sizing: border-box;">Title number</th>
+            <th scope="col" class="govuk-table__header" style="width: 20%;box-sizing: border-box;">Property description</th>
+            <th scope="col" class="govuk-table__header" style="width: 25%;box-sizing: border-box;">Additional details</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table_body">
+          <tr class="govuk-table_row" id="hidePI">
+          <td class="govuk-table__cell">ABC123</td>
+          <td class="govuk-table__cell">123 St Edwards Row, Littlehaxten, LH2 7AE</td>
+          <td class="govuk-table__cell">This application affects the whole of the title </td>
+        </tbody>
+      </table>
+      <table class="govuk-table">
+        <h2 class="govuk-heading-l">Overriding interests</h2>
+        <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header govuk-!-width-one-third">Disclosable overriding interests</th>
+                <td class="govuk-table__cell">No</td>
+              </tr>
+
+        </tbody>
+      </table>
+      <table class="govuk-table govuk-!-margin-bottom-9" id="applicantlist-review">
+        <div class="heading govuk-grid-column-one-half">
+        <h2 class="govuk-heading-l" style="margin-left: -15px;">Applicants</h2>
+        </div>
+        <div class="govuk-grid-column-one-half">
+          <br>
+        </div>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header ">Applicant type</th>
+            <th scope="col" class="govuk-table__header">Full name</th>
+            <th scope="col" class="govuk-table__header">Company number</th>
+            <th scope="col" class="govuk-table__header">Territory of incorporation</th>
+          </tr>
+        </thead>
+
+        <table class="govuk-table govuk-!-margin-bottom-9">
+          <h2 class="govuk-heading-m">Attached documents</h2>
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header govuk-!-width-one-third">Document type</th>
+                <th scope="col" class="govuk-table__header govuk-!-width-one-eighth">Certification</th>
+                <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">File name</th>
+              </tr>
+            </thead>
+
+            <tbody class="govuk-table__body">
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">Mortgage deed</td>
+                    <td class="govuk-table__cell">Certified</td>
+                    <td class="govuk-table__cell">MD.pdf</td>
+                  </tr>
+
+            </tbody>
+
+
+          <tbody class="govuk-table_body">
+            {% if data['applicant-individual-forename'] %}
+              <tbody class="govuk-table_body">
+                <tr class="govuk-table_row" id="hidePI">
+                <td class="govuk-table__cell">Private individual</td>
+                <td class="govuk-table__cell govuk-!-width-one-third">{{ data['applicant-individual-forename'] }} {{ data['applicant-individual-surname'] }}</td>
+                <td class="govuk-table__cell">N/a</td>
+                <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+              </tbody>
+               {% endif %}
+
+               {% if data['applicant2-individual-forename-2'] %}
+                 <tbody class="govuk-table_body">
+                   <tr class="govuk-table_row" id="hidePI">
+                   <td class="govuk-table__cell">Private individual</td>
+                   <td class="govuk-table__cell govuk-!-width-one-third">{{ data['applicant2-individual-forename-2'] }} {{ data['applicant2-individual-surname-2'] }}</td>
+                   <td class="govuk-table__cell">N/a</td>
+                   <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+                </tbody>
+                  {% endif %}
+
+                  {% if data['applicant3-individual-forename-3'] %}
+                    <tbody class="govuk-table_body">
+                      <tr class="govuk-table_row" id="hidePI">
+                      <td class="govuk-table__cell">Private individual</td>
+                      <td class="govuk-table__cell govuk-!-width-one-third">{{ data['applicant3-individual-forename-3'] }} {{ data['applicant3-individual-surname-3'] }}</td>
+                      <td class="govuk-table__cell">N/a</td>
+                      <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+                    </tbody>
+                     {% endif %}
+
+              {% if data['applicant-company-name'] %}
+              <tbody class="govuk-table_body">
+                <tr class="govuk-table_row" id="hidePI">
+                <td class="govuk-table__cell">UK Company or LLC</td>
+                <td class="govuk-table__cell govuk-!-width-one-third">{{ data['applicant-company-name'] }}</td>
+                <td class="govuk-table__cell"> {{ data['applicant-company-number'] }}</td>
+                <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+              </tbody>
+               {% endif %}
+
+               {% if data['applicant2-company-name-2'] %}
+               <tbody class="govuk-table_body">
+                 <tr class="govuk-table_row" id="hidePI">
+                 <td class="govuk-table__cell">UK Company or LLC</td>
+                 <td class="govuk-table__cell govuk-!-width-one-third">{{ data['applicant2-company-name-2'] }}</td>
+                 <td class="govuk-table__cell"> {{ data['applicant2-company-number-2'] }}</td>
+                 <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+              </tbody>
+                {% endif %}
+
+                {% if data['applicant3-company-name-3'] %}
+                <tbody class="govuk-table_body">
+                  <tr class="govuk-table_row" id="hidePI">
+                  <td class="govuk-table__cell">UK Company or LLC</td>
+                  <td class="govuk-table__cell govuk-!-width-one-third">{{ data['applicant3-company-name-3'] }}</td>
+                  <td class="govuk-table__cell"> {{ data['applicant3-company-number-3'] }}</td>
+                  <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+                </tbody>
+                 {% endif %}
+
+                {% if data['applicant-overseas-name'] %}
+                  <tbody class="govuk-table_body">
+                    <tr class="govuk-table_row">
+                    <td class="govuk-table__cell">Overseas company</td>
+                    <td class="govuk-table__cell govuk-!-width-one-third">{{ data['applicant-overseas-name'] }}</td>
+                    <td class="govuk-table__cell"> {% if data['applicant-overseas-number'] %}{{ data['applicant-overseas-number'] }}{% endif %}{% if not data['applicant-overseas-number'] %}N/a{% endif %}</td>
+                    <td class="govuk-table__cell govuk-!-width-one-quarter"> {{ data['applicant-overseas-country'] }}</td>
+                  </tbody>
+                   {% endif %}
+
+                   {% if data['applicant2-overseas-name'] %}
+                     <tbody class="govuk-table_body">
+                       <tr class="govuk-table_row">
+                       <td class="govuk-table__cell">Overseas company</td>
+                       <td class="govuk-table__cell govuk-!-width-one-third">{{ data['applicant2-overseas-name'] }}</td>
+                       <td class="govuk-table__cell"> {% if data['applicant2-overseas-number'] %}{{ data['applicant2-overseas-number'] }}{% endif %}{% if not data['applicant2-overseas-number'] %}N/a{% endif %}</td>
+                       <td class="govuk-table__cell govuk-!-width-one-quarter"> {{ data['applicant2-overseas-country'] }}</td>
+                    </tbody>
+                      {% endif %}
+
+                      {% if data['applicant3-overseas-name'] %}
+                        <tbody class="govuk-table_body">
+                          <tr class="govuk-table_row">
+                          <td class="govuk-table__cell">Overseas company</td>
+                          <td class="govuk-table__cell govuk-!-width-one-third">{{ data['applicant3-overseas-name'] }}</td>
+                          <td class="govuk-table__cell"> {% if data['applicant3-overseas-number'] %}{{ data['applicant3-overseas-number'] }}{% endif %}{% if not data['applicant3-overseas-number'] %}N/a{% endif %}</td>
+                          <td class="govuk-table__cell govuk-!-width-one-quarter"> {{ data['applicant3-overseas-country'] }}</td>
+                        </tbody>
+                         {% endif %}
+
+                 {% if data['applicant-other-name'] %}
+                 <tbody class="govuk-table_body">
+                   <tr class="govuk-table_row">
+                   <td class="govuk-table__cell">Other organisation</td>
+                   <td class="govuk-table__cell govuk-!-width-one-third">{{ data['applicant-other-name'] }}</td>
+                   <td class="govuk-table__cell">N/a</td>
+                   <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+                </tbody>
+                 {% endif %}
+
+                 {% if data['applicant2-other-name'] %}
+                 <tbody class="govuk-table_body">
+                   <tr class="govuk-table_row">
+                   <td class="govuk-table__cell">Other organisation</td>
+                   <td class="govuk-table__cell govuk-!-width-one-third">{{ data['applicant2-other-name'] }}</td>
+                   <td class="govuk-table__cell">N/a</td>
+                   <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+                </tbody>
+                 {% endif %}
+
+                 {% if data['applicant3-other-name'] %}
+                 <tbody class="govuk-table_body">
+                   <tr class="govuk-table_row">
+                   <td class="govuk-table__cell">Other organisation</td>
+                   <td class="govuk-table__cell govuk-!-width-one-third">{{ data['applicant3-other-name'] }}</td>
+                   <td class="govuk-table__cell">N/a</td>
+                   <td class="govuk-table__cell govuk-!-width-one-quarter">N/a</td>
+                </tbody>
+                 {% endif %}
+
+                </table>
+
+<!-- PRINTABLE AREA -->
+
+    <div class="example-print">
+      <h1 class="govuk-heading-m">
+        Application submitted
+      </h1>
+      <div class="print-text">
+        Your HM Land Registry reference number<br><strong>HDJ2123F</strong>
+      </div>
+      <br>
+      <div class="print-text">
+        You must quote this reference number in any correspondence
+        </div>
+
+        <br>
+    <div>
+        <h2 class="govuk-heading-s" style="float: left;">
+        Application details
+        </h2>
+
+        <table class="govuk-table">
+        <tbody class="govuk-table__body print-text">
+          <tr class="govuk-table__row print-text">
+            <th scope="row" class="govuk-table__header col-print-12 print-text">Priority date</th>
+            <td class="govuk-table__cell">7 June 2021</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header col-print-12">Priority time</th>
+            <td class="govuk-table__cell">14:43:07</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header col-print-12">Your reference</th>
+            <td class="govuk-table__cell">1206301/1</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header col-print-12">Title numbers</th>
+            <td class="govuk-table__cell">LP12345, LP12346, LP12347, LP12348, LP12349, LP12350, LP12351, LP12352, LP12353, LP12354, LP12355, LP12356, LP12357, LP12358, LP12359, LP12360, LP12361, LP12362, LP12363, LP12364, LP12365, LP12366, LP12367, LP12366</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header col-print-12">Property description</th>
+            <td class="govuk-table__cell ">66 Edwards Walk, Littlehaxten, LH6 8SH <br> 67 Edwards Walk, Littlehaxten, LH6 8SH <br> 68 Edwards Walk, Littlehaxten, LH6 8SH <br> 69 Edwards Walk, Littlehaxten, LH6 8SH<br> 70 Edwards Walk, Littlehaxten, LH6 8SH<br>
+                                          71 Edwards Walk, Littlehaxten, LH6 8SH<br> 72 Edwards Walk, Littlehaxten, LH6 8SH <br> 73 Edwards Walk, Littlehaxten, LH6 8SH <br> 74 Edwards Walk, Littlehaxten, LH6 8SH <br> 75 Edwards Walk, Littlehaxten, LH6 8SH<br>
+                                          76 Edwards Walk, Littlehaxten, LH6 8SH <br> 77 Edwards Walk, Littlehaxten, LH6 8SH <br> 78 Edwards Walk, Littlehaxten, LH6 8SH <br> 79 Edwards Walk, Littlehaxten, LH6 8SH<br> 80 Edwards Walk, Littlehaxten, LH6 8SH<br>
+                                          81 Edwards Walk, Littlehaxten, LH6 8SH<br> 82 Edwards Walk, Littlehaxten, LH6 8SH <br> 83 Edwards Walk, Littlehaxten, LH6 8SH <br> 84 Edwards Walk, Littlehaxten, LH6 8SH <br> 85 Edwards Walk, Littlehaxten, LH6 8SH<br>
+                                          86 Edwards Walk, Littlehaxten, LH6 8SH<br> 87 Edwards Walk, Littlehaxten, LH6 8SH <br> 88 Edwards Walk, Littlehaxten, LH6 8SH <br> 89 Edwards Walk, Littlehaxten, LH6 8SH <br> 90 Edwards Walk, Littlehaxten, LH6 8SH<br>
+
+                                        </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Attachments</th>
+            <td class="govuk-table__cell">deed.pdf <br> evidence.pdf</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Contact email</th>
+            <td class="govuk-table__cell">admin@conveyancingfirm.co.uk</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+
+    <!-- END OF PRINTABLE AREA -->
+    <div class="govuk-form-group govuk-!-margin-bottom-9">
+      <table class="govuk-table">
+        <h2 class="govuk-heading-l">Your contact email for this application</h2>
+        <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header govuk-!-width-one-third">Your contact email for this application</th>
+                <td class="govuk-table__cell">me@ukconveyancers.co.uk</td>
+              </tr>
+        </tbody>
+      </table>
+    <div class="example-screen">
+      <h3 class="govuk-heading-l">Next steps</h3>
+        <ul class="govuk-list">
+          <li>
+            <a class="govuk-link" href="#">Download completed AP1</a>
+          </li>
+          <li>
+            <a class="govuk-link" href="#">Start new application</a>
+          </li>
+          <li>
+            <a class="govuk-link" href="#">View your applications</a>
+          </li>
+          <li>
+            <a class="govuk-link" href="#">Go to portal homepage</a>
+          </li>
+          <li>
+            <br>
+            <p class="govuk-body">Got a moment? <a class="govuk-link" href="https://forms.office.com/r/Lyh4kx0bMn">Tell us what you think</a></p>
+          </li>
+      </ul>
+  </div>
+
+
+
+</div>
+
+<style>
+  .example-print {
+    display: none;
+}
+@media print {
+   .example-screen {
+       display: none;
+    }
+    .example-print {
+       display: block;
+    }
+    .col-print-12 {
+        width: 10%
+      }
+    .print-text {
+        font-size: 12px;
+        font-family: arial;
+    }
+}
+
+</style>
+
+
+{% endblock %}
+
+
