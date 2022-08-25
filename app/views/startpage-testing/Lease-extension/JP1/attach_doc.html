@@ -1,0 +1,133 @@
+{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
+{%- set assetPath = '/govuk/assets' -%}
+
+{% extends "govuk/template.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/tabs/macro.njk" import govukTabs %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+
+{% block headIcons %}
+  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
+  <link rel="mask-icon" href="{{ asset_path }}images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset_path }}images/apple-touch-icon-152x152.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset_path }}images/apple-touch-icon-120x120.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset_path }}images/apple-touch-icon-76x76.png?0.18.3">
+  <link rel="apple-touch-icon-precomposed" href="{{ asset_path }}images/apple-touch-icon-60x60.png?0.18.3">
+{% endblock %}
+
+{% block head %}
+  <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full" id="headerdiv">
+    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
+    <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+
+
+    <div class="govuk-phase-banner">
+        <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
+        <span class="govuk-phase-banner__text">
+        This is a prototype and not a real service
+        </span></p>
+    </div>
+    </div>
+
+    </div>
+
+    <main class="govuk-main-wrapper" id="main-content" role="main">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-xl">Attach and certify JP1 letter</h1>
+
+<form method="post">
+
+  <p class="govuk-body">Files can be GIF, TIFF, JPG or PDF and must not exceed 20MB file size.</p>
+
+  <p class="govuk-body">Category</p>
+  <h2 class="govuk-heading-m govuk-!-margin-bottom-6" style="margin-top: -20px;">Evidence</h2>
+
+  <p class="govuk-body">Document type</p>
+  <h3 class="govuk-heading-m govuk-!-margin-bottom-6" style="margin-top: -20px;">JP1 letter</h3>
+
+  <p class="govuk-body">Attach a file</p>
+  <a href="/startpage-testing/JP1/attach_doc-complete" type="file" id="suggested_upload" class="govuk-link--no-visited-state" onclick="fileupload()" style="cursor: pointer; text-decoration: none; font-size: 14px; color: black; border-style: solid;  border-width: 0.5px; padding: 5px; border-radius: 3px; position: absolute; ">Choose file</a>
+  <a  style="margin-left: 100px;" class="govuk-body" id="filename" for="JP1-upload"> No file chosen </a>
+
+  <h4 class="govuk-heading-m govuk-!-margin-top-6">Certification</h4>
+  <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <div class="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="Certified-1" name="cert" value="Certified" type="radio">
+        <label class="govuk-label govuk-radios__label">
+          I/we certify this is a true copy of an original document
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="Certified-2" name="cert" value="Certified" type="radio">
+        <label class="govuk-label govuk-radios__label">
+          I/we certify this attachment is a true copy of an original document which is certified by a conveyancer to be a true copy of the original
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="Certified-3" name="cert" value="Not certified" type="radio">
+        <label class="govuk-label govuk-radios__label">
+          This attachment is an uncertified copy
+        </label>
+      </div>
+    </div>
+  </fieldset>
+  </div>
+
+</form>
+
+<div class="govuk-warning-text">
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+  <strong class="govuk-warning-text__text">
+    <span class="govuk-warning-text__assistive">Warning</span>
+    To avoid requisitions, check that details in the attached JP1 letter exactly match the information you’ve provided in this application.
+  </strong>
+</div>
+
+{{ govukButton({
+  text: "Continue",
+  href: "doc_review"
+}) }}
+
+</div>
+</div>
+
+      <footer>
+      <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+      <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+      <br>
+      <p class="govuk-body-s" style="color: #747B7F"> The following links open in a new window
+      <br>
+      <br>
+      <a href="#" style="color: #747B7F"> Terms and conditions</a> | <a href="/setup/accessibility-statement" target="_blank" rel="noopener noreferrer" style="color: #747B7F">Accessibility statement</a> |  <a href="#" style="color: #747B7F">Freedom of information</a> | <a href="#" style="color: #747B7F">© Crown copyright</a></p>
+      </div>
+      </div>
+      </footer>
+
+
+
+
+{% endblock %}
+
+
+{% block footer %}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}
