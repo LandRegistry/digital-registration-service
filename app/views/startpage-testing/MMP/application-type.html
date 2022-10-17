@@ -1,0 +1,89 @@
+{% extends "drs-layout.html" %}
+{% include "includes/scripts.html" %}
+
+
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l"></span>
+  <h1 class="govuk-heading-xl">What is the main purpose of your application?</h1>
+
+  <form method="post" action="Application-type">
+
+  <div id="sign-in-hint" class="govuk-hint">
+    You can add specific transactions later. For complex applications, select the action you need to complete first.
+  </div>
+
+<br>
+
+  <form method="post" action="/type-selected" novalidate>
+      <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset" aria-describedby="sign-in-hint">
+      <div class="govuk-radios" data-module="govuk-radios">
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="register-updates" name="Application-type" type="radio" value="register-updates" aria-describedby="sign-in-item-hint">
+          <label class="govuk-label govuk-radios__label" for="register-updates">
+            Update existing titles only (also known as register updates)
+          </label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="transfer-of-part" name="Application-type" type="radio" value="transfer-of-part" aria-describedby="sign-in-2-item-hint">
+          <label class="govuk-label govuk-radios__label" for="transfer-of-part">
+            Transfer of part
+          </label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="new-lease" name="Application-type" type="radio" value="new-lease" aria-describedby="sign-in-2-item-hint">
+          <label class="govuk-label govuk-radios__label" for="new-lease">
+            Create New lease
+          </label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="lease-extension" name="Application-type" type="radio" value="lease-extension" aria-describedby="sign-in-2-item-hint">
+          <label class="govuk-label govuk-radios__label" for="lease-extension">
+            Close an old lease and open new a lease under the same tenant (also known as lease extension)
+          </label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="FormA" name="Application-type" type="radio" value="formA" aria-describedby="sign-in-2-item-hint">
+          <label class="govuk-label govuk-radios__label" for="formA">
+            Remove a form A restriction (JP1)
+          </label>
+        </div>
+
+      </div>
+      </fieldset>
+
+</div>
+
+    <!---  <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            What are register updates?
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          Register updates are changes to existing registered titles only. For example, if you need to apply for transfer of whole.
+        </div>
+      </details> --->
+
+
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+
+</form>
+
+    </div>
+    </div>
+
+
+
+{% endblock %}
+
+
+
+{% block bodyEnd %}
+{% endblock %}

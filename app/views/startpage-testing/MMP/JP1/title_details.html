@@ -1,0 +1,52 @@
+{% extends "drs-layout.html" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-full">
+
+    <span class="govuk-caption-xl"></span>
+    <h1 class="govuk-heading-xl"> Title details</h1>
+
+      <h2 class="govuk-heading-m">Application type: Removal a default Form A restriction (JP1)</h2>
+
+        <br>
+
+    <form method="post">
+
+      <table class="govuk-table">
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-width-one-third">Title number</th>
+          <td class="govuk-table__cell govuk-!-width-one-half">ABC123</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter" style="text-align: right"><a class="govuk-link govuk-link--no-visited-state" href="/startpage-testing/JP1/enter_title.html">Change</a></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Property</th>
+          <td class="govuk-table__cell">1 Main Road, Littlehaxten, LH1 1AA</td>
+          <td class="govuk-table__cell"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br>
+
+    <p class="govuk-!-width-two-thirds govuk-body" style="font-weight: bold;">Ensure all details are correct before continuing. You will not be able to change the title numbers later in the application.</p>
+
+
+    {{ govukButton({
+      text: "Continue",
+      href: "LR_reference"
+        }) }}
+
+  </form>
+  </div>
+  </div>
+
+
+{% endblock %}
+
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}
