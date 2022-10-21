@@ -7,9 +7,7 @@
   <span class="govuk-caption-l"></span>
 
 
-    <h1 class="govuk-heading-l">Add Tenant representation</h1>
-    <p class="govuk-body-m">Select 'Add representation' for each Tenant.</p>
-
+    <h1 class="govuk-heading-l">Applicants</h1>
 
 
 <form method="post" action="/enhancements/which-task-list">
@@ -19,21 +17,13 @@
 
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header" style="width: 25%; box-sizing: border-box;">Applicant type</th>
+      <th scope="col" class="govuk-table__header" style="width: 20%; box-sizing: border-box;">Applicant type</th>
       <th scope="col" class="govuk-table__header" style="width: 20%;box-sizing: border-box;">Full name</th>
-      <th scope="col" class="govuk-table__header" style="width: 30%;box-sizing: border-box;">Represented by</th>
-      <th scope="col" class="govuk-table__header" style="width: 20%;box-sizing: border-box;">Options</th>
+      <th scope="col" class="govuk-table__header" style="width: 25%;box-sizing: border-box;">Company number</th>
+      <th scope="col" class="govuk-table__header" style="width: 25%;box-sizing: border-box;" >Territory of incorporation</th>
+      <th scope="col" class="govuk-table__header" style="width: 10%;box-sizing: border-box;">Options</th>
     </tr>
   </thead>
-
-  <tbody class="govuk-table_body">
-    <tr class="govuk-table_row" id="hidePI">
-    <td class="govuk-table__cell">Private individual</td>
-     <td class="govuk-table__cell nametest"><!--John Smith--></td>
-    <td class="govuk-table__cell">N/A</td>
-    <td class="govuk-table__cell govuk-link"><a href="add-applicants-change">Add representation</a><br><a
-  </tbody>
-
   {% if data['applicant-individual-forename'] %}
     <tbody class="govuk-table_body">
       <tr class="govuk-table_row" id="hidePI">
@@ -172,34 +162,25 @@
     <a class="govuk-link" href="add-applicants-2">Add applicant</a><br>
     {% endif %} -->
 
-    <!--  {% if data['applicant2-company-name-2'] or data['applicant2-individual-forename-2'] or data['applicant2-overseas-name'] or data['applicant2-other-name'] %}
-    <a class="govuk-link govuk-body" href="add-applicants-3">Add representation</a><br>
+    {% if data['applicant2-company-name-2'] or data['applicant2-individual-forename-2'] or data['applicant2-overseas-name'] or data['applicant2-other-name'] %}
+    <a class="govuk-link govuk-body" href="add-applicants-3">Add applicant</a><br>
     {% else %}
     <a class="govuk-link govuk-body" href="add-applicants-2">Add applicant</a><br>
-    {% endif %} -->
+    {% endif %}
+
+
 
 
     {{ govukButton({
-      text: "Continue",
-      classes: "govuk-!-margin-top-5",
-      href:"check-tenant-details"
+    classes: "",
+    text: "Continue",
+    href: "/startpage-testing/MMP/transfer-part/complete-application"
     }) }}
 
 </form>
 
 </div>
 </div>
-
-
-<script type="text/javascript">
-  $('.nametest').html(member.nameTest + ' ' + member.nameTest2);
-  // console.log('sup dude')
-//   member.nameTest = true;
-
-// console.log(member.nameTest);
-
-</script>
-
 
 <!-- <script>
   function RemoveTransfereeIndividual() {

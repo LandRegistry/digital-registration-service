@@ -32,49 +32,60 @@
 
       </tbody>
     </table>
-    <h2 class="govuk-heading-m govuk-!-padding-top-5">1. Surrender a lease</h2>
 
 </div>
 
-
-  <div class="govuk-grid-column-full" style="margin-left: 35px; width: 97%;">
-
-    <table class="govuk-table govuk-!-width-two-thirds">
-        <th scope="col" class="govuk-table__header">1.1 Attach documents</th>
-        <td class="govuk-table__cell"></td>
-        <tbody class="govuk-table__body">
-
-                <tr class="govuk-table__row">
-                <td class="govuk-table__cell"><a href="9-attach-documents-surrender.html" class="govuk-link">Attach documents</a></td>
-                <td class="govuk-table__cell">{% if data['charge-date'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
-                </tr>
-
-        </tbody>
-      </table>
-    </div>
 
     <div class="govuk-grid-column-full">
 
-    <h2 class="govuk-heading-m govuk-!-padding-top-5">2. New lease</h2>
-</div>
+      <h2 class="govuk-heading-m govuk-!-padding-top-5">1. Surrender a lease</h2>
+    </div>
 
 
     <div class="govuk-grid-column-full" style="margin-left: 35px; width: 97%;">
 
     <table class="govuk-table govuk-!-width-two-thirds">
-      <th scope="col" class="govuk-table__header">2.1 Attach documents</th>
+      <th scope="col" class="govuk-table__header">1.1 Attach documents</th>
       <td class="govuk-table__cell"></td>
       <tbody class="govuk-table__body">
 
               <tr class="govuk-table__row">
-              <td class="govuk-table__cell"><a href="9-attach-documents-new-lease.html" class="govuk-link">Attach documents</a></td>
-              <td class="govuk-table__cell">{% if data['charge-date'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
+              <td class="govuk-table__cell"><a href="9-attach-documents-surrender.html" class="govuk-link">Attach documents</a></td>
+              <td class="govuk-table__cell"><strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Attached</strong></td>
               </tr>
 
       </tbody>
     </table>
 
-    </div>
+
+
+
+  </div>
+    <div class="govuk-grid-column-full">
+
+      <h2 class="govuk-heading-m govuk-!-padding-top-5">2. New lease</h2>
+  </div>
+
+
+      <div class="govuk-grid-column-full" style="margin-left: 35px; width: 97%;">
+
+      <table class="govuk-table govuk-!-width-two-thirds">
+        <th scope="col" class="govuk-table__header">2.1 Attach documents</th>
+        <td class="govuk-table__cell"></td>
+        <tbody class="govuk-table__body">
+
+                <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><a href="9-attach-documents-new-lease.html" class="govuk-link">Attach documents</a></td>
+                <td class="govuk-table__cell">{% if data['charge-date'] %}<strong class="govuk-tag app-task-list__task-completed" id="contact-details-completed">Completed</strong>{% endif %}</td>
+                </tr>
+
+        </tbody>
+      </table>
+
+      </div>
+
+
+
 
     <div class="govuk-grid-column-full">
 
@@ -91,18 +102,17 @@
 
 
 
-
       {{ govukButton({
         text: "Continue",
         classes: "govuk-!-margin-top-9",
-        href:"5-cal-fee"
+        href:"review-application"
       }) }}
 
 
       {{ govukButton({
         text: "Save application and exit",
         classes: "secondary-button-save govuk-!-margin-top-9",
-        href: "/../save-resume/save-confirmation"
+        href: "/startpage-testing/MMP/transfer-part/save-confirmation"
       }) }}
 
 

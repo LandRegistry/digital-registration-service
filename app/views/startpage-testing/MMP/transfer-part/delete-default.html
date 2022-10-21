@@ -1,0 +1,121 @@
+
+{% extends "layout_unbranded.html" %}
+
+{% block pageTitle %}
+  Delete application
+{% endblock %}
+
+{% block beforeContent %}
+<br>
+<br>
+<!-- <a href="javascript: window.history.go(-1)"> Back </a> -->
+
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full" id="headerdiv">
+    <a href="/../../setup/app-start"><img src="/public/images/headerlogo.svg" alt="hmlrlogo"></a>
+
+    <hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+
+
+  <div class="govuk-phase-banner">
+      <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
+      <span class="govuk-phase-banner__text">
+      This is a prototype and not a real service.
+      </span></p>
+  </div>
+  </div>
+</div>
+
+<form method="post">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds govuk-!-margin-top-5">
+      <h1 class="govuk-heading-l">
+        Are you sure you want to delete this saved application?
+      </h1>
+    </div>
+      <div class="govuk-grid-column-full govuk-!-margin-top-5">
+      </div>
+      <div class="govuk-grid-column-full">
+      <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Reference</th>
+            <th scope="col" class="govuk-table__header">Title</th>
+            <th scope="col" class="govuk-table__header govuk-!-width-two-thirds">Property</th>
+            <th scope="col" class="govuk-table__header govuk-!-width-one-half">Applicants</th>
+            <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Created</th>
+          </tr>
+        </thead>
+
+
+        <tbody class="govuk-table_body">
+          <!-- {% if data['reference'] %}
+          <tr class="govuk-table_row" id="">
+          <td class="govuk-table__cell">{{ data['reference'] }}</td>
+          <td class="govuk-table__cell">{{ data['title'] }}</td>
+          <td class="govuk-table__cell">{{ data['property-description'] }}</td>
+          <td class="govuk-table__cell">
+              {{ data['applicant-individual-forename'] }} {{ data['applicant-individual-surname'] }}<br>
+              {{ data['applicant-individual-forename-2'] }} {{ data['applicant-individual-surname-2'] }}<br>
+              {{ data['applicant-company-name'] }}
+          </td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter">19 December 2019</td>
+          {% endif %} -->
+
+          <tr class="govuk-table_row" id="">
+          <td class="govuk-table__cell">JT/123/TR1</td>
+          <td class="govuk-table__cell">LP12345</td>
+          <td class="govuk-table__cell">2 William Prance Road, Plymouth, PL6 5WS</td>
+          <td class="govuk-table__cell">John James Smith<br> Jane Smith</td>
+          <td class="govuk-table__cell"><p>06/12/19</p></td>
+
+
+
+          </tbody>
+
+      </table>
+
+      <!-- <div class="govuk-warning-text">
+        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+        <strong class="govuk-warning-text__text">
+          <span class="govuk-warning-text__assistive">Warning</span>
+          By selecting ‘Delete’ you will permenantly remove this application from the service.
+        </strong>
+      </div> -->
+
+  <!--  <div class="govuk-heading-s">
+        <b>
+          By selecting ‘Delete’ you will permenantly remove this application from the service.  
+        </b>
+      </div> -->
+
+      <div class="govuk-grid-column-one-half govuk-!-margin-top-5" style="display: flex; align-items: center;">
+        <br>
+        {{ govukButton({
+          text: "Delete",
+          href: "saved-applications",
+          classes: "govuk-button--warning"
+        }) }}
+        <a href="saved-applications" class="govuk-link govuk-link--no-visited-state" style="padding-bottom: 30px; padding-left: 20px;">Return to saved applications</a>
+      </div>
+
+</div>
+</form>
+
+<footer>
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-full">
+<hr style= "height: 7px;  background: #b4d307 linear-gradient(-60deg,#b4d307,#b4d307 50%,#d7e900 0,#d7e900); border: none;">
+<br>
+<p class="govuk-body-s" style="color: #747B7F"> The following links open in a new window
+<br>
+<br>
+<a href="#" style="color: #747B7F"> Terms and conditions</a> | <a href="/setup/accessibility-statement" target="_blank" rel="noopener noreferrer" style="color: #747B7F">Accessibility statement</a> |  <a href="#" style="color: #747B7F">Freedom of information</a> | <a href="#" style="color: #747B7F">© Crown copyright</a></p>
+</div>
+</div>
+</footer>
+{% endblock %}
