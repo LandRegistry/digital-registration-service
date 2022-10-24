@@ -50,14 +50,6 @@
     <span class="govuk-caption-xl"></span>
     <h1 class="govuk-heading-xl"> Enter title numbers </h1>
 
-    <p class="govuk-body">
-      You can add up to 25 titles per application if:
-      <ul class="govuk-list govuk-list--bullet">
-      <li>all titles have the same proprietors registered against each title number
-      <li>transferors and transferees are the same for each title number
-      </ul>
-    </p>
-
     <br>
 
     <form method="post" action="#">
@@ -66,7 +58,7 @@
         <div class="govuk-form-group">
           <h2 class="govuk-heading-m">Transferor title number</h2>
           <label class="govuk-hint for="govuk-input govuk-input--width-10">
-            For example, "A123" or "XY5678"
+            You can add up to 25 transferor title numbers.
           </label>
           <input type="text" class="govuk-input govuk-!-width-one-third govuk-!-margin-bottom-5" name="title_1" aria-describedby="with-hint-info with-hint-hint">
         </div>
@@ -95,7 +87,7 @@
             </span>
           </summary>
           <div class="govuk-details__text">
-            A related title is affected by your application, but not the main purpose of it. For example, adjoining land affected by an easement.
+            A related title is affected by your application, but is not the main purpose of it. For example, adjoining land affected by an easement or a restriction.
           </div>
         </details>
 
@@ -145,7 +137,7 @@
 
   {{ govukButton({
     text: "Continue",
-    href: "whole-or-part-1"
+    href: "TP-transactions-amend"
   }) }}
 
   </div>
