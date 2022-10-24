@@ -1,0 +1,147 @@
+{% extends "drs-layout.html" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+
+    <span class="govuk-caption-xl"></span>
+    <h1 class="govuk-heading-xl"> Titles in this application</h1>
+
+    <p class="govuk-body" style="font-weight: bold">Application type: New lease</p>
+
+    <form method="post">
+
+    <p class="govuk-body">Check the details of the title numbers in the application and add any disclosable overriding interests.</p>
+
+    <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">About disclosable overriding interests</span>
+        </summary>
+        <div class="govuk-details__text">
+          Add disclosable overriding interests where the application relates to a registrable disposition and <br>disclosable overriding interests affect the registered estate.
+
+          <br><br>
+
+          If there's a disclosable overriding interest, you must:
+          <ul class="govuk-list govuk-list--bullet">
+          <li>attach a completed <a href="#">Form DI (opens in new tab)</a>
+          <li>provide evidence of the overriding interest
+          </ul>
+          <br>
+          Evidence of overriding interest could be a certified copy of the deed or document that created it. If valid, the overriding interest will be noted on the title.
+          <br>
+          For more information see <a href="#">Practice Guide 15 (opens in new tab)</a>.
+        </div>
+      </details>
+
+      <table class="govuk-table">
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-width-one-third">Title number</th>
+          <td class="govuk-table__cell govuk-!-width-one-half">ABC123</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter" style="text-align: right"><a class="govuk-link govuk-link--no-visited-state" href="#">Remove</a></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-width-one-third">Title number type</th>
+          <td class="govuk-table__cell govuk-!-width-one-half">Landlord</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter" style="text-align: right"><a class="govuk-link govuk-link--no-visited-state" href="#"></a></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Property</th>
+          <td class="govuk-table__cell">1 Main Road, Littlehaxten, LH1 1AA</td>
+          <td class="govuk-table__cell"></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">This application affects</th>
+          <td class="govuk-table__cell">the whole of the title</td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter" style="text-align: right"><a class="govuk-link govuk-link--no-visited-state" href="#">Change</a></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header"></th>
+          <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" onclick="DOI1" id="DOI-link-1" href="#">Add disclosable overriding interests</a></td>
+          <td class="govuk-table__cell govuk-!-width-one-quarter"><a class="govuk-link govuk-link--no-visited-state" href="#"></a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="govuk-table">
+    <tbody class="govuk-table__body">
+      <tr class="govuk-table__row">
+        <th scope="row" class="govuk-table__header govuk-!-width-one-third">Title number</th>
+        <td class="govuk-table__cell govuk-!-width-one-half">ABC456</td>
+        <td class="govuk-table__cell govuk-!-width-one-quarter" style="text-align: right"><a class="govuk-link govuk-link--no-visited-state" href="#">Remove</a></td>
+      </tr>
+      <tr class="govuk-table__row">
+        <th scope="row" class="govuk-table__header govuk-!-width-one-third">Title number type</th>
+        <td class="govuk-table__cell govuk-!-width-one-half">Related</td>
+        <td class="govuk-table__cell govuk-!-width-one-quarter" style="text-align: right"><a class="govuk-link govuk-link--no-visited-state" href="#"></a></td>
+      </tr>
+      <tr class="govuk-table__row">
+        <th scope="row" class="govuk-table__header">Property</th>
+        <td class="govuk-table__cell">2 Main Road, Littlehaxten, LH1 1AA</td>
+        <td class="govuk-table__cell"></td>
+      </tr>
+      <tr class="govuk-table__row">
+        <th scope="row" class="govuk-table__header">This application affects</th>
+        <td class="govuk-table__cell">the whole of the title</td>
+        <td class="govuk-table__cell govuk-!-width-one-quarter" style="text-align: right"><a class="govuk-link govuk-link--no-visited-state" href="#">Change</a></td>
+      </tr>
+      <tr class="govuk-table__row">
+        <th scope="row" class="govuk-table__header"></th>
+        <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" onclick="DOI1" id="DOI-link-1" href="#">Add disclosable overriding interests</a></td>
+        <td class="govuk-table__cell govuk-!-width-one-quarter"><a class="govuk-link govuk-link--no-visited-state" href="#"></a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="govuk-table">
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header govuk-!-width-one-third">Title number</th>
+      <td class="govuk-table__cell govuk-!-width-one-half">ABC789</td>
+      <td class="govuk-table__cell govuk-!-width-one-quarter" style="text-align: right"><a class="govuk-link govuk-link--no-visited-state" href="/startpage-testing/version-2/new-lease/titles-in-this-application-2">Remove</a></td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header govuk-!-width-one-third">Title number type</th>
+      <td class="govuk-table__cell govuk-!-width-one-half">Related</td>
+      <td class="govuk-table__cell govuk-!-width-one-quarter" style="text-align: right"><a class="govuk-link govuk-link--no-visited-state" href="#"></a></td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Property</th>
+      <td class="govuk-table__cell">3 Main Road, Littlehaxten, LH1 1AA</td>
+      <td class="govuk-table__cell"></td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">This application affects</th>
+      <td class="govuk-table__cell">the whole of the title</td>
+      <td class="govuk-table__cell govuk-!-width-one-quarter" style="text-align: right"><a class="govuk-link govuk-link--no-visited-state" href="#">Change</a></td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header"></th>
+      <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" onclick="DOI1" id="DOI-link-1" href="#">Add disclosable overriding interests</a></td>
+      <td class="govuk-table__cell govuk-!-width-one-quarter"><a class="govuk-link govuk-link--no-visited-state" href="#"></a></td>
+    </tr>
+  </tbody>
+</table>
+
+<a class="govuk-link govuk-body govuk-!-margin-bottom-9" href="#">Add another title number</a>
+<br><br><br>
+
+
+    {{ govukButton({
+      text: "Continue",
+      href: "new_lease-transactions"
+        }) }}
+
+  </form>
+  </div>
+  </div>
+
+
+{% endblock %}
+
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}
