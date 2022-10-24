@@ -1,0 +1,71 @@
+{% extends "drs-layout.html" %}
+
+
+{% block content %}
+
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+
+  <form method="post">
+
+    <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset" aria-describedby="nationality-hint">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <h1 class="govuk-fieldset__heading">
+            Select which related titles are partly affected
+          </h1>
+        </legend>
+        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="nationality" name="nationality" type="checkbox" value="british" aria-describedby="nationality-item-hint">
+            <label class="govuk-label govuk-checkboxes__label" for="nationality">
+              ABC789
+            </label>
+            <div id="nationality-item-hint" class="govuk-hint govuk-checkboxes__hint">
+              1 Main Road, Littlehaxten, LH1
+            </div>
+          </div>
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="nationality-2" name="nationality" type="checkbox" value="irish">
+            <label class="govuk-label govuk-checkboxes__label" for="nationality-2">
+              ABC999
+            </label>
+            <div id="nationality-item-hint" class="govuk-hint govuk-checkboxes__hint">
+              2 Main Road, Littlehaxten, LH1
+            </div>
+          </div>
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="nationality-3" name="nationality" type="checkbox" value="other">
+            <label class="govuk-label govuk-checkboxes__label" for="nationality-3">
+              ABC789
+            </label>
+            <div id="nationality-item-hint" class="govuk-hint govuk-checkboxes__hint">
+              3 Main Road, Littlehaxten, LH1
+            </div>
+          </div>
+        </div>
+
+      </fieldset>
+    </div>
+
+
+    {{ govukButton({
+      text: "Continue",
+      href: "titles-in-this-application-3"
+    }) }}
+
+  </form>
+  </div>
+  </div>
+
+
+
+
+
+{% endblock %}
+
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}

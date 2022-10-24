@@ -2666,8 +2666,7 @@ router.post('/formP-addresstype-answer', function (req, res) {
     }
   })
 
-
-  router.post('/startpage-testing/version-1/application-type', function (req, res) {
+  router.post('/startpage-testing/lease-extension/application-type', function (req, res) {
     // Get the answer from session data
     // The name between the quotes is the same as the 'name' attribute on the input elements
     // However in JavaScript we can't use hyphens in variable names
@@ -2677,50 +2676,70 @@ router.post('/formP-addresstype-answer', function (req, res) {
     switch (ApplicationType) {
 
       case 'register-updates':
-        res.redirect('/startpage-testing/version-1/register-updates/enter_titles-0');
+        res.redirect('/startpage-testing/lease-extension/register-updates/enter_titles-0');
         break;
 
       case 'transfer-of-part':
-        res.redirect('/startpage-testing/version-1/transfer-part/enter_titles-0');
-        break;
-
-      case 'FormA':
-        res.redirect('/startpage-testing/version-1/JP1/enter_title.html');
-        break;
-
-    }
-
-  })
-
-  router.post('/startpage-testing/version-2/application-type', function (req, res) {
-    // Get the answer from session data
-    // The name between the quotes is the same as the 'name' attribute on the input elements
-    // However in JavaScript we can't use hyphens in variable names
-
-    const ApplicationType = req.session.data['Application-type']
-
-    switch (ApplicationType) {
-
-      case 'register-updates':
-        res.redirect('/startpage-testing/version-2/register-updates/enter_titles-0');
-        break;
-
-      case 'transfer-of-part':
-        res.redirect('/startpage-testing/version-2/transfer-part/enter_titles-0');
+        res.redirect('/startpage-testing/lease-extension/transfer-part/enter_titles-0');
         break;
 
       case 'new-lease':
-        res.redirect('/startpage-testing/version-2/new-lease/enter_titles-0');
+        res.redirect('/startpage-testing/lease-extension/new-lease/enter_titles-0');
         break;
 
       case 'lease-extension':
-        res.redirect('/startpage-testing/version-2/lease-extension/enter_titles-0');
+        res.redirect('/startpage-testing/lease-extension/lease-extension/enter_titles-0');
         break;
 
       case 'FormA':
-        res.redirect('/startpage-testing/version-2/JP1/enter_title');
+        res.redirect('/startpage-testing/lease-extension/JP1/enter_title');
         break;
 
     }
 
   })
+
+  router.post('/startpage-testing/MMP/application-type', function (req, res) {
+    // Get the answer from session data
+    // The name between the quotes is the same as the 'name' attribute on the input elements
+    // However in JavaScript we can't use hyphens in variable names
+
+    const ApplicationType = req.session.data['Application-type']
+
+    switch (ApplicationType) {
+
+      case 'register-updates':
+        res.redirect('/startpage-testing/MMP/register-updates/enter_titles-0');
+        break;
+
+      case 'transfer-of-part':
+        res.redirect('/startpage-testing/MMP/transfer-part/enter_titles-0');
+        break;
+
+      case 'new-lease':
+        res.redirect('/startpage-testing/MMP/new-lease/enter_titles-0');
+        break;
+
+      case 'lease-extension':
+        res.redirect('/startpage-testing/MMP/lease-extension/enter_titles-0');
+        break;
+
+      case 'FormA':
+        res.redirect('/startpage-testing/MMP/JP1/enter_title');
+        break;
+
+    }
+
+  })
+
+  // branching from titles
+    router.post('/startpage-testing/MMP/transfer-part/TP-transactions', function (req, res) {
+
+      let transactionMMP = req.session.data['TransactionMMP']
+
+      if (transactionMMP === 'new lease') {
+        res.redirect('*');
+      } else {
+        res.redirect('/startpage-testing/MMP/transfer-part/add-applicants');
+      }
+    })

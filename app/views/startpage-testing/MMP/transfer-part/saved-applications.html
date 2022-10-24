@@ -1,0 +1,57 @@
+{% extends "drs-layout.html" %}
+
+{% block content %}
+<div class="govuk-grid-row">
+
+<div class="govuk-grid-column-full">
+  <span class="govuk-caption-l"></span>
+
+
+    <h1 class="govuk-heading-xl">Saved applications</h1>
+
+    <p class="govuk-body">Saved applications are available for up to 90 days.</p>
+
+<form method="post" action="/enhancements/which-task-list">
+
+
+<table class="govuk-table" id="applicantlist">
+
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Reference</th>
+      <th scope="col" class="govuk-table__header">Titles</th>
+      <th scope="col" class="govuk-table__header">Property</th>
+      <th scope="col" class="govuk-table__header">Applicants</th>
+      <th scope="col" class="govuk-table__header">Created</th>
+      <th scope="col" class="govuk-table__header">Options</th>
+    </tr>
+  </thead>
+    <tbody class="govuk-table_body">
+      <tr class="govuk-table_row" id="hidePI">
+      <td class="govuk-table__cell">ref12345</td>
+      <td class="govuk-table__cell">ABC123, ABC789</td>
+      <td class="govuk-table__cell">1 Main Road, Littlehaxten, LH1,
+2 Main Road, Littlehaxten, LH1</td>
+      <td class="govuk-table__cell">John Smith</td>
+      <td class="govuk-table__cell">26 Oct 22</td>
+      <td class="govuk-table__cell govuk-link"><a href="complete-application">Change</a><br><a  href="#"">Remove</a></td>
+    </tbody>
+
+      </table>
+
+</form>
+
+<p class="govuk-body">
+  <a href="start" class="govuk-link govuk-link--no-visited-state">Start a new application</a>
+  </p>
+
+</div>
+</div>
+
+
+{% endblock %}
+
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}

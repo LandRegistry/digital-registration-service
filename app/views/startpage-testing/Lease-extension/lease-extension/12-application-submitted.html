@@ -1,0 +1,180 @@
+{% extends "drs-layout.html" %}
+
+{% block content %}
+<div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-full">
+
+    <div class="example-screen">
+    <div class="govuk-panel govuk-panel--confirmation">
+      <h1 class="govuk-panel__title">
+        Application submitted
+      </h1>
+      <div class="govuk-panel__body">
+        Your HM Land Registry reference number<br><strong>HDJ2123F</strong>
+      </div>
+      <br>
+      <div class="govuk-panel_body">
+        You must quote this reference number in any correspondence
+        </div>
+    </div>
+
+    <div>
+        <h1 class="govuk-heading-l" style="float: left;">
+        Application details
+        </h1>
+
+        <button class="govuk-button govuk-button--secondary" onclick="window.print();" data-module="govuk-button" style="float: right;">
+        Print submission receipt
+      </button>
+
+        <table class="govuk-table">
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header govuk-!-width-one-third">Priority date</th>
+            <td class="govuk-table__cell">7 March 2022</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Priority time</th>
+            <td class="govuk-table__cell">14:43:07</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Your reference</th>
+            <td class="govuk-table__cell">{{data['reference-1']}}</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Title numbers</th>
+            <td class="govuk-table__cell">ABC123, ABC456</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Property description</th>
+            <td class="govuk-table__cell">
+                1 Main Road, Littlehaxten, LH1 <br> 2, Main Road, Littlehaxten, LH1
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Attachments</th>
+            <td class="govuk-table__cell">lease-surrender-JohnSmith.pdf</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Contact email</th>
+            <td class="govuk-table__cell">admin@conveyancingfirm.co.uk</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+
+<!-- PRINTABLE AREA -->
+
+    <div class="example-print">
+      <h1 class="govuk-heading-m">
+        Application submitted
+      </h1>
+      <div class="print-text">
+        Your HM Land Registry reference number<br><strong>HDJ2123F</strong>
+      </div>
+      <br>
+      <div class="print-text">
+        You must quote this reference number in any correspondence
+        </div>
+
+        <br>
+    <div>
+        <h2 class="govuk-heading-s" style="float: left;">
+        Application details
+        </h2>
+
+        <table class="govuk-table">
+        <tbody class="govuk-table__body print-text">
+          <tr class="govuk-table__row print-text">
+            <th scope="row" class="govuk-table__header col-print-12 print-text">Priority date</th>
+            <td class="govuk-table__cell">7 June 2021</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header col-print-12">Priority time</th>
+            <td class="govuk-table__cell">14:43:07</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header col-print-12">Your reference</th>
+            <td class="govuk-table__cell">1206301/1</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header col-print-12">Title numbers</th>
+            <td class="govuk-table__cell">LP12345, LP12346, LP12347, LP12348, LP12349, LP12350, LP12351, LP12352, LP12353, LP12354, LP12355, LP12356, LP12357, LP12358, LP12359, LP12360, LP12361, LP12362, LP12363, LP12364, LP12365, LP12366, LP12367, LP12366</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header col-print-12">Property description</th>
+            <td class="govuk-table__cell ">66 Edwards Walk, Littlehaxten, LH6 8SH <br> 67 Edwards Walk, Littlehaxten, LH6 8SH <br> 68 Edwards Walk, Littlehaxten, LH6 8SH <br> 69 Edwards Walk, Littlehaxten, LH6 8SH<br> 70 Edwards Walk, Littlehaxten, LH6 8SH<br>
+                                          71 Edwards Walk, Littlehaxten, LH6 8SH<br> 72 Edwards Walk, Littlehaxten, LH6 8SH <br> 73 Edwards Walk, Littlehaxten, LH6 8SH <br> 74 Edwards Walk, Littlehaxten, LH6 8SH <br> 75 Edwards Walk, Littlehaxten, LH6 8SH<br>
+                                          76 Edwards Walk, Littlehaxten, LH6 8SH <br> 77 Edwards Walk, Littlehaxten, LH6 8SH <br> 78 Edwards Walk, Littlehaxten, LH6 8SH <br> 79 Edwards Walk, Littlehaxten, LH6 8SH<br> 80 Edwards Walk, Littlehaxten, LH6 8SH<br>
+                                          81 Edwards Walk, Littlehaxten, LH6 8SH<br> 82 Edwards Walk, Littlehaxten, LH6 8SH <br> 83 Edwards Walk, Littlehaxten, LH6 8SH <br> 84 Edwards Walk, Littlehaxten, LH6 8SH <br> 85 Edwards Walk, Littlehaxten, LH6 8SH<br>
+                                          86 Edwards Walk, Littlehaxten, LH6 8SH<br> 87 Edwards Walk, Littlehaxten, LH6 8SH <br> 88 Edwards Walk, Littlehaxten, LH6 8SH <br> 89 Edwards Walk, Littlehaxten, LH6 8SH <br> 90 Edwards Walk, Littlehaxten, LH6 8SH<br>
+
+                                        </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Attachments</th>
+            <td class="govuk-table__cell">deed.pdf <br> evidence.pdf</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Contact email</th>
+            <td class="govuk-table__cell">admin@conveyancingfirm.co.uk</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+
+    <!-- END OF PRINTABLE AREA -->
+
+    <div class="example-screen">
+      <h3 class="govuk-heading-l">Next steps</h3>
+        <ul class="govuk-list">
+          <li>
+            <a class="govuk-link" href="#">Download completed AP1</a>
+          </li>
+          <li>
+            <a class="govuk-link" href="/startpage-testing/Lease-extension/start">Start new application</a>
+          </li>
+          <li>
+            <a class="govuk-link" href="#">View your applications</a>
+          </li>
+          <li>
+            <a class="govuk-link" href="/startpage-testing/lease-extension/portal">Go to portal homepage</a>
+          </li>
+          <li>
+            <br>
+            <p class="govuk-body">Got a moment? <a class="govuk-link" href="https://forms.office.com/r/Lyh4kx0bMn">Tell us what you think</a></p>
+          </li>
+      </ul>
+  </div>
+
+
+
+</div>
+
+<style>
+  .example-print {
+    display: none;
+}
+@media print {
+   .example-screen {
+       display: none;
+    }
+    .example-print {
+       display: block;
+    }
+    .col-print-12 {
+        width: 10%
+      }
+    .print-text {
+        font-size: 12px;
+        font-family: arial;
+    }
+}
+
+</style>
+
+
+{% endblock %}
