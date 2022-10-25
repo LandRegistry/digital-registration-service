@@ -2708,9 +2708,9 @@ router.post('/formP-addresstype-answer', function (req, res) {
 
     switch (ApplicationType) {
 
-      case 'register-updates':
-        res.redirect('/startpage-testing/MMP/register-updates/enter_titles-0');
-        break;
+    //  case 'register-updates':
+    //    res.redirect('/startpage-testing/MMP/register-updates/enter_titles-0');
+    //    break;
 
       case 'transfer-of-part':
         res.redirect('/startpage-testing/MMP/transfer-part/enter_titles-0');
@@ -2720,9 +2720,10 @@ router.post('/formP-addresstype-answer', function (req, res) {
         res.redirect('/startpage-testing/MMP/new-lease/enter_titles-0');
         break;
 
-      case 'lease-extension':
-        res.redirect('/startpage-testing/MMP/lease-extension/enter_titles-0');
-        break;
+    //  case 'lease-extension':
+    //    res.redirect('/startpage-testing/MMP/lease-extension/enter_titles-0');
+    //  break;
+
 
       case 'FormA':
         res.redirect('/startpage-testing/MMP/JP1/enter_title');
