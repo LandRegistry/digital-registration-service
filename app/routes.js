@@ -2708,9 +2708,9 @@ router.post('/formP-addresstype-answer', function (req, res) {
 
     switch (ApplicationType) {
 
-    //  case 'register-updates':
-    //    res.redirect('/startpage-testing/MMP/register-updates/enter_titles-0');
-    //    break;
+      case 'register-updates':
+        res.redirect('/startpage-testing/MMP/register-updates/enter_titles-0');
+        break;
 
       case 'transfer-of-part':
         res.redirect('/startpage-testing/MMP/transfer-part/enter_titles-0');

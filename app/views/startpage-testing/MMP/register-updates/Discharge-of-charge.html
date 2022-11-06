@@ -1,0 +1,75 @@
+{% extends "drs-layout.html" %}
+
+
+{% block content %}
+
+<main class="govuk-main-wrapper" style="padding: 0; padding-bottom: 20px;" id="main-content" role="main">
+
+    <a href="/startpage-testing/MMP/new-lease/link-titles" class="govuk-back-link">Return to link transactions and titles</a>
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+
+
+  <form method="post">
+
+    <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        Discharge of charge
+      </h1>
+    </legend>
+    <div id="waste-hint" class="govuk-hint">
+      Select which titles are affected by this transaction.
+    </div>
+    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="carcasses">
+        <label class="govuk-label govuk-checkboxes__label" for="waste">
+          ABC123 (Farmhouse, Tracy Farm, High lane, Old Town)
+        </label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="waste-2" name="waste" type="checkbox" value="mines">
+        <label class="govuk-label govuk-checkboxes__label" for="waste-2">
+          EDC678 (Cottage 1, Tracy Farm, High lane, Old Town)
+        </label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="waste-2" name="waste" type="checkbox" value="mines">
+        <label class="govuk-label govuk-checkboxes__label" for="waste-2">
+          YHU890 (Cottage 2, Tracy Farm, High lane, Old Town)
+        </label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="waste-2" name="waste" type="checkbox" value="mines">
+        <label class="govuk-label govuk-checkboxes__label" for="waste-2">
+          BGT345 (Cottage 3, Tracy Farm, High lane, Old Town)
+        </label>
+      </div>
+    </div>
+
+  </fieldset>
+</div>
+
+    {{ govukButton({
+      text: "Continue",
+      href: "Transfer-for-value"
+    }) }}
+
+  </form>
+  </div>
+  </div>
+  </main>
+
+
+
+
+
+{% endblock %}
+
+
+{% block bodyEnd %}
+  {% include "includes/scripts.html" %}
+{% endblock %}
