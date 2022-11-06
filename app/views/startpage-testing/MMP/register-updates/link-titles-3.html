@@ -41,68 +41,65 @@
 
     <main class="govuk-main-wrapper" style="padding: 0; padding-bottom: 20px;" id="main-content" role="main">
 
-        <a href="/startpage-testing/version-2/application-type.html" class="govuk-back-link">Return to select application type</a>
+        <a href="new_lease-transactions" class="govuk-back-link">Return to select transaction</a>
 
         <div class="govuk-grid-row">
 
             <div class="govuk-grid-column-two-thirds">
 
     <span class="govuk-caption-xl"></span>
-    <h1 class="govuk-heading-xl"> Enter title numbers </h1>
+    <h1 class="govuk-heading-xl"> Link titles and transactions </h1>
+
+    <p class="govuk-body">We need to understand the relationship between some of your titles and transactions. This helps us automatically calculate your application fees. </p>
 
 
-    <br>
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Transactions</th>
+          <th scope="col" class="govuk-table__header">Title numbers</th>
+          <th scope="col" class="govuk-table__header"></th>
 
-  <form method="post" action="enter_titles-1">
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">Discharge of charge</td>
+          <td scope="row" class="govuk-table__cell">ABC123,<br>EDC678,<br>YHU890,<br>BGT345</td>
+          <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="Discharge-of-charge">Change</a></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">Transfer for value</td>
+          <td scope="row" class="govuk-table__cell">ABC123,<br>EDC678,<br>YHU890,<br>BGT345</td>
+          <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="Transfer-for-value">Change</a></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">Charge</td>
+          <td scope="row" class="govuk-table__cell">ABC123</td>
+          <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="charge">Change</a></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">Cancellation of restriction (RX3)</td>
+          <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="Cancellation-of-restriction">Select title numbers</a></td>
+        </tr>
+      </tbody>
+    </table>
 
-    <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
-      <div class="govuk-form-group">
-        <h2 class="govuk-heading-m">Transferor title number</h2>
-        <label class="govuk-hint for="govuk-input govuk-input--width-10">
-          You can add up to 25 transferor title numbers.<br><br>
-        </label>
-        <input type="text" class="govuk-input govuk-!-width-one-third govuk-!-margin-bottom-5" name="title_1" aria-describedby="with-hint-info with-hint-hint">
-      </div>
-      <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
-        Add to application
-      </button>
-      </div>
-
-  </form>
-
-  <form method="post" action="#">
-
-    <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="25">
-      <div class="govuk-form-group">
-        <h3 class="govuk-heading-m">Related title number (optional)</h3>
-        <label class="govuk-hint for="govuk-input govuk-input--width-10">
-          For example, a title related to a grant of easement.<br><br>
-        </label>
-        <input type="text" class="govuk-input govuk-!-width-one-third govuk-!-margin-bottom-5" name="title_1" aria-describedby="with-hint-info with-hint-hint">
-      </div>
-
-      <details class="govuk-details" data-module="govuk-details">
-        <summary class="govuk-details__summary">
-          <span class="govuk-details__summary-text">
-            What is a related title?
-          </span>
-        </summary>
-        <div class="govuk-details__text">
-          A related title is affected by your application, but is not the main purpose of it. For example, adjoining land affected by an easement or a restriction.
-        </div>
-      </details>
-
-      <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
-        Add to application
-      </button>
-      </div>
-
-  </form>
+    <div class="govuk-warning-text">
+      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+      <strong class="govuk-warning-text__text">
+        <span class="govuk-warning-text__assistive">Warning</span>
+        Make sure all details are correct before continuing. Mistakes could lead to incorrect fees and requisitions.
+      </strong>
+    </div>
 
 
-  {{ govukButton({
-    text: "Continue"
-  }) }}
+    {{ govukButton({
+    classes: "",
+    text: "Continue",
+    href: "add-applicants"
+    }) }}
+
   </div>
   </div>
 
